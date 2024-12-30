@@ -1,3 +1,24 @@
+2024-12-30 Version: 1.65.0
+- Support API BatchCreateDataLakePartitions.
+- Support API BatchDeleteDataLakePartitions.
+- Support API BatchUpdateDataLakePartitions.
+- Support API CreateDataLakeDatabase.
+- Support API CreateDataLakePartition.
+- Support API CreateDataLakeTable.
+- Support API DeleteDataLakeDatabase.
+- Support API DeleteDataLakePartition.
+- Support API DeleteDataLakeTable.
+- Support API GetDataLakePartition.
+- Support API ListDataLakePartition.
+- Support API ListDataLakePartitionByFilter.
+- Support API ListDataLakePartitionName.
+- Support API ListDataLakeTable.
+- Support API ListDataLakeTableName.
+- Support API UpdateDataLakeDatabase.
+- Support API UpdateDataLakePartition.
+- Support API UpdateDataLakeTable.
+
+
 2024-12-17 Version: 1.64.1
 - Update API SetWorkflowExtraInfo: update param WorkflowInstanceId.
 

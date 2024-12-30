@@ -242,7 +242,7 @@ class DLSerdeInfo(TeaModel):
         deserializer_class: str = None,
         name: str = None,
         parameters: Dict[str, Any] = None,
-        serde_type: str = None,
+        serde_type: int = None,
         serialization_lib: str = None,
         serializer_class: str = None,
     ):
@@ -459,6 +459,130 @@ class DLStorageDescriptor(TeaModel):
             for k in m.get('SortCols'):
                 temp_model = DLOrder()
                 self.sort_cols.append(temp_model.from_map(k))
+        return self
+
+
+class DLPartition(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        create_time: int = None,
+        db_name: str = None,
+        last_access_time: int = None,
+        parameters: Dict[str, str] = None,
+        sd: DLStorageDescriptor = None,
+        table_name: str = None,
+        values: List[str] = None,
+    ):
+        self.catalog_name = catalog_name
+        self.create_time = create_time
+        self.db_name = db_name
+        self.last_access_time = last_access_time
+        self.parameters = parameters
+        self.sd = sd
+        self.table_name = table_name
+        self.values = values
+
+    def validate(self):
+        if self.sd:
+            self.sd.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.last_access_time is not None:
+            result['LastAccessTime'] = self.last_access_time
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.sd is not None:
+            result['Sd'] = self.sd.to_map()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('LastAccessTime') is not None:
+            self.last_access_time = m.get('LastAccessTime')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('Sd') is not None:
+            temp_model = DLStorageDescriptor()
+            self.sd = temp_model.from_map(m['Sd'])
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DLPartitionInput(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        last_access_time: int = None,
+        parameters: Dict[str, str] = None,
+        storage_descriptor: DLStorageDescriptor = None,
+        values: List[str] = None,
+    ):
+        self.create_time = create_time
+        self.last_access_time = last_access_time
+        self.parameters = parameters
+        self.storage_descriptor = storage_descriptor
+        self.values = values
+
+    def validate(self):
+        if self.storage_descriptor:
+            self.storage_descriptor.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_access_time is not None:
+            result['LastAccessTime'] = self.last_access_time
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.storage_descriptor is not None:
+            result['StorageDescriptor'] = self.storage_descriptor.to_map()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastAccessTime') is not None:
+            self.last_access_time = m.get('LastAccessTime')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('StorageDescriptor') is not None:
+            temp_model = DLStorageDescriptor()
+            self.storage_descriptor = temp_model.from_map(m['StorageDescriptor'])
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
         return self
 
 
@@ -1002,6 +1126,39 @@ class ImportMasterKeyVO(TeaModel):
         return self
 
 
+class PartitionError(TeaModel):
+    def __init__(
+        self,
+        error_detail: str = None,
+        values: List[str] = None,
+    ):
+        self.error_detail = error_detail
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorDetail') is not None:
+            self.error_detail = m.get('ErrorDetail')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class StsApplyVO(TeaModel):
     def __init__(
         self,
@@ -1269,6 +1426,134 @@ class UsersDetailsVO(TeaModel):
             self.user_name = m.get('UserName')
         if m.get('UserPublicKeyPem') is not None:
             self.user_public_key_pem = m.get('UserPublicKeyPem')
+        return self
+
+
+class OpenStructDLTableInput(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        creator_id: int = None,
+        description: str = None,
+        last_access_time: int = None,
+        location: str = None,
+        modifier_id: int = None,
+        name: str = None,
+        owner: str = None,
+        owner_type: str = None,
+        parameters: Dict[str, str] = None,
+        partition_keys: List[DLColumn] = None,
+        retention: int = None,
+        storage_descriptor: DLStorageDescriptor = None,
+        table_type: str = None,
+        view_expanded_text: str = None,
+        view_original_text: str = None,
+    ):
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.description = description
+        self.last_access_time = last_access_time
+        self.location = location
+        self.modifier_id = modifier_id
+        self.name = name
+        self.owner = owner
+        self.owner_type = owner_type
+        self.parameters = parameters
+        self.partition_keys = partition_keys
+        self.retention = retention
+        self.storage_descriptor = storage_descriptor
+        self.table_type = table_type
+        self.view_expanded_text = view_expanded_text
+        self.view_original_text = view_original_text
+
+    def validate(self):
+        if self.partition_keys:
+            for k in self.partition_keys:
+                if k:
+                    k.validate()
+        if self.storage_descriptor:
+            self.storage_descriptor.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.last_access_time is not None:
+            result['LastAccessTime'] = self.last_access_time
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.modifier_id is not None:
+            result['ModifierId'] = self.modifier_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        result['PartitionKeys'] = []
+        if self.partition_keys is not None:
+            for k in self.partition_keys:
+                result['PartitionKeys'].append(k.to_map() if k else None)
+        if self.retention is not None:
+            result['Retention'] = self.retention
+        if self.storage_descriptor is not None:
+            result['StorageDescriptor'] = self.storage_descriptor.to_map()
+        if self.table_type is not None:
+            result['TableType'] = self.table_type
+        if self.view_expanded_text is not None:
+            result['ViewExpandedText'] = self.view_expanded_text
+        if self.view_original_text is not None:
+            result['ViewOriginalText'] = self.view_original_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LastAccessTime') is not None:
+            self.last_access_time = m.get('LastAccessTime')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('ModifierId') is not None:
+            self.modifier_id = m.get('ModifierId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        self.partition_keys = []
+        if m.get('PartitionKeys') is not None:
+            for k in m.get('PartitionKeys'):
+                temp_model = DLColumn()
+                self.partition_keys.append(temp_model.from_map(k))
+        if m.get('Retention') is not None:
+            self.retention = m.get('Retention')
+        if m.get('StorageDescriptor') is not None:
+            temp_model = DLStorageDescriptor()
+            self.storage_descriptor = temp_model.from_map(m['StorageDescriptor'])
+        if m.get('TableType') is not None:
+            self.table_type = m.get('TableType')
+        if m.get('ViewExpandedText') is not None:
+            self.view_expanded_text = m.get('ViewExpandedText')
+        if m.get('ViewOriginalText') is not None:
+            self.view_original_text = m.get('ViewOriginalText')
         return self
 
 
@@ -3640,6 +3925,662 @@ class BackFillResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BackFillResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchCreateDataLakePartitionsRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_not_exists: bool = None,
+        need_result: bool = None,
+        partition_inputs: List[DLPartitionInput] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_not_exists = if_not_exists
+        self.need_result = need_result
+        # This parameter is required.
+        self.partition_inputs = partition_inputs
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        if self.partition_inputs:
+            for k in self.partition_inputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_not_exists is not None:
+            result['IfNotExists'] = self.if_not_exists
+        if self.need_result is not None:
+            result['NeedResult'] = self.need_result
+        result['PartitionInputs'] = []
+        if self.partition_inputs is not None:
+            for k in self.partition_inputs:
+                result['PartitionInputs'].append(k.to_map() if k else None)
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfNotExists') is not None:
+            self.if_not_exists = m.get('IfNotExists')
+        if m.get('NeedResult') is not None:
+            self.need_result = m.get('NeedResult')
+        self.partition_inputs = []
+        if m.get('PartitionInputs') is not None:
+            for k in m.get('PartitionInputs'):
+                temp_model = DLPartitionInput()
+                self.partition_inputs.append(temp_model.from_map(k))
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class BatchCreateDataLakePartitionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_not_exists: bool = None,
+        need_result: bool = None,
+        partition_inputs_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_not_exists = if_not_exists
+        self.need_result = need_result
+        # This parameter is required.
+        self.partition_inputs_shrink = partition_inputs_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_not_exists is not None:
+            result['IfNotExists'] = self.if_not_exists
+        if self.need_result is not None:
+            result['NeedResult'] = self.need_result
+        if self.partition_inputs_shrink is not None:
+            result['PartitionInputs'] = self.partition_inputs_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfNotExists') is not None:
+            self.if_not_exists = m.get('IfNotExists')
+        if m.get('NeedResult') is not None:
+            self.need_result = m.get('NeedResult')
+        if m.get('PartitionInputs') is not None:
+            self.partition_inputs_shrink = m.get('PartitionInputs')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class BatchCreateDataLakePartitionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        partitions: List[DLPartition] = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.partitions = partitions
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partitions:
+            for k in self.partitions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['Partitions'] = []
+        if self.partitions is not None:
+            for k in self.partitions:
+                result['Partitions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.partitions = []
+        if m.get('Partitions') is not None:
+            for k in m.get('Partitions'):
+                temp_model = DLPartition()
+                self.partitions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchCreateDataLakePartitionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchCreateDataLakePartitionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchCreateDataLakePartitionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchDeleteDataLakePartitionsRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_exists: bool = None,
+        partition_values_list: List[List[str]] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_exists = if_exists
+        # This parameter is required.
+        self.partition_values_list = partition_values_list
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_exists is not None:
+            result['IfExists'] = self.if_exists
+        if self.partition_values_list is not None:
+            result['PartitionValuesList'] = self.partition_values_list
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfExists') is not None:
+            self.if_exists = m.get('IfExists')
+        if m.get('PartitionValuesList') is not None:
+            self.partition_values_list = m.get('PartitionValuesList')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class BatchDeleteDataLakePartitionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        partition_errors: List[PartitionError] = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.partition_errors = partition_errors
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition_errors:
+            for k in self.partition_errors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['PartitionErrors'] = []
+        if self.partition_errors is not None:
+            for k in self.partition_errors:
+                result['PartitionErrors'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.partition_errors = []
+        if m.get('PartitionErrors') is not None:
+            for k in m.get('PartitionErrors'):
+                temp_model = PartitionError()
+                self.partition_errors.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchDeleteDataLakePartitionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchDeleteDataLakePartitionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchDeleteDataLakePartitionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchUpdateDataLakePartitionsRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_inputs: List[DLPartitionInput] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_inputs = partition_inputs
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        if self.partition_inputs:
+            for k in self.partition_inputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        result['PartitionInputs'] = []
+        if self.partition_inputs is not None:
+            for k in self.partition_inputs:
+                result['PartitionInputs'].append(k.to_map() if k else None)
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        self.partition_inputs = []
+        if m.get('PartitionInputs') is not None:
+            for k in m.get('PartitionInputs'):
+                temp_model = DLPartitionInput()
+                self.partition_inputs.append(temp_model.from_map(k))
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class BatchUpdateDataLakePartitionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_inputs_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_inputs_shrink = partition_inputs_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.partition_inputs_shrink is not None:
+            result['PartitionInputs'] = self.partition_inputs_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('PartitionInputs') is not None:
+            self.partition_inputs_shrink = m.get('PartitionInputs')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class BatchUpdateDataLakePartitionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        partition_errors: List[PartitionError] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.partition_errors = partition_errors
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition_errors:
+            for k in self.partition_errors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['PartitionErrors'] = []
+        if self.partition_errors is not None:
+            for k in self.partition_errors:
+                result['PartitionErrors'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.partition_errors = []
+        if m.get('PartitionErrors') is not None:
+            for k in m.get('PartitionErrors'):
+                temp_model = PartitionError()
+                self.partition_errors.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchUpdateDataLakePartitionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchUpdateDataLakePartitionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchUpdateDataLakePartitionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7094,6 +8035,676 @@ class CreateDataImportOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDataImportOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataLakeDatabaseRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        description: str = None,
+        location: str = None,
+        parameters: Dict[str, str] = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.description = description
+        # This parameter is required.
+        self.location = location
+        self.parameters = parameters
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakeDatabaseShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        description: str = None,
+        location: str = None,
+        parameters_shrink: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.description = description
+        # This parameter is required.
+        self.location = location
+        self.parameters_shrink = parameters_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakeDatabaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataLakeDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataLakeDatabaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataLakePartitionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_not_exists: bool = None,
+        need_result: bool = None,
+        partition_input: DLPartitionInput = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_not_exists = if_not_exists
+        self.need_result = need_result
+        # This parameter is required.
+        self.partition_input = partition_input
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        if self.partition_input:
+            self.partition_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_not_exists is not None:
+            result['IfNotExists'] = self.if_not_exists
+        if self.need_result is not None:
+            result['NeedResult'] = self.need_result
+        if self.partition_input is not None:
+            result['PartitionInput'] = self.partition_input.to_map()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfNotExists') is not None:
+            self.if_not_exists = m.get('IfNotExists')
+        if m.get('NeedResult') is not None:
+            self.need_result = m.get('NeedResult')
+        if m.get('PartitionInput') is not None:
+            temp_model = DLPartitionInput()
+            self.partition_input = temp_model.from_map(m['PartitionInput'])
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_not_exists: bool = None,
+        need_result: bool = None,
+        partition_input_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_not_exists = if_not_exists
+        self.need_result = need_result
+        # This parameter is required.
+        self.partition_input_shrink = partition_input_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_not_exists is not None:
+            result['IfNotExists'] = self.if_not_exists
+        if self.need_result is not None:
+            result['NeedResult'] = self.need_result
+        if self.partition_input_shrink is not None:
+            result['PartitionInput'] = self.partition_input_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfNotExists') is not None:
+            self.if_not_exists = m.get('IfNotExists')
+        if m.get('NeedResult') is not None:
+            self.need_result = m.get('NeedResult')
+        if m.get('PartitionInput') is not None:
+            self.partition_input_shrink = m.get('PartitionInput')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakePartitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        partition: DLPartition = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.partition = partition
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition:
+            self.partition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.partition is not None:
+            result['Partition'] = self.partition.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Partition') is not None:
+            temp_model = DLPartition()
+            self.partition = temp_model.from_map(m['Partition'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataLakePartitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataLakePartitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataLakePartitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataLakeTableRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        table_input: OpenStructDLTableInput = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.table_input = table_input
+        self.tid = tid
+
+    def validate(self):
+        if self.table_input:
+            self.table_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.table_input is not None:
+            result['TableInput'] = self.table_input.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('TableInput') is not None:
+            temp_model = OpenStructDLTableInput()
+            self.table_input = temp_model.from_map(m['TableInput'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakeTableShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        table_input_shrink: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.table_input_shrink = table_input_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.table_input_shrink is not None:
+            result['TableInput'] = self.table_input_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('TableInput') is not None:
+            self.table_input_shrink = m.get('TableInput')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataLakeTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table: DLTable = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.table = table
+
+    def validate(self):
+        if self.table:
+            self.table.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table is not None:
+            result['Table'] = self.table.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Table') is not None:
+            temp_model = DLTable()
+            self.table = temp_model.from_map(m['Table'])
+        return self
+
+
+class CreateDataLakeTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataLakeTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataLakeTableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11865,6 +13476,503 @@ class DeleteAuthorityTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAuthorityTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataLakeDatabaseRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteDataLakeDatabaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataLakeDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataLakeDatabaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataLakePartitionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_exists: bool = None,
+        partition_values: List[str] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_exists = if_exists
+        # This parameter is required.
+        self.partition_values = partition_values
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_exists is not None:
+            result['IfExists'] = self.if_exists
+        if self.partition_values is not None:
+            result['PartitionValues'] = self.partition_values
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfExists') is not None:
+            self.if_exists = m.get('IfExists')
+        if m.get('PartitionValues') is not None:
+            self.partition_values = m.get('PartitionValues')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteDataLakePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        if_exists: bool = None,
+        partition_values_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.if_exists = if_exists
+        # This parameter is required.
+        self.partition_values_shrink = partition_values_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.if_exists is not None:
+            result['IfExists'] = self.if_exists
+        if self.partition_values_shrink is not None:
+            result['PartitionValues'] = self.partition_values_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('IfExists') is not None:
+            self.if_exists = m.get('IfExists')
+        if m.get('PartitionValues') is not None:
+            self.partition_values_shrink = m.get('PartitionValues')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteDataLakePartitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataLakePartitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataLakePartitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataLakePartitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataLakeTableRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteDataLakeTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataLakeTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataLakeTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataLakeTableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21723,6 +23831,224 @@ class GetDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataLakePartitionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_values: List[str] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_values = partition_values
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.partition_values is not None:
+            result['PartitionValues'] = self.partition_values
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('PartitionValues') is not None:
+            self.partition_values = m.get('PartitionValues')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataLakePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_values_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_values_shrink = partition_values_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.partition_values_shrink is not None:
+            result['PartitionValues'] = self.partition_values_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('PartitionValues') is not None:
+            self.partition_values_shrink = m.get('PartitionValues')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataLakePartitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        partition: DLPartition = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.partition = partition
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition:
+            self.partition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.partition is not None:
+            result['Partition'] = self.partition.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Partition') is not None:
+            temp_model = DLPartition()
+            self.partition = temp_model.from_map(m['Partition'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDataLakePartitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataLakePartitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataLakePartitionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38529,45 +40855,10 @@ class ListDataLakeCatalogRequest(TeaModel):
         return self
 
 
-class ListDataLakeCatalogResponseBodyCataLogList(TeaModel):
-    def __init__(
-        self,
-        catalog: List[DLCatalog] = None,
-    ):
-        self.catalog = catalog
-
-    def validate(self):
-        if self.catalog:
-            for k in self.catalog:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Catalog'] = []
-        if self.catalog is not None:
-            for k in self.catalog:
-                result['Catalog'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.catalog = []
-        if m.get('Catalog') is not None:
-            for k in m.get('Catalog'):
-                temp_model = DLCatalog()
-                self.catalog.append(temp_model.from_map(k))
-        return self
-
-
 class ListDataLakeCatalogResponseBody(TeaModel):
     def __init__(
         self,
-        cata_log_list: ListDataLakeCatalogResponseBodyCataLogList = None,
+        cata_log_list: List[DLCatalog] = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
@@ -38581,7 +40872,9 @@ class ListDataLakeCatalogResponseBody(TeaModel):
 
     def validate(self):
         if self.cata_log_list:
-            self.cata_log_list.validate()
+            for k in self.cata_log_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38589,8 +40882,10 @@ class ListDataLakeCatalogResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['CataLogList'] = []
         if self.cata_log_list is not None:
-            result['CataLogList'] = self.cata_log_list.to_map()
+            for k in self.cata_log_list:
+                result['CataLogList'].append(k.to_map() if k else None)
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
@@ -38603,9 +40898,11 @@ class ListDataLakeCatalogResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.cata_log_list = []
         if m.get('CataLogList') is not None:
-            temp_model = ListDataLakeCatalogResponseBodyCataLogList()
-            self.cata_log_list = temp_model.from_map(m['CataLogList'])
+            for k in m.get('CataLogList'):
+                temp_model = DLCatalog()
+                self.cata_log_list.append(temp_model.from_map(k))
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
@@ -38717,45 +41014,10 @@ class ListDataLakeDatabaseRequest(TeaModel):
         return self
 
 
-class ListDataLakeDatabaseResponseBodyDatabaseList(TeaModel):
-    def __init__(
-        self,
-        database: List[DLDatabase] = None,
-    ):
-        self.database = database
-
-    def validate(self):
-        if self.database:
-            for k in self.database:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Database'] = []
-        if self.database is not None:
-            for k in self.database:
-                result['Database'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.database = []
-        if m.get('Database') is not None:
-            for k in m.get('Database'):
-                temp_model = DLDatabase()
-                self.database.append(temp_model.from_map(k))
-        return self
-
-
 class ListDataLakeDatabaseResponseBody(TeaModel):
     def __init__(
         self,
-        database_list: ListDataLakeDatabaseResponseBodyDatabaseList = None,
+        database_list: List[DLDatabase] = None,
         error_code: str = None,
         error_message: str = None,
         max_results: int = None,
@@ -38773,7 +41035,9 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
 
     def validate(self):
         if self.database_list:
-            self.database_list.validate()
+            for k in self.database_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38781,8 +41045,10 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['DatabaseList'] = []
         if self.database_list is not None:
-            result['DatabaseList'] = self.database_list.to_map()
+            for k in self.database_list:
+                result['DatabaseList'].append(k.to_map() if k else None)
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
@@ -38799,9 +41065,11 @@ class ListDataLakeDatabaseResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.database_list = []
         if m.get('DatabaseList') is not None:
-            temp_model = ListDataLakeDatabaseResponseBodyDatabaseList()
-            self.database_list = temp_model.from_map(m['DatabaseList'])
+            for k in m.get('DatabaseList'):
+                temp_model = DLDatabase()
+                self.database_list.append(temp_model.from_map(k))
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
@@ -38854,6 +41122,981 @@ class ListDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakePartitionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        part_names: List[str] = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.part_names = part_names
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.part_names is not None:
+            result['PartNames'] = self.part_names
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PartNames') is not None:
+            self.part_names = m.get('PartNames')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        part_names_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.part_names_shrink = part_names_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.part_names_shrink is not None:
+            result['PartNames'] = self.part_names_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PartNames') is not None:
+            self.part_names_shrink = m.get('PartNames')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakePartitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        partition_list: List[DLPartition] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.partition_list = partition_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition_list:
+            for k in self.partition_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['PartitionList'] = []
+        if self.partition_list is not None:
+            for k in self.partition_list:
+                result['PartitionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.partition_list = []
+        if m.get('PartitionList') is not None:
+            for k in m.get('PartitionList'):
+                temp_model = DLPartition()
+                self.partition_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataLakePartitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakePartitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakePartitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakePartitionByFilterRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        filter: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.filter = filter
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakePartitionByFilterResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        partition_list: List[DLPartition] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.partition_list = partition_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.partition_list:
+            for k in self.partition_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['PartitionList'] = []
+        if self.partition_list is not None:
+            for k in self.partition_list:
+                result['PartitionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.partition_list = []
+        if m.get('PartitionList') is not None:
+            for k in m.get('PartitionList'):
+                temp_model = DLPartition()
+                self.partition_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataLakePartitionByFilterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakePartitionByFilterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakePartitionByFilterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakePartitionNameRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakePartitionNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        partition_name_list: List[str] = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.partition_name_list = partition_name_list
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.partition_name_list is not None:
+            result['PartitionNameList'] = self.partition_name_list
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PartitionNameList') is not None:
+            self.partition_name_list = m.get('PartitionNameList')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataLakePartitionNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakePartitionNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakePartitionNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakeTableRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        table_name_pattern: str = None,
+        table_type: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.table_name_pattern = table_name_pattern
+        self.table_type = table_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.table_name_pattern is not None:
+            result['TableNamePattern'] = self.table_name_pattern
+        if self.table_type is not None:
+            result['TableType'] = self.table_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TableNamePattern') is not None:
+            self.table_name_pattern = m.get('TableNamePattern')
+        if m.get('TableType') is not None:
+            self.table_type = m.get('TableType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakeTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table_list: List[DLTable] = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.table_list = table_list
+
+    def validate(self):
+        if self.table_list:
+            for k in self.table_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        result['TableList'] = []
+        if self.table_list is not None:
+            for k in self.table_list:
+                result['TableList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.table_list = []
+        if m.get('TableList') is not None:
+            for k in m.get('TableList'):
+                temp_model = DLTable()
+                self.table_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataLakeTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakeTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakeTableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakeTableNameRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        table_name_pattern: str = None,
+        table_type: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.table_name_pattern = table_name_pattern
+        self.table_type = table_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.table_name_pattern is not None:
+            result['TableNamePattern'] = self.table_name_pattern
+        if self.table_type is not None:
+            result['TableType'] = self.table_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TableNamePattern') is not None:
+            self.table_name_pattern = m.get('TableNamePattern')
+        if m.get('TableType') is not None:
+            self.table_type = m.get('TableType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakeTableNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table_name_list: List[str] = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.table_name_list = table_name_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table_name_list is not None:
+            result['TableNameList'] = self.table_name_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TableNameList') is not None:
+            self.table_name_list = m.get('TableNameList')
+        return self
+
+
+class ListDataLakeTableNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakeTableNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakeTableNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38924,41 +42167,6 @@ class ListDataLakeTablebaseInfoRequest(TeaModel):
         return self
 
 
-class ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList(TeaModel):
-    def __init__(
-        self,
-        tablebase_info: List[DLTablebaseInfo] = None,
-    ):
-        self.tablebase_info = tablebase_info
-
-    def validate(self):
-        if self.tablebase_info:
-            for k in self.tablebase_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['TablebaseInfo'] = []
-        if self.tablebase_info is not None:
-            for k in self.tablebase_info:
-                result['TablebaseInfo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.tablebase_info = []
-        if m.get('TablebaseInfo') is not None:
-            for k in m.get('TablebaseInfo'):
-                temp_model = DLTablebaseInfo()
-                self.tablebase_info.append(temp_model.from_map(k))
-        return self
-
-
 class ListDataLakeTablebaseInfoResponseBody(TeaModel):
     def __init__(
         self,
@@ -38966,7 +42174,7 @@ class ListDataLakeTablebaseInfoResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
-        tablebase_info_list: ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList = None,
+        tablebase_info_list: List[DLTablebaseInfo] = None,
         total_count: str = None,
     ):
         self.error_code = error_code
@@ -38978,7 +42186,9 @@ class ListDataLakeTablebaseInfoResponseBody(TeaModel):
 
     def validate(self):
         if self.tablebase_info_list:
-            self.tablebase_info_list.validate()
+            for k in self.tablebase_info_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38994,8 +42204,10 @@ class ListDataLakeTablebaseInfoResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        result['TablebaseInfoList'] = []
         if self.tablebase_info_list is not None:
-            result['TablebaseInfoList'] = self.tablebase_info_list.to_map()
+            for k in self.tablebase_info_list:
+                result['TablebaseInfoList'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
@@ -39010,9 +42222,11 @@ class ListDataLakeTablebaseInfoResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        self.tablebase_info_list = []
         if m.get('TablebaseInfoList') is not None:
-            temp_model = ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList()
-            self.tablebase_info_list = temp_model.from_map(m['TablebaseInfoList'])
+            for k in m.get('TablebaseInfoList'):
+                temp_model = DLTablebaseInfo()
+                self.tablebase_info_list.append(temp_model.from_map(k))
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -59617,6 +62831,652 @@ class UpdateAuthorityTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAuthorityTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataLakeDatabaseRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        description: str = None,
+        location: str = None,
+        parameters: Dict[str, str] = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.description = description
+        # This parameter is required.
+        self.location = location
+        self.parameters = parameters
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakeDatabaseShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        description: str = None,
+        location: str = None,
+        parameters_shrink: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.description = description
+        # This parameter is required.
+        self.location = location
+        self.parameters_shrink = parameters_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakeDatabaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        database: DLDatabase = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.database = database
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.database:
+            self.database.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database is not None:
+            result['Database'] = self.database.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Database') is not None:
+            temp_model = DLDatabase()
+            self.database = temp_model.from_map(m['Database'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataLakeDatabaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataLakeDatabaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataLakePartitionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_input: DLPartitionInput = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_input = partition_input
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        if self.partition_input:
+            self.partition_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.partition_input is not None:
+            result['PartitionInput'] = self.partition_input.to_map()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('PartitionInput') is not None:
+            temp_model = DLPartitionInput()
+            self.partition_input = temp_model.from_map(m['PartitionInput'])
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakePartitionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        partition_input_shrink: str = None,
+        table_name: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.partition_input_shrink = partition_input_shrink
+        # This parameter is required.
+        self.table_name = table_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.partition_input_shrink is not None:
+            result['PartitionInput'] = self.partition_input_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('PartitionInput') is not None:
+            self.partition_input_shrink = m.get('PartitionInput')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakePartitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataLakePartitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataLakePartitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataLakePartitionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataLakeTableRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        table_input: OpenStructDLTableInput = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.table_input = table_input
+        self.tid = tid
+
+    def validate(self):
+        if self.table_input:
+            self.table_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.table_input is not None:
+            result['TableInput'] = self.table_input.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('TableInput') is not None:
+            temp_model = OpenStructDLTableInput()
+            self.table_input = temp_model.from_map(m['TableInput'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakeTableShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        table_input_shrink: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.table_input_shrink = table_input_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.table_input_shrink is not None:
+            result['TableInput'] = self.table_input_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('TableInput') is not None:
+            self.table_input_shrink = m.get('TableInput')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class UpdateDataLakeTableResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        table: DLTable = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.table = table
+
+    def validate(self):
+        if self.table:
+            self.table.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.table is not None:
+            result['Table'] = self.table.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Table') is not None:
+            temp_model = DLTable()
+            self.table = temp_model.from_map(m['Table'])
+        return self
+
+
+class UpdateDataLakeTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataLakeTableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataLakeTableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
