@@ -1,3 +1,14 @@
+2024-12-30 Version: 4.0.1
+- Update API AddStoryFiles: update response param.
+- Update API ClearRecyclebin: update param body.
+- Update API CreateShareLink: update param body.
+- Update API FileListPermission: update param body.
+- Update API GetLinkInfoByUserId: update param body.
+- Update API ListAssignment: update param body.
+- Update API ListMyGroupDrive: update param body.
+- Update API UpdateShareLink: update param body.
+
+
 2024-08-26 Version: 4.0.0
 - Update API GetVideoPreviewPlayInfo: update param body.
 - Update API GetVideoPreviewPlayInfo: update response param.

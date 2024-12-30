@@ -23,7 +23,6 @@ class Client(OpenApiClient):
         super().__init__(config)
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._signature_algorithm = 'v2'
         self._disable_http_2 = True
         self._endpoint_rule = ''
 
@@ -1330,9 +1329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        @summary Create domain.
+        @summary test_domain
         
-        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @description The description of the domain.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -1382,9 +1381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        @summary Create domain.
+        @summary test_domain
         
-        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @description The description of the domain.
         
         @param request: CreateDomainRequest
         @param headers: map
@@ -1432,9 +1431,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        @summary Create domain.
+        @summary test_domain
         
-        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @description The description of the domain.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -1448,9 +1447,9 @@ class Client(OpenApiClient):
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
         """
-        @summary Create domain.
+        @summary test_domain
         
-        @description If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        @description The description of the domain.
         
         @param request: CreateDomainRequest
         @return: CreateDomainResponse
@@ -2197,8 +2196,12 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
+        if not UtilClient.is_unset(request.require_login):
+            body['require_login'] = request.require_login
         if not UtilClient.is_unset(request.save_limit):
             body['save_limit'] = request.save_limit
         if not UtilClient.is_unset(request.share_all_files):
@@ -2267,8 +2270,12 @@ class Client(OpenApiClient):
             body['expiration'] = request.expiration
         if not UtilClient.is_unset(request.file_id_list):
             body['file_id_list'] = request.file_id_list
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_limit):
             body['preview_limit'] = request.preview_limit
+        if not UtilClient.is_unset(request.require_login):
+            body['require_login'] = request.require_login
         if not UtilClient.is_unset(request.save_limit):
             body['save_limit'] = request.save_limit
         if not UtilClient.is_unset(request.share_all_files):
@@ -8653,6 +8660,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.drive_name):
+            body['drive_name'] = request.drive_name
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -8693,6 +8702,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.drive_name):
+            body['drive_name'] = request.drive_name
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -11796,7 +11807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UnLinkAccountResponse:
         """
-        @summary 取消账号绑定
+        @summary Unlink Account Binding
         
         @param request: UnLinkAccountRequest
         @param headers: map
@@ -11840,7 +11851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.UnLinkAccountResponse:
         """
-        @summary 取消账号绑定
+        @summary Unlink Account Binding
         
         @param request: UnLinkAccountRequest
         @param headers: map
@@ -11882,7 +11893,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.UnLinkAccountRequest,
     ) -> pds_20220301_models.UnLinkAccountResponse:
         """
-        @summary 取消账号绑定
+        @summary Unlink Account Binding
         
         @param request: UnLinkAccountRequest
         @return: UnLinkAccountResponse
@@ -11896,7 +11907,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.UnLinkAccountRequest,
     ) -> pds_20220301_models.UnLinkAccountResponse:
         """
-        @summary 取消账号绑定
+        @summary Unlink Account Binding
         
         @param request: UnLinkAccountRequest
         @return: UnLinkAccountResponse
@@ -12799,6 +12810,8 @@ class Client(OpenApiClient):
             body['download_limit'] = request.download_limit
         if not UtilClient.is_unset(request.expiration):
             body['expiration'] = request.expiration
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_count):
             body['preview_count'] = request.preview_count
         if not UtilClient.is_unset(request.preview_limit):
@@ -12869,6 +12882,8 @@ class Client(OpenApiClient):
             body['download_limit'] = request.download_limit
         if not UtilClient.is_unset(request.expiration):
             body['expiration'] = request.expiration
+        if not UtilClient.is_unset(request.office_editable):
+            body['office_editable'] = request.office_editable
         if not UtilClient.is_unset(request.preview_count):
             body['preview_count'] = request.preview_count
         if not UtilClient.is_unset(request.preview_limit):
