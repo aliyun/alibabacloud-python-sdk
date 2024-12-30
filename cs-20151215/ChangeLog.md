@@ -1,3 +1,7 @@
+2024-12-30 Version: 4.8.7
+- Update API ListOperationPlans: update response param.
+
+
 2024-12-18 Version: 4.8.6
 - Update API ModifyClusterTags: add param body.
 - Update API ModifyClusterTags: update param body.

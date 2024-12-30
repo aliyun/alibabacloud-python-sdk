@@ -22999,6 +22999,7 @@ class ListOperationPlansResponseBodyPlans(TeaModel):
         state: str = None,
         target_id: str = None,
         target_type: str = None,
+        task_id: str = None,
         type: str = None,
     ):
         # The cluster ID.
@@ -23020,6 +23021,7 @@ class ListOperationPlansResponseBodyPlans(TeaModel):
         self.target_id = target_id
         # The target type.
         self.target_type = target_type
+        self.task_id = task_id
         # The plan type. Valid values:
         # 
         # *   cluster_upgrade
@@ -23050,6 +23052,8 @@ class ListOperationPlansResponseBodyPlans(TeaModel):
             result['target_id'] = self.target_id
         if self.target_type is not None:
             result['target_type'] = self.target_type
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -23072,6 +23076,8 @@ class ListOperationPlansResponseBodyPlans(TeaModel):
             self.target_id = m.get('target_id')
         if m.get('target_type') is not None:
             self.target_type = m.get('target_type')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -23830,7 +23836,7 @@ class ModifyClusterRequestApiServerCustomCertSans(TeaModel):
         # *   overwrite: overwrites SANs.
         # *   append: adds SANs.
         self.action = action
-        # The SANs.
+        # The list of SANs.
         self.subject_alternative_names = subject_alternative_names
 
     def validate(self):
@@ -23885,29 +23891,110 @@ class ModifyClusterRequestControlPlaneConfig(TeaModel):
         system_disk_size: int = None,
         system_disk_snapshot_policy_id: str = None,
     ):
+        # Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+        # 
+        # *   `true`: enables auto-renewal.
+        # *   `false`: disables auto-renewal.
+        # 
+        # Default value: `false`.
         self.auto_renew = auto_renew
+        # The auto-renewal period of the instance. Valid values: 1, 2, 3, 6, and 12.
+        # 
+        # Default value: 1.
         self.auto_renew_period = auto_renew_period
+        # The billing method of the instance. Valid values:
+        # 
+        # *   `PrePaid`: subscription.
+        # *   `PostPaid`: pay-as-you-go.
+        # 
+        # Default value: `PostPaid`.
         self.charge_type = charge_type
+        # Specifies whether to install the CloudMonitor agent. Valid values:
+        # 
+        # *   `true`: installs the CloudMonitor agent.
+        # *   `false`: does not install the CloudMonitor agent.
         self.cloud_monitor_flags = cloud_monitor_flags
+        # The CPU management policy of nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
+        # 
+        # *   `static`: allows pods with specific resource characteristics on the node to be granted with enhanced CPU affinity and exclusivity.
+        # *   `none`: specifies that the default CPU affinity is used.
+        # 
+        # Default value: `none`.
         self.cpu_policy = cpu_policy
+        # The ID of the deployment set.
         self.deploymentset_id = deploymentset_id
+        # The custom image ID. You must configure this parameter if you use a custom image.
         self.image_id = image_id
+        # The type of the OS image. Valid values:
+        # 
+        # *   `AliyunLinux3`: Alibaba Cloud Linux 3.
+        # *   `Custom`: the custom image.
         self.image_type = image_type
+        # The instance type. For more information, see [Overview of ECS instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_types = instance_types
+        # The name of the key pair. You must configure either this parameter or the `login_password` parameter.
         self.key_pair = key_pair
+        # The password for SSH logon. You must configure either this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. To log on with a password, you must specify this parameter during the scale-out.
         self.login_password = login_password
+        # The node port range.
         self.node_port_range = node_port_range
+        # The subscription duration of the instance. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`.
+        # 
+        # If `PeriodUnit=Month` is specified, the valid values are 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         self.period = period
+        # The billing cycle of the instance. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`.
+        # 
+        # Valid value: `Month`.
         self.period_unit = period_unit
+        # The type of the container runtime. Valid values:
+        # 
+        # *   `containerd`: supports all Kubernetes versions. We recommend that you set the parameter to this value.
+        # 
+        # Default value: containerd.
         self.runtime = runtime
+        # Specifies whether to enable Alibaba Cloud Linux Security Hardening. Valid values:
+        # 
+        # *   `true`: enables Alibaba Cloud Linux Security Hardening.
+        # *   `false`: disables Alibaba Cloud Linux Security Hardening.
+        # 
+        # Default value: `false`.
         self.security_hardening_os = security_hardening_os
+        # The number of control plane nodes. If you want to scale out the control plane in an ACK dedicated cluster, set this parameter to the desired number of nodes. This parameter must be greater than the current number of nodes.
         self.size = size
+        # Specifies whether to enable Multi-Level Protection Scheme (MLPS) security hardening. For more information, see [ACK security hardening based on MLPS](https://help.aliyun.com/document_detail/196148.html).
+        # 
+        # Valid values:
+        # 
+        # *   `true`: enables MLPS security hardening.
+        # *   `false`: disables MLPS security hardening.
+        # 
+        # Default value: `false`.
         self.soc_enabled = soc_enabled
+        # Specifies whether to enable the burst feature for the system disk. Valid values:
+        # 
+        # *   `true`: enables the burst feature.
+        # *   `false`: disables the burst feature.
+        # 
+        # This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        # The type of the node system disk. Valid values:
+        # 
+        # *   `cloud`: basic disk.
+        # *   `cloud_efficiency`: ultra disk.
+        # *   `cloud_ssd`: standard SSD.
+        # *   `cloud_essd`: enhanced SSD (ESSD).
+        # *   `cloud_auto`: ESSD AutoPL disk.
+        # *   `cloud_essd_entry`: ESSD Entry disk.
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system disk that you want to use for the node. This parameter is effective only for ESSDs. This parameter is related to the disk size. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.system_disk_performance_level = system_disk_performance_level
+        # The preset read/write input/output operations per second (IOPS) of the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS} Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # 
+        # This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
+        # The type of the system disk. Valid values: [40,500]. Unit: GiB.
         self.system_disk_size = system_disk_size
+        # The ID of the automatic snapshot policy applied to the node system disk.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
@@ -24028,11 +24115,11 @@ class ModifyClusterRequestOperationPolicyClusterAutoUpgrade(TeaModel):
         channel: str = None,
         enabled: bool = None,
     ):
-        # The automatic update frequency. For more information, see [Update frequency](https://help.aliyun.com/document_detail/2712866.html).
+        # The frequency of automatic cluster updates. For more information, see [Update frequency](https://help.aliyun.com/document_detail/2712866.html).
         # 
         # Valid values:
         # 
-        # *   patch: specifies the latest patch version.
+        # *   patch: the latest patch version.
         # *   stables: the second-latest minor version.
         # *   rapid: the latest minor version.
         self.channel = channel
@@ -24148,7 +24235,7 @@ class ModifyClusterRequest(TeaModel):
         system_events_logging: ModifyClusterRequestSystemEventsLogging = None,
         vswitch_ids: List[str] = None,
     ):
-        # The network access control lists (ACLs) of the SLB instance associated with the API server if the cluster is a registered cluster.
+        # The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
         self.access_control_list = access_control_list
         # The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. This parameter is available only for ACK managed clusters.
         self.api_server_custom_cert_sans = api_server_custom_cert_sans
@@ -24163,13 +24250,14 @@ class ModifyClusterRequest(TeaModel):
         # 
         # The cluster name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The cluster name cannot start with a hyphen (-).
         self.cluster_name = cluster_name
+        # The control plane configurations of an ACK dedicated cluster.
         self.control_plane_config = control_plane_config
-        # Specifies whether to enable cluster deletion protection. If this option is enabled, the cluster cannot be deleted in the console or by calling API operations. Valid values:
+        # Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
         # 
         # *   `true`: enables cluster deletion protection.
         # *   `false`: disables cluster deletion protection.
         # 
-        # Default value: `false`
+        # Default value: `false`.
         self.deletion_protection = deletion_protection
         # Specifies whether to enable the RAM Roles for Service Accounts (RRSA) feature. This parameter is available only for ACK managed clusters. Valid values:
         # 
@@ -24181,7 +24269,7 @@ class ModifyClusterRequest(TeaModel):
         # *   `true`: remaps the test domain name of the cluster.
         # *   `false`: does not remap the test domain name of the cluster.
         # 
-        # Default value: `false`
+        # Default value: `false`.
         self.ingress_domain_rebinding = ingress_domain_rebinding
         # The ID of the Server Load Balancer (SLB) instance of the cluster to be modified.
         self.ingress_loadbalancer_id = ingress_loadbalancer_id
@@ -24190,22 +24278,22 @@ class ModifyClusterRequest(TeaModel):
         # *   `true`: enables instance deletion protection.
         # *   `false`: disables instance deletion protection.
         # 
-        # Default value: `false`
+        # Default value: `false`.
         self.instance_deletion_protection = instance_deletion_protection
         # The cluster maintenance window. This feature takes effect only for ACK Pro clusters.
         self.maintenance_window = maintenance_window
         # The automatic O\\&M policy of the cluster.
         self.operation_policy = operation_policy
-        # The cluster resource group ID.
+        # The resource group ID of the cluster.
         self.resource_group_id = resource_group_id
         # The storage configurations of system events.
         self.system_events_logging = system_events_logging
-        # The vSwitches of the control planes. This parameter can be used to change the vSwitches of the control planes in an ACK managed cluster. Take note of the following items:
+        # The vSwitches of the control plane. This parameter can be used to change the vSwitches of the control plane in an ACK managed cluster. Take note of the following items:
         # 
-        # *   This parameter overwrites the existing configuration. You must specify all vSwitches of the control planes.
-        # *   The control planes restart during the update process. Exercise caution when you perform this operation.
-        # *   Make sure that all security groups of the cluster, including the security groups of the control planes, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
-        # *   If the new vSwitches of the control planes are configured with an access control list (ACL), ensure that the ACL allows communication between the new vSwitches and the CIDR blocks of cluster nodes and container networks.
+        # *   This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
+        # *   The control plane restarts during the change process. Exercise caution when you perform this operation.
+        # *   Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+        # *   If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
