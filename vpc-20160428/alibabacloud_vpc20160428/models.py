@@ -8648,7 +8648,13 @@ class CreateExpressConnectTrafficQosRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key to add to the resource. You must enter at least one tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -8710,8 +8716,10 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The tag to add to the resource.
         self.tags = tags
 
     def validate(self):
@@ -10792,18 +10800,48 @@ class CreateHighReliablePhysicalConnectionRequestApList(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The ID of the access point that is associated with the Express Connect circuit.
+        # 
+        # > Two access points must be specified when **HighReliableType** is set to **MultiApMultiDevice** or **MultiApSingleDevice**. One access point must be specified when **HighReliableType** is set to **SingleApMultiDevice** or **SingleApMultiConnection**.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The maximum bandwidth of the hosted connection. Unit: Mbit/s.
+        # 
+        # Valid values: 50, 100, 200, 300, 400, 500, 1000, 2000, 4000, 5000, 8000, and 10000.
         self.bandwidth = bandwidth
+        # The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
         self.circuit_code = circuit_code
+        # The description of the Express Connect circuit.
+        # 
+        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
+        # The connectivity provider of the Express Connect circuit. Valid values:
+        # 
+        # *   **CT**: China Telecom.
+        # *   **CU**: China Unicom.
+        # *   **CM**: China Mobile.
+        # *   **CO**: other connectivity providers in the Chinese mainland.
+        # *   **Equinix**: Equinix.
+        # *   **Other**: other connectivity providers outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.line_operator = line_operator
+        # The name of the Express Connect circuit.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or` https://`.
         self.name = name
+        # The geographical location of the data center.
         self.peer_location = peer_location
+        # The number of ports. Valid values: 2 to 16. This parameter is required only when **HighReliableType** is set to **SingleApMultiConnection**.
         self.port_num = port_num
+        # The region ID of the Express Connect circuit.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The type of the Express Connect circuit. Default value: **VPC**.
         self.type = type
 
     def validate(self):
@@ -10868,7 +10906,13 @@ class CreateHighReliablePhysicalConnectionRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value cannot be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -10913,22 +10957,62 @@ class CreateHighReliablePhysicalConnectionRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[CreateHighReliablePhysicalConnectionRequestTag] = None,
     ):
+        # The language to display the results. Valid values:
+        # 
+        # *   **zh-CN** (default): Chinese
+        # *   **en-US**: English
         self.accept_language = accept_language
+        # The access points.
+        # 
         # This parameter is required.
         self.ap_list = ap_list
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The advanced features of the device.
         self.device_advanced_capacity = device_advanced_capacity
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The high availability mode. Valid values:
+        # 
+        # - **MultiApMultiDevice** : This mode supports two access points and two devices, and provides the maximum disaster recovery capability.
+        # - **MultiApSingleDevice** : This mode supports two access points and one device, and provides robust disaster recovery capability.
+        # - **SingleApMultiDevice** : This mode supports one access point and two devices, and is recommended for non-critical business test and development.
+        # - **SingleApMultiConnection** : This mode supports one access point, one device, and multiple physical ports. Only users in the whitelist can use this mode. To use this mode, contact your account manager.
+        # 
         # This parameter is required.
         self.high_reliable_type = high_reliable_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The port type. Valid values:
+        # 
+        # *   **100Base-T**: 100 Mbit/s copper Ethernet port
+        # *   **1000Base-T**: 1,000 Mbit/s copper Ethernet port
+        # *   **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
+        # *   **10GBase-T**: 10,000 Mbit/s copper Ethernet port
+        # *   **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
+        # *   **40GBase-LR**: 40,000 Mbit/s single-mode optical port
+        # *   **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+        # 
+        # >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+        # 
         # This parameter is required.
         self.port_type = port_type
+        # The region ID of the Express Connect circuit.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -11027,8 +11111,11 @@ class CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList
         error_message: str = None,
         instance_id: str = None,
     ):
+        # Error codes.
         self.error_code = error_code
+        # The returned error message.
         self.error_message = error_message
+        # The ID of the Express Connect circuit.
         self.instance_id = instance_id
 
     def validate(self):
@@ -11100,7 +11187,9 @@ class CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhys
         instance_id: str = None,
         region_no: str = None,
     ):
+        # The ID of the Express Connect circuit.
         self.instance_id = instance_id
+        # The region ID of the Express Connect circuit.
         self.region_no = region_no
 
     def validate(self):
@@ -11169,8 +11258,16 @@ class CreateHighReliablePhysicalConnectionResponseBody(TeaModel):
         physical_connection_list: CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList = None,
         request_id: str = None,
     ):
+        # If the request fails the dry run, the following error codes and error messages may be returned:
+        # 
+        # - pconn.high.reliable.dryrun.error.disable.outbound.data.transfer.billing. Billing for outbound data transfer is not enabled.
+        # - pconn.high.reliable.dryrun.error.incompatable.device.capacity. No device in the access point supports advanced features.
+        # - pconn.high.reliable.dryrun.error.quota.exceeded. The quota is insufficient.
+        # - pconn.high.reliable.dryrun.error.not.enough.resource. The access point resources are insufficient.
         self.error_info_list = error_info_list
+        # The Express Connect circuits.
         self.physical_connection_list = physical_connection_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25133,13 +25230,26 @@ class DeleteExpressConnectTrafficQosQueueRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the QoS policy.
+        # 
         # This parameter is required.
         self.qos_id = qos_id
+        # The ID of the QoS queue.
+        # 
         # This parameter is required.
         self.queue_id = queue_id
+        # The region ID of the QoS policy.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -25193,6 +25303,7 @@ class DeleteExpressConnectTrafficQosQueueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37729,7 +37840,13 @@ class DescribeExpressConnectTrafficQosRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You must enter at least one tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values of the resources. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -37771,17 +37888,35 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
         resource_owner_account: str = None,
         tags: List[DescribeExpressConnectTrafficQosRequestTags] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The maximum number of entries to return. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # - If no value is returned for NetToken, you do not need to specify this parameter.
+        # - If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IDs of QoS policies.
         self.qos_id_list = qos_id_list
+        # The names of QoS policies.
         self.qos_name_list = qos_name_list
+        # The ID of the region in which the QoS policy is created.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The tags of the resource.
         self.tags = tags
 
     def validate(self):
@@ -37860,9 +37995,17 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList(
         instance_status: str = None,
         instance_type: str = None,
     ):
+        # The ID of the instance to which the QoS policy is associated.
         self.instance_id = instance_id
+        # The configuration progress of the instance to which the QoS policy is associated. Valid values: **0** to **100**.
         self.instance_progressing = instance_progressing
+        # The state of the instance to which the QoS policy is associated. Valid values:
+        # 
+        # - **Normal**: The instance is available.
+        # - **Configuring**: The instance is being configured.
+        # - **Deleting**: The instance is being deleted.
         self.instance_status = instance_status
+        # The type of the instance to which the QoS policy is associated. Only **PHYSICALCONNECTION** is returned.
         self.instance_type = instance_type
 
     def validate(self):
@@ -37908,12 +38051,37 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListQueueList(TeaModel):
         queue_type: str = None,
         status: str = None,
     ):
+        # The percentage of bandwidth allocated to a QoS queue.
+        # 
+        # - If QueueType is set to **Medium**, this parameter is required. Valid values: **1** to **100**.
+        # - If QueueType is set to **Default**, a value of - is returned.
         self.bandwidth_percent = bandwidth_percent
+        # The ID of the QoS policy.
         self.qos_id = qos_id
+        # The description of the QoS queue.
+        # 
+        # The description can be up to **256** characters in length. It cannot start with `http://` or `https://`.
         self.queue_description = queue_description
+        # The ID of the QoS queue.
         self.queue_id = queue_id
+        # The name of the QoS queue.
+        # 
+        # The name can be up to **128** characters in length and cannot start with `http://` or `https://`.
         self.queue_name = queue_name
+        # The type of the QoS queue. Valid values:
+        # 
+        # - **High**: high-priority queue.
+        # - **Medium**: standard queue.
+        # - **Default**: default queue.
+        # 
+        # 
+        # > You cannot create a default queue.
         self.queue_type = queue_type
+        # The state of the QoS queue. Valid values:
+        # 
+        # - **Normal**: The QoS queue is available.
+        # - **Configuring**: The QoS queue is being configured.
+        # - **Deleting**: The QoS queue is being deleted.
         self.status = status
 
     def validate(self):
@@ -37966,7 +38134,9 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -38006,14 +38176,32 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(TeaModel):
         status: str = None,
         tags: List[DescribeExpressConnectTrafficQosResponseBodyQosListTags] = None,
     ):
+        # The information about the instances to which the QoS policy is associated.
         self.associated_instance_list = associated_instance_list
+        # The configuration progress of the QoS policy. Valid values: **0** to **100**.
         self.progressing = progressing
+        # The description of the QoS policy.
+        # 
+        # The description can be up to 256 characters in length. It cannot start with `http://` or `https://`.
         self.qos_description = qos_description
+        # The ID of the QoS policy.
         self.qos_id = qos_id
+        # The name of the QoS policy.
+        # 
+        # The name can be up to 128 characters in length and cannot start with `http://` or `https://`.
         self.qos_name = qos_name
+        # The information about the QoS queues.
         self.queue_list = queue_list
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The state of the QoS policy. Valid values:
+        # 
+        # - **Normal**: The QoS policy is available.
+        # - **Configuring**: The QoS policy is being configured.
+        # 
+        #  > If a QoS policy is in the Configuring state, you cannot perform most of the operations to create, update, or delete QoS policies, QoS queues, or QoS rules.
         self.status = status
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -38104,11 +38292,20 @@ class DescribeExpressConnectTrafficQosResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The number of entries per page. Valid values: **1 to 100**. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # 
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The information about QoS policies.
         self.qos_list = qos_list
+        # The request ID.
         self.request_id = request_id
+        # The number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -38212,12 +38409,24 @@ class DescribeExpressConnectTrafficQosQueueRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the QoS policy.
         self.qos_id = qos_id
+        # The IDs of the QoS queues.
         self.queue_id_list = queue_id_list
+        # The names of the QoS queues.
         self.queue_name_list = queue_name_list
+        # The region ID of the QoS policy.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -38290,21 +38499,95 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(TeaMode
         src_port_range: str = None,
         status: str = None,
     ):
+        # The destination IPv4 CIDR block that matches the QoS rule traffic.
+        # 
+        # 
+        # 
+        # > If the parameter is unavailable, specify **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.dst_cidr = dst_cidr
+        # The destination IPv6 CIDR block that matches the QoS rule traffic.
+        # 
+        # 
+        # 
+        # > If the parameter is unavailable, specify **SrcCidr** or **DstCidr**.
         self.dst_ipv_6cidr = dst_ipv_6cidr
+        # The range of destination ports that match the QoS rule traffic. Valid values: **0** to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number. Different protocols correspond to different ports. Valid values:
+        # 
+        # *   **ALL** (uneditable): -1/-1.
+        # *   **ICMP(IPv4)** (uneditable): -1/-1.
+        # *   **ICMPv6(IPv6)** (uneditable): -1/-1.
+        # *   **TCP** (editable): -1/-1.
+        # *   **UDP** (editable): -1/-1.
+        # *   **GRE** (uneditable): -1/-1.
+        # *   **SSH** (uneditable): 22/22.
+        # *   **Telnet** (uneditable): 23/23.
+        # *   **HTTP** (uneditable): 80/80.
+        # *   **HTTPS** (uneditable): 443/443.
+        # *   **MS SQL** (uneditable): 1443/1443.
+        # *   **Oracle** (uneditable): 1521/1521.
+        # *   **MySql** (uneditable): 3306/3306.
+        # *   **RDP** (uneditable): 3389/3389.
+        # *   **PostgreSQL** (uneditable): 5432/5432.
+        # *   **Redis** (uneditable): 6379/6379.
         self.dst_port_range = dst_port_range
+        # The DSCP value that matches the QoS rule traffic. Valid values: **0** to **63**. If no value is matched, the value is -1.
         self.match_dscp = match_dscp
+        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique in the same QoS policy.
         self.priority = priority
+        # The protocol of the QoS rule. Valid values:
+        # 
+        # *   **ALL**\
+        # *   **ICMP(IPv4)**\
+        # *   **ICMPv6(IPv6)**\
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **GRE**\
+        # *   **SSH**\
+        # *   **Telnet**\
+        # *   **HTTP**\
+        # *   **HTTPS**\
+        # *   **MS SQL**\
+        # *   **Oracle**\
+        # *   **MySql**\
+        # *   **RDP**\
+        # *   **PostgreSQL**\
+        # *   **Redis**\
         self.protocol = protocol
+        # The ID of the QoS policy.
         self.qos_id = qos_id
+        # The ID of the QoS queue.
         self.queue_id = queue_id
+        # The new DSCP value. Valid values: **0** to **63**. If you do not change the value, the value is -1.
         self.remarking_dscp = remarking_dscp
+        # The description of the QoS rule.
+        # 
+        # The name must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
         self.rule_description = rule_description
+        # The ID of the QoS rule.
         self.rule_id = rule_id
+        # The name of the QoS rule.
+        # 
+        # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.rule_name = rule_name
+        # The source IPv4 CIDR block that matches the QoS rule traffic.
+        # 
+        # 
+        # 
+        #  > If the parameter is unavailable, specify **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.src_cidr = src_cidr
+        # The source IPv6 CIDR block that matches the QoS rule traffic.
+        # 
+        # 
+        # 
+        # > If the parameter is unavailable, specify **SrcCidr** or **DstCidr**.
         self.src_ipv_6cidr = src_ipv_6cidr
+        # The range of source ports that match the QoS rule traffic. Valid values: **0** to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number.
         self.src_port_range = src_port_range
+        # The status of the QoS rule. Valid values:
+        # 
+        # *   **Normal**: The QoS queue is available.
+        # *   **Configuring**: The QoS queue is being configured.
+        # *   **Deleting**: The QoS queue is being deleted.
         self.status = status
 
     def validate(self):
@@ -38399,13 +38682,40 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueList(TeaModel):
         rule_list: List[DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList] = None,
         status: str = None,
     ):
+        # The percentage of bandwidth allocated to a QoS queue.
+        # 
+        # *   If QueueType is set to **Medium**, this parameter is returned. Valid values: **1** to **100**.
+        # *   If QueueType is set to **Default**, a value of - is returned.
         self.bandwidth_percent = bandwidth_percent
+        # The ID of the QoS policy.
         self.qos_id = qos_id
+        # The description of the QoS queue.
+        # 
+        # The name must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
         self.queue_description = queue_description
+        # The ID of the QoS queue.
         self.queue_id = queue_id
+        # The name of the QoS queue.
+        # 
+        # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.queue_name = queue_name
+        # The priority of the QoS queue. Valid values:
+        # 
+        # *   **High**\
+        # *   **Medium**\
+        # *   **Default**\
+        # 
+        # 
+        # 
+        # >  You cannot create a QoS queue of the default priority.
         self.queue_type = queue_type
+        # The information about the QoS rules.
         self.rule_list = rule_list
+        # The state of the QoS queue. Valid values:
+        # 
+        # *   **Normal**: The QoS queue is available.
+        # *   **Configuring**: The QoS queue is being configured.
+        # *   **Deleting**: The QoS queue is being deleted.
         self.status = status
 
     def validate(self):
@@ -38470,7 +38780,9 @@ class DescribeExpressConnectTrafficQosQueueResponseBody(TeaModel):
         queue_list: List[DescribeExpressConnectTrafficQosQueueResponseBodyQueueList] = None,
         request_id: str = None,
     ):
+        # The information about the QoS queues.
         self.queue_list = queue_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -39220,6 +39532,10 @@ class DescribeFailoverTestJobsRequest(TeaModel):
         self.filter = filter
         # The number of entries per page. Valid values: **1 to 100**. Default value: 20.
         self.max_results = max_results
+        # The token that is used for the next query. Valid values:
+        # 
+        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
+        # *   If a value of **NextToken** is returned, the value is the token that is used for the subsequent query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -39320,6 +39636,7 @@ class DescribeFailoverTestJobsResponseBodyFailoverTestJobList(TeaModel):
         self.resource_id = resource_id
         # The type of the failover test resource. Only **PHYSICALCONNECTION** is returned.
         self.resource_type = resource_type
+        # The beginning of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
         self.start_time = start_time
         # The status of the failover test. Valid values:
         # 
@@ -39329,6 +39646,7 @@ class DescribeFailoverTestJobsResponseBodyFailoverTestJobList(TeaModel):
         # *   **Stopping**\
         # *   **Stopped**\
         self.status = status
+        # The end of the fault drill task. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format.
         self.stop_time = stop_time
 
     def validate(self):
@@ -39397,13 +39715,20 @@ class DescribeFailoverTestJobsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries on the current page.
         self.count = count
         # The list of failover tests.
         self.failover_test_job_list = failover_test_job_list
         # The number of entries per page. Valid values: **1 to 100**. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # 
+        # *   If no value is returned for **NextToken**, no next queries are sent.
+        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -45706,6 +46031,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(TeaModel):
     def __init__(
         self,
         associate_network_interfaces: DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces = None,
+        count: int = None,
         max_results: int = None,
         nat_gateway_id: str = None,
         next_token: str = None,
@@ -45713,6 +46039,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.associate_network_interfaces = associate_network_interfaces
+        self.count = count
         self.max_results = max_results
         self.nat_gateway_id = nat_gateway_id
         self.next_token = next_token
@@ -45731,6 +46058,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(TeaModel):
         result = dict()
         if self.associate_network_interfaces is not None:
             result['AssociateNetworkInterfaces'] = self.associate_network_interfaces.to_map()
+        if self.count is not None:
+            result['Count'] = self.count
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.nat_gateway_id is not None:
@@ -45748,6 +46077,8 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(TeaModel):
         if m.get('AssociateNetworkInterfaces') is not None:
             temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces()
             self.associate_network_interfaces = temp_model.from_map(m['AssociateNetworkInterfaces'])
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NatGatewayId') is not None:
@@ -58313,6 +58644,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         self.ecr_attatch_status = ecr_attatch_status
         # The ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
+        # The ID of the Alibaba Cloud account (primary account)  to which the ECR belongs.
         self.ecr_owner_id = ecr_owner_id
         # Indicates whether IPv6 is enabled. Valid values:
         # 
@@ -91074,6 +91406,10 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Indicates whether to allow service access between data centers. Valid values:
+        # 
+        # - **true**\
+        # - **false**\
         self.sitelink_enable = sitelink_enable
         # The VBR ID.
         # 
@@ -99662,11 +99998,21 @@ class StopFailoverTestJobRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The ID of the failover test.
+        # 
         # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the failover test.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -99715,6 +100061,7 @@ class StopFailoverTestJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -102349,16 +102696,38 @@ class UpdateFailoverTestJobRequest(TeaModel):
         resource_id: List[str] = None,
         resource_owner_account: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # >  If you do not set this parameter, the system uses the value of **RequestId** as **ClientToken**. The value of **RequestId** for each API request is different.
         self.client_token = client_token
+        # The description of the failover test.
+        # 
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The duration of the failover test. Unit: minutes. Valid values: **1** to **4320**.
         self.job_duration = job_duration
+        # The ID of the failover test.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The name of the failover test.
+        # 
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the failover test.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of the failover test resources. You can add at most 16 resources.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
 
@@ -102427,6 +102796,7 @@ class UpdateFailoverTestJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -8441,7 +8441,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
         """
-        @summary 创建高可靠物理专线
+        @summary Creates Express Connect circuits in high reliability mode. This improves the stability of multiple Express Connect circuits and prevents service interruptions caused by single points of failures (SPOFs).
         
         @param request: CreateHighReliablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8504,7 +8504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
         """
-        @summary 创建高可靠物理专线
+        @summary Creates Express Connect circuits in high reliability mode. This improves the stability of multiple Express Connect circuits and prevents service interruptions caused by single points of failures (SPOFs).
         
         @param request: CreateHighReliablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8566,7 +8566,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
         """
-        @summary 创建高可靠物理专线
+        @summary Creates Express Connect circuits in high reliability mode. This improves the stability of multiple Express Connect circuits and prevents service interruptions caused by single points of failures (SPOFs).
         
         @param request: CreateHighReliablePhysicalConnectionRequest
         @return: CreateHighReliablePhysicalConnectionResponse
@@ -8579,7 +8579,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
     ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
         """
-        @summary 创建高可靠物理专线
+        @summary Creates Express Connect circuits in high reliability mode. This improves the stability of multiple Express Connect circuits and prevents service interruptions caused by single points of failures (SPOFs).
         
         @param request: CreateHighReliablePhysicalConnectionRequest
         @return: CreateHighReliablePhysicalConnectionResponse
@@ -16693,7 +16693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
         """
-        @summary 删除高速通道Qos队列
+        @summary Deletes a quality of service (QoS) queue.
         
         @param request: DeleteExpressConnectTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16742,7 +16742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
         """
-        @summary 删除高速通道Qos队列
+        @summary Deletes a quality of service (QoS) queue.
         
         @param request: DeleteExpressConnectTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16790,7 +16790,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
     ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
         """
-        @summary 删除高速通道Qos队列
+        @summary Deletes a quality of service (QoS) queue.
         
         @param request: DeleteExpressConnectTrafficQosQueueRequest
         @return: DeleteExpressConnectTrafficQosQueueResponse
@@ -16803,7 +16803,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteExpressConnectTrafficQosQueueRequest,
     ) -> vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse:
         """
-        @summary 删除高速通道Qos队列
+        @summary Deletes a quality of service (QoS) queue.
         
         @param request: DeleteExpressConnectTrafficQosQueueRequest
         @return: DeleteExpressConnectTrafficQosQueueResponse
@@ -25117,7 +25117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
         """
-        @summary 查询高速通道Qos
+        @summary Queries the quality of service (QoS) policies of Express Connect. The response can be displayed by page.
         
         @param request: DescribeExpressConnectTrafficQosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25174,7 +25174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
         """
-        @summary 查询高速通道Qos
+        @summary Queries the quality of service (QoS) policies of Express Connect. The response can be displayed by page.
         
         @param request: DescribeExpressConnectTrafficQosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25230,7 +25230,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
         """
-        @summary 查询高速通道Qos
+        @summary Queries the quality of service (QoS) policies of Express Connect. The response can be displayed by page.
         
         @param request: DescribeExpressConnectTrafficQosRequest
         @return: DescribeExpressConnectTrafficQosResponse
@@ -25243,7 +25243,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeExpressConnectTrafficQosRequest,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosResponse:
         """
-        @summary 查询高速通道Qos
+        @summary Queries the quality of service (QoS) policies of Express Connect. The response can be displayed by page.
         
         @param request: DescribeExpressConnectTrafficQosRequest
         @return: DescribeExpressConnectTrafficQosResponse
@@ -25257,7 +25257,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
         """
-        @summary 查询高速通道Qos队列
+        @summary Queries the information about the quality of service (QoS) queues of the Express Connect circuit.
         
         @param request: DescribeExpressConnectTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25308,7 +25308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
         """
-        @summary 查询高速通道Qos队列
+        @summary Queries the information about the quality of service (QoS) queues of the Express Connect circuit.
         
         @param request: DescribeExpressConnectTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25358,7 +25358,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
         """
-        @summary 查询高速通道Qos队列
+        @summary Queries the information about the quality of service (QoS) queues of the Express Connect circuit.
         
         @param request: DescribeExpressConnectTrafficQosQueueRequest
         @return: DescribeExpressConnectTrafficQosQueueResponse
@@ -25371,7 +25371,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeExpressConnectTrafficQosQueueRequest,
     ) -> vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse:
         """
-        @summary 查询高速通道Qos队列
+        @summary Queries the information about the quality of service (QoS) queues of the Express Connect circuit.
         
         @param request: DescribeExpressConnectTrafficQosQueueRequest
         @return: DescribeExpressConnectTrafficQosQueueResponse
@@ -51855,7 +51855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.StopFailoverTestJobResponse:
         """
-        @summary 结束故障演练任务
+        @summary Terminates a failover test.
         
         @param request: StopFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51902,7 +51902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.StopFailoverTestJobResponse:
         """
-        @summary 结束故障演练任务
+        @summary Terminates a failover test.
         
         @param request: StopFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51948,7 +51948,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.StopFailoverTestJobRequest,
     ) -> vpc_20160428_models.StopFailoverTestJobResponse:
         """
-        @summary 结束故障演练任务
+        @summary Terminates a failover test.
         
         @param request: StopFailoverTestJobRequest
         @return: StopFailoverTestJobResponse
@@ -51961,7 +51961,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.StopFailoverTestJobRequest,
     ) -> vpc_20160428_models.StopFailoverTestJobResponse:
         """
-        @summary 结束故障演练任务
+        @summary Terminates a failover test.
         
         @param request: StopFailoverTestJobRequest
         @return: StopFailoverTestJobResponse
@@ -54095,7 +54095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateFailoverTestJobResponse:
         """
-        @summary 更新故障演练任务
+        @summary Updates a failover test.
         
         @param request: UpdateFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54152,7 +54152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateFailoverTestJobResponse:
         """
-        @summary 更新故障演练任务
+        @summary Updates a failover test.
         
         @param request: UpdateFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54208,7 +54208,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateFailoverTestJobRequest,
     ) -> vpc_20160428_models.UpdateFailoverTestJobResponse:
         """
-        @summary 更新故障演练任务
+        @summary Updates a failover test.
         
         @param request: UpdateFailoverTestJobRequest
         @return: UpdateFailoverTestJobResponse
@@ -54221,7 +54221,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateFailoverTestJobRequest,
     ) -> vpc_20160428_models.UpdateFailoverTestJobResponse:
         """
-        @summary 更新故障演练任务
+        @summary Updates a failover test.
         
         @param request: UpdateFailoverTestJobRequest
         @return: UpdateFailoverTestJobResponse

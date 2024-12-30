@@ -1,3 +1,7 @@
+2024-12-30 Version: 6.10.1
+- Update API DescribeNatGatewayAssociateNetworkInterfaces: update response param.
+
+
 2024-12-20 Version: 6.10.0
 - Support API TransformEipSegmentToPublicIpAddressPool.
 
