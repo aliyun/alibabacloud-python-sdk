@@ -1,3 +1,7 @@
+2024-12-30 Version: 2.1.0
+- Support API GetSpotPriceHistory.
+
+
 2024-12-17 Version: 2.0.2
 - Generated python 2022-01-12 for PaiStudio.
 

@@ -8634,6 +8634,157 @@ class GetResourceGroupTotalResponse(TeaModel):
         return self
 
 
+class GetSpotPriceHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        spot_duration: int = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.spot_duration = spot_duration
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetSpotPriceHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        spot_price_history: List[SpotPriceItem] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.spot_price_history = spot_price_history
+        self.total_count = total_count
+
+    def validate(self):
+        if self.spot_price_history:
+            for k in self.spot_price_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SpotPriceHistory'] = []
+        if self.spot_price_history is not None:
+            for k in self.spot_price_history:
+                result['SpotPriceHistory'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.spot_price_history = []
+        if m.get('SpotPriceHistory') is not None:
+            for k in m.get('SpotPriceHistory'):
+                temp_model = SpotPriceItem()
+                self.spot_price_history.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetSpotPriceHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSpotPriceHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSpotPriceHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTokenRequest(TeaModel):
     def __init__(
         self,
