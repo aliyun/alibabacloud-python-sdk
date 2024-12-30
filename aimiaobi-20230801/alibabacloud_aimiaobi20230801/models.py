@@ -32887,6 +32887,7 @@ class RunStepByStepWritingRequestWritingConfig(TeaModel):
         prompt_tag: RunStepByStepWritingRequestWritingConfigPromptTag = None,
         scene: str = None,
         step: str = None,
+        summary_return_type: str = None,
         tags: List[RunStepByStepWritingRequestWritingConfigTags] = None,
         use_search: bool = None,
     ):
@@ -32895,6 +32896,7 @@ class RunStepByStepWritingRequestWritingConfig(TeaModel):
         self.prompt_tag = prompt_tag
         self.scene = scene
         self.step = step
+        self.summary_return_type = summary_return_type
         self.tags = tags
         self.use_search = use_search
 
@@ -32922,6 +32924,8 @@ class RunStepByStepWritingRequestWritingConfig(TeaModel):
             result['Scene'] = self.scene
         if self.step is not None:
             result['Step'] = self.step
+        if self.summary_return_type is not None:
+            result['SummaryReturnType'] = self.summary_return_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -32943,6 +32947,8 @@ class RunStepByStepWritingRequestWritingConfig(TeaModel):
             self.scene = m.get('Scene')
         if m.get('Step') is not None:
             self.step = m.get('Step')
+        if m.get('SummaryReturnType') is not None:
+            self.summary_return_type = m.get('SummaryReturnType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):

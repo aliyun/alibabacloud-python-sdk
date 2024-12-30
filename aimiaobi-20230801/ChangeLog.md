@@ -1,3 +1,11 @@
+2024-12-30 Version: 1.15.0
+- Support API RunBookIntroduction.
+- Support API RunBookSmartCard.
+- Support API RunDocSmartCard.
+- Support API UploadBook.
+- Update API RunStepByStepWriting: update param WritingConfig.
+
+
 2024-12-27 Version: 1.14.0
 - Support API RunBookIntroduction.
 - Support API RunBookSmartCard.
