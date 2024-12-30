@@ -21144,6 +21144,8 @@ class Client(OpenApiClient):
             query['AnalysisParams'] = request.analysis_params
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21181,6 +21183,8 @@ class Client(OpenApiClient):
             query['AnalysisParams'] = request.analysis_params
         if not UtilClient.is_unset(request.input):
             query['Input'] = request.input
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

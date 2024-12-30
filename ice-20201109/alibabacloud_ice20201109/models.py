@@ -865,6 +865,164 @@ class AppInfoDTO(TeaModel):
         return self
 
 
+class ChannelOutPutConfigList(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        format: str = None,
+        manifest_name: str = None,
+        manifest_settings: str = None,
+        playback_url: str = None,
+        source_group_name: str = None,
+    ):
+        self.channel_name = channel_name
+        self.format = format
+        self.manifest_name = manifest_name
+        self.manifest_settings = manifest_settings
+        self.playback_url = playback_url
+        self.source_group_name = source_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.manifest_settings is not None:
+            result['ManifestSettings'] = self.manifest_settings
+        if self.playback_url is not None:
+            result['PlaybackUrl'] = self.playback_url
+        if self.source_group_name is not None:
+            result['SourceGroupName'] = self.source_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('ManifestSettings') is not None:
+            self.manifest_settings = m.get('ManifestSettings')
+        if m.get('PlaybackUrl') is not None:
+            self.playback_url = m.get('PlaybackUrl')
+        if m.get('SourceGroupName') is not None:
+            self.source_group_name = m.get('SourceGroupName')
+        return self
+
+
+class Channel(TeaModel):
+    def __init__(
+        self,
+        access_policy: bool = None,
+        access_token: str = None,
+        arn: str = None,
+        channel_name: str = None,
+        channel_tier: str = None,
+        filler_source_location_name: str = None,
+        filler_source_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        out_put_config_list: List[ChannelOutPutConfigList] = None,
+        playback_mode: str = None,
+        state: int = None,
+    ):
+        self.access_policy = access_policy
+        self.access_token = access_token
+        self.arn = arn
+        self.channel_name = channel_name
+        self.channel_tier = channel_tier
+        self.filler_source_location_name = filler_source_location_name
+        self.filler_source_name = filler_source_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.out_put_config_list = out_put_config_list
+        self.playback_mode = playback_mode
+        self.state = state
+
+    def validate(self):
+        if self.out_put_config_list:
+            for k in self.out_put_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_policy is not None:
+            result['AccessPolicy'] = self.access_policy
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.channel_tier is not None:
+            result['ChannelTier'] = self.channel_tier
+        if self.filler_source_location_name is not None:
+            result['FillerSourceLocationName'] = self.filler_source_location_name
+        if self.filler_source_name is not None:
+            result['FillerSourceName'] = self.filler_source_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        result['OutPutConfigList'] = []
+        if self.out_put_config_list is not None:
+            for k in self.out_put_config_list:
+                result['OutPutConfigList'].append(k.to_map() if k else None)
+        if self.playback_mode is not None:
+            result['PlaybackMode'] = self.playback_mode
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPolicy') is not None:
+            self.access_policy = m.get('AccessPolicy')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ChannelTier') is not None:
+            self.channel_tier = m.get('ChannelTier')
+        if m.get('FillerSourceLocationName') is not None:
+            self.filler_source_location_name = m.get('FillerSourceLocationName')
+        if m.get('FillerSourceName') is not None:
+            self.filler_source_name = m.get('FillerSourceName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        self.out_put_config_list = []
+        if m.get('OutPutConfigList') is not None:
+            for k in m.get('OutPutConfigList'):
+                temp_model = ChannelOutPutConfigList()
+                self.out_put_config_list.append(temp_model.from_map(k))
+        if m.get('PlaybackMode') is not None:
+            self.playback_mode = m.get('PlaybackMode')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
 class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
     def __init__(
         self,
@@ -1020,6 +1178,436 @@ class LicenseInstanceAppDTO(TeaModel):
             self.status = m.get('Status')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class ProgramAdBreaks(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        message_type: str = None,
+        offset_millis: int = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        splice_insert_settings: str = None,
+        time_signal_settings: str = None,
+    ):
+        self.channel_name = channel_name
+        self.message_type = message_type
+        self.offset_millis = offset_millis
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.splice_insert_settings = splice_insert_settings
+        self.time_signal_settings = time_signal_settings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.offset_millis is not None:
+            result['OffsetMillis'] = self.offset_millis
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.splice_insert_settings is not None:
+            result['SpliceInsertSettings'] = self.splice_insert_settings
+        if self.time_signal_settings is not None:
+            result['TimeSignalSettings'] = self.time_signal_settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('OffsetMillis') is not None:
+            self.offset_millis = m.get('OffsetMillis')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SpliceInsertSettings') is not None:
+            self.splice_insert_settings = m.get('SpliceInsertSettings')
+        if m.get('TimeSignalSettings') is not None:
+            self.time_signal_settings = m.get('TimeSignalSettings')
+        return self
+
+
+class Program(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: List[ProgramAdBreaks] = None,
+        arn: str = None,
+        channel_name: str = None,
+        clip_range: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        transition: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        self.arn = arn
+        self.channel_name = channel_name
+        self.clip_range = clip_range
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+        self.transition = transition
+
+    def validate(self):
+        if self.ad_breaks:
+            for k in self.ad_breaks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdBreaks'] = []
+        if self.ad_breaks is not None:
+            for k in self.ad_breaks:
+                result['AdBreaks'].append(k.to_map() if k else None)
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.clip_range is not None:
+            result['ClipRange'] = self.clip_range
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.transition is not None:
+            result['Transition'] = self.transition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ad_breaks = []
+        if m.get('AdBreaks') is not None:
+            for k in m.get('AdBreaks'):
+                temp_model = ProgramAdBreaks()
+                self.ad_breaks.append(temp_model.from_map(k))
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClipRange') is not None:
+            self.clip_range = m.get('ClipRange')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Transition') is not None:
+            self.transition = m.get('Transition')
+        return self
+
+
+class ScheduleDataAdBreaks(TeaModel):
+    def __init__(
+        self,
+        message_type: str = None,
+        offset_millis: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        splice_insert_settings: str = None,
+        time_signal_settings: str = None,
+    ):
+        self.message_type = message_type
+        self.offset_millis = offset_millis
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.splice_insert_settings = splice_insert_settings
+        self.time_signal_settings = time_signal_settings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.offset_millis is not None:
+            result['OffsetMillis'] = self.offset_millis
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.splice_insert_settings is not None:
+            result['SpliceInsertSettings'] = self.splice_insert_settings
+        if self.time_signal_settings is not None:
+            result['TimeSignalSettings'] = self.time_signal_settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('OffsetMillis') is not None:
+            self.offset_millis = m.get('OffsetMillis')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SpliceInsertSettings') is not None:
+            self.splice_insert_settings = m.get('SpliceInsertSettings')
+        if m.get('TimeSignalSettings') is not None:
+            self.time_signal_settings = m.get('TimeSignalSettings')
+        return self
+
+
+class ScheduleData(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: List[ScheduleDataAdBreaks] = None,
+        approximate_duration_seconds: int = None,
+        approximate_start_time: str = None,
+        entry_type: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        self.approximate_duration_seconds = approximate_duration_seconds
+        self.approximate_start_time = approximate_start_time
+        self.entry_type = entry_type
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+
+    def validate(self):
+        if self.ad_breaks:
+            for k in self.ad_breaks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdBreaks'] = []
+        if self.ad_breaks is not None:
+            for k in self.ad_breaks:
+                result['AdBreaks'].append(k.to_map() if k else None)
+        if self.approximate_duration_seconds is not None:
+            result['ApproximateDurationSeconds'] = self.approximate_duration_seconds
+        if self.approximate_start_time is not None:
+            result['ApproximateStartTime'] = self.approximate_start_time
+        if self.entry_type is not None:
+            result['EntryType'] = self.entry_type
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ad_breaks = []
+        if m.get('AdBreaks') is not None:
+            for k in m.get('AdBreaks'):
+                temp_model = ScheduleDataAdBreaks()
+                self.ad_breaks.append(temp_model.from_map(k))
+        if m.get('ApproximateDurationSeconds') is not None:
+            self.approximate_duration_seconds = m.get('ApproximateDurationSeconds')
+        if m.get('ApproximateStartTime') is not None:
+            self.approximate_start_time = m.get('ApproximateStartTime')
+        if m.get('EntryType') is not None:
+            self.entry_type = m.get('EntryType')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class Source(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        http_package_configurations: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        state: int = None,
+    ):
+        self.arn = arn
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.http_package_configurations = http_package_configurations
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.http_package_configurations is not None:
+            result['HttpPackageConfigurations'] = self.http_package_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('HttpPackageConfigurations') is not None:
+            self.http_package_configurations = m.get('HttpPackageConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class SourceLocation(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        base_url: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        segment_delivery_configurations: str = None,
+        source_location_name: str = None,
+        state: int = None,
+    ):
+        self.arn = arn
+        self.base_url = base_url
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.segment_delivery_configurations = segment_delivery_configurations
+        self.source_location_name = source_location_name
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.segment_delivery_configurations is not None:
+            result['SegmentDeliveryConfigurations'] = self.segment_delivery_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('SegmentDeliveryConfigurations') is not None:
+            self.segment_delivery_configurations = m.get('SegmentDeliveryConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -56058,11 +56646,13 @@ class SubmitMediaAiAnalysisJobRequest(TeaModel):
         self,
         analysis_params: str = None,
         input: str = None,
+        user_data: str = None,
     ):
         # The analysis parameters.
         self.analysis_params = analysis_params
         # The media asset that you want to analyze. You can specify an Object Storage Service (OSS) URL, a media asset ID, or an external URL.
         self.input = input
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -56077,6 +56667,8 @@ class SubmitMediaAiAnalysisJobRequest(TeaModel):
             result['AnalysisParams'] = self.analysis_params
         if self.input is not None:
             result['Input'] = self.input
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -56085,6 +56677,8 @@ class SubmitMediaAiAnalysisJobRequest(TeaModel):
             self.analysis_params = m.get('AnalysisParams')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 

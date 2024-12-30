@@ -1,3 +1,7 @@
+2024-12-30 Version: 3.9.1
+- Update API SubmitMediaAiAnalysisJob: add param UserData.
+
+
 2024-12-27 Version: 3.9.0
 - Support API SubmitScreenMediaHighlightsJob.
 
