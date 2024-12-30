@@ -892,7 +892,9 @@ class CreateCloudResourceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20.
         self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -953,6 +955,7 @@ class CreateCloudResourceRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The tags to add to the resource.
         self.tag = tag
 
     def validate(self):
@@ -1019,7 +1022,9 @@ class CreateCloudResourceShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. Valid values of N: 1 to 20.
         self.key = key
+        # The value of tag N to add to the resource. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -1080,6 +1085,7 @@ class CreateCloudResourceShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The tags to add to the resource.
         self.tag = tag
 
     def validate(self):
@@ -9690,7 +9696,7 @@ class DescribeCertsRequest(TeaModel):
         # The region in which the WAF instance is deployed. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -9750,17 +9756,17 @@ class DescribeCertsResponseBodyCerts(TeaModel):
         domain: str = None,
         is_chain_completed: bool = None,
     ):
-        # The time when the certificate becomes valid.
+        # The expiration time.
         self.after_date = after_date
-        # The time when the certificate expires.
+        # The effective time.
         self.before_date = before_date
-        # The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+        # The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-ap-southeast-1" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-ap-southeast-1.
         self.cert_identifier = cert_identifier
         # The name of the certificate.
         self.cert_name = cert_name
         # The common name.
         self.common_name = common_name
-        # The domain name that is added to WAF.
+        # The domain that is supported by the certificate.
         self.domain = domain
         # Indicates whether the certificate chain is complete. Valid values:
         # 
@@ -12440,7 +12446,9 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
         rule_id: int = None,
+        rule_name: str = None,
         rule_type: str = None,
+        template_name: str = None,
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
@@ -12466,11 +12474,13 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
         self.resource_type = resource_type
         # The ID of the protection rule.
         self.rule_id = rule_id
+        self.rule_name = rule_name
         # The type of the protection rule. Valid values:
         # 
         # *   **defense**: defense rule. This is the default value.
         # *   **whitelist**: whitelist rule.
         self.rule_type = rule_type
+        self.template_name = template_name
 
     def validate(self):
         pass
@@ -12493,8 +12503,12 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
         return result
 
     def from_map(self, m: dict = None):
@@ -12511,8 +12525,12 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
         return self
 
 
@@ -12711,9 +12729,7 @@ class DescribeDefenseResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -12772,7 +12788,6 @@ class DescribeDefenseResourcesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags of the resources that you want to query. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -12847,34 +12862,37 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         resource_origin: str = None,
         xff_status: int = None,
     ):
-        # The status of the tracking cookie.
+        # 跟踪cookie开关状态。
         # 
-        # *   **0:** disabled.
-        # *   **1:** enabled.
+        # - **0**：表示关闭。
+        # 
+        # - **1**：表示开启。
         self.acw_cookie_status = acw_cookie_status
-        # The status of the secure attribute in the tracking cookie.
+        # 跟踪cookie的secure属性状态。
         # 
-        # *   **0:** disabled.
-        # *   **1:** enabled.
+        # - **0**：表示关闭。
+        # 
+        # - **1**：表示开启。
         self.acw_secure_status = acw_secure_status
-        # The status of the secure attribute in the slider CAPTCHA cookie.
+        # 滑块cookie的secure属性状态。
         # 
-        # *   **0:** disabled.
-        # *   **1:** enabled.
+        # - **0**：表示关闭。
+        # 
+        # - **1**：表示开启。
         self.acw_v3secure_status = acw_v3secure_status
-        # The custom XFF headers that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF headers are used as the originating IP addresses of clients.
+        # An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
         self.custom_headers = custom_headers
         # The description of the protected object.
         self.description = description
-        # The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
+        # The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
         self.detail = detail
-        # The time when the protected object was created. Unit: milliseconds.
+        # The creation time of the protected object. Unit: seconds.
         self.gmt_create = gmt_create
-        # The time when the protected object was modified. Unit: milliseconds.
+        # The most recent modification time of the protected object. Unit: seconds.
         self.gmt_modified = gmt_modified
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # 多账号统一管理场景中防护对象资产归属账号。
         self.owner_user_id = owner_user_id
-        # The pattern in which the protected object is protected.
+        # The protection pattern.
         self.pattern = pattern
         # The name of the cloud service.
         self.product = product
@@ -12882,11 +12900,11 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         self.resource = resource
         # The name of the protected object group to which the protected object belongs.
         self.resource_group = resource_group
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The origin of the protected object.
         self.resource_origin = resource_origin
-        # Indicates whether the X-Forwarded-For (XFF) proxy is enabled.
+        # Indicates whether the X-Forwarded-For (XFF) header is used.
         self.xff_status = xff_status
 
     def validate(self):
@@ -12978,7 +12996,7 @@ class DescribeDefenseResourcesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The protected objects.
+        # An array of protected objects.
         self.resources = resources
         # The total number of entries that are returned.
         self.total_count = total_count
@@ -13967,6 +13985,8 @@ class DescribeDefenseTemplatesRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
         template_id: int = None,
+        template_ids: str = None,
+        template_name: str = None,
         template_type: str = None,
     ):
         # The scenario in which the protection template is used.
@@ -14018,6 +14038,8 @@ class DescribeDefenseTemplatesRequest(TeaModel):
         self.resource_type = resource_type
         # The ID of the protection template.
         self.template_id = template_id
+        self.template_ids = template_ids
+        self.template_name = template_name
         # The type of the protection template. Valid values:
         # 
         # *   **user_default**: default template.
@@ -14053,6 +14075,10 @@ class DescribeDefenseTemplatesRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.template_ids is not None:
+            result['TemplateIds'] = self.template_ids
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
         return result
@@ -14079,6 +14105,10 @@ class DescribeDefenseTemplatesRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('TemplateIds') is not None:
+            self.template_ids = m.get('TemplateIds')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
         return self
@@ -30789,7 +30819,7 @@ class ModifyDefaultHttpsRequest(TeaModel):
         # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The version of the TLS protocol. Valid values:
         # 
@@ -32768,6 +32798,8 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
         self,
         cluster_resource_id: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
         rule_status: str = None,
     ):
         # The ID of the hybrid cloud cluster.
@@ -32782,6 +32814,8 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of manual bypass. Valid values:
         # 
         # *   **on**: enabled.
@@ -32803,6 +32837,10 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
             result['ClusterResourceId'] = self.cluster_resource_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.rule_status is not None:
             result['RuleStatus'] = self.rule_status
         return result
@@ -32813,6 +32851,10 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
             self.cluster_resource_id = m.get('ClusterResourceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('RuleStatus') is not None:
             self.rule_status = m.get('RuleStatus')
         return self
@@ -34632,7 +34674,7 @@ class SyncProductInstanceRequest(TeaModel):
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # 阿里云资源组ID。
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

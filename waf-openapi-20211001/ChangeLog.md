@@ -1,3 +1,12 @@
+2024-12-30 Version: 5.0.3
+- Update API DescribeDefenseResourceTemplates: add param RuleName.
+- Update API DescribeDefenseResourceTemplates: add param TemplateName.
+- Update API DescribeDefenseTemplates: add param TemplateIds.
+- Update API DescribeDefenseTemplates: add param TemplateName.
+- Update API ModifyHybridCloudClusterBypassStatus: add param RegionId.
+- Update API ModifyHybridCloudClusterBypassStatus: add param ResourceManagerResourceGroupId.
+
+
 2024-12-12 Version: 5.0.2
 - Update API CreateCloudResource: add param Tag.
 - Update API CreateDomain: add param Tag.

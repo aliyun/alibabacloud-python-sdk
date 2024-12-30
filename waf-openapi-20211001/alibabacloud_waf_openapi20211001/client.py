@@ -6689,8 +6689,12 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6736,8 +6740,12 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7401,6 +7409,10 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
@@ -7456,6 +7468,10 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_ids):
+            query['TemplateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
@@ -15793,7 +15809,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
+        @summary Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15842,7 +15858,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
+        @summary Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15890,7 +15906,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
+        @summary Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @return: ModifyDefaultHttpsResponse
@@ -15903,7 +15919,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyDefaultHttpsRequest,
     ) -> waf_openapi_20211001_models.ModifyDefaultHttpsResponse:
         """
-        @summary Modifies the default SSL and Transport Layer Security (TLS) settings.
+        @summary Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
         
         @param request: ModifyDefaultHttpsRequest
         @return: ModifyDefaultHttpsResponse
@@ -16989,6 +17005,10 @@ class Client(OpenApiClient):
             query['ClusterResourceId'] = request.cluster_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_status):
             query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
@@ -17028,6 +17048,10 @@ class Client(OpenApiClient):
             query['ClusterResourceId'] = request.cluster_resource_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.rule_status):
             query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
@@ -18469,7 +18493,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -18510,7 +18534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -18550,7 +18574,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.SyncProductInstanceRequest,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
@@ -18565,7 +18589,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.SyncProductInstanceRequest,
     ) -> waf_openapi_20211001_models.SyncProductInstanceResponse:
         """
-        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+        @summary Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
         
         @description SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
         
