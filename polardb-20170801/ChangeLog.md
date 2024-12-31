@@ -1,3 +1,12 @@
+2024-12-31 Version: 5.3.2
+- Update API CreateDBCluster: add param StorageEncryption.
+- Update API CreateDBCluster: add param StorageEncryptionKey.
+- Update API DescribeDBClusterTDE: update response param.
+- Update API DescribeUserEncryptionKeyList: update param AccessKeyId.
+- Update API DescribeUserEncryptionKeyList: update param DBClusterId.
+- Update API DescribeUserEncryptionKeyList: update param TDERegion.
+
+
 2024-12-26 Version: 5.3.1
 - Update API CreateDBCluster: add param StorageEncryption.
 - Update API CreateDBCluster: add param StorageEncryptionKey.
