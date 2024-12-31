@@ -1,3 +1,11 @@
+2024-12-31 Version: 2.1.0
+- Support API DeleteDisasterRecoveryPlan.
+- Support API ListMetricMeta.
+- Support API StartDisasterRecoveryItem.
+- Support API StopDisasterRecoveryItem.
+- Update API GetConsumerGroupLag: update response param.
+
+
 2024-12-26 Version: 2.0.0
 - Support API AddDisasterRecoveryItem.
 - Update API CreateConsumerGroup: update param body.

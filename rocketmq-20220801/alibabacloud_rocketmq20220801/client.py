@@ -1263,6 +1263,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_consumer_group_subscription_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
+    def delete_disaster_recovery_plan_with_options(
+        self,
+        plan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
+        """
+        @summary 删除容灾计划
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDisasterRecoveryPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_disaster_recovery_plan_with_options_async(
+        self,
+        plan_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
+        """
+        @summary 删除容灾计划
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDisasterRecoveryPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDisasterRecoveryPlan',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_disaster_recovery_plan(
+        self,
+        plan_id: str,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
+        """
+        @summary 删除容灾计划
+        
+        @return: DeleteDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_disaster_recovery_plan_with_options(plan_id, headers, runtime)
+
+    async def delete_disaster_recovery_plan_async(
+        self,
+        plan_id: str,
+    ) -> rocket_mq20220801_models.DeleteDisasterRecoveryPlanResponse:
+        """
+        @summary 删除容灾计划
+        
+        @return: DeleteDisasterRecoveryPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_disaster_recovery_plan_with_options_async(plan_id, headers, runtime)
+
     def delete_instance_with_options(
         self,
         instance_id: str,
@@ -3721,6 +3811,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_messages_with_options_async(instance_id, topic_name, request, headers, runtime)
 
+    def list_metric_meta_with_options(
+        self,
+        request: rocket_mq20220801_models.ListMetricMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMetricMetaResponse:
+        """
+        @summary 查询监控项列表
+        
+        @param request: ListMetricMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetricMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetricMeta',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/monitor/metrics/meta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMetricMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_metric_meta_with_options_async(
+        self,
+        request: rocket_mq20220801_models.ListMetricMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMetricMetaResponse:
+        """
+        @summary 查询监控项列表
+        
+        @param request: ListMetricMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetricMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMetricMeta',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/monitor/metrics/meta',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMetricMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_metric_meta(
+        self,
+        request: rocket_mq20220801_models.ListMetricMetaRequest,
+    ) -> rocket_mq20220801_models.ListMetricMetaResponse:
+        """
+        @summary 查询监控项列表
+        
+        @param request: ListMetricMetaRequest
+        @return: ListMetricMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_metric_meta_with_options(request, headers, runtime)
+
+    async def list_metric_meta_async(
+        self,
+        request: rocket_mq20220801_models.ListMetricMetaRequest,
+    ) -> rocket_mq20220801_models.ListMetricMetaResponse:
+        """
+        @summary 查询监控项列表
+        
+        @param request: ListMetricMetaRequest
+        @return: ListMetricMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_metric_meta_with_options_async(request, headers, runtime)
+
     def list_regions_with_options(
         self,
         headers: Dict[str, str],
@@ -4404,6 +4602,194 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reset_consume_offset_with_options_async(instance_id, consumer_group_id, topic_name, request, headers, runtime)
+
+    def start_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
+        """
+        @summary 启用容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
+        """
+        @summary 启用容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StartDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_disaster_recovery_item(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
+        """
+        @summary 启用容灾计划条目
+        
+        @return: StartDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_disaster_recovery_item_with_options(plan_id, item_id, headers, runtime)
+
+    async def start_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.StartDisasterRecoveryItemResponse:
+        """
+        @summary 启用容灾计划条目
+        
+        @return: StartDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
+
+    def stop_disaster_recovery_item_with_options(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
+        """
+        @summary 停用容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_disaster_recovery_item_with_options_async(
+        self,
+        plan_id: str,
+        item_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
+        """
+        @summary 停用容灾计划条目
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDisasterRecoveryItemResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopDisasterRecoveryItem',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/disaster_recovery/{OpenApiUtilClient.get_encode_param(plan_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.StopDisasterRecoveryItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_disaster_recovery_item(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
+        """
+        @summary 停用容灾计划条目
+        
+        @return: StopDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_disaster_recovery_item_with_options(plan_id, item_id, headers, runtime)
+
+    async def stop_disaster_recovery_item_async(
+        self,
+        plan_id: str,
+        item_id: str,
+    ) -> rocket_mq20220801_models.StopDisasterRecoveryItemResponse:
+        """
+        @summary 停用容灾计划条目
+        
+        @return: StopDisasterRecoveryItemResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
 
     def tag_resources_with_options(
         self,
