@@ -1054,10 +1054,12 @@ class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
     def __init__(
         self,
         domain: str = None,
+        domain_block_trade: List[str] = None,
         order_no: str = None,
         price: int = None,
     ):
         self.domain = domain
+        self.domain_block_trade = domain_block_trade
         self.order_no = order_no
         self.price = price
 
@@ -1072,6 +1074,8 @@ class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.domain_block_trade is not None:
+            result['DomainBlockTrade'] = self.domain_block_trade
         if self.order_no is not None:
             result['OrderNo'] = self.order_no
         if self.price is not None:
@@ -1082,6 +1086,8 @@ class CreateFixedPriceSelectedOrderResponseBodyModule(TeaModel):
         m = m or dict()
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DomainBlockTrade') is not None:
+            self.domain_block_trade = m.get('DomainBlockTrade')
         if m.get('OrderNo') is not None:
             self.order_no = m.get('OrderNo')
         if m.get('Price') is not None:

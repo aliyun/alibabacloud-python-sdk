@@ -1,3 +1,7 @@
+2024-12-31 Version: 1.3.1
+- Update API CreateFixedPriceSelectedOrder: update response param.
+
+
 2024-10-17 Version: 1.3.0
 - Support API QueryExchangeRate.
 
