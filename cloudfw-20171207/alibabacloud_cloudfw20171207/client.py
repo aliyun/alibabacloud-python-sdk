@@ -763,6 +763,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.task_data):
             query['TaskData'] = request.task_data
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         if not UtilClient.is_unset(request.time_zone):
             query['TimeZone'] = request.time_zone
         req = open_api_models.OpenApiRequest(
@@ -802,6 +804,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.task_data):
             query['TaskData'] = request.task_data
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         if not UtilClient.is_unset(request.time_zone):
             query['TimeZone'] = request.time_zone
         req = open_api_models.OpenApiRequest(
@@ -4063,7 +4067,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
         """
-        @summary 获取资产统计信息
+        @summary Queries statistics on the assets that are protected by Cloud Firewall.
         
         @param request: DescribeAssetStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4102,7 +4106,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
         """
-        @summary 获取资产统计信息
+        @summary Queries statistics on the assets that are protected by Cloud Firewall.
         
         @param request: DescribeAssetStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4140,7 +4144,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
     ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
         """
-        @summary 获取资产统计信息
+        @summary Queries statistics on the assets that are protected by Cloud Firewall.
         
         @param request: DescribeAssetStatisticRequest
         @return: DescribeAssetStatisticResponse
@@ -4153,7 +4157,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetStatisticRequest,
     ) -> cloudfw_20171207_models.DescribeAssetStatisticResponse:
         """
-        @summary 获取资产统计信息
+        @summary Queries statistics on the assets that are protected by Cloud Firewall.
         
         @param request: DescribeAssetStatisticRequest
         @return: DescribeAssetStatisticResponse
@@ -6941,6 +6945,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.firewall_type):
             query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.is_only_private_assoc):
+            query['IsOnlyPrivateAssoc'] = request.is_only_private_assoc
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
@@ -7024,6 +7030,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.firewall_type):
             query['FirewallType'] = request.firewall_type
+        if not UtilClient.is_unset(request.is_only_private_assoc):
+            query['IsOnlyPrivateAssoc'] = request.is_only_private_assoc
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
@@ -7977,7 +7985,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
         """
-        @summary 获取用户版本信息
+        @summary Queries the edition information about Cloud Firewall.
+        
+        @description You can call this operation to query the edition information about Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUserBuyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8012,7 +8024,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
         """
-        @summary 获取用户版本信息
+        @summary Queries the edition information about Cloud Firewall.
+        
+        @description You can call this operation to query the edition information about Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUserBuyVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8046,7 +8062,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
     ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
         """
-        @summary 获取用户版本信息
+        @summary Queries the edition information about Cloud Firewall.
+        
+        @description You can call this operation to query the edition information about Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUserBuyVersionRequest
         @return: DescribeUserBuyVersionResponse
@@ -8059,7 +8079,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserBuyVersionRequest,
     ) -> cloudfw_20171207_models.DescribeUserBuyVersionResponse:
         """
-        @summary 获取用户版本信息
+        @summary Queries the edition information about Cloud Firewall.
+        
+        @description You can call this operation to query the edition information about Cloud Firewall.
+        ## [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUserBuyVersionRequest
         @return: DescribeUserBuyVersionResponse

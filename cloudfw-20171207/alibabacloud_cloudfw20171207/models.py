@@ -1040,6 +1040,7 @@ class CreateDownloadTaskRequest(TeaModel):
         self,
         lang: str = None,
         task_data: str = None,
+        task_type: str = None,
         time_zone: str = None,
     ):
         # The language of the content within the response.
@@ -1051,6 +1052,8 @@ class CreateDownloadTaskRequest(TeaModel):
         self.lang = lang
         # The query condition of the download task.
         self.task_data = task_data
+        # The type of the task. For more information about task types, see the descriptions in the "DescribeDownloadTaskType" topic.
+        self.task_type = task_type
         # The time zone of the time information in the downloaded file. The value must be an identifier of a time zone in the Internet Assigned Numbers Authority (IANA) database. The default value is Asia/Shanghai, which indicates UTC+8.
         self.time_zone = time_zone
 
@@ -1067,6 +1070,8 @@ class CreateDownloadTaskRequest(TeaModel):
             result['Lang'] = self.lang
         if self.task_data is not None:
             result['TaskData'] = self.task_data
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
         if self.time_zone is not None:
             result['TimeZone'] = self.time_zone
         return result
@@ -1077,6 +1082,8 @@ class CreateDownloadTaskRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('TaskData') is not None:
             self.task_data = m.get('TaskData')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
         if m.get('TimeZone') is not None:
             self.time_zone = m.get('TimeZone')
         return self
@@ -4069,6 +4076,8 @@ class DeleteNatFirewallControlPolicyBatchRequest(TeaModel):
         nat_gateway_id: str = None,
     ):
         # The UUIDs of access control policies.
+        # 
+        # This parameter is required.
         self.acl_uuid_list = acl_uuid_list
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
@@ -5047,6 +5056,39 @@ class DescribeAddressBookRequest(TeaModel):
         return self
 
 
+class DescribeAddressBookResponseBodyAclsAddresses(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        note: str = None,
+    ):
+        self.address = address
+        self.note = note
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.note is not None:
+            result['Note'] = self.note
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Note') is not None:
+            self.note = m.get('Note')
+        return self
+
+
 class DescribeAddressBookResponseBodyAclsTagList(TeaModel):
     def __init__(
         self,
@@ -5087,6 +5129,7 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self,
         address_list: List[str] = None,
         address_list_count: int = None,
+        addresses: List[DescribeAddressBookResponseBodyAclsAddresses] = None,
         auto_add_tag_ecs: int = None,
         description: str = None,
         group_name: str = None,
@@ -5100,6 +5143,7 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.address_list = address_list
         # The number of addresses in the address book.
         self.address_list_count = address_list_count
+        self.addresses = addresses
         # Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
         # 
         # *   **1**: yes
@@ -5131,6 +5175,10 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
         self.tag_relation = tag_relation
 
     def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
         if self.tag_list:
             for k in self.tag_list:
                 if k:
@@ -5146,6 +5194,10 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
             result['AddressList'] = self.address_list
         if self.address_list_count is not None:
             result['AddressListCount'] = self.address_list_count
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
         if self.auto_add_tag_ecs is not None:
             result['AutoAddTagEcs'] = self.auto_add_tag_ecs
         if self.description is not None:
@@ -5172,6 +5224,11 @@ class DescribeAddressBookResponseBodyAcls(TeaModel):
             self.address_list = m.get('AddressList')
         if m.get('AddressListCount') is not None:
             self.address_list_count = m.get('AddressListCount')
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = DescribeAddressBookResponseBodyAclsAddresses()
+                self.addresses.append(temp_model.from_map(k))
         if m.get('AutoAddTagEcs') is not None:
             self.auto_add_tag_ecs = m.get('AutoAddTagEcs')
         if m.get('Description') is not None:
@@ -5340,6 +5397,7 @@ class DescribeAssetListRequest(TeaModel):
         # *   **discovered in 1 day**: within one day.
         # *   **discovered in 7 days**: within seven days.
         self.new_resource_tag = new_resource_tag
+        # Whether to query external traffic information.
         self.out_statistic = out_statistic
         # The number of entries per page. Valid values: 1 to 50.
         # 
@@ -5365,6 +5423,7 @@ class DescribeAssetListRequest(TeaModel):
         self.resource_type = resource_type
         # The instance ID or IP address of the asset.
         self.search_item = search_item
+        # Data leakage detection activation status.
         self.sensitive_status = sensitive_status
         # The status of the security group policy. Valid values:
         # 
@@ -5515,6 +5574,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         # *   **4**: IPv4
         # *   **6**: IPv6
         self.ip_version = ip_version
+        # Outbound traffic in the last 7 days.
         self.last_7day_out_traffic_bytes = last_7day_out_traffic_bytes
         # The UID of the member.
         self.member_uid = member_uid
@@ -5569,6 +5629,7 @@ class DescribeAssetListResponseBodyAssets(TeaModel):
         # 
         # >  The value of this parameter is returned only when the UserType parameter is set to free.
         self.risk_level = risk_level
+        # Data leakage detection enabled status.
         self.sensitive_data_status = sensitive_data_status
         # The status of the security group policy. Valid values:
         # 
@@ -5701,7 +5762,7 @@ class DescribeAssetListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the assets that are protected by Cloud Firewall.
+        # The assets that are protected by Cloud Firewall.
         self.assets = assets
         # The ID of the request.
         self.request_id = request_id
@@ -6005,7 +6066,12 @@ class DescribeAssetStatisticRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the content within the request. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):
@@ -6037,22 +6103,16 @@ class DescribeAssetStatisticResponseBodyResourceSpecStatistic(TeaModel):
         self,
         ip_num_spec: int = None,
         ip_num_used: int = None,
-        is_ip_num_enough: int = None,
-        is_region_num_enough: int = None,
-        is_suggest_update: int = None,
-        region_num_spec: int = None,
-        region_num_used: int = None,
         sensitive_data_ip_num_spec: int = None,
         sensitive_data_ip_num_used: int = None,
     ):
+        # The number of public IP addresses that can be protected.
         self.ip_num_spec = ip_num_spec
+        # The number of public IP addresses that are protected.
         self.ip_num_used = ip_num_used
-        self.is_ip_num_enough = is_ip_num_enough
-        self.is_region_num_enough = is_region_num_enough
-        self.is_suggest_update = is_suggest_update
-        self.region_num_spec = region_num_spec
-        self.region_num_used = region_num_used
+        # The number of public IP addresses that can enable data leakage detection.
         self.sensitive_data_ip_num_spec = sensitive_data_ip_num_spec
+        # The number of public IP addresses that enabled data leakage detection.
         self.sensitive_data_ip_num_used = sensitive_data_ip_num_used
 
     def validate(self):
@@ -6068,16 +6128,6 @@ class DescribeAssetStatisticResponseBodyResourceSpecStatistic(TeaModel):
             result['IpNumSpec'] = self.ip_num_spec
         if self.ip_num_used is not None:
             result['IpNumUsed'] = self.ip_num_used
-        if self.is_ip_num_enough is not None:
-            result['IsIpNumEnough'] = self.is_ip_num_enough
-        if self.is_region_num_enough is not None:
-            result['IsRegionNumEnough'] = self.is_region_num_enough
-        if self.is_suggest_update is not None:
-            result['IsSuggestUpdate'] = self.is_suggest_update
-        if self.region_num_spec is not None:
-            result['RegionNumSpec'] = self.region_num_spec
-        if self.region_num_used is not None:
-            result['RegionNumUsed'] = self.region_num_used
         if self.sensitive_data_ip_num_spec is not None:
             result['SensitiveDataIpNumSpec'] = self.sensitive_data_ip_num_spec
         if self.sensitive_data_ip_num_used is not None:
@@ -6090,16 +6140,6 @@ class DescribeAssetStatisticResponseBodyResourceSpecStatistic(TeaModel):
             self.ip_num_spec = m.get('IpNumSpec')
         if m.get('IpNumUsed') is not None:
             self.ip_num_used = m.get('IpNumUsed')
-        if m.get('IsIpNumEnough') is not None:
-            self.is_ip_num_enough = m.get('IsIpNumEnough')
-        if m.get('IsRegionNumEnough') is not None:
-            self.is_region_num_enough = m.get('IsRegionNumEnough')
-        if m.get('IsSuggestUpdate') is not None:
-            self.is_suggest_update = m.get('IsSuggestUpdate')
-        if m.get('RegionNumSpec') is not None:
-            self.region_num_spec = m.get('RegionNumSpec')
-        if m.get('RegionNumUsed') is not None:
-            self.region_num_used = m.get('RegionNumUsed')
         if m.get('SensitiveDataIpNumSpec') is not None:
             self.sensitive_data_ip_num_spec = m.get('SensitiveDataIpNumSpec')
         if m.get('SensitiveDataIpNumUsed') is not None:
@@ -6113,7 +6153,9 @@ class DescribeAssetStatisticResponseBody(TeaModel):
         request_id: str = None,
         resource_spec_statistic: DescribeAssetStatisticResponseBodyResourceSpecStatistic = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The statistics on specifications.
         self.resource_spec_statistic = resource_spec_statistic
 
     def validate(self):
@@ -8448,7 +8490,9 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         self.risk_reason = risk_reason
         # The list of applications.
         self.service_name_list = service_name_list
+        # Number of source IPs.
         self.src_ip_cnt = src_ip_cnt
+        # Outbound traffic in the last 7 days.
         self.total_reply_bytes = total_reply_bytes
         # The percentage of traffic of a day. Unit: percent (%).
         self.traffic_percent_1day = traffic_percent_1day
@@ -10795,13 +10839,13 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.end_time = end_time
         # The language of the content within the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
-        # The method that is used to sort the results. Valid values:
+        # The method that you want to use to sort the query results. Valid values:
         # 
-        # *   **asc**: the ascending order.
-        # *   **desc** (default): the descending order.
+        # *   **asc**\
+        # *   **desc** (default)
         self.order = order
         # The number of entries to return on each page.
         # 
@@ -11040,9 +11084,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
         self.class_id = class_id
         # The risk level. Valid values:
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # *   **1**: low.
+        # *   **2**: medium.
+        # *   **3**: high.
         self.risk_level = risk_level
         # The description of the tag.
         self.tag_describe = tag_describe
@@ -11131,7 +11175,10 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         # The information about the address book.
         self.address_group_list = address_group_list
         # The application ports.
+        # 
+        # >  Only the first 100 application ports are displayed.
         self.application_port_list = application_port_list
+        # The outbound asset count.
         self.asset_count = asset_count
         # The type of the tag. Valid values:
         # 
@@ -11170,9 +11217,11 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         # *   **true**\
         # *   **false**\
         self.is_mark_normal = is_mark_normal
+        # Location name.
         self.location_name = location_name
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
+        # The outbound private asset count.
         self.private_asset_count = private_asset_count
         # The UUID of the access control policy.
         self.rule_id = rule_id
@@ -11696,7 +11745,9 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         self.address_group_name = address_group_name
         # The UUID of the address book.
         self.address_group_uuid = address_group_uuid
+        # The application names.
         self.application_name_list = application_name_list
+        # The outbound asset count.
         self.asset_count = asset_count
         # The website service.
         self.business = business
@@ -11741,6 +11792,7 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         self.organization = organization
         # The volume of outbound traffic.
         self.out_bytes = out_bytes
+        # The outbound private asset count.
         self.private_asset_count = private_asset_count
         # The ID of the access control policy.
         self.rule_id = rule_id
@@ -11900,7 +11952,7 @@ class DescribeOutgoingDomainResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the domain names in outbound connections.
+        # The domain names in outbound connections.
         self.domain_list = domain_list
         # The ID of the request.
         self.request_id = request_id
@@ -12285,6 +12337,7 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
         self.order = order
         # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The region ID.
         self.region_no = region_no
         # The instance ID or the IP address of the asset.
         self.search_item = search_item
@@ -12375,7 +12428,9 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(TeaModel):
         self.instance_type = instance_type
         # The outbound network throughput, which indicates the total number of bytes that are sent. Unit: bytes.
         self.out_bytes = out_bytes
+        # Protection duration. Unit: hours.
         self.protection_duration = protection_duration
+        # The region ID.
         self.region_no = region_no
         # The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
         self.resource_id = resource_id
@@ -12707,6 +12762,8 @@ class DescribePrefixListsRequest(TeaModel):
         source_ip: str = None,
     ):
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_no = region_no
         # The source IP address of the request.
         self.source_ip = source_ip
@@ -12906,6 +12963,7 @@ class DescribeRiskEventGroupRequest(TeaModel):
         end_time: str = None,
         event_name: str = None,
         firewall_type: str = None,
+        is_only_private_assoc: str = None,
         lang: str = None,
         no_location: str = None,
         order: str = None,
@@ -12976,6 +13034,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # *   **VpcFirewall**: virtual private cloud (VPC) firewall
         # *   **InternetFirewall**: Internet firewall (default)
         self.firewall_type = firewall_type
+        # Whether to query only the data that has completed private network tracing.
+        self.is_only_private_assoc = is_only_private_assoc
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -13065,6 +13125,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
             result['EventName'] = self.event_name
         if self.firewall_type is not None:
             result['FirewallType'] = self.firewall_type
+        if self.is_only_private_assoc is not None:
+            result['IsOnlyPrivateAssoc'] = self.is_only_private_assoc
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.no_location is not None:
@@ -13113,6 +13175,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
             self.event_name = m.get('EventName')
         if m.get('FirewallType') is not None:
             self.firewall_type = m.get('FirewallType')
+        if m.get('IsOnlyPrivateAssoc') is not None:
+            self.is_only_private_assoc = m.get('IsOnlyPrivateAssoc')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('NoLocation') is not None:
@@ -13794,8 +13858,11 @@ class DescribeRiskEventPayloadResponseBody(TeaModel):
         self.dst_port = dst_port
         # The destination VPC ID of the intrusion event.
         self.dst_vpc_id = dst_vpc_id
+        # Type of the hit.
         self.hit_content_type = hit_content_type
+        # The position where the hit ends.
         self.hit_to = hit_to
+        # Hit payload.
         self.parsed_content = parsed_content
         # The attack payload of the intrusion event.
         self.payload = payload
@@ -15064,6 +15131,11 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable_all_patch = enable_all_patch
+        # The level of the rule group for the IPS. Valid values:
+        # 
+        # *   **1**: loose.
+        # *   **2**: medium.
+        # *   **3**: strict.
         self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
@@ -15115,6 +15187,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsProtectedResource(TeaMo
     ):
         # The number of protected resources.
         self.count = count
+        # The protected express connect routers.
         self.ecr_list = ecr_list
         # The protected peer transit routers.
         self.peer_tr_list = peer_tr_list
@@ -15177,6 +15250,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsUnprotectedResource(Tea
     ):
         # The number of unprotected resources.
         self.count = count
+        # The unprotected express connect routers.
         self.ecr_list = ecr_list
         # The unprotected peer transit routers.
         self.peer_tr_list = peer_tr_list
@@ -15251,6 +15325,10 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         self.cen_id = cen_id
         # The name of the CEN instance.
         self.cen_name = cen_name
+        # The party responsible for the TR fees generated by the VPC firewall. Values:
+        # 
+        # - **PayByCloudFirewall**: Fees are borne by the Cloud Firewall.
+        # - **PayByCenOwner**: Fees are borne by the account to which the CEN instance belongs.
         self.cloud_firewall_vpc_order_type = cloud_firewall_vpc_order_type
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
@@ -15266,7 +15344,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls(TeaModel):
         # 
         # >  If you do not specify this parameter, VPC firewalls in all states are queried.
         self.firewall_switch_status = firewall_switch_status
-        # The information about the intrusion prevention system (IPS) configuration.
+        # The intrusion prevention system (IPS) configurations.
         self.ips_config = ips_config
         # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
@@ -15401,7 +15479,7 @@ class DescribeTrFirewallsV2ListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The VPC firewalls.
+        # The information about the VPC firewalls.
         self.vpc_tr_firewalls = vpc_tr_firewalls
 
     def validate(self):
@@ -15852,6 +15930,7 @@ class DescribeUserBuyVersionRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # Instance ID. If the Instance ID is provided, the query will be based on this ID. If not provided, the latest instance will be queried by default.
         self.instance_id = instance_id
 
     def validate(self):
@@ -15891,18 +15970,67 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         version: int = None,
         vpc_number: int = None,
     ):
+        # The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
         self.ali_uid = ali_uid
+        # The time when Cloud Firewall expires.
+        # 
+        # >  The value is a timestamp in milliseconds.
+        # 
+        # >  If you use Cloud Firewall that uses the pay-as-you-go billing method, ignore this parameter.
         self.expire = expire
+        # The instance ID of Cloud Firewall.
+        # 
+        # >  If you use a trial of Cloud Firewall, ignore this parameter.
         self.instance_id = instance_id
+        # The status of Cloud Firewall. Valid values:
+        # 
+        # *   **normal**: Cloud Firewall is running as expected.
+        # *   **init**: Cloud Firewall is being initialized.
+        # *   **deleting**: Cloud Firewall is being deleted.
+        # *   **abnormal**: An exception occurs in Cloud Firewall.
+        # *   **free**: Cloud Firewall is invalid.
         self.instance_status = instance_status
+        # The number of public IP addresses that can be protected.
+        # 
+        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.ip_number = ip_number
+        # Indicates whether log delivery is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.log_status = log_status
+        # The log storage capacity.
+        # 
+        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.log_storage = log_storage
+        # The status of the burstable protected traffic feature. Valid values:
+        # 
+        # *   **1000000**: enabled.
+        # *   **0**: disabled.
+        # 
+        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.max_overflow = max_overflow
+        # The request ID.
         self.request_id = request_id
+        # The time when Cloud Firewall was activated.
+        # 
+        # >  The value is a timestamp in milliseconds.
         self.start_time = start_time
+        # Indicates whether Cloud Firewall is valid. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.user_status = user_status
+        # The edition of Cloud Firewall. Valid values:
+        # 
+        # *   **2**: Premium Edition.
+        # *   **3**: Enterprise Edition.
+        # *   **4**: Ultimate Edition.
+        # *   **10**: Cloud Firewall that uses the pay-as-you-go billing method.
         self.version = version
+        # The number of virtual private clouds (VPCs) that can be protected.
+        # 
+        # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.vpc_number = vpc_number
 
     def validate(self):
@@ -17138,6 +17266,11 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable_all_patch = enable_all_patch
+        # The level of the rule group for the IPS. Valid values:
+        # 
+        # *   **1**: loose.
+        # *   **2**: medium.
+        # *   **3**: strict.
         self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
@@ -17423,7 +17556,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewalls(TeaModel):
         # *   **closed**: The VPC firewall is disabled.
         # *   **notconfigured**: The VPC firewall is not configured.
         self.firewall_switch_status = firewall_switch_status
-        # The information about the intrusion prevention system (IPS) configuration.
+        # The intrusion prevention system (IPS) configurations.
         self.ips_config = ips_config
         # The details about the VPC.
         self.local_vpc = local_vpc
@@ -17533,7 +17666,7 @@ class DescribeVpcFirewallCenListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of VPC firewalls.
         self.total_count = total_count
-        # An array that consists of the details about the VPC firewall.
+        # The information about the VPC firewalls.
         self.vpc_firewalls = vpc_firewalls
 
     def validate(self):
@@ -18252,6 +18385,11 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(TeaModel):
         self.enable_all_patch = enable_all_patch
         # The ID of the request.
         self.request_id = request_id
+        # The level of the rule group for the IPS. Valid values:
+        # 
+        # *   **1**: loose.
+        # *   **2**: medium.
+        # *   **3**: strict.
         self.rule_class = rule_class
         # The mode of the intrusion prevention system (IPS). Valid values:
         # 
@@ -20070,6 +20208,8 @@ class DescribeVpcZoneRequest(TeaModel):
         # The UID of the member in Cloud Firewall.
         self.member_uid = member_uid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_no = region_no
 
     def validate(self):
