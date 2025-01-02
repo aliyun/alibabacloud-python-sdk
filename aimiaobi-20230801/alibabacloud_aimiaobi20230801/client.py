@@ -13165,6 +13165,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.editing_config_shrink):
             body['EditingConfig'] = request.editing_config_shrink
+        if not UtilClient.is_unset(request.extend_param):
+            body['ExtendParam'] = request.extend_param
         if not UtilClient.is_unset(request.input_config_shrink):
             body['InputConfig'] = request.input_config_shrink
         if not UtilClient.is_unset(request.output_config_shrink):
@@ -13214,6 +13216,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.editing_config_shrink):
             body['EditingConfig'] = request.editing_config_shrink
+        if not UtilClient.is_unset(request.extend_param):
+            body['ExtendParam'] = request.extend_param
         if not UtilClient.is_unset(request.input_config_shrink):
             body['InputConfig'] = request.input_config_shrink
         if not UtilClient.is_unset(request.output_config_shrink):

@@ -39226,6 +39226,182 @@ class SubmitEnterpriseVocAnalysisTaskResponse(TeaModel):
         return self
 
 
+class SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig(TeaModel):
+    def __init__(
+        self,
+        style: str = None,
+        volume: float = None,
+    ):
+        self.style = style
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.style is not None:
+            result['Style'] = self.style
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class SubmitSmartClipTaskRequestEditingConfigMediaConfig(TeaModel):
+    def __init__(
+        self,
+        volume: float = None,
+    ):
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
+class SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig(TeaModel):
+    def __init__(
+        self,
+        alignment: str = None,
+        font: str = None,
+        font_color: str = None,
+        font_size: str = None,
+        spacing: str = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.alignment = alignment
+        self.font = font
+        self.font_color = font_color
+        self.font_size = font_size
+        self.spacing = spacing
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alignment is not None:
+            result['Alignment'] = self.alignment
+        if self.font is not None:
+            result['Font'] = self.font
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.spacing is not None:
+            result['Spacing'] = self.spacing
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alignment') is not None:
+            self.alignment = m.get('Alignment')
+        if m.get('Font') is not None:
+            self.font = m.get('Font')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Spacing') is not None:
+            self.spacing = m.get('Spacing')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class SubmitSmartClipTaskRequestEditingConfigSpeechConfig(TeaModel):
+    def __init__(
+        self,
+        asr_config: SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig = None,
+        speech_rate: float = None,
+        style: str = None,
+        voice: str = None,
+        volume: float = None,
+    ):
+        self.asr_config = asr_config
+        self.speech_rate = speech_rate
+        self.style = style
+        self.voice = voice
+        self.volume = volume
+
+    def validate(self):
+        if self.asr_config:
+            self.asr_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asr_config is not None:
+            result['AsrConfig'] = self.asr_config.to_map()
+        if self.speech_rate is not None:
+            result['SpeechRate'] = self.speech_rate
+        if self.style is not None:
+            result['Style'] = self.style
+        if self.voice is not None:
+            result['Voice'] = self.voice
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsrConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig()
+            self.asr_config = temp_model.from_map(m['AsrConfig'])
+        if m.get('SpeechRate') is not None:
+            self.speech_rate = m.get('SpeechRate')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
 class SubmitSmartClipTaskRequestEditingConfigTitleConfig(TeaModel):
     def __init__(
         self,
@@ -39280,11 +39456,23 @@ class SubmitSmartClipTaskRequestEditingConfigTitleConfig(TeaModel):
 class SubmitSmartClipTaskRequestEditingConfig(TeaModel):
     def __init__(
         self,
+        background_music_config: SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig = None,
+        media_config: SubmitSmartClipTaskRequestEditingConfigMediaConfig = None,
+        speech_config: SubmitSmartClipTaskRequestEditingConfigSpeechConfig = None,
         title_config: SubmitSmartClipTaskRequestEditingConfigTitleConfig = None,
     ):
+        self.background_music_config = background_music_config
+        self.media_config = media_config
+        self.speech_config = speech_config
         self.title_config = title_config
 
     def validate(self):
+        if self.background_music_config:
+            self.background_music_config.validate()
+        if self.media_config:
+            self.media_config.validate()
+        if self.speech_config:
+            self.speech_config.validate()
         if self.title_config:
             self.title_config.validate()
 
@@ -39294,12 +39482,27 @@ class SubmitSmartClipTaskRequestEditingConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.background_music_config is not None:
+            result['BackgroundMusicConfig'] = self.background_music_config.to_map()
+        if self.media_config is not None:
+            result['MediaConfig'] = self.media_config.to_map()
+        if self.speech_config is not None:
+            result['SpeechConfig'] = self.speech_config.to_map()
         if self.title_config is not None:
             result['TitleConfig'] = self.title_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackgroundMusicConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig()
+            self.background_music_config = temp_model.from_map(m['BackgroundMusicConfig'])
+        if m.get('MediaConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfigMediaConfig()
+            self.media_config = temp_model.from_map(m['MediaConfig'])
+        if m.get('SpeechConfig') is not None:
+            temp_model = SubmitSmartClipTaskRequestEditingConfigSpeechConfig()
+            self.speech_config = temp_model.from_map(m['SpeechConfig'])
         if m.get('TitleConfig') is not None:
             temp_model = SubmitSmartClipTaskRequestEditingConfigTitleConfig()
             self.title_config = temp_model.from_map(m['TitleConfig'])
@@ -39608,11 +39811,13 @@ class SubmitSmartClipTaskRequest(TeaModel):
     def __init__(
         self,
         editing_config: SubmitSmartClipTaskRequestEditingConfig = None,
+        extend_param: str = None,
         input_config: SubmitSmartClipTaskRequestInputConfig = None,
         output_config: SubmitSmartClipTaskRequestOutputConfig = None,
         workspace_id: str = None,
     ):
         self.editing_config = editing_config
+        self.extend_param = extend_param
         # This parameter is required.
         self.input_config = input_config
         self.output_config = output_config
@@ -39635,6 +39840,8 @@ class SubmitSmartClipTaskRequest(TeaModel):
         result = dict()
         if self.editing_config is not None:
             result['EditingConfig'] = self.editing_config.to_map()
+        if self.extend_param is not None:
+            result['ExtendParam'] = self.extend_param
         if self.input_config is not None:
             result['InputConfig'] = self.input_config.to_map()
         if self.output_config is not None:
@@ -39648,6 +39855,8 @@ class SubmitSmartClipTaskRequest(TeaModel):
         if m.get('EditingConfig') is not None:
             temp_model = SubmitSmartClipTaskRequestEditingConfig()
             self.editing_config = temp_model.from_map(m['EditingConfig'])
+        if m.get('ExtendParam') is not None:
+            self.extend_param = m.get('ExtendParam')
         if m.get('InputConfig') is not None:
             temp_model = SubmitSmartClipTaskRequestInputConfig()
             self.input_config = temp_model.from_map(m['InputConfig'])
@@ -39663,11 +39872,13 @@ class SubmitSmartClipTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         editing_config_shrink: str = None,
+        extend_param: str = None,
         input_config_shrink: str = None,
         output_config_shrink: str = None,
         workspace_id: str = None,
     ):
         self.editing_config_shrink = editing_config_shrink
+        self.extend_param = extend_param
         # This parameter is required.
         self.input_config_shrink = input_config_shrink
         self.output_config_shrink = output_config_shrink
@@ -39685,6 +39896,8 @@ class SubmitSmartClipTaskShrinkRequest(TeaModel):
         result = dict()
         if self.editing_config_shrink is not None:
             result['EditingConfig'] = self.editing_config_shrink
+        if self.extend_param is not None:
+            result['ExtendParam'] = self.extend_param
         if self.input_config_shrink is not None:
             result['InputConfig'] = self.input_config_shrink
         if self.output_config_shrink is not None:
@@ -39697,6 +39910,8 @@ class SubmitSmartClipTaskShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('EditingConfig') is not None:
             self.editing_config_shrink = m.get('EditingConfig')
+        if m.get('ExtendParam') is not None:
+            self.extend_param = m.get('ExtendParam')
         if m.get('InputConfig') is not None:
             self.input_config_shrink = m.get('InputConfig')
         if m.get('OutputConfig') is not None:

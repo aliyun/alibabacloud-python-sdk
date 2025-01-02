@@ -1,3 +1,13 @@
+2025-01-02 Version: 1.17.0
+- Support API RunBookIntroduction.
+- Support API RunBookSmartCard.
+- Support API RunDocSmartCard.
+- Support API UploadBook.
+- Update API RunStepByStepWriting: update param WritingConfig.
+- Update API SubmitSmartClipTask: add param ExtendParam.
+- Update API SubmitSmartClipTask: update param EditingConfig.
+
+
 2024-12-31 Version: 1.16.0
 - Support API RunBookIntroduction.
 - Support API RunBookSmartCard.
