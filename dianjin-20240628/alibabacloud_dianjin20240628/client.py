@@ -1693,6 +1693,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_chat_question_resp_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_dialog_analysis_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogAnalysisResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetDialogAnalysisResultResponse:
+        """
+        @summary 获取外呼会话分析结果
+        
+        @param request: GetDialogAnalysisResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDialogAnalysisResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.asc):
+            body['asc'] = request.asc
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.session_ids):
+            body['sessionIds'] = request.session_ids
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.use_url):
+            body['useUrl'] = request.use_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDialogAnalysisResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/analysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetDialogAnalysisResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dialog_analysis_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogAnalysisResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetDialogAnalysisResultResponse:
+        """
+        @summary 获取外呼会话分析结果
+        
+        @param request: GetDialogAnalysisResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDialogAnalysisResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.asc):
+            body['asc'] = request.asc
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.session_ids):
+            body['sessionIds'] = request.session_ids
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.use_url):
+            body['useUrl'] = request.use_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDialogAnalysisResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/virtualHuman/dialog/analysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetDialogAnalysisResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dialog_analysis_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogAnalysisResultRequest,
+    ) -> dian_jin_20240628_models.GetDialogAnalysisResultResponse:
+        """
+        @summary 获取外呼会话分析结果
+        
+        @param request: GetDialogAnalysisResultRequest
+        @return: GetDialogAnalysisResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_dialog_analysis_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_dialog_analysis_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetDialogAnalysisResultRequest,
+    ) -> dian_jin_20240628_models.GetDialogAnalysisResultResponse:
+        """
+        @summary 获取外呼会话分析结果
+        
+        @param request: GetDialogAnalysisResultRequest
+        @return: GetDialogAnalysisResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_dialog_analysis_result_with_options_async(workspace_id, request, headers, runtime)
+
     def get_document_chunk_list_with_options(
         self,
         workspace_id: str,

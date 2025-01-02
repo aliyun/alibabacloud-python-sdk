@@ -3163,6 +3163,337 @@ class GetChatQuestionRespResponse(TeaModel):
         return self
 
 
+class GetDialogAnalysisResultRequest(TeaModel):
+    def __init__(
+        self,
+        asc: bool = None,
+        end_time: str = None,
+        session_ids: List[str] = None,
+        start_time: str = None,
+        use_url: bool = None,
+    ):
+        self.asc = asc
+        self.end_time = end_time
+        self.session_ids = session_ids
+        self.start_time = start_time
+        self.use_url = use_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['asc'] = self.asc
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.session_ids is not None:
+            result['sessionIds'] = self.session_ids
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.use_url is not None:
+            result['useUrl'] = self.use_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('asc') is not None:
+            self.asc = m.get('asc')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('sessionIds') is not None:
+            self.session_ids = m.get('sessionIds')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('useUrl') is not None:
+            self.use_url = m.get('useUrl')
+        return self
+
+
+class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(TeaModel):
+    def __init__(
+        self,
+        dialog_exec_plan: str = None,
+        dialog_labels: List[GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels] = None,
+        dialog_summary: str = None,
+    ):
+        self.dialog_exec_plan = dialog_exec_plan
+        self.dialog_labels = dialog_labels
+        self.dialog_summary = dialog_summary
+
+    def validate(self):
+        if self.dialog_labels:
+            for k in self.dialog_labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialog_exec_plan is not None:
+            result['dialogExecPlan'] = self.dialog_exec_plan
+        result['dialogLabels'] = []
+        if self.dialog_labels is not None:
+            for k in self.dialog_labels:
+                result['dialogLabels'].append(k.to_map() if k else None)
+        if self.dialog_summary is not None:
+            result['dialogSummary'] = self.dialog_summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogExecPlan') is not None:
+            self.dialog_exec_plan = m.get('dialogExecPlan')
+        self.dialog_labels = []
+        if m.get('dialogLabels') is not None:
+            for k in m.get('dialogLabels'):
+                temp_model = GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels()
+                self.dialog_labels.append(temp_model.from_map(k))
+        if m.get('dialogSummary') is not None:
+            self.dialog_summary = m.get('dialogSummary')
+        return self
+
+
+class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList(TeaModel):
+    def __init__(
+        self,
+        analysis_resp: GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp = None,
+        gmt_create: str = None,
+        oss_url: str = None,
+        session_id: str = None,
+        status: str = None,
+    ):
+        self.analysis_resp = analysis_resp
+        self.gmt_create = gmt_create
+        self.oss_url = oss_url
+        self.session_id = session_id
+        self.status = status
+
+    def validate(self):
+        if self.analysis_resp:
+            self.analysis_resp.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_resp is not None:
+            result['analysisResp'] = self.analysis_resp.to_map()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.oss_url is not None:
+            result['ossUrl'] = self.oss_url
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisResp') is not None:
+            temp_model = GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp()
+            self.analysis_resp = temp_model.from_map(m['analysisResp'])
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('ossUrl') is not None:
+            self.oss_url = m.get('ossUrl')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetDialogAnalysisResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dialog_analysis_resp_list: List[GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList] = None,
+    ):
+        self.dialog_analysis_resp_list = dialog_analysis_resp_list
+
+    def validate(self):
+        if self.dialog_analysis_resp_list:
+            for k in self.dialog_analysis_resp_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dialogAnalysisRespList'] = []
+        if self.dialog_analysis_resp_list is not None:
+            for k in self.dialog_analysis_resp_list:
+                result['dialogAnalysisRespList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialog_analysis_resp_list = []
+        if m.get('dialogAnalysisRespList') is not None:
+            for k in m.get('dialogAnalysisRespList'):
+                temp_model = GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList()
+                self.dialog_analysis_resp_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetDialogAnalysisResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: GetDialogAnalysisResultResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = GetDialogAnalysisResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class GetDialogAnalysisResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDialogAnalysisResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDialogAnalysisResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDocumentChunkListRequest(TeaModel):
     def __init__(
         self,
