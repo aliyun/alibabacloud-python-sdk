@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary 审批运维操作
+        @summary Approve Operation
         
         @param request: ApproveOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -84,7 +84,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary 审批运维操作
+        @summary Approve Operation
         
         @param request: ApproveOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -120,7 +120,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary 审批运维操作
+        @summary Approve Operation
         
         @param request: ApproveOperationRequest
         @return: ApproveOperationResponse
@@ -133,7 +133,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ApproveOperationRequest,
     ) -> eflo_controller_20221215_models.ApproveOperationResponse:
         """
-        @summary 审批运维操作
+        @summary Approve Operation
         
         @param request: ApproveOperationRequest
         @return: ApproveOperationResponse
@@ -147,7 +147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Change
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Change
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -224,7 +224,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Change
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -237,7 +237,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
     ) -> eflo_controller_20221215_models.ChangeResourceGroupResponse:
         """
-        @summary 资源转组
+        @summary Resource Group Change
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -251,7 +251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary 创建大计算集群
+        @summary Create a large-scale computing cluster
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -320,7 +320,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary 创建大计算集群
+        @summary Create a large-scale computing cluster
         
         @param tmp_req: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -388,7 +388,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary 创建大计算集群
+        @summary Create a large-scale computing cluster
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -401,7 +401,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.CreateClusterRequest,
     ) -> eflo_controller_20221215_models.CreateClusterResponse:
         """
-        @summary 创建大计算集群
+        @summary Create a large-scale computing cluster
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -415,7 +415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary 删除集群实例
+        @summary Delete cluster instance
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -450,7 +450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary 删除集群实例
+        @summary Delete cluster instance
         
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -484,7 +484,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary 删除集群实例
+        @summary Delete cluster instance
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -497,7 +497,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DeleteClusterRequest,
     ) -> eflo_controller_20221215_models.DeleteClusterResponse:
         """
-        @summary 删除集群实例
+        @summary Delete cluster instance
         
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
@@ -511,7 +511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary 集群详情
+        @summary Cluster Details
         
         @param request: DescribeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -546,7 +546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary 集群详情
+        @summary Cluster Details
         
         @param request: DescribeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -580,7 +580,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary 集群详情
+        @summary Cluster Details
         
         @param request: DescribeClusterRequest
         @return: DescribeClusterResponse
@@ -593,7 +593,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeClusterRequest,
     ) -> eflo_controller_20221215_models.DescribeClusterResponse:
         """
-        @summary 集群详情
+        @summary Cluster Details
         
         @param request: DescribeClusterRequest
         @return: DescribeClusterResponse
@@ -607,7 +607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary 查询运维助手命令的执行列表和状态
+        @summary Query the list and status of operations assistant command executions
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -648,7 +648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary 查询运维助手命令的执行列表和状态
+        @summary Query the list and status of operations assistant command executions
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -688,7 +688,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary 查询运维助手命令的执行列表和状态
+        @summary Query the list and status of operations assistant command executions
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -701,7 +701,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeInvocationsRequest,
     ) -> eflo_controller_20221215_models.DescribeInvocationsResponse:
         """
-        @summary 查询运维助手命令的执行列表和状态
+        @summary Query the list and status of operations assistant command executions
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -715,7 +715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary 查询节点列表
+        @summary Query node list
         
         @param request: DescribeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -750,7 +750,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary 查询节点列表
+        @summary Query node list
         
         @param request: DescribeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -784,7 +784,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary 查询节点列表
+        @summary Query node list
         
         @param request: DescribeNodeRequest
         @return: DescribeNodeResponse
@@ -797,7 +797,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeNodeRequest,
     ) -> eflo_controller_20221215_models.DescribeNodeResponse:
         """
-        @summary 查询节点列表
+        @summary Query node list
         
         @param request: DescribeNodeRequest
         @return: DescribeNodeResponse
@@ -811,7 +811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary 区域列表
+        @summary Region List
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -846,7 +846,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary 区域列表
+        @summary Region List
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -880,7 +880,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary 区域列表
+        @summary Region List
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -893,7 +893,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
     ) -> eflo_controller_20221215_models.DescribeRegionsResponse:
         """
-        @summary 区域列表
+        @summary Region List
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -907,7 +907,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary 查询运维助手下发文件列表及状态
+        @summary Query the list and status of files sent by the operation assistant
         
         @param request: DescribeSendFileResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -944,7 +944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary 查询运维助手下发文件列表及状态
+        @summary Query the list and status of files sent by the operation assistant
         
         @param request: DescribeSendFileResultsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -980,7 +980,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary 查询运维助手下发文件列表及状态
+        @summary Query the list and status of files sent by the operation assistant
         
         @param request: DescribeSendFileResultsRequest
         @return: DescribeSendFileResultsResponse
@@ -993,7 +993,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeSendFileResultsRequest,
     ) -> eflo_controller_20221215_models.DescribeSendFileResultsResponse:
         """
-        @summary 查询运维助手下发文件列表及状态
+        @summary Query the list and status of files sent by the operation assistant
         
         @param request: DescribeSendFileResultsRequest
         @return: DescribeSendFileResultsResponse
@@ -1007,7 +1007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary 查询任务详情
+        @summary Query Task Details
         
         @param request: DescribeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1042,7 +1042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary 查询任务详情
+        @summary Query Task Details
         
         @param request: DescribeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1076,7 +1076,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary 查询任务详情
+        @summary Query Task Details
         
         @param request: DescribeTaskRequest
         @return: DescribeTaskResponse
@@ -1089,7 +1089,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeTaskRequest,
     ) -> eflo_controller_20221215_models.DescribeTaskResponse:
         """
-        @summary 查询任务详情
+        @summary Query Task Details
         
         @param request: DescribeTaskRequest
         @return: DescribeTaskResponse
@@ -1103,7 +1103,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary 可用区列表
+        @summary List of Available Zones
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1138,7 +1138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary 可用区列表
+        @summary List of Available Zones
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1172,7 +1172,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary 可用区列表
+        @summary List of Available Zones
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -1185,7 +1185,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.DescribeZonesRequest,
     ) -> eflo_controller_20221215_models.DescribeZonesResponse:
         """
-        @summary 可用区列表
+        @summary List of Available Zones
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -1199,7 +1199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary 集群扩容
+        @summary Cluster Scaling
         
         @param tmp_req: ExtendClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1252,7 +1252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary 集群扩容
+        @summary Cluster Scaling
         
         @param tmp_req: ExtendClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1304,7 +1304,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary 集群扩容
+        @summary Cluster Scaling
         
         @param request: ExtendClusterRequest
         @return: ExtendClusterResponse
@@ -1317,7 +1317,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ExtendClusterRequest,
     ) -> eflo_controller_20221215_models.ExtendClusterResponse:
         """
-        @summary 集群扩容
+        @summary Cluster Scaling
         
         @param request: ExtendClusterRequest
         @return: ExtendClusterResponse
@@ -1331,7 +1331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary 集群下的主机分组列表，分组下的主机列表
+        @summary List of host groups under the cluster, and list of hosts under each group
         
         @param request: ListClusterNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1372,7 +1372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary 集群下的主机分组列表，分组下的主机列表
+        @summary List of host groups under the cluster, and list of hosts under each group
         
         @param request: ListClusterNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1412,7 +1412,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary 集群下的主机分组列表，分组下的主机列表
+        @summary List of host groups under the cluster, and list of hosts under each group
         
         @param request: ListClusterNodesRequest
         @return: ListClusterNodesResponse
@@ -1425,7 +1425,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClusterNodesRequest,
     ) -> eflo_controller_20221215_models.ListClusterNodesResponse:
         """
-        @summary 集群下的主机分组列表，分组下的主机列表
+        @summary List of host groups under the cluster, and list of hosts under each group
         
         @param request: ListClusterNodesRequest
         @return: ListClusterNodesResponse
@@ -1439,7 +1439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary 获取集群实例列表
+        @summary Get the list of cluster instances
         
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1478,7 +1478,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary 获取集群实例列表
+        @summary Get the list of cluster instances
         
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1516,7 +1516,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary 获取集群实例列表
+        @summary Get the list of cluster instances
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -1529,7 +1529,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListClustersRequest,
     ) -> eflo_controller_20221215_models.ListClustersResponse:
         """
-        @summary 获取集群实例列表
+        @summary Get the list of cluster instances
         
         @param request: ListClustersRequest
         @return: ListClustersResponse
@@ -1543,7 +1543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary 可用物理机列表
+        @summary List of Available Physical Machines
         
         @param request: ListFreeNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1586,7 +1586,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary 可用物理机列表
+        @summary List of Available Physical Machines
         
         @param request: ListFreeNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1628,7 +1628,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary 可用物理机列表
+        @summary List of Available Physical Machines
         
         @param request: ListFreeNodesRequest
         @return: ListFreeNodesResponse
@@ -1641,7 +1641,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListFreeNodesRequest,
     ) -> eflo_controller_20221215_models.ListFreeNodesResponse:
         """
-        @summary 可用物理机列表
+        @summary List of Available Physical Machines
         
         @param request: ListFreeNodesRequest
         @return: ListFreeNodesResponse
@@ -1655,7 +1655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query Resource Tags
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1698,7 +1698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query Resource Tags
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1740,7 +1740,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query Resource Tags
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -1753,7 +1753,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
     ) -> eflo_controller_20221215_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query Resource Tags
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -1767,7 +1767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary 重启机器
+        @summary Reboot Machine
         
         @param tmp_req: RebootNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1810,7 +1810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary 重启机器
+        @summary Reboot Machine
         
         @param tmp_req: RebootNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1852,7 +1852,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary 重启机器
+        @summary Reboot Machine
         
         @param request: RebootNodesRequest
         @return: RebootNodesResponse
@@ -1865,7 +1865,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RebootNodesRequest,
     ) -> eflo_controller_20221215_models.RebootNodesResponse:
         """
-        @summary 重启机器
+        @summary Reboot Machine
         
         @param request: RebootNodesRequest
         @return: RebootNodesResponse
@@ -1879,7 +1879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary 机器重装
+        @summary Machine Reinstallation
         
         @param tmp_req: ReimageNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +1924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary 机器重装
+        @summary Machine Reinstallation
         
         @param tmp_req: ReimageNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1968,7 +1968,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary 机器重装
+        @summary Machine Reinstallation
         
         @param request: ReimageNodesRequest
         @return: ReimageNodesResponse
@@ -1981,7 +1981,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ReimageNodesRequest,
     ) -> eflo_controller_20221215_models.ReimageNodesResponse:
         """
-        @summary 机器重装
+        @summary Machine Reinstallation
         
         @param request: ReimageNodesRequest
         @return: ReimageNodesResponse
@@ -1995,7 +1995,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        @summary Execute a Shell script on one or more Lingjun machines
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2060,7 +2060,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        @summary Execute a Shell script on one or more Lingjun machines
         
         @param tmp_req: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2124,7 +2124,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        @summary Execute a Shell script on one or more Lingjun machines
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -2137,7 +2137,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.RunCommandRequest,
     ) -> eflo_controller_20221215_models.RunCommandResponse:
         """
-        @summary 一台或多台灵骏机器中执行一段Shell的脚本
+        @summary Execute a Shell script on one or more Lingjun machines
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -2151,7 +2151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary 一台或多台灵骏机器下发远程文件
+        @summary Send a remote file to one or more Lingjun machines
         
         @param tmp_req: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2210,7 +2210,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary 一台或多台灵骏机器下发远程文件
+        @summary Send a remote file to one or more Lingjun machines
         
         @param tmp_req: SendFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2268,7 +2268,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary 一台或多台灵骏机器下发远程文件
+        @summary Send a remote file to one or more Lingjun machines
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -2281,7 +2281,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.SendFileRequest,
     ) -> eflo_controller_20221215_models.SendFileResponse:
         """
-        @summary 一台或多台灵骏机器下发远程文件
+        @summary Send a remote file to one or more Lingjun machines
         
         @param request: SendFileRequest
         @return: SendFileResponse
@@ -2295,7 +2295,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary 缩容
+        @summary Shrink
         
         @param tmp_req: ShrinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2338,7 +2338,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary 缩容
+        @summary Shrink
         
         @param tmp_req: ShrinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2380,7 +2380,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary 缩容
+        @summary Shrink
         
         @param request: ShrinkClusterRequest
         @return: ShrinkClusterResponse
@@ -2393,7 +2393,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ShrinkClusterRequest,
     ) -> eflo_controller_20221215_models.ShrinkClusterResponse:
         """
-        @summary 缩容
+        @summary Shrink
         
         @param request: ShrinkClusterRequest
         @return: ShrinkClusterResponse
@@ -2407,7 +2407,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary 停止运维助手命令进程
+        @summary Stop the operation assistant command process
         
         @param tmp_req: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2448,7 +2448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary 停止运维助手命令进程
+        @summary Stop the operation assistant command process
         
         @param tmp_req: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2488,7 +2488,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary 停止运维助手命令进程
+        @summary Stop the operation assistant command process
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -2501,7 +2501,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.StopInvocationRequest,
     ) -> eflo_controller_20221215_models.StopInvocationResponse:
         """
-        @summary 停止运维助手命令进程
+        @summary Stop the operation assistant command process
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -2515,7 +2515,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Tag User Resources
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2556,7 +2556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Tag User Resources
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2596,7 +2596,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Tag User Resources
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2609,7 +2609,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.TagResourcesRequest,
     ) -> eflo_controller_20221215_models.TagResourcesResponse:
         """
-        @summary 资源打用户标签
+        @summary Tag User Resources
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -2623,7 +2623,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Remove user tags from resources
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2666,7 +2666,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Remove user tags from resources
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2708,7 +2708,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Remove user tags from resources
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -2721,7 +2721,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.UntagResourcesRequest,
     ) -> eflo_controller_20221215_models.UntagResourcesResponse:
         """
-        @summary 资源去除用户标签
+        @summary Remove user tags from resources
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
