@@ -1,3 +1,16 @@
+2025-01-02 Version: 3.1.0
+- Support API ApplyComputeQuotaPlan.
+- Support API CreateComputeQuotaPlan.
+- Support API DeleteComputeQuotaPlan.
+- Support API GetComputeEffectivePlan.
+- Support API GetComputeQuotaPlan.
+- Support API GetComputeQuotaSchedule.
+- Support API ListComputeQuotaPlan.
+- Support API UpdateComputeQuotaPlan.
+- Support API UpdateComputeQuotaSchedule.
+- Support API UpdateComputeSubQuota.
+
+
 2024-12-23 Version: 3.0.0
 - Support API CreateMmsDataSource.
 - Support API CreateMmsFetchMetadataJob.

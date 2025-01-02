@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_maxcompute20220104 import models as max_compute_20220104_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_maxcompute20220104 import models as max_compute_20220104_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -96,6 +96,236 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def apply_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ApplyComputeQuotaPlanResponse:
+        """
+        @summary Activate a Quota Plan Immediately.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ApplyComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}/apply',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ApplyComputeQuotaPlanResponse:
+        """
+        @summary Activate a Quota Plan Immediately.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ApplyComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}/apply',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ApplyComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_compute_quota_plan(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.ApplyComputeQuotaPlanResponse:
+        """
+        @summary Activate a Quota Plan Immediately.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @return: ApplyComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.apply_compute_quota_plan_with_options(nickname, plan_name, headers, runtime)
+
+    async def apply_compute_quota_plan_async(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.ApplyComputeQuotaPlanResponse:
+        """
+        @summary Activate a Quota Plan Immediately.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @return: ApplyComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.apply_compute_quota_plan_with_options_async(nickname, plan_name, headers, runtime)
+
+    def create_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.CreateComputeQuotaPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateComputeQuotaPlanResponse:
+        """
+        @summary Create MaxCompute ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: CreateComputeQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeQuotaPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.CreateComputeQuotaPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.CreateComputeQuotaPlanResponse:
+        """
+        @summary Create MaxCompute ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: CreateComputeQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeQuotaPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.CreateComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compute_quota_plan(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.CreateComputeQuotaPlanRequest,
+    ) -> max_compute_20220104_models.CreateComputeQuotaPlanResponse:
+        """
+        @summary Create MaxCompute ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: CreateComputeQuotaPlanRequest
+        @return: CreateComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_compute_quota_plan_with_options(nickname, request, headers, runtime)
+
+    async def create_compute_quota_plan_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.CreateComputeQuotaPlanRequest,
+    ) -> max_compute_20220104_models.CreateComputeQuotaPlanResponse:
+        """
+        @summary Create MaxCompute ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: CreateComputeQuotaPlanRequest
+        @return: CreateComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_compute_quota_plan_with_options_async(nickname, request, headers, runtime)
 
     def create_mms_data_source_with_options(
         self,
@@ -899,6 +1129,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_role_with_options_async(project_name, request, headers, runtime)
 
+    def delete_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteComputeQuotaPlanResponse:
+        """
+        @summary Delete MaxCompute compute quota plan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.DeleteComputeQuotaPlanResponse:
+        """
+        @summary Delete MaxCompute compute quota plan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.DeleteComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compute_quota_plan(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.DeleteComputeQuotaPlanResponse:
+        """
+        @summary Delete MaxCompute compute quota plan.
+        
+        @return: DeleteComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_compute_quota_plan_with_options(nickname, plan_name, headers, runtime)
+
+    async def delete_compute_quota_plan_async(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.DeleteComputeQuotaPlanResponse:
+        """
+        @summary Delete MaxCompute compute quota plan.
+        
+        @return: DeleteComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_compute_quota_plan_with_options_async(nickname, plan_name, headers, runtime)
+
     def delete_mms_data_source_with_options(
         self,
         source_id: str,
@@ -1190,6 +1514,298 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_quota_plan_with_options_async(nickname, plan_name, request, headers, runtime)
+
+    def get_compute_effective_plan_with_options(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeEffectivePlanResponse:
+        """
+        @summary GetComputeEffectivePlan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeEffectivePlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetComputeEffectivePlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeEffectivePlan/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeEffectivePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_effective_plan_with_options_async(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeEffectivePlanResponse:
+        """
+        @summary GetComputeEffectivePlan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeEffectivePlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetComputeEffectivePlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeEffectivePlan/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeEffectivePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_effective_plan(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.GetComputeEffectivePlanResponse:
+        """
+        @summary GetComputeEffectivePlan.
+        
+        @return: GetComputeEffectivePlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_compute_effective_plan_with_options(nickname, headers, runtime)
+
+    async def get_compute_effective_plan_async(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.GetComputeEffectivePlanResponse:
+        """
+        @summary GetComputeEffectivePlan.
+        
+        @return: GetComputeEffectivePlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_compute_effective_plan_with_options_async(nickname, headers, runtime)
+
+    def get_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeQuotaPlanResponse:
+        """
+        @summary Get detailed information of a single compute quota plan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        plan_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeQuotaPlanResponse:
+        """
+        @summary Get detailed information of a single compute quota plan.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan/{OpenApiUtilClient.get_encode_param(plan_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_quota_plan(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.GetComputeQuotaPlanResponse:
+        """
+        @summary Get detailed information of a single compute quota plan.
+        
+        @return: GetComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_compute_quota_plan_with_options(nickname, plan_name, headers, runtime)
+
+    async def get_compute_quota_plan_async(
+        self,
+        nickname: str,
+        plan_name: str,
+    ) -> max_compute_20220104_models.GetComputeQuotaPlanResponse:
+        """
+        @summary Get detailed information of a single compute quota plan.
+        
+        @return: GetComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_compute_quota_plan_with_options_async(nickname, plan_name, headers, runtime)
+
+    def get_compute_quota_schedule_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetComputeQuotaScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeQuotaScheduleResponse:
+        """
+        @summary Displays the time-specific configuration of compute quota.
+        
+        @param request: GetComputeQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeQuotaScheduleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.display_timezone):
+            query['displayTimezone'] = request.display_timezone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeQuotaSchedule',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaSchedule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_quota_schedule_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetComputeQuotaScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.GetComputeQuotaScheduleResponse:
+        """
+        @summary Displays the time-specific configuration of compute quota.
+        
+        @param request: GetComputeQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeQuotaScheduleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.display_timezone):
+            query['displayTimezone'] = request.display_timezone
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeQuotaSchedule',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaSchedule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.GetComputeQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_quota_schedule(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetComputeQuotaScheduleRequest,
+    ) -> max_compute_20220104_models.GetComputeQuotaScheduleResponse:
+        """
+        @summary Displays the time-specific configuration of compute quota.
+        
+        @param request: GetComputeQuotaScheduleRequest
+        @return: GetComputeQuotaScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_compute_quota_schedule_with_options(nickname, request, headers, runtime)
+
+    async def get_compute_quota_schedule_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.GetComputeQuotaScheduleRequest,
+    ) -> max_compute_20220104_models.GetComputeQuotaScheduleResponse:
+        """
+        @summary Displays the time-specific configuration of compute quota.
+        
+        @param request: GetComputeQuotaScheduleRequest
+        @return: GetComputeQuotaScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_compute_quota_schedule_with_options_async(nickname, request, headers, runtime)
 
     def get_job_resource_usage_with_options(
         self,
@@ -3500,6 +4116,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.kill_jobs_with_options_async(request, headers, runtime)
+
+    def list_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListComputeQuotaPlanResponse:
+        """
+        @summary Get computeQuotaPlan list.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListComputeQuotaPlanResponse:
+        """
+        @summary Get computeQuotaPlan list.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeQuotaPlanResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_quota_plan(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.ListComputeQuotaPlanResponse:
+        """
+        @summary Get computeQuotaPlan list.
+        
+        @return: ListComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_compute_quota_plan_with_options(nickname, headers, runtime)
+
+    async def list_compute_quota_plan_async(
+        self,
+        nickname: str,
+    ) -> max_compute_20220104_models.ListComputeQuotaPlanResponse:
+        """
+        @summary Get computeQuotaPlan list.
+        
+        @return: ListComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_compute_quota_plan_with_options_async(nickname, headers, runtime)
 
     def list_functions_with_options(
         self,
@@ -6554,6 +7260,352 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_mms_job_with_options_async(source_id, job_id, headers, runtime)
+
+    def update_compute_quota_plan_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaPlanResponse:
+        """
+        @summary Update the ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeQuotaPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_quota_plan_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaPlanResponse:
+        """
+        @summary Update the ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeQuotaPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeQuotaPlan',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaPlan',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_quota_plan(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaPlanRequest,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaPlanResponse:
+        """
+        @summary Update the ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaPlanRequest
+        @return: UpdateComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_compute_quota_plan_with_options(nickname, request, headers, runtime)
+
+    async def update_compute_quota_plan_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaPlanRequest,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaPlanResponse:
+        """
+        @summary Update the ComputeQuotaPlan.
+        
+        @description Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaPlanRequest
+        @return: UpdateComputeQuotaPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_compute_quota_plan_with_options_async(nickname, request, headers, runtime)
+
+    def update_compute_quota_schedule_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaScheduleResponse:
+        """
+        @summary Update the time-based plan for computing quota.
+        
+        @description Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeQuotaScheduleResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeQuotaSchedule',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaSchedule',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_quota_schedule_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaScheduleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaScheduleResponse:
+        """
+        @summary Update the time-based plan for computing quota.
+        
+        @description Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaScheduleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeQuotaScheduleResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeQuotaSchedule',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeQuotaSchedule',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeQuotaScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_quota_schedule(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaScheduleRequest,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaScheduleResponse:
+        """
+        @summary Update the time-based plan for computing quota.
+        
+        @description Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaScheduleRequest
+        @return: UpdateComputeQuotaScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_compute_quota_schedule_with_options(nickname, request, headers, runtime)
+
+    async def update_compute_quota_schedule_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeQuotaScheduleRequest,
+    ) -> max_compute_20220104_models.UpdateComputeQuotaScheduleResponse:
+        """
+        @summary Update the time-based plan for computing quota.
+        
+        @description Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+        <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+        
+        @param request: UpdateComputeQuotaScheduleRequest
+        @return: UpdateComputeQuotaScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_compute_quota_schedule_with_options_async(nickname, request, headers, runtime)
+
+    def update_compute_sub_quota_with_options(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeSubQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeSubQuotaResponse:
+        """
+        @summary Update the basic configuration of the calculation quota, including adding or deleting the sub quota, modifying the basic properties of the secondary quota, and the CU configuration of the effective quota plan.
+        
+        @param request: UpdateComputeSubQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeSubQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sub_quota_info_list):
+            body['subQuotaInfoList'] = request.sub_quota_info_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeSubQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeSubQuota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_sub_quota_with_options_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeSubQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.UpdateComputeSubQuotaResponse:
+        """
+        @summary Update the basic configuration of the calculation quota, including adding or deleting the sub quota, modifying the basic properties of the secondary quota, and the CU configuration of the effective quota plan.
+        
+        @param request: UpdateComputeSubQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeSubQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sub_quota_info_list):
+            body['subQuotaInfoList'] = request.sub_quota_info_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeSubQuota',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(nickname)}/computeSubQuota',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.UpdateComputeSubQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_sub_quota(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeSubQuotaRequest,
+    ) -> max_compute_20220104_models.UpdateComputeSubQuotaResponse:
+        """
+        @summary Update the basic configuration of the calculation quota, including adding or deleting the sub quota, modifying the basic properties of the secondary quota, and the CU configuration of the effective quota plan.
+        
+        @param request: UpdateComputeSubQuotaRequest
+        @return: UpdateComputeSubQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_compute_sub_quota_with_options(nickname, request, headers, runtime)
+
+    async def update_compute_sub_quota_async(
+        self,
+        nickname: str,
+        request: max_compute_20220104_models.UpdateComputeSubQuotaRequest,
+    ) -> max_compute_20220104_models.UpdateComputeSubQuotaResponse:
+        """
+        @summary Update the basic configuration of the calculation quota, including adding or deleting the sub quota, modifying the basic properties of the secondary quota, and the CU configuration of the effective quota plan.
+        
+        @param request: UpdateComputeSubQuotaRequest
+        @return: UpdateComputeSubQuotaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_compute_sub_quota_with_options_async(nickname, request, headers, runtime)
 
     def update_mms_data_source_with_options(
         self,
