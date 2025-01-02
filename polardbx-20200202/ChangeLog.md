@@ -1,3 +1,7 @@
+2025-01-02 Version: 2.1.0
+- Support API DescribeSlowLogRecords.
+
+
 2024-12-13 Version: 2.0.2
 - Update API DescribeDBInstanceAttribute: update response param.
 - Update API DescribeDBInstances: update response param.

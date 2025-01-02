@@ -4486,6 +4486,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ips_with_options_async(request, runtime)
 
+    def describe_slow_log_records_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeSlowLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeSlowLogRecordsResponse:
+        """
+        @summary 慢SQL明细
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeSlowLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_slow_log_records_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeSlowLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeSlowLogRecordsResponse:
+        """
+        @summary 慢SQL明细
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowLogRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.character_type):
+            query['CharacterType'] = request.character_type
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page):
+            query['Page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeSlowLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_slow_log_records(
+        self,
+        request: polardbx_20200202_models.DescribeSlowLogRecordsRequest,
+    ) -> polardbx_20200202_models.DescribeSlowLogRecordsResponse:
+        """
+        @summary 慢SQL明细
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_slow_log_records_with_options(request, runtime)
+
+    async def describe_slow_log_records_async(
+        self,
+        request: polardbx_20200202_models.DescribeSlowLogRecordsRequest,
+    ) -> polardbx_20200202_models.DescribeSlowLogRecordsResponse:
+        """
+        @summary 慢SQL明细
+        
+        @param request: DescribeSlowLogRecordsRequest
+        @return: DescribeSlowLogRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_slow_log_records_with_options_async(request, runtime)
+
     def describe_tags_with_options(
         self,
         request: polardbx_20200202_models.DescribeTagsRequest,
