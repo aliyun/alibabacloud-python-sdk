@@ -2393,8 +2393,12 @@ class Client(OpenApiClient):
         @summary Decodes the blind watermark in an image.
         
         @description    Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+        *\
+        *Note** Asynchronous processing does not guarantee timely task completion.
         Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
         A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+        This operation is compatible with its earlier version DecodeBlindWatermark.
         This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
         
         @param tmp_req: CreateDecodeBlindWatermarkTaskRequest
@@ -2453,8 +2457,12 @@ class Client(OpenApiClient):
         @summary Decodes the blind watermark in an image.
         
         @description    Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+        *\
+        *Note** Asynchronous processing does not guarantee timely task completion.
         Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
         A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+        This operation is compatible with its earlier version DecodeBlindWatermark.
         This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
         
         @param tmp_req: CreateDecodeBlindWatermarkTaskRequest
@@ -2512,8 +2520,12 @@ class Client(OpenApiClient):
         @summary Decodes the blind watermark in an image.
         
         @description    Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+        *\
+        *Note** Asynchronous processing does not guarantee timely task completion.
         Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
         A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+        This operation is compatible with its earlier version DecodeBlindWatermark.
         This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
         
         @param request: CreateDecodeBlindWatermarkTaskRequest
@@ -2530,8 +2542,12 @@ class Client(OpenApiClient):
         @summary Decodes the blind watermark in an image.
         
         @description    Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+        *\
+        *Note** Asynchronous processing does not guarantee timely task completion.
         Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        The region and project specified in the request to decode a blind watermark must match those in the [EncodeBlindWatermark](https://help.aliyun.com/document_detail/2743655.html) request to encode the blind watermark.
         A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+        This operation is compatible with its earlier version DecodeBlindWatermark.
         This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
         
         @param request: CreateDecodeBlindWatermarkTaskRequest
@@ -4309,7 +4325,7 @@ class Client(OpenApiClient):
         Text files: txt
         PDF files: pdf
         Each input document can be up to 200 MB in size.
-        The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+        The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
         The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
         Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
         In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).
@@ -4440,7 +4456,7 @@ class Client(OpenApiClient):
         Text files: txt
         PDF files: pdf
         Each input document can be up to 200 MB in size.
-        The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+        The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
         The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
         Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
         In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).
@@ -4570,7 +4586,7 @@ class Client(OpenApiClient):
         Text files: txt
         PDF files: pdf
         Each input document can be up to 200 MB in size.
-        The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+        The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
         The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
         Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
         In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).
@@ -4603,7 +4619,7 @@ class Client(OpenApiClient):
         Text files: txt
         PDF files: pdf
         Each input document can be up to 200 MB in size.
-        The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+        The maximum conversion time is 120 seconds. If the document contains too much or complex content, the conversion may time out.
         The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
         Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
         In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).

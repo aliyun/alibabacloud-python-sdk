@@ -5464,6 +5464,33 @@ class Story(TeaModel):
         return self
 
 
+class StreamOptions(TeaModel):
+    def __init__(
+        self,
+        incremental_output: bool = None,
+    ):
+        self.incremental_output = incremental_output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.incremental_output is not None:
+            result['IncrementalOutput'] = self.incremental_output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IncrementalOutput') is not None:
+            self.incremental_output = m.get('IncrementalOutput')
+        return self
+
+
 class TargetAudioFilterAudio(TeaModel):
     def __init__(
         self,
@@ -8867,9 +8894,13 @@ class ContextualAnswerResponseBody(TeaModel):
     def __init__(
         self,
         answer: Answer = None,
+        code: str = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.answer = answer
+        self.code = code
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -8884,6 +8915,10 @@ class ContextualAnswerResponseBody(TeaModel):
         result = dict()
         if self.answer is not None:
             result['Answer'] = self.answer.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -8893,6 +8928,10 @@ class ContextualAnswerResponseBody(TeaModel):
         if m.get('Answer') is not None:
             temp_model = Answer()
             self.answer = temp_model.from_map(m['Answer'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -10667,22 +10706,25 @@ class CreateDecodeBlindWatermarkTaskRequest(TeaModel):
         target_uri: str = None,
         watermark_type: str = None,
     ):
-        # The quality of the output image.
-        # The higher the quality, the larger the image size and the higher the watermark resolution quality.
-        self.image_quality = image_quality
-        # The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # The quality of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
-        # If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+        # Higher image quality indicates a larger image size and higher watermark resolution quality.
+        self.image_quality = image_quality
+        # The watermark algorithm model. This parameter is also available in the earlier DecodeBlindWatermark operation. Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # 
+        # If this parameter is left empty, the CreateDecodeBlindWatermarkTask operation is called. Otherwise, the earlier DecodeBlindWatermark operation is called.
         self.model = model
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The OSS URI of the image before the blind watermark is added. 
+        # The OSS URI of the image before the blind watermark is added. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
         # Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
         # 
         # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.original_image_uri = original_image_uri
         # The name of the project.[](~~478153~~)
+        # 
+        # >  The project specified in the request must match the one in the EncodeBlindWatermark request to encode the blind watermark.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -10694,7 +10736,8 @@ class CreateDecodeBlindWatermarkTaskRequest(TeaModel):
         self.source_uri = source_uri
         # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
         self.strength_level = strength_level
-        # The OSS URI of the output image.
+        # The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
+        # 
         # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.target_uri = target_uri
         # The type of the watermark. Valid value: text.
@@ -10769,22 +10812,25 @@ class CreateDecodeBlindWatermarkTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         watermark_type: str = None,
     ):
-        # The quality of the output image.
-        # The higher the quality, the larger the image size and the higher the watermark resolution quality.
-        self.image_quality = image_quality
-        # The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # The quality of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
-        # If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+        # Higher image quality indicates a larger image size and higher watermark resolution quality.
+        self.image_quality = image_quality
+        # The watermark algorithm model. This parameter is also available in the earlier DecodeBlindWatermark operation. Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+        # 
+        # If this parameter is left empty, the CreateDecodeBlindWatermarkTask operation is called. Otherwise, the earlier DecodeBlindWatermark operation is called.
         self.model = model
         # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
-        # The OSS URI of the image before the blind watermark is added. 
+        # The OSS URI of the image before the blind watermark is added. This parameter is also available in the earlier DecodeBlindWatermark operation.
         # 
         # Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
         # 
         # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.original_image_uri = original_image_uri
         # The name of the project.[](~~478153~~)
+        # 
+        # >  The project specified in the request must match the one in the EncodeBlindWatermark request to encode the blind watermark.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -10796,7 +10842,8 @@ class CreateDecodeBlindWatermarkTaskShrinkRequest(TeaModel):
         self.source_uri = source_uri
         # The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
         self.strength_level = strength_level
-        # The OSS URI of the output image.
+        # The OSS URI of the output image. This parameter is also available in the earlier DecodeBlindWatermark operation.
+        # 
         # Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
         self.target_uri = target_uri
         # The type of the watermark. Valid value: text.

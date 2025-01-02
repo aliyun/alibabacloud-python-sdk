@@ -1,3 +1,7 @@
+2025-01-02 Version: 4.6.1
+- Update API ContextualAnswer: update response param.
+
+
 2024-12-27 Version: 4.6.0
 - Support API ContextualAnswer.
 - Support API ContextualRetrieval.
