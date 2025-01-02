@@ -1,3 +1,12 @@
+2025-01-02 Version: 6.1.0
+- Support API GenerateServicePolicy.
+- Support API GetServiceProvisions.
+- Support API ListTagKeys.
+- Support API ListTagValues.
+- Support API TagResources.
+- Support API UnTagResources.
+
+
 2024-12-17 Version: 6.0.0
 - Update API CreateArtifact: add param ClientToken.
 - Update API CreateArtifact: update param ArtifactProperty.
