@@ -1,3 +1,7 @@
+2025-01-02 Version: 2.0.11
+- Update API UpgradeEngineVersion: add param updateStrategy.
+
+
 2024-12-10 Version: 2.0.10
 - Update API ListInstance: update response param.
 

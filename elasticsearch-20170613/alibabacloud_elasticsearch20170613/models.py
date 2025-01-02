@@ -38379,6 +38379,7 @@ class UpgradeEngineVersionRequest(TeaModel):
         version: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        update_strategy: str = None,
     ):
         self.plugins = plugins
         self.type = type
@@ -38392,6 +38393,7 @@ class UpgradeEngineVersionRequest(TeaModel):
         # *   checkClusterResource: resource space status
         # *   checkClusterSnapshot: Whether a snapshot exists
         self.dry_run = dry_run
+        self.update_strategy = update_strategy
 
     def validate(self):
         if self.plugins:
@@ -38417,6 +38419,8 @@ class UpgradeEngineVersionRequest(TeaModel):
             result['clientToken'] = self.client_token
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
+        if self.update_strategy is not None:
+            result['updateStrategy'] = self.update_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -38434,6 +38438,8 @@ class UpgradeEngineVersionRequest(TeaModel):
             self.client_token = m.get('clientToken')
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')
+        if m.get('updateStrategy') is not None:
+            self.update_strategy = m.get('updateStrategy')
         return self
 
 

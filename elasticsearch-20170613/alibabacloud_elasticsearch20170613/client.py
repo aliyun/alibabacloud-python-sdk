@@ -21363,6 +21363,8 @@ class Client(OpenApiClient):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         body = {}
         if not UtilClient.is_unset(request.plugins):
             body['plugins'] = request.plugins
@@ -21414,6 +21416,8 @@ class Client(OpenApiClient):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.update_strategy):
+            query['updateStrategy'] = request.update_strategy
         body = {}
         if not UtilClient.is_unset(request.plugins):
             body['plugins'] = request.plugins
