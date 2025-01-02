@@ -3786,11 +3786,11 @@ class GetAITeacherSyncDialogueSuggestionRequest(TeaModel):
 class GetAITeacherSyncDialogueSuggestionResponseBodyData(TeaModel):
     def __init__(
         self,
+        chinese_result: str = None,
         english_result: str = None,
-        english_result_1: str = None,
     ):
+        self.chinese_result = chinese_result
         self.english_result = english_result
-        self.english_result_1 = english_result_1
 
     def validate(self):
         pass
@@ -3801,18 +3801,18 @@ class GetAITeacherSyncDialogueSuggestionResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.chinese_result is not None:
+            result['chineseResult'] = self.chinese_result
         if self.english_result is not None:
             result['englishResult'] = self.english_result
-        if self.english_result_1 is not None:
-            result['englishResult1'] = self.english_result_1
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('chineseResult') is not None:
+            self.chinese_result = m.get('chineseResult')
         if m.get('englishResult') is not None:
             self.english_result = m.get('englishResult')
-        if m.get('englishResult1') is not None:
-            self.english_result_1 = m.get('englishResult1')
         return self
 
 
