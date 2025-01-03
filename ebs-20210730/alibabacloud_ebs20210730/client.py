@@ -3061,6 +3061,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.max_results):
@@ -3112,6 +3114,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
         if not UtilClient.is_unset(request.event_name):
             query['EventName'] = request.event_name
         if not UtilClient.is_unset(request.max_results):
@@ -3189,6 +3193,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.disk_category):
             query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id_pattern):
+            query['DiskIdPattern'] = request.disk_id_pattern
         if not UtilClient.is_unset(request.disk_ids):
             query['DiskIds'] = request.disk_ids
         if not UtilClient.is_unset(request.lens_tags):
@@ -3234,6 +3240,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.disk_category):
             query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id_pattern):
+            query['DiskIdPattern'] = request.disk_id_pattern
         if not UtilClient.is_unset(request.disk_ids):
             query['DiskIds'] = request.disk_ids
         if not UtilClient.is_unset(request.lens_tags):

@@ -6335,6 +6335,7 @@ class DescribeEventsRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        event_level: str = None,
         event_name: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -6346,6 +6347,12 @@ class DescribeEventsRequest(TeaModel):
     ):
         # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The severity level of the event. Valid values:
+        # 
+        # *   **INFO**\
+        # *   **WARN**\
+        # *   **CRITICAL**\
+        self.event_level = event_level
         # The name of the event. Valid values:
         # 
         # *   NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
@@ -6361,11 +6368,11 @@ class DescribeEventsRequest(TeaModel):
         # *   DiskIOPSExceedDiskMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the disk.
         # *   DiskBPSExceedDiskMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the disk.
         self.event_name = event_name
-        # The maximum number of entries per page. If you specify MaxResults, `MaxResults` and `NextToken` are used for a paged query.
+        # The number of entries to return on each page. If you specify MaxResults, `MaxResults` and `NextToken` are used for a paged query.
         # 
         # Valid values: 1 to 100.
         # 
-        # Default value: 10.
+        # Default value: 10
         self.max_results = max_results
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -6404,6 +6411,8 @@ class DescribeEventsRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
         if self.event_name is not None:
             result['EventName'] = self.event_name
         if self.max_results is not None:
@@ -6426,6 +6435,8 @@ class DescribeEventsRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
         if m.get('EventName') is not None:
             self.event_name = m.get('EventName')
         if m.get('MaxResults') is not None:
@@ -6453,6 +6464,7 @@ class DescribeEventsResponseBodyResourceEvents(TeaModel):
         event_level: str = None,
         event_name: str = None,
         event_type: str = None,
+        extra_attributes: str = None,
         recommend_action: str = None,
         recommend_params: str = None,
         resource_id: str = None,
@@ -6491,6 +6503,11 @@ class DescribeEventsResponseBodyResourceEvents(TeaModel):
         # 2.  SystemException
         # 3.  Alert
         self.event_type = event_type
+        # Extra attributes of event, possible fields are:
+        # 
+        # - EcsInstanceId: ECS instance ID where the cloud disk is mounted;
+        # - Adapter: cloud disk mount point.
+        self.extra_attributes = extra_attributes
         # The recommended action after the event occurred. Valid values:
         # 
         # *   ModifyDiskSpec
@@ -6536,6 +6553,8 @@ class DescribeEventsResponseBodyResourceEvents(TeaModel):
             result['EventName'] = self.event_name
         if self.event_type is not None:
             result['EventType'] = self.event_type
+        if self.extra_attributes is not None:
+            result['ExtraAttributes'] = self.extra_attributes
         if self.recommend_action is not None:
             result['RecommendAction'] = self.recommend_action
         if self.recommend_params is not None:
@@ -6562,6 +6581,8 @@ class DescribeEventsResponseBodyResourceEvents(TeaModel):
             self.event_name = m.get('EventName')
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')
+        if m.get('ExtraAttributes') is not None:
+            self.extra_attributes = m.get('ExtraAttributes')
         if m.get('RecommendAction') is not None:
             self.recommend_action = m.get('RecommendAction')
         if m.get('RecommendParams') is not None:
@@ -6679,6 +6700,7 @@ class DescribeLensMonitorDisksRequest(TeaModel):
     def __init__(
         self,
         disk_category: str = None,
+        disk_id_pattern: str = None,
         disk_ids: List[str] = None,
         lens_tags: List[str] = None,
         max_results: int = None,
@@ -6693,6 +6715,7 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         # - cloud_auto
         # - cloud_essd_entry
         self.disk_category = disk_category
+        self.disk_id_pattern = disk_id_pattern
         # The list of disks.
         self.disk_ids = disk_ids
         # Event tags of the disk, which are used to filter the disks on which the events associated with the specified tags occurred in the previous 24 hours. Valid values:
@@ -6733,6 +6756,8 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         result = dict()
         if self.disk_category is not None:
             result['DiskCategory'] = self.disk_category
+        if self.disk_id_pattern is not None:
+            result['DiskIdPattern'] = self.disk_id_pattern
         if self.disk_ids is not None:
             result['DiskIds'] = self.disk_ids
         if self.lens_tags is not None:
@@ -6749,6 +6774,8 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         m = m or dict()
         if m.get('DiskCategory') is not None:
             self.disk_category = m.get('DiskCategory')
+        if m.get('DiskIdPattern') is not None:
+            self.disk_id_pattern = m.get('DiskIdPattern')
         if m.get('DiskIds') is not None:
             self.disk_ids = m.get('DiskIds')
         if m.get('LensTags') is not None:
