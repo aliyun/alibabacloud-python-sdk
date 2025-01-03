@@ -183,6 +183,7 @@ class AddFileRequest(TeaModel):
     def __init__(
         self,
         category_id: str = None,
+        category_type: str = None,
         lease_id: str = None,
         parser: str = None,
         tags: List[str] = None,
@@ -191,6 +192,7 @@ class AddFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.category_id = category_id
+        self.category_type = category_type
         # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
         # 
         # This parameter is required.
@@ -215,6 +217,8 @@ class AddFileRequest(TeaModel):
         result = dict()
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
+        if self.category_type is not None:
+            result['CategoryType'] = self.category_type
         if self.lease_id is not None:
             result['LeaseId'] = self.lease_id
         if self.parser is not None:
@@ -227,6 +231,8 @@ class AddFileRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
+        if m.get('CategoryType') is not None:
+            self.category_type = m.get('CategoryType')
         if m.get('LeaseId') is not None:
             self.lease_id = m.get('LeaseId')
         if m.get('Parser') is not None:
@@ -240,6 +246,7 @@ class AddFileShrinkRequest(TeaModel):
     def __init__(
         self,
         category_id: str = None,
+        category_type: str = None,
         lease_id: str = None,
         parser: str = None,
         tags_shrink: str = None,
@@ -248,6 +255,7 @@ class AddFileShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.category_id = category_id
+        self.category_type = category_type
         # The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
         # 
         # This parameter is required.
@@ -272,6 +280,8 @@ class AddFileShrinkRequest(TeaModel):
         result = dict()
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
+        if self.category_type is not None:
+            result['CategoryType'] = self.category_type
         if self.lease_id is not None:
             result['LeaseId'] = self.lease_id
         if self.parser is not None:
@@ -284,6 +294,8 @@ class AddFileShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
+        if m.get('CategoryType') is not None:
+            self.category_type = m.get('CategoryType')
         if m.get('LeaseId') is not None:
             self.lease_id = m.get('LeaseId')
         if m.get('Parser') is not None:
@@ -442,10 +454,12 @@ class AddFileResponse(TeaModel):
 class ApplyFileUploadLeaseRequest(TeaModel):
     def __init__(
         self,
+        category_type: str = None,
         file_name: str = None,
         md_5: str = None,
         size_in_bytes: str = None,
     ):
+        self.category_type = category_type
         # The name of the uploaded document, including the extension. Supported formats: pdf, doc, docx, md, txt, ppt, and pptx. The document name must be 4 to 128 characters in length.
         # 
         # This parameter is required.
@@ -468,6 +482,8 @@ class ApplyFileUploadLeaseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category_type is not None:
+            result['CategoryType'] = self.category_type
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.md_5 is not None:
@@ -478,6 +494,8 @@ class ApplyFileUploadLeaseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryType') is not None:
+            self.category_type = m.get('CategoryType')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('Md5') is not None:
@@ -1537,6 +1555,7 @@ class CreateIndexRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        enable_headers: bool = None,
         meta_extract_columns: List[CreateIndexRequestMetaExtractColumns] = None,
     ):
         # The list of primary key IDs of the categories to be imported into the knowledge base.
@@ -1629,6 +1648,7 @@ class CreateIndexRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.enable_headers = enable_headers
         self.meta_extract_columns = meta_extract_columns
 
     def validate(self):
@@ -1685,6 +1705,8 @@ class CreateIndexRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.enable_headers is not None:
+            result['enableHeaders'] = self.enable_headers
         result['metaExtractColumns'] = []
         if self.meta_extract_columns is not None:
             for k in self.meta_extract_columns:
@@ -1731,6 +1753,8 @@ class CreateIndexRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('enableHeaders') is not None:
+            self.enable_headers = m.get('enableHeaders')
         self.meta_extract_columns = []
         if m.get('metaExtractColumns') is not None:
             for k in m.get('metaExtractColumns'):
@@ -1759,6 +1783,7 @@ class CreateIndexShrinkRequest(TeaModel):
         sink_type: str = None,
         source_type: str = None,
         structure_type: str = None,
+        enable_headers: bool = None,
         meta_extract_columns_shrink: str = None,
     ):
         # The list of primary key IDs of the categories to be imported into the knowledge base.
@@ -1851,6 +1876,7 @@ class CreateIndexShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.structure_type = structure_type
+        self.enable_headers = enable_headers
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
 
     def validate(self):
@@ -1896,6 +1922,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['SourceType'] = self.source_type
         if self.structure_type is not None:
             result['StructureType'] = self.structure_type
+        if self.enable_headers is not None:
+            result['enableHeaders'] = self.enable_headers
         if self.meta_extract_columns_shrink is not None:
             result['metaExtractColumns'] = self.meta_extract_columns_shrink
         return result
@@ -1936,6 +1964,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.source_type = m.get('SourceType')
         if m.get('StructureType') is not None:
             self.structure_type = m.get('StructureType')
+        if m.get('enableHeaders') is not None:
+            self.enable_headers = m.get('enableHeaders')
         if m.get('metaExtractColumns') is not None:
             self.meta_extract_columns_shrink = m.get('metaExtractColumns')
         return self

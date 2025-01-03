@@ -178,6 +178,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.lease_id):
             body['LeaseId'] = request.lease_id
         if not UtilClient.is_unset(request.parser):
@@ -233,6 +235,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.lease_id):
             body['LeaseId'] = request.lease_id
         if not UtilClient.is_unset(request.parser):
@@ -324,6 +328,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.file_name):
             body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.md_5):
@@ -373,6 +379,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
         if not UtilClient.is_unset(request.file_name):
             body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.md_5):
@@ -644,6 +652,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.enable_headers):
+            query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
         req = open_api_models.OpenApiRequest(
@@ -733,6 +743,8 @@ class Client(OpenApiClient):
             query['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.structure_type):
             query['StructureType'] = request.structure_type
+        if not UtilClient.is_unset(request.enable_headers):
+            query['enableHeaders'] = request.enable_headers
         if not UtilClient.is_unset(request.meta_extract_columns_shrink):
             query['metaExtractColumns'] = request.meta_extract_columns_shrink
         req = open_api_models.OpenApiRequest(
