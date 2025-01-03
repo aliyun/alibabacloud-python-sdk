@@ -1,3 +1,9 @@
+2025-01-03 Version: 3.1.1
+- Update API GetSmsSign: update response param.
+- Update API QueryExtCodeSign: update param ExtCode.
+- Update API QueryExtCodeSign: update param SignName.
+
+
 2024-10-24 Version: 3.1.0
 - Support API AddExtCodeSign.
 - Support API DeleteExtCodeSign.

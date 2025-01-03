@@ -2942,16 +2942,29 @@ class GetCardSmsDetailsRequest(TeaModel):
         resource_owner_id: int = None,
         send_date: str = None,
     ):
+        # Card SMS sending ID, which is the BizCardId field in the response when calling SendCardSms or SendBatchCardSms.
         self.biz_card_id = biz_card_id
+        # Digital SMS sending ID, which is the BizDigitalId field in the response when calling SendCardSms or SendBatchCardSms.
         self.biz_digit_id = biz_digit_id
+        # Text SMS sending ID, which is the BizSmsId field in the response when calling SendCardSms or SendBatchCardSms.
         self.biz_sms_id = biz_sms_id
+        # For paginated viewing of sending records, specify the current page number of the sending records.
         self.current_page = current_page
         self.owner_id = owner_id
+        # For paginated viewing of sending records, specify the number of card SMS records to display per page.
+        # 
+        # The value range is 1~50.
         self.page_size = page_size
+        # Domestic phone number that received the SMS. Format: 11-digit phone number, for example, 1390000****.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Card SMS sending date, supports querying records from the last 30 days.
+        # 
+        # Format: yyyyMMdd, for example, 20240112.
+        # 
         # This parameter is required.
         self.send_date = send_date
 
@@ -3026,27 +3039,27 @@ class GetCardSmsDetailsResponseBodyCardSendDetailDTORecords(TeaModel):
         sms_content: str = None,
         template_code: str = None,
     ):
-        # 发送错误码
+        # Error code for sending
         self.err_code = err_code
-        # 客户传输outId
+        # Customer-transmitted outId
         self.out_id = out_id
-        # 接收短信手机号
+        # Phone number that received the SMS
         self.phone_number = phone_number
-        # 接收时间
+        # Receive date
         self.receive_date = receive_date
-        # 接收短信类型
+        # Receive SMS type
         self.receive_type = receive_type
-        # 渲染时间
+        # Render date
         self.render_date = render_date
-        # 解析状态.。0：未解析；1：解析成功；3：未解析
+        # Render status. 0: Not rendered; 1: Rendered successfully; 3: Not rendered
         self.render_status = render_status
-        # 短信发送时间
+        # Time when the SMS was sent
         self.send_date = send_date
-        # 发送状态 1：发送中；2：发送失败；3：发送成功；4：寻址失败
+        # Sending status. 1: Sending; 2: Send failed; 3: Sent successfully; 4: Addressing failed
         self.send_status = send_status
-        # 短信内容。只有文本短信有值
+        # SMS content. Only applicable for text messages.
         self.sms_content = sms_content
-        # 模板code
+        # Template code
         self.template_code = template_code
 
     def validate(self):
@@ -3117,12 +3130,13 @@ class GetCardSmsDetailsResponseBodyCardSendDetailDTO(TeaModel):
         records: List[GetCardSmsDetailsResponseBodyCardSendDetailDTORecords] = None,
         total_count: int = None,
     ):
-        # 页码
+        # Current page number
         self.current_page = current_page
-        # 页数
+        # Page size
         self.page_size = page_size
+        # List of card SMS sending records
         self.records = records
-        # 总量
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -3174,13 +3188,18 @@ class GetCardSmsDetailsResponseBody(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # Access denied detail; this field is returned only if the RAM check fails.
         self.access_denied_detail = access_denied_detail
-        # 卡片短信发送结果
+        # Card SMS sending result
         self.card_send_detail_dto = card_send_detail_dto
-        # 状态码
+        # Request status code.
+        # * OK indicates a successful request.
+        # * For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # 状态描述
+        # Description of the status code.
         self.message = message
+        # Indicates whether the API call was successful. Values:
+        # - **true** - **false**\
         self.success = success
 
     def validate(self):
@@ -4240,6 +4259,7 @@ class GetSmsSignResponseBody(TeaModel):
         message: str = None,
         order_id: str = None,
         qualification_id: int = None,
+        register_result: int = None,
         remark: str = None,
         request_id: str = None,
         sign_code: str = None,
@@ -4270,6 +4290,7 @@ class GetSmsSignResponseBody(TeaModel):
         self.order_id = order_id
         # Credential ID, the credential ID associated when applying for the signature.
         self.qualification_id = qualification_id
+        self.register_result = register_result
         # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
         self.remark = remark
         # The ID of this call request, which is a unique identifier generated by Alibaba Cloud for the request and can be used for troubleshooting and issue localization.
@@ -4327,6 +4348,8 @@ class GetSmsSignResponseBody(TeaModel):
             result['OrderId'] = self.order_id
         if self.qualification_id is not None:
             result['QualificationId'] = self.qualification_id
+        if self.register_result is not None:
+            result['RegisterResult'] = self.register_result
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.request_id is not None:
@@ -4364,6 +4387,8 @@ class GetSmsSignResponseBody(TeaModel):
             self.order_id = m.get('OrderId')
         if m.get('QualificationId') is not None:
             self.qualification_id = m.get('QualificationId')
+        if m.get('RegisterResult') is not None:
+            self.register_result = m.get('RegisterResult')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('RequestId') is not None:
@@ -5875,8 +5900,6 @@ class QueryExtCodeSignRequest(TeaModel):
         sign_name: str = None,
     ):
         # 扩展码A3
-        # 
-        # This parameter is required.
         self.ext_code = ext_code
         self.owner_id = owner_id
         self.page_no = page_no
@@ -5884,8 +5907,6 @@ class QueryExtCodeSignRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # 签名
-        # 
-        # This parameter is required.
         self.sign_name = sign_name
 
     def validate(self):

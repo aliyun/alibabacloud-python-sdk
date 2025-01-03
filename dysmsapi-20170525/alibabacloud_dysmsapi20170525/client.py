@@ -1955,7 +1955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
         """
-        @summary 查询卡片发送详情
+        @summary Query card sending details
         
         @param request: GetCardSmsDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2008,7 +2008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
         """
-        @summary 查询卡片发送详情
+        @summary Query card sending details
         
         @param request: GetCardSmsDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2060,7 +2060,7 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
     ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
         """
-        @summary 查询卡片发送详情
+        @summary Query card sending details
         
         @param request: GetCardSmsDetailsRequest
         @return: GetCardSmsDetailsResponse
@@ -2073,7 +2073,7 @@ class Client(OpenApiClient):
         request: dysmsapi_20170525_models.GetCardSmsDetailsRequest,
     ) -> dysmsapi_20170525_models.GetCardSmsDetailsResponse:
         """
-        @summary 查询卡片发送详情
+        @summary Query card sending details
         
         @param request: GetCardSmsDetailsRequest
         @return: GetCardSmsDetailsResponse
