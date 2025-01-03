@@ -2346,7 +2346,6 @@ class DescribeDBClusterConfigChangeLogsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # This parameter is required.
         self.config_key = config_key
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

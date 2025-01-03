@@ -1,3 +1,7 @@
+2025-01-03 Version: 4.1.2
+- Update API DescribeDBClusterConfigChangeLogs: update param ConfigKey.
+
+
 2024-12-18 Version: 4.1.1
 - Generated python 2023-05-22 for selectdb.
 
