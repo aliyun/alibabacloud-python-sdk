@@ -1,3 +1,13 @@
+2025-01-03 Version: 5.0.0
+- Delete API CreateWorkspace.
+- Delete API FrozenWorkspace.
+- Delete API GetPushRule.
+- Delete API GetWorkspace.
+- Delete API ListWorkspaces.
+- Delete API ReleaseWorkspace.
+- Update API GetWorkItemInfo: update response param.
+
+
 2024-08-16 Version: 4.23.2
 - Update API ExportInsightSpace: update response param.
 
