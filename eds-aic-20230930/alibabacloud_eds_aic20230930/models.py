@@ -303,6 +303,7 @@ class BackupFileRequest(TeaModel):
     def __init__(
         self,
         android_instance_id_list: List[str] = None,
+        backup_all: bool = None,
         backup_file_name: str = None,
         backup_file_path: str = None,
         description: str = None,
@@ -313,6 +314,7 @@ class BackupFileRequest(TeaModel):
     ):
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        self.backup_all = backup_all
         self.backup_file_name = backup_file_name
         # This parameter is required.
         self.backup_file_path = backup_file_path
@@ -333,6 +335,8 @@ class BackupFileRequest(TeaModel):
         result = dict()
         if self.android_instance_id_list is not None:
             result['AndroidInstanceIdList'] = self.android_instance_id_list
+        if self.backup_all is not None:
+            result['BackupAll'] = self.backup_all
         if self.backup_file_name is not None:
             result['BackupFileName'] = self.backup_file_name
         if self.backup_file_path is not None:
@@ -353,6 +357,8 @@ class BackupFileRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceIdList') is not None:
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
+        if m.get('BackupAll') is not None:
+            self.backup_all = m.get('BackupAll')
         if m.get('BackupFileName') is not None:
             self.backup_file_name = m.get('BackupFileName')
         if m.get('BackupFilePath') is not None:
@@ -3034,6 +3040,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         gmt_create: str = None,
         gmt_expired: str = None,
         gmt_modified: str = None,
+        image_version: str = None,
         instance_type: str = None,
         key_pair_id: str = None,
         memory: int = None,
@@ -3041,6 +3048,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         office_site_id: str = None,
         persistent_app_instance_id: str = None,
         policy_group_id: str = None,
+        public_ip_address: str = None,
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
@@ -3062,6 +3070,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_expired = gmt_expired
         self.gmt_modified = gmt_modified
+        self.image_version = image_version
         self.instance_type = instance_type
         self.key_pair_id = key_pair_id
         self.memory = memory
@@ -3069,6 +3078,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.office_site_id = office_site_id
         self.persistent_app_instance_id = persistent_app_instance_id
         self.policy_group_id = policy_group_id
+        self.public_ip_address = public_ip_address
         self.rate = rate
         self.region_id = region_id
         self.rendering_type = rendering_type
@@ -3124,6 +3134,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['GmtExpired'] = self.gmt_expired
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.key_pair_id is not None:
@@ -3138,6 +3150,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['PersistentAppInstanceId'] = self.persistent_app_instance_id
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.public_ip_address is not None:
+            result['PublicIpAddress'] = self.public_ip_address
         if self.rate is not None:
             result['Rate'] = self.rate
         if self.region_id is not None:
@@ -3187,6 +3201,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.gmt_expired = m.get('GmtExpired')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('KeyPairId') is not None:
@@ -3201,6 +3217,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PublicIpAddress') is not None:
+            self.public_ip_address = m.get('PublicIpAddress')
         if m.get('Rate') is not None:
             self.rate = m.get('Rate')
         if m.get('RegionId') is not None:
@@ -3582,6 +3600,7 @@ class DescribeBackupFilesRequest(TeaModel):
         self,
         android_instance_id: str = None,
         android_instance_name: str = None,
+        backup_all: bool = None,
         backup_file_id: str = None,
         backup_file_name: str = None,
         description: str = None,
@@ -3595,6 +3614,7 @@ class DescribeBackupFilesRequest(TeaModel):
     ):
         self.android_instance_id = android_instance_id
         self.android_instance_name = android_instance_name
+        self.backup_all = backup_all
         self.backup_file_id = backup_file_id
         self.backup_file_name = backup_file_name
         self.description = description
@@ -3619,6 +3639,8 @@ class DescribeBackupFilesRequest(TeaModel):
             result['AndroidInstanceId'] = self.android_instance_id
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.backup_all is not None:
+            result['BackupAll'] = self.backup_all
         if self.backup_file_id is not None:
             result['BackupFileId'] = self.backup_file_id
         if self.backup_file_name is not None:
@@ -3647,6 +3669,8 @@ class DescribeBackupFilesRequest(TeaModel):
             self.android_instance_id = m.get('AndroidInstanceId')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('BackupAll') is not None:
+            self.backup_all = m.get('BackupAll')
         if m.get('BackupFileId') is not None:
             self.backup_file_id = m.get('BackupFileId')
         if m.get('BackupFileName') is not None:
@@ -3675,6 +3699,7 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         self,
         android_instance_id: str = None,
         android_instance_name: str = None,
+        backup_all: bool = None,
         backup_file_id: str = None,
         backup_file_name: str = None,
         backup_file_path: str = None,
@@ -3694,6 +3719,7 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
     ):
         self.android_instance_id = android_instance_id
         self.android_instance_name = android_instance_name
+        self.backup_all = backup_all
         self.backup_file_id = backup_file_id
         self.backup_file_name = backup_file_name
         self.backup_file_path = backup_file_path
@@ -3724,6 +3750,8 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             result['AndroidInstanceId'] = self.android_instance_id
         if self.android_instance_name is not None:
             result['AndroidInstanceName'] = self.android_instance_name
+        if self.backup_all is not None:
+            result['BackupAll'] = self.backup_all
         if self.backup_file_id is not None:
             result['BackupFileId'] = self.backup_file_id
         if self.backup_file_name is not None:
@@ -3764,6 +3792,8 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             self.android_instance_id = m.get('AndroidInstanceId')
         if m.get('AndroidInstanceName') is not None:
             self.android_instance_name = m.get('AndroidInstanceName')
+        if m.get('BackupAll') is not None:
+            self.backup_all = m.get('BackupAll')
         if m.get('BackupFileId') is not None:
             self.backup_file_id = m.get('BackupFileId')
         if m.get('BackupFileName') is not None:
@@ -4986,6 +5016,7 @@ class DescribeTasksResponseBodyData(TeaModel):
         finish_time: str = None,
         instance_id: str = None,
         instance_name: str = None,
+        instance_status: str = None,
         invoke_id: str = None,
         level: int = None,
         operator: str = None,
@@ -5008,6 +5039,7 @@ class DescribeTasksResponseBodyData(TeaModel):
         self.finish_time = finish_time
         self.instance_id = instance_id
         self.instance_name = instance_name
+        self.instance_status = instance_status
         self.invoke_id = invoke_id
         self.level = level
         self.operator = operator
@@ -5045,6 +5077,8 @@ class DescribeTasksResponseBodyData(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
         if self.invoke_id is not None:
             result['InvokeId'] = self.invoke_id
         if self.level is not None:
@@ -5091,6 +5125,8 @@ class DescribeTasksResponseBodyData(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
         if m.get('InvokeId') is not None:
             self.invoke_id = m.get('InvokeId')
         if m.get('Level') is not None:
@@ -7040,6 +7076,119 @@ class ModifyPolicyGroupResponse(TeaModel):
         return self
 
 
+class OperateAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: int = None,
+        instance_id_list: List[str] = None,
+        operate_type: str = None,
+    ):
+        self.app_id = app_id
+        self.instance_id_list = instance_id_list
+        self.operate_type = operate_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
+        return self
+
+
+class OperateAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class OperateAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OperateAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OperateAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RebootAndroidInstancesInGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7145,6 +7294,7 @@ class RecoveryFileRequest(TeaModel):
     def __init__(
         self,
         android_instance_id_list: List[str] = None,
+        backup_all: bool = None,
         backup_file_id: str = None,
         backup_file_path: str = None,
         upload_endpoint: str = None,
@@ -7152,6 +7302,7 @@ class RecoveryFileRequest(TeaModel):
     ):
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        self.backup_all = backup_all
         self.backup_file_id = backup_file_id
         self.backup_file_path = backup_file_path
         self.upload_endpoint = upload_endpoint
@@ -7168,6 +7319,8 @@ class RecoveryFileRequest(TeaModel):
         result = dict()
         if self.android_instance_id_list is not None:
             result['AndroidInstanceIdList'] = self.android_instance_id_list
+        if self.backup_all is not None:
+            result['BackupAll'] = self.backup_all
         if self.backup_file_id is not None:
             result['BackupFileId'] = self.backup_file_id
         if self.backup_file_path is not None:
@@ -7182,6 +7335,8 @@ class RecoveryFileRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceIdList') is not None:
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
+        if m.get('BackupAll') is not None:
+            self.backup_all = m.get('BackupAll')
         if m.get('BackupFileId') is not None:
             self.backup_file_id = m.get('BackupFileId')
         if m.get('BackupFilePath') is not None:

@@ -1,3 +1,13 @@
+2025-01-03 Version: 3.2.0
+- Support API OperateApp.
+- Update API BackupFile: add param BackupAll.
+- Update API DescribeAndroidInstances: update response param.
+- Update API DescribeBackupFiles: add param BackupAll.
+- Update API DescribeBackupFiles: update response param.
+- Update API DescribeTasks: update response param.
+- Update API RecoveryFile: add param BackupAll.
+
+
 2024-12-25 Version: 3.1.0
 - Support API BatchGetAcpConnectionTicket.
 

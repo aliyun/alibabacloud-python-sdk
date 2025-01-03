@@ -262,6 +262,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_name):
             query['BackupFileName'] = request.backup_file_name
         if not UtilClient.is_unset(request.backup_file_path):
@@ -311,6 +313,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_name):
             query['BackupFileName'] = request.backup_file_name
         if not UtilClient.is_unset(request.backup_file_path):
@@ -2092,6 +2096,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeBackupFilesResponse:
         """
+        @summary 查询备份文件列表
+        
         @param request: DescribeBackupFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupFilesResponse
@@ -2102,6 +2108,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceId'] = request.android_instance_id
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_id):
             query['BackupFileId'] = request.backup_file_id
         if not UtilClient.is_unset(request.backup_file_name):
@@ -2147,6 +2155,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.DescribeBackupFilesResponse:
         """
+        @summary 查询备份文件列表
+        
         @param request: DescribeBackupFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeBackupFilesResponse
@@ -2157,6 +2167,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceId'] = request.android_instance_id
         if not UtilClient.is_unset(request.android_instance_name):
             query['AndroidInstanceName'] = request.android_instance_name
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_id):
             query['BackupFileId'] = request.backup_file_id
         if not UtilClient.is_unset(request.backup_file_name):
@@ -2201,6 +2213,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeBackupFilesRequest,
     ) -> eds_aic_20230930_models.DescribeBackupFilesResponse:
         """
+        @summary 查询备份文件列表
+        
         @param request: DescribeBackupFilesRequest
         @return: DescribeBackupFilesResponse
         """
@@ -2212,6 +2226,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.DescribeBackupFilesRequest,
     ) -> eds_aic_20230930_models.DescribeBackupFilesResponse:
         """
+        @summary 查询备份文件列表
+        
         @param request: DescribeBackupFilesRequest
         @return: DescribeBackupFilesResponse
         """
@@ -4166,6 +4182,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
 
+    def operate_app_with_options(
+        self,
+        request: eds_aic_20230930_models.OperateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.OperateAppResponse:
+        """
+        @summary 操作App
+        
+        @param request: OperateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateApp',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.OperateAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_app_with_options_async(
+        self,
+        request: eds_aic_20230930_models.OperateAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.OperateAppResponse:
+        """
+        @summary 操作App
+        
+        @param request: OperateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperateAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateApp',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.OperateAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_app(
+        self,
+        request: eds_aic_20230930_models.OperateAppRequest,
+    ) -> eds_aic_20230930_models.OperateAppResponse:
+        """
+        @summary 操作App
+        
+        @param request: OperateAppRequest
+        @return: OperateAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.operate_app_with_options(request, runtime)
+
+    async def operate_app_async(
+        self,
+        request: eds_aic_20230930_models.OperateAppRequest,
+    ) -> eds_aic_20230930_models.OperateAppResponse:
+        """
+        @summary 操作App
+        
+        @param request: OperateAppRequest
+        @return: OperateAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_app_with_options_async(request, runtime)
+
     def reboot_android_instances_in_group_with_options(
         self,
         request: eds_aic_20230930_models.RebootAndroidInstancesInGroupRequest,
@@ -4282,6 +4402,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_id):
             query['BackupFileId'] = request.backup_file_id
         if not UtilClient.is_unset(request.backup_file_path):
@@ -4325,6 +4447,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.backup_all):
+            query['BackupAll'] = request.backup_all
         if not UtilClient.is_unset(request.backup_file_id):
             query['BackupFileId'] = request.backup_file_id
         if not UtilClient.is_unset(request.backup_file_path):
