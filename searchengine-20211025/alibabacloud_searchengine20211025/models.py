@@ -9061,6 +9061,7 @@ class GetInstanceResponseBodyResultTags(TeaModel):
 class GetInstanceResponseBodyResult(TeaModel):
     def __init__(
         self,
+        bs_version: str = None,
         charge_type: str = None,
         commodity_code: str = None,
         create_time: str = None,
@@ -9081,6 +9082,7 @@ class GetInstanceResponseBodyResult(TeaModel):
         user_name: str = None,
         version: str = None,
     ):
+        self.bs_version = bs_version
         # The billing method.
         self.charge_type = charge_type
         # The commodity code of the instance.
@@ -9141,6 +9143,8 @@ class GetInstanceResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.bs_version is not None:
+            result['bsVersion'] = self.bs_version
         if self.charge_type is not None:
             result['chargeType'] = self.charge_type
         if self.commodity_code is not None:
@@ -9185,6 +9189,8 @@ class GetInstanceResponseBodyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bsVersion') is not None:
+            self.bs_version = m.get('bsVersion')
         if m.get('chargeType') is not None:
             self.charge_type = m.get('chargeType')
         if m.get('commodityCode') is not None:
@@ -10562,6 +10568,8 @@ class ListAdvanceConfigsRequest(TeaModel):
         data_source_name: str = None,
         index_name: str = None,
         new_mode: bool = None,
+        page_number: str = None,
+        page_size: str = None,
         type: str = None,
     ):
         # The name of the data source.
@@ -10570,6 +10578,8 @@ class ListAdvanceConfigsRequest(TeaModel):
         self.index_name = index_name
         # Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
         self.new_mode = new_mode
+        self.page_number = page_number
+        self.page_size = page_size
         # The type of advanced configurations that you want to query. Valid values: - online -offline (default)
         self.type = type
 
@@ -10588,6 +10598,10 @@ class ListAdvanceConfigsRequest(TeaModel):
             result['indexName'] = self.index_name
         if self.new_mode is not None:
             result['newMode'] = self.new_mode
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -10600,6 +10614,10 @@ class ListAdvanceConfigsRequest(TeaModel):
             self.index_name = m.get('indexName')
         if m.get('newMode') is not None:
             self.new_mode = m.get('newMode')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self

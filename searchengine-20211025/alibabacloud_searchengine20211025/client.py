@@ -5513,6 +5513,10 @@ class Client(OpenApiClient):
             query['indexName'] = request.index_name
         if not UtilClient.is_unset(request.new_mode):
             query['newMode'] = request.new_mode
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -5561,6 +5565,10 @@ class Client(OpenApiClient):
             query['indexName'] = request.index_name
         if not UtilClient.is_unset(request.new_mode):
             query['newMode'] = request.new_mode
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(

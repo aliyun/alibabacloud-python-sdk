@@ -1,3 +1,9 @@
+2025-01-03 Version: 4.2.6
+- Update API GetInstance: update response param.
+- Update API ListAdvanceConfigs: add param pageNumber.
+- Update API ListAdvanceConfigs: add param pageSize.
+
+
 2024-12-05 Version: 4.2.5
 - Update API CreateIndex: update param body.
 - Update API GetIndex: update response param.
