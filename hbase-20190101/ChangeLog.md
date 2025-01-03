@@ -1,3 +1,6 @@
+2025-01-03 Version: 2.10.3
+- Generated python 2019-01-01 for HBase.
+
 2024-07-24 Version: 2.10.2
 - Generated python 2019-01-01 for HBase.
 
