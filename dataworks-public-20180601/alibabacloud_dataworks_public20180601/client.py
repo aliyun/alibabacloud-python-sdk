@@ -363,6 +363,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_emr_hive_table_with_options_async(request, runtime)
 
+    def get_data_service_api_auth_map_context_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceApiAuthMapContextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse:
+        """
+        @summary 新server独享资源组获取api context
+        
+        @param request: GetDataServiceApiAuthMapContextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiAuthMapContextResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiAuthMapContext',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_auth_map_context_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceApiAuthMapContextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse:
+        """
+        @summary 新server独享资源组获取api context
+        
+        @param request: GetDataServiceApiAuthMapContextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiAuthMapContextResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiAuthMapContext',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_auth_map_context(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceApiAuthMapContextRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse:
+        """
+        @summary 新server独享资源组获取api context
+        
+        @param request: GetDataServiceApiAuthMapContextRequest
+        @return: GetDataServiceApiAuthMapContextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_auth_map_context_with_options(request, runtime)
+
+    async def get_data_service_api_auth_map_context_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceApiAuthMapContextRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceApiAuthMapContextResponse:
+        """
+        @summary 新server独享资源组获取api context
+        
+        @param request: GetDataServiceApiAuthMapContextRequest
+        @return: GetDataServiceApiAuthMapContextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_auth_map_context_with_options_async(request, runtime)
+
     def get_data_service_api_context_with_options(
         self,
         request: dataworks_public_20180601_models.GetDataServiceApiContextRequest,
@@ -455,6 +547,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_api_context_with_options_async(request, runtime)
 
+    def get_data_service_connection_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceConnectionResponse:
+        """
+        @summary 新server独享资源组获取数据源信息
+        
+        @param request: GetDataServiceConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceConnection',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_connection_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceConnectionResponse:
+        """
+        @summary 新server独享资源组获取数据源信息
+        
+        @param request: GetDataServiceConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceConnection',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_connection(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceConnectionRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceConnectionResponse:
+        """
+        @summary 新server独享资源组获取数据源信息
+        
+        @param request: GetDataServiceConnectionRequest
+        @return: GetDataServiceConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_connection_with_options(request, runtime)
+
+    async def get_data_service_connection_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceConnectionRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceConnectionResponse:
+        """
+        @summary 新server独享资源组获取数据源信息
+        
+        @param request: GetDataServiceConnectionRequest
+        @return: GetDataServiceConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_connection_with_options_async(request, runtime)
+
     def get_data_service_context_update_event_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -528,6 +712,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_context_update_event_with_options_async(runtime)
+
+    def get_data_service_function_with_options(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceFunctionResponse:
+        """
+        @summary 查询函数信息
+        
+        @param request: GetDataServiceFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceFunction',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceFunctionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_function_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.GetDataServiceFunctionResponse:
+        """
+        @summary 查询函数信息
+        
+        @param request: GetDataServiceFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceFunction',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.GetDataServiceFunctionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_function(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceFunctionRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceFunctionResponse:
+        """
+        @summary 查询函数信息
+        
+        @param request: GetDataServiceFunctionRequest
+        @return: GetDataServiceFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_function_with_options(request, runtime)
+
+    async def get_data_service_function_async(
+        self,
+        request: dataworks_public_20180601_models.GetDataServiceFunctionRequest,
+    ) -> dataworks_public_20180601_models.GetDataServiceFunctionResponse:
+        """
+        @summary 查询函数信息
+        
+        @param request: GetDataServiceFunctionRequest
+        @return: GetDataServiceFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_function_with_options_async(request, runtime)
 
     def get_switch_value_with_options(
         self,
