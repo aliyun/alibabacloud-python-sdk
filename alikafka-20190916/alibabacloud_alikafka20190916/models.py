@@ -158,6 +158,7 @@ class ConvertPostPayOrderRequest(TeaModel):
         self,
         duration: int = None,
         instance_id: str = None,
+        paid_type: int = None,
         region_id: str = None,
     ):
         # The subscription duration. Unit: months. Valid values:
@@ -170,6 +171,7 @@ class ConvertPostPayOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.paid_type = paid_type
         # The region ID of the instance.
         # 
         # This parameter is required.
@@ -188,6 +190,8 @@ class ConvertPostPayOrderRequest(TeaModel):
             result['Duration'] = self.duration
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.paid_type is not None:
+            result['PaidType'] = self.paid_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -198,6 +202,8 @@ class ConvertPostPayOrderRequest(TeaModel):
             self.duration = m.get('Duration')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PaidType') is not None:
+            self.paid_type = m.get('PaidType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -320,8 +326,8 @@ class CreateAclRequest(TeaModel):
         # *   **Read**\
         # *   **Describe**: reads of transactional IDs.
         # *   **IdempotentWrite**: idempotent data writes to clusters.
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
         # 
         # This parameter is required.
         self.acl_operation_type = acl_operation_type
@@ -333,17 +339,17 @@ class CreateAclRequest(TeaModel):
         # *   **Read**\
         # *   **Describe**: reads of transactional IDs.
         # *   **IdempotentWrite**: idempotent data writes to clusters.
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
         # 
-        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.acl_operation_types = acl_operation_types
         # The authorization method. Valid values:
         # 
         # *   **DENY**\
         # *   **ALLOW**\
         # 
-        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.acl_permission_type = acl_permission_type
         # The resource name.
         # 
@@ -370,10 +376,13 @@ class CreateAclRequest(TeaModel):
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
-        # The source IP address.
+        # The IP address of the source.
         # 
-        # > -  You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-        # > -  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # > 
+        # 
+        # *   You can specify a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # 
+        # *   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.host = host
         # The instance ID.
         # 
@@ -745,6 +754,443 @@ class CreateConsumerGroupResponse(TeaModel):
         return self
 
 
+class CreatePostPayInstanceRequestServerlessConfig(TeaModel):
+    def __init__(
+        self,
+        reserved_publish_capacity: int = None,
+        reserved_subscribe_capacity: int = None,
+    ):
+        self.reserved_publish_capacity = reserved_publish_capacity
+        self.reserved_subscribe_capacity = reserved_subscribe_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reserved_publish_capacity is not None:
+            result['ReservedPublishCapacity'] = self.reserved_publish_capacity
+        if self.reserved_subscribe_capacity is not None:
+            result['ReservedSubscribeCapacity'] = self.reserved_subscribe_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReservedPublishCapacity') is not None:
+            self.reserved_publish_capacity = m.get('ReservedPublishCapacity')
+        if m.get('ReservedSubscribeCapacity') is not None:
+            self.reserved_subscribe_capacity = m.get('ReservedSubscribeCapacity')
+        return self
+
+
+class CreatePostPayInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePostPayInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        deploy_type: int = None,
+        disk_size: int = None,
+        disk_type: str = None,
+        eip_max: int = None,
+        io_max_spec: str = None,
+        paid_type: int = None,
+        partition_num: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        serverless_config: CreatePostPayInstanceRequestServerlessConfig = None,
+        spec_type: str = None,
+        tag: List[CreatePostPayInstanceRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.deploy_type = deploy_type
+        self.disk_size = disk_size
+        self.disk_type = disk_type
+        self.eip_max = eip_max
+        self.io_max_spec = io_max_spec
+        self.paid_type = paid_type
+        self.partition_num = partition_num
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.serverless_config = serverless_config
+        self.spec_type = spec_type
+        self.tag = tag
+
+    def validate(self):
+        if self.serverless_config:
+            self.serverless_config.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.eip_max is not None:
+            result['EipMax'] = self.eip_max
+        if self.io_max_spec is not None:
+            result['IoMaxSpec'] = self.io_max_spec
+        if self.paid_type is not None:
+            result['PaidType'] = self.paid_type
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.serverless_config is not None:
+            result['ServerlessConfig'] = self.serverless_config.to_map()
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('EipMax') is not None:
+            self.eip_max = m.get('EipMax')
+        if m.get('IoMaxSpec') is not None:
+            self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PaidType') is not None:
+            self.paid_type = m.get('PaidType')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServerlessConfig') is not None:
+            temp_model = CreatePostPayInstanceRequestServerlessConfig()
+            self.serverless_config = temp_model.from_map(m['ServerlessConfig'])
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreatePostPayInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePostPayInstanceShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePostPayInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        deploy_type: int = None,
+        disk_size: int = None,
+        disk_type: str = None,
+        eip_max: int = None,
+        io_max_spec: str = None,
+        paid_type: int = None,
+        partition_num: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        serverless_config_shrink: str = None,
+        spec_type: str = None,
+        tag: List[CreatePostPayInstanceShrinkRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.deploy_type = deploy_type
+        self.disk_size = disk_size
+        self.disk_type = disk_type
+        self.eip_max = eip_max
+        self.io_max_spec = io_max_spec
+        self.paid_type = paid_type
+        self.partition_num = partition_num
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.serverless_config_shrink = serverless_config_shrink
+        self.spec_type = spec_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.eip_max is not None:
+            result['EipMax'] = self.eip_max
+        if self.io_max_spec is not None:
+            result['IoMaxSpec'] = self.io_max_spec
+        if self.paid_type is not None:
+            result['PaidType'] = self.paid_type
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.serverless_config_shrink is not None:
+            result['ServerlessConfig'] = self.serverless_config_shrink
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('EipMax') is not None:
+            self.eip_max = m.get('EipMax')
+        if m.get('IoMaxSpec') is not None:
+            self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PaidType') is not None:
+            self.paid_type = m.get('PaidType')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServerlessConfig') is not None:
+            self.serverless_config_shrink = m.get('ServerlessConfig')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreatePostPayInstanceShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePostPayInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: int = None,
+    ):
+        self.instance_id = instance_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CreatePostPayInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreatePostPayInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreatePostPayInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePostPayInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePostPayInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePostPayInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePostPayOrderRequestServerlessConfig(TeaModel):
     def __init__(
         self,
@@ -858,40 +1304,40 @@ class CreatePostPayOrderRequest(TeaModel):
         # 
         # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_size = disk_size
-        # The disk type. Valid values:
+        # The disk type of the instance. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_type = disk_type
-        # The maximum Internet traffic in the instance.
+        # The Internet traffic.
         # 
         # *   If you set **DeployType** to **4**, you must configure this parameter.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The billing method of the instance. Valid values:
         # 
-        # *   1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
-        # *   3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
+        # *   1: pay-as-you-go (reserved capacity).
+        # *   3: pay-as-you-go (reserved capacity) + pay-as-you-go (on-demand capacity)
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
@@ -899,7 +1345,7 @@ class CreatePostPayOrderRequest(TeaModel):
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
@@ -909,7 +1355,7 @@ class CreatePostPayOrderRequest(TeaModel):
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+        # The parameters configured for the serverless ApsaraMQ for Kafka instance. These parameters are required only when you create a serverless instance.
         self.serverless_config = serverless_config
         # The instance edition.
         # 
@@ -934,7 +1380,7 @@ class CreatePostPayOrderRequest(TeaModel):
         # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1094,40 +1540,40 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # 
         # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_size = disk_size
-        # The disk type. Valid values:
+        # The disk type of the instance. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_type = disk_type
-        # The maximum Internet traffic in the instance.
+        # The Internet traffic.
         # 
         # *   If you set **DeployType** to **4**, you must configure this parameter.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The billing method of the instance. Valid values:
         # 
-        # *   1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
-        # *   3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
+        # *   1: pay-as-you-go (reserved capacity).
+        # *   3: pay-as-you-go (reserved capacity) + pay-as-you-go (on-demand capacity)
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
@@ -1135,7 +1581,7 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
@@ -1145,7 +1591,7 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+        # The parameters configured for the serverless ApsaraMQ for Kafka instance. These parameters are required only when you create a serverless instance.
         self.serverless_config_shrink = serverless_config_shrink
         # The instance edition.
         # 
@@ -1170,7 +1616,7 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
+        # >  If you create a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1346,6 +1792,549 @@ class CreatePostPayOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePostPayOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePrePayInstanceRequestConfluentConfig(TeaModel):
+    def __init__(
+        self,
+        connect_cu: int = None,
+        connect_replica: int = None,
+        control_center_cu: int = None,
+        control_center_replica: int = None,
+        control_center_storage: int = None,
+        kafka_cu: int = None,
+        kafka_replica: int = None,
+        kafka_rest_proxy_cu: int = None,
+        kafka_rest_proxy_replica: int = None,
+        kafka_storage: int = None,
+        ksql_cu: int = None,
+        ksql_replica: int = None,
+        ksql_storage: int = None,
+        schema_registry_cu: int = None,
+        schema_registry_replica: int = None,
+        zoo_keeper_cu: int = None,
+        zoo_keeper_replica: int = None,
+        zoo_keeper_storage: int = None,
+    ):
+        self.connect_cu = connect_cu
+        self.connect_replica = connect_replica
+        self.control_center_cu = control_center_cu
+        self.control_center_replica = control_center_replica
+        self.control_center_storage = control_center_storage
+        self.kafka_cu = kafka_cu
+        self.kafka_replica = kafka_replica
+        self.kafka_rest_proxy_cu = kafka_rest_proxy_cu
+        self.kafka_rest_proxy_replica = kafka_rest_proxy_replica
+        self.kafka_storage = kafka_storage
+        self.ksql_cu = ksql_cu
+        self.ksql_replica = ksql_replica
+        self.ksql_storage = ksql_storage
+        self.schema_registry_cu = schema_registry_cu
+        self.schema_registry_replica = schema_registry_replica
+        self.zoo_keeper_cu = zoo_keeper_cu
+        self.zoo_keeper_replica = zoo_keeper_replica
+        self.zoo_keeper_storage = zoo_keeper_storage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_cu is not None:
+            result['ConnectCU'] = self.connect_cu
+        if self.connect_replica is not None:
+            result['ConnectReplica'] = self.connect_replica
+        if self.control_center_cu is not None:
+            result['ControlCenterCU'] = self.control_center_cu
+        if self.control_center_replica is not None:
+            result['ControlCenterReplica'] = self.control_center_replica
+        if self.control_center_storage is not None:
+            result['ControlCenterStorage'] = self.control_center_storage
+        if self.kafka_cu is not None:
+            result['KafkaCU'] = self.kafka_cu
+        if self.kafka_replica is not None:
+            result['KafkaReplica'] = self.kafka_replica
+        if self.kafka_rest_proxy_cu is not None:
+            result['KafkaRestProxyCU'] = self.kafka_rest_proxy_cu
+        if self.kafka_rest_proxy_replica is not None:
+            result['KafkaRestProxyReplica'] = self.kafka_rest_proxy_replica
+        if self.kafka_storage is not None:
+            result['KafkaStorage'] = self.kafka_storage
+        if self.ksql_cu is not None:
+            result['KsqlCU'] = self.ksql_cu
+        if self.ksql_replica is not None:
+            result['KsqlReplica'] = self.ksql_replica
+        if self.ksql_storage is not None:
+            result['KsqlStorage'] = self.ksql_storage
+        if self.schema_registry_cu is not None:
+            result['SchemaRegistryCU'] = self.schema_registry_cu
+        if self.schema_registry_replica is not None:
+            result['SchemaRegistryReplica'] = self.schema_registry_replica
+        if self.zoo_keeper_cu is not None:
+            result['ZooKeeperCU'] = self.zoo_keeper_cu
+        if self.zoo_keeper_replica is not None:
+            result['ZooKeeperReplica'] = self.zoo_keeper_replica
+        if self.zoo_keeper_storage is not None:
+            result['ZooKeeperStorage'] = self.zoo_keeper_storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectCU') is not None:
+            self.connect_cu = m.get('ConnectCU')
+        if m.get('ConnectReplica') is not None:
+            self.connect_replica = m.get('ConnectReplica')
+        if m.get('ControlCenterCU') is not None:
+            self.control_center_cu = m.get('ControlCenterCU')
+        if m.get('ControlCenterReplica') is not None:
+            self.control_center_replica = m.get('ControlCenterReplica')
+        if m.get('ControlCenterStorage') is not None:
+            self.control_center_storage = m.get('ControlCenterStorage')
+        if m.get('KafkaCU') is not None:
+            self.kafka_cu = m.get('KafkaCU')
+        if m.get('KafkaReplica') is not None:
+            self.kafka_replica = m.get('KafkaReplica')
+        if m.get('KafkaRestProxyCU') is not None:
+            self.kafka_rest_proxy_cu = m.get('KafkaRestProxyCU')
+        if m.get('KafkaRestProxyReplica') is not None:
+            self.kafka_rest_proxy_replica = m.get('KafkaRestProxyReplica')
+        if m.get('KafkaStorage') is not None:
+            self.kafka_storage = m.get('KafkaStorage')
+        if m.get('KsqlCU') is not None:
+            self.ksql_cu = m.get('KsqlCU')
+        if m.get('KsqlReplica') is not None:
+            self.ksql_replica = m.get('KsqlReplica')
+        if m.get('KsqlStorage') is not None:
+            self.ksql_storage = m.get('KsqlStorage')
+        if m.get('SchemaRegistryCU') is not None:
+            self.schema_registry_cu = m.get('SchemaRegistryCU')
+        if m.get('SchemaRegistryReplica') is not None:
+            self.schema_registry_replica = m.get('SchemaRegistryReplica')
+        if m.get('ZooKeeperCU') is not None:
+            self.zoo_keeper_cu = m.get('ZooKeeperCU')
+        if m.get('ZooKeeperReplica') is not None:
+            self.zoo_keeper_replica = m.get('ZooKeeperReplica')
+        if m.get('ZooKeeperStorage') is not None:
+            self.zoo_keeper_storage = m.get('ZooKeeperStorage')
+        return self
+
+
+class CreatePrePayInstanceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePrePayInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        confluent_config: CreatePrePayInstanceRequestConfluentConfig = None,
+        deploy_type: int = None,
+        disk_size: int = None,
+        disk_type: str = None,
+        duration: int = None,
+        eip_max: int = None,
+        io_max_spec: str = None,
+        paid_type: int = None,
+        partition_num: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        spec_type: str = None,
+        tag: List[CreatePrePayInstanceRequestTag] = None,
+    ):
+        self.confluent_config = confluent_config
+        self.deploy_type = deploy_type
+        self.disk_size = disk_size
+        self.disk_type = disk_type
+        self.duration = duration
+        self.eip_max = eip_max
+        self.io_max_spec = io_max_spec
+        self.paid_type = paid_type
+        self.partition_num = partition_num
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.spec_type = spec_type
+        self.tag = tag
+
+    def validate(self):
+        if self.confluent_config:
+            self.confluent_config.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confluent_config is not None:
+            result['ConfluentConfig'] = self.confluent_config.to_map()
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eip_max is not None:
+            result['EipMax'] = self.eip_max
+        if self.io_max_spec is not None:
+            result['IoMaxSpec'] = self.io_max_spec
+        if self.paid_type is not None:
+            result['PaidType'] = self.paid_type
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfluentConfig') is not None:
+            temp_model = CreatePrePayInstanceRequestConfluentConfig()
+            self.confluent_config = temp_model.from_map(m['ConfluentConfig'])
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EipMax') is not None:
+            self.eip_max = m.get('EipMax')
+        if m.get('IoMaxSpec') is not None:
+            self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PaidType') is not None:
+            self.paid_type = m.get('PaidType')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreatePrePayInstanceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePrePayInstanceShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreatePrePayInstanceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        confluent_config_shrink: str = None,
+        deploy_type: int = None,
+        disk_size: int = None,
+        disk_type: str = None,
+        duration: int = None,
+        eip_max: int = None,
+        io_max_spec: str = None,
+        paid_type: int = None,
+        partition_num: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        spec_type: str = None,
+        tag: List[CreatePrePayInstanceShrinkRequestTag] = None,
+    ):
+        self.confluent_config_shrink = confluent_config_shrink
+        self.deploy_type = deploy_type
+        self.disk_size = disk_size
+        self.disk_type = disk_type
+        self.duration = duration
+        self.eip_max = eip_max
+        self.io_max_spec = io_max_spec
+        self.paid_type = paid_type
+        self.partition_num = partition_num
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.spec_type = spec_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confluent_config_shrink is not None:
+            result['ConfluentConfig'] = self.confluent_config_shrink
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.eip_max is not None:
+            result['EipMax'] = self.eip_max
+        if self.io_max_spec is not None:
+            result['IoMaxSpec'] = self.io_max_spec
+        if self.paid_type is not None:
+            result['PaidType'] = self.paid_type
+        if self.partition_num is not None:
+            result['PartitionNum'] = self.partition_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfluentConfig') is not None:
+            self.confluent_config_shrink = m.get('ConfluentConfig')
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EipMax') is not None:
+            self.eip_max = m.get('EipMax')
+        if m.get('IoMaxSpec') is not None:
+            self.io_max_spec = m.get('IoMaxSpec')
+        if m.get('PaidType') is not None:
+            self.paid_type = m.get('PaidType')
+        if m.get('PartitionNum') is not None:
+            self.partition_num = m.get('PartitionNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreatePrePayInstanceShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePrePayInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: int = None,
+    ):
+        self.instance_id = instance_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CreatePrePayInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreatePrePayInstanceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreatePrePayInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreatePrePayInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrePayInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrePayInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2096,9 +3085,7 @@ class CreateSaslUserRequest(TeaModel):
         # *   SCRAM-SHA-512 (default)
         # *   SCRAM-SHA-256
         # 
-        # > 
-        # 
-        # *   This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for ApsaraMQ for Kafka serverless instances.
         self.mechanism = mechanism
         # The password of the SASL user.
         # 
@@ -2169,13 +3156,13 @@ class CreateSaslUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. The HTTP status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2697,7 +3684,7 @@ class CreateTopicRequest(TeaModel):
         # *   false: The topic uses the default log cleanup policy.
         # *   true: The topic uses the log compaction policy.
         self.compact_topic = compact_topic
-        # The additional configurations.
+        # The additional configuration.
         # 
         # *   The value must be in JSON format.
         # *   Set Key to **replications**. This value specifies the number of replicas of the topic. The value must be an integer that ranges from 1 to 3.
@@ -2931,36 +3918,36 @@ class DeleteAclRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The operation allowed by the access control list (ACL). Valid values:
+        # The type of the operation allowed by the access control list (ACL). Valid values:
         # 
-        # *   **Write**\
-        # *   **Read**\
-        # *   **Describe**: reads of transactional IDs
-        # *   **IdempotentWrite**: idempotent data writes to clusters
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # *   **DESCRIBE_CONFIGS**: configuration queries. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **Write**: data writes.
+        # *   **Read**: data reads.
+        # *   **Describe**: reads of transaction IDs.
+        # *   **IdempotentWrite**: idempotent data writes to clusters.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
         # 
         # This parameter is required.
         self.acl_operation_type = acl_operation_type
-        # The operations allowed by the ACL. Separate multiple operations with commas (,).
+        # The types of operations allowed by the ACL. Separate multiple operations with commas (,).
         # 
         # Valid values:
         # 
-        # *   **Write**: data writes
-        # *   **Read**: data reads
-        # *   **Describe**: reads of transactional IDs
-        # *   **IdempotentWrite**: idempotent data writes to clusters
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **Write**: data writes.
+        # *   **Read**: data reads.
+        # *   **Describe**: reads of transaction IDs.
+        # *   **IdempotentWrite**: idempotent data writes to clusters.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
         # 
-        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.acl_operation_types = acl_operation_types
         # The authorization method. Valid values:
         # 
         # *   Deny
         # *   ALLOW
         # 
-        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.acl_permission_type = acl_permission_type
         # The name of the resource.
         # 
@@ -2987,8 +3974,11 @@ class DeleteAclRequest(TeaModel):
         self.acl_resource_type = acl_resource_type
         # The IP address of the source.
         # 
-        # > - You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-        # >- This parameter is available only for serverless ApsaraMQ for Kafka V3 instances.
+        # > 
+        # 
+        # *   You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # 
+        # *   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.host = host
         # The ID of the instance.
         # 
@@ -3434,7 +4424,7 @@ class DeleteSaslUserRequest(TeaModel):
         # *   SCRAM-SHA-512. This is the default value.
         # *   SCRAM-SHA-256
         # 
-        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.mechanism = mechanism
         # The ID of the region.
         # 
@@ -4252,7 +5242,7 @@ class DescribeSaslUsersResponseBodySaslUserListSaslUserVO(TeaModel):
     ):
         # The encryption method.
         # 
-        # >  This field is available only for serverless ApsaraMQ for Kafka V3 instances.
+        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
         self.mechanism = mechanism
         # The password.
         self.password = password
@@ -4585,6 +5575,7 @@ class EnableAutoTopicCreationRequest(TeaModel):
         operate: str = None,
         partition_num: int = None,
         region_id: str = None,
+        update_partition: bool = None,
     ):
         # The instance ID.
         # 
@@ -4595,8 +5586,6 @@ class EnableAutoTopicCreationRequest(TeaModel):
         # *   enable: enables the automatic topic creation feature.
         # *   disable: disables the automatic topic creation feature.
         # *   updatePartition: changes the number of partitions in topics that are automatically created.
-        # 
-        # This parameter is required.
         self.operate = operate
         # The changed number of partitions in topics that are automatically created.
         # 
@@ -4606,6 +5595,7 @@ class EnableAutoTopicCreationRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.update_partition = update_partition
 
     def validate(self):
         pass
@@ -4624,6 +5614,8 @@ class EnableAutoTopicCreationRequest(TeaModel):
             result['PartitionNum'] = self.partition_num
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.update_partition is not None:
+            result['UpdatePartition'] = self.update_partition
         return result
 
     def from_map(self, m: dict = None):
@@ -4636,6 +5628,8 @@ class EnableAutoTopicCreationRequest(TeaModel):
             self.partition_num = m.get('PartitionNum')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('UpdatePartition') is not None:
+            self.update_partition = m.get('UpdatePartition')
         return self
 
 
@@ -5633,6 +6627,7 @@ class GetConsumerListResponseBodyConsumerListConsumerVO(TeaModel):
         self,
         automatically_created_group: bool = None,
         consumer_id: str = None,
+        create_time: int = None,
         instance_id: str = None,
         region_id: str = None,
         remark: str = None,
@@ -5642,6 +6637,8 @@ class GetConsumerListResponseBodyConsumerListConsumerVO(TeaModel):
         self.automatically_created_group = automatically_created_group
         # The consumer group ID.
         self.consumer_id = consumer_id
+        # The timestamp that indicates when the consumer group was created. Unit: milliseconds.
+        self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
         # The ID of the region where the instance resides.
@@ -5665,6 +6662,8 @@ class GetConsumerListResponseBodyConsumerListConsumerVO(TeaModel):
             result['AutomaticallyCreatedGroup'] = self.automatically_created_group
         if self.consumer_id is not None:
             result['ConsumerId'] = self.consumer_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5681,6 +6680,8 @@ class GetConsumerListResponseBodyConsumerListConsumerVO(TeaModel):
             self.automatically_created_group = m.get('AutomaticallyCreatedGroup')
         if m.get('ConsumerId') is not None:
             self.consumer_id = m.get('ConsumerId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -5860,6 +6861,13 @@ class GetConsumerProgressRequest(TeaModel):
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        # Specifies whether to hide LastTimestamp. Default value: false. We recommend that you set this parameter to true.
+        # 
+        # > 
+        # 
+        # *   If you set this parameter to true, -1 is returned for LastTimestamp. If you set this parameter to false, a specific value is returned for LastTimestamp. This parameter is supported only by topics that use cloud storage on reserved instances.
+        # 
+        # *   A large amount of data is processed by this operation, which causes performance loss. We recommend that you set this parameter to true to accelerate processing.
         self.hide_last_timestamp = hide_last_timestamp
         # The ID of the instance.
         # 
@@ -6004,16 +7012,25 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
     def __init__(
         self,
         broker_offset: int = None,
+        client_id: str = None,
+        client_ip: str = None,
         consumer_offset: int = None,
         last_timestamp: int = None,
+        member_id: str = None,
         partition: int = None,
     ):
         # The latest offset in the partition of the topic.
         self.broker_offset = broker_offset
+        # Client ID of the application.
+        self.client_id = client_id
+        # The IP address of the client.
+        self.client_ip = client_ip
         # The consumer offset in the partition of the topic.
         self.consumer_offset = consumer_offset
         # The time when the last consumed message in the partition was generated.
         self.last_timestamp = last_timestamp
+        # Member ID.
+        self.member_id = member_id
         # The partition ID.
         self.partition = partition
 
@@ -6028,10 +7045,16 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
         result = dict()
         if self.broker_offset is not None:
             result['BrokerOffset'] = self.broker_offset
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
         if self.consumer_offset is not None:
             result['ConsumerOffset'] = self.consumer_offset
         if self.last_timestamp is not None:
             result['LastTimestamp'] = self.last_timestamp
+        if self.member_id is not None:
+            result['MemberId'] = self.member_id
         if self.partition is not None:
             result['Partition'] = self.partition
         return result
@@ -6040,10 +7063,16 @@ class GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetLis
         m = m or dict()
         if m.get('BrokerOffset') is not None:
             self.broker_offset = m.get('BrokerOffset')
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
         if m.get('ConsumerOffset') is not None:
             self.consumer_offset = m.get('ConsumerOffset')
         if m.get('LastTimestamp') is not None:
             self.last_timestamp = m.get('LastTimestamp')
+        if m.get('MemberId') is not None:
+            self.member_id = m.get('MemberId')
         if m.get('Partition') is not None:
             self.partition = m.get('Partition')
         return self
@@ -6744,6 +7773,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         reserved_subscribe_capacity: int = None,
         resource_group_id: str = None,
         sasl_domain_endpoint: str = None,
+        sasl_end_point: str = None,
         security_group: str = None,
         series: str = None,
         service_status: int = None,
@@ -6761,17 +7791,23 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         v_switch_ids: GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds = None,
         view_instance_status_code: int = None,
         vpc_id: str = None,
+        vpc_sasl_domain_endpoint: str = None,
+        vpc_sasl_end_point: str = None,
         zone_id: str = None,
     ):
         # The configurations of the deployed ApsaraMQ for Kafka instance.
         self.all_config = all_config
+        # Indicates whether the flexible group creation feature is enabled.
         self.auto_create_group_enable = auto_create_group_enable
+        # Indicates whether the automatic topic creation feature is enabled.
         self.auto_create_topic_enable = auto_create_topic_enable
+        # The ID of the secondary zone.
         self.backup_zone_id = backup_zone_id
         # The parameters that are returned for the ApsaraMQ for Confluent instance.
         self.confluent_config = confluent_config
         # The time when the instance was created. Unit: milliseconds.
         self.create_time = create_time
+        # The number of partitions in a topic that is automatically created.
         self.default_partition_num = default_partition_num
         # The type of the network in which the instance is deployed. Valid values:
         # 
@@ -6839,6 +7875,11 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
         # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
         self.sasl_domain_endpoint = sasl_domain_endpoint
+        # The Simple Authentication and Security Layer (SASL) endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+        # 
+        # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+        # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+        self.sasl_end_point = sasl_end_point
         # The security group to which the instance belongs.
         # 
         # *   If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
@@ -6896,6 +7937,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.used_topic_count = used_topic_count
         # The ID of the vSwitch to which the instance belongs.
         self.v_switch_id = v_switch_id
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
         # 
@@ -6920,6 +7962,16 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.view_instance_status_code = view_instance_status_code
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The SSL endpoint of the instance in domain name mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+        # 
+        # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+        # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+        self.vpc_sasl_domain_endpoint = vpc_sasl_domain_endpoint
+        # The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
+        # 
+        # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
+        # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
+        self.vpc_sasl_end_point = vpc_sasl_end_point
         # The zone ID.
         self.zone_id = zone_id
 
@@ -6995,6 +8047,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.sasl_domain_endpoint is not None:
             result['SaslDomainEndpoint'] = self.sasl_domain_endpoint
+        if self.sasl_end_point is not None:
+            result['SaslEndPoint'] = self.sasl_end_point
         if self.security_group is not None:
             result['SecurityGroup'] = self.security_group
         if self.series is not None:
@@ -7029,6 +8083,10 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['ViewInstanceStatusCode'] = self.view_instance_status_code
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vpc_sasl_domain_endpoint is not None:
+            result['VpcSaslDomainEndpoint'] = self.vpc_sasl_domain_endpoint
+        if self.vpc_sasl_end_point is not None:
+            result['VpcSaslEndPoint'] = self.vpc_sasl_end_point
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -7092,6 +8150,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SaslDomainEndpoint') is not None:
             self.sasl_domain_endpoint = m.get('SaslDomainEndpoint')
+        if m.get('SaslEndPoint') is not None:
+            self.sasl_end_point = m.get('SaslEndPoint')
         if m.get('SecurityGroup') is not None:
             self.security_group = m.get('SecurityGroup')
         if m.get('Series') is not None:
@@ -7129,6 +8189,10 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             self.view_instance_status_code = m.get('ViewInstanceStatusCode')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VpcSaslDomainEndpoint') is not None:
+            self.vpc_sasl_domain_endpoint = m.get('VpcSaslDomainEndpoint')
+        if m.get('VpcSaslEndPoint') is not None:
+            self.vpc_sasl_end_point = m.get('VpcSaslEndPoint')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -7279,16 +8343,38 @@ class GetKafkaClientIpRequest(TeaModel):
         topic: str = None,
         type: str = None,
     ):
+        # The end of the time range to query.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the consumer group.
+        # 
+        # >  This parameter is required only if you set Type to byGroup.
         self.group = group
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance is deployed.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The beginning of the time range to query.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The topic name.
+        # 
+        # > 
+        # 
+        # *   This parameter is required only if you set Type to byTopic.
         self.topic = topic
+        # The query method that you want to use to query the client IP addresses. Valid values:
+        # 
+        # *   byInstance: queries the IP addresses of the clients that are connected to the instance within a specific period of time.
+        # *   byTopic: queries the IP addresses of the clients that are connected to a specific topic on the instance within a specific period of time.
+        # *   byGroup: queries the IP addresses of the clients that are connected to a specific group on the instance within a specific period of time.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -7342,7 +8428,11 @@ class GetKafkaClientIpResponseBodyDataDataDataDataData(TeaModel):
         ip: str = None,
         num: int = None,
     ):
+        # The IP address of the client.
         self.ip = ip
+        # The statistics.
+        # 
+        # >  The value of this parameter indicates the number of connections on different ports of the IP address within the specified period of time.
         self.num = num
 
     def validate(self):
@@ -7410,7 +8500,11 @@ class GetKafkaClientIpResponseBodyDataDataData(TeaModel):
         data: GetKafkaClientIpResponseBodyDataDataDataData = None,
         name: str = None,
     ):
+        # The response parameters.
         self.data = data
+        # The request name.
+        # 
+        # >  The value of this parameter indicates the type of request that the client sends to the broker within the specified period of time.
         self.name = name
 
     def validate(self):
@@ -7484,11 +8578,23 @@ class GetKafkaClientIpResponseBodyData(TeaModel):
         start_date: int = None,
         time_limit_day: int = None,
     ):
+        # The value true indicates that the broker is not of the latest minor version.
+        # 
+        # >  If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
         self.alert = alert
+        # The data returned.
         self.data = data
+        # The end of the date range within which data is queried.
         self.end_date = end_date
+        # The time range within which the client IP addresses are queried.
+        # 
+        # >  The valid value is 1 hour. If the beginning of the time range to query and the end of the time range to query exceeds 1 hour, only data within 1 hour is returned.
         self.search_time_range = search_time_range
+        # The beginning of the date range within which data is queried.
         self.start_date = start_date
+        # The date range within which the client IP addresses are queried.
+        # 
+        # >  The valid value is 7 days. If the beginning of the date range to query and the end of the date range to query exceeds 7 days, only data within 7 days is returned.
         self.time_limit_day = time_limit_day
 
     def validate(self):
@@ -7542,10 +8648,15 @@ class GetKafkaClientIpResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10697,14 +11808,14 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the resource tag.
+        # The tag key.
         # 
         # *   You must specify this parameter.
         # *   The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the resource tag.
+        # The tag value.
         # 
         # *   You can leave this parameter empty.
         # *   The tag value can be up to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with acs: or aliyun.
@@ -10763,7 +11874,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags that you want to add.
+        # The tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -11677,10 +12788,10 @@ class UpdateTopicConfigRequest(TeaModel):
     ):
         # The key of the topic configuration.
         # 
-        # *   ApsaraMQ for Kafka V2 instances allow you to modify configurations only for topics that use local storage.
-        # *   ApsaraMQ for Kafka V3 instances allow you to modify configurations for all topics.
-        # *   The following keys are supported by `local topic` of ApsaraMQ for Kafka V2 instances: retention.ms, retention.bytes, and replications.
-        # *   The following keys are supported by ApsaraMQ for Kafka V3 instances: retention.hours and max.message.bytes.
+        # *   For reserved instances, you can modify only the configurations of the topics that use local storage.
+        # *   For serverless instances, you can modify the configurations of all topics.
+        # *   Reserved instances whose topics use local storage support the following keys: retention.ms, max.message.bytes, replications, message.timestamp.type, and message.timestamp.difference.max.ms.``
+        # *   Serverless instances support the following keys: retention.hours, max.message.bytes, message.timestamp.type, message.timestamp.difference.max.ms.
         # 
         # This parameter is required.
         self.config = config
@@ -11696,10 +12807,22 @@ class UpdateTopicConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.topic = topic
-        # The configuration item that you want to update for the topic. The following configuration items are supported by ApsaraMQ for Kafka V3 instances:
+        # The value of the topic configuration.
         # 
-        # *   `retention.hours` specifies the message retention period. Value type: string. Valid values: 24 to 8760.
-        # *   `max.message.bytes` specifies the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+        # *   Serverless instances support the following values:
+        # 
+        #     *   `retention.hours`: the message retention period. Value type: string. Valid values: 24 to 8760.
+        #     *   `max.message.bytes`: the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+        #     *   `message.timestamp.type`: the timestamp type of a message. Valid values: CreateTime and LogAppendTime. The value CreateTime specifies the timestamp that is specified by the producer when the message is sent. The value LogAppendTime specifies the time when the broker appends the message to its log. If you do not specify this parameter, the time when the message is created on the client is used.
+        #     *   `message.timestamp.difference.max.ms`: the maximum positive or negative difference allowed between the timestamp when the broker receives a message and the timestamp specified in the message. If you set message.timestamp.type to CreateTime, **a message is rejected** if the difference in timestamp exceeds the threshold. If you set message.timestamp.type to LogAppendTime, this configuration does not take effect.
+        # 
+        # *   Reserved instances support the following values:
+        # 
+        #     *   `retention.ms`: the message retention period. Value type: string. Valid values: 3600000 to 31536000000.
+        #     *   `max.message.bytes`: the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+        #     *   `replications`: the number of replicas. Value type: string. Valid values: 1 to 3.
+        #     *   `message.timestamp.type`: the timestamp type of a message. Valid values: CreateTime and LogAppendTime. The value CreateTime specifies the timestamp that is specified by the producer when the message is sent. The value LogAppendTime specifies the time when the broker appends the message to its log. If you do not specify this parameter, the time when the message is created on the client is used.
+        #     *   `message.timestamp.difference.max.ms`: the maximum positive or negative difference allowed between the timestamp when the broker receives a message and the timestamp specified in the message. If you set message.timestamp.type to CreateTime, **a message is rejected** if the difference in timestamp exceeds the threshold. If you set message.timestamp.type to LogAppendTime, this configuration does not take effect.
         # 
         # This parameter is required.
         self.value = value
@@ -11986,11 +13109,11 @@ class UpgradePostPayOrderRequestServerlessConfig(TeaModel):
         reserved_publish_capacity: int = None,
         reserved_subscribe_capacity: int = None,
     ):
-        # The reserved capacity for publishing messages. You can specify only integers for this parameter. Minimum value: 60.
+        # The reserved capacity for publishing messages. You can specify only an integer for this parameter. Minimum value: 60.
         # 
         # >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
         self.reserved_publish_capacity = reserved_publish_capacity
-        # The reserved capacity for subscribing to messages. You can specify only integers for this parameter. Minimum value: 50.
+        # The reserved capacity for subscribing to messages. You can specify only an integer for this parameter. Minimum value: 50.
         # 
         # >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
@@ -12039,16 +13162,20 @@ class UpgradePostPayOrderRequest(TeaModel):
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_size = disk_size
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic of the instance.
         # 
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > -  If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
-        # >- If you set **EipModel** to **false**, set **EipMax** to **0**.
-        # >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # > 
+        # 
+        # *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+        # 
+        # *   If you set **EipModel** to **false**, set **EipMax** to **0**.
+        # 
+        # *   If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # Specifies whether to enable Internet access for the instance. Valid values:
         # 
@@ -12059,13 +13186,13 @@ class UpgradePostPayOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic of the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
@@ -12073,21 +13200,21 @@ class UpgradePostPayOrderRequest(TeaModel):
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
+        # The parameters that are configured for the serverless instance. These parameters are required only when you create a serverless instance.
         self.serverless_config = serverless_config
         # The instance edition.
         # 
@@ -12105,12 +13232,12 @@ class UpgradePostPayOrderRequest(TeaModel):
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -12195,16 +13322,20 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.disk_size = disk_size
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic of the instance.
         # 
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > -  If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
-        # >- If you set **EipModel** to **false**, set **EipMax** to **0**.
-        # >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # > 
+        # 
+        # *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+        # 
+        # *   If you set **EipModel** to **false**, set **EipMax** to **0**.
+        # 
+        # *   If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # Specifies whether to enable Internet access for the instance. Valid values:
         # 
@@ -12215,13 +13346,13 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic of the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
@@ -12229,21 +13360,21 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
+        # The parameters that are configured for the serverless instance. These parameters are required only when you create a serverless instance.
         self.serverless_config_shrink = serverless_config_shrink
         # The instance edition.
         # 
@@ -12261,12 +13392,12 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):

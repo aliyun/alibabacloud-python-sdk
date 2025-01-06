@@ -1,3 +1,15 @@
+2025-01-06 Version: 2.9.0
+- Support API CreatePostPayInstance.
+- Support API CreatePrePayInstance.
+- Update API ConvertPostPayOrder: add param PaidType.
+- Update API EnableAutoTopicCreation: add param UpdatePartition.
+- Update API EnableAutoTopicCreation: update param Operate.
+- Update API GetConsumerList: update response param.
+- Update API GetConsumerProgress: update response param.
+- Update API GetInstanceList: update response param.
+- Update API UpgradePrePayOrder: update param DiskSize.
+
+
 2024-11-25 Version: 2.8.1
 - Update API GetInstanceList: update response param.
 

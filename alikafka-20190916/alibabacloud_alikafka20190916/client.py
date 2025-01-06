@@ -163,6 +163,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -202,6 +204,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -493,6 +497,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_consumer_group_with_options_async(request, runtime)
 
+    def create_post_pay_instance_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.CreatePostPayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.CreatePostPayInstanceResponse:
+        """
+        @summary 创建后付费实例。
+        
+        @param tmp_req: CreatePostPayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePostPayInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePostPayInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePostPayInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_post_pay_instance_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.CreatePostPayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.CreatePostPayInstanceResponse:
+        """
+        @summary 创建后付费实例。
+        
+        @param tmp_req: CreatePostPayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePostPayInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePostPayInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.serverless_config):
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePostPayInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePostPayInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_post_pay_instance(
+        self,
+        request: alikafka_20190916_models.CreatePostPayInstanceRequest,
+    ) -> alikafka_20190916_models.CreatePostPayInstanceResponse:
+        """
+        @summary 创建后付费实例。
+        
+        @param request: CreatePostPayInstanceRequest
+        @return: CreatePostPayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_post_pay_instance_with_options(request, runtime)
+
+    async def create_post_pay_instance_async(
+        self,
+        request: alikafka_20190916_models.CreatePostPayInstanceRequest,
+    ) -> alikafka_20190916_models.CreatePostPayInstanceResponse:
+        """
+        @summary 创建后付费实例。
+        
+        @param request: CreatePostPayInstanceRequest
+        @return: CreatePostPayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_post_pay_instance_with_options_async(request, runtime)
+
     def create_post_pay_order_with_options(
         self,
         tmp_req: alikafka_20190916_models.CreatePostPayOrderRequest,
@@ -656,6 +808,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_post_pay_order_with_options_async(request, runtime)
+
+    def create_pre_pay_instance_with_options(
+        self,
+        tmp_req: alikafka_20190916_models.CreatePrePayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.CreatePrePayInstanceResponse:
+        """
+        @summary 创建预付费实例
+        
+        @param tmp_req: CreatePrePayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrePayInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePrePayInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrePayInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pre_pay_instance_with_options_async(
+        self,
+        tmp_req: alikafka_20190916_models.CreatePrePayInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alikafka_20190916_models.CreatePrePayInstanceResponse:
+        """
+        @summary 创建预付费实例
+        
+        @param tmp_req: CreatePrePayInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrePayInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alikafka_20190916_models.CreatePrePayInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.confluent_config):
+            request.confluent_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.confluent_config, 'ConfluentConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.confluent_config_shrink):
+            query['ConfluentConfig'] = request.confluent_config_shrink
+        if not UtilClient.is_unset(request.deploy_type):
+            query['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.eip_max):
+            query['EipMax'] = request.eip_max
+        if not UtilClient.is_unset(request.io_max_spec):
+            query['IoMaxSpec'] = request.io_max_spec
+        if not UtilClient.is_unset(request.paid_type):
+            query['PaidType'] = request.paid_type
+        if not UtilClient.is_unset(request.partition_num):
+            query['PartitionNum'] = request.partition_num
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.spec_type):
+            query['SpecType'] = request.spec_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePrePayInstance',
+            version='2019-09-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alikafka_20190916_models.CreatePrePayInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pre_pay_instance(
+        self,
+        request: alikafka_20190916_models.CreatePrePayInstanceRequest,
+    ) -> alikafka_20190916_models.CreatePrePayInstanceResponse:
+        """
+        @summary 创建预付费实例
+        
+        @param request: CreatePrePayInstanceRequest
+        @return: CreatePrePayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_pre_pay_instance_with_options(request, runtime)
+
+    async def create_pre_pay_instance_async(
+        self,
+        request: alikafka_20190916_models.CreatePrePayInstanceRequest,
+    ) -> alikafka_20190916_models.CreatePrePayInstanceResponse:
+        """
+        @summary 创建预付费实例
+        
+        @param request: CreatePrePayInstanceRequest
+        @return: CreatePrePayInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_pre_pay_instance_with_options_async(request, runtime)
 
     def create_pre_pay_order_with_options(
         self,
@@ -1703,9 +2007,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: DeleteScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1744,9 +2048,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: DeleteScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1784,9 +2088,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.DeleteScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: DeleteScheduledScalingRuleRequest
         @return: DeleteScheduledScalingRuleResponse
@@ -1799,9 +2103,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.DeleteScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Deletes the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: DeleteScheduledScalingRuleRequest
         @return: DeleteScheduledScalingRuleResponse
@@ -2267,6 +2571,8 @@ class Client(OpenApiClient):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.update_partition):
+            query['UpdatePartition'] = request.update_partition
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2308,6 +2614,8 @@ class Client(OpenApiClient):
             query['PartitionNum'] = request.partition_num
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.update_partition):
+            query['UpdatePartition'] = request.update_partition
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2555,9 +2863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)*This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2594,9 +2902,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)*This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2632,9 +2940,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetAutoScalingConfigurationRequest,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)*This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @return: GetAutoScalingConfigurationResponse
@@ -2647,9 +2955,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetAutoScalingConfigurationRequest,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Queries the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)*This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @return: GetAutoScalingConfigurationResponse
@@ -2999,7 +3307,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
         """
-        @summary 获取kafka客户端ip
+        @summary Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+        
+        @description    The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+        Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+        If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
         
         @param request: GetKafkaClientIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3046,7 +3358,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
         """
-        @summary 获取kafka客户端ip
+        @summary Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+        
+        @description    The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+        Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+        If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
         
         @param request: GetKafkaClientIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3092,7 +3408,11 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetKafkaClientIpRequest,
     ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
         """
-        @summary 获取kafka客户端ip
+        @summary Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+        
+        @description    The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+        Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+        If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
         
         @param request: GetKafkaClientIpRequest
         @return: GetKafkaClientIpResponse
@@ -3105,7 +3425,11 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetKafkaClientIpRequest,
     ) -> alikafka_20190916_models.GetKafkaClientIpResponse:
         """
-        @summary 获取kafka客户端ip
+        @summary Queries the IP addresses of the clients that are connected to an ApsaraMQ for Kafka instance.
+        
+        @description    The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+        Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+        If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
         
         @param request: GetKafkaClientIpRequest
         @return: GetKafkaClientIpResponse
@@ -3863,9 +4187,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3906,9 +4230,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3948,9 +4272,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @return: ModifyScheduledScalingRuleResponse
@@ -3963,9 +4287,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        @summary Modifies the scheduled scaling policy of a serverless ApsaraMQ for Kafka instance after you deploy the instance.
         
-        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
+        @description ###### [](#-serverless-)This operation is available only for serverless ApsaraMQ for Kafka instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @return: ModifyScheduledScalingRuleResponse
