@@ -1380,6 +1380,319 @@ class CreateClusterResponse(TeaModel):
         return self
 
 
+class CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs(TeaModel):
+    def __init__(
+        self,
+        datetime: str = None,
+        log_content: str = None,
+    ):
+        # Sent date, in the format yyyymmdd.
+        self.datetime = datetime
+        # Log content
+        self.log_content = log_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.datetime is not None:
+            result['Datetime'] = self.datetime
+        if self.log_content is not None:
+            result['LogContent'] = self.log_content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Datetime') is not None:
+            self.datetime = m.get('Datetime')
+        if m.get('LogContent') is not None:
+            self.log_content = m.get('LogContent')
+        return self
+
+
+class CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs(TeaModel):
+    def __init__(
+        self,
+        ai_instance: str = None,
+        logs: List[CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs] = None,
+        node_id: str = None,
+    ):
+        # Instance ID
+        self.ai_instance = ai_instance
+        # Log object
+        self.logs = logs
+        # Node ID
+        self.node_id = node_id
+
+    def validate(self):
+        if self.logs:
+            for k in self.logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_instance is not None:
+            result['AiInstance'] = self.ai_instance
+        result['Logs'] = []
+        if self.logs is not None:
+            for k in self.logs:
+                result['Logs'].append(k.to_map() if k else None)
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiInstance') is not None:
+            self.ai_instance = m.get('AiInstance')
+        self.logs = []
+        if m.get('Logs') is not None:
+            for k in m.get('Logs'):
+                temp_model = CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs()
+                self.logs.append(temp_model.from_map(k))
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class CreateDiagnosticTaskRequestAiJobLogInfo(TeaModel):
+    def __init__(
+        self,
+        ai_job_logs: List[CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs] = None,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        # Task logs
+        self.ai_job_logs = ai_job_logs
+        # End time. In timestamp format, unit: seconds.
+        # > Must be on the hour or half-hour mark.
+        self.end_time = end_time
+        # Start time. In timestamp format, unit: seconds.
+        # > Must be on the hour or half-hour mark.
+        self.start_time = start_time
+
+    def validate(self):
+        if self.ai_job_logs:
+            for k in self.ai_job_logs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AiJobLogs'] = []
+        if self.ai_job_logs is not None:
+            for k in self.ai_job_logs:
+                result['AiJobLogs'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ai_job_logs = []
+        if m.get('AiJobLogs') is not None:
+            for k in m.get('AiJobLogs'):
+                temp_model = CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs()
+                self.ai_job_logs.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class CreateDiagnosticTaskRequest(TeaModel):
+    def __init__(
+        self,
+        ai_job_log_info: CreateDiagnosticTaskRequestAiJobLogInfo = None,
+        cluster_id: str = None,
+        diagnostic_type: str = None,
+        node_ids: List[str] = None,
+    ):
+        # Log information
+        self.ai_job_log_info = ai_job_log_info
+        # Cluster ID
+        self.cluster_id = cluster_id
+        # Diagnostic type.
+        self.diagnostic_type = diagnostic_type
+        # List of node IDs
+        self.node_ids = node_ids
+
+    def validate(self):
+        if self.ai_job_log_info:
+            self.ai_job_log_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_job_log_info is not None:
+            result['AiJobLogInfo'] = self.ai_job_log_info.to_map()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.diagnostic_type is not None:
+            result['DiagnosticType'] = self.diagnostic_type
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiJobLogInfo') is not None:
+            temp_model = CreateDiagnosticTaskRequestAiJobLogInfo()
+            self.ai_job_log_info = temp_model.from_map(m['AiJobLogInfo'])
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DiagnosticType') is not None:
+            self.diagnostic_type = m.get('DiagnosticType')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
+        return self
+
+
+class CreateDiagnosticTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ai_job_log_info_shrink: str = None,
+        cluster_id: str = None,
+        diagnostic_type: str = None,
+        node_ids_shrink: str = None,
+    ):
+        # Log information
+        self.ai_job_log_info_shrink = ai_job_log_info_shrink
+        # Cluster ID
+        self.cluster_id = cluster_id
+        # Diagnostic type.
+        self.diagnostic_type = diagnostic_type
+        # List of node IDs
+        self.node_ids_shrink = node_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ai_job_log_info_shrink is not None:
+            result['AiJobLogInfo'] = self.ai_job_log_info_shrink
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.diagnostic_type is not None:
+            result['DiagnosticType'] = self.diagnostic_type
+        if self.node_ids_shrink is not None:
+            result['NodeIds'] = self.node_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AiJobLogInfo') is not None:
+            self.ai_job_log_info_shrink = m.get('AiJobLogInfo')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DiagnosticType') is not None:
+            self.diagnostic_type = m.get('DiagnosticType')
+        if m.get('NodeIds') is not None:
+            self.node_ids_shrink = m.get('NodeIds')
+        return self
+
+
+class CreateDiagnosticTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        diagnostic_id: str = None,
+        request_id: str = None,
+    ):
+        # Diagnosis ID
+        self.diagnostic_id = diagnostic_id
+        # Request ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnostic_id is not None:
+            result['DiagnosticId'] = self.diagnostic_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnosticId') is not None:
+            self.diagnostic_id = m.get('DiagnosticId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDiagnosticTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDiagnosticTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDiagnosticTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteClusterRequest(TeaModel):
     def __init__(
         self,
@@ -5105,6 +5418,453 @@ class ListFreeNodesResponse(TeaModel):
         return self
 
 
+class ListMachineTypesRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListMachineTypesResponseBodyMachineTypes(TeaModel):
+    def __init__(
+        self,
+        bond_num: int = None,
+        cpu_info: str = None,
+        disk_info: str = None,
+        gpu_info: str = None,
+        memory_info: str = None,
+        name: str = None,
+        network_info: str = None,
+        node_count: str = None,
+        total_cpu_core: int = None,
+        type: str = None,
+    ):
+        self.bond_num = bond_num
+        self.cpu_info = cpu_info
+        self.disk_info = disk_info
+        self.gpu_info = gpu_info
+        self.memory_info = memory_info
+        self.name = name
+        self.network_info = network_info
+        self.node_count = node_count
+        self.total_cpu_core = total_cpu_core
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bond_num is not None:
+            result['BondNum'] = self.bond_num
+        if self.cpu_info is not None:
+            result['CpuInfo'] = self.cpu_info
+        if self.disk_info is not None:
+            result['DiskInfo'] = self.disk_info
+        if self.gpu_info is not None:
+            result['GpuInfo'] = self.gpu_info
+        if self.memory_info is not None:
+            result['MemoryInfo'] = self.memory_info
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.network_info is not None:
+            result['NetworkInfo'] = self.network_info
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.total_cpu_core is not None:
+            result['TotalCpuCore'] = self.total_cpu_core
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BondNum') is not None:
+            self.bond_num = m.get('BondNum')
+        if m.get('CpuInfo') is not None:
+            self.cpu_info = m.get('CpuInfo')
+        if m.get('DiskInfo') is not None:
+            self.disk_info = m.get('DiskInfo')
+        if m.get('GpuInfo') is not None:
+            self.gpu_info = m.get('GpuInfo')
+        if m.get('MemoryInfo') is not None:
+            self.memory_info = m.get('MemoryInfo')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NetworkInfo') is not None:
+            self.network_info = m.get('NetworkInfo')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('TotalCpuCore') is not None:
+            self.total_cpu_core = m.get('TotalCpuCore')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListMachineTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        machine_types: List[ListMachineTypesResponseBodyMachineTypes] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.machine_types = machine_types
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.machine_types:
+            for k in self.machine_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MachineTypes'] = []
+        if self.machine_types is not None:
+            for k in self.machine_types:
+                result['MachineTypes'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.machine_types = []
+        if m.get('MachineTypes') is not None:
+            for k in m.get('MachineTypes'):
+                temp_model = ListMachineTypesResponseBodyMachineTypes()
+                self.machine_types.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListMachineTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMachineTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMachineTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNodeGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        node_group_id: str = None,
+    ):
+        # Cluster ID
+        self.cluster_id = cluster_id
+        # Number of items per page in a paginated query. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # - If no value is set or the set value is less than 20, the default value is 20.
+        # - If the set value is greater than 100, the default value is 100.
+        self.max_results = max_results
+        # NextToken for the next page, include this value when requesting the next page
+        self.next_token = next_token
+        # Node group ID
+        self.node_group_id = node_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        return self
+
+
+class ListNodeGroupsResponseBodyGroups(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        machine_type: str = None,
+        node_count: int = None,
+        update_time: str = None,
+        zone_id: str = None,
+    ):
+        # Cluster ID
+        self.cluster_id = cluster_id
+        # Cluster name
+        self.cluster_name = cluster_name
+        # Creation time
+        self.create_time = create_time
+        # Description
+        self.description = description
+        # Group ID.
+        self.group_id = group_id
+        # Group name.
+        self.group_name = group_name
+        # Image ID
+        self.image_id = image_id
+        # Image name
+        self.image_name = image_name
+        # Machine type
+        self.machine_type = machine_type
+        # Number of nodes
+        self.node_count = node_count
+        # Update time
+        self.update_time = update_time
+        # 可用区id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.machine_type is not None:
+            result['MachineType'] = self.machine_type
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('MachineType') is not None:
+            self.machine_type = m.get('MachineType')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListNodeGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        groups: List[ListNodeGroupsResponseBodyGroups] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        # Cluster group information
+        self.groups = groups
+        # NextToken for the next page, include this value when requesting the next page
+        self.next_token = next_token
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = ListNodeGroupsResponseBodyGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListNodeGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNodeGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNodeGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -5775,14 +6535,17 @@ class RunCommandRequest(TeaModel):
         self,
         client_token: str = None,
         command_content: str = None,
+        command_id: str = None,
         content_encoding: str = None,
         description: str = None,
         enable_parameter: bool = None,
         frequency: str = None,
+        launcher: str = None,
         name: str = None,
         node_id_list: List[str] = None,
         parameters: Dict[str, Any] = None,
         repeat_mode: str = None,
+        termination_mode: str = None,
         timeout: int = None,
         username: str = None,
         working_dir: str = None,
@@ -5797,9 +6560,8 @@ class RunCommandRequest(TeaModel):
         # - The number of custom parameters cannot exceed 20.
         # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
         # - A single custom parameter name cannot exceed 64 bytes.
-        # 
-        # This parameter is required.
         self.command_content = command_content
+        self.command_id = command_id
         # Encoding method for the script content. Valid values:
         # 
         # - PlainText: No encoding, transmitted in plain text.
@@ -5833,6 +6595,7 @@ class RunCommandRequest(TeaModel):
         # 
         # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
         self.frequency = frequency
+        self.launcher = launcher
         # Command name.
         self.name = name
         # List of nodes.
@@ -5859,6 +6622,7 @@ class RunCommandRequest(TeaModel):
         # - If the `Frequency` parameter is not specified, the default value is `Once`.
         # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
         self.repeat_mode = repeat_mode
+        self.termination_mode = termination_mode
         # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
         self.timeout = timeout
         # The username to execute the command in the instance. The length must not exceed 255 characters.
@@ -5882,6 +6646,8 @@ class RunCommandRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
         if self.content_encoding is not None:
             result['ContentEncoding'] = self.content_encoding
         if self.description is not None:
@@ -5890,6 +6656,8 @@ class RunCommandRequest(TeaModel):
             result['EnableParameter'] = self.enable_parameter
         if self.frequency is not None:
             result['Frequency'] = self.frequency
+        if self.launcher is not None:
+            result['Launcher'] = self.launcher
         if self.name is not None:
             result['Name'] = self.name
         if self.node_id_list is not None:
@@ -5898,6 +6666,8 @@ class RunCommandRequest(TeaModel):
             result['Parameters'] = self.parameters
         if self.repeat_mode is not None:
             result['RepeatMode'] = self.repeat_mode
+        if self.termination_mode is not None:
+            result['TerminationMode'] = self.termination_mode
         if self.timeout is not None:
             result['Timeout'] = self.timeout
         if self.username is not None:
@@ -5912,6 +6682,8 @@ class RunCommandRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
         if m.get('ContentEncoding') is not None:
             self.content_encoding = m.get('ContentEncoding')
         if m.get('Description') is not None:
@@ -5920,6 +6692,8 @@ class RunCommandRequest(TeaModel):
             self.enable_parameter = m.get('EnableParameter')
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
+        if m.get('Launcher') is not None:
+            self.launcher = m.get('Launcher')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NodeIdList') is not None:
@@ -5928,6 +6702,8 @@ class RunCommandRequest(TeaModel):
             self.parameters = m.get('Parameters')
         if m.get('RepeatMode') is not None:
             self.repeat_mode = m.get('RepeatMode')
+        if m.get('TerminationMode') is not None:
+            self.termination_mode = m.get('TerminationMode')
         if m.get('Timeout') is not None:
             self.timeout = m.get('Timeout')
         if m.get('Username') is not None:
@@ -5942,14 +6718,17 @@ class RunCommandShrinkRequest(TeaModel):
         self,
         client_token: str = None,
         command_content: str = None,
+        command_id: str = None,
         content_encoding: str = None,
         description: str = None,
         enable_parameter: bool = None,
         frequency: str = None,
+        launcher: str = None,
         name: str = None,
         node_id_list_shrink: str = None,
         parameters_shrink: str = None,
         repeat_mode: str = None,
+        termination_mode: str = None,
         timeout: int = None,
         username: str = None,
         working_dir: str = None,
@@ -5964,9 +6743,8 @@ class RunCommandShrinkRequest(TeaModel):
         # - The number of custom parameters cannot exceed 20.
         # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
         # - A single custom parameter name cannot exceed 64 bytes.
-        # 
-        # This parameter is required.
         self.command_content = command_content
+        self.command_id = command_id
         # Encoding method for the script content. Valid values:
         # 
         # - PlainText: No encoding, transmitted in plain text.
@@ -6000,6 +6778,7 @@ class RunCommandShrinkRequest(TeaModel):
         # 
         # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
         self.frequency = frequency
+        self.launcher = launcher
         # Command name.
         self.name = name
         # List of nodes.
@@ -6026,6 +6805,7 @@ class RunCommandShrinkRequest(TeaModel):
         # - If the `Frequency` parameter is not specified, the default value is `Once`.
         # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
         self.repeat_mode = repeat_mode
+        self.termination_mode = termination_mode
         # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
         self.timeout = timeout
         # The username to execute the command in the instance. The length must not exceed 255 characters.
@@ -6049,6 +6829,8 @@ class RunCommandShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
         if self.content_encoding is not None:
             result['ContentEncoding'] = self.content_encoding
         if self.description is not None:
@@ -6057,6 +6839,8 @@ class RunCommandShrinkRequest(TeaModel):
             result['EnableParameter'] = self.enable_parameter
         if self.frequency is not None:
             result['Frequency'] = self.frequency
+        if self.launcher is not None:
+            result['Launcher'] = self.launcher
         if self.name is not None:
             result['Name'] = self.name
         if self.node_id_list_shrink is not None:
@@ -6065,6 +6849,8 @@ class RunCommandShrinkRequest(TeaModel):
             result['Parameters'] = self.parameters_shrink
         if self.repeat_mode is not None:
             result['RepeatMode'] = self.repeat_mode
+        if self.termination_mode is not None:
+            result['TerminationMode'] = self.termination_mode
         if self.timeout is not None:
             result['Timeout'] = self.timeout
         if self.username is not None:
@@ -6079,6 +6865,8 @@ class RunCommandShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
         if m.get('ContentEncoding') is not None:
             self.content_encoding = m.get('ContentEncoding')
         if m.get('Description') is not None:
@@ -6087,6 +6875,8 @@ class RunCommandShrinkRequest(TeaModel):
             self.enable_parameter = m.get('EnableParameter')
         if m.get('Frequency') is not None:
             self.frequency = m.get('Frequency')
+        if m.get('Launcher') is not None:
+            self.launcher = m.get('Launcher')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NodeIdList') is not None:
@@ -6095,6 +6885,8 @@ class RunCommandShrinkRequest(TeaModel):
             self.parameters_shrink = m.get('Parameters')
         if m.get('RepeatMode') is not None:
             self.repeat_mode = m.get('RepeatMode')
+        if m.get('TerminationMode') is not None:
+            self.termination_mode = m.get('TerminationMode')
         if m.get('Timeout') is not None:
             self.timeout = m.get('Timeout')
         if m.get('Username') is not None:

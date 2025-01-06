@@ -1,3 +1,25 @@
+2025-01-06 Version: 2.1.0
+- Support API CreateDiagnosticTask.
+- Support API ListMachineTypes.
+- Support API ListNodeGroups.
+- Update API RunCommand: add param CommandId.
+- Update API RunCommand: add param Launcher.
+- Update API RunCommand: add param TerminationMode.
+- Update API RunCommand: update param ClientToken.
+- Update API RunCommand: update param CommandContent.
+- Update API RunCommand: update param ContentEncoding.
+- Update API RunCommand: update param Description.
+- Update API RunCommand: update param EnableParameter.
+- Update API RunCommand: update param Frequency.
+- Update API RunCommand: update param Name.
+- Update API RunCommand: update param NodeIdList.
+- Update API RunCommand: update param Parameters.
+- Update API RunCommand: update param RepeatMode.
+- Update API RunCommand: update param Timeout.
+- Update API RunCommand: update param Username.
+- Update API RunCommand: update param WorkingDir.
+
+
 2025-01-02 Version: 2.0.0
 - Update API DescribeInvocations: update response param.
 

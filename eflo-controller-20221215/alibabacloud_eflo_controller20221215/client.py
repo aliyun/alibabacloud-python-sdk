@@ -409,6 +409,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
+    def create_diagnostic_task_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
+        """
+        @summary Diagnostic Task Creation Interface
+        
+        @param tmp_req: CreateDiagnosticTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnosticTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateDiagnosticTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ai_job_log_info):
+            request.ai_job_log_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ai_job_log_info, 'AiJobLogInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.ai_job_log_info_shrink):
+            body['AiJobLogInfo'] = request.ai_job_log_info_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.diagnostic_type):
+            body['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticTask',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnostic_task_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
+        """
+        @summary Diagnostic Task Creation Interface
+        
+        @param tmp_req: CreateDiagnosticTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiagnosticTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.CreateDiagnosticTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ai_job_log_info):
+            request.ai_job_log_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ai_job_log_info, 'AiJobLogInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.node_ids):
+            request.node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'simple')
+        body = {}
+        if not UtilClient.is_unset(request.ai_job_log_info_shrink):
+            body['AiJobLogInfo'] = request.ai_job_log_info_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.diagnostic_type):
+            body['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticTask',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.CreateDiagnosticTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnostic_task(
+        self,
+        request: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
+    ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
+        """
+        @summary Diagnostic Task Creation Interface
+        
+        @param request: CreateDiagnosticTaskRequest
+        @return: CreateDiagnosticTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnostic_task_with_options(request, runtime)
+
+    async def create_diagnostic_task_async(
+        self,
+        request: eflo_controller_20221215_models.CreateDiagnosticTaskRequest,
+    ) -> eflo_controller_20221215_models.CreateDiagnosticTaskResponse:
+        """
+        @summary Diagnostic Task Creation Interface
+        
+        @param request: CreateDiagnosticTaskRequest
+        @return: CreateDiagnosticTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnostic_task_with_options_async(request, runtime)
+
     def delete_cluster_with_options(
         self,
         request: eflo_controller_20221215_models.DeleteClusterRequest,
@@ -1649,6 +1769,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_free_nodes_with_options_async(request, runtime)
 
+    def list_machine_types_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListMachineTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
+        """
+        @summary 查询用户可用的机型列表
+        
+        @param request: ListMachineTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineTypesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMachineTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListMachineTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_machine_types_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListMachineTypesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
+        """
+        @summary 查询用户可用的机型列表
+        
+        @param request: ListMachineTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineTypesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMachineTypes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListMachineTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_machine_types(
+        self,
+        request: eflo_controller_20221215_models.ListMachineTypesRequest,
+    ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
+        """
+        @summary 查询用户可用的机型列表
+        
+        @param request: ListMachineTypesRequest
+        @return: ListMachineTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_machine_types_with_options(request, runtime)
+
+    async def list_machine_types_async(
+        self,
+        request: eflo_controller_20221215_models.ListMachineTypesRequest,
+    ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
+        """
+        @summary 查询用户可用的机型列表
+        
+        @param request: ListMachineTypesRequest
+        @return: ListMachineTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_machine_types_with_options_async(request, runtime)
+
+    def list_node_groups_with_options(
+        self,
+        request: eflo_controller_20221215_models.ListNodeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
+        """
+        @summary Query Node Group Information Under the Cluster
+        
+        @param request: ListNodeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNodeGroups',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListNodeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_groups_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ListNodeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
+        """
+        @summary Query Node Group Information Under the Cluster
+        
+        @param request: ListNodeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListNodeGroups',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ListNodeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_groups(
+        self,
+        request: eflo_controller_20221215_models.ListNodeGroupsRequest,
+    ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
+        """
+        @summary Query Node Group Information Under the Cluster
+        
+        @param request: ListNodeGroupsRequest
+        @return: ListNodeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_node_groups_with_options(request, runtime)
+
+    async def list_node_groups_async(
+        self,
+        request: eflo_controller_20221215_models.ListNodeGroupsRequest,
+    ) -> eflo_controller_20221215_models.ListNodeGroupsResponse:
+        """
+        @summary Query Node Group Information Under the Cluster
+        
+        @param request: ListNodeGroupsRequest
+        @return: ListNodeGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_node_groups_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: eflo_controller_20221215_models.ListTagResourcesRequest,
@@ -2013,6 +2337,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.command_content):
             body['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.command_id):
+            body['CommandId'] = request.command_id
         if not UtilClient.is_unset(request.content_encoding):
             body['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
@@ -2021,6 +2347,8 @@ class Client(OpenApiClient):
             body['EnableParameter'] = request.enable_parameter
         if not UtilClient.is_unset(request.frequency):
             body['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.launcher):
+            body['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.node_id_list_shrink):
@@ -2029,6 +2357,8 @@ class Client(OpenApiClient):
             body['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.repeat_mode):
             body['RepeatMode'] = request.repeat_mode
+        if not UtilClient.is_unset(request.termination_mode):
+            body['TerminationMode'] = request.termination_mode
         if not UtilClient.is_unset(request.timeout):
             body['Timeout'] = request.timeout
         if not UtilClient.is_unset(request.username):
@@ -2078,6 +2408,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.command_content):
             body['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.command_id):
+            body['CommandId'] = request.command_id
         if not UtilClient.is_unset(request.content_encoding):
             body['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
@@ -2086,6 +2418,8 @@ class Client(OpenApiClient):
             body['EnableParameter'] = request.enable_parameter
         if not UtilClient.is_unset(request.frequency):
             body['Frequency'] = request.frequency
+        if not UtilClient.is_unset(request.launcher):
+            body['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.node_id_list_shrink):
@@ -2094,6 +2428,8 @@ class Client(OpenApiClient):
             body['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.repeat_mode):
             body['RepeatMode'] = request.repeat_mode
+        if not UtilClient.is_unset(request.termination_mode):
+            body['TerminationMode'] = request.termination_mode
         if not UtilClient.is_unset(request.timeout):
             body['Timeout'] = request.timeout
         if not UtilClient.is_unset(request.username):
