@@ -735,6 +735,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.city_limit):
+            query['cityLimit'] = request.city_limit
         if not UtilClient.is_unset(request.keywords):
             query['keywords'] = request.keywords
         if not UtilClient.is_unset(request.latitude):
@@ -785,6 +787,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.city_limit):
+            query['cityLimit'] = request.city_limit
         if not UtilClient.is_unset(request.keywords):
             query['keywords'] = request.keywords
         if not UtilClient.is_unset(request.latitude):
@@ -863,6 +867,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.city_limit):
+            query['cityLimit'] = request.city_limit
         if not UtilClient.is_unset(request.keywords):
             query['keywords'] = request.keywords
         if not UtilClient.is_unset(request.page):
@@ -909,6 +915,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.city_limit):
+            query['cityLimit'] = request.city_limit
         if not UtilClient.is_unset(request.keywords):
             query['keywords'] = request.keywords
         if not UtilClient.is_unset(request.page):

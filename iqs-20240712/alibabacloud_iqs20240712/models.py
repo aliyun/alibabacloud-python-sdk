@@ -2331,6 +2331,7 @@ class GeoCodeResponse(TeaModel):
 class NearbySearchNovaRequest(TeaModel):
     def __init__(
         self,
+        city_limit: bool = None,
         keywords: str = None,
         latitude: str = None,
         longitude: str = None,
@@ -2339,6 +2340,7 @@ class NearbySearchNovaRequest(TeaModel):
         size: int = None,
         types: str = None,
     ):
+        self.city_limit = city_limit
         self.keywords = keywords
         self.latitude = latitude
         self.longitude = longitude
@@ -2356,6 +2358,8 @@ class NearbySearchNovaRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.city_limit is not None:
+            result['cityLimit'] = self.city_limit
         if self.keywords is not None:
             result['keywords'] = self.keywords
         if self.latitude is not None:
@@ -2374,6 +2378,8 @@ class NearbySearchNovaRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cityLimit') is not None:
+            self.city_limit = m.get('cityLimit')
         if m.get('keywords') is not None:
             self.keywords = m.get('keywords')
         if m.get('latitude') is not None:
@@ -2724,12 +2730,14 @@ class NearbySearchNovaResponse(TeaModel):
 class PlaceSearchNovaRequest(TeaModel):
     def __init__(
         self,
+        city_limit: bool = None,
         keywords: str = None,
         page: int = None,
         region: str = None,
         size: int = None,
         types: str = None,
     ):
+        self.city_limit = city_limit
         self.keywords = keywords
         self.page = page
         self.region = region
@@ -2745,6 +2753,8 @@ class PlaceSearchNovaRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.city_limit is not None:
+            result['cityLimit'] = self.city_limit
         if self.keywords is not None:
             result['keywords'] = self.keywords
         if self.page is not None:
@@ -2759,6 +2769,8 @@ class PlaceSearchNovaRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cityLimit') is not None:
+            self.city_limit = m.get('cityLimit')
         if m.get('keywords') is not None:
             self.keywords = m.get('keywords')
         if m.get('page') is not None:

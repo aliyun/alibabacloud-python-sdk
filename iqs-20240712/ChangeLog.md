@@ -1,3 +1,8 @@
+2025-01-06 Version: 2.0.4
+- Update API NearbySearchNova: add param cityLimit.
+- Update API PlaceSearchNova: add param cityLimit.
+
+
 2024-12-13 Version: 2.0.3
 - Update API TransitIntegratedDirection: update response param.
 
