@@ -825,6 +825,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_image_analyze_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
 
+    def get_prediction_with_options(
+        self,
+        deployment_id: str,
+        request: searchplat_20240529_models.GetPredictionRequest,
+        headers: searchplat_20240529_models.GetPredictionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetPredictionResponse:
+        """
+        @summary 获取推理结果
+        
+        @param request: GetPredictionRequest
+        @param headers: GetPredictionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPredictionResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.token):
+            real_headers['Token'] = UtilClient.to_jsonstring(headers.token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='GetPrediction',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/deployments/{deployment_id}/predict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetPredictionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_prediction_with_options_async(
+        self,
+        deployment_id: str,
+        request: searchplat_20240529_models.GetPredictionRequest,
+        headers: searchplat_20240529_models.GetPredictionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetPredictionResponse:
+        """
+        @summary 获取推理结果
+        
+        @param request: GetPredictionRequest
+        @param headers: GetPredictionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPredictionResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.token):
+            real_headers['Token'] = UtilClient.to_jsonstring(headers.token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='GetPrediction',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/deployments/{deployment_id}/predict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetPredictionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_prediction(
+        self,
+        deployment_id: str,
+        request: searchplat_20240529_models.GetPredictionRequest,
+    ) -> searchplat_20240529_models.GetPredictionResponse:
+        """
+        @summary 获取推理结果
+        
+        @param request: GetPredictionRequest
+        @return: GetPredictionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = searchplat_20240529_models.GetPredictionHeaders()
+        return self.get_prediction_with_options(deployment_id, request, headers, runtime)
+
+    async def get_prediction_async(
+        self,
+        deployment_id: str,
+        request: searchplat_20240529_models.GetPredictionRequest,
+    ) -> searchplat_20240529_models.GetPredictionResponse:
+        """
+        @summary 获取推理结果
+        
+        @param request: GetPredictionRequest
+        @return: GetPredictionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = searchplat_20240529_models.GetPredictionHeaders()
+        return await self.get_prediction_with_options_async(deployment_id, request, headers, runtime)
+
     def get_query_analysis_with_options(
         self,
         workspace_name: str,
