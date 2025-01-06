@@ -1,3 +1,8 @@
+2025-01-06 Version: 2.19.2
+- Update API TextModeration: update response param.
+- Update API TextModerationPlus: update response param.
+
+
 2024-11-28 Version: 2.19.1
 - Update API ImageBatchModeration: add param Service.
 

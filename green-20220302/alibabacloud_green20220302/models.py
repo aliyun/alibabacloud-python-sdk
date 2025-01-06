@@ -2058,7 +2058,14 @@ class ImageBatchModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The types of detection supported by the enhanced image review, separated by English commas. Values:
+        # 
+        # - baselineCheck：General Baseline Detection
+        # - baselineCheck_pro：General Baseline Detection_Pro Edition
+        # - tonalityImprove：Content governance monitoring
+        # - aigcCheck：AIGC image detection
         self.service = service
+        # The set of relevant parameters for content detection objects.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -2092,8 +2099,11 @@ class ImageBatchModerationResponseBodyDataResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, ranging from 0 to 100, retained to two decimal places. Some labels do not have a confidence score.
         self.confidence = confidence
+        # Description.
         self.description = description
+        # The labels returned after image content detection. A single image may be associated with multiple labels and corresponding scores.
         self.label = label
 
     def validate(self):
@@ -2131,8 +2141,11 @@ class ImageBatchModerationResponseBodyDataResultsExtCustomImage(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # The ID of the hit custom image.
         self.image_id = image_id
+        # Custom library ID
         self.lib_id = lib_id
+        # The name of the hit custom gallery.
         self.lib_name = lib_name
 
     def validate(self):
@@ -2171,9 +2184,13 @@ class ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # The width of the text area, in pixels.
         self.h = h
+        # The height of the text area, in pixels.
         self.w = w
+        # The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin, in pixels.
         self.x = x
+        # The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin, in pixels.
         self.y = y
 
     def validate(self):
@@ -2215,8 +2232,11 @@ class ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo(TeaModel):
         label: str = None,
         name: str = None,
     ):
+        # Confidence score, from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
+        # Identify the category.
         self.label = label
+        # identifier  name.
         self.name = name
 
     def validate(self):
@@ -2253,7 +2273,9 @@ class ImageBatchModerationResponseBodyDataResultsExtLogoData(TeaModel):
         location: ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation = None,
         logo: List[ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo] = None,
     ):
+        # The location information of the identifier.
         self.location = location
+        # identification information
         self.logo = logo
 
     def validate(self):
@@ -2299,9 +2321,13 @@ class ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation(TeaMode
         x: int = None,
         y: int = None,
     ):
+        # The width of the text area, in pixels.
         self.h = h
+        # The height of the text area, in pixels.
         self.w = w
+        # The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin, in pixels.
         self.x = x
+        # The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin, in pixels.
         self.y = y
 
     def validate(self):
@@ -2343,8 +2369,11 @@ class ImageBatchModerationResponseBodyDataResultsExtPublicFigure(TeaModel):
         figure_name: str = None,
         location: List[ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation] = None,
     ):
+        # Identify the encoded information of the person.
         self.figure_id = figure_id
+        # The identified person\\"s name information.
         self.figure_name = figure_name
+        # The location information of the identifier.
         self.location = location
 
     def validate(self):
@@ -2390,8 +2419,11 @@ class ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText(TeaMod
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # Custom words, separate multiple words with commas.
         self.key_words = key_words
+        # Custom library ID.
         self.lib_id = lib_id
+        # Custom library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -2430,9 +2462,13 @@ class ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation
         x: int = None,
         y: int = None,
     ):
+        # The height of the text area, in pixels.
         self.h = h
+        # The width of the text area, in pixels.
         self.w = w
+        # The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin, in pixels.
         self.x = x
+        # The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin, in pixels.
         self.y = y
 
     def validate(self):
@@ -2473,7 +2509,9 @@ class ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult(TeaMode
         location: ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation = None,
         text: str = None,
     ):
+        # Text line coordinate information.
         self.location = location
+        # Text information.
         self.text = text
 
     def validate(self):
@@ -2509,8 +2547,11 @@ class ImageBatchModerationResponseBodyDataResultsExtTextInImage(TeaModel):
         ocr_result: List[ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult] = None,
         risk_word: List[str] = None,
     ):
+        # When a custom text library is matched, return the custom library ID, custom library name, and custom words.
         self.custom_text = custom_text
+        # Return the text information of each line recognized in the image.
         self.ocr_result = ocr_result
+        # hit risk keywords
         self.risk_word = risk_word
 
     def validate(self):
@@ -2566,9 +2607,13 @@ class ImageBatchModerationResponseBodyDataResultsExt(TeaModel):
         public_figure: List[ImageBatchModerationResponseBodyDataResultsExtPublicFigure] = None,
         text_in_image: ImageBatchModerationResponseBodyDataResultsExtTextInImage = None,
     ):
+        # Custom image library hit information list.
         self.custom_image = custom_image
+        # Logo identification information.
         self.logo_data = logo_data
+        # List of character information.
         self.public_figure = public_figure
+        # Return the text information from the recognized images.
         self.text_in_image = text_in_image
 
     def validate(self):
@@ -2633,8 +2678,11 @@ class ImageBatchModerationResponseBodyDataResultsResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
+        # Confidence score, ranging from 0 to 100, rounded to two decimal places. Some labels do not have a confidence score.
         self.confidence = confidence
+        # Description.
         self.description = description
+        # The labels returned after image content detection. A single image may have multiple labels and corresponding scores detected.
         self.label = label
 
     def validate(self):
@@ -2673,9 +2721,13 @@ class ImageBatchModerationResponseBodyDataResults(TeaModel):
         risk_level: str = None,
         service: str = None,
     ):
+        # Image supplementary reference information.
         self.ext = ext
+        # The risk labels, confidence scores, and other parameters of image detection results, in an array structure.
         self.result = result
+        # Risk level.
         self.risk_level = risk_level
+        # The enhanced image detection service supports various detection services.
         self.service = service
 
     def validate(self):
@@ -2729,9 +2781,13 @@ class ImageBatchModerationResponseBodyData(TeaModel):
         results: List[ImageBatchModerationResponseBodyDataResults] = None,
         risk_level: str = None,
     ):
+        # To detect the data ID corresponding to the object.
         self.data_id = data_id
+        # The risk labels, confidence scores, and other parameters of image detection results, in an array structure.
         self.result = result
+        # The risk labels, confidence scores, and other parameters for each service\\"s image detection, in an array structure.
         self.results = results
+        # Risk level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -2791,9 +2847,13 @@ class ImageBatchModerationResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # Return code. A return of 200 represents success.
         self.code = code
+        # The result of image content detection.
         self.data = data
+        # The response message for this request.
         self.msg = msg
+        # The ID of this invocation request, generated by Alibaba Cloud as a unique identifier for the request, can be used for troubleshooting and pinpointing issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4382,12 +4442,16 @@ class TextModerationResponseBodyData(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        data_id: str = None,
+        descriptions: str = None,
         device_id: str = None,
         labels: str = None,
         reason: str = None,
     ):
         # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        self.data_id = data_id
+        self.descriptions = descriptions
         # The device ID.
         self.device_id = device_id
         # Labels.
@@ -4406,6 +4470,10 @@ class TextModerationResponseBodyData(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['accountId'] = self.account_id
+        if self.data_id is not None:
+            result['dataId'] = self.data_id
+        if self.descriptions is not None:
+            result['descriptions'] = self.descriptions
         if self.device_id is not None:
             result['deviceId'] = self.device_id
         if self.labels is not None:
@@ -4418,6 +4486,10 @@ class TextModerationResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+        if m.get('dataId') is not None:
+            self.data_id = m.get('dataId')
+        if m.get('descriptions') is not None:
+            self.descriptions = m.get('descriptions')
         if m.get('deviceId') is not None:
             self.device_id = m.get('deviceId')
         if m.get('labels') is not None:
@@ -4707,12 +4779,14 @@ class TextModerationPlusResponseBodyData(TeaModel):
     def __init__(
         self,
         advice: List[TextModerationPlusResponseBodyDataAdvice] = None,
+        data_id: str = None,
         result: List[TextModerationPlusResponseBodyDataResult] = None,
         risk_level: str = None,
         score: float = None,
     ):
         # The suggestion.
         self.advice = advice
+        self.data_id = data_id
         # The results.
         self.result = result
         # Risk Level
@@ -4740,6 +4814,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
         if self.advice is not None:
             for k in self.advice:
                 result['Advice'].append(k.to_map() if k else None)
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         result['Result'] = []
         if self.result is not None:
             for k in self.result:
@@ -4757,6 +4833,8 @@ class TextModerationPlusResponseBodyData(TeaModel):
             for k in m.get('Advice'):
                 temp_model = TextModerationPlusResponseBodyDataAdvice()
                 self.advice.append(temp_model.from_map(k))
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
