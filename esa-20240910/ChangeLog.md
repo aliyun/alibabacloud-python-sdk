@@ -1,3 +1,8 @@
+2025-01-06 Version: 2.9.0
+- Support API DescribeDDoSBpsList.
+- Support API DescribeDDoSL7QpsList.
+
+
 2024-12-27 Version: 2.8.0
 - Support API ApplyCertificate.
 - Support API CreateOriginPool.

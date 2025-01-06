@@ -7799,6 +7799,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ddo_sall_event_list_with_options_async(request, runtime)
 
+    def describe_ddo_sbps_list_with_options(
+        self,
+        request: esa20240910_models.DescribeDDoSBpsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeDDoSBpsListResponse:
+        """
+        @summary 查询DCDN DDoS用户bps、pps数据
+        
+        @param request: DescribeDDoSBpsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSBpsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSBpsList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeDDoSBpsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sbps_list_with_options_async(
+        self,
+        request: esa20240910_models.DescribeDDoSBpsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeDDoSBpsListResponse:
+        """
+        @summary 查询DCDN DDoS用户bps、pps数据
+        
+        @param request: DescribeDDoSBpsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSBpsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSBpsList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeDDoSBpsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sbps_list(
+        self,
+        request: esa20240910_models.DescribeDDoSBpsListRequest,
+    ) -> esa20240910_models.DescribeDDoSBpsListResponse:
+        """
+        @summary 查询DCDN DDoS用户bps、pps数据
+        
+        @param request: DescribeDDoSBpsListRequest
+        @return: DescribeDDoSBpsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ddo_sbps_list_with_options(request, runtime)
+
+    async def describe_ddo_sbps_list_async(
+        self,
+        request: esa20240910_models.DescribeDDoSBpsListRequest,
+    ) -> esa20240910_models.DescribeDDoSBpsListResponse:
+        """
+        @summary 查询DCDN DDoS用户bps、pps数据
+        
+        @param request: DescribeDDoSBpsListRequest
+        @return: DescribeDDoSBpsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ddo_sbps_list_with_options_async(request, runtime)
+
+    def describe_ddo_sl7qps_list_with_options(
+        self,
+        request: esa20240910_models.DescribeDDoSL7QpsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeDDoSL7QpsListResponse:
+        """
+        @summary ddos分析七层qps走势图接口
+        
+        @param request: DescribeDDoSL7QpsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSL7QpsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSL7QpsList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeDDoSL7QpsListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sl7qps_list_with_options_async(
+        self,
+        request: esa20240910_models.DescribeDDoSL7QpsListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DescribeDDoSL7QpsListResponse:
+        """
+        @summary ddos分析七层qps走势图接口
+        
+        @param request: DescribeDDoSL7QpsListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDDoSL7QpsListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDDoSL7QpsList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DescribeDDoSL7QpsListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sl7qps_list(
+        self,
+        request: esa20240910_models.DescribeDDoSL7QpsListRequest,
+    ) -> esa20240910_models.DescribeDDoSL7QpsListResponse:
+        """
+        @summary ddos分析七层qps走势图接口
+        
+        @param request: DescribeDDoSL7QpsListRequest
+        @return: DescribeDDoSL7QpsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ddo_sl7qps_list_with_options(request, runtime)
+
+    async def describe_ddo_sl7qps_list_async(
+        self,
+        request: esa20240910_models.DescribeDDoSL7QpsListRequest,
+    ) -> esa20240910_models.DescribeDDoSL7QpsListResponse:
+        """
+        @summary ddos分析七层qps走势图接口
+        
+        @param request: DescribeDDoSL7QpsListRequest
+        @return: DescribeDDoSL7QpsListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ddo_sl7qps_list_with_options_async(request, runtime)
+
     def describe_http_ddo_sattack_intelligent_protection_with_options(
         self,
         request: esa20240910_models.DescribeHttpDDoSAttackIntelligentProtectionRequest,

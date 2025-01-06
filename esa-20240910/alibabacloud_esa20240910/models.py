@@ -14951,6 +14951,431 @@ class DescribeDDoSAllEventListResponse(TeaModel):
         return self
 
 
+class DescribeDDoSBpsListRequest(TeaModel):
+    def __init__(
+        self,
+        coverage: str = None,
+        end_time: str = None,
+        site_id: int = None,
+        start_time: str = None,
+    ):
+        self.coverage = coverage
+        self.end_time = end_time
+        # This parameter is required.
+        self.site_id = site_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coverage is not None:
+            result['Coverage'] = self.coverage
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Coverage') is not None:
+            self.coverage = m.get('Coverage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDDoSBpsListResponseBodyDataModule(TeaModel):
+    def __init__(
+        self,
+        attack_bps: int = None,
+        attack_pps: int = None,
+        normal_bps: int = None,
+        normal_pps: int = None,
+        time_stamp: str = None,
+        total_bps: int = None,
+        total_pps: int = None,
+    ):
+        self.attack_bps = attack_bps
+        self.attack_pps = attack_pps
+        self.normal_bps = normal_bps
+        self.normal_pps = normal_pps
+        self.time_stamp = time_stamp
+        self.total_bps = total_bps
+        self.total_pps = total_pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack_bps is not None:
+            result['AttackBps'] = self.attack_bps
+        if self.attack_pps is not None:
+            result['AttackPps'] = self.attack_pps
+        if self.normal_bps is not None:
+            result['NormalBps'] = self.normal_bps
+        if self.normal_pps is not None:
+            result['NormalPps'] = self.normal_pps
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.total_bps is not None:
+            result['TotalBps'] = self.total_bps
+        if self.total_pps is not None:
+            result['TotalPps'] = self.total_pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttackBps') is not None:
+            self.attack_bps = m.get('AttackBps')
+        if m.get('AttackPps') is not None:
+            self.attack_pps = m.get('AttackPps')
+        if m.get('NormalBps') is not None:
+            self.normal_bps = m.get('NormalBps')
+        if m.get('NormalPps') is not None:
+            self.normal_pps = m.get('NormalPps')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TotalBps') is not None:
+            self.total_bps = m.get('TotalBps')
+        if m.get('TotalPps') is not None:
+            self.total_pps = m.get('TotalPps')
+        return self
+
+
+class DescribeDDoSBpsListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: int = None,
+        data_module: List[DescribeDDoSBpsListResponseBodyDataModule] = None,
+        end_time: str = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.data_module = data_module
+        self.end_time = end_time
+        # Id of the request
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeDDoSBpsListResponseBodyDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDDoSBpsListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDDoSBpsListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDDoSBpsListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDDoSL7QpsListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        interval: int = None,
+        record_id: int = None,
+        site_id: int = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.interval = interval
+        self.record_id = record_id
+        # This parameter is required.
+        self.site_id = site_id
+        # A short description of struct
+        # 
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDDoSL7QpsListResponseBodyDataModule(TeaModel):
+    def __init__(
+        self,
+        attack: int = None,
+        normal: int = None,
+        time_stamp: str = None,
+        total: int = None,
+    ):
+        self.attack = attack
+        self.normal = normal
+        self.time_stamp = time_stamp
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack is not None:
+            result['Attack'] = self.attack
+        if self.normal is not None:
+            result['Normal'] = self.normal
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attack') is not None:
+            self.attack = m.get('Attack')
+        if m.get('Normal') is not None:
+            self.normal = m.get('Normal')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeDDoSL7QpsListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: int = None,
+        data_module: List[DescribeDDoSL7QpsListResponseBodyDataModule] = None,
+        end_time: str = None,
+        record_id: int = None,
+        request_id: str = None,
+        site_id: int = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.data_module = data_module
+        self.end_time = end_time
+        self.record_id = record_id
+        # Id of the request
+        self.request_id = request_id
+        self.site_id = site_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeDDoSL7QpsListResponseBodyDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDDoSL7QpsListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDDoSL7QpsListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDDoSL7QpsListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHttpDDoSAttackIntelligentProtectionRequest(TeaModel):
     def __init__(
         self,
@@ -16406,7 +16831,7 @@ class GetCertificateResponseBodyResultDCV(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # DCV ID。
+        # DCV ID.
         self.id = id
         self.key = key
         self.status = status
