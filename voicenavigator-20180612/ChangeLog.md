@@ -1,3 +1,8 @@
+2025-01-06 Version: 1.0.7
+- Update API GetAsrConfig: update response param.
+- Update API ModifyAsrConfig: add param Engine.
+
+
 2024-07-22 Version: 1.0.6
 - Update API DescribeTTSConfig: update response param.
 - Update API ExportConversationDetails: update response param.

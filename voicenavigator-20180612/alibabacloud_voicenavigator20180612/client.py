@@ -3147,6 +3147,8 @@ class Client(OpenApiClient):
             query['AsrVocabularyId'] = request.asr_vocabulary_id
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.entry_id):
             query['EntryId'] = request.entry_id
         req = open_api_models.OpenApiRequest(
@@ -3190,6 +3192,8 @@ class Client(OpenApiClient):
             query['AsrVocabularyId'] = request.asr_vocabulary_id
         if not UtilClient.is_unset(request.config_level):
             query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         if not UtilClient.is_unset(request.entry_id):
             query['EntryId'] = request.entry_id
         req = open_api_models.OpenApiRequest(

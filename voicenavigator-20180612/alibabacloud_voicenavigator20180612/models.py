@@ -3833,11 +3833,15 @@ class GetAsrConfigResponseBodyData(TeaModel):
         asr_class_vocabulary_id: str = None,
         asr_customization_id: str = None,
         asr_vocabulary_id: str = None,
+        engine: str = None,
+        engine_xufei: str = None,
     ):
         self.asr_acoustic_model_id = asr_acoustic_model_id
         self.asr_class_vocabulary_id = asr_class_vocabulary_id
         self.asr_customization_id = asr_customization_id
         self.asr_vocabulary_id = asr_vocabulary_id
+        self.engine = engine
+        self.engine_xufei = engine_xufei
 
     def validate(self):
         pass
@@ -3856,6 +3860,10 @@ class GetAsrConfigResponseBodyData(TeaModel):
             result['AsrCustomizationId'] = self.asr_customization_id
         if self.asr_vocabulary_id is not None:
             result['AsrVocabularyId'] = self.asr_vocabulary_id
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_xufei is not None:
+            result['EngineXufei'] = self.engine_xufei
         return result
 
     def from_map(self, m: dict = None):
@@ -3868,6 +3876,10 @@ class GetAsrConfigResponseBodyData(TeaModel):
             self.asr_customization_id = m.get('AsrCustomizationId')
         if m.get('AsrVocabularyId') is not None:
             self.asr_vocabulary_id = m.get('AsrVocabularyId')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineXufei') is not None:
+            self.engine_xufei = m.get('EngineXufei')
         return self
 
 
@@ -5351,6 +5363,7 @@ class ModifyAsrConfigRequest(TeaModel):
         asr_customization_id: str = None,
         asr_vocabulary_id: str = None,
         config_level: int = None,
+        engine: str = None,
         entry_id: str = None,
     ):
         self.asr_acoustic_model_id = asr_acoustic_model_id
@@ -5358,6 +5371,7 @@ class ModifyAsrConfigRequest(TeaModel):
         self.asr_customization_id = asr_customization_id
         self.asr_vocabulary_id = asr_vocabulary_id
         self.config_level = config_level
+        self.engine = engine
         self.entry_id = entry_id
 
     def validate(self):
@@ -5379,6 +5393,8 @@ class ModifyAsrConfigRequest(TeaModel):
             result['AsrVocabularyId'] = self.asr_vocabulary_id
         if self.config_level is not None:
             result['ConfigLevel'] = self.config_level
+        if self.engine is not None:
+            result['Engine'] = self.engine
         if self.entry_id is not None:
             result['EntryId'] = self.entry_id
         return result
@@ -5395,6 +5411,8 @@ class ModifyAsrConfigRequest(TeaModel):
             self.asr_vocabulary_id = m.get('AsrVocabularyId')
         if m.get('ConfigLevel') is not None:
             self.config_level = m.get('ConfigLevel')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
         if m.get('EntryId') is not None:
             self.entry_id = m.get('EntryId')
         return self
