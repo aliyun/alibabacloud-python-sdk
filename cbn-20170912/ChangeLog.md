@@ -1,3 +1,9 @@
+2025-01-06 Version: 1.2.2
+- Update API CreateTransitRouterMulticastDomain: add param Options.
+- Update API ListTransitRouterMulticastDomains: update response param.
+- Update API ModifyTransitRouterMulticastDomain: add param Options.
+
+
 2024-11-15 Version: 1.2.1
 - Update API ActiveFlowLog: update param CenId.
 - Update API CreateFlowlog: add param LogFormatString.

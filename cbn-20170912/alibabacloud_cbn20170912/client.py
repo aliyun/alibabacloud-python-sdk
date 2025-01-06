@@ -1811,7 +1811,7 @@ class Client(OpenApiClient):
         **CreateCenInterRegionTrafficQosPolicy** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the task.
         If the QoS policy is in the **Creating** state, the QoS policy is being created. You can query the QoS policy but cannot perform other operations on the QoS policy.
         If the QoS policy is in the **Active** state, the QoS policy is created.
-        ## [](#)Prerequisite
+        ### [](#)Prerequisites
         Before you call the *CreateCenInterRegionTrafficQosPolicy** operation, make sure that the following requirements are met:
         An inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
         A traffic marking policy is created. For more information, see [CreateTrafficMarkingPolicy](https://help.aliyun.com/document_detail/419025.html).
@@ -1879,7 +1879,7 @@ class Client(OpenApiClient):
         **CreateCenInterRegionTrafficQosPolicy** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the task.
         If the QoS policy is in the **Creating** state, the QoS policy is being created. You can query the QoS policy but cannot perform other operations on the QoS policy.
         If the QoS policy is in the **Active** state, the QoS policy is created.
-        ## [](#)Prerequisite
+        ### [](#)Prerequisites
         Before you call the *CreateCenInterRegionTrafficQosPolicy** operation, make sure that the following requirements are met:
         An inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
         A traffic marking policy is created. For more information, see [CreateTrafficMarkingPolicy](https://help.aliyun.com/document_detail/419025.html).
@@ -1946,7 +1946,7 @@ class Client(OpenApiClient):
         **CreateCenInterRegionTrafficQosPolicy** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the task.
         If the QoS policy is in the **Creating** state, the QoS policy is being created. You can query the QoS policy but cannot perform other operations on the QoS policy.
         If the QoS policy is in the **Active** state, the QoS policy is created.
-        ## [](#)Prerequisite
+        ### [](#)Prerequisites
         Before you call the *CreateCenInterRegionTrafficQosPolicy** operation, make sure that the following requirements are met:
         An inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
         A traffic marking policy is created. For more information, see [CreateTrafficMarkingPolicy](https://help.aliyun.com/document_detail/419025.html).
@@ -1970,7 +1970,7 @@ class Client(OpenApiClient):
         **CreateCenInterRegionTrafficQosPolicy** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the task.
         If the QoS policy is in the **Creating** state, the QoS policy is being created. You can query the QoS policy but cannot perform other operations on the QoS policy.
         If the QoS policy is in the **Active** state, the QoS policy is created.
-        ## [](#)Prerequisite
+        ### [](#)Prerequisites
         Before you call the *CreateCenInterRegionTrafficQosPolicy** operation, make sure that the following requirements are met:
         An inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
         A traffic marking policy is created. For more information, see [CreateTrafficMarkingPolicy](https://help.aliyun.com/document_detail/419025.html).
@@ -1987,9 +1987,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
         """
-        @summary The ID of the queue.
+        @summary Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
         
-        @description The ID of the request.
+        @description The *CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
+        - If a QoS policy is in the *Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+        - If a QoS policy is in the *Active** state, the queue is created.
         
         @param request: CreateCenInterRegionTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2046,9 +2048,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
         """
-        @summary The ID of the queue.
+        @summary Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
         
-        @description The ID of the request.
+        @description The *CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
+        - If a QoS policy is in the *Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+        - If a QoS policy is in the *Active** state, the queue is created.
         
         @param request: CreateCenInterRegionTrafficQosQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2104,9 +2108,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
         """
-        @summary The ID of the queue.
+        @summary Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
         
-        @description The ID of the request.
+        @description The *CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
+        - If a QoS policy is in the *Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+        - If a QoS policy is in the *Active** state, the queue is created.
         
         @param request: CreateCenInterRegionTrafficQosQueueRequest
         @return: CreateCenInterRegionTrafficQosQueueResponse
@@ -2119,9 +2125,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
         """
-        @summary The ID of the queue.
+        @summary Creates queues in a quality of service (QoS) policy to manage network traffic based on finer granularities, improve service performance, and meet service-level agreements (SLAs).
         
-        @description The ID of the request.
+        @description The *CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
+        - If a QoS policy is in the *Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
+        - If a QoS policy is in the *Active** state, the queue is created.
         
         @param request: CreateCenInterRegionTrafficQosQueueRequest
         @return: CreateCenInterRegionTrafficQosQueueResponse
@@ -2385,16 +2393,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a flow log.
         
-        @description Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+        @description Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
         Flow logs are supported only by Enterprise Edition transit routers.
-        Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
-        Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
-        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
-        `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
-        If a flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
-        If a flow log is in the **Active** state, the flow log is created.
-        # Prerequisites
-        An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+        Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+        If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
+        `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        If the flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+        If the flow log is in the **Active** state, the flow log is created.
+        ### [](#)Prerequisites
+        Required resources are created. For more information about how to create resources, see the following topics:
+        [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+        [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+        [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+        [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+        [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+        [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
         
         @param request: CreateFlowlogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2461,16 +2475,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a flow log.
         
-        @description Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+        @description Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
         Flow logs are supported only by Enterprise Edition transit routers.
-        Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
-        Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
-        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
-        `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
-        If a flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
-        If a flow log is in the **Active** state, the flow log is created.
-        # Prerequisites
-        An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+        Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+        If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
+        `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        If the flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+        If the flow log is in the **Active** state, the flow log is created.
+        ### [](#)Prerequisites
+        Required resources are created. For more information about how to create resources, see the following topics:
+        [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+        [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+        [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+        [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+        [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+        [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
         
         @param request: CreateFlowlogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2536,16 +2556,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a flow log.
         
-        @description Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+        @description Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
         Flow logs are supported only by Enterprise Edition transit routers.
-        Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
-        Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
-        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
-        `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
-        If a flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
-        If a flow log is in the **Active** state, the flow log is created.
-        # Prerequisites
-        An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+        Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+        If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
+        `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        If the flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+        If the flow log is in the **Active** state, the flow log is created.
+        ### [](#)Prerequisites
+        Required resources are created. For more information about how to create resources, see the following topics:
+        [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+        [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+        [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+        [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+        [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+        [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
         
         @param request: CreateFlowlogRequest
         @return: CreateFlowlogResponse
@@ -2560,16 +2586,22 @@ class Client(OpenApiClient):
         """
         @summary Creates a flow log.
         
-        @description Flow logs are used to capture the information about network traffic between transit routers and between virtual border routers (VBRs). Before you create a flow log, take note of the following items:
+        @description Flow logs can be used to capture traffic information about transit routers and network instance connections, including inter-region connections, virtual private cloud (VPC) connections, VPN connections, Express Connect Router (ECR) connections, and virtual border router (VBR) connections. Before you create a flow log, take note of the following items:
         Flow logs are supported only by Enterprise Edition transit routers.
-        Only flow logs in some regions can capture the information about network traffic over VBR connections. For more information, see [Limits](https://help.aliyun.com/document_detail/339822.html).
-        Flow logs are used to capture the information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
-        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through CEN. After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
-        `CreateFlowLog` is an asynchronous operation. After you send a request, the system returns a flow log ID and runs the task in the background. You can call the `DescribeFlowLogs` operation to query the status of a flow log.
-        If a flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
-        If a flow log is in the **Active** state, the flow log is created.
-        # Prerequisites
-        An inter-region connection or a VBR connection is created. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html) or [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/261361.html).
+        Flow logs are used to capture information about outbound traffic on transit routers. Information about inbound traffic on transit routers is not captured.
+        For example, an Elastic Compute Service (ECS) instance in the US (Silicon Valley) region accesses an ECS instance in the US (Virginia) region through Cloud Enterprise Network (CEN). After you enable the flow log feature for the transit router in the US (Virginia) region, you can check the log entries about packets sent from the ECS instance in the US (Virginia) region to the ECS instance in the US (Silicon Valley) region. However, packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region are not recorded. If you want to record the packets sent from the ECS instance in the US (Silicon Valley) region to the ECS instance in the US (Virginia) region, you must also enable the flow log feature on the transit router that is in the US (Silicon Valley) region.
+        If you use a flow log to capture traffic information about VPC connections, the flow log captures information only about traffic on the elastic network interface (ENI) of the transit router. For more information about how to view traffic information about other ENIs in the VPC, see [VPC flow log overview](https://help.aliyun.com/document_detail/127150.html).
+        `CreateFlowLog` is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        If the flow log is in the **Creating** state, the flow log is being created. In this case, you can query the flow log but cannot perform other operations.
+        If the flow log is in the **Active** state, the flow log is created.
+        ### [](#)Prerequisites
+        Required resources are created. For more information about how to create resources, see the following topics:
+        [CreateTransitRouterVpcAttachment](https://help.aliyun.com/document_detail/468237.html)
+        [CreateTransitRouterEcrAttachment](https://help.aliyun.com/document_detail/2715446.html)
+        [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468249.html)
+        [CreateTransitRouterVbrAttachment](https://help.aliyun.com/document_detail/468243.html)
+        [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/468270.html)
+        [CreateTransitRouter](https://help.aliyun.com/document_detail/468222.html)
         
         @param request: CreateFlowlogRequest
         @return: CreateFlowlogResponse
@@ -3490,6 +3522,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -3552,6 +3586,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4509,18 +4545,18 @@ class Client(OpenApiClient):
         """
         @summary Attaches virtual private clouds (VPCs) that you want to connect to a transit router. After you attach the VPCs to the same transit router, the VPCs can communicate with each other.
         
-        @description    You can use the following methods to attach a VPC to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
-        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
-        If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
-        If a VPC connection is in the **Attached** state, the VPC connection is created.
+        @description    You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId** parameters.
+        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+        If the VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        If the VPC connection is in the **Attached** state, the VPC connection is created.
         By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
-        ## Prerequisites
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
-        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
-        VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+        The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
         @param tmp_req: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4595,18 +4631,18 @@ class Client(OpenApiClient):
         """
         @summary Attaches virtual private clouds (VPCs) that you want to connect to a transit router. After you attach the VPCs to the same transit router, the VPCs can communicate with each other.
         
-        @description    You can use the following methods to attach a VPC to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
-        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
-        If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
-        If a VPC connection is in the **Attached** state, the VPC connection is created.
+        @description    You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId** parameters.
+        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+        If the VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        If the VPC connection is in the **Attached** state, the VPC connection is created.
         By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
-        ## Prerequisites
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
-        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
-        VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+        The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
         @param tmp_req: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4680,18 +4716,18 @@ class Client(OpenApiClient):
         """
         @summary Attaches virtual private clouds (VPCs) that you want to connect to a transit router. After you attach the VPCs to the same transit router, the VPCs can communicate with each other.
         
-        @description    You can use the following methods to attach a VPC to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
-        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
-        If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
-        If a VPC connection is in the **Attached** state, the VPC connection is created.
+        @description    You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId** parameters.
+        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+        If the VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        If the VPC connection is in the **Attached** state, the VPC connection is created.
         By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
-        ## Prerequisites
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
-        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
-        VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+        The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @return: CreateTransitRouterVpcAttachmentResponse
@@ -4706,18 +4742,18 @@ class Client(OpenApiClient):
         """
         @summary Attaches virtual private clouds (VPCs) that you want to connect to a transit router. After you attach the VPCs to the same transit router, the VPCs can communicate with each other.
         
-        @description    You can use the following methods to attach a VPC to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
-        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the VPC connection ID is returned but the operation is still being performed in the system background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
-        If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
-        If a VPC connection is in the **Attached** state, the VPC connection is created.
+        @description    You can use the following methods to create a VPC connection from an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **TransitRouterId**, and **RegionId** parameters.
+        If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, configure the **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVpcAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](https://help.aliyun.com/document_detail/261222.html) operation to query the status of a VPC connection.
+        If the VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+        If the VPC connection is in the **Attached** state, the VPC connection is created.
         By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
-        ## Prerequisites
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
-        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
-        VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
+        The VPC in the zones of the Enterprise Edition transit router contains at least one vSwitch. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](https://help.aliyun.com/document_detail/181681.html).
+        To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        VPC connections incur fees. Make sure that you understand the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
         @param request: CreateTransitRouterVpcAttachmentRequest
         @return: CreateTransitRouterVpcAttachmentResponse
@@ -10451,7 +10487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         """
-        @summary 查询指定区域内的地域信息
+        @summary Queries regions in an area.
         
         @param request: DescribeGeographicRegionMembershipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10498,7 +10534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         """
-        @summary 查询指定区域内的地域信息
+        @summary Queries regions in an area.
         
         @param request: DescribeGeographicRegionMembershipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10544,7 +10580,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeGeographicRegionMembershipRequest,
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         """
-        @summary 查询指定区域内的地域信息
+        @summary Queries regions in an area.
         
         @param request: DescribeGeographicRegionMembershipRequest
         @return: DescribeGeographicRegionMembershipResponse
@@ -10557,7 +10593,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeGeographicRegionMembershipRequest,
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         """
-        @summary 查询指定区域内的地域信息
+        @summary Queries regions in an area.
         
         @param request: DescribeGeographicRegionMembershipRequest
         @return: DescribeGeographicRegionMembershipResponse
@@ -17175,7 +17211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         """
-        @summary Modifies the name and description of a flow log.
+        @summary Modifies the name, description, and capture window of a flow log.
         
         @description `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
@@ -17234,7 +17270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         """
-        @summary Modifies the name and description of a flow log.
+        @summary Modifies the name, description, and capture window of a flow log.
         
         @description `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
@@ -17292,7 +17328,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         """
-        @summary Modifies the name and description of a flow log.
+        @summary Modifies the name, description, and capture window of a flow log.
         
         @description `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
@@ -17309,7 +17345,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         """
-        @summary Modifies the name and description of a flow log.
+        @summary Modifies the name, description, and capture window of a flow log.
         
         @description `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
         If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
@@ -17327,7 +17363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        @summary 编辑流分类规则的名称和描述
+        @summary Modifies the name and description of a traffic classification rule.
         
         @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17380,7 +17416,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        @summary 编辑流分类规则的名称和描述
+        @summary Modifies the name and description of a traffic classification rule.
         
         @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17432,7 +17468,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        @summary 编辑流分类规则的名称和描述
+        @summary Modifies the name and description of a traffic classification rule.
         
         @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
         @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
@@ -17445,7 +17481,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest,
     ) -> cbn_20170912_models.ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse:
         """
-        @summary 编辑流分类规则的名称和描述
+        @summary Modifies the name and description of a traffic classification rule.
         
         @param request: ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest
         @return: ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse
@@ -17643,6 +17679,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -17694,6 +17732,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

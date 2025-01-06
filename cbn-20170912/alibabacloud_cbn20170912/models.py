@@ -1798,7 +1798,6 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         # *   **North-America**: North America
         # *   **Asia-Pacific**: Asia Pacific
         # *   **Europe**: Europe
-        # *   **Australia**: Australia
         # 
         # This parameter is required.
         self.geographic_region_aid = geographic_region_aid
@@ -1808,7 +1807,6 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         # *   **North-America**: North America
         # *   **Asia-Pacific**: Asia Pacific
         # *   **Europe**: Europe
-        # *   **Australia**: Australia
         # 
         # This parameter is required.
         self.geographic_region_bid = geographic_region_bid
@@ -2378,6 +2376,13 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
         qos_queue_name: str = None,
         remain_bandwidth_percent: str = None,
     ):
+        # The absolute bandwidth that can be consumed by the QoS queue. Unit: Mbit/s.
+        # 
+        # Each QoS policy supports at most 10 queues. You can specify a valid bandwidth value for each queue.
+        # 
+        # For example, a value of 1 specifies that the queue can consume 1 Mbit/s of the inter-region bandwidth.
+        # 
+        # >  The sum of the absolute bandwidth values of all the queues in a QoS policy cannot exceed the total bandwidth of the inter-region connection.
         self.bandwidth = bandwidth
         # The Differentiated Services Code Point (DSCP) value that matches the current queue.
         # 
@@ -2385,7 +2390,7 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
         self.dscps = dscps
         # The description of the current queue.
         # 
-        # Each QoS policy supports at most three queues. You can specify a description for each queue.
+        # Each QoS policy supports at most 10 queues. You can specify a description for each queue.
         # 
         # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.qos_queue_description = qos_queue_description
@@ -2397,7 +2402,7 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
         self.qos_queue_name = qos_queue_name
         # The percentage of the inter-region bandwidth that can be used by the queue.
         # 
-        # Each QoS policy supports at most three queues. You can specify a valid percentage for each queue.
+        # Each QoS policy supports at most 10 queues. You can specify a valid percentage for each queue.
         # 
         # For example, a value of **1** specifies that the queue can consume 1% of the inter-region bandwidth.
         # 
@@ -2456,6 +2461,10 @@ class CreateCenInterRegionTrafficQosPolicyRequest(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
+        # The allocation mode of the guaranteed bandwidth. You can specify an absolute bandwidth value or a bandwidth percentage. Valid values:
+        # 
+        # *   **byBandwidth**: allocates an absolute bandwidth value for the QoS queue.
+        # *   **byBandwidthPercent** (default): allocates a bandwidth percentage for the OoS queue.
         self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -2655,18 +2664,47 @@ class CreateCenInterRegionTrafficQosQueueRequest(TeaModel):
         resource_owner_id: int = None,
         traffic_qos_policy_id: str = None,
     ):
+        # The maximum absolute bandwidth value that can be allocated to the queue. Unit: Mbit/s.
+        # 
+        # - The value specifies an absolute bandwidth. For example, a value of 20 specifies that the queue can consume at most 20 Mbit/s of bandwidth.
+        # - The sum of the bandwidth values specified for all queues that belong to the same inter-region connection cannot exceed the maximum bandwidth of the inter-region connection.
         self.bandwidth = bandwidth
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # - **true**: performs a dry run. The system checks the required parameters, the request format, and the service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request.
         self.dry_run = dry_run
+        # The differentiated services code point (DSCP) value that matches the current queue.
+        # 
+        # You can specify at most 20 DSCP values for a queue in each call. Separate DSCP values with commas (,).
+        # 
         # This parameter is required.
         self.dscps = dscps
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The description of the queue.
+        # 
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.qos_queue_description = qos_queue_description
+        # The name of the queue.
+        # 
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.qos_queue_name = qos_queue_name
+        # The maximum percentage of inter-region bandwidth that can be allocated to the queue.
+        # 
+        # - Unit: percentage. For example, a value of 20 specifies that the queue can consume at most 20% of inter-region bandwidth.
+        # - The sum of the percentage values specified for all queues that belong to the same inter-region connection cannot exceed 100%.
         self.remain_bandwidth_percent = remain_bandwidth_percent
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the QoS policy.
+        # 
         # This parameter is required.
         self.traffic_qos_policy_id = traffic_qos_policy_id
 
@@ -2740,7 +2778,9 @@ class CreateCenInterRegionTrafficQosQueueResponseBody(TeaModel):
         qos_queue_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the queue.
         self.qos_queue_id = qos_queue_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3294,17 +3334,17 @@ class CreateFlowlogRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag keys.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify at most 20 tag keys in each call.
         self.key = key
-        # The tag value.
+        # The tag values.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -3363,16 +3403,22 @@ class CreateFlowlogRequest(TeaModel):
         self.client_token = client_token
         # The description of the flow log.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # The name of the flow log.
+        # The flow log name.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
         # The time window for collecting log data. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
         self.interval = interval
+        # The strings that define the fields in the flow log.
+        # 
+        # Format: `${Field 1}${Field 2}${Field 3}...{Field n}`
+        # 
+        # *   If you do not configure this parameter, all fields are included in the flow log.
+        # *   If you configure this parameter, start the string with `${srcaddr}${dstaddr}${bytes}` because `${srcaddr}${dstaddr}${bytes}` are required variables. For more information about the fields supported by flow logs, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
         self.log_format_string = log_format_string
-        # The Logstore where the flow log is stored.
+        # The Logstore that stores the captured traffic data.
         # 
         # *   If a Logstore is already created in the selected region, enter the name of the Logstore.
         # 
@@ -3381,24 +3427,24 @@ class CreateFlowlogRequest(TeaModel):
         #     *   The name must be unique in a project.
         #     *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         #     *   The name must start and end with a lowercase letter or a digit.
-        #     *   The name must be 3 to 63 characters in length.
+        #     *   The name must be 3 to 63 characters in length,
         # 
         # This parameter is required.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The Log Service project where the flow log is stored.
+        # The project that stores the captured traffic data.
         # 
         # *   If a project is already created in the selected region, enter the name of the project.
         # 
         # *   If no projects are created in the selected region, enter a name and the system automatically creates a project.
         # 
-        #     The project name must be unique in a region. You cannot change the name after you create the project. The naming conventions are:
+        #     The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
         # 
         #     *   The name must be globally unique.
         #     *   The name can contain only lowercase letters, digits, and hyphens (-).
         #     *   The name must start and end with a lowercase letter or a digit.
-        #     *   The name must be 3 to 63 characters in length.
+        #     *   The name must be 3 to 63 characters in length,
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -3410,14 +3456,15 @@ class CreateFlowlogRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The information about the tags.
+        # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify at most 20 tags.
         self.tag = tag
-        # The ID of the inter-region connection or the VBR connection.
+        # The ID of the VPC connection, VPN connection, VBR connection, ECR connection, or inter-region connection.
         # 
-        # > This parameter is required.
+        # If you create the flow log for a transfer router, skip this parameter.
         self.transit_router_attachment_id = transit_router_attachment_id
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -5108,6 +5155,33 @@ class CreateTransitRouterEcrAttachmentResponse(TeaModel):
         return self
 
 
+class CreateTransitRouterMulticastDomainRequestOptions(TeaModel):
+    def __init__(
+        self,
+        igmpv_2support: str = None,
+    ):
+        self.igmpv_2support = igmpv_2support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.igmpv_2support is not None:
+            result['Igmpv2Support'] = self.igmpv_2support
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Igmpv2Support') is not None:
+            self.igmpv_2support = m.get('Igmpv2Support')
+        return self
+
+
 class CreateTransitRouterMulticastDomainRequestTag(TeaModel):
     def __init__(
         self,
@@ -5157,6 +5231,7 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
         cen_id: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        options: CreateTransitRouterMulticastDomainRequestOptions = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -5178,6 +5253,7 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
         # *   **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and sends the request.
         self.dry_run = dry_run
+        self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the transit router.
@@ -5202,6 +5278,8 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
         self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
 
     def validate(self):
+        if self.options:
+            self.options.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -5219,6 +5297,8 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -5249,6 +5329,9 @@ class CreateTransitRouterMulticastDomainRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('Options') is not None:
+            temp_model = CreateTransitRouterMulticastDomainRequestOptions()
+            self.options = temp_model.from_map(m['Options'])
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -6754,6 +6837,7 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        # Feature configurations of the VPC connection.
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
         # The VPC ID.
         # 
@@ -7027,6 +7111,7 @@ class CreateTransitRouterVpcAttachmentShrinkRequest(TeaModel):
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        # Feature configurations of the VPC connection.
         self.transit_router_vpcattachment_options_shrink = transit_router_vpcattachment_options_shrink
         # The VPC ID.
         # 
@@ -12557,7 +12642,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         # *   **china**: Chinese mainland.
         # *   **asia-pacific**: Asia Pacific
         # *   **europe**: Europe
-        # *   **australia**: Australia
         # *   **north-america**: North America
         self.geographic_region_aid = geographic_region_aid
         # The ID of the other area connected by the bandwidth plan. Valid values:
@@ -12565,7 +12649,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         # *   **china**: Chinese mainland.
         # *   **asia-pacific**: Asia Pacific
         # *   **europe**: Europe
-        # *   **australia**: Australia
         # *   **north-america**: North America
         self.geographic_region_bid = geographic_region_bid
         # The ID of the connected area.
@@ -12888,6 +12971,7 @@ class DescribeCenChildInstanceRouteEntriesRequest(TeaModel):
         # *   **VPC**: virtual private cloud (VPC)
         # *   **VBR**: virtual border router (VBR)
         # *   **CCN**: Cloud Connect Network (CCN) instance
+        # *   **ECR**: Express Connect Router (ECR)
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
@@ -13111,9 +13195,10 @@ class DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEnt
         self.instance_id = instance_id
         # The type of the peer network instance on which the overlapping routes are found. Valid values:
         # 
-        # *   **VPC**\
-        # *   **VBR**\
-        # *   **CCN**\
+        # *   **VPC**: VPC
+        # *   **VBR**: VBR
+        # *   **CCN**: CCN instance
+        # *   **ECR**: ECR
         self.instance_type = instance_type
         # The region ID of the peer network instance on which the overlapping routes are found.
         self.region_id = region_id
@@ -13512,7 +13597,6 @@ class DescribeCenGeographicSpanRemainingBandwidthRequest(TeaModel):
         # *   **North-America**: North America
         # *   **Asia-Pacific**: Asia Pacific
         # *   **Europe**: Europe
-        # *   **Australia**: Australia
         # 
         # This parameter is required.
         self.geographic_region_aid = geographic_region_aid
@@ -13522,7 +13606,6 @@ class DescribeCenGeographicSpanRemainingBandwidthRequest(TeaModel):
         # *   **North-America**: North America
         # *   **Asia-Pacific**: Asia Pacific
         # *   **Europe**: Europe
-        # *   **Australia**: Australia
         # 
         # This parameter is required.
         self.geographic_region_bid = geographic_region_bid
@@ -17138,7 +17221,11 @@ class DescribeFlowlogsRequest(TeaModel):
         # 
         # The name is optional. If you enter a name, it must be 1 to 128 characters in length, and cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
+        # The flow log version.
+        # 
+        # Flow logs are automatically created in the latest version, which is **3**.
         self.flow_log_version = flow_log_version
+        # The time window for collecting log data. Unit: seconds Valid values: **60** or **600** Default value: **600**.
         self.interval = interval
         # The name of the Logstore where the flow log is stored.
         # 
@@ -17146,7 +17233,7 @@ class DescribeFlowlogsRequest(TeaModel):
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the page to return. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Minimum value: **1**. Default value: **20**.
         self.page_size = page_size
@@ -17171,6 +17258,7 @@ class DescribeFlowlogsRequest(TeaModel):
         self.tag = tag
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -17378,9 +17466,15 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         self.flow_log_name = flow_log_name
+        # The flow log version.
+        # 
+        # Flow logs are automatically created in the latest version, which is **3**.
         self.flow_log_version = flow_log_version
         # The time window for collecting log data. Unit: seconds. Valid values: **60** or **600** Default value: **600**.
         self.interval = interval
+        # The string that defines the format of the flow log. Format:
+        # 
+        # `${Field 1}${Field 2}${Field 3}`
         self.log_format_string = log_format_string
         # The Logstore that stores the captured traffic data.
         self.log_store_name = log_store_name
@@ -17393,10 +17487,11 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
         # *   **Active**: The flow log is enabled.
         # *   **Inactive**: The flow log is disabled.
         self.status = status
-        # A list of tags.
+        # The tags.
         self.tags = tags
         # The ID of the network instance connection
         self.transit_router_attachment_id = transit_router_attachment_id
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -17632,11 +17727,20 @@ class DescribeGeographicRegionMembershipRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the area that you want to query. Valid values:
+        # 
+        # *   **china**: the Chinese mainland
+        # *   **asia-pacific**: Asia Pacific
+        # *   **europe**: Europe
+        # *   **north-america**: North America
+        # 
         # This parameter is required.
         self.geographic_region_id = geographic_region_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return per page. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17690,6 +17794,9 @@ class DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
+        # 
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -17756,10 +17863,15 @@ class DescribeGeographicRegionMembershipResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The list of regions.
         self.region_ids = region_ids
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21780,11 +21892,11 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
         qos_queue_name: str = None,
         remain_bandwidth_percent: int = None,
     ):
-        # 带宽保障类型为按绝对值模式时，当前队列分配的跨地域带宽的值。
+        # If the QoS queues are assigned absolute bandwidth values, this parameter indicates the absolute bandwidth value that is allocated to the queue.
         self.bandwidth = bandwidth
         # The differentiated services code point (DSCP) value that is used to match packets.
         self.dscps = dscps
-        # 当前队列实际生效的带宽值。
+        # The actual bandwidth value of the current queue.
         self.effective_bandwidth = effective_bandwidth
         # The description of the queue.
         self.qos_queue_description = qos_queue_description
@@ -21792,7 +21904,7 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
         self.qos_queue_id = qos_queue_id
         # The name of the queue.
         self.qos_queue_name = qos_queue_name
-        # The percentage of the inter-region bandwidth that can be used by the queue.
+        # If the QoS queues are assigned bandwidth percentages, this parameter indicates the percentage of bandwidth that is allocated to the queue.
         self.remain_bandwidth_percent = remain_bandwidth_percent
 
     def validate(self):
@@ -21851,9 +21963,10 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(TeaMode
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # 带宽保障类型。
-        # - **byBandwidth**：按带宽绝对值模式配置QoS队列。
-        # - **byBandwidthPercent**：按带宽百分比模式配置QoS队列。
+        # The guaranteed bandwidth mode.
+        # 
+        # *   **byBandwidth**: allocates absolute bandwidth values to QoS queues.
+        # *   **byBandwidthPercent**: assigns bandwidth percentages to QoS queues.
         self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
         # The description of the QoS policy.
         self.traffic_qos_policy_description = traffic_qos_policy_description
@@ -22045,9 +22158,9 @@ class ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter(TeaModel
         gte: int = None,
         lte: int = None,
     ):
-        # 实际生效带宽大于或等于指定带宽值。
+        # The actual bandwidth is equal to or larger than the specified value.
         self.gte = gte
-        # 实际生效带宽小于或等于指定带宽值。
+        # The actual bandwidth is equal to or smaller than the specified value.
         self.lte = lte
 
     def validate(self):
@@ -22091,7 +22204,7 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # 按照实际的生效带宽值进行过滤，只允许输入正整数，单位Mbps。
+        # The filter works based on the actual bandwidth. Enter a positive integer. Unit: Mbit/s.
         self.effective_bandwidth_filter = effective_bandwidth_filter
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
@@ -22206,15 +22319,15 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # 带宽保障类型为按绝对值模式时，当前队列分配跨地域带宽的值。
+        # The absolute bandwidth value that can be allocated to the current queue.
         # 
-        # 例如，**1**表示符合当前队列的流量报文最多只能使用1Mbps的跨地域带宽。
+        # A value of **1** indicates that the QoS queue can consume at most 1 Mbit/s of inter-region bandwidth.
         self.bandwidth = bandwidth
         # The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
         self.dscps = dscps
-        # 当前队列实际生效的带宽值。
+        # The actual bandwidth of the current queue.
         self.effective_bandwidth = effective_bandwidth
-        # The percentage of the inter-region bandwidth that can be consumed by the QoS queue.
+        # The percentage of bandwidth that can be allocated to the current queue.
         # 
         # A value of **1** indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
         self.remain_bandwidth_percent = remain_bandwidth_percent
@@ -23416,8 +23529,9 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
         traffic_match_rule_name: str = None,
         traffic_match_rule_status: str = None,
     ):
+        # The address family. You can set the value to IPv4 or IPv6, or leave the value empty.
         self.address_family = address_family
-        # The destination CIDR block that is used to match packets.
+        # The destination CIDR block of packets. IPv4 and IPv6 addresses are supported.
         self.dst_cidr = dst_cidr
         # The destination port range used to match data packets.
         self.dst_port_range = dst_port_range
@@ -23429,7 +23543,7 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
         # 
         # >  Traffic marking policies support multiple protocols. For more information, see the documentation of CEN.
         self.protocol = protocol
-        # The source CIDR block that is used to match packets.
+        # The source CIDR block of packets. IPv6 and IPv4 addresses are supported.
         self.src_cidr = src_cidr
         # The source port range used to match data packets.
         self.src_port_range = src_port_range
@@ -25509,6 +25623,33 @@ class ListTransitRouterMulticastDomainsRequest(TeaModel):
         return self
 
 
+class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions(TeaModel):
+    def __init__(
+        self,
+        igmpv_2support: str = None,
+    ):
+        self.igmpv_2support = igmpv_2support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.igmpv_2support is not None:
+            result['Igmpv2Support'] = self.igmpv_2support
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Igmpv2Support') is not None:
+            self.igmpv_2support = m.get('Igmpv2Support')
+        return self
+
+
 class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags(TeaModel):
     def __init__(
         self,
@@ -25548,6 +25689,7 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
     def __init__(
         self,
         cen_id: str = None,
+        options: ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions = None,
         region_id: str = None,
         status: str = None,
         tags: List[ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags] = None,
@@ -25558,6 +25700,7 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
     ):
         # The CEN instance ID.
         self.cen_id = cen_id
+        self.options = options
         # The region ID of the transit router.
         # 
         # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
@@ -25578,6 +25721,8 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
 
     def validate(self):
+        if self.options:
+            self.options.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -25591,6 +25736,8 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         result = dict()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.status is not None:
@@ -25613,6 +25760,9 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         m = m or dict()
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
+        if m.get('Options') is not None:
+            temp_model = ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions()
+            self.options = temp_model.from_map(m['Options'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
@@ -29358,7 +29508,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         # *   **Attaching**\
         # *   **Detaching**\
         self.status = status
-        # The tag key.
+        # The tags.
         self.tags = tags
         # The description of the VPC connection.
         self.transit_router_attachment_description = transit_router_attachment_description
@@ -29368,6 +29518,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.transit_router_attachment_name = transit_router_attachment_name
         # The description of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        # The features of the VPC connection.
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -31110,10 +31261,10 @@ class ModifyCenRouteMapRequest(TeaModel):
         source_region_ids: List[str] = None,
         source_route_table_ids: List[str] = None,
     ):
-        # The match method that is used to match routes against the AS paths. Valid values:
+        # The match method that is used to match routes based on the AS path. Valid values:
         # 
-        # *   **Include**: fuzzy match. A route meets the match condition if the AS path of the route overlaps with the AS paths specified in the match condition.
-        # *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
+        # *   **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
+        # *   **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
         self.as_path_match_mode = as_path_match_mode
         # The ID of the CEN instance.
         # 
@@ -31129,18 +31280,18 @@ class ModifyCenRouteMapRequest(TeaModel):
         # 
         # *   **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
         # 
-        #     For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is enabled, the route whose prefix is 10.10.1.0/24 is a match.
+        # For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
         # 
         # *   **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
         # 
-        #     For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
+        # For example, if you set the match condition to 10.10.0.0/16 and exact match is applied, only the route whose prefix is 10.10.0.0/16 meets the match condition.
         self.cidr_match_mode = cidr_match_mode
-        # The match method that is sed to match routes based on the community. Valid values:
+        # The match method that is used to match routes based on the community. Valid values:
         # 
-        # *   **Include**: fuzzy match. A route meets the match condition if the community of the route overlaps with the community specified in the match condition.
-        # *   **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
+        # *   **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
+        # *   **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
         self.community_match_mode = community_match_mode
-        # The action that is performed on the community. Valid values:
+        # The action to be performed on the community. Valid values:
         # 
         # *   **Additive**: adds the community to the route.
         # *   **Replace**: replaces the original community of the route.
@@ -31149,7 +31300,7 @@ class ModifyCenRouteMapRequest(TeaModel):
         self.community_operate_mode = community_operate_mode
         # The description of the routing policy.
         # 
-        # The description cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, hyphens (-), periods (.), and underscores (_).
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # The types of destination network instance to which the routes belong. The following types of network instances are supported:
         # 
@@ -31181,17 +31332,18 @@ class ModifyCenRouteMapRequest(TeaModel):
         # 
         # > The destination instance IDs take effect only when Direction is set to Export from Regional Gateway and the destination instances are deployed in the current region.
         self.destination_instance_ids = destination_instance_ids
-        # Specifies whether to exclude the destination network instance IDs. Valid values:
+        # Specifies whether to exclude destination instance IDs. Valid values:
         # 
-        # *   **false** (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
-        # *   **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
+        # *   **false** (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
+        # *   **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
+        # The destination region IDs of the route. You can specify at most 32 region IDs.
         self.destination_region_ids = destination_region_ids
         # The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
         # 
         # > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
         self.destination_route_table_ids = destination_route_table_ids
-        # The action to be performed on a route that meets all match conditions. Valid values:
+        # The action to be performed on a route that meets all the match conditions. Valid values:
         # 
         # *   **Permit**: the route is permitted.
         # *   **Deny**: the route is denied.
@@ -31289,10 +31441,10 @@ class ModifyCenRouteMapRequest(TeaModel):
         # 
         # You can enter at most 32 IDs.
         self.source_instance_ids = source_instance_ids
-        # Specifies whether to exclude the source network instance IDs. Valid values:
+        # Specifies whether to exclude source instance IDs. Valid values:
         # 
-        # *   **false** (default value): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
-        # *   **true**: A route is a match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+        # *   **false** (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
+        # *   **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
         # The IDs of the source regions to which the routes belong. You can enter at most 32 region IDs.
         # 
@@ -31533,7 +31685,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -31553,6 +31705,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # 
         # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
+        # The time window for collecting log data. Unit: seconds. Valid values: **60** or **600** Default value: **600**.
         self.interval = interval
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31718,17 +31871,36 @@ class ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest(TeaModel):
         traffic_match_rule_id: str = None,
         traffic_match_rule_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and sends the request.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the traffic marking policy.
+        # 
         # This parameter is required.
         self.traffic_marking_policy_id = traffic_marking_policy_id
+        # The description of the traffic classification rule.
+        # 
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
         self.traffic_match_rule_description = traffic_match_rule_description
+        # The ID of the traffic classification rule.
+        # 
         # This parameter is required.
         self.traffic_match_rule_id = traffic_match_rule_id
+        # The name of the traffic classification rule.
+        # 
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):
@@ -31792,6 +31964,7 @@ class ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32059,11 +32232,39 @@ class ModifyTransitRouterCidrResponse(TeaModel):
         return self
 
 
+class ModifyTransitRouterMulticastDomainRequestOptions(TeaModel):
+    def __init__(
+        self,
+        igmpv_2support: str = None,
+    ):
+        self.igmpv_2support = igmpv_2support
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.igmpv_2support is not None:
+            result['Igmpv2Support'] = self.igmpv_2support
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Igmpv2Support') is not None:
+            self.igmpv_2support = m.get('Igmpv2Support')
+        return self
+
+
 class ModifyTransitRouterMulticastDomainRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         dry_run: bool = None,
+        options: ModifyTransitRouterMulticastDomainRequestOptions = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -32081,6 +32282,7 @@ class ModifyTransitRouterMulticastDomainRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
+        self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -32099,7 +32301,8 @@ class ModifyTransitRouterMulticastDomainRequest(TeaModel):
         self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
 
     def validate(self):
-        pass
+        if self.options:
+            self.options.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -32111,6 +32314,8 @@ class ModifyTransitRouterMulticastDomainRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -32133,6 +32338,9 @@ class ModifyTransitRouterMulticastDomainRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('Options') is not None:
+            temp_model = ModifyTransitRouterMulticastDomainRequestOptions()
+            self.options = temp_model.from_map(m['Options'])
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -35189,9 +35397,9 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 按带宽绝对值模式分配时，当前队列可使用的跨地域带宽的绝对值，单位Mbps。
+        # The absolute bandwidth value that can be allocated to the current queue. Unit: Mbit/s.
         # 
-        # 输入数字即可，无需输入单位。
+        # Enter a number. You do not need to enter a unit.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -35218,7 +35426,7 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         self.qos_queue_name = qos_queue_name
-        # The percentage of the inter-region bandwidth that can be used by the queue.
+        # The percentage of bandwidth that can be allocated to the current queue.
         # 
         # Enter a number. You do not need to enter a percent sign (%).
         self.remain_bandwidth_percent = remain_bandwidth_percent
@@ -36918,9 +37126,7 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # Feature configurations of the VPC connection.
-        # 
-        # *   ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
+        # The features of the VPC connection.
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
 
     def validate(self):
@@ -37030,9 +37236,7 @@ class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # Feature configurations of the VPC connection.
-        # 
-        # *   ipv6Support: specifies whether to enable IPv6. Valid values: true and false. The default value is the status of the VPC connection.
+        # The features of the VPC connection.
         self.transit_router_vpcattachment_options_shrink = transit_router_vpcattachment_options_shrink
 
     def validate(self):
