@@ -1,3 +1,9 @@
+2025-01-06 Version: 3.4.0
+- Support API Id2MetaPeriodVerify.
+- Support API Mobile3MetaDetailStandardVerify.
+- Support API Mobile3MetaSimpleStandardVerify.
+
+
 2024-11-21 Version: 3.3.0
 - Support API Id2MetaStandardVerify.
 

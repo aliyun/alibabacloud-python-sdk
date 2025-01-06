@@ -2445,6 +2445,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_face_attributes_with_options_async(request, runtime)
 
+    def id_2meta_period_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
+        """
+        @summary 二要素有效期核验接口
+        
+        @param request: Id2MetaPeriodVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaPeriodVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.validity_end_date):
+            body['ValidityEndDate'] = request.validity_end_date
+        if not UtilClient.is_unset(request.validity_start_date):
+            body['ValidityStartDate'] = request.validity_start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaPeriodVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaPeriodVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_2meta_period_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
+        """
+        @summary 二要素有效期核验接口
+        
+        @param request: Id2MetaPeriodVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaPeriodVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.validity_end_date):
+            body['ValidityEndDate'] = request.validity_end_date
+        if not UtilClient.is_unset(request.validity_start_date):
+            body['ValidityStartDate'] = request.validity_start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaPeriodVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Id2MetaPeriodVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_2meta_period_verify(
+        self,
+        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
+        """
+        @summary 二要素有效期核验接口
+        
+        @param request: Id2MetaPeriodVerifyRequest
+        @return: Id2MetaPeriodVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.id_2meta_period_verify_with_options(request, runtime)
+
+    async def id_2meta_period_verify_async(
+        self,
+        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
+    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
+        """
+        @summary 二要素有效期核验接口
+        
+        @param request: Id2MetaPeriodVerifyRequest
+        @return: Id2MetaPeriodVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.id_2meta_period_verify_with_options_async(request, runtime)
+
     def id_2meta_standard_verify_with_options(
         self,
         request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
@@ -3145,6 +3257,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.liveness_face_verify_with_options_async(request, runtime)
 
+    def mobile_3meta_detail_standard_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
+        """
+        @summary 手机号三要素详版_标准版
+        
+        @param request: Mobile3MetaDetailStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaDetailStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaDetailStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_3meta_detail_standard_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
+        """
+        @summary 手机号三要素详版_标准版
+        
+        @param request: Mobile3MetaDetailStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaDetailStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaDetailStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_3meta_detail_standard_verify(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
+        """
+        @summary 手机号三要素详版_标准版
+        
+        @param request: Mobile3MetaDetailStandardVerifyRequest
+        @return: Mobile3MetaDetailStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_3meta_detail_standard_verify_with_options(request, runtime)
+
+    async def mobile_3meta_detail_standard_verify_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
+        """
+        @summary 手机号三要素详版_标准版
+        
+        @param request: Mobile3MetaDetailStandardVerifyRequest
+        @return: Mobile3MetaDetailStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_3meta_detail_standard_verify_with_options_async(request, runtime)
+
     def mobile_3meta_detail_verify_with_options(
         self,
         request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
@@ -3252,6 +3472,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.mobile_3meta_detail_verify_with_options_async(request, runtime)
+
+    def mobile_3meta_simple_standard_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
+        """
+        @summary 手机号三要素简版_标准版
+        
+        @param request: Mobile3MetaSimpleStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaSimpleStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaSimpleStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_3meta_simple_standard_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
+        """
+        @summary 手机号三要素简版_标准版
+        
+        @param request: Mobile3MetaSimpleStandardVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Mobile3MetaSimpleStandardVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            body['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaSimpleStandardVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_3meta_simple_standard_verify(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
+        """
+        @summary 手机号三要素简版_标准版
+        
+        @param request: Mobile3MetaSimpleStandardVerifyRequest
+        @return: Mobile3MetaSimpleStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_3meta_simple_standard_verify_with_options(request, runtime)
+
+    async def mobile_3meta_simple_standard_verify_async(
+        self,
+        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
+    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
+        """
+        @summary 手机号三要素简版_标准版
+        
+        @param request: Mobile3MetaSimpleStandardVerifyRequest
+        @return: Mobile3MetaSimpleStandardVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_3meta_simple_standard_verify_with_options_async(request, runtime)
 
     def mobile_3meta_simple_verify_with_options(
         self,
