@@ -231,15 +231,19 @@ class NodeTemplateDataDisks(TeaModel):
         self,
         category: str = None,
         delete_with_instance: bool = None,
+        device: str = None,
         level: str = None,
         mount_dir: str = None,
         size: int = None,
+        snapshot_id: str = None,
     ):
         self.category = category
         self.delete_with_instance = delete_with_instance
+        self.device = device
         self.level = level
         self.mount_dir = mount_dir
         self.size = size
+        self.snapshot_id = snapshot_id
 
     def validate(self):
         pass
@@ -254,12 +258,16 @@ class NodeTemplateDataDisks(TeaModel):
             result['Category'] = self.category
         if self.delete_with_instance is not None:
             result['DeleteWithInstance'] = self.delete_with_instance
+        if self.device is not None:
+            result['Device'] = self.device
         if self.level is not None:
             result['Level'] = self.level
         if self.mount_dir is not None:
             result['MountDir'] = self.mount_dir
         if self.size is not None:
             result['Size'] = self.size
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
         return result
 
     def from_map(self, m: dict = None):
@@ -268,12 +276,16 @@ class NodeTemplateDataDisks(TeaModel):
             self.category = m.get('Category')
         if m.get('DeleteWithInstance') is not None:
             self.delete_with_instance = m.get('DeleteWithInstance')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
         if m.get('Level') is not None:
             self.level = m.get('Level')
         if m.get('MountDir') is not None:
             self.mount_dir = m.get('MountDir')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
         return self
 
 
@@ -5060,6 +5072,33 @@ class GetClusterResponseBodyMonitorSpec(TeaModel):
         return self
 
 
+class GetClusterResponseBodySchedulerSpec(TeaModel):
+    def __init__(
+        self,
+        enable_topology_awareness: bool = None,
+    ):
+        self.enable_topology_awareness = enable_topology_awareness
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_topology_awareness is not None:
+            result['EnableTopologyAwareness'] = self.enable_topology_awareness
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableTopologyAwareness') is not None:
+            self.enable_topology_awareness = m.get('EnableTopologyAwareness')
+        return self
+
+
 class GetClusterResponseBody(TeaModel):
     def __init__(
         self,
@@ -5086,6 +5125,7 @@ class GetClusterResponseBody(TeaModel):
         monitor_spec: GetClusterResponseBodyMonitorSpec = None,
         request_id: str = None,
         resource_group_id: str = None,
+        scheduler_spec: GetClusterResponseBodySchedulerSpec = None,
         security_group_id: str = None,
     ):
         # The E-HPC Util version.
@@ -5159,6 +5199,7 @@ class GetClusterResponseBody(TeaModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.scheduler_spec = scheduler_spec
         # The security group ID.
         self.security_group_id = security_group_id
 
@@ -5169,6 +5210,8 @@ class GetClusterResponseBody(TeaModel):
             self.manager.validate()
         if self.monitor_spec:
             self.monitor_spec.validate()
+        if self.scheduler_spec:
+            self.scheduler_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5222,6 +5265,8 @@ class GetClusterResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.scheduler_spec is not None:
+            result['SchedulerSpec'] = self.scheduler_spec.to_map()
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         return result
@@ -5277,6 +5322,9 @@ class GetClusterResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SchedulerSpec') is not None:
+            temp_model = GetClusterResponseBodySchedulerSpec()
+            self.scheduler_spec = temp_model.from_map(m['SchedulerSpec'])
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         return self
@@ -12801,6 +12849,33 @@ class UpdateClusterRequestMonitorSpec(TeaModel):
         return self
 
 
+class UpdateClusterRequestSchedulerSpec(TeaModel):
+    def __init__(
+        self,
+        enable_topology_awareness: bool = None,
+    ):
+        self.enable_topology_awareness = enable_topology_awareness
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_topology_awareness is not None:
+            result['EnableTopologyAwareness'] = self.enable_topology_awareness
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableTopologyAwareness') is not None:
+            self.enable_topology_awareness = m.get('EnableTopologyAwareness')
+        return self
+
+
 class UpdateClusterRequest(TeaModel):
     def __init__(
         self,
@@ -12817,6 +12892,7 @@ class UpdateClusterRequest(TeaModel):
         max_core_count: int = None,
         max_count: int = None,
         monitor_spec: UpdateClusterRequestMonitorSpec = None,
+        scheduler_spec: UpdateClusterRequestSchedulerSpec = None,
     ):
         # The client version. By default, the latest version is used.
         self.client_version = client_version
@@ -12856,12 +12932,15 @@ class UpdateClusterRequest(TeaModel):
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
         self.monitor_spec = monitor_spec
+        self.scheduler_spec = scheduler_spec
 
     def validate(self):
         if self.cluster_custom_configuration:
             self.cluster_custom_configuration.validate()
         if self.monitor_spec:
             self.monitor_spec.validate()
+        if self.scheduler_spec:
+            self.scheduler_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12895,6 +12974,8 @@ class UpdateClusterRequest(TeaModel):
             result['MaxCount'] = self.max_count
         if self.monitor_spec is not None:
             result['MonitorSpec'] = self.monitor_spec.to_map()
+        if self.scheduler_spec is not None:
+            result['SchedulerSpec'] = self.scheduler_spec.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -12927,6 +13008,9 @@ class UpdateClusterRequest(TeaModel):
         if m.get('MonitorSpec') is not None:
             temp_model = UpdateClusterRequestMonitorSpec()
             self.monitor_spec = temp_model.from_map(m['MonitorSpec'])
+        if m.get('SchedulerSpec') is not None:
+            temp_model = UpdateClusterRequestSchedulerSpec()
+            self.scheduler_spec = temp_model.from_map(m['SchedulerSpec'])
         return self
 
 
@@ -12946,6 +13030,7 @@ class UpdateClusterShrinkRequest(TeaModel):
         max_core_count: int = None,
         max_count: int = None,
         monitor_spec_shrink: str = None,
+        scheduler_spec_shrink: str = None,
     ):
         # The client version. By default, the latest version is used.
         self.client_version = client_version
@@ -12985,6 +13070,7 @@ class UpdateClusterShrinkRequest(TeaModel):
         # The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
         self.max_count = max_count
         self.monitor_spec_shrink = monitor_spec_shrink
+        self.scheduler_spec_shrink = scheduler_spec_shrink
 
     def validate(self):
         pass
@@ -13021,6 +13107,8 @@ class UpdateClusterShrinkRequest(TeaModel):
             result['MaxCount'] = self.max_count
         if self.monitor_spec_shrink is not None:
             result['MonitorSpec'] = self.monitor_spec_shrink
+        if self.scheduler_spec_shrink is not None:
+            result['SchedulerSpec'] = self.scheduler_spec_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -13051,6 +13139,8 @@ class UpdateClusterShrinkRequest(TeaModel):
             self.max_count = m.get('MaxCount')
         if m.get('MonitorSpec') is not None:
             self.monitor_spec_shrink = m.get('MonitorSpec')
+        if m.get('SchedulerSpec') is not None:
+            self.scheduler_spec_shrink = m.get('SchedulerSpec')
         return self
 
 

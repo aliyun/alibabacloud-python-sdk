@@ -1,3 +1,13 @@
+2025-01-07 Version: 2.0.2
+- Update API CreateNodes: add param DeploymentSetId.
+- Update API GetCluster: update response param.
+- Update API ListJobs: update param JobFilter.
+- Update API ListJobs: update response param.
+- Update API ListNodes: update response param.
+- Update API UpdateCluster: add param MonitorSpec.
+- Update API UpdateCluster: add param SchedulerSpec.
+
+
 2024-12-09 Version: 2.0.1
 - Update API CreateNodes: add param DeploymentSetId.
 - Update API GetCluster: update response param.

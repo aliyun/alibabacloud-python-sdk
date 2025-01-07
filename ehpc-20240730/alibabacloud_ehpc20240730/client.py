@@ -4232,6 +4232,8 @@ class Client(OpenApiClient):
             request.cluster_custom_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_custom_configuration, 'ClusterCustomConfiguration', 'json')
         if not UtilClient.is_unset(tmp_req.monitor_spec):
             request.monitor_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.monitor_spec, 'MonitorSpec', 'json')
+        if not UtilClient.is_unset(tmp_req.scheduler_spec):
+            request.scheduler_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scheduler_spec, 'SchedulerSpec', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_version):
             query['ClientVersion'] = request.client_version
@@ -4259,6 +4261,8 @@ class Client(OpenApiClient):
             query['MaxCount'] = request.max_count
         if not UtilClient.is_unset(request.monitor_spec_shrink):
             query['MonitorSpec'] = request.monitor_spec_shrink
+        if not UtilClient.is_unset(request.scheduler_spec_shrink):
+            query['SchedulerSpec'] = request.scheduler_spec_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4297,6 +4301,8 @@ class Client(OpenApiClient):
             request.cluster_custom_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_custom_configuration, 'ClusterCustomConfiguration', 'json')
         if not UtilClient.is_unset(tmp_req.monitor_spec):
             request.monitor_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.monitor_spec, 'MonitorSpec', 'json')
+        if not UtilClient.is_unset(tmp_req.scheduler_spec):
+            request.scheduler_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scheduler_spec, 'SchedulerSpec', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_version):
             query['ClientVersion'] = request.client_version
@@ -4324,6 +4330,8 @@ class Client(OpenApiClient):
             query['MaxCount'] = request.max_count
         if not UtilClient.is_unset(request.monitor_spec_shrink):
             query['MonitorSpec'] = request.monitor_spec_shrink
+        if not UtilClient.is_unset(request.scheduler_spec_shrink):
+            query['SchedulerSpec'] = request.scheduler_spec_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
