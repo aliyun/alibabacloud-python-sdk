@@ -3275,6 +3275,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -3283,6 +3285,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3324,6 +3330,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -3332,6 +3340,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4281,6 +4293,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
         if not UtilClient.is_unset(request.page_no):
@@ -4291,6 +4305,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4332,6 +4350,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
         if not UtilClient.is_unset(request.page_no):
@@ -4342,6 +4362,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4411,6 +4435,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
         if not UtilClient.is_unset(request.page_no):
@@ -4421,6 +4447,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4462,6 +4492,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.cooperator_id):
             query['cooperator_id'] = request.cooperator_id
         if not UtilClient.is_unset(request.page_no):
@@ -4472,6 +4504,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7769,6 +7805,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -7777,6 +7815,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -7818,6 +7860,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -7826,6 +7870,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -12353,6 +12401,148 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.FlightSearchListHeaders()
         return await self.flight_search_list_with_options_async(request, headers, runtime)
 
+    def fu_point_bill_settlement_query_with_options(
+        self,
+        request: btrip_open_20220520_models.FuPointBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.FuPointBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FuPointBillSettlementQueryResponse:
+        """
+        @summary 查询福豆记账数据
+        
+        @param request: FuPointBillSettlementQueryRequest
+        @param headers: FuPointBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FuPointBillSettlementQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FuPointBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/fupoint/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FuPointBillSettlementQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fu_point_bill_settlement_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.FuPointBillSettlementQueryRequest,
+        headers: btrip_open_20220520_models.FuPointBillSettlementQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.FuPointBillSettlementQueryResponse:
+        """
+        @summary 查询福豆记账数据
+        
+        @param request: FuPointBillSettlementQueryRequest
+        @param headers: FuPointBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FuPointBillSettlementQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not UtilClient.is_unset(request.cooperator_id):
+            query['cooperator_id'] = request.cooperator_id
+        if not UtilClient.is_unset(request.page_no):
+            query['page_no'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        if not UtilClient.is_unset(request.period_end):
+            query['period_end'] = request.period_end
+        if not UtilClient.is_unset(request.period_start):
+            query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FuPointBillSettlementQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/fupoint/v1/bill-settlement',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.FuPointBillSettlementQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fu_point_bill_settlement_query(
+        self,
+        request: btrip_open_20220520_models.FuPointBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.FuPointBillSettlementQueryResponse:
+        """
+        @summary 查询福豆记账数据
+        
+        @param request: FuPointBillSettlementQueryRequest
+        @return: FuPointBillSettlementQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FuPointBillSettlementQueryHeaders()
+        return self.fu_point_bill_settlement_query_with_options(request, headers, runtime)
+
+    async def fu_point_bill_settlement_query_async(
+        self,
+        request: btrip_open_20220520_models.FuPointBillSettlementQueryRequest,
+    ) -> btrip_open_20220520_models.FuPointBillSettlementQueryResponse:
+        """
+        @summary 查询福豆记账数据
+        
+        @param request: FuPointBillSettlementQueryRequest
+        @return: FuPointBillSettlementQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.FuPointBillSettlementQueryHeaders()
+        return await self.fu_point_bill_settlement_query_with_options_async(request, headers, runtime)
+
     def group_corp_token_with_options(
         self,
         request: btrip_open_20220520_models.GroupCorpTokenRequest,
@@ -12965,6 +13155,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -12973,6 +13165,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -13014,6 +13210,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -13022,6 +13220,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -16011,6 +16213,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16019,6 +16223,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -16060,6 +16268,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -16068,6 +16278,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -16137,6 +16351,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
         if not UtilClient.is_unset(request.page_no):
@@ -16147,6 +16363,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -16188,6 +16408,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
         if not UtilClient.is_unset(request.page_no):
@@ -16198,6 +16420,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -20121,6 +20347,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -20129,6 +20357,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -20170,6 +20402,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -20178,6 +20412,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -20597,6 +20835,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.bill_month):
             query['bill_month'] = request.bill_month
         real_headers = {}
@@ -20640,6 +20880,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.bill_month):
             query['bill_month'] = request.bill_month
         real_headers = {}
@@ -20694,6 +20936,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillGetHeaders()
         return await self.month_bill_get_with_options_async(request, headers, runtime)
+
+    def order_refund_detail_query_with_options(
+        self,
+        request: btrip_open_20220520_models.OrderRefundDetailQueryRequest,
+        headers: btrip_open_20220520_models.OrderRefundDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.OrderRefundDetailQueryResponse:
+        """
+        @summary 查询订单退款明细
+        
+        @param request: OrderRefundDetailQueryRequest
+        @param headers: OrderRefundDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderRefundDetailQueryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OrderRefundDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-hotel/v1/refund/action/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.OrderRefundDetailQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def order_refund_detail_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.OrderRefundDetailQueryRequest,
+        headers: btrip_open_20220520_models.OrderRefundDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.OrderRefundDetailQueryResponse:
+        """
+        @summary 查询订单退款明细
+        
+        @param request: OrderRefundDetailQueryRequest
+        @param headers: OrderRefundDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderRefundDetailQueryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cooperator_order_id):
+            body['cooperator_order_id'] = request.cooperator_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OrderRefundDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/coop-hotel/v1/refund/action/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.OrderRefundDetailQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def order_refund_detail_query(
+        self,
+        request: btrip_open_20220520_models.OrderRefundDetailQueryRequest,
+    ) -> btrip_open_20220520_models.OrderRefundDetailQueryResponse:
+        """
+        @summary 查询订单退款明细
+        
+        @param request: OrderRefundDetailQueryRequest
+        @return: OrderRefundDetailQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.OrderRefundDetailQueryHeaders()
+        return self.order_refund_detail_query_with_options(request, headers, runtime)
+
+    async def order_refund_detail_query_async(
+        self,
+        request: btrip_open_20220520_models.OrderRefundDetailQueryRequest,
+    ) -> btrip_open_20220520_models.OrderRefundDetailQueryResponse:
+        """
+        @summary 查询订单退款明细
+        
+        @param request: OrderRefundDetailQueryRequest
+        @return: OrderRefundDetailQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.OrderRefundDetailQueryHeaders()
+        return await self.order_refund_detail_query_with_options_async(request, headers, runtime)
 
     def project_add_with_options(
         self,
@@ -21068,6 +21428,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return await self.project_modify_with_options_async(request, headers, runtime)
+
+    def query_corp_detail_info_with_options(
+        self,
+        request: btrip_open_20220520_models.QueryCorpDetailInfoRequest,
+        headers: btrip_open_20220520_models.QueryCorpDetailInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryCorpDetailInfoResponse:
+        """
+        @summary 查询企业信息详情
+        
+        @param request: QueryCorpDetailInfoRequest
+        @param headers: QueryCorpDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCorpDetailInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.target_corp_id):
+            query['target_corp_id'] = request.target_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCorpDetailInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corps/v1/corps/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryCorpDetailInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_corp_detail_info_with_options_async(
+        self,
+        request: btrip_open_20220520_models.QueryCorpDetailInfoRequest,
+        headers: btrip_open_20220520_models.QueryCorpDetailInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryCorpDetailInfoResponse:
+        """
+        @summary 查询企业信息详情
+        
+        @param request: QueryCorpDetailInfoRequest
+        @param headers: QueryCorpDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCorpDetailInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.target_corp_id):
+            query['target_corp_id'] = request.target_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCorpDetailInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corps/v1/corps/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryCorpDetailInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_corp_detail_info(
+        self,
+        request: btrip_open_20220520_models.QueryCorpDetailInfoRequest,
+    ) -> btrip_open_20220520_models.QueryCorpDetailInfoResponse:
+        """
+        @summary 查询企业信息详情
+        
+        @param request: QueryCorpDetailInfoRequest
+        @return: QueryCorpDetailInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryCorpDetailInfoHeaders()
+        return self.query_corp_detail_info_with_options(request, headers, runtime)
+
+    async def query_corp_detail_info_async(
+        self,
+        request: btrip_open_20220520_models.QueryCorpDetailInfoRequest,
+    ) -> btrip_open_20220520_models.QueryCorpDetailInfoResponse:
+        """
+        @summary 查询企业信息详情
+        
+        @param request: QueryCorpDetailInfoRequest
+        @return: QueryCorpDetailInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryCorpDetailInfoHeaders()
+        return await self.query_corp_detail_info_with_options_async(request, headers, runtime)
 
     def query_employee_detail_with_options(
         self,
@@ -23011,6 +23485,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -23019,6 +23495,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -23060,6 +23540,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
         if not UtilClient.is_unset(request.page_no):
             query['page_no'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
@@ -23068,6 +23550,10 @@ class Client(OpenApiClient):
             query['period_end'] = request.period_end
         if not UtilClient.is_unset(request.period_start):
             query['period_start'] = request.period_start
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scroll_id'] = request.scroll_id
+        if not UtilClient.is_unset(request.scroll_mod):
+            query['scroll_mod'] = request.scroll_mod
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

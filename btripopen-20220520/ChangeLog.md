@@ -1,3 +1,70 @@
+2025-01-07 Version: 4.6.0
+- Support API FuPointBillSettlementQuery.
+- Support API OrderRefundDetailQuery.
+- Support API QueryCorpDetailInfo.
+- Update API CarBillSettlementQuery: add param bill_batch.
+- Update API CarBillSettlementQuery: add param scroll_id.
+- Update API CarBillSettlementQuery: add param scroll_mod.
+- Update API CarBillSettlementQuery: update param period_end.
+- Update API CarBillSettlementQuery: update param period_start.
+- Update API CarBillSettlementQuery: update response param.
+- Update API CooperatorFlightBillSettlementQuery: add param period_end.
+- Update API CooperatorFlightBillSettlementQuery: add param period_start.
+- Update API CooperatorFlightBillSettlementQuery: add param bill_batch.
+- Update API CooperatorFlightBillSettlementQuery: add param scroll_id.
+- Update API CooperatorFlightBillSettlementQuery: add param scroll_mod.
+- Update API CooperatorFlightBillSettlementQuery: update param period_end.
+- Update API CooperatorFlightBillSettlementQuery: update param period_start.
+- Update API CooperatorFlightBillSettlementQuery: update response param.
+- Update API CooperatorHotelBillSettlementQuery: add param period_end.
+- Update API CooperatorHotelBillSettlementQuery: add param period_start.
+- Update API CooperatorHotelBillSettlementQuery: add param bill_batch.
+- Update API CooperatorHotelBillSettlementQuery: add param scroll_id.
+- Update API CooperatorHotelBillSettlementQuery: add param scroll_mod.
+- Update API CooperatorHotelBillSettlementQuery: update param period_end.
+- Update API CooperatorHotelBillSettlementQuery: update response param.
+- Update API FlightBillSettlementQuery: add param bill_batch.
+- Update API FlightBillSettlementQuery: add param scroll_id.
+- Update API FlightBillSettlementQuery: add param scroll_mod.
+- Update API FlightBillSettlementQuery: update param period_end.
+- Update API FlightBillSettlementQuery: update param period_start.
+- Update API FlightBillSettlementQuery: update response param.
+- Update API HotelBillSettlementQuery: add param bill_batch.
+- Update API HotelBillSettlementQuery: add param scroll_id.
+- Update API HotelBillSettlementQuery: add param scroll_mod.
+- Update API HotelBillSettlementQuery: update param period_end.
+- Update API HotelBillSettlementQuery: update param period_start.
+- Update API HotelBillSettlementQuery: update response param.
+- Update API IeFlightBillSettlementQuery: add param bill_batch.
+- Update API IeFlightBillSettlementQuery: add param scroll_id.
+- Update API IeFlightBillSettlementQuery: add param scroll_mod.
+- Update API IeFlightBillSettlementQuery: update param period_end.
+- Update API IeFlightBillSettlementQuery: update param period_start.
+- Update API IeFlightBillSettlementQuery: update response param.
+- Update API IeHotelBillSettlementQuery: add param bill_batch.
+- Update API IeHotelBillSettlementQuery: add param scroll_id.
+- Update API IeHotelBillSettlementQuery: add param scroll_mod.
+- Update API IeHotelBillSettlementQuery: update param period_end.
+- Update API IeHotelBillSettlementQuery: update param period_start.
+- Update API IeHotelBillSettlementQuery: update response param.
+- Update API MealBillSettlementQuery: add param bill_batch.
+- Update API MealBillSettlementQuery: add param scroll_id.
+- Update API MealBillSettlementQuery: add param scroll_mod.
+- Update API MealBillSettlementQuery: update param period_end.
+- Update API MealBillSettlementQuery: update param period_start.
+- Update API MealBillSettlementQuery: update response param.
+- Update API MealOrderDetailQuery: update response param.
+- Update API MonthBillGet: add param bill_batch.
+- Update API MonthBillGet: update response param.
+- Update API TrainBillSettlementQuery: add param bill_batch.
+- Update API TrainBillSettlementQuery: add param scroll_id.
+- Update API TrainBillSettlementQuery: add param scroll_mod.
+- Update API TrainBillSettlementQuery: update param period_end.
+- Update API TrainBillSettlementQuery: update param period_start.
+- Update API TrainBillSettlementQuery: update response param.
+- Update API TrainOrderQueryV2: update response param.
+
+
 2024-12-17 Version: 4.5.0
 - Support API ElectronicItineraryBatchApply.
 - Support API ElectronicItineraryGetApplyResult.
