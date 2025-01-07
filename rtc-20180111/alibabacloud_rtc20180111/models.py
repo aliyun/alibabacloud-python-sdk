@@ -3853,12 +3853,12 @@ class DescribeAppRecordTemplatesShrinkRequest(TeaModel):
 class DescribeAppRecordTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
-        create_time: bytes = None,
+        create_time: str = None,
         delay_stop_time: int = None,
         file_prefix: str = None,
         file_split_interval: int = None,
         formats: List[str] = None,
-        layout_ids: List[int] = None,
+        layout_ids: List[str] = None,
         media_encode: int = None,
         name: str = None,
         template_id: str = None,

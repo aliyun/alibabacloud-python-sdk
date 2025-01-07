@@ -1,3 +1,7 @@
+2025-01-07 Version: 5.0.0
+- Update API DescribeAppRecordTemplates: update response param.
+
+
 2024-12-16 Version: 4.1.0
 - Support API DescribeCloudNotes.
 - Support API StartCloudNote.
