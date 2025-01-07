@@ -1,3 +1,79 @@
+2025-01-07 Version: 4.0.0
+- Support API GetBuildRiskDefineRuleConfig.
+- Support API GetTenantCheckAvailable.
+- Support API ListOperationProcess.
+- Support API ListOperationProcessDetail.
+- Support API SetBuildRiskDefineRuleConfig.
+- Support API SubmitTenantCheck.
+- Delete API DescribeAttachRecords.
+- Delete API DescribeImageScanAuthorization.
+- Delete API DescribeUserLayoutAuthorization.
+- Delete API GetClientInstallationStatistic.
+- Delete API InstallRaspAttach.
+- Delete API UninstallRaspAttach.
+- Update API AddCloudVendorAccountAK: add param Lang.
+- Update API AddImageEventOperation: add param Note.
+- Update API AddImageEventOperation: add param Source.
+- Update API AddInstallCode: add param PrivateLinkId.
+- Update API CreateAssetSelectionConfig: add param Platform.
+- Update API CreateAssetSelectionConfig: update response param.
+- Update API CreateOrUpdateAssetGroup: update param GroupName.
+- Update API DescribeAgentlessSensitiveFileByKey: update response param.
+- Update API DescribeAssetDetailByUuids: update response param.
+- Update API DescribeCloudCenterInstances: update response param.
+- Update API DescribeExposedInstanceDetail: add param Lang.
+- Update API DescribeExposedInstanceDetail: update response param.
+- Update API DescribeExposedInstanceList: add param AssetType.
+- Update API DescribeExposedInstanceList: add param CspmStatus.
+- Update API DescribeExposedInstanceList: update response param.
+- Update API DescribeExposedStatistics: update response param.
+- Update API DescribeImageEventOperationPage: add param Source.
+- Update API DescribeImageEventOperationPage: update response param.
+- Update API DescribeImageRepoDetailList: update response param.
+- Update API DescribeImageSensitiveFileList: update response param.
+- Update API DescribeInstallCodes: update response param.
+- Update API DescribeMonitorAccounts: update response param.
+- Update API DescribeOnceTask: add param Source.
+- Update API DescribeOnceTask: update response param.
+- Update API DescribeStrategy: update response param.
+- Update API DescribeStrategyExecDetail: update response param.
+- Update API DescribeStrategyTarget: update response param.
+- Update API DescribeSuspiciousOverallConfig: update response param.
+- Update API FixCheckWarnings: add param RetentionDays.
+- Update API FixCheckWarnings: add param SnapshotName.
+- Update API GetAssetDetailByUuid: update response param.
+- Update API GetAssetSelectionConfig: update response param.
+- Update API GetCheckRiskStatistics: update response param.
+- Update API GetOssBucketScanStatistic: add param Source.
+- Update API GetSensitiveDefineRuleConfig: add param Source.
+- Update API GetSensitiveDefineRuleConfig: update response param.
+- Update API GetSuspiciousStatistics: update response param.
+- Update API ListAgentlessRelateMalicious: add param Lang.
+- Update API ListAgentlessRelateMalicious: add param Scenario.
+- Update API ListAgentlessRelateMalicious: update response param.
+- Update API ListCheckItemWarningSummary: add param CheckWarningStatusList.
+- Update API ListCheckItemWarningSummary: add param StartTime.
+- Update API ListCheckResult: add param OperationTypes.
+- Update API ListCheckResult: update response param.
+- Update API ListCheckStandard: update response param.
+- Update API ListQueryRaspAppInfo: update param Uuids.
+- Update API ListSystemClientRules: update response param.
+- Update API ModifyCloudVendorAccountAK: add param Lang.
+- Update API ModifyUniBackupPolicy: update param AccountPassword.
+- Update API SetImageSensitiveFileStatus: add param IdList.
+- Update API SetImageSensitiveFileStatus: add param ScanRange.
+- Update API SetSensitiveDefineRuleConfig: add param EnableNewRule.
+- Update API SetSensitiveDefineRuleConfig: add param Source.
+- Update API SubmitCheck: update response param.
+- Update API SubmitOperationTask: add param RelationKey.
+- Update API SubmitOperationTask: update param DimensionType.
+- Update API UpdateImageEventOperation: add param Conditions.
+- Update API UpdateImageEventOperation: add param Note.
+- Update API UpdateImageEventOperation: add param Source.
+- Update API VerifyCheckInstanceResult: update response param.
+- Update API VerifyCheckResult: update response param.
+
+
 2024-10-10 Version: 3.2.0
 - Support API GetBuildRiskDefineRuleConfig.
 - Support API SetBuildRiskDefineRuleConfig.
