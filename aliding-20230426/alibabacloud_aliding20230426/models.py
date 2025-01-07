@@ -38906,12 +38906,14 @@ class GetOrgOrWebOpenDocContentTaskIdRequest(TeaModel):
         self,
         dentry_uuid: str = None,
         generate_cp: bool = None,
+        scope_type: int = None,
         target_format: str = None,
         tenant_context: GetOrgOrWebOpenDocContentTaskIdRequestTenantContext = None,
     ):
         # This parameter is required.
         self.dentry_uuid = dentry_uuid
         self.generate_cp = generate_cp
+        self.scope_type = scope_type
         self.target_format = target_format
         self.tenant_context = tenant_context
 
@@ -38929,6 +38931,8 @@ class GetOrgOrWebOpenDocContentTaskIdRequest(TeaModel):
             result['DentryUuid'] = self.dentry_uuid
         if self.generate_cp is not None:
             result['GenerateCp'] = self.generate_cp
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
         if self.target_format is not None:
             result['TargetFormat'] = self.target_format
         if self.tenant_context is not None:
@@ -38941,6 +38945,8 @@ class GetOrgOrWebOpenDocContentTaskIdRequest(TeaModel):
             self.dentry_uuid = m.get('DentryUuid')
         if m.get('GenerateCp') is not None:
             self.generate_cp = m.get('GenerateCp')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
         if m.get('TargetFormat') is not None:
             self.target_format = m.get('TargetFormat')
         if m.get('TenantContext') is not None:
@@ -38954,12 +38960,14 @@ class GetOrgOrWebOpenDocContentTaskIdShrinkRequest(TeaModel):
         self,
         dentry_uuid: str = None,
         generate_cp: bool = None,
+        scope_type: int = None,
         target_format: str = None,
         tenant_context_shrink: str = None,
     ):
         # This parameter is required.
         self.dentry_uuid = dentry_uuid
         self.generate_cp = generate_cp
+        self.scope_type = scope_type
         self.target_format = target_format
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -38976,6 +38984,8 @@ class GetOrgOrWebOpenDocContentTaskIdShrinkRequest(TeaModel):
             result['DentryUuid'] = self.dentry_uuid
         if self.generate_cp is not None:
             result['GenerateCp'] = self.generate_cp
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
         if self.target_format is not None:
             result['TargetFormat'] = self.target_format
         if self.tenant_context_shrink is not None:
@@ -38988,6 +38998,8 @@ class GetOrgOrWebOpenDocContentTaskIdShrinkRequest(TeaModel):
             self.dentry_uuid = m.get('DentryUuid')
         if m.get('GenerateCp') is not None:
             self.generate_cp = m.get('GenerateCp')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
         if m.get('TargetFormat') is not None:
             self.target_format = m.get('TargetFormat')
         if m.get('TenantContext') is not None:

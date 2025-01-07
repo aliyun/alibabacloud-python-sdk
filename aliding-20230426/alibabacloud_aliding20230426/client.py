@@ -15107,6 +15107,8 @@ class Client(OpenApiClient):
             body['DentryUuid'] = request.dentry_uuid
         if not UtilClient.is_unset(request.generate_cp):
             body['GenerateCp'] = request.generate_cp
+        if not UtilClient.is_unset(request.scope_type):
+            body['ScopeType'] = request.scope_type
         if not UtilClient.is_unset(request.target_format):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -15164,6 +15166,8 @@ class Client(OpenApiClient):
             body['DentryUuid'] = request.dentry_uuid
         if not UtilClient.is_unset(request.generate_cp):
             body['GenerateCp'] = request.generate_cp
+        if not UtilClient.is_unset(request.scope_type):
+            body['ScopeType'] = request.scope_type
         if not UtilClient.is_unset(request.target_format):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):

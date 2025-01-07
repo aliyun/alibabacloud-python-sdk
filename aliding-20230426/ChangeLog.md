@@ -1,3 +1,7 @@
+2025-01-07 Version: 2.29.1
+- Update API GetOrgOrWebOpenDocContentTaskId: add param ScopeType.
+
+
 2024-12-24 Version: 2.29.0
 - Support API GetOrgOrWebOpenDocContentTaskId.
 - Support API QueryConferenceInfoByRoomCode.
