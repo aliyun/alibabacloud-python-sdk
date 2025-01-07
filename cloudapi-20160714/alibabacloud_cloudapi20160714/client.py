@@ -595,7 +595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例关联内网域名解析记录
+        @summary Associates an internal domain name resolution with a dedicated instance.
+        
+        @description An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
         
         @param tmp_req: AssociateInstanceWithPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -640,7 +642,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例关联内网域名解析记录
+        @summary Associates an internal domain name resolution with a dedicated instance.
+        
+        @description An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
         
         @param tmp_req: AssociateInstanceWithPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -684,7 +688,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
     ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例关联内网域名解析记录
+        @summary Associates an internal domain name resolution with a dedicated instance.
+        
+        @description An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
         
         @param request: AssociateInstanceWithPrivateDNSRequest
         @return: AssociateInstanceWithPrivateDNSResponse
@@ -697,7 +703,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AssociateInstanceWithPrivateDNSRequest,
     ) -> cloud_api20160714_models.AssociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例关联内网域名解析记录
+        @summary Associates an internal domain name resolution with a dedicated instance.
+        
+        @description An internal domain name resolution can be associated only with a dedicated instance, not with a shared instance or shared instance cluster.
         
         @param request: AssociateInstanceWithPrivateDNSRequest
         @return: AssociateInstanceWithPrivateDNSResponse
@@ -1491,6 +1499,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
         """
+        @summary 创建API分组
+        
         @param request: CreateApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApiGroupResponse
@@ -1534,6 +1544,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
         """
+        @summary 创建API分组
+        
         @param request: CreateApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateApiGroupResponse
@@ -1576,6 +1588,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiGroupRequest,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
         """
+        @summary 创建API分组
+        
         @param request: CreateApiGroupRequest
         @return: CreateApiGroupResponse
         """
@@ -1587,6 +1601,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiGroupRequest,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
         """
+        @summary 创建API分组
+        
         @param request: CreateApiGroupRequest
         @return: CreateApiGroupResponse
         """
@@ -2687,6 +2703,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
         """
+        @summary 创建内网域名
+        
         @param request: CreateIntranetDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIntranetDomainResponse
@@ -2722,6 +2740,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
         """
+        @summary 创建内网域名
+        
         @param request: CreateIntranetDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateIntranetDomainResponse
@@ -2756,6 +2776,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
         """
+        @summary 创建内网域名
+        
         @param request: CreateIntranetDomainRequest
         @return: CreateIntranetDomainResponse
         """
@@ -2767,6 +2789,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
         """
+        @summary 创建内网域名
+        
         @param request: CreateIntranetDomainRequest
         @return: CreateIntranetDomainResponse
         """
@@ -2911,12 +2935,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
         """
+        @summary Creates a Simple Log Service configuration for an API.
+        
         @param request: CreateLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLogConfigResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.create_slr):
+            query['CreateSlr'] = request.create_slr
         if not UtilClient.is_unset(request.log_type):
             query['LogType'] = request.log_type
         if not UtilClient.is_unset(request.security_token):
@@ -2950,12 +2978,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
         """
+        @summary Creates a Simple Log Service configuration for an API.
+        
         @param request: CreateLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLogConfigResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.create_slr):
+            query['CreateSlr'] = request.create_slr
         if not UtilClient.is_unset(request.log_type):
             query['LogType'] = request.log_type
         if not UtilClient.is_unset(request.security_token):
@@ -2988,6 +3020,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateLogConfigRequest,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
         """
+        @summary Creates a Simple Log Service configuration for an API.
+        
         @param request: CreateLogConfigRequest
         @return: CreateLogConfigResponse
         """
@@ -2999,6 +3033,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateLogConfigRequest,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
         """
+        @summary Creates a Simple Log Service configuration for an API.
+        
         @param request: CreateLogConfigRequest
         @return: CreateLogConfigResponse
         """
@@ -3379,7 +3415,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
         """
-        @summary 创建内网域名解析
+        @summary Creates an internal domain name resolution and adds a resolution record.
+        
+        @description An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
         
         @param tmp_req: CreatePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3426,7 +3464,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
         """
-        @summary 创建内网域名解析
+        @summary Creates an internal domain name resolution and adds a resolution record.
+        
+        @description An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
         
         @param tmp_req: CreatePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3472,7 +3512,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreatePrivateDNSRequest,
     ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
         """
-        @summary 创建内网域名解析
+        @summary Creates an internal domain name resolution and adds a resolution record.
+        
+        @description An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
         
         @param request: CreatePrivateDNSRequest
         @return: CreatePrivateDNSResponse
@@ -3485,7 +3527,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreatePrivateDNSRequest,
     ) -> cloud_api20160714_models.CreatePrivateDNSResponse:
         """
-        @summary 创建内网域名解析
+        @summary Creates an internal domain name resolution and adds a resolution record.
+        
+        @description An internal domain name resolution of the virtual private cloud (VPC) type can be bound only to traditional dedicated instances. An internal domain name resolution of the A type can be bound only to VPC integration dedicated instances.
         
         @param request: CreatePrivateDNSRequest
         @return: CreatePrivateDNSResponse
@@ -6031,7 +6075,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
         """
-        @summary 删除内网域名解析
+        @summary Deletes an internal domain name resolution.
         
         @param request: DeletePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6072,7 +6116,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
         """
-        @summary 删除内网域名解析
+        @summary Deletes an internal domain name resolution.
         
         @param request: DeletePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6112,7 +6156,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeletePrivateDNSRequest,
     ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
         """
-        @summary 删除内网域名解析
+        @summary Deletes an internal domain name resolution.
         
         @param request: DeletePrivateDNSRequest
         @return: DeletePrivateDNSResponse
@@ -6125,7 +6169,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeletePrivateDNSRequest,
     ) -> cloud_api20160714_models.DeletePrivateDNSResponse:
         """
-        @summary 删除内网域名解析
+        @summary Deletes an internal domain name resolution.
         
         @param request: DeletePrivateDNSRequest
         @return: DeletePrivateDNSResponse
@@ -6623,6 +6667,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
         """
+        @summary 查询批量下线API任务
+        
         @param request: DescribeAbolishApiTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAbolishApiTaskResponse
@@ -6658,6 +6704,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
         """
+        @summary 查询批量下线API任务
+        
         @param request: DescribeAbolishApiTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAbolishApiTaskResponse
@@ -6692,6 +6740,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
         """
+        @summary 查询批量下线API任务
+        
         @param request: DescribeAbolishApiTaskRequest
         @return: DescribeAbolishApiTaskResponse
         """
@@ -6703,6 +6753,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
         """
+        @summary 查询批量下线API任务
+        
         @param request: DescribeAbolishApiTaskRequest
         @return: DescribeAbolishApiTaskResponse
         """
@@ -7389,6 +7441,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_path):
+            query['BasePath'] = request.base_path
         if not UtilClient.is_unset(request.enable_tag_auth):
             query['EnableTagAuth'] = request.enable_tag_auth
         if not UtilClient.is_unset(request.group_id):
@@ -7442,6 +7496,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.base_path):
+            query['BasePath'] = request.base_path
         if not UtilClient.is_unset(request.enable_tag_auth):
             query['EnableTagAuth'] = request.enable_tag_auth
         if not UtilClient.is_unset(request.group_id):
@@ -14083,6 +14139,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
         """
+        @summary 查询日志配置
+        
         @param request: DescribeLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogConfigResponse
@@ -14118,6 +14176,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
         """
+        @summary 查询日志配置
+        
         @param request: DescribeLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeLogConfigResponse
@@ -14152,6 +14212,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeLogConfigRequest,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
         """
+        @summary 查询日志配置
+        
         @param request: DescribeLogConfigRequest
         @return: DescribeLogConfigResponse
         """
@@ -14163,6 +14225,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeLogConfigRequest,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
         """
+        @summary 查询日志配置
+        
         @param request: DescribeLogConfigRequest
         @return: DescribeLogConfigResponse
         """
@@ -14531,6 +14595,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
         """
+        @summary 查询插件列表
+        
         @param request: DescribePluginSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePluginSchemasResponse
@@ -14566,6 +14632,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
         """
+        @summary 查询插件列表
+        
         @param request: DescribePluginSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePluginSchemasResponse
@@ -14600,6 +14668,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
         """
+        @summary 查询插件列表
+        
         @param request: DescribePluginSchemasRequest
         @return: DescribePluginSchemasResponse
         """
@@ -14611,6 +14681,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
         """
+        @summary 查询插件列表
+        
         @param request: DescribePluginSchemasRequest
         @return: DescribePluginSchemasResponse
         """
@@ -14623,6 +14695,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
         """
+        @summary 查询插件模板
+        
         @param request: DescribePluginTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePluginTemplatesResponse
@@ -14660,6 +14734,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
         """
+        @summary 查询插件模板
+        
         @param request: DescribePluginTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePluginTemplatesResponse
@@ -14696,6 +14772,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
         """
+        @summary 查询插件模板
+        
         @param request: DescribePluginTemplatesRequest
         @return: DescribePluginTemplatesResponse
         """
@@ -14707,6 +14785,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
         """
+        @summary 查询插件模板
+        
         @param request: DescribePluginTemplatesRequest
         @return: DescribePluginTemplatesResponse
         """
@@ -16227,6 +16307,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
         """
+        @summary 查询更新VPC授权的任务
+        
         @param request: DescribeUpdateVpcInfoTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUpdateVpcInfoTaskResponse
@@ -16262,6 +16344,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
         """
+        @summary 查询更新VPC授权的任务
+        
         @param request: DescribeUpdateVpcInfoTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUpdateVpcInfoTaskResponse
@@ -16296,6 +16380,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
         """
+        @summary 查询更新VPC授权的任务
+        
         @param request: DescribeUpdateVpcInfoTaskRequest
         @return: DescribeUpdateVpcInfoTaskResponse
         """
@@ -16307,6 +16393,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
         """
+        @summary 查询更新VPC授权的任务
+        
         @param request: DescribeUpdateVpcInfoTaskRequest
         @return: DescribeUpdateVpcInfoTaskResponse
         """
@@ -16875,7 +16963,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例解除的关联内网域名解析记录
+        @summary Disassociates an internal domain name resolution from a dedicated instance.
         
         @param tmp_req: DissociateInstanceWithPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16920,7 +17008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例解除的关联内网域名解析记录
+        @summary Disassociates an internal domain name resolution from a dedicated instance.
         
         @param tmp_req: DissociateInstanceWithPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16964,7 +17052,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
     ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例解除的关联内网域名解析记录
+        @summary Disassociates an internal domain name resolution from a dedicated instance.
         
         @param request: DissociateInstanceWithPrivateDNSRequest
         @return: DissociateInstanceWithPrivateDNSResponse
@@ -16977,7 +17065,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DissociateInstanceWithPrivateDNSRequest,
     ) -> cloud_api20160714_models.DissociateInstanceWithPrivateDNSResponse:
         """
-        @summary 专享实例解除的关联内网域名解析记录
+        @summary Disassociates an internal domain name resolution from a dedicated instance.
         
         @param request: DissociateInstanceWithPrivateDNSRequest
         @return: DissociateInstanceWithPrivateDNSResponse
@@ -17119,7 +17207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
         """
-        @summary 开启实例的访问控制
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
         
         @param request: EnableInstanceAccessControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17162,7 +17250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
         """
-        @summary 开启实例的访问控制
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
         
         @param request: EnableInstanceAccessControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17204,7 +17292,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
         """
-        @summary 开启实例的访问控制
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
         
         @param request: EnableInstanceAccessControlRequest
         @return: EnableInstanceAccessControlResponse
@@ -17217,7 +17305,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
         """
-        @summary 开启实例的访问控制
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Specifies the access control policy of an instance.
         
         @param request: EnableInstanceAccessControlRequest
         @return: EnableInstanceAccessControlResponse
@@ -17643,7 +17731,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ListPrivateDNSResponse:
         """
-        @summary 查询内网域名解析
+        @summary Queries internal domain name resolutions by domain name or resolution type.
         
         @param request: ListPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17682,7 +17770,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ListPrivateDNSResponse:
         """
-        @summary 查询内网域名解析
+        @summary Queries internal domain name resolutions by domain name or resolution type.
         
         @param request: ListPrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17720,7 +17808,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ListPrivateDNSRequest,
     ) -> cloud_api20160714_models.ListPrivateDNSResponse:
         """
-        @summary 查询内网域名解析
+        @summary Queries internal domain name resolutions by domain name or resolution type.
         
         @param request: ListPrivateDNSRequest
         @return: ListPrivateDNSResponse
@@ -17733,7 +17821,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ListPrivateDNSRequest,
     ) -> cloud_api20160714_models.ListPrivateDNSResponse:
         """
-        @summary 查询内网域名解析
+        @summary Queries internal domain name resolutions by domain name or resolution type.
         
         @param request: ListPrivateDNSRequest
         @return: ListPrivateDNSResponse
@@ -18378,6 +18466,8 @@ class Client(OpenApiClient):
             query['BasePath'] = request.base_path
         if not UtilClient.is_unset(request.compatible_flags):
             query['CompatibleFlags'] = request.compatible_flags
+        if not UtilClient.is_unset(request.custom_app_code_config):
+            query['CustomAppCodeConfig'] = request.custom_app_code_config
         if not UtilClient.is_unset(request.custom_trace_config):
             query['CustomTraceConfig'] = request.custom_trace_config
         if not UtilClient.is_unset(request.customer_configs):
@@ -18444,6 +18534,8 @@ class Client(OpenApiClient):
             query['BasePath'] = request.base_path
         if not UtilClient.is_unset(request.compatible_flags):
             query['CompatibleFlags'] = request.compatible_flags
+        if not UtilClient.is_unset(request.custom_app_code_config):
+            query['CustomAppCodeConfig'] = request.custom_app_code_config
         if not UtilClient.is_unset(request.custom_trace_config):
             query['CustomTraceConfig'] = request.custom_trace_config
         if not UtilClient.is_unset(request.customer_configs):
@@ -18527,6 +18619,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
         """
+        @summary 变更分组实例
+        
         @param request: ModifyApiGroupInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyApiGroupInstanceResponse
@@ -18568,6 +18662,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
         """
+        @summary 变更分组实例
+        
         @param request: ModifyApiGroupInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyApiGroupInstanceResponse
@@ -18608,6 +18704,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
         """
+        @summary 变更分组实例
+        
         @param request: ModifyApiGroupInstanceRequest
         @return: ModifyApiGroupInstanceResponse
         """
@@ -18619,6 +18717,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
         """
+        @summary 变更分组实例
+        
         @param request: ModifyApiGroupInstanceRequest
         @return: ModifyApiGroupInstanceResponse
         """
@@ -18859,11 +18959,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        @summary Modifies a specified application.
+        @summary Modifies a specified app.
         
         @description    This operation is intended for API callers.
-        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        You can call this operation up to 50 times per second per account.
+        AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********\
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18908,11 +19008,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        @summary Modifies a specified application.
+        @summary Modifies a specified app.
         
         @description    This operation is intended for API callers.
-        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        You can call this operation up to 50 times per second per account.
+        AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********\
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18956,11 +19056,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyAppRequest,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        @summary Modifies a specified application.
+        @summary Modifies a specified app.
         
         @description    This operation is intended for API callers.
-        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        You can call this operation up to 50 times per second per account.
+        AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********\
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyAppRequest
         @return: ModifyAppResponse
@@ -18973,11 +19073,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyAppRequest,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        @summary Modifies a specified application.
+        @summary Modifies a specified app.
         
         @description    This operation is intended for API callers.
-        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        You can call this operation up to 50 times per second per account.
+        AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********\
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyAppRequest
         @return: ModifyAppResponse
@@ -19439,7 +19539,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
         """
-        @summary 修改API网关实例属性
+        @summary Modifies the properties of an API Gateway instance.
         
         @param tmp_req: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19500,7 +19600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
         """
-        @summary 修改API网关实例属性
+        @summary Modifies the properties of an API Gateway instance.
         
         @param tmp_req: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19560,7 +19660,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
         """
-        @summary 修改API网关实例属性
+        @summary Modifies the properties of an API Gateway instance.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -19573,7 +19673,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
         """
-        @summary 修改API网关实例属性
+        @summary Modifies the properties of an API Gateway instance.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -19696,6 +19796,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_spec_with_options_async(request, runtime)
+
+    def modify_instance_vpc_attribute_for_console_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse:
+        """
+        @summary Modify instance client VPC config.
+        
+        @param request: ModifyInstanceVpcAttributeForConsoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVpcAttributeForConsoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_vpc_access):
+            query['DeleteVpcAccess'] = request.delete_vpc_access
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_owner_id):
+            query['VpcOwnerId'] = request.vpc_owner_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceVpcAttributeForConsole',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_vpc_attribute_for_console_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse:
+        """
+        @summary Modify instance client VPC config.
+        
+        @param request: ModifyInstanceVpcAttributeForConsoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceVpcAttributeForConsoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delete_vpc_access):
+            query['DeleteVpcAccess'] = request.delete_vpc_access
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_owner_id):
+            query['VpcOwnerId'] = request.vpc_owner_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceVpcAttributeForConsole',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_vpc_attribute_for_console(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleRequest,
+    ) -> cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse:
+        """
+        @summary Modify instance client VPC config.
+        
+        @param request: ModifyInstanceVpcAttributeForConsoleRequest
+        @return: ModifyInstanceVpcAttributeForConsoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_vpc_attribute_for_console_with_options(request, runtime)
+
+    async def modify_instance_vpc_attribute_for_console_async(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleRequest,
+    ) -> cloud_api20160714_models.ModifyInstanceVpcAttributeForConsoleResponse:
+        """
+        @summary Modify instance client VPC config.
+        
+        @param request: ModifyInstanceVpcAttributeForConsoleRequest
+        @return: ModifyInstanceVpcAttributeForConsoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_vpc_attribute_for_console_with_options_async(request, runtime)
 
     def modify_intranet_domain_policy_with_options(
         self,
@@ -20055,6 +20271,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
         """
+        @summary 修改日志配置
+        
         @param request: ModifyLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogConfigResponse
@@ -20094,6 +20312,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
         """
+        @summary 修改日志配置
+        
         @param request: ModifyLogConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLogConfigResponse
@@ -20132,6 +20352,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyLogConfigRequest,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
         """
+        @summary 修改日志配置
+        
         @param request: ModifyLogConfigRequest
         @return: ModifyLogConfigResponse
         """
@@ -20143,6 +20365,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyLogConfigRequest,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
         """
+        @summary 修改日志配置
+        
         @param request: ModifyLogConfigRequest
         @return: ModifyLogConfigResponse
         """
@@ -20794,6 +21018,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
         """
+        @summary 开通API网关服务
+        
         @param request: OpenApiGatewayServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenApiGatewayServiceResponse
@@ -20820,6 +21046,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
         """
+        @summary 开通API网关服务
+        
         @param request: OpenApiGatewayServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenApiGatewayServiceResponse
@@ -20843,6 +21071,8 @@ class Client(OpenApiClient):
 
     def open_api_gateway_service(self) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
         """
+        @summary 开通API网关服务
+        
         @return: OpenApiGatewayServiceResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -20850,6 +21080,8 @@ class Client(OpenApiClient):
 
     async def open_api_gateway_service_async(self) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
         """
+        @summary 开通API网关服务
+        
         @return: OpenApiGatewayServiceResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -22165,6 +22397,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
         """
+        @summary 删除VPC授权并下线关联API
+        
         @param request: RemoveVpcAccessAndAbolishApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveVpcAccessAndAbolishApisResponse
@@ -22206,6 +22440,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
         """
+        @summary 删除VPC授权并下线关联API
+        
         @param request: RemoveVpcAccessAndAbolishApisRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveVpcAccessAndAbolishApisResponse
@@ -22246,6 +22482,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
         """
+        @summary 删除VPC授权并下线关联API
+        
         @param request: RemoveVpcAccessAndAbolishApisRequest
         @return: RemoveVpcAccessAndAbolishApisResponse
         """
@@ -22257,6 +22495,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
         """
+        @summary 删除VPC授权并下线关联API
+        
         @param request: RemoveVpcAccessAndAbolishApisRequest
         @return: RemoveVpcAccessAndAbolishApisResponse
         """
@@ -22497,6 +22737,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
         """
+        @summary 根据APP生成SDK
+        
         @param request: SdkGenerateByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SdkGenerateByAppResponse
@@ -22534,6 +22776,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
         """
+        @summary 根据APP生成SDK
+        
         @param request: SdkGenerateByAppRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SdkGenerateByAppResponse
@@ -22570,6 +22814,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
         """
+        @summary 根据APP生成SDK
+        
         @param request: SdkGenerateByAppRequest
         @return: SdkGenerateByAppResponse
         """
@@ -22581,6 +22827,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
         """
+        @summary 根据APP生成SDK
+        
         @param request: SdkGenerateByAppRequest
         @return: SdkGenerateByAppResponse
         """
@@ -22697,6 +22945,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
         """
+        @summary 根据分组生成SDK
+        
         @param request: SdkGenerateByGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SdkGenerateByGroupResponse
@@ -22734,6 +22984,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
         """
+        @summary 根据分组生成SDK
+        
         @param request: SdkGenerateByGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SdkGenerateByGroupResponse
@@ -22770,6 +23022,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
         """
+        @summary 根据分组生成SDK
+        
         @param request: SdkGenerateByGroupRequest
         @return: SdkGenerateByGroupResponse
         """
@@ -22781,6 +23035,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
         """
+        @summary 根据分组生成SDK
+        
         @param request: SdkGenerateByGroupRequest
         @return: SdkGenerateByGroupResponse
         """
@@ -22897,7 +23153,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
         """
-        @summary 给多个API产品添加APP授权
+        @summary Grants permissions on API products to an application.
         
         @param tmp_req: SetApiProductsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22944,7 +23200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
         """
-        @summary 给多个API产品添加APP授权
+        @summary Grants permissions on API products to an application.
         
         @param tmp_req: SetApiProductsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22990,7 +23246,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
         """
-        @summary 给多个API产品添加APP授权
+        @summary Grants permissions on API products to an application.
         
         @param request: SetApiProductsAuthoritiesRequest
         @return: SetApiProductsAuthoritiesResponse
@@ -23003,7 +23259,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
         """
-        @summary 给多个API产品添加APP授权
+        @summary Grants permissions on API products to an application.
         
         @param request: SetApiProductsAuthoritiesRequest
         @return: SetApiProductsAuthoritiesResponse
@@ -23153,7 +23409,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
         """
-        @summary 将多个APP授权给API产品
+        @summary Authorizes multiple applications to call APIs in an API product.
         
         @param request: SetAppsAuthToApiProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23196,7 +23452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
         """
-        @summary 将多个APP授权给API产品
+        @summary Authorizes multiple applications to call APIs in an API product.
         
         @param request: SetAppsAuthToApiProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23238,7 +23494,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
         """
-        @summary 将多个APP授权给API产品
+        @summary Authorizes multiple applications to call APIs in an API product.
         
         @param request: SetAppsAuthToApiProductRequest
         @return: SetAppsAuthToApiProductResponse
@@ -23251,7 +23507,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
         """
-        @summary 将多个APP授权给API产品
+        @summary Authorizes multiple applications to call APIs in an API product.
         
         @param request: SetAppsAuthToApiProductRequest
         @return: SetAppsAuthToApiProductResponse
@@ -23537,12 +23793,16 @@ class Client(OpenApiClient):
             query['CertificateName'] = request.certificate_name
         if not UtilClient.is_unset(request.certificate_private_key):
             query['CertificatePrivateKey'] = request.certificate_private_key
+        if not UtilClient.is_unset(request.client_cert_sdn_pass_through):
+            query['ClientCertSDnPassThrough'] = request.client_cert_sdn_pass_through
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ssl_ocsp_enable):
+            query['SslOcspEnable'] = request.ssl_ocsp_enable
         if not UtilClient.is_unset(request.ssl_verify_depth):
             query['SslVerifyDepth'] = request.ssl_verify_depth
         req = open_api_models.OpenApiRequest(
@@ -23590,12 +23850,16 @@ class Client(OpenApiClient):
             query['CertificateName'] = request.certificate_name
         if not UtilClient.is_unset(request.certificate_private_key):
             query['CertificatePrivateKey'] = request.certificate_private_key
+        if not UtilClient.is_unset(request.client_cert_sdn_pass_through):
+            query['ClientCertSDnPassThrough'] = request.client_cert_sdn_pass_through
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ssl_ocsp_enable):
+            query['SslOcspEnable'] = request.ssl_ocsp_enable
         if not UtilClient.is_unset(request.ssl_verify_depth):
             query['SslVerifyDepth'] = request.ssl_verify_depth
         req = open_api_models.OpenApiRequest(
@@ -23769,6 +24033,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
         """
+        @summary 设置分组授权AppCode
+        
         @param request: SetGroupAuthAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetGroupAuthAppCodeResponse
@@ -23806,6 +24072,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
         """
+        @summary 设置分组授权AppCode
+        
         @param request: SetGroupAuthAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetGroupAuthAppCodeResponse
@@ -23842,6 +24110,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
         """
+        @summary 设置分组授权AppCode
+        
         @param request: SetGroupAuthAppCodeRequest
         @return: SetGroupAuthAppCodeResponse
         """
@@ -23853,6 +24123,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
         """
+        @summary 设置分组授权AppCode
+        
         @param request: SetGroupAuthAppCodeRequest
         @return: SetGroupAuthAppCodeResponse
         """
@@ -24853,7 +25125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
         """
-        @summary 更新内网域名解析
+        @summary Modifies an internal domain name resolution.
         
         @param tmp_req: UpdatePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24900,7 +25172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
         """
-        @summary 更新内网域名解析
+        @summary Modifies an internal domain name resolution.
         
         @param tmp_req: UpdatePrivateDNSRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24946,7 +25218,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.UpdatePrivateDNSRequest,
     ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
         """
-        @summary 更新内网域名解析
+        @summary Modifies an internal domain name resolution.
         
         @param request: UpdatePrivateDNSRequest
         @return: UpdatePrivateDNSResponse
@@ -24959,7 +25231,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.UpdatePrivateDNSRequest,
     ) -> cloud_api20160714_models.UpdatePrivateDNSResponse:
         """
-        @summary 更新内网域名解析
+        @summary Modifies an internal domain name resolution.
         
         @param request: UpdatePrivateDNSRequest
         @return: UpdatePrivateDNSResponse

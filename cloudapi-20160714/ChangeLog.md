@@ -1,3 +1,18 @@
+2025-01-07 Version: 4.6.0
+- Support API ModifyInstanceVpcAttributeForConsole.
+- Update API CreateLogConfig: add param CreateSlr.
+- Update API DescribeApi: update response param.
+- Update API DescribeApiGroup: update response param.
+- Update API DescribeApiGroups: add param BasePath.
+- Update API DescribeBackendInfo: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribePluginsByApi: update response param.
+- Update API ModifyApiGroup: add param CustomAppCodeConfig.
+- Update API QueryRequestLogs: update response param.
+- Update API SetDomainCertificate: add param ClientCertSDnPassThrough.
+- Update API SetDomainCertificate: add param SslOcspEnable.
+
+
 2024-10-19 Version: 4.5.0
 - Support API AssociateInstanceWithPrivateDNS.
 - Support API CreatePrivateDNS.

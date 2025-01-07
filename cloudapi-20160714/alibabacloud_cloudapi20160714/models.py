@@ -523,8 +523,12 @@ class AssociateInstanceWithPrivateDNSRequest(TeaModel):
         intranet_domains: List[str] = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The internal domain names included in the resolution.
+        # 
         # This parameter is required.
         self.intranet_domains = intranet_domains
         self.security_token = security_token
@@ -564,8 +568,12 @@ class AssociateInstanceWithPrivateDNSShrinkRequest(TeaModel):
         intranet_domains_shrink: str = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The internal domain names included in the resolution.
+        # 
         # This parameter is required.
         self.intranet_domains_shrink = intranet_domains_shrink
         self.security_token = security_token
@@ -603,6 +611,7 @@ class AssociateInstanceWithPrivateDNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3866,17 +3875,27 @@ class CreateIpControlResponse(TeaModel):
 class CreateLogConfigRequest(TeaModel):
     def __init__(
         self,
+        create_slr: bool = None,
         log_type: str = None,
         security_token: str = None,
         sls_log_store: str = None,
         sls_project: str = None,
     ):
+        # Specifies to create a service-linked role.
+        self.create_slr = create_slr
+        # The log type.
+        # 
+        # Valid values:
+        # 
+        # *   PROVIDER
         self.log_type = log_type
         self.security_token = security_token
         # slslogstore
         # 
         # This parameter is required.
         self.sls_log_store = sls_log_store
+        # The name of the Log Service project.
+        # 
         # This parameter is required.
         self.sls_project = sls_project
 
@@ -3889,6 +3908,8 @@ class CreateLogConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.create_slr is not None:
+            result['CreateSlr'] = self.create_slr
         if self.log_type is not None:
             result['LogType'] = self.log_type
         if self.security_token is not None:
@@ -3901,6 +3922,8 @@ class CreateLogConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateSlr') is not None:
+            self.create_slr = m.get('CreateSlr')
         if m.get('LogType') is not None:
             self.log_type = m.get('LogType')
         if m.get('SecurityToken') is not None:
@@ -3917,6 +3940,7 @@ class CreateLogConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4560,7 +4584,9 @@ class CreatePrivateDNSRequestRecords(TeaModel):
         record: str = None,
         weight: int = None,
     ):
+        # The resolution record.
         self.record = record
+        # The weight of the record.
         self.weight = weight
 
     def validate(self):
@@ -4595,10 +4621,18 @@ class CreatePrivateDNSRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The internal domain name.
+        # 
         # This parameter is required.
         self.intranet_domain = intranet_domain
+        # The resolution records. This parameter is valid only when Type is set to A.
         self.records = records
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -4650,10 +4684,18 @@ class CreatePrivateDNSShrinkRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The internal domain name.
+        # 
         # This parameter is required.
         self.intranet_domain = intranet_domain
+        # The resolution records. This parameter is valid only when Type is set to A.
         self.records_shrink = records_shrink
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -4694,6 +4736,7 @@ class CreatePrivateDNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7573,10 +7616,21 @@ class DeletePrivateDNSRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # Specifies whether to force delete the resolution.
+        # 
+        # *   true: force deletes the resolution if the resolution is associated with an instance.
+        # *   false: does not force delete the resolution if the resolution is associated with an instance.
         self.force = force
+        # The internal domain name.
+        # 
         # This parameter is required.
         self.intranet_domain = intranet_domain
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -7617,6 +7671,7 @@ class DeletePrivateDNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9608,6 +9663,7 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
         region_id: str = None,
         role_arn: str = None,
         service_name: str = None,
+        trigger_name: str = None,
     ):
         # The ContentType header type used when you call the backend service over HTTP.
         # 
@@ -9637,6 +9693,7 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
         self.role_arn = role_arn
         # The service name defined in Function Compute.
         self.service_name = service_name
+        self.trigger_name = trigger_name
 
     def validate(self):
         pass
@@ -9671,6 +9728,8 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
             result['RoleArn'] = self.role_arn
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.trigger_name is not None:
+            result['TriggerName'] = self.trigger_name
         return result
 
     def from_map(self, m: dict = None):
@@ -9699,6 +9758,8 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
             self.role_arn = m.get('RoleArn')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('TriggerName') is not None:
+            self.trigger_name = m.get('TriggerName')
         return self
 
 
@@ -11675,6 +11736,7 @@ class DescribeApiGroupResponseBody(TeaModel):
         cms_monitor_group: str = None,
         compatible_flags: str = None,
         created_time: str = None,
+        custom_app_code_config: str = None,
         custom_domains: DescribeApiGroupResponseBodyCustomDomains = None,
         custom_trace_config: str = None,
         customer_configs: str = None,
@@ -11718,6 +11780,8 @@ class DescribeApiGroupResponseBody(TeaModel):
         self.compatible_flags = compatible_flags
         # The creation time (UTC) of the API group.
         self.created_time = created_time
+        # The custom appcode configuration.
+        self.custom_app_code_config = custom_app_code_config
         # The details about the custom domain name.
         self.custom_domains = custom_domains
         # The custom trace configuration.
@@ -11817,6 +11881,8 @@ class DescribeApiGroupResponseBody(TeaModel):
             result['CompatibleFlags'] = self.compatible_flags
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
+        if self.custom_app_code_config is not None:
+            result['CustomAppCodeConfig'] = self.custom_app_code_config
         if self.custom_domains is not None:
             result['CustomDomains'] = self.custom_domains.to_map()
         if self.custom_trace_config is not None:
@@ -11887,6 +11953,8 @@ class DescribeApiGroupResponseBody(TeaModel):
             self.compatible_flags = m.get('CompatibleFlags')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
+        if m.get('CustomAppCodeConfig') is not None:
+            self.custom_app_code_config = m.get('CustomAppCodeConfig')
         if m.get('CustomDomains') is not None:
             temp_model = DescribeApiGroupResponseBodyCustomDomains()
             self.custom_domains = temp_model.from_map(m['CustomDomains'])
@@ -12137,6 +12205,7 @@ class DescribeApiGroupsRequestTag(TeaModel):
 class DescribeApiGroupsRequest(TeaModel):
     def __init__(
         self,
+        base_path: str = None,
         enable_tag_auth: bool = None,
         group_id: str = None,
         group_name: str = None,
@@ -12147,6 +12216,7 @@ class DescribeApiGroupsRequest(TeaModel):
         sort: str = None,
         tag: List[DescribeApiGroupsRequestTag] = None,
     ):
+        self.base_path = base_path
         # Specifies whether to enable tag verification.
         self.enable_tag_auth = enable_tag_auth
         # The ID of the API group. This ID is generated by the system and globally unique.
@@ -12180,6 +12250,8 @@ class DescribeApiGroupsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_path is not None:
+            result['BasePath'] = self.base_path
         if self.enable_tag_auth is not None:
             result['EnableTagAuth'] = self.enable_tag_auth
         if self.group_id is not None:
@@ -12204,6 +12276,8 @@ class DescribeApiGroupsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BasePath') is not None:
+            self.base_path = m.get('BasePath')
         if m.get('EnableTagAuth') is not None:
             self.enable_tag_auth = m.get('EnableTagAuth')
         if m.get('GroupId') is not None:
@@ -17574,14 +17648,23 @@ class DescribeApisByAppRequest(TeaModel):
         path: str = None,
         security_token: str = None,
     ):
+        # The name of the API. The name is used for fuzzy match.
         self.api_name = api_name
+        # The API ID.
         self.api_uid = api_uid
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The description of the API.
         self.description = description
+        # The request HTTP method of the API.
         self.method = method
+        # The number of the current page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request path of the API.
         self.path = path
         self.security_token = security_token
 
@@ -17805,9 +17888,13 @@ class DescribeApisByAppResponseBody(TeaModel):
     ):
         # The API authorizations.
         self.app_api_relation_infos = app_api_relation_infos
+        # The number of pages to return the results on.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -21889,8 +21976,11 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscov
         namespace: str = None,
         service_name: str = None,
     ):
+        # The connection URL of the ZooKeeper server.
         self.connect_string = connect_string
+        # The namespace.
         self.namespace = namespace
+        # Service name
         self.service_name = service_name
 
     def validate(self):
@@ -21932,6 +22022,7 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigDiscov
         self.nacos_config = nacos_config
         # The registry type.
         self.rc_type = rc_type
+        # The ZooKeeper configuration.
         self.zookeeper_config = zookeeper_config
 
     def validate(self):
@@ -21978,12 +22069,19 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEdasCo
         registry_type: str = None,
         service_name: str = None,
     ):
+        # The EDAS application ID.
         self.edas_app_id = edas_app_id
+        # The ID of the microservices namespace in EDAS.
         self.microservice_namespace = microservice_namespace
+        # The ID of the microservices namespace in EDAS.
         self.microservice_namespace_id = microservice_namespace_id
+        # The name of the microservices namespace in EDAS.
         self.microservice_namespace_name = microservice_namespace_name
+        # The MSE instance ID.
         self.mse_instance_id = mse_instance_id
+        # The registration type.
         self.registry_type = registry_type
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -22090,6 +22188,7 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFuncti
         qualifier: str = None,
         role_arn: str = None,
         service_name: str = None,
+        trigger_name: str = None,
     ):
         # The root path of the Function Compute service.
         self.fc_base_url = fc_base_url
@@ -22107,6 +22206,7 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFuncti
         self.role_arn = role_arn
         # The service name that is defined in Function Compute.
         self.service_name = service_name
+        self.trigger_name = trigger_name
 
     def validate(self):
         pass
@@ -22133,6 +22233,8 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFuncti
             result['RoleArn'] = self.role_arn
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.trigger_name is not None:
+            result['TriggerName'] = self.trigger_name
         return result
 
     def from_map(self, m: dict = None):
@@ -22153,6 +22255,8 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFuncti
             self.role_arn = m.get('RoleArn')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('TriggerName') is not None:
+            self.trigger_name = m.get('TriggerName')
         return self
 
 
@@ -22162,9 +22266,9 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockCo
         header_name: str = None,
         header_value: str = None,
     ):
-        # The name of the header parameter.
+        # The header name.
         self.header_name = header_name
-        # The value of the header parameter.
+        # The header value.
         self.header_value = header_value
 
     def validate(self):
@@ -22198,11 +22302,11 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockCo
         mock_result: str = None,
         mock_status_code: str = None,
     ):
-        # The header returned for service mocking.
+        # The header in the mocked response.
         self.mock_headers = mock_headers
-        # The result returned for service mocking.
+        # The mocked response.
         self.mock_result = mock_result
-        # The status code that is returned for service mocking.
+        # The status code in the mocked response.
         self.mock_status_code = mock_status_code
 
     def validate(self):
@@ -22299,7 +22403,7 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcCon
         self.vpc_id = vpc_id
         # Indicates whether HTTP or HTTPS is used.
         self.vpc_scheme = vpc_scheme
-        # The host of the backend service.
+        # The host of the VPC backend service.
         self.vpc_target_host_name = vpc_target_host_name
 
     def validate(self):
@@ -22361,25 +22465,27 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig(TeaMo
         type: str = None,
         vpc_config: DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig = None,
     ):
-        # The information about the backend service whose type is Service Discovery.
+        # The information about the backend service when the backend service is of the Service Discovery type.
         self.discovery_config = discovery_config
+        # The EDAS configuration.
         self.edas_config = edas_config
         # The information about the backend service whose type is EventBridge.
         self.event_bridge_config = event_bridge_config
         # The information about the backend service whose type is Function Compute.
         self.function_compute_config = function_compute_config
-        # The host of the backend service.
+        # The host of the HTTP backend service.
         self.http_target_host_name = http_target_host_name
-        # The information about the backend service whose type is Mock.
+        # The information about the backend service when the backend service is of the Mock type.
         self.mock_config = mock_config
         # The information about the backend service whose type is Object Storage Service (OSS).
         self.oss_config = oss_config
         # The URL of the backend service.
         self.service_address = service_address
+        # The timeout period of the backend service, in millisecond.
         self.service_timeout = service_timeout
         # The type of the backend service.
         self.type = type
-        # The information about the virtual private cloud (VPC). This parameter is available only for backend services whose type is VPC.
+        # The information about the backend service when the backend service is of the VPC type.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -23115,6 +23221,7 @@ class DescribeDatasetInfoResponseBody(TeaModel):
         dataset_info: DescribeDatasetInfoResponseBodyDatasetInfo = None,
         request_id: str = None,
     ):
+        # The dataset info.
         self.dataset_info = dataset_info
         # The ID of the request.
         self.request_id = request_id
@@ -23622,9 +23729,9 @@ class DescribeDatasetListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键
+        # The tag key.
         self.key = key
-        # 标签值
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -23667,7 +23774,7 @@ class DescribeDatasetListRequest(TeaModel):
         # The number of entries returned per page.
         self.page_size = page_size
         self.security_token = security_token
-        # 指定规则所适用的对象标签，可设置多个
+        # Specify the object labels to which the rule applies, and multiple labels can be set
         self.tag = tag
 
     def validate(self):
@@ -23720,9 +23827,9 @@ class DescribeDatasetListResponseBodyDatasetInfoListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签的键
+        # The tag key.
         self.key = key
-        # 标签值
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -23773,7 +23880,7 @@ class DescribeDatasetListResponseBodyDatasetInfoList(TeaModel):
         self.dataset_type = dataset_type
         # The time when the dataset was last modified. The time is displayed in UTC.
         self.modified_time = modified_time
-        # 标签
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -25832,9 +25939,11 @@ class DescribeDeployedApisRequest(TeaModel):
     ):
         # The ID of the API.
         self.api_id = api_id
+        # The HTTP method of the API request.
         self.api_method = api_method
         # The name of the API. The name is used for fuzzy match.
         self.api_name = api_name
+        # The request path of the API.
         self.api_path = api_path
         # Specifies whether to enable tag verification.
         self.enable_tag_auth = enable_tag_auth
@@ -25938,9 +26047,11 @@ class DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem(TeaModel):
     ):
         # The ID of the API.
         self.api_id = api_id
+        # The HTTP method of the API request.
         self.api_method = api_method
         # The name of the API.
         self.api_name = api_name
+        # The request path of the API.
         self.api_path = api_path
         # The publising time (UTC) of the API.
         self.deployed_time = deployed_time
@@ -28345,6 +28456,7 @@ class DescribeInstanceClusterListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instance cluster list.
         self.instance_clusters = instance_clusters
         # The page number of the returned page.
         self.page_number = page_number
@@ -30709,7 +30821,9 @@ class DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo(TeaMode
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the instance.
         self.key = key
+        # The tag value of the instance.
         self.value = value
 
     def validate(self):
@@ -30804,6 +30918,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         maintain_end_time: str = None,
         maintain_start_time: str = None,
         network_interface_attributes: DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes = None,
+        new_vpc_egress_address: str = None,
         private_dns_list: DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList = None,
         region_id: str = None,
         status: str = None,
@@ -30902,6 +31017,9 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         self.maintain_start_time = maintain_start_time
         # The network information of the user\\"s VPC if the instance is a VPC integration instance.
         self.network_interface_attributes = network_interface_attributes
+        # The new VPC egress CIDR block.
+        self.new_vpc_egress_address = new_vpc_egress_address
+        # The private DNS list.
         self.private_dns_list = private_dns_list
         # The region ID.
         self.region_id = region_id
@@ -30909,6 +31027,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         self.status = status
         # Indicates whether IPv6 traffic is supported.
         self.support_ipv_6 = support_ipv_6
+        # The tags of the instance.
         self.tags = tags
         # The user VPC ID.
         self.user_vpc_id = user_vpc_id
@@ -31003,6 +31122,8 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
             result['MaintainStartTime'] = self.maintain_start_time
         if self.network_interface_attributes is not None:
             result['NetworkInterfaceAttributes'] = self.network_interface_attributes.to_map()
+        if self.new_vpc_egress_address is not None:
+            result['NewVpcEgressAddress'] = self.new_vpc_egress_address
         if self.private_dns_list is not None:
             result['PrivateDnsList'] = self.private_dns_list.to_map()
         if self.region_id is not None:
@@ -31095,6 +31216,8 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         if m.get('NetworkInterfaceAttributes') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes()
             self.network_interface_attributes = temp_model.from_map(m['NetworkInterfaceAttributes'])
+        if m.get('NewVpcEgressAddress') is not None:
+            self.new_vpc_egress_address = m.get('NewVpcEgressAddress')
         if m.get('PrivateDnsList') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList()
             self.private_dns_list = temp_model.from_map(m['PrivateDnsList'])
@@ -31780,6 +31903,11 @@ class DescribeLogConfigRequest(TeaModel):
         log_type: str = None,
         security_token: str = None,
     ):
+        # The log type.
+        # 
+        # Valid values:
+        # 
+        # *   PROVIDER
         self.log_type = log_type
         self.security_token = security_token
 
@@ -31815,9 +31943,13 @@ class DescribeLogConfigResponseBodyLogInfosLogInfo(TeaModel):
         sls_log_store: str = None,
         sls_project: str = None,
     ):
+        # The log type.
         self.log_type = log_type
+        # The region ID of the Logstore.
         self.region_id = region_id
+        # The name of the Logstore in Log Service.
         self.sls_log_store = sls_log_store
+        # The name of the Log Service project.
         self.sls_project = sls_project
 
     def validate(self):
@@ -31893,7 +32025,9 @@ class DescribeLogConfigResponseBody(TeaModel):
         log_infos: DescribeLogConfigResponseBodyLogInfos = None,
         request_id: str = None,
     ):
+        # Info of the log config.
         self.log_infos = log_infos
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -37823,8 +37957,12 @@ class DissociateInstanceWithPrivateDNSRequest(TeaModel):
         intranet_domains: List[str] = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The internal domain names included in the resolution.
+        # 
         # This parameter is required.
         self.intranet_domains = intranet_domains
         self.security_token = security_token
@@ -37864,8 +38002,12 @@ class DissociateInstanceWithPrivateDNSShrinkRequest(TeaModel):
         intranet_domains_shrink: str = None,
         security_token: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The internal domain names included in the resolution.
+        # 
         # This parameter is required.
         self.intranet_domains_shrink = intranet_domains_shrink
         self.security_token = security_token
@@ -37903,6 +38045,7 @@ class DissociateInstanceWithPrivateDNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38569,11 +38712,21 @@ class EnableInstanceAccessControlRequest(TeaModel):
         instance_id: str = None,
         security_token: str = None,
     ):
+        # The ID of the access control policy.
+        # 
         # This parameter is required.
         self.acl_id = acl_id
+        # The ACL type. Valid values:
+        # 
+        # *   black: blacklist
+        # *   white: whitelist
+        # 
         # This parameter is required.
         self.acl_type = acl_type
+        # The IP version. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.security_token = security_token
@@ -38619,6 +38772,7 @@ class EnableInstanceAccessControlResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -39719,11 +39873,11 @@ class ImportSwaggerResponseBodyFailedApiImportSwaggerFailed(TeaModel):
         http_method: str = None,
         path: str = None,
     ):
-        # The error message returned.
+        # The error message returned when the API is created.
         self.error_msg = error_msg
-        # The HTTP method of the API.
+        # The HTTP method configured when the API is created.
         self.http_method = http_method
-        # The request path of the API.
+        # The request path configured when the API is created.
         self.path = path
 
     def validate(self):
@@ -39878,7 +40032,7 @@ class ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess(TeaModel):
         self.group_id = group_id
         # The name of the model.
         self.model_name = model_name
-        # The model operation.
+        # The model operation
         self.model_operation = model_operation
         # The UID of the model.
         self.model_uid = model_uid
@@ -39958,13 +40112,13 @@ class ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess(TeaModel):
         http_method: str = None,
         path: str = None,
     ):
-        # Specifies that the operation is CREATE or MODIFY.
+        # Specifies whether the operation is CREATE or MODIFY.
         self.api_operation = api_operation
-        # The UID of the imported API.
+        # The UID of the successfully imported API.
         self.api_uid = api_uid
-        # The HTTP method of the API.
+        # The HTTP method configured when the API is created.
         self.http_method = http_method
-        # The request path of the API.
+        # The request path configured when the API is created.
         self.path = path
 
     def validate(self):
@@ -40045,13 +40199,13 @@ class ImportSwaggerResponseBody(TeaModel):
     ):
         # The APIs that failed to be created based on the Swagger-compliant data imported this time.
         self.failed = failed
-        # The models that failed to be imported based on the Swagger-compliant data imported this time.
+        # The models that failed to be imported through the Swagger-compliant data this time.
         self.model_failed = model_failed
-        # The models that were imported based on the Swagger-compliant data imported this time.
+        # The models that were imported through the Swagger-compliant data this time.
         self.model_success = model_success
         # The ID of the request.
         self.request_id = request_id
-        # The APIs that were created based on the Swagger-compliant data imported this time.
+        # The APIs that are created based on the Swagger-compliant data imported this time.
         self.success = success
 
     def validate(self):
@@ -40149,8 +40303,13 @@ class ListPrivateDNSRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The internal domain name.
         self.intranet_domain = intranet_domain
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
         self.type = type
 
     def validate(self):
@@ -40187,7 +40346,9 @@ class ListPrivateDNSResponseBodyPrivateDNSListRecords(TeaModel):
         record: str = None,
         weight: int = None,
     ):
+        # The resolution record.
         self.record = record
+        # The weight of the record.
         self.weight = weight
 
     def validate(self):
@@ -40223,10 +40384,18 @@ class ListPrivateDNSResponseBodyPrivateDNSList(TeaModel):
         records: List[ListPrivateDNSResponseBodyPrivateDNSListRecords] = None,
         type: str = None,
     ):
+        # The instances that are associated with the resolution.
         self.bind_instances = bind_instances
+        # The time when the resolution was created. The time is displayed in UTC.
         self.created_time = created_time
+        # The internal domain name.
         self.intranet_domain = intranet_domain
+        # The resolution records.
         self.records = records
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for VPC access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
         self.type = type
 
     def validate(self):
@@ -40282,10 +40451,15 @@ class ListPrivateDNSResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The internal domain name resolutions.
         self.private_dnslist = private_dnslist
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -41391,6 +41565,7 @@ class ModifyApiGroupRequest(TeaModel):
         self,
         base_path: str = None,
         compatible_flags: str = None,
+        custom_app_code_config: str = None,
         custom_trace_config: str = None,
         customer_configs: str = None,
         default_domain: str = None,
@@ -41409,6 +41584,8 @@ class ModifyApiGroupRequest(TeaModel):
         self.base_path = base_path
         # The list of associated tags. Separate multiple tags with commas (,).
         self.compatible_flags = compatible_flags
+        # The custom appcode configuration.
+        self.custom_app_code_config = custom_app_code_config
         # The custom trace configuration.
         self.custom_trace_config = custom_trace_config
         # The data of custom configuration items.
@@ -41417,6 +41594,7 @@ class ModifyApiGroupRequest(TeaModel):
         self.default_domain = default_domain
         # The API group description that you want to specify, which cannot exceed 180 characters. If this parameter is not specified, the group description is not modified.
         self.description = description
+        # If filter AppCode for backend.
         self.filter_app_code_for_backend = filter_app_code_for_backend
         # The ID of the API group. This ID is generated by the system and globally unique.
         # 
@@ -41429,6 +41607,7 @@ class ModifyApiGroupRequest(TeaModel):
         # The RPC mode.
         self.rpc_pattern = rpc_pattern
         self.security_token = security_token
+        # If support SSE.
         self.support_sse = support_sse
         # The object tags that match the lifecycle rule. You can specify multiple tags.
         self.tag = tag
@@ -41451,6 +41630,8 @@ class ModifyApiGroupRequest(TeaModel):
             result['BasePath'] = self.base_path
         if self.compatible_flags is not None:
             result['CompatibleFlags'] = self.compatible_flags
+        if self.custom_app_code_config is not None:
+            result['CustomAppCodeConfig'] = self.custom_app_code_config
         if self.custom_trace_config is not None:
             result['CustomTraceConfig'] = self.custom_trace_config
         if self.customer_configs is not None:
@@ -41487,6 +41668,8 @@ class ModifyApiGroupRequest(TeaModel):
             self.base_path = m.get('BasePath')
         if m.get('CompatibleFlags') is not None:
             self.compatible_flags = m.get('CompatibleFlags')
+        if m.get('CustomAppCodeConfig') is not None:
+            self.custom_app_code_config = m.get('CustomAppCodeConfig')
         if m.get('CustomTraceConfig') is not None:
             self.custom_trace_config = m.get('CustomTraceConfig')
         if m.get('CustomerConfigs') is not None:
@@ -41629,8 +41812,12 @@ class ModifyApiGroupInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -41667,11 +41854,17 @@ class ModifyApiGroupInstanceRequest(TeaModel):
         tag: List[ModifyApiGroupInstanceRequestTag] = None,
         target_instance_id: str = None,
     ):
+        # The ID of the API group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The remarks.
         self.remark = remark
         self.security_token = security_token
+        # The tag of objects that match the rule. You can specify multiple tags.
         self.tag = tag
+        # The ID of the instance to which you want to migrate the API group.
+        # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
 
@@ -41724,6 +41917,7 @@ class ModifyApiGroupInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -42057,15 +42251,15 @@ class ModifyAppRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The value of the tag.
         # 
-        # Valid values of n: `[1, 20]`.
+        # N can be an integer from 1 to 20.``
         # 
         # This parameter is required.
         self.key = key
         # The value of the tag.
         # 
-        # Valid values of n: `[1, 20]`.
+        # N can be an integer from 1 to 20.``
         self.value = value
 
     def validate(self):
@@ -42102,18 +42296,19 @@ class ModifyAppRequest(TeaModel):
         security_token: str = None,
         tag: List[ModifyAppRequestTag] = None,
     ):
-        # The ID of the application.
+        # The ID of the app.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID must be 4 to 26 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
+        # The value must be 4 to 26 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
         # 
-        # If you do not want to modify the existing value, do not specify this parameter.
+        # This parameter is required only when you want to modify the value.
         self.app_name = app_name
-        # The description of the application. The description can be up to 180 characters in length.
+        # The description of the app. The description can contain a maximum of 180 characters in length.
         # 
-        # If you do not want to modify the existing value, do not specify this parameter.
+        # This parameter is required only when you want to modify the value.
         self.description = description
+        # 扩展信息
         self.extend = extend
         self.security_token = security_token
         # The tag of objects that match the rule. You can specify multiple tags.
@@ -42802,19 +42997,31 @@ class ModifyInstanceAttributeRequest(TeaModel):
         token: str = None,
         vpc_slb_intranet_enable: str = None,
     ):
+        # If delete VPC Ip block.
         self.delete_vpc_ip_block = delete_vpc_ip_block
+        # If enable outbound IPv6 Traffic.
         self.egress_ipv_6enable = egress_ipv_6enable
+        # The HTTPS policy.
         self.https_policy = https_policy
+        # If enable inbound IPv6 Traffic.
         self.ipv6enabled = ipv6enabled
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Instance Name
         self.instance_name = instance_name
+        # Custom private CIDR block.
         self.intranet_segments = intranet_segments
+        # Maintainable end time.
         self.maintain_end_time = maintain_end_time
+        # Maintainable start time.
         self.maintain_start_time = maintain_start_time
         # The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
         self.to_connect_vpc_ip_block = to_connect_vpc_ip_block
+        # The token of the request.
         self.token = token
+        # Specifies whether to enable the self-calling domain name.
         self.vpc_slb_intranet_enable = vpc_slb_intranet_enable
 
     def validate(self):
@@ -42899,19 +43106,31 @@ class ModifyInstanceAttributeShrinkRequest(TeaModel):
         token: str = None,
         vpc_slb_intranet_enable: str = None,
     ):
+        # If delete VPC Ip block.
         self.delete_vpc_ip_block = delete_vpc_ip_block
+        # If enable outbound IPv6 Traffic.
         self.egress_ipv_6enable = egress_ipv_6enable
+        # The HTTPS policy.
         self.https_policy = https_policy
+        # If enable inbound IPv6 Traffic.
         self.ipv6enabled = ipv6enabled
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Instance Name
         self.instance_name = instance_name
+        # Custom private CIDR block.
         self.intranet_segments = intranet_segments
+        # Maintainable end time.
         self.maintain_end_time = maintain_end_time
+        # Maintainable start time.
         self.maintain_start_time = maintain_start_time
         # The information about the CIDR block that API Gateway can use to access the virtual private cloud (VPC) of the backend service.
         self.to_connect_vpc_ip_block_shrink = to_connect_vpc_ip_block_shrink
+        # The token of the request.
         self.token = token
+        # Specifies whether to enable the self-calling domain name.
         self.vpc_slb_intranet_enable = vpc_slb_intranet_enable
 
     def validate(self):
@@ -42983,6 +43202,7 @@ class ModifyInstanceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -43190,6 +43410,144 @@ class ModifyInstanceSpecResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceVpcAttributeForConsoleRequest(TeaModel):
+    def __init__(
+        self,
+        delete_vpc_access: bool = None,
+        instance_id: str = None,
+        token: str = None,
+        vpc_id: str = None,
+        vpc_owner_id: int = None,
+        vswitch_id: str = None,
+    ):
+        # Whether delete instance client VPC.
+        # - FALSE: set or modify instance client VPC
+        # - TRUE: delete instance client VPC
+        self.delete_vpc_access = delete_vpc_access
+        # The ID of the instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The token of the request.
+        self.token = token
+        # The ID of the VPC.
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # The ID of the Alibaba Cloud account to which the VPC belongs.
+        self.vpc_owner_id = vpc_owner_id
+        # The ID of the vSwitch.
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_vpc_access is not None:
+            result['DeleteVpcAccess'] = self.delete_vpc_access
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_owner_id is not None:
+            result['VpcOwnerId'] = self.vpc_owner_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteVpcAccess') is not None:
+            self.delete_vpc_access = m.get('DeleteVpcAccess')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcOwnerId') is not None:
+            self.vpc_owner_id = m.get('VpcOwnerId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
+class ModifyInstanceVpcAttributeForConsoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceVpcAttributeForConsoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceVpcAttributeForConsoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceVpcAttributeForConsoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43574,10 +43932,22 @@ class ModifyLogConfigRequest(TeaModel):
         sls_log_store: str = None,
         sls_project: str = None,
     ):
+        # The log type. Valid values:
+        # 
+        # *   **log**: other logs
+        # *   **survey**: inspection logs
+        # 
+        # Enumeration value:
+        # 
+        # *   PROVIDER
         self.log_type = log_type
         self.security_token = security_token
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.sls_log_store = sls_log_store
+        # The name of the Log Service project.
+        # 
         # This parameter is required.
         self.sls_project = sls_project
 
@@ -43618,6 +43988,7 @@ class ModifyLogConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -46893,8 +47264,12 @@ class SdkGenerateByAppForRegionRequest(TeaModel):
         language: str = None,
         security_token: str = None,
     ):
+        # The ID of the app. This ID is generated by the system and globally unique.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The programming language in which the SDK is generated.
+        # 
         # This parameter is required.
         self.language = language
         self.security_token = security_token
@@ -46933,7 +47308,9 @@ class SdkGenerateByAppForRegionResponseBody(TeaModel):
         download_link: str = None,
         request_id: str = None,
     ):
+        # The code of the SDK by using the Base64 scheme. You can obtain the file by using the Base64 decoding scheme.
         self.download_link = download_link
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47234,11 +47611,17 @@ class SetApiProductsAuthoritiesRequest(TeaModel):
         description: str = None,
         security_token: str = None,
     ):
+        # The API products.
+        # 
         # This parameter is required.
         self.api_product_ids = api_product_ids
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # 授权有效时间的截止时间，请设置格林尼治标准时间(GMT), 如果为空，即为授权永久有效。
         self.auth_valid_time = auth_valid_time
+        # The authorization description.
         self.description = description
         self.security_token = security_token
 
@@ -47287,11 +47670,17 @@ class SetApiProductsAuthoritiesShrinkRequest(TeaModel):
         description: str = None,
         security_token: str = None,
     ):
+        # The API products.
+        # 
         # This parameter is required.
         self.api_product_ids_shrink = api_product_ids_shrink
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # 授权有效时间的截止时间，请设置格林尼治标准时间(GMT), 如果为空，即为授权永久有效。
         self.auth_valid_time = auth_valid_time
+        # The authorization description.
         self.description = description
         self.security_token = security_token
 
@@ -47336,6 +47725,7 @@ class SetApiProductsAuthoritiesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47553,11 +47943,17 @@ class SetAppsAuthToApiProductRequest(TeaModel):
         description: str = None,
         security_token: str = None,
     ):
+        # The ID of the API product.
+        # 
         # This parameter is required.
         self.api_product_id = api_product_id
+        # The IDs of the applications that you want to authorize.
+        # 
         # This parameter is required.
         self.app_ids = app_ids
+        # The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
         self.auth_valid_time = auth_valid_time
+        # The description of the authorization.
         self.description = description
         self.security_token = security_token
 
@@ -47602,6 +47998,7 @@ class SetAppsAuthToApiProductResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48021,9 +48418,11 @@ class SetDomainCertificateRequest(TeaModel):
         certificate_body: str = None,
         certificate_name: str = None,
         certificate_private_key: str = None,
+        client_cert_sdn_pass_through: bool = None,
         domain_name: str = None,
         group_id: str = None,
         security_token: str = None,
+        ssl_ocsp_enable: bool = None,
         ssl_verify_depth: str = None,
     ):
         # The content of the CA certificate.
@@ -48036,6 +48435,8 @@ class SetDomainCertificateRequest(TeaModel):
         self.certificate_name = certificate_name
         # The private key of the SSL certificate.
         self.certificate_private_key = certificate_private_key
+        # If pass ssl_client_s_dn of the cert to backend header \\"X-Client-S-Dn\\".
+        self.client_cert_sdn_pass_through = client_cert_sdn_pass_through
         # The custom domain name.
         # 
         # This parameter is required.
@@ -48045,6 +48446,8 @@ class SetDomainCertificateRequest(TeaModel):
         # This parameter is required.
         self.group_id = group_id
         self.security_token = security_token
+        # If enable ssl OCSP.
+        self.ssl_ocsp_enable = ssl_ocsp_enable
         # The certificate verification depth.
         self.ssl_verify_depth = ssl_verify_depth
 
@@ -48065,12 +48468,16 @@ class SetDomainCertificateRequest(TeaModel):
             result['CertificateName'] = self.certificate_name
         if self.certificate_private_key is not None:
             result['CertificatePrivateKey'] = self.certificate_private_key
+        if self.client_cert_sdn_pass_through is not None:
+            result['ClientCertSDnPassThrough'] = self.client_cert_sdn_pass_through
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.ssl_ocsp_enable is not None:
+            result['SslOcspEnable'] = self.ssl_ocsp_enable
         if self.ssl_verify_depth is not None:
             result['SslVerifyDepth'] = self.ssl_verify_depth
         return result
@@ -48085,12 +48492,16 @@ class SetDomainCertificateRequest(TeaModel):
             self.certificate_name = m.get('CertificateName')
         if m.get('CertificatePrivateKey') is not None:
             self.certificate_private_key = m.get('CertificatePrivateKey')
+        if m.get('ClientCertSDnPassThrough') is not None:
+            self.client_cert_sdn_pass_through = m.get('ClientCertSDnPassThrough')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SslOcspEnable') is not None:
+            self.ssl_ocsp_enable = m.get('SslOcspEnable')
         if m.get('SslVerifyDepth') is not None:
             self.ssl_verify_depth = m.get('SslVerifyDepth')
         return self
@@ -48187,6 +48598,7 @@ class SetDomainWebSocketStatusRequest(TeaModel):
         # This parameter is required.
         self.group_id = group_id
         self.security_token = security_token
+        # If enable WSS.
         self.wssenable = wssenable
 
     def validate(self):
@@ -49594,7 +50006,9 @@ class UpdatePrivateDNSRequestRecords(TeaModel):
         record: str = None,
         weight: int = None,
     ):
+        # The resolution record.
         self.record = record
+        # The weight of the record.
         self.weight = weight
 
     def validate(self):
@@ -49629,11 +50043,20 @@ class UpdatePrivateDNSRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The internal domain name.
+        # 
         # This parameter is required.
         self.intranet_domain = intranet_domain
+        # The resolution records. This parameter is valid only when Type is set to A.
+        # 
         # This parameter is required.
         self.records = records
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -49685,11 +50108,20 @@ class UpdatePrivateDNSShrinkRequest(TeaModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The internal domain name.
+        # 
         # This parameter is required.
         self.intranet_domain = intranet_domain
+        # The resolution records. This parameter is valid only when Type is set to A.
+        # 
         # This parameter is required.
         self.records_shrink = records_shrink
         self.security_token = security_token
+        # The internal domain name resolution type. Valid values:
+        # 
+        # *   VPC: resolution for virtual private cloud (VPC) access authorizations. A resolution of this type can be bound only to traditional dedicated instances.
+        # *   A: resolution that supports A records. A resolution of this type can be bound only to VPC integration dedicated instances.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -49730,6 +50162,7 @@ class UpdatePrivateDNSResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
