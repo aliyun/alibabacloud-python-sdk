@@ -1,3 +1,21 @@
+2025-01-07 Version: 4.8.0
+- Support API CheckLdpsColumnarIndexStatus.
+- Support API CreateAutoScalingConfig.
+- Support API CreateAutoScalingRule.
+- Support API DeleteAutoScalingConfig.
+- Support API DeleteAutoScalingRule.
+- Support API GetAutoScalingConfig.
+- Support API GetAutoScalingRule.
+- Support API GetLindormFsUsedDetail.
+- Support API ListAutoScalingConfigs.
+- Support API ListAutoScalingRecords.
+- Support API ListAutoScalingRules.
+- Support API ModifyAutoScalingConfig.
+- Support API ModifyAutoScalingRule.
+- Update API ListLdpsComputeGroups: update response param.
+- Update API ModifyLindormV2Instance: update param UpgradeType.
+
+
 2024-11-25 Version: 4.7.0
 - Support API GetLindormV2StorageUsage.
 

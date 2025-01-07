@@ -128,6 +128,866 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CheckLdpsColumnarIndexStatusRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CheckLdpsColumnarIndexStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        opened: bool = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.opened = opened
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.opened is not None:
+            result['Opened'] = self.opened
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Opened') is not None:
+            self.opened = m.get('Opened')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckLdpsColumnarIndexStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckLdpsColumnarIndexStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckLdpsColumnarIndexStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAutoScalingConfigRequestScaleRuleList(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class CreateAutoScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_rule_list: List[CreateAutoScalingConfigRequestScaleRuleList] = None,
+        scale_type: str = None,
+        security_token: str = None,
+        spec_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        # This parameter is required.
+        self.engine = engine
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_rule_list = scale_rule_list
+        # This parameter is required.
+        self.scale_type = scale_type
+        self.security_token = security_token
+        # This parameter is required.
+        self.spec_id = spec_id
+
+    def validate(self):
+        if self.scale_rule_list:
+            for k in self.scale_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['ScaleRuleList'] = []
+        if self.scale_rule_list is not None:
+            for k in self.scale_rule_list:
+                result['ScaleRuleList'].append(k.to_map() if k else None)
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.scale_rule_list = []
+        if m.get('ScaleRuleList') is not None:
+            for k in m.get('ScaleRuleList'):
+                temp_model = CreateAutoScalingConfigRequestScaleRuleList()
+                self.scale_rule_list.append(temp_model.from_map(k))
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        return self
+
+
+class CreateAutoScalingConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_rule_list_shrink: str = None,
+        scale_type: str = None,
+        security_token: str = None,
+        spec_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        # This parameter is required.
+        self.engine = engine
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_rule_list_shrink = scale_rule_list_shrink
+        # This parameter is required.
+        self.scale_type = scale_type
+        self.security_token = security_token
+        # This parameter is required.
+        self.spec_id = spec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_rule_list_shrink is not None:
+            result['ScaleRuleList'] = self.scale_rule_list_shrink
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleRuleList') is not None:
+            self.scale_rule_list_shrink = m.get('ScaleRuleList')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        return self
+
+
+class CreateAutoScalingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAutoScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAutoScalingConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutoScalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAutoScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        security_token: str = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.security_token = security_token
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class CreateAutoScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAutoScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAutoScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutoScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLdpsComputeGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1218,6 +2078,327 @@ class CreateLindormV2InstanceResponse(TeaModel):
         return self
 
 
+class DeleteAutoScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DeleteAutoScalingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAutoScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAutoScalingConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAutoScalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAutoScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_id: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_id = rule_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DeleteAutoScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAutoScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAutoScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAutoScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCustomResourceRequest(TeaModel):
     def __init__(
         self,
@@ -1823,6 +3004,738 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetAutoScalingConfigResponseBodyDataScaleRuleList(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class GetAutoScalingConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        scale_rule_list: List[GetAutoScalingConfigResponseBodyDataScaleRuleList] = None,
+        scale_type: str = None,
+        spec_id: str = None,
+    ):
+        self.config_id = config_id
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        self.engine = engine
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.scale_rule_list = scale_rule_list
+        self.scale_type = scale_type
+        self.spec_id = spec_id
+
+    def validate(self):
+        if self.scale_rule_list:
+            for k in self.scale_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        result['ScaleRuleList'] = []
+        if self.scale_rule_list is not None:
+            for k in self.scale_rule_list:
+                result['ScaleRuleList'].append(k.to_map() if k else None)
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        self.scale_rule_list = []
+        if m.get('ScaleRuleList') is not None:
+            for k in m.get('ScaleRuleList'):
+                temp_model = GetAutoScalingConfigResponseBodyDataScaleRuleList()
+                self.scale_rule_list.append(temp_model.from_map(k))
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        return self
+
+
+class GetAutoScalingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetAutoScalingConfigResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoScalingConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoScalingConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoScalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAutoScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_id: str = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_id = rule_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetAutoScalingRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class GetAutoScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetAutoScalingRuleResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoScalingRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoScalingRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3041,6 +4954,329 @@ class GetLdpsResourceCostResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLdpsResourceCostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLindormFsUsedDetailRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetLindormFsUsedDetailResponseBodyLStorageUsageList(TeaModel):
+    def __init__(
+        self,
+        capacity: str = None,
+        disk_type: str = None,
+        used: str = None,
+        used_lindorm_search: str = None,
+        used_lindorm_spark: str = None,
+        used_lindorm_table: str = None,
+        used_lindorm_tsdb: str = None,
+        used_other: str = None,
+    ):
+        self.capacity = capacity
+        self.disk_type = disk_type
+        self.used = used
+        self.used_lindorm_search = used_lindorm_search
+        self.used_lindorm_spark = used_lindorm_spark
+        self.used_lindorm_table = used_lindorm_table
+        self.used_lindorm_tsdb = used_lindorm_tsdb
+        self.used_other = used_other
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.used is not None:
+            result['Used'] = self.used
+        if self.used_lindorm_search is not None:
+            result['UsedLindormSearch'] = self.used_lindorm_search
+        if self.used_lindorm_spark is not None:
+            result['UsedLindormSpark'] = self.used_lindorm_spark
+        if self.used_lindorm_table is not None:
+            result['UsedLindormTable'] = self.used_lindorm_table
+        if self.used_lindorm_tsdb is not None:
+            result['UsedLindormTsdb'] = self.used_lindorm_tsdb
+        if self.used_other is not None:
+            result['UsedOther'] = self.used_other
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('Used') is not None:
+            self.used = m.get('Used')
+        if m.get('UsedLindormSearch') is not None:
+            self.used_lindorm_search = m.get('UsedLindormSearch')
+        if m.get('UsedLindormSpark') is not None:
+            self.used_lindorm_spark = m.get('UsedLindormSpark')
+        if m.get('UsedLindormTable') is not None:
+            self.used_lindorm_table = m.get('UsedLindormTable')
+        if m.get('UsedLindormTsdb') is not None:
+            self.used_lindorm_tsdb = m.get('UsedLindormTsdb')
+        if m.get('UsedOther') is not None:
+            self.used_other = m.get('UsedOther')
+        return self
+
+
+class GetLindormFsUsedDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        fs_capacity: str = None,
+        fs_capacity_cold: str = None,
+        fs_capacity_hot: str = None,
+        fs_used_cold: str = None,
+        fs_used_cold_on_lindorm_search: str = None,
+        fs_used_cold_on_lindorm_tsdb: str = None,
+        fs_used_cold_on_lindorm_table: str = None,
+        fs_used_hot: str = None,
+        fs_used_hot_on_lindorm_search: str = None,
+        fs_used_hot_on_lindorm_tsdb: str = None,
+        fs_used_hot_on_lindorm_table: str = None,
+        fs_used_on_lindorm_search: str = None,
+        fs_used_on_lindorm_tsdb: str = None,
+        fs_used_on_lindorm_table: str = None,
+        fs_used_on_lindorm_table_data: str = None,
+        fs_used_on_lindorm_table_wal: str = None,
+        lstorage_usage_list: List[GetLindormFsUsedDetailResponseBodyLStorageUsageList] = None,
+        request_id: str = None,
+        valid: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.fs_capacity = fs_capacity
+        self.fs_capacity_cold = fs_capacity_cold
+        self.fs_capacity_hot = fs_capacity_hot
+        self.fs_used_cold = fs_used_cold
+        self.fs_used_cold_on_lindorm_search = fs_used_cold_on_lindorm_search
+        self.fs_used_cold_on_lindorm_tsdb = fs_used_cold_on_lindorm_tsdb
+        self.fs_used_cold_on_lindorm_table = fs_used_cold_on_lindorm_table
+        self.fs_used_hot = fs_used_hot
+        self.fs_used_hot_on_lindorm_search = fs_used_hot_on_lindorm_search
+        self.fs_used_hot_on_lindorm_tsdb = fs_used_hot_on_lindorm_tsdb
+        self.fs_used_hot_on_lindorm_table = fs_used_hot_on_lindorm_table
+        self.fs_used_on_lindorm_search = fs_used_on_lindorm_search
+        self.fs_used_on_lindorm_tsdb = fs_used_on_lindorm_tsdb
+        self.fs_used_on_lindorm_table = fs_used_on_lindorm_table
+        self.fs_used_on_lindorm_table_data = fs_used_on_lindorm_table_data
+        self.fs_used_on_lindorm_table_wal = fs_used_on_lindorm_table_wal
+        self.lstorage_usage_list = lstorage_usage_list
+        self.request_id = request_id
+        self.valid = valid
+
+    def validate(self):
+        if self.lstorage_usage_list:
+            for k in self.lstorage_usage_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.fs_capacity is not None:
+            result['FsCapacity'] = self.fs_capacity
+        if self.fs_capacity_cold is not None:
+            result['FsCapacityCold'] = self.fs_capacity_cold
+        if self.fs_capacity_hot is not None:
+            result['FsCapacityHot'] = self.fs_capacity_hot
+        if self.fs_used_cold is not None:
+            result['FsUsedCold'] = self.fs_used_cold
+        if self.fs_used_cold_on_lindorm_search is not None:
+            result['FsUsedColdOnLindormSearch'] = self.fs_used_cold_on_lindorm_search
+        if self.fs_used_cold_on_lindorm_tsdb is not None:
+            result['FsUsedColdOnLindormTSDB'] = self.fs_used_cold_on_lindorm_tsdb
+        if self.fs_used_cold_on_lindorm_table is not None:
+            result['FsUsedColdOnLindormTable'] = self.fs_used_cold_on_lindorm_table
+        if self.fs_used_hot is not None:
+            result['FsUsedHot'] = self.fs_used_hot
+        if self.fs_used_hot_on_lindorm_search is not None:
+            result['FsUsedHotOnLindormSearch'] = self.fs_used_hot_on_lindorm_search
+        if self.fs_used_hot_on_lindorm_tsdb is not None:
+            result['FsUsedHotOnLindormTSDB'] = self.fs_used_hot_on_lindorm_tsdb
+        if self.fs_used_hot_on_lindorm_table is not None:
+            result['FsUsedHotOnLindormTable'] = self.fs_used_hot_on_lindorm_table
+        if self.fs_used_on_lindorm_search is not None:
+            result['FsUsedOnLindormSearch'] = self.fs_used_on_lindorm_search
+        if self.fs_used_on_lindorm_tsdb is not None:
+            result['FsUsedOnLindormTSDB'] = self.fs_used_on_lindorm_tsdb
+        if self.fs_used_on_lindorm_table is not None:
+            result['FsUsedOnLindormTable'] = self.fs_used_on_lindorm_table
+        if self.fs_used_on_lindorm_table_data is not None:
+            result['FsUsedOnLindormTableData'] = self.fs_used_on_lindorm_table_data
+        if self.fs_used_on_lindorm_table_wal is not None:
+            result['FsUsedOnLindormTableWAL'] = self.fs_used_on_lindorm_table_wal
+        result['LStorageUsageList'] = []
+        if self.lstorage_usage_list is not None:
+            for k in self.lstorage_usage_list:
+                result['LStorageUsageList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.valid is not None:
+            result['Valid'] = self.valid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('FsCapacity') is not None:
+            self.fs_capacity = m.get('FsCapacity')
+        if m.get('FsCapacityCold') is not None:
+            self.fs_capacity_cold = m.get('FsCapacityCold')
+        if m.get('FsCapacityHot') is not None:
+            self.fs_capacity_hot = m.get('FsCapacityHot')
+        if m.get('FsUsedCold') is not None:
+            self.fs_used_cold = m.get('FsUsedCold')
+        if m.get('FsUsedColdOnLindormSearch') is not None:
+            self.fs_used_cold_on_lindorm_search = m.get('FsUsedColdOnLindormSearch')
+        if m.get('FsUsedColdOnLindormTSDB') is not None:
+            self.fs_used_cold_on_lindorm_tsdb = m.get('FsUsedColdOnLindormTSDB')
+        if m.get('FsUsedColdOnLindormTable') is not None:
+            self.fs_used_cold_on_lindorm_table = m.get('FsUsedColdOnLindormTable')
+        if m.get('FsUsedHot') is not None:
+            self.fs_used_hot = m.get('FsUsedHot')
+        if m.get('FsUsedHotOnLindormSearch') is not None:
+            self.fs_used_hot_on_lindorm_search = m.get('FsUsedHotOnLindormSearch')
+        if m.get('FsUsedHotOnLindormTSDB') is not None:
+            self.fs_used_hot_on_lindorm_tsdb = m.get('FsUsedHotOnLindormTSDB')
+        if m.get('FsUsedHotOnLindormTable') is not None:
+            self.fs_used_hot_on_lindorm_table = m.get('FsUsedHotOnLindormTable')
+        if m.get('FsUsedOnLindormSearch') is not None:
+            self.fs_used_on_lindorm_search = m.get('FsUsedOnLindormSearch')
+        if m.get('FsUsedOnLindormTSDB') is not None:
+            self.fs_used_on_lindorm_tsdb = m.get('FsUsedOnLindormTSDB')
+        if m.get('FsUsedOnLindormTable') is not None:
+            self.fs_used_on_lindorm_table = m.get('FsUsedOnLindormTable')
+        if m.get('FsUsedOnLindormTableData') is not None:
+            self.fs_used_on_lindorm_table_data = m.get('FsUsedOnLindormTableData')
+        if m.get('FsUsedOnLindormTableWAL') is not None:
+            self.fs_used_on_lindorm_table_wal = m.get('FsUsedOnLindormTableWAL')
+        self.lstorage_usage_list = []
+        if m.get('LStorageUsageList') is not None:
+            for k in m.get('LStorageUsageList'):
+                temp_model = GetLindormFsUsedDetailResponseBodyLStorageUsageList()
+                self.lstorage_usage_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Valid') is not None:
+            self.valid = m.get('Valid')
+        return self
+
+
+class GetLindormFsUsedDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLindormFsUsedDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLindormFsUsedDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5529,6 +7765,1130 @@ class GetLindormV2StorageUsageResponse(TeaModel):
         return self
 
 
+class ListAutoScalingConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class ListAutoScalingConfigsResponseBodyDataScaleConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        scale_rule_list: List[ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList] = None,
+        scale_type: str = None,
+        spec_id: str = None,
+    ):
+        self.config_id = config_id
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        self.engine = engine
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.scale_rule_list = scale_rule_list
+        self.scale_type = scale_type
+        self.spec_id = spec_id
+
+    def validate(self):
+        if self.scale_rule_list:
+            for k in self.scale_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        result['ScaleRuleList'] = []
+        if self.scale_rule_list is not None:
+            for k in self.scale_rule_list:
+                result['ScaleRuleList'].append(k.to_map() if k else None)
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        self.scale_rule_list = []
+        if m.get('ScaleRuleList') is not None:
+            for k in m.get('ScaleRuleList'):
+                temp_model = ListAutoScalingConfigsResponseBodyDataScaleConfigsScaleRuleList()
+                self.scale_rule_list.append(temp_model.from_map(k))
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        return self
+
+
+class ListAutoScalingConfigsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        scale_configs: List[ListAutoScalingConfigsResponseBodyDataScaleConfigs] = None,
+    ):
+        self.scale_configs = scale_configs
+
+    def validate(self):
+        if self.scale_configs:
+            for k in self.scale_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ScaleConfigs'] = []
+        if self.scale_configs is not None:
+            for k in self.scale_configs:
+                result['ScaleConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.scale_configs = []
+        if m.get('ScaleConfigs') is not None:
+            for k in m.get('ScaleConfigs'):
+                temp_model = ListAutoScalingConfigsResponseBodyDataScaleConfigs()
+                self.scale_configs.append(temp_model.from_map(k))
+        return self
+
+
+class ListAutoScalingConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListAutoScalingConfigsResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListAutoScalingConfigsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAutoScalingConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAutoScalingConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAutoScalingConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAutoScalingRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_num: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.page_num = page_num
+        # This parameter is required.
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ListAutoScalingRecordsResponseBodyDataScaleRecords(TeaModel):
+    def __init__(
+        self,
+        detail: str = None,
+        end_time: str = None,
+        id: str = None,
+        instance_id: str = None,
+        old_value: str = None,
+        resource_type: str = None,
+        spec_group_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        strategy: str = None,
+        target_value: str = None,
+    ):
+        self.detail = detail
+        self.end_time = end_time
+        self.id = id
+        self.instance_id = instance_id
+        self.old_value = old_value
+        self.resource_type = resource_type
+        self.spec_group_id = spec_group_id
+        self.start_time = start_time
+        self.status = status
+        self.strategy = strategy
+        self.target_value = target_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.old_value is not None:
+            result['OldValue'] = self.old_value
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.spec_group_id is not None:
+            result['SpecGroupId'] = self.spec_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.target_value is not None:
+            result['TargetValue'] = self.target_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OldValue') is not None:
+            self.old_value = m.get('OldValue')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SpecGroupId') is not None:
+            self.spec_group_id = m.get('SpecGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('TargetValue') is not None:
+            self.target_value = m.get('TargetValue')
+        return self
+
+
+class ListAutoScalingRecordsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_num: int = None,
+        page_size: int = None,
+        scale_records: List[ListAutoScalingRecordsResponseBodyDataScaleRecords] = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        self.page_num = page_num
+        self.page_size = page_size
+        self.scale_records = scale_records
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.scale_records:
+            for k in self.scale_records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['ScaleRecords'] = []
+        if self.scale_records is not None:
+            for k in self.scale_records:
+                result['ScaleRecords'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.scale_records = []
+        if m.get('ScaleRecords') is not None:
+            for k in m.get('ScaleRecords'):
+                temp_model = ListAutoScalingRecordsResponseBodyDataScaleRecords()
+                self.scale_records.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListAutoScalingRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListAutoScalingRecordsResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListAutoScalingRecordsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAutoScalingRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAutoScalingRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAutoScalingRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAutoScalingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        instance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ListAutoScalingRulesResponseBodyDataScaleRules(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class ListAutoScalingRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        scale_rules: List[ListAutoScalingRulesResponseBodyDataScaleRules] = None,
+    ):
+        self.scale_rules = scale_rules
+
+    def validate(self):
+        if self.scale_rules:
+            for k in self.scale_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ScaleRules'] = []
+        if self.scale_rules is not None:
+            for k in self.scale_rules:
+                result['ScaleRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.scale_rules = []
+        if m.get('ScaleRules') is not None:
+            for k in m.get('ScaleRules'):
+                temp_model = ListAutoScalingRulesResponseBodyDataScaleRules()
+                self.scale_rules.append(temp_model.from_map(k))
+        return self
+
+
+class ListAutoScalingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: ListAutoScalingRulesResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListAutoScalingRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAutoScalingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAutoScalingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAutoScalingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListLdpsComputeGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -5596,13 +8956,19 @@ class ListLdpsComputeGroupsRequest(TeaModel):
 class ListLdpsComputeGroupsResponseBodyGroupList(TeaModel):
     def __init__(
         self,
+        exception_info: str = None,
         group_name: str = None,
         is_default: bool = None,
         properties: Dict[str, Any] = None,
+        state: str = None,
+        web_ui: str = None,
     ):
+        self.exception_info = exception_info
         self.group_name = group_name
         self.is_default = is_default
         self.properties = properties
+        self.state = state
+        self.web_ui = web_ui
 
     def validate(self):
         pass
@@ -5613,22 +8979,34 @@ class ListLdpsComputeGroupsResponseBodyGroupList(TeaModel):
             return _map
 
         result = dict()
+        if self.exception_info is not None:
+            result['ExceptionInfo'] = self.exception_info
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.properties is not None:
             result['Properties'] = self.properties
+        if self.state is not None:
+            result['State'] = self.state
+        if self.web_ui is not None:
+            result['WebUI'] = self.web_ui
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExceptionInfo') is not None:
+            self.exception_info = m.get('ExceptionInfo')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Properties') is not None:
             self.properties = m.get('Properties')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('WebUI') is not None:
+            self.web_ui = m.get('WebUI')
         return self
 
 
@@ -5997,6 +9375,471 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAutoScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        config_name: str = None,
+        effective_time_end: str = None,
+        effective_time_start: str = None,
+        enabled: bool = None,
+        engine: str = None,
+        instance_id: str = None,
+        nodes_max: int = None,
+        nodes_min: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scale_type: str = None,
+        security_token: str = None,
+        spec_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.config_name = config_name
+        self.effective_time_end = effective_time_end
+        self.effective_time_start = effective_time_start
+        self.enabled = enabled
+        self.engine = engine
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.nodes_max = nodes_max
+        self.nodes_min = nodes_min
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scale_type = scale_type
+        self.security_token = security_token
+        self.spec_id = spec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.effective_time_end is not None:
+            result['EffectiveTimeEnd'] = self.effective_time_end
+        if self.effective_time_start is not None:
+            result['EffectiveTimeStart'] = self.effective_time_start
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.nodes_max is not None:
+            result['NodesMax'] = self.nodes_max
+        if self.nodes_min is not None:
+            result['NodesMin'] = self.nodes_min
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.spec_id is not None:
+            result['SpecId'] = self.spec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('EffectiveTimeEnd') is not None:
+            self.effective_time_end = m.get('EffectiveTimeEnd')
+        if m.get('EffectiveTimeStart') is not None:
+            self.effective_time_start = m.get('EffectiveTimeStart')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodesMax') is not None:
+            self.nodes_max = m.get('NodesMax')
+        if m.get('NodesMin') is not None:
+            self.nodes_min = m.get('NodesMin')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SpecId') is not None:
+            self.spec_id = m.get('SpecId')
+        return self
+
+
+class ModifyAutoScalingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAutoScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAutoScalingConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAutoScalingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAutoScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: str = None,
+        enabled: bool = None,
+        end_time: str = None,
+        instance_id: str = None,
+        observation_window: int = None,
+        operation_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        rule_type: str = None,
+        scale_in_step: int = None,
+        scale_out_step: int = None,
+        security_token: str = None,
+        silence_time: int = None,
+        start_time: str = None,
+        target_metric: str = None,
+        target_nodes: int = None,
+        threshold_lower: int = None,
+        threshold_upper: int = None,
+        trigger_cron_expr: str = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.enabled = enabled
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.observation_window = observation_window
+        self.operation_type = operation_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_type = rule_type
+        self.scale_in_step = scale_in_step
+        self.scale_out_step = scale_out_step
+        self.security_token = security_token
+        self.silence_time = silence_time
+        self.start_time = start_time
+        self.target_metric = target_metric
+        self.target_nodes = target_nodes
+        self.threshold_lower = threshold_lower
+        self.threshold_upper = threshold_upper
+        self.trigger_cron_expr = trigger_cron_expr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.observation_window is not None:
+            result['ObservationWindow'] = self.observation_window
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.scale_in_step is not None:
+            result['ScaleInStep'] = self.scale_in_step
+        if self.scale_out_step is not None:
+            result['ScaleOutStep'] = self.scale_out_step
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.silence_time is not None:
+            result['SilenceTime'] = self.silence_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.target_metric is not None:
+            result['TargetMetric'] = self.target_metric
+        if self.target_nodes is not None:
+            result['TargetNodes'] = self.target_nodes
+        if self.threshold_lower is not None:
+            result['ThresholdLower'] = self.threshold_lower
+        if self.threshold_upper is not None:
+            result['ThresholdUpper'] = self.threshold_upper
+        if self.trigger_cron_expr is not None:
+            result['TriggerCronExpr'] = self.trigger_cron_expr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObservationWindow') is not None:
+            self.observation_window = m.get('ObservationWindow')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('ScaleInStep') is not None:
+            self.scale_in_step = m.get('ScaleInStep')
+        if m.get('ScaleOutStep') is not None:
+            self.scale_out_step = m.get('ScaleOutStep')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SilenceTime') is not None:
+            self.silence_time = m.get('SilenceTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TargetMetric') is not None:
+            self.target_metric = m.get('TargetMetric')
+        if m.get('TargetNodes') is not None:
+            self.target_nodes = m.get('TargetNodes')
+        if m.get('ThresholdLower') is not None:
+            self.threshold_lower = m.get('ThresholdLower')
+        if m.get('ThresholdUpper') is not None:
+            self.threshold_upper = m.get('ThresholdUpper')
+        if m.get('TriggerCronExpr') is not None:
+            self.trigger_cron_expr = m.get('TriggerCronExpr')
+        return self
+
+
+class ModifyAutoScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAutoScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAutoScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAutoScalingRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

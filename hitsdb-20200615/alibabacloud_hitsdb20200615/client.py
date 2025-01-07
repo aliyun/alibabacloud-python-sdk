@@ -145,6 +145,442 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def check_ldps_columnar_index_status_with_options(
+        self,
+        request: hitsdb_20200615_models.CheckLdpsColumnarIndexStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse:
+        """
+        @param request: CheckLdpsColumnarIndexStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckLdpsColumnarIndexStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckLdpsColumnarIndexStatus',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_ldps_columnar_index_status_with_options_async(
+        self,
+        request: hitsdb_20200615_models.CheckLdpsColumnarIndexStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse:
+        """
+        @param request: CheckLdpsColumnarIndexStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckLdpsColumnarIndexStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckLdpsColumnarIndexStatus',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_ldps_columnar_index_status(
+        self,
+        request: hitsdb_20200615_models.CheckLdpsColumnarIndexStatusRequest,
+    ) -> hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse:
+        """
+        @param request: CheckLdpsColumnarIndexStatusRequest
+        @return: CheckLdpsColumnarIndexStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_ldps_columnar_index_status_with_options(request, runtime)
+
+    async def check_ldps_columnar_index_status_async(
+        self,
+        request: hitsdb_20200615_models.CheckLdpsColumnarIndexStatusRequest,
+    ) -> hitsdb_20200615_models.CheckLdpsColumnarIndexStatusResponse:
+        """
+        @param request: CheckLdpsColumnarIndexStatusRequest
+        @return: CheckLdpsColumnarIndexStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_ldps_columnar_index_status_with_options_async(request, runtime)
+
+    def create_auto_scaling_config_with_options(
+        self,
+        tmp_req: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
+        """
+        @param tmp_req: CreateAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.CreateAutoScalingConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_rule_list):
+            request.scale_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_rule_list, 'ScaleRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.effective_time_end):
+            query['EffectiveTimeEnd'] = request.effective_time_end
+        if not UtilClient.is_unset(request.effective_time_start):
+            query['EffectiveTimeStart'] = request.effective_time_start
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.nodes_max):
+            query['NodesMax'] = request.nodes_max
+        if not UtilClient.is_unset(request.nodes_min):
+            query['NodesMin'] = request.nodes_min
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_rule_list_shrink):
+            query['ScaleRuleList'] = request.scale_rule_list_shrink
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_scaling_config_with_options_async(
+        self,
+        tmp_req: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
+        """
+        @param tmp_req: CreateAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = hitsdb_20200615_models.CreateAutoScalingConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scale_rule_list):
+            request.scale_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scale_rule_list, 'ScaleRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.effective_time_end):
+            query['EffectiveTimeEnd'] = request.effective_time_end
+        if not UtilClient.is_unset(request.effective_time_start):
+            query['EffectiveTimeStart'] = request.effective_time_start
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.nodes_max):
+            query['NodesMax'] = request.nodes_max
+        if not UtilClient.is_unset(request.nodes_min):
+            query['NodesMin'] = request.nodes_min
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_rule_list_shrink):
+            query['ScaleRuleList'] = request.scale_rule_list_shrink
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_scaling_config(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
+        """
+        @param request: CreateAutoScalingConfigRequest
+        @return: CreateAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_auto_scaling_config_with_options(request, runtime)
+
+    async def create_auto_scaling_config_async(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.CreateAutoScalingConfigResponse:
+        """
+        @param request: CreateAutoScalingConfigRequest
+        @return: CreateAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_auto_scaling_config_with_options_async(request, runtime)
+
+    def create_auto_scaling_rule_with_options(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
+        """
+        @param request: CreateAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.observation_window):
+            query['ObservationWindow'] = request.observation_window
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scale_in_step):
+            query['ScaleInStep'] = request.scale_in_step
+        if not UtilClient.is_unset(request.scale_out_step):
+            query['ScaleOutStep'] = request.scale_out_step
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_metric):
+            query['TargetMetric'] = request.target_metric
+        if not UtilClient.is_unset(request.target_nodes):
+            query['TargetNodes'] = request.target_nodes
+        if not UtilClient.is_unset(request.threshold_lower):
+            query['ThresholdLower'] = request.threshold_lower
+        if not UtilClient.is_unset(request.threshold_upper):
+            query['ThresholdUpper'] = request.threshold_upper
+        if not UtilClient.is_unset(request.trigger_cron_expr):
+            query['TriggerCronExpr'] = request.trigger_cron_expr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_scaling_rule_with_options_async(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
+        """
+        @param request: CreateAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.observation_window):
+            query['ObservationWindow'] = request.observation_window
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scale_in_step):
+            query['ScaleInStep'] = request.scale_in_step
+        if not UtilClient.is_unset(request.scale_out_step):
+            query['ScaleOutStep'] = request.scale_out_step
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_metric):
+            query['TargetMetric'] = request.target_metric
+        if not UtilClient.is_unset(request.target_nodes):
+            query['TargetNodes'] = request.target_nodes
+        if not UtilClient.is_unset(request.threshold_lower):
+            query['ThresholdLower'] = request.threshold_lower
+        if not UtilClient.is_unset(request.threshold_upper):
+            query['ThresholdUpper'] = request.threshold_upper
+        if not UtilClient.is_unset(request.trigger_cron_expr):
+            query['TriggerCronExpr'] = request.trigger_cron_expr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_scaling_rule(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
+        """
+        @param request: CreateAutoScalingRuleRequest
+        @return: CreateAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_auto_scaling_rule_with_options(request, runtime)
+
+    async def create_auto_scaling_rule_async(
+        self,
+        request: hitsdb_20200615_models.CreateAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.CreateAutoScalingRuleResponse:
+        """
+        @param request: CreateAutoScalingRuleRequest
+        @return: CreateAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_auto_scaling_rule_with_options_async(request, runtime)
+
     def create_ldps_compute_group_with_options(
         self,
         request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
@@ -749,6 +1185,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_lindorm_v2instance_with_options_async(request, runtime)
 
+    def delete_auto_scaling_config_with_options(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingConfigResponse:
+        """
+        @param request: DeleteAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_auto_scaling_config_with_options_async(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingConfigResponse:
+        """
+        @param request: DeleteAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_auto_scaling_config(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingConfigResponse:
+        """
+        @param request: DeleteAutoScalingConfigRequest
+        @return: DeleteAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_auto_scaling_config_with_options(request, runtime)
+
+    async def delete_auto_scaling_config_async(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingConfigResponse:
+        """
+        @param request: DeleteAutoScalingConfigRequest
+        @return: DeleteAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_auto_scaling_config_with_options_async(request, runtime)
+
+    def delete_auto_scaling_rule_with_options(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingRuleResponse:
+        """
+        @param request: DeleteAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_auto_scaling_rule_with_options_async(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingRuleResponse:
+        """
+        @param request: DeleteAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_auto_scaling_rule(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingRuleResponse:
+        """
+        @param request: DeleteAutoScalingRuleRequest
+        @return: DeleteAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_auto_scaling_rule_with_options(request, runtime)
+
+    async def delete_auto_scaling_rule_async(
+        self,
+        request: hitsdb_20200615_models.DeleteAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.DeleteAutoScalingRuleResponse:
+        """
+        @param request: DeleteAutoScalingRuleRequest
+        @return: DeleteAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_auto_scaling_rule_with_options_async(request, runtime)
+
     def delete_custom_resource_with_options(
         self,
         request: hitsdb_20200615_models.DeleteCustomResourceRequest,
@@ -1212,6 +1876,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def get_auto_scaling_config_with_options(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetAutoScalingConfigResponse:
+        """
+        @param request: GetAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_scaling_config_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetAutoScalingConfigResponse:
+        """
+        @param request: GetAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_scaling_config(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.GetAutoScalingConfigResponse:
+        """
+        @param request: GetAutoScalingConfigRequest
+        @return: GetAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_scaling_config_with_options(request, runtime)
+
+    async def get_auto_scaling_config_async(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.GetAutoScalingConfigResponse:
+        """
+        @param request: GetAutoScalingConfigRequest
+        @return: GetAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_scaling_config_with_options_async(request, runtime)
+
+    def get_auto_scaling_rule_with_options(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetAutoScalingRuleResponse:
+        """
+        @param request: GetAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_scaling_rule_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetAutoScalingRuleResponse:
+        """
+        @param request: GetAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_scaling_rule(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.GetAutoScalingRuleResponse:
+        """
+        @param request: GetAutoScalingRuleRequest
+        @return: GetAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_scaling_rule_with_options(request, runtime)
+
+    async def get_auto_scaling_rule_async(
+        self,
+        request: hitsdb_20200615_models.GetAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.GetAutoScalingRuleResponse:
+        """
+        @param request: GetAutoScalingRuleRequest
+        @return: GetAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_scaling_rule_with_options_async(request, runtime)
 
     def get_client_source_ip_with_options(
         self,
@@ -2017,6 +2909,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ldps_resource_cost_with_options_async(request, runtime)
 
+    def get_lindorm_fs_used_detail_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
+        """
+        @param request: GetLindormFsUsedDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormFsUsedDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormFsUsedDetail',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lindorm_fs_used_detail_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
+        """
+        @param request: GetLindormFsUsedDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormFsUsedDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormFsUsedDetail',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormFsUsedDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lindorm_fs_used_detail(
+        self,
+        request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
+    ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
+        """
+        @param request: GetLindormFsUsedDetailRequest
+        @return: GetLindormFsUsedDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lindorm_fs_used_detail_with_options(request, runtime)
+
+    async def get_lindorm_fs_used_detail_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormFsUsedDetailRequest,
+    ) -> hitsdb_20200615_models.GetLindormFsUsedDetailResponse:
+        """
+        @param request: GetLindormFsUsedDetailRequest
+        @return: GetLindormFsUsedDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lindorm_fs_used_detail_with_options_async(request, runtime)
+
     def get_lindorm_instance_with_options(
         self,
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
@@ -2725,6 +3729,342 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_v2storage_usage_with_options_async(request, runtime)
 
+    def list_auto_scaling_configs_with_options(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
+        """
+        @param request: ListAutoScalingConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingConfigs',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_scaling_configs_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
+        """
+        @param request: ListAutoScalingConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingConfigs',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_scaling_configs(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
+        """
+        @param request: ListAutoScalingConfigsRequest
+        @return: ListAutoScalingConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_auto_scaling_configs_with_options(request, runtime)
+
+    async def list_auto_scaling_configs_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingConfigsRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingConfigsResponse:
+        """
+        @param request: ListAutoScalingConfigsRequest
+        @return: ListAutoScalingConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_auto_scaling_configs_with_options_async(request, runtime)
+
+    def list_auto_scaling_records_with_options(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
+        """
+        @param request: ListAutoScalingRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingRecords',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_scaling_records_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
+        """
+        @param request: ListAutoScalingRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingRecords',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_scaling_records(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
+        """
+        @param request: ListAutoScalingRecordsRequest
+        @return: ListAutoScalingRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_auto_scaling_records_with_options(request, runtime)
+
+    async def list_auto_scaling_records_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRecordsRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingRecordsResponse:
+        """
+        @param request: ListAutoScalingRecordsRequest
+        @return: ListAutoScalingRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_auto_scaling_records_with_options_async(request, runtime)
+
+    def list_auto_scaling_rules_with_options(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingRulesResponse:
+        """
+        @param request: ListAutoScalingRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingRules',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_scaling_rules_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListAutoScalingRulesResponse:
+        """
+        @param request: ListAutoScalingRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoScalingRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoScalingRules',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListAutoScalingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_scaling_rules(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRulesRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingRulesResponse:
+        """
+        @param request: ListAutoScalingRulesRequest
+        @return: ListAutoScalingRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_auto_scaling_rules_with_options(request, runtime)
+
+    async def list_auto_scaling_rules_async(
+        self,
+        request: hitsdb_20200615_models.ListAutoScalingRulesRequest,
+    ) -> hitsdb_20200615_models.ListAutoScalingRulesResponse:
+        """
+        @param request: ListAutoScalingRulesRequest
+        @return: ListAutoScalingRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_auto_scaling_rules_with_options_async(request, runtime)
+
     def list_ldps_compute_groups_with_options(
         self,
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
@@ -2968,6 +4308,330 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_auto_scaling_config_with_options(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
+        """
+        @param request: ModifyAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.effective_time_end):
+            query['EffectiveTimeEnd'] = request.effective_time_end
+        if not UtilClient.is_unset(request.effective_time_start):
+            query['EffectiveTimeStart'] = request.effective_time_start
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.nodes_max):
+            query['NodesMax'] = request.nodes_max
+        if not UtilClient.is_unset(request.nodes_min):
+            query['NodesMin'] = request.nodes_min
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_scaling_config_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
+        """
+        @param request: ModifyAutoScalingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.effective_time_end):
+            query['EffectiveTimeEnd'] = request.effective_time_end
+        if not UtilClient.is_unset(request.effective_time_start):
+            query['EffectiveTimeStart'] = request.effective_time_start
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.nodes_max):
+            query['NodesMax'] = request.nodes_max
+        if not UtilClient.is_unset(request.nodes_min):
+            query['NodesMin'] = request.nodes_min
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_type):
+            query['ScaleType'] = request.scale_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.spec_id):
+            query['SpecId'] = request.spec_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingConfig',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_scaling_config(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
+        """
+        @param request: ModifyAutoScalingConfigRequest
+        @return: ModifyAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_scaling_config_with_options(request, runtime)
+
+    async def modify_auto_scaling_config_async(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingConfigRequest,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingConfigResponse:
+        """
+        @param request: ModifyAutoScalingConfigRequest
+        @return: ModifyAutoScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_scaling_config_with_options_async(request, runtime)
+
+    def modify_auto_scaling_rule_with_options(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
+        """
+        @param request: ModifyAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.observation_window):
+            query['ObservationWindow'] = request.observation_window
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scale_in_step):
+            query['ScaleInStep'] = request.scale_in_step
+        if not UtilClient.is_unset(request.scale_out_step):
+            query['ScaleOutStep'] = request.scale_out_step
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_metric):
+            query['TargetMetric'] = request.target_metric
+        if not UtilClient.is_unset(request.target_nodes):
+            query['TargetNodes'] = request.target_nodes
+        if not UtilClient.is_unset(request.threshold_lower):
+            query['ThresholdLower'] = request.threshold_lower
+        if not UtilClient.is_unset(request.threshold_upper):
+            query['ThresholdUpper'] = request.threshold_upper
+        if not UtilClient.is_unset(request.trigger_cron_expr):
+            query['TriggerCronExpr'] = request.trigger_cron_expr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_scaling_rule_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
+        """
+        @param request: ModifyAutoScalingRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoScalingRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.observation_window):
+            query['ObservationWindow'] = request.observation_window
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scale_in_step):
+            query['ScaleInStep'] = request.scale_in_step
+        if not UtilClient.is_unset(request.scale_out_step):
+            query['ScaleOutStep'] = request.scale_out_step
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_metric):
+            query['TargetMetric'] = request.target_metric
+        if not UtilClient.is_unset(request.target_nodes):
+            query['TargetNodes'] = request.target_nodes
+        if not UtilClient.is_unset(request.threshold_lower):
+            query['ThresholdLower'] = request.threshold_lower
+        if not UtilClient.is_unset(request.threshold_upper):
+            query['ThresholdUpper'] = request.threshold_upper
+        if not UtilClient.is_unset(request.trigger_cron_expr):
+            query['TriggerCronExpr'] = request.trigger_cron_expr
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoScalingRule',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyAutoScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_scaling_rule(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
+        """
+        @param request: ModifyAutoScalingRuleRequest
+        @return: ModifyAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_scaling_rule_with_options(request, runtime)
+
+    async def modify_auto_scaling_rule_async(
+        self,
+        request: hitsdb_20200615_models.ModifyAutoScalingRuleRequest,
+    ) -> hitsdb_20200615_models.ModifyAutoScalingRuleResponse:
+        """
+        @param request: ModifyAutoScalingRuleRequest
+        @return: ModifyAutoScalingRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_scaling_rule_with_options_async(request, runtime)
 
     def modify_instance_pay_type_with_options(
         self,
