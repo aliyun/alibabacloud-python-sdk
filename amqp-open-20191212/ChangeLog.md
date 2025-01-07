@@ -1,3 +1,18 @@
+2025-01-07 Version: 1.4.0
+- Support API GetInstance.
+- Update API CreateBinding: update param Argument.
+- Update API CreateBinding: update param BindingKey.
+- Update API CreateInstance: add param EncryptedInstance.
+- Update API CreateInstance: add param KmsKeyId.
+- Update API CreateInstance: add param ResourceGroupId.
+- Update API CreateInstance: update param InstanceType.
+- Update API DeleteBinding: update param BindingKey.
+- Update API ListInstances: add param ResourceGroupId.
+- Update API ListInstances: update response param.
+- Update API UpdateInstance: add param EncryptedInstance.
+- Update API UpdateInstance: add param KmsKeyId.
+
+
 2024-08-15 Version: 1.3.3
 - Update API ListDownStreamBindings: update param MaxResults.
 - Update API ListExchangeUpStreamBindings: update param MaxResults.

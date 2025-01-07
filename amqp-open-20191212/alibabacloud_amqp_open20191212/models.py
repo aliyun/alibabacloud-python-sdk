@@ -351,8 +351,6 @@ class CreateBindingRequest(TeaModel):
         #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), asterisks (\\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
         #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
-        # 
-        # This parameter is required.
         self.binding_key = binding_key
         # The type of the object that you want to bind to the source exchange. Valid values:
         # 
@@ -669,8 +667,10 @@ class CreateInstanceRequest(TeaModel):
         auto_renew: bool = None,
         auto_renew_period: int = None,
         client_token: str = None,
+        encrypted_instance: bool = None,
         instance_name: str = None,
         instance_type: str = None,
+        kms_key_id: str = None,
         max_connections: int = None,
         max_eip_tps: int = None,
         max_private_tps: int = None,
@@ -680,32 +680,109 @@ class CreateInstanceRequest(TeaModel):
         queue_capacity: int = None,
         renew_status: str = None,
         renewal_duration_unit: str = None,
+        resource_group_id: str = None,
         serverless_charge_type: str = None,
         storage_size: int = None,
         support_eip: bool = None,
         support_tracing: bool = None,
         tracing_storage_time: int = None,
     ):
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # *   true: enables auto-renewal.
+        # *   false: disables auto-renewal. If you select this value, you must manually renew the instance.
         self.auto_renew = auto_renew
+        # The auto-renewal duration. Unit: months.
+        # 
+        # >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
         self.auto_renew_period = auto_renew_period
+        # The client token.
         self.client_token = client_token
+        self.encrypted_instance = encrypted_instance
+        # The instance name. We recommend that you specify a name that does not exceed 64 characters in length.
         self.instance_name = instance_name
+        # The instance edition. Valid values:
+        # 
+        # *   professional: Professional Edition
+        # *   enterprise: Enterprise Edition
+        # *   vip: Enterprise Platinum Edition
         self.instance_type = instance_type
+        self.kms_key_id = kms_key_id
+        # The maximum number of connections that can be established to the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_connections = max_connections
+        # The maximum number of EIP-based TPS on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_eip_tps = max_eip_tps
+        # The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_private_tps = max_private_tps
+        # The billing method. Valid value:
+        # 
+        # *   Subscription
+        # 
+        # >  API operations provided by ApsaraMQ for RabbitMQ are supported only by subscription instances. You can set this parameter only to Subscription.
+        # 
         # This parameter is required.
         self.payment_type = payment_type
+        # The subscription period. The unit of the subscription period is specified by periodCycle.
+        # 
+        # >  This parameter takes effect only if you set PaymentType to Subscription. Default value: 1.
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # 
+        # >  This parameter takes effect only if you set PaymentType to Subscription. Default value: Month.
         self.period_cycle = period_cycle
+        # The number of queues. Valid values:
+        # 
+        # *   Professional Edition: 50 to 1000. The number of queues must increase in increments of 5.
+        # *   Enterprise Edition: 200 to 6000. The number of queues must increase in increments of 100.
+        # *   Enterprise Platinum Edition: 10000 to 80000. The number of queues must increase in increments of 100.
         self.queue_capacity = queue_capacity
-        # autoRenew和renewStatus都是续费方式，当两个同时填写时，以renewStatus为准
+        # The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
+        # - AutoRenewal
+        # 
+        # > If you configure both this parameter and AutoRenew, the value of this parameter is used.
         self.renew_status = renew_status
+        # The unit of the auto-renewal period. Valid values:
+        # - Month
+        # - Year
         self.renewal_duration_unit = renewal_duration_unit
+        self.resource_group_id = resource_group_id
+        # The billing method of the pay-as-you-go instance. Valid values:
+        # - onDemand: You are charged based on your actual usage
         self.serverless_charge_type = serverless_charge_type
+        # The storage capacity. Unit: GB. Valid values:
+        # 
+        # *   Professional Edition and Enterprise Edition instances: Set this parameter to 0.
+        # 
+        # >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
+        # 
+        # *   Platinum Edition instances: Set the value to m × 100, where m ranges from 7 to 28.
         self.storage_size = storage_size
+        # Specifies whether elastic IP addresses (EIPs) are supported. Valid values:
+        # 
+        # *   True
+        # *   False
         self.support_eip = support_eip
+        # Specifies whether to enable the message trace feature. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # > 
+        # 
+        # *   Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you use an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
+        # 
+        # *   For instances of other editions, you can set this parameter to true or false.
         self.support_tracing = support_tracing
+        # The retention period of messages. Unit: days. Valid values:
+        # 
+        # *   3
+        # *   7
+        # *   15
+        # 
+        # >  This parameter takes effect only if you set SupportTracing to true.
         self.tracing_storage_time = tracing_storage_time
 
     def validate(self):
@@ -723,10 +800,14 @@ class CreateInstanceRequest(TeaModel):
             result['AutoRenewPeriod'] = self.auto_renew_period
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.encrypted_instance is not None:
+            result['EncryptedInstance'] = self.encrypted_instance
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
         if self.max_eip_tps is not None:
@@ -745,6 +826,8 @@ class CreateInstanceRequest(TeaModel):
             result['RenewStatus'] = self.renew_status
         if self.renewal_duration_unit is not None:
             result['RenewalDurationUnit'] = self.renewal_duration_unit
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.serverless_charge_type is not None:
             result['ServerlessChargeType'] = self.serverless_charge_type
         if self.storage_size is not None:
@@ -765,10 +848,14 @@ class CreateInstanceRequest(TeaModel):
             self.auto_renew_period = m.get('AutoRenewPeriod')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('EncryptedInstance') is not None:
+            self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxEipTps') is not None:
@@ -787,6 +874,8 @@ class CreateInstanceRequest(TeaModel):
             self.renew_status = m.get('RenewStatus')
         if m.get('RenewalDurationUnit') is not None:
             self.renewal_duration_unit = m.get('RenewalDurationUnit')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServerlessChargeType') is not None:
             self.serverless_charge_type = m.get('ServerlessChargeType')
         if m.get('StorageSize') is not None:
@@ -809,10 +898,15 @@ class CreateInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The ID of the created instance.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -1346,8 +1440,6 @@ class DeleteBindingRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The binding key.
-        # 
-        # This parameter is required.
         self.binding_key = binding_key
         # The type of the object that you want to unbind from the source exchange. Valid values:
         # 
@@ -1820,6 +1912,316 @@ class DeleteVirtualHostResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVirtualHostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetInstanceResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auto_renew_instance: bool = None,
+        classic_endpoint: str = None,
+        encrypted_instance: bool = None,
+        expire_time: int = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        kms_key_id: str = None,
+        max_connections: int = None,
+        max_eip_tps: int = None,
+        max_queue: int = None,
+        max_tps: int = None,
+        max_vhost: int = None,
+        order_create_time: int = None,
+        order_type: str = None,
+        private_endpoint: str = None,
+        public_endpoint: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        storage_size: int = None,
+        support_eip: bool = None,
+        support_tracing: bool = None,
+        tags: List[GetInstanceResponseBodyDataTags] = None,
+        tracing_storage_time: int = None,
+    ):
+        self.auto_renew_instance = auto_renew_instance
+        self.classic_endpoint = classic_endpoint
+        self.encrypted_instance = encrypted_instance
+        self.expire_time = expire_time
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.kms_key_id = kms_key_id
+        self.max_connections = max_connections
+        self.max_eip_tps = max_eip_tps
+        self.max_queue = max_queue
+        self.max_tps = max_tps
+        self.max_vhost = max_vhost
+        self.order_create_time = order_create_time
+        self.order_type = order_type
+        self.private_endpoint = private_endpoint
+        self.public_endpoint = public_endpoint
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.storage_size = storage_size
+        self.support_eip = support_eip
+        self.support_tracing = support_tracing
+        self.tags = tags
+        self.tracing_storage_time = tracing_storage_time
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew_instance is not None:
+            result['AutoRenewInstance'] = self.auto_renew_instance
+        if self.classic_endpoint is not None:
+            result['ClassicEndpoint'] = self.classic_endpoint
+        if self.encrypted_instance is not None:
+            result['EncryptedInstance'] = self.encrypted_instance
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
+        if self.max_connections is not None:
+            result['MaxConnections'] = self.max_connections
+        if self.max_eip_tps is not None:
+            result['MaxEipTps'] = self.max_eip_tps
+        if self.max_queue is not None:
+            result['MaxQueue'] = self.max_queue
+        if self.max_tps is not None:
+            result['MaxTps'] = self.max_tps
+        if self.max_vhost is not None:
+            result['MaxVhost'] = self.max_vhost
+        if self.order_create_time is not None:
+            result['OrderCreateTime'] = self.order_create_time
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.private_endpoint is not None:
+            result['PrivateEndpoint'] = self.private_endpoint
+        if self.public_endpoint is not None:
+            result['PublicEndpoint'] = self.public_endpoint
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_size is not None:
+            result['StorageSize'] = self.storage_size
+        if self.support_eip is not None:
+            result['SupportEIP'] = self.support_eip
+        if self.support_tracing is not None:
+            result['SupportTracing'] = self.support_tracing
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.tracing_storage_time is not None:
+            result['TracingStorageTime'] = self.tracing_storage_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenewInstance') is not None:
+            self.auto_renew_instance = m.get('AutoRenewInstance')
+        if m.get('ClassicEndpoint') is not None:
+            self.classic_endpoint = m.get('ClassicEndpoint')
+        if m.get('EncryptedInstance') is not None:
+            self.encrypted_instance = m.get('EncryptedInstance')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
+        if m.get('MaxConnections') is not None:
+            self.max_connections = m.get('MaxConnections')
+        if m.get('MaxEipTps') is not None:
+            self.max_eip_tps = m.get('MaxEipTps')
+        if m.get('MaxQueue') is not None:
+            self.max_queue = m.get('MaxQueue')
+        if m.get('MaxTps') is not None:
+            self.max_tps = m.get('MaxTps')
+        if m.get('MaxVhost') is not None:
+            self.max_vhost = m.get('MaxVhost')
+        if m.get('OrderCreateTime') is not None:
+            self.order_create_time = m.get('OrderCreateTime')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PrivateEndpoint') is not None:
+            self.private_endpoint = m.get('PrivateEndpoint')
+        if m.get('PublicEndpoint') is not None:
+            self.public_endpoint = m.get('PublicEndpoint')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageSize') is not None:
+            self.storage_size = m.get('StorageSize')
+        if m.get('SupportEIP') is not None:
+            self.support_eip = m.get('SupportEIP')
+        if m.get('SupportTracing') is not None:
+            self.support_tracing = m.get('SupportTracing')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetInstanceResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TracingStorageTime') is not None:
+            self.tracing_storage_time = m.get('TracingStorageTime')
+        return self
+
+
+class GetInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetInstanceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3220,6 +3622,7 @@ class ListInstancesRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        resource_group_id: str = None,
     ):
         # The maximum number of entries to return. Valid values: 1 to 100.
         # 
@@ -3227,6 +3630,7 @@ class ListInstancesRequest(TeaModel):
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3241,6 +3645,8 @@ class ListInstancesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3249,6 +3655,8 @@ class ListInstancesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3292,10 +3700,12 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self,
         auto_renew_instance: bool = None,
         classic_endpoint: str = None,
+        encrypted_instance: bool = None,
         expire_time: int = None,
         instance_id: str = None,
         instance_name: str = None,
         instance_type: str = None,
+        kms_key_id: str = None,
         max_eip_tps: int = None,
         max_queue: int = None,
         max_tps: int = None,
@@ -3304,6 +3714,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         order_type: str = None,
         private_endpoint: str = None,
         public_endpoint: str = None,
+        resource_group_id: str = None,
         status: str = None,
         storage_size: int = None,
         support_eip: bool = None,
@@ -3313,6 +3724,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.auto_renew_instance = auto_renew_instance
         # The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
         self.classic_endpoint = classic_endpoint
+        self.encrypted_instance = encrypted_instance
         # The timestamp that indicates when the instance expires. Unit: milliseconds.
         self.expire_time = expire_time
         # The instance ID
@@ -3325,6 +3737,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         # *   ENTERPRISE: Enterprise Edition
         # *   VIP: Enterprise Platinum Edition
         self.instance_type = instance_type
+        self.kms_key_id = kms_key_id
         # The maximum number of Internet-based transactions per second (TPS) for the instance.
         self.max_eip_tps = max_eip_tps
         # The maximum number of queues on the instance.
@@ -3344,6 +3757,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.private_endpoint = private_endpoint
         # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
+        self.resource_group_id = resource_group_id
         # The instance status. Valid values:
         # 
         # *   DEPLOYING: The instance is being deployed.
@@ -3376,6 +3790,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['AutoRenewInstance'] = self.auto_renew_instance
         if self.classic_endpoint is not None:
             result['ClassicEndpoint'] = self.classic_endpoint
+        if self.encrypted_instance is not None:
+            result['EncryptedInstance'] = self.encrypted_instance
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.instance_id is not None:
@@ -3384,6 +3800,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
         if self.max_eip_tps is not None:
             result['MaxEipTps'] = self.max_eip_tps
         if self.max_queue is not None:
@@ -3400,6 +3818,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['PrivateEndpoint'] = self.private_endpoint
         if self.public_endpoint is not None:
             result['PublicEndpoint'] = self.public_endpoint
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.storage_size is not None:
@@ -3418,6 +3838,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.auto_renew_instance = m.get('AutoRenewInstance')
         if m.get('ClassicEndpoint') is not None:
             self.classic_endpoint = m.get('ClassicEndpoint')
+        if m.get('EncryptedInstance') is not None:
+            self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('InstanceId') is not None:
@@ -3426,6 +3848,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
         if m.get('MaxEipTps') is not None:
             self.max_eip_tps = m.get('MaxEipTps')
         if m.get('MaxQueue') is not None:
@@ -3442,6 +3866,8 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.private_endpoint = m.get('PrivateEndpoint')
         if m.get('PublicEndpoint') is not None:
             self.public_endpoint = m.get('PublicEndpoint')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StorageSize') is not None:
@@ -4535,8 +4961,10 @@ class UpdateInstanceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        encrypted_instance: bool = None,
         instance_id: str = None,
         instance_type: str = None,
+        kms_key_id: str = None,
         max_connections: int = None,
         max_eip_tps: int = None,
         max_private_tps: int = None,
@@ -4549,9 +4977,11 @@ class UpdateInstanceRequest(TeaModel):
         tracing_storage_time: int = None,
     ):
         self.client_token = client_token
+        self.encrypted_instance = encrypted_instance
         # This parameter is required.
         self.instance_id = instance_id
         self.instance_type = instance_type
+        self.kms_key_id = kms_key_id
         self.max_connections = max_connections
         self.max_eip_tps = max_eip_tps
         self.max_private_tps = max_private_tps
@@ -4575,10 +5005,14 @@ class UpdateInstanceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.encrypted_instance is not None:
+            result['EncryptedInstance'] = self.encrypted_instance
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.kms_key_id is not None:
+            result['KmsKeyId'] = self.kms_key_id
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
         if self.max_eip_tps is not None:
@@ -4605,10 +5039,14 @@ class UpdateInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('EncryptedInstance') is not None:
+            self.encrypted_instance = m.get('EncryptedInstance')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('KmsKeyId') is not None:
+            self.kms_key_id = m.get('KmsKeyId')
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxEipTps') is not None:

@@ -407,7 +407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
         """
-        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        @summary Creates an ApsaraMQ for RabbitMQ instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -421,10 +423,14 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.encrypted_instance):
+            query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not UtilClient.is_unset(request.max_eip_tps):
@@ -443,6 +449,8 @@ class Client(OpenApiClient):
             query['RenewStatus'] = request.renew_status
         if not UtilClient.is_unset(request.renewal_duration_unit):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.serverless_charge_type):
             query['ServerlessChargeType'] = request.serverless_charge_type
         if not UtilClient.is_unset(request.storage_size):
@@ -478,7 +486,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
         """
-        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        @summary Creates an ApsaraMQ for RabbitMQ instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -492,10 +502,14 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.encrypted_instance):
+            query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not UtilClient.is_unset(request.max_eip_tps):
@@ -514,6 +528,8 @@ class Client(OpenApiClient):
             query['RenewStatus'] = request.renew_status
         if not UtilClient.is_unset(request.renewal_duration_unit):
             query['RenewalDurationUnit'] = request.renewal_duration_unit
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.serverless_charge_type):
             query['ServerlessChargeType'] = request.serverless_charge_type
         if not UtilClient.is_unset(request.storage_size):
@@ -548,7 +564,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateInstanceRequest,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
         """
-        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        @summary Creates an ApsaraMQ for RabbitMQ instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -561,7 +579,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateInstanceRequest,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
         """
-        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        @summary Creates an ApsaraMQ for RabbitMQ instance.
+        
+        @description *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1352,6 +1372,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_virtual_host_with_options_async(request, runtime)
+
+    def get_instance_with_options(
+        self,
+        request: amqp_open_20191212_models.GetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_with_options_async(
+        self,
+        request: amqp_open_20191212_models.GetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance(
+        self,
+        request: amqp_open_20191212_models.GetInstanceRequest,
+    ) -> amqp_open_20191212_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_with_options(request, runtime)
+
+    async def get_instance_async(
+        self,
+        request: amqp_open_20191212_models.GetInstanceRequest,
+    ) -> amqp_open_20191212_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_with_options_async(request, runtime)
 
     def get_metadata_amount_with_options(
         self,
@@ -2393,10 +2505,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.encrypted_instance):
+            query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not UtilClient.is_unset(request.max_eip_tps):
@@ -2452,10 +2568,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.encrypted_instance):
+            query['EncryptedInstance'] = request.encrypted_instance
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.kms_key_id):
+            query['KmsKeyId'] = request.kms_key_id
         if not UtilClient.is_unset(request.max_connections):
             query['MaxConnections'] = request.max_connections
         if not UtilClient.is_unset(request.max_eip_tps):
