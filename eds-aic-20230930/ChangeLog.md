@@ -1,3 +1,6 @@
+2025-01-07 Version: 3.2.1
+- Generated python 2023-09-30 for eds-aic.
+
 2025-01-03 Version: 3.2.0
 - Support API OperateApp.
 - Update API BackupFile: add param BackupAll.
