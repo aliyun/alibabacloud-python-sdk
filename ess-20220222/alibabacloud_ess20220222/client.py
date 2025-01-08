@@ -780,6 +780,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.entrusted):
             query['Entrusted'] = request.entrusted
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_hook):
@@ -850,6 +852,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.entrusted):
             query['Entrusted'] = request.entrusted
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_hook):

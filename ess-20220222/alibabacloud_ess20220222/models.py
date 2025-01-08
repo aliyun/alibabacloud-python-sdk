@@ -663,6 +663,7 @@ class AttachInstancesRequest(TeaModel):
         self,
         client_token: str = None,
         entrusted: bool = None,
+        ignore_invalid_instance: bool = None,
         instance_ids: List[str] = None,
         lifecycle_hook: bool = None,
         load_balancer_weights: List[int] = None,
@@ -686,6 +687,7 @@ class AttachInstancesRequest(TeaModel):
         # 
         # Default value: false.
         self.entrusted = entrusted
+        self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances, elastic container instances, non-Alibaba Cloud instances, or instances in Economical Mode.
         self.instance_ids = instance_ids
         # Specifies whether to trigger the lifecycle hook for scale-outs when you call this operation. Valid values:
@@ -723,6 +725,8 @@ class AttachInstancesRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.entrusted is not None:
             result['Entrusted'] = self.entrusted
+        if self.ignore_invalid_instance is not None:
+            result['IgnoreInvalidInstance'] = self.ignore_invalid_instance
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.lifecycle_hook is not None:
@@ -749,6 +753,8 @@ class AttachInstancesRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Entrusted') is not None:
             self.entrusted = m.get('Entrusted')
+        if m.get('IgnoreInvalidInstance') is not None:
+            self.ignore_invalid_instance = m.get('IgnoreInvalidInstance')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('LifecycleHook') is not None:
@@ -16549,17 +16555,38 @@ class DescribeElasticStrengthRequest(TeaModel):
         system_disk_categories: List[str] = None,
         v_switch_ids: List[str] = None,
     ):
+        # The disk categories of the data disks. The disk categories that do not match the specified criteria are returned after you call this operation.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify this parameter.
         self.data_disk_categories = data_disk_categories
+        # The name of the image family. You can specify the ImageFamily request parameter to obtain the most recent available images in the current image family for instance creation. If you specify ImageId, you cannot specify ImageFamily.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
         self.image_family = image_family
+        # The ID of the image file that provides the image resource for Auto Scaling to create instances.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
         self.image_id = image_id
+        # The name of the image. Each image name must be unique in a region. If you specify ImageId, ImageName is ignored.
+        # 
+        # You cannot use ImageName to specify an Alibaba Cloud Marketplace image.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify at least one of ImageId, ImageName, and ImageFamily.
         self.image_name = image_name
         # The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
         self.instance_types = instance_types
+        # The number of IPv6 addresses. If the instance type that you specified does meet the requirement for the number of IPv6 addresses, the scaling strength is weak.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify this parameter.
         self.ipv_6address_count = ipv_6address_count
+        # **\
+        # 
+        # **Warning** This parameter is deprecated. We recommend that you use SpotStrategy.
+        # 
         # The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
         # 
         # *   NoSpot: The instances are created as regular pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
         # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
         # 
         # Default value: NoSpot.
@@ -16572,6 +16599,13 @@ class DescribeElasticStrengthRequest(TeaModel):
         self.scaling_group_id = scaling_group_id
         # The IDs of the scaling groups that you want to query.
         self.scaling_group_ids = scaling_group_ids
+        # The instance bidding policy. Valid values:
+        # 
+        # *   NoSpot: The instances are created as pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is used as the bid price.
+        # 
+        # Default value: NoSpot.
         self.spot_strategy = spot_strategy
         # The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
         # 
@@ -16579,7 +16613,12 @@ class DescribeElasticStrengthRequest(TeaModel):
         # *   cloud_efficiency: ultra disk.
         # *   cloud_ssd: standard SSD.
         # *   cloud_essd: Enterprise SSD (ESSD).
+        # 
+        # >  If you do not specify the scaling group ID, you must specify this parameter.
         self.system_disk_categories = system_disk_categories
+        # The vSwitch IDs.
+        # 
+        # >  If you do not specify the scaling group ID, you must specify this parameter.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -16658,9 +16697,25 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePoolsInven
         hot_score: int = None,
         supply_score: int = None,
     ):
+        # The adequacy score.
+        # 
+        # Valid values: 0 to 3.
         self.adequacy_score = adequacy_score
+        # The score of the inventory health.
+        # 
+        # *   A score between 5 and 6 indicates a sufficient inventory.
+        # *   A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+        # *   A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+        # 
+        # Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
         self.health_score = health_score
+        # The popularity score.
+        # 
+        # Valid values: 0 to 3.
         self.hot_score = hot_score
+        # The score of the replenishment capability.
+        # 
+        # Valid values: 0 to 3.
         self.supply_score = supply_score
 
     def validate(self):
@@ -16711,11 +16766,20 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools(TeaM
         self.code = code
         # The instance type of the resource pool.
         self.instance_type = instance_type
+        # The inventory health.
         self.inventory_health = inventory_health
         # The error message returned when the scaling strength is the weakest.
         self.msg = msg
+        # Indicates whether the resource pool is available. Valid values:
+        # 
+        # *   Available
+        # *   Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
         self.status = status
         # The scaling strength of the resource pool.
+        # 
+        # **\
+        # 
+        # **Warning** This parameter is deprecated.
         self.strength = strength
         # The IDs of the vSwitches in the zones of the resource pool.
         self.v_switch_ids = v_switch_ids
@@ -16780,12 +16844,21 @@ class DescribeElasticStrengthResponseBodyElasticStrengthModels(TeaModel):
         scaling_group_id: str = None,
         total_strength: float = None,
     ):
+        # The scaling strength level of the scaling group. Valid values:
+        # 
+        # *   Strong
+        # *   Medium
+        # *   Weak
         self.elastic_strength = elastic_strength
         # The resource pools.
         self.resource_pools = resource_pools
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+        # The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+        # 
+        # **\
+        # 
+        # **Warning** This parameter is deprecated.
         self.total_strength = total_strength
 
     def validate(self):
@@ -16899,13 +16972,17 @@ class DescribeElasticStrengthResponseBody(TeaModel):
         resource_pools: List[DescribeElasticStrengthResponseBodyResourcePools] = None,
         total_strength: float = None,
     ):
-        # The scaling strengths of scaling configurations that are queried at the same time.
+        # The scaling strength models.
         self.elastic_strength_models = elastic_strength_models
         # The request ID.
         self.request_id = request_id
         # The resource pools.
         self.resource_pools = resource_pools
-        # The scaling strength of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+        # The scaling strength score of the scaling group. Each combination of instance type + zone is scored from 0 to 1 based on its availability, with 0 being the weakest scaling strength and 1 being the strongest. The scaling strength score of the scaling group is measured by the combined scores of all the combinations of instance type + zone.
+        # 
+        # **\
+        # 
+        # **Warning** This parameter is deprecated.
         self.total_strength = total_strength
 
     def validate(self):
@@ -35612,6 +35689,7 @@ class ModifyScheduledTaskRequest(TeaModel):
         # 
         # After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
         self.recurrence_value = recurrence_value
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
