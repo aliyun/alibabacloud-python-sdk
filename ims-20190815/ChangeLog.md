@@ -1,3 +1,9 @@
+2025-01-08 Version: 3.1.5
+- Update API GetSecurityPreference: update response param.
+- Update API SetSecurityPreference: add param AllowUserToLoginWithPasskey.
+- Update API SetSecurityPreference: update response param.
+
+
 2024-12-19 Version: 3.1.4
 - Update API GetAccountSummary: update response param.
 - Update API GetLoginProfile: update response param.

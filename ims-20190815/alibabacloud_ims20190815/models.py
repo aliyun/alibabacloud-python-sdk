@@ -6409,6 +6409,7 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     def __init__(
         self,
         allow_user_to_change_password: bool = None,
+        allow_user_to_login_with_passkey: bool = None,
         enable_save_mfaticket: bool = None,
         login_network_masks: str = None,
         login_session_duration: int = None,
@@ -6420,6 +6421,7 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         # *   true
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Indicates whether RAM users can remember the multi-factor authentication (MFA) devices for seven days. Valid values:
         # 
         # *   true
@@ -6452,6 +6454,8 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         result = dict()
         if self.allow_user_to_change_password is not None:
             result['AllowUserToChangePassword'] = self.allow_user_to_change_password
+        if self.allow_user_to_login_with_passkey is not None:
+            result['AllowUserToLoginWithPasskey'] = self.allow_user_to_login_with_passkey
         if self.enable_save_mfaticket is not None:
             result['EnableSaveMFATicket'] = self.enable_save_mfaticket
         if self.login_network_masks is not None:
@@ -6468,6 +6472,8 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         m = m or dict()
         if m.get('AllowUserToChangePassword') is not None:
             self.allow_user_to_change_password = m.get('AllowUserToChangePassword')
+        if m.get('AllowUserToLoginWithPasskey') is not None:
+            self.allow_user_to_login_with_passkey = m.get('AllowUserToLoginWithPasskey')
         if m.get('EnableSaveMFATicket') is not None:
             self.enable_save_mfaticket = m.get('EnableSaveMFATicket')
         if m.get('LoginNetworkMasks') is not None:
@@ -11823,6 +11829,7 @@ class SetSecurityPreferenceRequest(TeaModel):
     def __init__(
         self,
         allow_user_to_change_password: bool = None,
+        allow_user_to_login_with_passkey: bool = None,
         allow_user_to_manage_access_keys: bool = None,
         allow_user_to_manage_mfadevices: bool = None,
         allow_user_to_manage_personal_ding_talk: bool = None,
@@ -11838,6 +11845,7 @@ class SetSecurityPreferenceRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
         # *   true
@@ -11898,6 +11906,8 @@ class SetSecurityPreferenceRequest(TeaModel):
         result = dict()
         if self.allow_user_to_change_password is not None:
             result['AllowUserToChangePassword'] = self.allow_user_to_change_password
+        if self.allow_user_to_login_with_passkey is not None:
+            result['AllowUserToLoginWithPasskey'] = self.allow_user_to_login_with_passkey
         if self.allow_user_to_manage_access_keys is not None:
             result['AllowUserToManageAccessKeys'] = self.allow_user_to_manage_access_keys
         if self.allow_user_to_manage_mfadevices is not None:
@@ -11922,6 +11932,8 @@ class SetSecurityPreferenceRequest(TeaModel):
         m = m or dict()
         if m.get('AllowUserToChangePassword') is not None:
             self.allow_user_to_change_password = m.get('AllowUserToChangePassword')
+        if m.get('AllowUserToLoginWithPasskey') is not None:
+            self.allow_user_to_login_with_passkey = m.get('AllowUserToLoginWithPasskey')
         if m.get('AllowUserToManageAccessKeys') is not None:
             self.allow_user_to_manage_access_keys = m.get('AllowUserToManageAccessKeys')
         if m.get('AllowUserToManageMFADevices') is not None:
@@ -11947,6 +11959,7 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
     def __init__(
         self,
         allow_user_to_change_password: bool = None,
+        allow_user_to_login_with_passkey: bool = None,
         allow_user_to_manage_access_keys: bool = None,
         allow_user_to_manage_mfadevices: bool = None,
         allow_user_to_manage_personal_ding_talk: bool = None,
@@ -11962,6 +11975,7 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         # *   true (default)
         # *   false
         self.allow_user_to_change_password = allow_user_to_change_password
+        self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Specifies whether RAM users can manage their AccessKey pairs. Valid values:
         # 
         # *   true
@@ -12022,6 +12036,8 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         result = dict()
         if self.allow_user_to_change_password is not None:
             result['AllowUserToChangePassword'] = self.allow_user_to_change_password
+        if self.allow_user_to_login_with_passkey is not None:
+            result['AllowUserToLoginWithPasskey'] = self.allow_user_to_login_with_passkey
         if self.allow_user_to_manage_access_keys is not None:
             result['AllowUserToManageAccessKeys'] = self.allow_user_to_manage_access_keys
         if self.allow_user_to_manage_mfadevices is not None:
@@ -12046,6 +12062,8 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AllowUserToChangePassword') is not None:
             self.allow_user_to_change_password = m.get('AllowUserToChangePassword')
+        if m.get('AllowUserToLoginWithPasskey') is not None:
+            self.allow_user_to_login_with_passkey = m.get('AllowUserToLoginWithPasskey')
         if m.get('AllowUserToManageAccessKeys') is not None:
             self.allow_user_to_manage_access_keys = m.get('AllowUserToManageAccessKeys')
         if m.get('AllowUserToManageMFADevices') is not None:
@@ -12099,6 +12117,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     def __init__(
         self,
         allow_user_to_change_password: bool = None,
+        allow_user_to_login_with_passkey: bool = None,
         enable_save_mfaticket: bool = None,
         login_network_masks: str = None,
         login_session_duration: int = None,
@@ -12107,6 +12126,7 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
     ):
         # Indicates whether RAM users can change their passwords.
         self.allow_user_to_change_password = allow_user_to_change_password
+        self.allow_user_to_login_with_passkey = allow_user_to_login_with_passkey
         # Indicates whether RAM users can remember the MFA devices for seven days.
         self.enable_save_mfaticket = enable_save_mfaticket
         # The subnet mask.
@@ -12129,6 +12149,8 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         result = dict()
         if self.allow_user_to_change_password is not None:
             result['AllowUserToChangePassword'] = self.allow_user_to_change_password
+        if self.allow_user_to_login_with_passkey is not None:
+            result['AllowUserToLoginWithPasskey'] = self.allow_user_to_login_with_passkey
         if self.enable_save_mfaticket is not None:
             result['EnableSaveMFATicket'] = self.enable_save_mfaticket
         if self.login_network_masks is not None:
@@ -12145,6 +12167,8 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference(
         m = m or dict()
         if m.get('AllowUserToChangePassword') is not None:
             self.allow_user_to_change_password = m.get('AllowUserToChangePassword')
+        if m.get('AllowUserToLoginWithPasskey') is not None:
+            self.allow_user_to_login_with_passkey = m.get('AllowUserToLoginWithPasskey')
         if m.get('EnableSaveMFATicket') is not None:
             self.enable_save_mfaticket = m.get('EnableSaveMFATicket')
         if m.get('LoginNetworkMasks') is not None:

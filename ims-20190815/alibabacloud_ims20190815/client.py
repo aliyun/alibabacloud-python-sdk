@@ -6226,6 +6226,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_user_to_change_password):
             query['AllowUserToChangePassword'] = request.allow_user_to_change_password
+        if not UtilClient.is_unset(request.allow_user_to_login_with_passkey):
+            query['AllowUserToLoginWithPasskey'] = request.allow_user_to_login_with_passkey
         if not UtilClient.is_unset(request.allow_user_to_manage_access_keys):
             query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
         if not UtilClient.is_unset(request.allow_user_to_manage_mfadevices):
@@ -6286,6 +6288,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_user_to_change_password):
             query['AllowUserToChangePassword'] = request.allow_user_to_change_password
+        if not UtilClient.is_unset(request.allow_user_to_login_with_passkey):
+            query['AllowUserToLoginWithPasskey'] = request.allow_user_to_login_with_passkey
         if not UtilClient.is_unset(request.allow_user_to_manage_access_keys):
             query['AllowUserToManageAccessKeys'] = request.allow_user_to_manage_access_keys
         if not UtilClient.is_unset(request.allow_user_to_manage_mfadevices):
@@ -6361,6 +6365,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
+        @summary 设置用户SSO身份提供商信息
+        
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetUserSsoSettingsResponse
@@ -6400,6 +6406,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
+        @summary 设置用户SSO身份提供商信息
+        
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetUserSsoSettingsResponse
@@ -6438,6 +6446,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
+        @summary 设置用户SSO身份提供商信息
+        
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
         """
@@ -6449,6 +6459,8 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
+        @summary 设置用户SSO身份提供商信息
+        
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
         """
