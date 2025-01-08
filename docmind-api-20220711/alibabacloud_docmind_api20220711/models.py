@@ -3124,11 +3124,13 @@ class SubmitDocParserJobRequest(TeaModel):
         file_name_extension: str = None,
         file_url: str = None,
         formula_enhancement: bool = None,
+        llm_enhancement: bool = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
+        self.llm_enhancement = llm_enhancement
 
     def validate(self):
         pass
@@ -3147,6 +3149,8 @@ class SubmitDocParserJobRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+        if self.llm_enhancement is not None:
+            result['LlmEnhancement'] = self.llm_enhancement
         return result
 
     def from_map(self, m: dict = None):
@@ -3159,6 +3163,8 @@ class SubmitDocParserJobRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('LlmEnhancement') is not None:
+            self.llm_enhancement = m.get('LlmEnhancement')
         return self
 
 
@@ -3169,11 +3175,13 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
+        llm_enhancement: bool = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.formula_enhancement = formula_enhancement
+        self.llm_enhancement = llm_enhancement
 
     def validate(self):
         pass
@@ -3192,6 +3200,8 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+        if self.llm_enhancement is not None:
+            result['LlmEnhancement'] = self.llm_enhancement
         return result
 
     def from_map(self, m: dict = None):
@@ -3204,6 +3214,8 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+        if m.get('LlmEnhancement') is not None:
+            self.llm_enhancement = m.get('LlmEnhancement')
         return self
 
 

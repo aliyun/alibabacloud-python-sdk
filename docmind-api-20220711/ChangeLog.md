@@ -1,3 +1,7 @@
+2025-01-08 Version: 1.4.3
+- Update API SubmitDocParserJob: add param LlmEnhancement.
+
+
 2024-09-30 Version: 1.4.2
 - Update API QueryDocParserStatus: update response param.
 
