@@ -2893,8 +2893,10 @@ class DeleteLoginProfileResponse(TeaModel):
 class DeletePolicyRequest(TeaModel):
     def __init__(
         self,
+        cascading_delete: bool = None,
         policy_name: str = None,
     ):
+        self.cascading_delete = cascading_delete
         # The name of the policy.
         self.policy_name = policy_name
 
@@ -2907,12 +2909,16 @@ class DeletePolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cascading_delete is not None:
+            result['CascadingDelete'] = self.cascading_delete
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CascadingDelete') is not None:
+            self.cascading_delete = m.get('CascadingDelete')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
         return self
@@ -9162,7 +9168,7 @@ class SetSecurityPreferenceRequest(TeaModel):
         # 
         # If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         # 
-        # You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+        # You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
         self.login_network_masks = login_network_masks
         # The validity period of the logon session of RAM users.
         # 
@@ -9491,7 +9497,6 @@ class UnbindMFADeviceRequest(TeaModel):
         self,
         user_name: str = None,
     ):
-        # The name of the RAM user.
         self.user_name = user_name
 
     def validate(self):
@@ -9519,7 +9524,6 @@ class UnbindMFADeviceResponseBodyMFADevice(TeaModel):
         self,
         serial_number: str = None,
     ):
-        # The serial number of the MFA device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -9548,9 +9552,7 @@ class UnbindMFADeviceResponseBody(TeaModel):
         mfadevice: UnbindMFADeviceResponseBodyMFADevice = None,
         request_id: str = None,
     ):
-        # The information of the MFA device.
         self.mfadevice = mfadevice
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

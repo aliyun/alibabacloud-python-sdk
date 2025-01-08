@@ -1943,6 +1943,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cascading_delete):
+            query['CascadingDelete'] = request.cascading_delete
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
@@ -1976,6 +1978,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cascading_delete):
+            query['CascadingDelete'] = request.cascading_delete
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
@@ -5345,6 +5349,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         """
+        @summary Configures the security preferences.
+        
         @param request: SetSecurityPreferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSecurityPreferenceResponse
@@ -5390,6 +5396,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         """
+        @summary Configures the security preferences.
+        
         @param request: SetSecurityPreferenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSecurityPreferenceResponse
@@ -5434,6 +5442,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetSecurityPreferenceRequest,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         """
+        @summary Configures the security preferences.
+        
         @param request: SetSecurityPreferenceRequest
         @return: SetSecurityPreferenceResponse
         """
@@ -5445,6 +5455,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.SetSecurityPreferenceRequest,
     ) -> ram_20150501_models.SetSecurityPreferenceResponse:
         """
+        @summary Configures the security preferences.
+        
         @param request: SetSecurityPreferenceRequest
         @return: SetSecurityPreferenceResponse
         """
@@ -5457,6 +5469,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
+        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindMFADeviceResponse
@@ -5490,6 +5504,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
+        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnbindMFADeviceResponse
@@ -5522,6 +5538,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
+        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
         """
@@ -5533,6 +5551,8 @@ class Client(OpenApiClient):
         request: ram_20150501_models.UnbindMFADeviceRequest,
     ) -> ram_20150501_models.UnbindMFADeviceResponse:
         """
+        @summary Detaches a multi-factor authentication (MFA) device from a RAM user.
+        
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
         """

@@ -1,3 +1,7 @@
+2025-01-08 Version: 1.1.1
+- Update API DeletePolicy: add param CascadingDelete.
+
+
 2024-06-11 Version: 1.1.0
 - Support API DecodeDiagnosticMessage.
 
