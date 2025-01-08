@@ -1,3 +1,9 @@
+2025-01-08 Version: 4.1.0
+- Support API SetSavingPlanUserDeductRule.
+- Update API DescribeInstanceBill: update response param.
+- Update API DescribeSplitItemBill: update response param.
+
+
 2024-12-03 Version: 4.0.3
 - Update API CreateInstance: add param PricingCycle.
 

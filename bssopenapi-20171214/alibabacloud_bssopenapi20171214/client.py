@@ -11075,6 +11075,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_reseller_user_status_with_options_async(request, runtime)
 
+    def set_saving_plan_user_deduct_rule_with_options(
+        self,
+        tmp_req: bss_open_api_20171214_models.SetSavingPlanUserDeductRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 设置节省计划用户级抵扣规则
+        
+        @param tmp_req: SetSavingPlanUserDeductRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSavingPlanUserDeductRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20171214_models.SetSavingPlanUserDeductRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.user_deduct_rules):
+            request.user_deduct_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_deduct_rules, 'UserDeductRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.spn_instance_code):
+            body['SpnInstanceCode'] = request.spn_instance_code
+        if not UtilClient.is_unset(request.user_deduct_rules_shrink):
+            body['UserDeductRules'] = request.user_deduct_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetSavingPlanUserDeductRule',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_saving_plan_user_deduct_rule_with_options_async(
+        self,
+        tmp_req: bss_open_api_20171214_models.SetSavingPlanUserDeductRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 设置节省计划用户级抵扣规则
+        
+        @param tmp_req: SetSavingPlanUserDeductRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSavingPlanUserDeductRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20171214_models.SetSavingPlanUserDeductRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not UtilClient.is_unset(tmp_req.user_deduct_rules):
+            request.user_deduct_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_deduct_rules, 'UserDeductRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.spn_instance_code):
+            body['SpnInstanceCode'] = request.spn_instance_code
+        if not UtilClient.is_unset(request.user_deduct_rules_shrink):
+            body['UserDeductRules'] = request.user_deduct_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetSavingPlanUserDeductRule',
+            version='2017-12-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_saving_plan_user_deduct_rule(
+        self,
+        request: bss_open_api_20171214_models.SetSavingPlanUserDeductRuleRequest,
+    ) -> bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 设置节省计划用户级抵扣规则
+        
+        @param request: SetSavingPlanUserDeductRuleRequest
+        @return: SetSavingPlanUserDeductRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_saving_plan_user_deduct_rule_with_options(request, runtime)
+
+    async def set_saving_plan_user_deduct_rule_async(
+        self,
+        request: bss_open_api_20171214_models.SetSavingPlanUserDeductRuleRequest,
+    ) -> bss_open_api_20171214_models.SetSavingPlanUserDeductRuleResponse:
+        """
+        @summary 设置节省计划用户级抵扣规则
+        
+        @param request: SetSavingPlanUserDeductRuleRequest
+        @return: SetSavingPlanUserDeductRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_saving_plan_user_deduct_rule_with_options_async(request, runtime)
+
     def subscribe_bill_to_osswith_options(
         self,
         request: bss_open_api_20171214_models.SubscribeBillToOSSRequest,

@@ -5610,6 +5610,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
     def __init__(
         self,
         adjust_amount: float = None,
+        after_discount_amount: str = None,
         bill_account_id: str = None,
         bill_account_name: str = None,
         billing_date: str = None,
@@ -5658,6 +5659,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
     ):
         # The amount deducted with credit refund.
         self.adjust_amount = adjust_amount
+        self.after_discount_amount = after_discount_amount
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
@@ -5772,6 +5774,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         result = dict()
         if self.adjust_amount is not None:
             result['AdjustAmount'] = self.adjust_amount
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.bill_account_id is not None:
             result['BillAccountID'] = self.bill_account_id
         if self.bill_account_name is not None:
@@ -5868,6 +5872,8 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
         m = m or dict()
         if m.get('AdjustAmount') is not None:
             self.adjust_amount = m.get('AdjustAmount')
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('BillAccountID') is not None:
             self.bill_account_id = m.get('BillAccountID')
         if m.get('BillAccountName') is not None:
@@ -11682,6 +11688,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
     def __init__(
         self,
         adjust_amount: float = None,
+        after_discount_amount: str = None,
         bill_account_id: str = None,
         bill_account_name: str = None,
         billing_date: str = None,
@@ -11738,6 +11745,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
     ):
         # The amount deducted with credit refund.
         self.adjust_amount = adjust_amount
+        self.after_discount_amount = after_discount_amount
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
@@ -11856,6 +11864,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         result = dict()
         if self.adjust_amount is not None:
             result['AdjustAmount'] = self.adjust_amount
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.bill_account_id is not None:
             result['BillAccountID'] = self.bill_account_id
         if self.bill_account_name is not None:
@@ -11968,6 +11978,8 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
         m = m or dict()
         if m.get('AdjustAmount') is not None:
             self.adjust_amount = m.get('AdjustAmount')
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('BillAccountID') is not None:
             self.bill_account_id = m.get('BillAccountID')
         if m.get('BillAccountName') is not None:
@@ -31961,6 +31973,259 @@ class SetResellerUserStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetResellerUserStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetSavingPlanUserDeductRuleRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class SetSavingPlanUserDeductRuleRequestUserDeductRules(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        module_code: str = None,
+        skip_deduct: bool = None,
+    ):
+        self.commodity_code = commodity_code
+        self.module_code = module_code
+        self.skip_deduct = skip_deduct
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.skip_deduct is not None:
+            result['SkipDeduct'] = self.skip_deduct
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('SkipDeduct') is not None:
+            self.skip_deduct = m.get('SkipDeduct')
+        return self
+
+
+class SetSavingPlanUserDeductRuleRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids: List[SetSavingPlanUserDeductRuleRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        spn_instance_code: str = None,
+        user_deduct_rules: List[SetSavingPlanUserDeductRuleRequestUserDeductRules] = None,
+    ):
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        self.spn_instance_code = spn_instance_code
+        self.user_deduct_rules = user_deduct_rules
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+        if self.user_deduct_rules:
+            for k in self.user_deduct_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.spn_instance_code is not None:
+            result['SpnInstanceCode'] = self.spn_instance_code
+        result['UserDeductRules'] = []
+        if self.user_deduct_rules is not None:
+            for k in self.user_deduct_rules:
+                result['UserDeductRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = SetSavingPlanUserDeductRuleRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('SpnInstanceCode') is not None:
+            self.spn_instance_code = m.get('SpnInstanceCode')
+        self.user_deduct_rules = []
+        if m.get('UserDeductRules') is not None:
+            for k in m.get('UserDeductRules'):
+                temp_model = SetSavingPlanUserDeductRuleRequestUserDeductRules()
+                self.user_deduct_rules.append(temp_model.from_map(k))
+        return self
+
+
+class SetSavingPlanUserDeductRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids_shrink: str = None,
+        nbid: str = None,
+        spn_instance_code: str = None,
+        user_deduct_rules_shrink: str = None,
+    ):
+        self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        self.nbid = nbid
+        self.spn_instance_code = spn_instance_code
+        self.user_deduct_rules_shrink = user_deduct_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ec_id_account_ids_shrink is not None:
+            result['EcIdAccountIds'] = self.ec_id_account_ids_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.spn_instance_code is not None:
+            result['SpnInstanceCode'] = self.spn_instance_code
+        if self.user_deduct_rules_shrink is not None:
+            result['UserDeductRules'] = self.user_deduct_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcIdAccountIds') is not None:
+            self.ec_id_account_ids_shrink = m.get('EcIdAccountIds')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('SpnInstanceCode') is not None:
+            self.spn_instance_code = m.get('SpnInstanceCode')
+        if m.get('UserDeductRules') is not None:
+            self.user_deduct_rules_shrink = m.get('UserDeductRules')
+        return self
+
+
+class SetSavingPlanUserDeductRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetSavingPlanUserDeductRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetSavingPlanUserDeductRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetSavingPlanUserDeductRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
