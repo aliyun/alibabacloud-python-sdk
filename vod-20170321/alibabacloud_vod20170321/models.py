@@ -2626,22 +2626,211 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(TeaModel):
         return self
 
 
+class BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList(TeaModel):
+    def __init__(
+        self,
+        bit_depth: int = None,
+        bitrate: str = None,
+        codec_name: str = None,
+        creation_time: str = None,
+        definition: str = None,
+        duration: str = None,
+        encrypt: int = None,
+        encrypt_mode: str = None,
+        encrypt_type: str = None,
+        format: str = None,
+        fps: str = None,
+        hdrtype: str = None,
+        height: int = None,
+        job_ext: str = None,
+        job_id: str = None,
+        job_type: int = None,
+        modification_time: str = None,
+        narrow_band_type: str = None,
+        play_url: str = None,
+        size: int = None,
+        specification: str = None,
+        status: str = None,
+        stream_type: str = None,
+        template_group_id: str = None,
+        template_id: str = None,
+        watermark_id: str = None,
+        width: int = None,
+    ):
+        self.bit_depth = bit_depth
+        self.bitrate = bitrate
+        self.codec_name = codec_name
+        self.creation_time = creation_time
+        self.definition = definition
+        self.duration = duration
+        self.encrypt = encrypt
+        self.encrypt_mode = encrypt_mode
+        self.encrypt_type = encrypt_type
+        self.format = format
+        self.fps = fps
+        self.hdrtype = hdrtype
+        self.height = height
+        self.job_ext = job_ext
+        self.job_id = job_id
+        self.job_type = job_type
+        self.modification_time = modification_time
+        self.narrow_band_type = narrow_band_type
+        self.play_url = play_url
+        self.size = size
+        self.specification = specification
+        self.status = status
+        self.stream_type = stream_type
+        self.template_group_id = template_group_id
+        self.template_id = template_id
+        self.watermark_id = watermark_id
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bit_depth is not None:
+            result['BitDepth'] = self.bit_depth
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.codec_name is not None:
+            result['CodecName'] = self.codec_name
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.definition is not None:
+            result['Definition'] = self.definition
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.encrypt is not None:
+            result['Encrypt'] = self.encrypt
+        if self.encrypt_mode is not None:
+            result['EncryptMode'] = self.encrypt_mode
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.fps is not None:
+            result['Fps'] = self.fps
+        if self.hdrtype is not None:
+            result['HDRType'] = self.hdrtype
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.job_ext is not None:
+            result['JobExt'] = self.job_ext
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.modification_time is not None:
+            result['ModificationTime'] = self.modification_time
+        if self.narrow_band_type is not None:
+            result['NarrowBandType'] = self.narrow_band_type
+        if self.play_url is not None:
+            result['PlayURL'] = self.play_url
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.specification is not None:
+            result['Specification'] = self.specification
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.stream_type is not None:
+            result['StreamType'] = self.stream_type
+        if self.template_group_id is not None:
+            result['TemplateGroupId'] = self.template_group_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.watermark_id is not None:
+            result['WatermarkId'] = self.watermark_id
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BitDepth') is not None:
+            self.bit_depth = m.get('BitDepth')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('CodecName') is not None:
+            self.codec_name = m.get('CodecName')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Definition') is not None:
+            self.definition = m.get('Definition')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Encrypt') is not None:
+            self.encrypt = m.get('Encrypt')
+        if m.get('EncryptMode') is not None:
+            self.encrypt_mode = m.get('EncryptMode')
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Fps') is not None:
+            self.fps = m.get('Fps')
+        if m.get('HDRType') is not None:
+            self.hdrtype = m.get('HDRType')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('JobExt') is not None:
+            self.job_ext = m.get('JobExt')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('ModificationTime') is not None:
+            self.modification_time = m.get('ModificationTime')
+        if m.get('NarrowBandType') is not None:
+            self.narrow_band_type = m.get('NarrowBandType')
+        if m.get('PlayURL') is not None:
+            self.play_url = m.get('PlayURL')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Specification') is not None:
+            self.specification = m.get('Specification')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StreamType') is not None:
+            self.stream_type = m.get('StreamType')
+        if m.get('TemplateGroupId') is not None:
+            self.template_group_id = m.get('TemplateGroupId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('WatermarkId') is not None:
+            self.watermark_id = m.get('WatermarkId')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
 class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
     def __init__(
         self,
         media_id: str = None,
         media_info: BatchGetMediaInfosResponseBodyMediaInfosMediaInfo = None,
         mezzanine_info: BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo = None,
+        play_info_list: List[BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList] = None,
     ):
         self.media_id = media_id
         self.media_info = media_info
         self.mezzanine_info = mezzanine_info
+        self.play_info_list = play_info_list
 
     def validate(self):
         if self.media_info:
             self.media_info.validate()
         if self.mezzanine_info:
             self.mezzanine_info.validate()
+        if self.play_info_list:
+            for k in self.play_info_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2655,6 +2844,10 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
             result['MediaInfo'] = self.media_info.to_map()
         if self.mezzanine_info is not None:
             result['MezzanineInfo'] = self.mezzanine_info.to_map()
+        result['PlayInfoList'] = []
+        if self.play_info_list is not None:
+            for k in self.play_info_list:
+                result['PlayInfoList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2667,6 +2860,11 @@ class BatchGetMediaInfosResponseBodyMediaInfos(TeaModel):
         if m.get('MezzanineInfo') is not None:
             temp_model = BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo()
             self.mezzanine_info = temp_model.from_map(m['MezzanineInfo'])
+        self.play_info_list = []
+        if m.get('PlayInfoList') is not None:
+            for k in m.get('PlayInfoList'):
+                temp_model = BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList()
+                self.play_info_list.append(temp_model.from_map(k))
         return self
 
 
