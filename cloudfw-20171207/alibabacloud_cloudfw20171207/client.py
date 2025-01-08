@@ -10271,6 +10271,8 @@ class Client(OpenApiClient):
             query['CtiRules'] = request.cti_rules
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_sdl):
+            query['MaxSdl'] = request.max_sdl
         if not UtilClient.is_unset(request.patch_rules):
             query['PatchRules'] = request.patch_rules
         if not UtilClient.is_unset(request.rule_class):
@@ -10316,6 +10318,8 @@ class Client(OpenApiClient):
             query['CtiRules'] = request.cti_rules
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_sdl):
+            query['MaxSdl'] = request.max_sdl
         if not UtilClient.is_unset(request.patch_rules):
             query['PatchRules'] = request.patch_rules
         if not UtilClient.is_unset(request.rule_class):

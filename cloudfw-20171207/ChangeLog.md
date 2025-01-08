@@ -1,3 +1,9 @@
+2025-01-08 Version: 5.0.1
+- Update API DescribeDefaultIPSConfig: update response param.
+- Update API DescribeUserBuyVersion: update response param.
+- Update API ModifyDefaultIPSConfig: add param MaxSdl.
+
+
 2025-01-02 Version: 5.0.0
 - Update API CreateDownloadTask: add param TaskType.
 - Update API DeleteNatFirewallControlPolicyBatch: update param AclUuidList.

@@ -7083,6 +7083,8 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
         self,
         basic_rules: int = None,
         cti_rules: int = None,
+        free_trail_status: str = None,
+        max_sdl: int = None,
         patch_rules: int = None,
         request_id: str = None,
         rule_class: int = None,
@@ -7098,6 +7100,8 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.cti_rules = cti_rules
+        self.free_trail_status = free_trail_status
+        self.max_sdl = max_sdl
         # Indicates whether virtual patching is enabled. Valid values:
         # 
         # *   **1**: yes
@@ -7130,6 +7134,10 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
             result['BasicRules'] = self.basic_rules
         if self.cti_rules is not None:
             result['CtiRules'] = self.cti_rules
+        if self.free_trail_status is not None:
+            result['FreeTrailStatus'] = self.free_trail_status
+        if self.max_sdl is not None:
+            result['MaxSdl'] = self.max_sdl
         if self.patch_rules is not None:
             result['PatchRules'] = self.patch_rules
         if self.request_id is not None:
@@ -7146,6 +7154,10 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
             self.basic_rules = m.get('BasicRules')
         if m.get('CtiRules') is not None:
             self.cti_rules = m.get('CtiRules')
+        if m.get('FreeTrailStatus') is not None:
+            self.free_trail_status = m.get('FreeTrailStatus')
+        if m.get('MaxSdl') is not None:
+            self.max_sdl = m.get('MaxSdl')
         if m.get('PatchRules') is not None:
             self.patch_rules = m.get('PatchRules')
         if m.get('RequestId') is not None:
@@ -15960,14 +15972,17 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         expire: int = None,
         instance_id: str = None,
         instance_status: str = None,
+        internet_bandwidth: int = None,
         ip_number: int = None,
         log_status: bool = None,
         log_storage: int = None,
         max_overflow: int = None,
+        nat_bandwidth: int = None,
         request_id: str = None,
         start_time: int = None,
         user_status: bool = None,
         version: int = None,
+        vpc_bandwidth: int = None,
         vpc_number: int = None,
     ):
         # The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
@@ -15990,6 +16005,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # *   **abnormal**: An exception occurs in Cloud Firewall.
         # *   **free**: Cloud Firewall is invalid.
         self.instance_status = instance_status
+        self.internet_bandwidth = internet_bandwidth
         # The number of public IP addresses that can be protected.
         # 
         # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
@@ -16010,6 +16026,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # 
         # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
         self.max_overflow = max_overflow
+        self.nat_bandwidth = nat_bandwidth
         # The request ID.
         self.request_id = request_id
         # The time when Cloud Firewall was activated.
@@ -16028,6 +16045,7 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
         # *   **4**: Ultimate Edition.
         # *   **10**: Cloud Firewall that uses the pay-as-you-go billing method.
         self.version = version
+        self.vpc_bandwidth = vpc_bandwidth
         # The number of virtual private clouds (VPCs) that can be protected.
         # 
         # >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
@@ -16050,6 +16068,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.internet_bandwidth is not None:
+            result['InternetBandwidth'] = self.internet_bandwidth
         if self.ip_number is not None:
             result['IpNumber'] = self.ip_number
         if self.log_status is not None:
@@ -16058,6 +16078,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             result['LogStorage'] = self.log_storage
         if self.max_overflow is not None:
             result['MaxOverflow'] = self.max_overflow
+        if self.nat_bandwidth is not None:
+            result['NatBandwidth'] = self.nat_bandwidth
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.start_time is not None:
@@ -16066,6 +16088,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             result['UserStatus'] = self.user_status
         if self.version is not None:
             result['Version'] = self.version
+        if self.vpc_bandwidth is not None:
+            result['VpcBandwidth'] = self.vpc_bandwidth
         if self.vpc_number is not None:
             result['VpcNumber'] = self.vpc_number
         return result
@@ -16080,6 +16104,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('InternetBandwidth') is not None:
+            self.internet_bandwidth = m.get('InternetBandwidth')
         if m.get('IpNumber') is not None:
             self.ip_number = m.get('IpNumber')
         if m.get('LogStatus') is not None:
@@ -16088,6 +16114,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             self.log_storage = m.get('LogStorage')
         if m.get('MaxOverflow') is not None:
             self.max_overflow = m.get('MaxOverflow')
+        if m.get('NatBandwidth') is not None:
+            self.nat_bandwidth = m.get('NatBandwidth')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('StartTime') is not None:
@@ -16096,6 +16124,8 @@ class DescribeUserBuyVersionResponseBody(TeaModel):
             self.user_status = m.get('UserStatus')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('VpcBandwidth') is not None:
+            self.vpc_bandwidth = m.get('VpcBandwidth')
         if m.get('VpcNumber') is not None:
             self.vpc_number = m.get('VpcNumber')
         return self
@@ -21700,6 +21730,7 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
         basic_rules: str = None,
         cti_rules: str = None,
         lang: str = None,
+        max_sdl: int = None,
         patch_rules: str = None,
         rule_class: str = None,
         run_mode: str = None,
@@ -21723,6 +21754,7 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
         # *   **zh** (default)
         # *   **en**\
         self.lang = lang
+        self.max_sdl = max_sdl
         # Specifies whether to enable virtual patching. Valid values:
         # 
         # *   **1**: yes
@@ -21757,6 +21789,8 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
             result['CtiRules'] = self.cti_rules
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.max_sdl is not None:
+            result['MaxSdl'] = self.max_sdl
         if self.patch_rules is not None:
             result['PatchRules'] = self.patch_rules
         if self.rule_class is not None:
@@ -21773,6 +21807,8 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
             self.cti_rules = m.get('CtiRules')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('MaxSdl') is not None:
+            self.max_sdl = m.get('MaxSdl')
         if m.get('PatchRules') is not None:
             self.patch_rules = m.get('PatchRules')
         if m.get('RuleClass') is not None:
