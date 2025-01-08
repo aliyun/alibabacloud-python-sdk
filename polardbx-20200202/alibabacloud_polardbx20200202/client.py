@@ -3920,6 +3920,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_events_with_options_async(request, runtime)
 
+    def describe_gdn_instances_with_options(
+        self,
+        request: polardbx_20200202_models.DescribeGdnInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeGdnInstancesResponse:
+        """
+        @summary 获取GDN实例列表
+        
+        @param request: DescribeGdnInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGdnInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGdnInstances',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeGdnInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gdn_instances_with_options_async(
+        self,
+        request: polardbx_20200202_models.DescribeGdnInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.DescribeGdnInstancesResponse:
+        """
+        @summary 获取GDN实例列表
+        
+        @param request: DescribeGdnInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGdnInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_type):
+            query['FilterType'] = request.filter_type
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGdnInstances',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.DescribeGdnInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gdn_instances(
+        self,
+        request: polardbx_20200202_models.DescribeGdnInstancesRequest,
+    ) -> polardbx_20200202_models.DescribeGdnInstancesResponse:
+        """
+        @summary 获取GDN实例列表
+        
+        @param request: DescribeGdnInstancesRequest
+        @return: DescribeGdnInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_gdn_instances_with_options(request, runtime)
+
+    async def describe_gdn_instances_async(
+        self,
+        request: polardbx_20200202_models.DescribeGdnInstancesRequest,
+    ) -> polardbx_20200202_models.DescribeGdnInstancesResponse:
+        """
+        @summary 获取GDN实例列表
+        
+        @param request: DescribeGdnInstancesRequest
+        @return: DescribeGdnInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_gdn_instances_with_options_async(request, runtime)
+
     def describe_open_backup_set_with_options(
         self,
         request: polardbx_20200202_models.DescribeOpenBackupSetRequest,
@@ -6941,6 +7057,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_hawith_options_async(request, runtime)
+
+    def switch_gdn_member_role_with_options(
+        self,
+        request: polardbx_20200202_models.SwitchGdnMemberRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.SwitchGdnMemberRoleResponse:
+        """
+        @summary GDN主备切换
+        
+        @param request: SwitchGdnMemberRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchGdnMemberRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchGdnMemberRole',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.SwitchGdnMemberRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_gdn_member_role_with_options_async(
+        self,
+        request: polardbx_20200202_models.SwitchGdnMemberRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardbx_20200202_models.SwitchGdnMemberRoleResponse:
+        """
+        @summary GDN主备切换
+        
+        @param request: SwitchGdnMemberRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchGdnMemberRoleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchGdnMemberRole',
+            version='2020-02-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardbx_20200202_models.SwitchGdnMemberRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_gdn_member_role(
+        self,
+        request: polardbx_20200202_models.SwitchGdnMemberRoleRequest,
+    ) -> polardbx_20200202_models.SwitchGdnMemberRoleResponse:
+        """
+        @summary GDN主备切换
+        
+        @param request: SwitchGdnMemberRoleRequest
+        @return: SwitchGdnMemberRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.switch_gdn_member_role_with_options(request, runtime)
+
+    async def switch_gdn_member_role_async(
+        self,
+        request: polardbx_20200202_models.SwitchGdnMemberRoleRequest,
+    ) -> polardbx_20200202_models.SwitchGdnMemberRoleResponse:
+        """
+        @summary GDN主备切换
+        
+        @param request: SwitchGdnMemberRoleRequest
+        @return: SwitchGdnMemberRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_gdn_member_role_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,

@@ -8794,6 +8794,405 @@ class DescribeEventsResponse(TeaModel):
         return self
 
 
+class DescribeGdnInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        filter_type: str = None,
+        filter_value: str = None,
+        gdnid: str = None,
+        page_num: str = None,
+        page_size: str = None,
+        region_id: str = None,
+    ):
+        self.filter_type = filter_type
+        self.filter_value = filter_value
+        # GDN ID。
+        self.gdnid = gdnid
+        self.page_num = page_num
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.gdnid is not None:
+            result['GDNId'] = self.gdnid
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('GDNId') is not None:
+            self.gdnid = m.get('GDNId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(TeaModel):
+    def __init__(
+        self,
+        class_code: str = None,
+        cn_node_class_code: str = None,
+        cn_node_count: str = None,
+        commodity_code: str = None,
+        dn_node_class_code: str = None,
+        dn_node_count: str = None,
+        expire_time: str = None,
+        gmt_created: str = None,
+        member_name: str = None,
+        pay_type: str = None,
+        primary_zone: str = None,
+        region_id: str = None,
+        role: str = None,
+        secondary_zone: str = None,
+        seconds_behind_master: str = None,
+        status: str = None,
+        tertiary_zone: str = None,
+        zone_id: str = None,
+    ):
+        self.class_code = class_code
+        self.cn_node_class_code = cn_node_class_code
+        self.cn_node_count = cn_node_count
+        self.commodity_code = commodity_code
+        self.dn_node_class_code = dn_node_class_code
+        self.dn_node_count = dn_node_count
+        self.expire_time = expire_time
+        self.gmt_created = gmt_created
+        self.member_name = member_name
+        self.pay_type = pay_type
+        self.primary_zone = primary_zone
+        self.region_id = region_id
+        self.role = role
+        self.secondary_zone = secondary_zone
+        self.seconds_behind_master = seconds_behind_master
+        self.status = status
+        self.tertiary_zone = tertiary_zone
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_code is not None:
+            result['ClassCode'] = self.class_code
+        if self.cn_node_class_code is not None:
+            result['CnNodeClassCode'] = self.cn_node_class_code
+        if self.cn_node_count is not None:
+            result['CnNodeCount'] = self.cn_node_count
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.dn_node_class_code is not None:
+            result['DnNodeClassCode'] = self.dn_node_class_code
+        if self.dn_node_count is not None:
+            result['DnNodeCount'] = self.dn_node_count
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        if self.member_name is not None:
+            result['MemberName'] = self.member_name
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.primary_zone is not None:
+            result['PrimaryZone'] = self.primary_zone
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.secondary_zone is not None:
+            result['SecondaryZone'] = self.secondary_zone
+        if self.seconds_behind_master is not None:
+            result['SecondsBehindMaster'] = self.seconds_behind_master
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tertiary_zone is not None:
+            result['TertiaryZone'] = self.tertiary_zone
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassCode') is not None:
+            self.class_code = m.get('ClassCode')
+        if m.get('CnNodeClassCode') is not None:
+            self.cn_node_class_code = m.get('CnNodeClassCode')
+        if m.get('CnNodeCount') is not None:
+            self.cn_node_count = m.get('CnNodeCount')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('DnNodeClassCode') is not None:
+            self.dn_node_class_code = m.get('DnNodeClassCode')
+        if m.get('DnNodeCount') is not None:
+            self.dn_node_count = m.get('DnNodeCount')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        if m.get('MemberName') is not None:
+            self.member_name = m.get('MemberName')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('PrimaryZone') is not None:
+            self.primary_zone = m.get('PrimaryZone')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('SecondaryZone') is not None:
+            self.secondary_zone = m.get('SecondaryZone')
+        if m.get('SecondsBehindMaster') is not None:
+            self.seconds_behind_master = m.get('SecondsBehindMaster')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TertiaryZone') is not None:
+            self.tertiary_zone = m.get('TertiaryZone')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeGdnInstancesResponseBodyDataGdnInstanceList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        gdn_instance_name: str = None,
+        gmt_created: str = None,
+        member_list: List[DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList] = None,
+        mysql_version: str = None,
+        status: str = None,
+        switch_history: str = None,
+    ):
+        self.description = description
+        self.gdn_instance_name = gdn_instance_name
+        self.gmt_created = gmt_created
+        self.member_list = member_list
+        self.mysql_version = mysql_version
+        self.status = status
+        self.switch_history = switch_history
+
+    def validate(self):
+        if self.member_list:
+            for k in self.member_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gdn_instance_name is not None:
+            result['GdnInstanceName'] = self.gdn_instance_name
+        if self.gmt_created is not None:
+            result['GmtCreated'] = self.gmt_created
+        result['MemberList'] = []
+        if self.member_list is not None:
+            for k in self.member_list:
+                result['MemberList'].append(k.to_map() if k else None)
+        if self.mysql_version is not None:
+            result['MysqlVersion'] = self.mysql_version
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.switch_history is not None:
+            result['SwitchHistory'] = self.switch_history
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GdnInstanceName') is not None:
+            self.gdn_instance_name = m.get('GdnInstanceName')
+        if m.get('GmtCreated') is not None:
+            self.gmt_created = m.get('GmtCreated')
+        self.member_list = []
+        if m.get('MemberList') is not None:
+            for k in m.get('MemberList'):
+                temp_model = DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList()
+                self.member_list.append(temp_model.from_map(k))
+        if m.get('MysqlVersion') is not None:
+            self.mysql_version = m.get('MysqlVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SwitchHistory') is not None:
+            self.switch_history = m.get('SwitchHistory')
+        return self
+
+
+class DescribeGdnInstancesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gdn_instance_list: List[DescribeGdnInstancesResponseBodyDataGdnInstanceList] = None,
+        page_number: str = None,
+        page_size: str = None,
+        total_number: str = None,
+    ):
+        self.gdn_instance_list = gdn_instance_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_number = total_number
+
+    def validate(self):
+        if self.gdn_instance_list:
+            for k in self.gdn_instance_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GdnInstanceList'] = []
+        if self.gdn_instance_list is not None:
+            for k in self.gdn_instance_list:
+                result['GdnInstanceList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_number is not None:
+            result['TotalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.gdn_instance_list = []
+        if m.get('GdnInstanceList') is not None:
+            for k in m.get('GdnInstanceList'):
+                temp_model = DescribeGdnInstancesResponseBodyDataGdnInstanceList()
+                self.gdn_instance_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalNumber') is not None:
+            self.total_number = m.get('TotalNumber')
+        return self
+
+
+class DescribeGdnInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeGdnInstancesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeGdnInstancesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeGdnInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeGdnInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeGdnInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeOpenBackupSetRequest(TeaModel):
     def __init__(
         self,
@@ -13537,6 +13936,164 @@ class SwitchDBInstanceHAResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SwitchDBInstanceHAResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchGdnMemberRoleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        region_id: str = None,
+        switch_mode: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_name = dbinstance_name
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.switch_mode = switch_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
+        return self
+
+
+class SwitchGdnMemberRoleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: int = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SwitchGdnMemberRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SwitchGdnMemberRoleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SwitchGdnMemberRoleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SwitchGdnMemberRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SwitchGdnMemberRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SwitchGdnMemberRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
