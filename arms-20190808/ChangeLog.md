@@ -1,3 +1,19 @@
+2025-01-08 Version: 8.0.0
+- Update API CreateGrafanaWorkspace: add param AccountNumber.
+- Update API CreateGrafanaWorkspace: add param AutoRenew.
+- Update API CreateGrafanaWorkspace: add param CustomAccountNumber.
+- Update API CreateGrafanaWorkspace: add param Duration.
+- Update API CreateGrafanaWorkspace: add param PricingCycle.
+- Update API CreateOrUpdateAlertRule: update response param.
+- Update API CreatePrometheusInstance: add param PaymentType.
+- Update API CreatePrometheusInstance: update param ArchiveDuration.
+- Update API DoInsightsAction: add param RegionId.
+- Update API GetPrometheusInstance: update response param.
+- Update API GetRumExceptionStack: add param ExtraInfo.
+- Update API UpdatePrometheusInstance: add param PaymentType.
+- Update API UpdatePrometheusInstance: update param ArchiveDuration.
+
+
 2024-11-27 Version: 7.3.0
 - Support API ListEnvironmentAddons.
 - Support API ListEnvironmentAlertRules.

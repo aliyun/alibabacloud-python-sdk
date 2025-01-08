@@ -3129,10 +3129,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.account_number):
+            query['AccountNumber'] = request.account_number
         if not UtilClient.is_unset(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.custom_account_number):
+            query['CustomAccountNumber'] = request.custom_account_number
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.grafana_version):
             query['GrafanaVersion'] = request.grafana_version
         if not UtilClient.is_unset(request.grafana_workspace_edition):
@@ -3141,6 +3149,8 @@ class Client(OpenApiClient):
             query['GrafanaWorkspaceName'] = request.grafana_workspace_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -3190,10 +3200,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.account_number):
+            query['AccountNumber'] = request.account_number
         if not UtilClient.is_unset(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.custom_account_number):
+            query['CustomAccountNumber'] = request.custom_account_number
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
         if not UtilClient.is_unset(request.grafana_version):
             query['GrafanaVersion'] = request.grafana_version
         if not UtilClient.is_unset(request.grafana_workspace_edition):
@@ -3202,6 +3220,8 @@ class Client(OpenApiClient):
             query['GrafanaWorkspaceName'] = request.grafana_workspace_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -4657,6 +4677,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.grafana_instance_id):
             query['GrafanaInstanceId'] = request.grafana_instance_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -4718,6 +4740,8 @@ class Client(OpenApiClient):
             query['Duration'] = request.duration
         if not UtilClient.is_unset(request.grafana_instance_id):
             query['GrafanaInstanceId'] = request.grafana_instance_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -9611,7 +9635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DescribeAddonMetricsResponse:
         """
-        @summary Example Query metric details about an Addon.
+        @summary Queries the metric details of a component.
         
         @param request: DescribeAddonMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9654,7 +9678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DescribeAddonMetricsResponse:
         """
-        @summary Example Query metric details about an Addon.
+        @summary Queries the metric details of a component.
         
         @param request: DescribeAddonMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9696,7 +9720,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DescribeAddonMetricsRequest,
     ) -> arms20190808_models.DescribeAddonMetricsResponse:
         """
-        @summary Example Query metric details about an Addon.
+        @summary Queries the metric details of a component.
         
         @param request: DescribeAddonMetricsRequest
         @return: DescribeAddonMetricsResponse
@@ -9709,7 +9733,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DescribeAddonMetricsRequest,
     ) -> arms20190808_models.DescribeAddonMetricsResponse:
         """
-        @summary Example Query metric details about an Addon.
+        @summary Queries the metric details of a component.
         
         @param request: DescribeAddonMetricsRequest
         @return: DescribeAddonMetricsResponse
@@ -11102,12 +11126,16 @@ class Client(OpenApiClient):
         @return: DoInsightsActionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.data):
             body['Data'] = request.data
         if not UtilClient.is_unset(request.module):
             body['Module'] = request.module
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -11139,12 +11167,16 @@ class Client(OpenApiClient):
         @return: DoInsightsActionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.data):
             body['Data'] = request.data
         if not UtilClient.is_unset(request.module):
             body['Module'] = request.module
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -14335,6 +14367,8 @@ class Client(OpenApiClient):
             query['ExceptionStack'] = request.exception_stack
         if not UtilClient.is_unset(request.exception_thread_id):
             query['ExceptionThreadId'] = request.exception_thread_id
+        if not UtilClient.is_unset(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
@@ -14382,6 +14416,8 @@ class Client(OpenApiClient):
             query['ExceptionStack'] = request.exception_stack
         if not UtilClient.is_unset(request.exception_thread_id):
             query['ExceptionThreadId'] = request.exception_thread_id
+        if not UtilClient.is_unset(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
@@ -18079,7 +18115,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
         """
-        @summary 环境的告警组列表
+        @summary Queries the alert groups of an environment instance.
         
         @param request: ListEnvironmentAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18120,7 +18156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
         """
-        @summary 环境的告警组列表
+        @summary Queries the alert groups of an environment instance.
         
         @param request: ListEnvironmentAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18160,7 +18196,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentAlertRulesRequest,
     ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
         """
-        @summary 环境的告警组列表
+        @summary Queries the alert groups of an environment instance.
         
         @param request: ListEnvironmentAlertRulesRequest
         @return: ListEnvironmentAlertRulesResponse
@@ -18173,7 +18209,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentAlertRulesRequest,
     ) -> arms20190808_models.ListEnvironmentAlertRulesResponse:
         """
-        @summary 环境的告警组列表
+        @summary Queries the alert groups of an environment instance.
         
         @param request: ListEnvironmentAlertRulesRequest
         @return: ListEnvironmentAlertRulesResponse
@@ -18399,7 +18435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
         """
-        @summary 环境中的kube资源列表
+        @summary Queries the Kubernetes resources of an environment.
         
         @param tmp_req: ListEnvironmentKubeResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18446,7 +18482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
         """
-        @summary 环境中的kube资源列表
+        @summary Queries the Kubernetes resources of an environment.
         
         @param tmp_req: ListEnvironmentKubeResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18492,7 +18528,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentKubeResourcesRequest,
     ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
         """
-        @summary 环境中的kube资源列表
+        @summary Queries the Kubernetes resources of an environment.
         
         @param request: ListEnvironmentKubeResourcesRequest
         @return: ListEnvironmentKubeResourcesResponse
@@ -18505,7 +18541,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentKubeResourcesRequest,
     ) -> arms20190808_models.ListEnvironmentKubeResourcesResponse:
         """
-        @summary 环境中的kube资源列表
+        @summary Queries the Kubernetes resources of an environment.
         
         @param request: ListEnvironmentKubeResourcesRequest
         @return: ListEnvironmentKubeResourcesResponse
@@ -18519,7 +18555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
         """
-        @summary 环境指标target列表
+        @summary Queries the targets of an environment.
         
         @param request: ListEnvironmentMetricTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18558,7 +18594,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
         """
-        @summary 环境指标target列表
+        @summary Queries the targets of an environment.
         
         @param request: ListEnvironmentMetricTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18596,7 +18632,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
     ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
         """
-        @summary 环境指标target列表
+        @summary Queries the targets of an environment.
         
         @param request: ListEnvironmentMetricTargetsRequest
         @return: ListEnvironmentMetricTargetsResponse
@@ -18609,7 +18645,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListEnvironmentMetricTargetsRequest,
     ) -> arms20190808_models.ListEnvironmentMetricTargetsResponse:
         """
-        @summary 环境指标target列表
+        @summary Queries the targets of an environment.
         
         @param request: ListEnvironmentMetricTargetsRequest
         @return: ListEnvironmentMetricTargetsResponse
@@ -26909,6 +26945,8 @@ class Client(OpenApiClient):
             query['EnableAuthFreeWrite'] = request.enable_auth_free_write
         if not UtilClient.is_unset(request.enable_auth_token):
             query['EnableAuthToken'] = request.enable_auth_token
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -26962,6 +27000,8 @@ class Client(OpenApiClient):
             query['EnableAuthFreeWrite'] = request.enable_auth_free_write
         if not UtilClient.is_unset(request.enable_auth_token):
             query['EnableAuthToken'] = request.enable_auth_token
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):

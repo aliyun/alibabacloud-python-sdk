@@ -6781,23 +6781,32 @@ class CreateGrafanaWorkspaceRequestTags(TeaModel):
 class CreateGrafanaWorkspaceRequest(TeaModel):
     def __init__(
         self,
+        account_number: str = None,
         aliyun_lang: str = None,
+        auto_renew: str = None,
+        custom_account_number: str = None,
         description: str = None,
+        duration: str = None,
         grafana_version: str = None,
         grafana_workspace_edition: str = None,
         grafana_workspace_name: str = None,
         password: str = None,
+        pricing_cycle: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[CreateGrafanaWorkspaceRequestTags] = None,
     ):
+        self.account_number = account_number
         # The language. Default value: zh. Valid values:
         # 
         # *   zh
         # *   en
         self.aliyun_lang = aliyun_lang
+        self.auto_renew = auto_renew
+        self.custom_account_number = custom_account_number
         # The description of the workspace
         self.description = description
+        self.duration = duration
         # This parameter is required.
         self.grafana_version = grafana_version
         # The edition.
@@ -6817,6 +6826,7 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
         self.grafana_workspace_name = grafana_workspace_name
         # The password of the workspace. The password must be 8 to 30 characters in length. It must include at least three of the following characters types: uppercase letter, lowercase letter, digit, and special character. Special characters include () \\" ~ ! @ # $ % ^ & \\* - _ + =.
         self.password = password
+        self.pricing_cycle = pricing_cycle
         # The region ID.
         # 
         # This parameter is required.
@@ -6838,10 +6848,18 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_number is not None:
+            result['AccountNumber'] = self.account_number
         if self.aliyun_lang is not None:
             result['AliyunLang'] = self.aliyun_lang
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.custom_account_number is not None:
+            result['CustomAccountNumber'] = self.custom_account_number
         if self.description is not None:
             result['Description'] = self.description
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.grafana_version is not None:
             result['GrafanaVersion'] = self.grafana_version
         if self.grafana_workspace_edition is not None:
@@ -6850,6 +6868,8 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
             result['GrafanaWorkspaceName'] = self.grafana_workspace_name
         if self.password is not None:
             result['Password'] = self.password
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6862,10 +6882,18 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountNumber') is not None:
+            self.account_number = m.get('AccountNumber')
         if m.get('AliyunLang') is not None:
             self.aliyun_lang = m.get('AliyunLang')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('CustomAccountNumber') is not None:
+            self.custom_account_number = m.get('CustomAccountNumber')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GrafanaVersion') is not None:
             self.grafana_version = m.get('GrafanaVersion')
         if m.get('GrafanaWorkspaceEdition') is not None:
@@ -6874,6 +6902,8 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
             self.grafana_workspace_name = m.get('GrafanaWorkspaceName')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -6889,23 +6919,32 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
 class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
     def __init__(
         self,
+        account_number: str = None,
         aliyun_lang: str = None,
+        auto_renew: str = None,
+        custom_account_number: str = None,
         description: str = None,
+        duration: str = None,
         grafana_version: str = None,
         grafana_workspace_edition: str = None,
         grafana_workspace_name: str = None,
         password: str = None,
+        pricing_cycle: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
+        self.account_number = account_number
         # The language. Default value: zh. Valid values:
         # 
         # *   zh
         # *   en
         self.aliyun_lang = aliyun_lang
+        self.auto_renew = auto_renew
+        self.custom_account_number = custom_account_number
         # The description of the workspace
         self.description = description
+        self.duration = duration
         # This parameter is required.
         self.grafana_version = grafana_version
         # The edition.
@@ -6925,6 +6964,7 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
         self.grafana_workspace_name = grafana_workspace_name
         # The password of the workspace. The password must be 8 to 30 characters in length. It must include at least three of the following characters types: uppercase letter, lowercase letter, digit, and special character. Special characters include () \\" ~ ! @ # $ % ^ & \\* - _ + =.
         self.password = password
+        self.pricing_cycle = pricing_cycle
         # The region ID.
         # 
         # This parameter is required.
@@ -6943,10 +6983,18 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_number is not None:
+            result['AccountNumber'] = self.account_number
         if self.aliyun_lang is not None:
             result['AliyunLang'] = self.aliyun_lang
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.custom_account_number is not None:
+            result['CustomAccountNumber'] = self.custom_account_number
         if self.description is not None:
             result['Description'] = self.description
+        if self.duration is not None:
+            result['Duration'] = self.duration
         if self.grafana_version is not None:
             result['GrafanaVersion'] = self.grafana_version
         if self.grafana_workspace_edition is not None:
@@ -6955,6 +7003,8 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
             result['GrafanaWorkspaceName'] = self.grafana_workspace_name
         if self.password is not None:
             result['Password'] = self.password
+        if self.pricing_cycle is not None:
+            result['PricingCycle'] = self.pricing_cycle
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -6965,10 +7015,18 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountNumber') is not None:
+            self.account_number = m.get('AccountNumber')
         if m.get('AliyunLang') is not None:
             self.aliyun_lang = m.get('AliyunLang')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('CustomAccountNumber') is not None:
+            self.custom_account_number = m.get('CustomAccountNumber')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
         if m.get('GrafanaVersion') is not None:
             self.grafana_version = m.get('GrafanaVersion')
         if m.get('GrafanaWorkspaceEdition') is not None:
@@ -6977,6 +7035,8 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
             self.grafana_workspace_name = m.get('GrafanaWorkspaceName')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('PricingCycle') is not None:
+            self.pricing_cycle = m.get('PricingCycle')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -8103,7 +8163,7 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(TeaModel):
         self,
         alert_check_type: str = None,
         alert_group: int = None,
-        alert_id: float = None,
+        alert_id: int = None,
         alert_name: str = None,
         alert_rule_content: CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent = None,
         alert_status: str = None,
@@ -8139,7 +8199,7 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(TeaModel):
         # *   1: Kubernetes load
         # *   15: Kubernetes node
         self.alert_group = alert_group
-        # The ID of the alert rule.
+        # The alert rule ID.
         self.alert_id = alert_id
         # The name of the alert rule.
         self.alert_name = alert_name
@@ -11206,6 +11266,7 @@ class CreatePrometheusInstanceRequest(TeaModel):
         cluster_type: str = None,
         duration: int = None,
         grafana_instance_id: str = None,
+        payment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
@@ -11238,6 +11299,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
         self.duration = duration
         # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
         self.grafana_instance_id = grafana_instance_id
+        # The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data. Empty value: The user-defined default billing mode is used. If no such a billing mode is available, you are charged based on the amount of reported metric data.
+        self.payment_type = payment_type
         # The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
         # 
         # This parameter is required.
@@ -11281,6 +11344,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             result['Duration'] = self.duration
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -11315,6 +11380,8 @@ class CreatePrometheusInstanceRequest(TeaModel):
             self.duration = m.get('Duration')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -21117,17 +21184,17 @@ class DescribeAddonMetricsRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
-        # Version of Addon.
+        # The version of the component.
         self.addon_version = addon_version
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # The environment type. Valid values: CS, ECS, and Cloud.
+        # The environment.
         self.environment_type = environment_type
-        # Name fo Addon.
+        # The name of the component.
         # 
         # This parameter is required.
         self.name = name
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -21173,11 +21240,11 @@ class DescribeAddonMetricsResponseBodyDataLabels(TeaModel):
         key: str = None,
         source: str = None,
     ):
-        # Metric label description.
+        # The description of the tag.
         self.description = description
-        # Metric label key.
+        # The tag key.
         self.key = key
-        # Metric label value.
+        # The source of the tag.
         self.source = source
 
     def validate(self):
@@ -21215,11 +21282,11 @@ class DescribeAddonMetricsResponseBodyDataMetricsLabels(TeaModel):
         key: str = None,
         source: str = None,
     ):
-        # Label description.
+        # The description of the tag.
         self.description = description
-        # Label key.
+        # The tag key.
         self.key = key
-        # Metric source.
+        # The source of the tag.
         self.source = source
 
     def validate(self):
@@ -21259,15 +21326,15 @@ class DescribeAddonMetricsResponseBodyDataMetrics(TeaModel):
         type: str = None,
         unit: str = None,
     ):
-        # Metric description.
+        # The description of the metric.
         self.description = description
-        # Metric label collection.
+        # The tags.
         self.labels = labels
-        # Metric name.
+        # The metric name.
         self.metric = metric
-        # Metric type.
+        # The type of the metric.
         self.type = type
-        # Metric unit.
+        # The unit of the metric.
         self.unit = unit
 
     def validate(self):
@@ -21321,11 +21388,11 @@ class DescribeAddonMetricsResponseBodyData(TeaModel):
         labels: List[DescribeAddonMetricsResponseBodyDataLabels] = None,
         metrics: List[DescribeAddonMetricsResponseBodyDataMetrics] = None,
     ):
-        # Metric Group.
+        # The metric group.
         self.group = group
-        # Metric Labels.
+        # The tags.
         self.labels = labels
-        # Metric list.
+        # The metrics.
         self.metrics = metrics
 
     def validate(self):
@@ -21384,13 +21451,13 @@ class DescribeAddonMetricsResponseBody(TeaModel):
     ):
         # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # Metric information list.
+        # The metric details.
         self.data = data
-        # The error message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -25578,6 +25645,7 @@ class DoInsightsActionRequest(TeaModel):
         self,
         data: str = None,
         module: str = None,
+        region_id: str = None,
     ):
         # The query parameters. Different module types correspond to different query parameters.
         # 
@@ -25646,6 +25714,7 @@ class DoInsightsActionRequest(TeaModel):
         # 
         # This parameter is required.
         self.module = module
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -25660,6 +25729,8 @@ class DoInsightsActionRequest(TeaModel):
             result['Data'] = self.data
         if self.module is not None:
             result['Module'] = self.module
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25668,6 +25739,8 @@ class DoInsightsActionRequest(TeaModel):
             self.data = m.get('Data')
         if m.get('Module') is not None:
             self.module = m.get('Module')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -30399,6 +30472,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         http_api_inter_url: str = None,
         http_api_intra_url: str = None,
         payment_type: str = None,
+        payment_type_update_time: str = None,
         product: str = None,
         push_gateway_inter_url: str = None,
         push_gateway_intra_url: str = None,
@@ -30416,6 +30490,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         tags: List[GetPrometheusInstanceResponseBodyDataTags] = None,
         user_id: str = None,
         v_switch_id: str = None,
+        version: str = None,
         vpc_id: str = None,
     ):
         # The permission type. Valid values: readWrite, readOnly, and httpReadOnly
@@ -30460,6 +30535,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
+        # The time when the billing method was modified.
+        self.payment_type_update_time = payment_type_update_time
         # The product to which the Prometheus instance belongs. Valid values: arms and cms.
         self.product = product
         # The public URL for Pushgateway.
@@ -30494,6 +30571,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.user_id = user_id
         # The vSwitch ID. This parameter is returned only for Prometheus instances for ECS.
         self.v_switch_id = v_switch_id
+        self.version = version
         # The VPC ID. This parameter is returned only for Prometheus instances for ECS.
         self.vpc_id = vpc_id
 
@@ -30543,6 +30621,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['HttpApiIntraUrl'] = self.http_api_intra_url
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.payment_type_update_time is not None:
+            result['PaymentTypeUpdateTime'] = self.payment_type_update_time
         if self.product is not None:
             result['Product'] = self.product
         if self.push_gateway_inter_url is not None:
@@ -30579,6 +30659,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['UserId'] = self.user_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.version is not None:
+            result['Version'] = self.version
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -30619,6 +30701,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.http_api_intra_url = m.get('HttpApiIntraUrl')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('PaymentTypeUpdateTime') is not None:
+            self.payment_type_update_time = m.get('PaymentTypeUpdateTime')
         if m.get('Product') is not None:
             self.product = m.get('Product')
         if m.get('PushGatewayInterUrl') is not None:
@@ -30656,6 +30740,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.user_id = m.get('UserId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -30671,7 +30757,7 @@ class GetPrometheusInstanceResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The returned message.
+        # The response parameters.
         self.data = data
         # The message returned.
         self.message = message
@@ -32437,8 +32523,9 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         self.app_group = app_group
         # The application type. Valid values: web, miniapp, ios, and android.
         self.app_type = app_type
+        # The region where the backend is deployed.
         self.backend_service_trace_region = backend_service_trace_region
-        # The mobile collection configurations.
+        # The collection configurations.
         self.bonree_sdkconfig = bonree_sdkconfig
         # The domain name of the SDK.
         self.cdn_domain = cdn_domain
@@ -33506,6 +33593,7 @@ class GetRumExceptionStackRequest(TeaModel):
         exception_binary_images: str = None,
         exception_stack: str = None,
         exception_thread_id: str = None,
+        extra_info: str = None,
         pid: str = None,
         region_id: str = None,
         sourcemap_type: str = None,
@@ -33516,6 +33604,7 @@ class GetRumExceptionStackRequest(TeaModel):
         self.exception_stack = exception_stack
         # The ID of the exception thread.
         self.exception_thread_id = exception_thread_id
+        self.extra_info = extra_info
         # The application ID.
         # 
         # This parameter is required.
@@ -33544,6 +33633,8 @@ class GetRumExceptionStackRequest(TeaModel):
             result['ExceptionStack'] = self.exception_stack
         if self.exception_thread_id is not None:
             result['ExceptionThreadId'] = self.exception_thread_id
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.region_id is not None:
@@ -33560,6 +33651,8 @@ class GetRumExceptionStackRequest(TeaModel):
             self.exception_stack = m.get('ExceptionStack')
         if m.get('ExceptionThreadId') is not None:
             self.exception_thread_id = m.get('ExceptionThreadId')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
@@ -33693,7 +33786,7 @@ class GetRumExceptionStackResponseBody(TeaModel):
     ):
         # The responses code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The response parameters.
+        # The returned message.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -45872,6 +45965,7 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies(TeaMod
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
+        # The cluster type.
         self.cluster_types = cluster_types
         # The feature that can be installed in the environment.
         self.features = features
@@ -45911,6 +46005,7 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheck
         self,
         prom_ql: List[str] = None,
     ):
+        # The PromQL statements.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -45997,8 +46092,11 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies(TeaModel):
         self.alert_default_status = alert_default_status
         # The default installation status.
         self.default_install = default_install
+        # Indicates whether a service account is enabled.
         self.enable_service_account = enable_service_account
+        # The metric check rule.
         self.metric_check_rule = metric_check_rule
+        # Indicates whether a restart is required after the installation.
         self.need_restart_after_integration = need_restart_after_integration
         # The supported protocols.
         self.protocols = protocols
@@ -46410,10 +46508,15 @@ class ListEnvironmentAlertRulesRequest(TeaModel):
         region_id: str = None,
         scene: str = None,
     ):
+        # The name of the add-on. You must specify AddonName or Scene.
         self.addon_name = addon_name
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The region ID.
         self.region_id = region_id
+        # The scenario of the add-on. You must specify AddonName or Scene.
         self.scene = scene
 
     def validate(self):
@@ -46454,7 +46557,9 @@ class ListEnvironmentAlertRulesResponseBodyDataRules(TeaModel):
         alert_id: int = None,
         name: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.name = name
 
     def validate(self):
@@ -46488,8 +46593,11 @@ class ListEnvironmentAlertRulesResponseBodyData(TeaModel):
         rules: List[ListEnvironmentAlertRulesResponseBodyDataRules] = None,
         total: int = None,
     ):
+        # The queried alert groups.
         self.groups = groups
+        # The queried rules.
         self.rules = rules
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -46537,11 +46645,18 @@ class ListEnvironmentAlertRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -47156,12 +47271,19 @@ class ListEnvironmentKubeResourcesRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The resource type. Valid values: Pod, Deployment, and Service.
+        # 
         # This parameter is required.
         self.kind = kind
+        # The tags.
         self.label_selectors = label_selectors
+        # The namespace.
         self.namespace = namespace
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -47209,12 +47331,19 @@ class ListEnvironmentKubeResourcesShrinkRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The resource type. Valid values: Pod, Deployment, and Service.
+        # 
         # This parameter is required.
         self.kind = kind
+        # The tags.
         self.label_selectors_shrink = label_selectors_shrink
+        # The namespace.
         self.namespace = namespace
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -47261,9 +47390,13 @@ class ListEnvironmentKubeResourcesResponseBodyDataMetadata(TeaModel):
         name: str = None,
         namespace: str = None,
     ):
+        # The annotations.
         self.annotations = annotations
+        # The tags.
         self.labels = labels
+        # The resource name.
         self.name = name
+        # The namespace.
         self.namespace = namespace
 
     def validate(self):
@@ -47307,10 +47440,15 @@ class ListEnvironmentKubeResourcesResponseBodyData(TeaModel):
         spec: Any = None,
         status: Any = None,
     ):
+        # The version number of the API.
         self.api_version = api_version
+        # The resource type.
         self.kind = kind
+        # The metadata.
         self.metadata = metadata
+        # The resource specifications.
         self.spec = spec
+        # The status of the resource.
         self.status = status
 
     def validate(self):
@@ -47360,11 +47498,18 @@ class ListEnvironmentKubeResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The returned struct.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -47459,9 +47604,13 @@ class ListEnvironmentMetricTargetsRequest(TeaModel):
         job_name: str = None,
         region_id: str = None,
     ):
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The job name.
         self.job_name = job_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -47506,15 +47655,25 @@ class ListEnvironmentMetricTargetsResponseBodyDataActiveTargets(TeaModel):
         scrape_pool: str = None,
         scrape_url: str = None,
     ):
+        # The tags used for service discovery.
         self.discovered_labels = discovered_labels
+        # The URL of the target.
         self.global_url = global_url
+        # The health status.
         self.health = health
+        # The tags.
         self.labels = labels
+        # The last error message.
         self.last_error = last_error
+        # The last collection time.
         self.last_scrape = last_scrape
+        # The duration of the last collection.
         self.last_scrape_duration = last_scrape_duration
+        # The amount of metrics in the last collection.
         self.last_scrape_series = last_scrape_series
+        # The name of the collection.
         self.scrape_pool = scrape_pool
+        # The URL of the collection.
         self.scrape_url = scrape_url
 
     def validate(self):
@@ -47587,15 +47746,25 @@ class ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets(TeaModel):
         scrape_pool: str = None,
         scrape_url: str = None,
     ):
+        # The tags used for service discovery.
         self.discovered_labels = discovered_labels
+        # The URL of the target.
         self.global_url = global_url
+        # The health status.
         self.health = health
+        # The tags.
         self.labels = labels
+        # The last error message.
         self.last_error = last_error
+        # The last collection time.
         self.last_scrape = last_scrape
+        # The duration of the last collection.
         self.last_scrape_duration = last_scrape_duration
+        # The amount of metrics in the last collection.
         self.last_scrape_series = last_scrape_series
+        # The name of the collection.
         self.scrape_pool = scrape_pool
+        # The URL of the collection.
         self.scrape_url = scrape_url
 
     def validate(self):
@@ -47660,7 +47829,9 @@ class ListEnvironmentMetricTargetsResponseBodyData(TeaModel):
         active_targets: List[ListEnvironmentMetricTargetsResponseBodyDataActiveTargets] = None,
         dropped_targets: List[ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets] = None,
     ):
+        # The active targets.
         self.active_targets = active_targets
+        # The deleted targets.
         self.dropped_targets = dropped_targets
 
     def validate(self):
@@ -47713,11 +47884,18 @@ class ListEnvironmentMetricTargetsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -57009,7 +57187,7 @@ class QueryMetricByPageRequest(TeaModel):
         # 
         # > If you do not specify the parameter, data is not sorted.
         self.order = order
-        # The dimension from which metrics are sorted. You can set this parameter to a supported dimension.
+        # The dimension for arranging metrics in sequence. For more information, see the supplementary metrics.
         self.order_by = order_by
         # This parameter is no longer supported. The number of entries per page.
         self.page_size = page_size
@@ -66926,6 +67104,7 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         enable_auth_free_read: bool = None,
         enable_auth_free_write: bool = None,
         enable_auth_token: bool = None,
+        payment_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         storage_duration: int = None,
@@ -66946,6 +67125,8 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         self.enable_auth_free_write = enable_auth_free_write
         # Specifies whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
+        # The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data.
+        self.payment_type = payment_type
         # The region ID.
         # 
         # This parameter is required.
@@ -66978,6 +67159,8 @@ class UpdatePrometheusInstanceRequest(TeaModel):
             result['EnableAuthFreeWrite'] = self.enable_auth_free_write
         if self.enable_auth_token is not None:
             result['EnableAuthToken'] = self.enable_auth_token
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -67002,6 +67185,8 @@ class UpdatePrometheusInstanceRequest(TeaModel):
             self.enable_auth_free_write = m.get('EnableAuthFreeWrite')
         if m.get('EnableAuthToken') is not None:
             self.enable_auth_token = m.get('EnableAuthToken')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
