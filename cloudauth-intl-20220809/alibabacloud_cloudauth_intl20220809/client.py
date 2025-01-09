@@ -1149,6 +1149,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fraud_result_call_back_with_options_async(request, runtime)
 
+    def id_2meta_period_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
+        """
+        @summary 身份二要素有效期核验
+        
+        @param request: Id2MetaPeriodVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaPeriodVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.doc_no):
+            body['DocNo'] = request.doc_no
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.validity_end_date):
+            body['ValidityEndDate'] = request.validity_end_date
+        if not UtilClient.is_unset(request.validity_start_date):
+            body['ValidityStartDate'] = request.validity_start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaPeriodVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_2meta_period_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
+        """
+        @summary 身份二要素有效期核验
+        
+        @param request: Id2MetaPeriodVerifyIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Id2MetaPeriodVerifyIntlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_name):
+            body['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.doc_no):
+            body['DocNo'] = request.doc_no
+        if not UtilClient.is_unset(request.doc_type):
+            body['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.merchant_biz_id):
+            body['MerchantBizId'] = request.merchant_biz_id
+        if not UtilClient.is_unset(request.merchant_user_id):
+            body['MerchantUserId'] = request.merchant_user_id
+        if not UtilClient.is_unset(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.validity_end_date):
+            body['ValidityEndDate'] = request.validity_end_date
+        if not UtilClient.is_unset(request.validity_start_date):
+            body['ValidityStartDate'] = request.validity_start_date
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaPeriodVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_2meta_period_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
+        """
+        @summary 身份二要素有效期核验
+        
+        @param request: Id2MetaPeriodVerifyIntlRequest
+        @return: Id2MetaPeriodVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.id_2meta_period_verify_intl_with_options(request, runtime)
+
+    async def id_2meta_period_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
+        """
+        @summary 身份二要素有效期核验
+        
+        @param request: Id2MetaPeriodVerifyIntlRequest
+        @return: Id2MetaPeriodVerifyIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.id_2meta_period_verify_intl_with_options_async(request, runtime)
+
     def id_2meta_verify_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,

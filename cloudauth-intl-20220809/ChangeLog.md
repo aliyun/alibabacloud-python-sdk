@@ -1,3 +1,7 @@
+2025-01-09 Version: 3.2.0
+- Support API Id2MetaPeriodVerifyIntl.
+
+
 2025-01-09 Version: 3.1.2
 - Generated python 2022-08-09 for Cloudauth-intl.
 
