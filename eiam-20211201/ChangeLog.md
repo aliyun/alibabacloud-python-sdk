@@ -1,3 +1,7 @@
+2025-01-09 Version: 1.7.0
+- Support API GetInstanceLicense.
+
+
 2024-12-17 Version: 1.6.1
 - Update API CreateIdentityProvider: add param LogoUrl.
 - Update API GetIdentityProvider: update response param.

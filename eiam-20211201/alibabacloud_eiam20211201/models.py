@@ -10264,6 +10264,210 @@ class GetInstanceResponse(TeaModel):
         return self
 
 
+class GetInstanceLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetInstanceLicenseResponseBodyLicense(TeaModel):
+    def __init__(
+        self,
+        edition: str = None,
+        end_time: int = None,
+        license_charge_type: str = None,
+        license_config_json: str = None,
+        license_create_time: int = None,
+        license_id: str = None,
+        license_status: str = None,
+        purchase_channel: str = None,
+        purchase_instance_id: str = None,
+        start_time: int = None,
+        user_quota: int = None,
+    ):
+        # License 的版本型号,free-免费版，trail-试用版，enterprise-企业版
+        self.edition = edition
+        # License 的有效期终止日期
+        self.end_time = end_time
+        # License 的付费类型，prepay-预付费，postpay-后付费
+        self.license_charge_type = license_charge_type
+        # License 详细配置JSON
+        self.license_config_json = license_config_json
+        # License 的创建时间
+        self.license_create_time = license_create_time
+        # License 的唯一标识
+        self.license_id = license_id
+        # License 的状态，valid-有效，expired-已过期，released-已释放
+        self.license_status = license_status
+        # License 的购买渠道
+        self.purchase_channel = purchase_channel
+        # License 对应的外部商品唯一标识
+        self.purchase_instance_id = purchase_instance_id
+        # License 的有效期开始日期
+        self.start_time = start_time
+        # License 的用户配额
+        self.user_quota = user_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.license_charge_type is not None:
+            result['LicenseChargeType'] = self.license_charge_type
+        if self.license_config_json is not None:
+            result['LicenseConfigJson'] = self.license_config_json
+        if self.license_create_time is not None:
+            result['LicenseCreateTime'] = self.license_create_time
+        if self.license_id is not None:
+            result['LicenseId'] = self.license_id
+        if self.license_status is not None:
+            result['LicenseStatus'] = self.license_status
+        if self.purchase_channel is not None:
+            result['PurchaseChannel'] = self.purchase_channel
+        if self.purchase_instance_id is not None:
+            result['PurchaseInstanceId'] = self.purchase_instance_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_quota is not None:
+            result['UserQuota'] = self.user_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LicenseChargeType') is not None:
+            self.license_charge_type = m.get('LicenseChargeType')
+        if m.get('LicenseConfigJson') is not None:
+            self.license_config_json = m.get('LicenseConfigJson')
+        if m.get('LicenseCreateTime') is not None:
+            self.license_create_time = m.get('LicenseCreateTime')
+        if m.get('LicenseId') is not None:
+            self.license_id = m.get('LicenseId')
+        if m.get('LicenseStatus') is not None:
+            self.license_status = m.get('LicenseStatus')
+        if m.get('PurchaseChannel') is not None:
+            self.purchase_channel = m.get('PurchaseChannel')
+        if m.get('PurchaseInstanceId') is not None:
+            self.purchase_instance_id = m.get('PurchaseInstanceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserQuota') is not None:
+            self.user_quota = m.get('UserQuota')
+        return self
+
+
+class GetInstanceLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        license: GetInstanceLicenseResponseBodyLicense = None,
+        request_id: str = None,
+    ):
+        self.license = license
+        self.request_id = request_id
+
+    def validate(self):
+        if self.license:
+            self.license.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.license is not None:
+            result['License'] = self.license.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('License') is not None:
+            temp_model = GetInstanceLicenseResponseBodyLicense()
+            self.license = temp_model.from_map(m['License'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetInstanceLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetNetworkAccessEndpointRequest(TeaModel):
     def __init__(
         self,
