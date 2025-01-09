@@ -1,3 +1,13 @@
+2025-01-09 Version: 5.0.1
+- Update API CreateNetworkInterface: update param EnhancedNetwork.
+- Update API DescribeInstanceTypes: update response param.
+- Update API DescribeNetworkInterfaceAttribute: update response param.
+- Update API DescribePrefixLists: add param PrefixListId.
+- Update API DescribePrefixLists: update param PrefixListId.
+- Update API ModifyDiskSpec: add param DestinationZoneId.
+- Update API ModifyNetworkInterfaceAttribute: update param EnhancedNetwork.
+
+
 2024-12-26 Version: 5.0.0
 - Update API DescribeImages: update response param.
 - Update API ModifyInstanceAttribute: add param CpuOptions.Core.
