@@ -1,3 +1,7 @@
+2025-01-09 Version: 4.0.3
+- Update API Search: update param search_control_options.
+
+
 2024-12-16 Version: 4.0.2
 - Update API Enrich: update param journey_param_list.
 

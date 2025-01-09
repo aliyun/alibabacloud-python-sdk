@@ -14286,11 +14286,13 @@ class SearchRequestSearchControlOptions(TeaModel):
         self,
         airline_excluded_list: List[str] = None,
         airline_prefer_list: List[str] = None,
+        service_quality: str = None,
     ):
         # excluded airlines list
         self.airline_excluded_list = airline_excluded_list
         # preferred airlines list
         self.airline_prefer_list = airline_prefer_list
+        self.service_quality = service_quality
 
     def validate(self):
         pass
@@ -14305,6 +14307,8 @@ class SearchRequestSearchControlOptions(TeaModel):
             result['airline_excluded_list'] = self.airline_excluded_list
         if self.airline_prefer_list is not None:
             result['airline_prefer_list'] = self.airline_prefer_list
+        if self.service_quality is not None:
+            result['service_quality'] = self.service_quality
         return result
 
     def from_map(self, m: dict = None):
@@ -14313,6 +14317,8 @@ class SearchRequestSearchControlOptions(TeaModel):
             self.airline_excluded_list = m.get('airline_excluded_list')
         if m.get('airline_prefer_list') is not None:
             self.airline_prefer_list = m.get('airline_prefer_list')
+        if m.get('service_quality') is not None:
+            self.service_quality = m.get('service_quality')
         return self
 
 
