@@ -1,3 +1,6 @@
+2025-01-09 Version: 2.2.1
+- Generated python 2020-02-02 for polardbx.
+
 2025-01-08 Version: 2.2.0
 - Support API DescribeGdnInstances.
 - Support API SwitchGdnMemberRole.
