@@ -1,3 +1,6 @@
+2025-01-09 Version: 3.1.2
+- Generated python 2022-08-09 for Cloudauth-intl.
+
 2024-12-06 Version: 3.1.1
 - Update API DocOcr: add param CardSide.
 - Update API Initialize: add param AppQualityCheck.
