@@ -1,3 +1,6 @@
+2025-01-09 Version: 2.10.1
+- Generated python 2024-09-10 for ESA.
+
 2025-01-06 Version: 2.9.0
 - Support API DescribeDDoSBpsList.
 - Support API DescribeDDoSL7QpsList.
