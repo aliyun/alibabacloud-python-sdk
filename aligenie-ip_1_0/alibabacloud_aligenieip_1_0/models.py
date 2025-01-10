@@ -50,8 +50,11 @@ class AddCartoonRequest(TeaModel):
         start_video_md_5: str = None,
         start_video_url: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.start_video_md_5 = start_video_md_5
+        # This parameter is required.
         self.start_video_url = start_video_url
 
     def validate(self):
@@ -217,6 +220,7 @@ class AddCustomQARequest(TeaModel):
         supplementary_questions: List[str] = None,
     ):
         self.answers = answers
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words = key_words
         self.major_question = major_question
@@ -268,6 +272,7 @@ class AddCustomQAShrinkRequest(TeaModel):
         supplementary_questions_shrink: str = None,
     ):
         self.answers_shrink = answers_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words_shrink = key_words_shrink
         self.major_question = major_question
@@ -443,7 +448,9 @@ class AddCustomQAV2Request(TeaModel):
         major_question: str = None,
         supplementary_questions: List[str] = None,
     ):
+        # This parameter is required.
         self.answers = answers
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words = key_words
         self.major_question = major_question
@@ -494,7 +501,9 @@ class AddCustomQAV2ShrinkRequest(TeaModel):
         major_question: str = None,
         supplementary_questions_shrink: str = None,
     ):
+        # This parameter is required.
         self.answers_shrink = answers_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words_shrink = key_words_shrink
         self.major_question = major_question
@@ -751,7 +760,9 @@ class AddMessageTemplateRequest(TeaModel):
         template_detail: str = None,
         template_name: str = None,
     ):
+        # This parameter is required.
         self.template_detail = template_detail
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -909,7 +920,9 @@ class AddOrUpdateDisPlayModesRequest(TeaModel):
         hotel_device_mode_list: List[str] = None,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_device_mode_list = hotel_device_mode_list
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -942,7 +955,9 @@ class AddOrUpdateDisPlayModesShrinkRequest(TeaModel):
         hotel_device_mode_list_shrink: str = None,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_device_mode_list_shrink = hotel_device_mode_list_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -1467,7 +1482,9 @@ class AddOrUpdateScreenSaverRequest(TeaModel):
         hotel_id: str = None,
         hotel_screen_saver: AddOrUpdateScreenSaverRequestHotelScreenSaver = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.hotel_screen_saver = hotel_screen_saver
 
     def validate(self):
@@ -1502,7 +1519,9 @@ class AddOrUpdateScreenSaverShrinkRequest(TeaModel):
         hotel_id: str = None,
         hotel_screen_saver_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.hotel_screen_saver_shrink = hotel_screen_saver_shrink
 
     def validate(self):
@@ -1661,8 +1680,11 @@ class AddOrUpdateWelcomeTextRequest(TeaModel):
         music_url: str = None,
         welcome_text: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.music_url = music_url
+        # This parameter is required.
         self.welcome_text = welcome_text
 
     def validate(self):
@@ -1832,7 +1854,9 @@ class AuditHotelRequestAuditHotelReq(TeaModel):
         status: int = None,
     ):
         self.audit_opinion = audit_opinion
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -1868,6 +1892,7 @@ class AuditHotelRequest(TeaModel):
         self,
         audit_hotel_req: AuditHotelRequestAuditHotelReq = None,
     ):
+        # This parameter is required.
         self.audit_hotel_req = audit_hotel_req
 
     def validate(self):
@@ -1897,6 +1922,7 @@ class AuditHotelShrinkRequest(TeaModel):
         self,
         audit_hotel_req_shrink: str = None,
     ):
+        # This parameter is required.
         self.audit_hotel_req_shrink = audit_hotel_req_shrink
 
     def validate(self):
@@ -2051,7 +2077,9 @@ class BatchAddHotelRoomRequest(TeaModel):
         hotel_id: str = None,
         room_no_list: List[str] = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no_list = room_no_list
 
     def validate(self):
@@ -2084,7 +2112,9 @@ class BatchAddHotelRoomShrinkRequest(TeaModel):
         hotel_id: str = None,
         room_no_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no_list_shrink = room_no_list_shrink
 
     def validate(self):
@@ -2242,7 +2272,9 @@ class BatchDeleteHotelRoomRequest(TeaModel):
         hotel_id: str = None,
         room_no_list: List[str] = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no_list = room_no_list
 
     def validate(self):
@@ -2275,7 +2307,9 @@ class BatchDeleteHotelRoomShrinkRequest(TeaModel):
         hotel_id: str = None,
         room_no_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no_list_shrink = room_no_list_shrink
 
     def validate(self):
@@ -2433,7 +2467,9 @@ class CheckoutWithAKRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -2593,9 +2629,13 @@ class ChildAccountAuthRequest(TeaModel):
         hotel_id: str = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.account = account
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -2771,11 +2811,16 @@ class ControlRoomDeviceRequest(TeaModel):
         properties: Dict[str, str] = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.cmd = cmd
         self.device_index = device_index
+        # This parameter is required.
         self.device_number = device_number
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.properties = properties
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -2828,11 +2873,16 @@ class ControlRoomDeviceShrinkRequest(TeaModel):
         properties_shrink: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.cmd = cmd
         self.device_index = device_index
+        # This parameter is required.
         self.device_number = device_number
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.properties_shrink = properties_shrink
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -3050,17 +3100,26 @@ class CreateHotelRequest(TeaModel):
         room_num: int = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.est_open_time = est_open_time
+        # This parameter is required.
         self.hotel_address = hotel_address
+        # This parameter is required.
         self.hotel_email = hotel_email
+        # This parameter is required.
         self.hotel_name = hotel_name
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.related_pk = related_pk
         # 酒店关联产品列表
         self.related_pks = related_pks
         self.remark = remark
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -3138,17 +3197,26 @@ class CreateHotelShrinkRequest(TeaModel):
         room_num: int = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.est_open_time = est_open_time
+        # This parameter is required.
         self.hotel_address = hotel_address
+        # This parameter is required.
         self.hotel_email = hotel_email
+        # This parameter is required.
         self.hotel_name = hotel_name
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.related_pk = related_pk
         # 酒店关联产品列表
         self.related_pks_shrink = related_pks_shrink
         self.remark = remark
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -3441,6 +3509,8 @@ class CreateHotelAlarmRequestScheduleInfo(TeaModel):
     ):
         self.once = once
         # ONCE, WEEKLY
+        # 
+        # This parameter is required.
         self.type = type
         self.weekly = weekly
 
@@ -3485,9 +3555,12 @@ class CreateHotelAlarmRequest(TeaModel):
         rooms: List[str] = None,
         schedule_info: CreateHotelAlarmRequestScheduleInfo = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.music_type = music_type
+        # This parameter is required.
         self.rooms = rooms
+        # This parameter is required.
         self.schedule_info = schedule_info
 
     def validate(self):
@@ -3532,9 +3605,12 @@ class CreateHotelAlarmShrinkRequest(TeaModel):
         rooms_shrink: str = None,
         schedule_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.music_type = music_type
+        # This parameter is required.
         self.rooms_shrink = rooms_shrink
+        # This parameter is required.
         self.schedule_info_shrink = schedule_info_shrink
 
     def validate(self):
@@ -3767,9 +3843,13 @@ class CreateRcuSceneRequestSceneRelationExtDTO(TeaModel):
         icon: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.corpus_list = corpus_list
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.icon = icon
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3811,8 +3891,11 @@ class CreateRcuSceneRequest(TeaModel):
         scene_id: str = None,
         scene_relation_ext_dto: CreateRcuSceneRequestSceneRelationExtDTO = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.scene_relation_ext_dto = scene_relation_ext_dto
 
     def validate(self):
@@ -3852,8 +3935,11 @@ class CreateRcuSceneShrinkRequest(TeaModel):
         scene_id: str = None,
         scene_relation_ext_dtoshrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.scene_relation_ext_dtoshrink = scene_relation_ext_dtoshrink
 
     def validate(self):
@@ -4168,6 +4254,7 @@ class DeleteCustomQARequest(TeaModel):
         hotel_id: str = None,
     ):
         self.custom_qaids = custom_qaids
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -4201,6 +4288,7 @@ class DeleteCustomQAShrinkRequest(TeaModel):
         hotel_id: str = None,
     ):
         self.custom_qaids_shrink = custom_qaids_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -4360,9 +4448,12 @@ class DeleteHotelAlarmRequestAlarms(TeaModel):
         room_no: str = None,
         user_open_id: str = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
+        # This parameter is required.
         self.device_open_id = device_open_id
         self.room_no = room_no
+        # This parameter is required.
         self.user_open_id = user_open_id
 
     def validate(self):
@@ -4403,7 +4494,9 @@ class DeleteHotelAlarmRequest(TeaModel):
         alarms: List[DeleteHotelAlarmRequestAlarms] = None,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.alarms = alarms
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -4444,7 +4537,9 @@ class DeleteHotelAlarmShrinkRequest(TeaModel):
         alarms_shrink: str = None,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.alarms_shrink = alarms_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -4610,6 +4705,8 @@ class DeleteHotelSceneBookItemRequest(TeaModel):
         name: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.id = id
         self.name = name
@@ -5083,7 +5180,9 @@ class DeleteRcuSceneRequest(TeaModel):
         hotel_id: str = None,
         scene_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -5245,10 +5344,14 @@ class DeviceControlRequestPayload(TeaModel):
         location: str = None,
         properties: Dict[str, str] = None,
     ):
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.cmd = cmd
+        # This parameter is required.
         self.device_number = device_number
         self.extend_info = extend_info
+        # This parameter is required.
         self.location = location
         self.properties = properties
 
@@ -5301,9 +5404,13 @@ class DeviceControlRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -5529,6 +5636,179 @@ class DeviceControlResponse(TeaModel):
         return self
 
 
+class ExecuteSceneHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ExecuteSceneRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+        scene_name: str = None,
+    ):
+        # This parameter is required.
+        self.hotel_id = hotel_id
+        # This parameter is required.
+        self.room_no = room_no
+        # This parameter is required.
+        self.scene_name = scene_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        return self
+
+
+class ExecuteSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+        status_code: int = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class ExecuteSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetBasicInfoQAHeaders(TeaModel):
     def __init__(
         self,
@@ -5573,6 +5853,7 @@ class GetBasicInfoQARequest(TeaModel):
         self,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -5814,6 +6095,7 @@ class GetCartoonRequest(TeaModel):
         self,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -6005,9 +6287,13 @@ class GetHotelContactByGenieDeviceRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -6056,9 +6342,13 @@ class GetHotelContactByGenieDeviceRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -6392,9 +6682,13 @@ class GetHotelContactByNumberRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -6440,6 +6734,7 @@ class GetHotelContactByNumberRequest(TeaModel):
         number: str = None,
         user_info: GetHotelContactByNumberRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.number = number
         self.user_info = user_info
 
@@ -6475,6 +6770,7 @@ class GetHotelContactByNumberShrinkRequest(TeaModel):
         number: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.number = number
         self.user_info_shrink = user_info_shrink
 
@@ -6707,9 +7003,13 @@ class GetHotelContactsRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -7016,9 +7316,13 @@ class GetHotelHomeBackImageAndModesRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -7063,6 +7367,7 @@ class GetHotelHomeBackImageAndModesRequest(TeaModel):
         self,
         user_info: GetHotelHomeBackImageAndModesRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -7092,6 +7397,7 @@ class GetHotelHomeBackImageAndModesShrinkRequest(TeaModel):
         self,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -7383,6 +7689,7 @@ class GetHotelNoticeRequest(TeaModel):
         self,
         user_info: GetHotelNoticeRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -7412,6 +7719,7 @@ class GetHotelNoticeShrinkRequest(TeaModel):
         self,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -7616,6 +7924,7 @@ class GetHotelNoticeV2Request(TeaModel):
         self,
         user_info: GetHotelNoticeV2RequestUserInfo = None,
     ):
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -7645,6 +7954,7 @@ class GetHotelNoticeV2ShrinkRequest(TeaModel):
         self,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -7838,6 +8148,7 @@ class GetHotelOrderDetailRequestPayload(TeaModel):
         self,
         order_no: str = None,
     ):
+        # This parameter is required.
         self.order_no = order_no
 
     def validate(self):
@@ -7865,6 +8176,7 @@ class GetHotelOrderDetailRequest(TeaModel):
         self,
         payload: GetHotelOrderDetailRequestPayload = None,
     ):
+        # This parameter is required.
         self.payload = payload
 
     def validate(self):
@@ -7894,6 +8206,7 @@ class GetHotelOrderDetailShrinkRequest(TeaModel):
         self,
         payload_shrink: str = None,
     ):
+        # This parameter is required.
         self.payload_shrink = payload_shrink
 
     def validate(self):
@@ -8106,7 +8419,9 @@ class GetHotelRoomDeviceRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -8332,9 +8647,13 @@ class GetHotelSampleUtterancesRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -8563,6 +8882,8 @@ class GetHotelSceneItemDetailRequest(TeaModel):
         name: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.item_id = item_id
         self.name = name
@@ -8895,9 +9216,13 @@ class GetHotelScreenSaverRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -8942,6 +9267,7 @@ class GetHotelScreenSaverRequest(TeaModel):
         self,
         user_info: GetHotelScreenSaverRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -8971,6 +9297,7 @@ class GetHotelScreenSaverShrinkRequest(TeaModel):
         self,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -9864,9 +10191,13 @@ class GetUnionIdRequest(TeaModel):
         id: str = None,
         id_type: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
 
     def validate(self):
@@ -10072,6 +10403,7 @@ class GetWelcomeTextAndMusicRequest(TeaModel):
         self,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -10275,10 +10607,14 @@ class HotelQrBindRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.code = code
         self.ext_info = ext_info
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -10593,10 +10929,13 @@ class ImportHotelConfigRequestImportHotelConfigRcuCustomScenes(TeaModel):
         name: str = None,
         scene_id: str = None,
     ):
+        # This parameter is required.
         self.corpus_list = corpus_list
         self.description = description
         self.icon = icon
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.scene_id = scene_id
 
     def validate(self):
@@ -10676,7 +11015,9 @@ class ImportHotelConfigRequest(TeaModel):
         hotel_id: str = None,
         import_hotel_config: ImportHotelConfigRequestImportHotelConfig = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.import_hotel_config = import_hotel_config
 
     def validate(self):
@@ -10711,7 +11052,9 @@ class ImportHotelConfigShrinkRequest(TeaModel):
         hotel_id: str = None,
         import_hotel_config_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.import_hotel_config_shrink = import_hotel_config_shrink
 
     def validate(self):
@@ -10972,12 +11315,14 @@ class ImportRoomControlDevicesRequestLocationDevicesDevices(TeaModel):
         self.brand = brand
         self.city = city
         self.connect_type = connect_type
+        # This parameter is required.
         self.device_name = device_name
         self.dn = dn
         self.infrared_id = infrared_id
         self.infrared_index = infrared_index
         self.infrared_version = infrared_version
         self.multi_key_switch_ext = multi_key_switch_ext
+        # This parameter is required.
         self.name = name
         self.number = number
         self.pk = pk
@@ -11070,6 +11415,7 @@ class ImportRoomControlDevicesRequestLocationDevices(TeaModel):
         location_name: str = None,
     ):
         self.devices = devices
+        # This parameter is required.
         self.location = location
         self.location_name = location_name
 
@@ -11118,8 +11464,11 @@ class ImportRoomControlDevicesRequest(TeaModel):
         room_no: str = None,
     ):
         self.enable_infrared_device_import = enable_infrared_device_import
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.location_devices = location_devices
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -11171,8 +11520,11 @@ class ImportRoomControlDevicesShrinkRequest(TeaModel):
         room_no: str = None,
     ):
         self.enable_infrared_device_import = enable_infrared_device_import
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.location_devices_shrink = location_devices_shrink
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -11344,7 +11696,9 @@ class ImportRoomGenieScenesRequestSceneListActionsAttributeValues(TeaModel):
         attribute_name: str = None,
         attribute_value: str = None,
     ):
+        # This parameter is required.
         self.attribute_name = attribute_name
+        # This parameter is required.
         self.attribute_value = attribute_value
 
     def validate(self):
@@ -11379,8 +11733,10 @@ class ImportRoomGenieScenesRequestSceneListActionsDevice(TeaModel):
         device_number: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.category = category
         self.device_index = device_index
+        # This parameter is required.
         self.device_number = device_number
         self.type = type
 
@@ -11478,7 +11834,9 @@ class ImportRoomGenieScenesRequestSceneListTriggersAttributeValues(TeaModel):
         attribute_name: str = None,
         attribute_value: str = None,
     ):
+        # This parameter is required.
         self.attribute_name = attribute_name
+        # This parameter is required.
         self.attribute_value = attribute_value
 
     def validate(self):
@@ -11512,8 +11870,10 @@ class ImportRoomGenieScenesRequestSceneListTriggersDevice(TeaModel):
         device_index: str = None,
         device_number: str = None,
     ):
+        # This parameter is required.
         self.category = category
         self.device_index = device_index
+        # This parameter is required.
         self.device_number = device_number
 
     def validate(self):
@@ -11555,6 +11915,7 @@ class ImportRoomGenieScenesRequestSceneListTriggers(TeaModel):
         self.attribute_values = attribute_values
         self.corpus_list = corpus_list
         self.device = device
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -11611,12 +11972,17 @@ class ImportRoomGenieScenesRequestSceneList(TeaModel):
         trigger_logical: int = None,
         triggers: List[ImportRoomGenieScenesRequestSceneListTriggers] = None,
     ):
+        # This parameter is required.
         self.actions = actions
         self.description = description
+        # This parameter is required.
         self.display = display
         self.icon = icon
+        # This parameter is required.
         self.scene_name = scene_name
+        # This parameter is required.
         self.trigger_logical = trigger_logical
+        # This parameter is required.
         self.triggers = triggers
 
     def validate(self):
@@ -11687,7 +12053,9 @@ class ImportRoomGenieScenesRequest(TeaModel):
         room_no: str = None,
         scene_list: List[ImportRoomGenieScenesRequestSceneList] = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
         self.scene_list = scene_list
 
@@ -11734,7 +12102,9 @@ class ImportRoomGenieScenesShrinkRequest(TeaModel):
         room_no: str = None,
         scene_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
         self.scene_list_shrink = scene_list_shrink
 
@@ -11900,9 +12270,14 @@ class InsertHotelSceneBookItemRequestAddHotelSceneItemReq(TeaModel):
         type: str = None,
     ):
         # icon
+        # 
+        # This parameter is required.
         self.icon = icon
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.price = price
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -11944,8 +12319,12 @@ class InsertHotelSceneBookItemRequest(TeaModel):
         hotel_id: str = None,
     ):
         # addHotelSceneItemReq
+        # 
+        # This parameter is required.
         self.add_hotel_scene_item_req = add_hotel_scene_item_req
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -11981,8 +12360,12 @@ class InsertHotelSceneBookItemShrinkRequest(TeaModel):
         hotel_id: str = None,
     ):
         # addHotelSceneItemReq
+        # 
+        # This parameter is required.
         self.add_hotel_scene_item_req_shrink = add_hotel_scene_item_req_shrink
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -12142,8 +12525,11 @@ class InvokeRobotPushRequest(TeaModel):
         push_type: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.push_type = push_type
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -12429,6 +12815,7 @@ class ListCitiesByProvinceRequest(TeaModel):
         self,
         province: str = None,
     ):
+        # This parameter is required.
         self.province = province
 
     def validate(self):
@@ -12582,7 +12969,9 @@ class ListCustomQARequestPage(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -12616,8 +13005,10 @@ class ListCustomQARequest(TeaModel):
         keyword: str = None,
         page: ListCustomQARequestPage = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.keyword = keyword
+        # This parameter is required.
         self.page = page
 
     def validate(self):
@@ -12657,8 +13048,10 @@ class ListCustomQAShrinkRequest(TeaModel):
         keyword: str = None,
         page_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.keyword = keyword
+        # This parameter is required.
         self.page_shrink = page_shrink
 
     def validate(self):
@@ -12951,6 +13344,8 @@ class ListDialogueTemplateRequest(TeaModel):
         hotel_id: str = None,
     ):
         # hotelId
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -13660,9 +14055,13 @@ class ListHotelControlDeviceRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -14292,7 +14691,9 @@ class ListHotelOrderRequestPayloadPage(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -14324,6 +14725,7 @@ class ListHotelOrderRequestPayload(TeaModel):
         self,
         page: ListHotelOrderRequestPayloadPage = None,
     ):
+        # This parameter is required.
         self.page = page
 
     def validate(self):
@@ -14357,9 +14759,13 @@ class ListHotelOrderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -14405,7 +14811,9 @@ class ListHotelOrderRequest(TeaModel):
         payload: ListHotelOrderRequestPayload = None,
         user_info: ListHotelOrderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -14443,7 +14851,9 @@ class ListHotelOrderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -14772,6 +15182,7 @@ class ListHotelRoomsRequest(TeaModel):
         hotel_id: str = None,
     ):
         self.hotel_admin_room = hotel_admin_room
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -14807,6 +15218,7 @@ class ListHotelRoomsShrinkRequest(TeaModel):
         hotel_id: str = None,
     ):
         self.hotel_admin_room_shrink = hotel_admin_room_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -15005,7 +15417,9 @@ class ListHotelSceneBookItemsRequestPage(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -15040,8 +15454,12 @@ class ListHotelSceneBookItemsRequest(TeaModel):
         type: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.page = page
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15082,8 +15500,12 @@ class ListHotelSceneBookItemsShrinkRequest(TeaModel):
         type: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.page_shrink = page_shrink
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15404,6 +15826,7 @@ class ListHotelSceneItemRequestPayload(TeaModel):
         self,
         type: str = None,
     ):
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15435,9 +15858,13 @@ class ListHotelSceneItemRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -15483,7 +15910,9 @@ class ListHotelSceneItemRequest(TeaModel):
         payload: ListHotelSceneItemRequestPayload = None,
         user_info: ListHotelSceneItemRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -15521,7 +15950,9 @@ class ListHotelSceneItemShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -15924,8 +16355,10 @@ class ListHotelSceneItemsRequestListHotelSceneReq(TeaModel):
     ):
         self.category = category
         self.keywords = keywords
+        # This parameter is required.
         self.page = page
         self.status = status
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -15973,8 +16406,12 @@ class ListHotelSceneItemsRequest(TeaModel):
         list_hotel_scene_req: ListHotelSceneItemsRequestListHotelSceneReq = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # ListHotelSceneReq
+        # 
+        # This parameter is required.
         self.list_hotel_scene_req = list_hotel_scene_req
 
     def validate(self):
@@ -16010,8 +16447,12 @@ class ListHotelSceneItemsShrinkRequest(TeaModel):
         list_hotel_scene_req_shrink: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # ListHotelSceneReq
+        # 
+        # This parameter is required.
         self.list_hotel_scene_req_shrink = list_hotel_scene_req_shrink
 
     def validate(self):
@@ -16371,6 +16812,7 @@ class ListHotelServiceCategoryRequestPayload(TeaModel):
         self,
         type: str = None,
     ):
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -16398,6 +16840,7 @@ class ListHotelServiceCategoryRequest(TeaModel):
         self,
         payload: ListHotelServiceCategoryRequestPayload = None,
     ):
+        # This parameter is required.
         self.payload = payload
 
     def validate(self):
@@ -16427,6 +16870,7 @@ class ListHotelServiceCategoryShrinkRequest(TeaModel):
         self,
         payload_shrink: str = None,
     ):
+        # This parameter is required.
         self.payload_shrink = payload_shrink
 
     def validate(self):
@@ -16666,7 +17110,9 @@ class ListHotelsRequestPage(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -16701,7 +17147,9 @@ class ListHotelsRequest(TeaModel):
         status: int = None,
     ):
         self.hotel_request = hotel_request
+        # This parameter is required.
         self.page = page
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -16745,7 +17193,9 @@ class ListHotelsShrinkRequest(TeaModel):
         status: int = None,
     ):
         self.hotel_request_shrink = hotel_request_shrink
+        # This parameter is required.
         self.page_shrink = page_shrink
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -17086,6 +17536,7 @@ class ListInfraredDeviceBrandsRequest(TeaModel):
         category: str = None,
         service_provider: str = None,
     ):
+        # This parameter is required.
         self.category = category
         self.service_provider = service_provider
 
@@ -17249,8 +17700,10 @@ class ListInfraredRemoteControllersRequest(TeaModel):
         service_provider: str = None,
     ):
         self.brand = brand
+        # This parameter is required.
         self.category = category
         self.city = city
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.province = province
         self.service_provider = service_provider
@@ -17473,7 +17926,9 @@ class ListSTBServiceProvidersRequest(TeaModel):
         city: str = None,
         province: str = None,
     ):
+        # This parameter is required.
         self.city = city
+        # This parameter is required.
         self.province = province
 
     def validate(self):
@@ -17632,7 +18087,10 @@ class ListSceneCategoryRequest(TeaModel):
         type: str = None,
     ):
         # hotelId
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -17827,6 +18285,7 @@ class ListServiceQARequest(TeaModel):
         page: ListServiceQARequestPage = None,
     ):
         self.active = active
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.keyword = keyword
         self.page = page
@@ -17874,6 +18333,7 @@ class ListServiceQAShrinkRequest(TeaModel):
         page_shrink: str = None,
     ):
         self.active = active
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.keyword = keyword
         self.page_shrink = page_shrink
@@ -18197,6 +18657,7 @@ class ListTicketsRequest(TeaModel):
         type: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.is_desc = is_desc
         self.is_need_callback = is_need_callback
@@ -18286,6 +18747,7 @@ class ListTicketsShrinkRequest(TeaModel):
         type: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.is_desc = is_desc
         self.is_need_callback = is_need_callback
@@ -18727,8 +19189,11 @@ class PageGetHotelRoomDevicesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -19032,6 +19497,7 @@ class PmsEventReportRequest(TeaModel):
         self,
         payload: str = None,
     ):
+        # This parameter is required.
         self.payload = payload
 
     def validate(self):
@@ -19187,9 +19653,12 @@ class PushHotelMessageRequestPushHotelMessageReq(TeaModel):
         room_no: str = None,
         template_id: int = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.param_map = param_map
+        # This parameter is required.
         self.room_no = room_no
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -19230,6 +19699,8 @@ class PushHotelMessageRequest(TeaModel):
         push_hotel_message_req: PushHotelMessageRequestPushHotelMessageReq = None,
     ):
         # pushHotelMessageReq
+        # 
+        # This parameter is required.
         self.push_hotel_message_req = push_hotel_message_req
 
     def validate(self):
@@ -19260,6 +19731,8 @@ class PushHotelMessageShrinkRequest(TeaModel):
         push_hotel_message_req_shrink: str = None,
     ):
         # pushHotelMessageReq
+        # 
+        # This parameter is required.
         self.push_hotel_message_req_shrink = push_hotel_message_req_shrink
 
     def validate(self):
@@ -19414,7 +19887,9 @@ class PushVoiceBoxCommandsRequestCommands(TeaModel):
         command_name: str = None,
         payload: str = None,
     ):
+        # This parameter is required.
         self.command_domain = command_domain
+        # This parameter is required.
         self.command_name = command_name
         self.payload = payload
 
@@ -19453,8 +19928,11 @@ class PushVoiceBoxCommandsRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.commands = commands
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -19500,8 +19978,11 @@ class PushVoiceBoxCommandsShrinkRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.commands_shrink = commands_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -19671,9 +20152,12 @@ class PushWelcomeRequest(TeaModel):
         welcome_music_url: str = None,
         welcome_text: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
         self.welcome_music_url = welcome_music_url
+        # This parameter is required.
         self.welcome_text = welcome_text
 
     def validate(self):
@@ -19840,7 +20324,9 @@ class PushWelcomeTextAndMusicRequest(TeaModel):
         room_no: str = None,
         template_variable: Dict[str, str] = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
         self.template_variable = template_variable
 
@@ -19879,7 +20365,9 @@ class PushWelcomeTextAndMusicShrinkRequest(TeaModel):
         room_no: str = None,
         template_variable_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
         self.template_variable_shrink = template_variable_shrink
 
@@ -20131,9 +20619,13 @@ class QueryDeviceStatusRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -20989,7 +21481,9 @@ class QueryRoomControlDevicesRequest(TeaModel):
         hotel_id: str = None,
         room_no: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.room_no = room_no
 
     def validate(self):
@@ -21332,6 +21826,760 @@ class QueryRoomControlDevicesResponse(TeaModel):
         return self
 
 
+class QueryRoomControlDevicesAndStatusHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList(TeaModel):
+    def __init__(
+        self,
+        alias_list: List[str] = None,
+        category: str = None,
+        device_index: int = None,
+        device_name: str = None,
+        device_status: str = None,
+        element_code: str = None,
+        location: str = None,
+        status: Dict[str, str] = None,
+        tags: List[str] = None,
+    ):
+        self.alias_list = alias_list
+        self.category = category
+        self.device_index = device_index
+        self.device_name = device_name
+        self.device_status = device_status
+        self.element_code = element_code
+        self.location = location
+        self.status = status
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.device_index is not None:
+            result['DeviceIndex'] = self.device_index
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.element_code is not None:
+            result['ElementCode'] = self.element_code
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeviceIndex') is not None:
+            self.device_index = m.get('DeviceIndex')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('ElementCode') is not None:
+            self.element_code = m.get('ElementCode')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt(TeaModel):
+    def __init__(
+        self,
+        switch_list: List[QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList] = None,
+    ):
+        self.switch_list = switch_list
+
+    def validate(self):
+        if self.switch_list:
+            for k in self.switch_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SwitchList'] = []
+        if self.switch_list is not None:
+            for k in self.switch_list:
+                result['SwitchList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.switch_list = []
+        if m.get('SwitchList') is not None:
+            for k in m.get('SwitchList'):
+                temp_model = QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExtSwitchList()
+                self.switch_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponseBodyResultDevices(TeaModel):
+    def __init__(
+        self,
+        alias_list: List[str] = None,
+        brand: str = None,
+        city: str = None,
+        connect_type: str = None,
+        device_name: str = None,
+        device_status: str = None,
+        dn: str = None,
+        infrared_id: str = None,
+        infrared_index: str = None,
+        infrared_version: str = None,
+        multi_key_switch_ext: QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt = None,
+        name: str = None,
+        number: str = None,
+        pk: str = None,
+        province: str = None,
+        service_provider: str = None,
+        status: Dict[str, str] = None,
+    ):
+        self.alias_list = alias_list
+        self.brand = brand
+        self.city = city
+        self.connect_type = connect_type
+        self.device_name = device_name
+        self.device_status = device_status
+        self.dn = dn
+        self.infrared_id = infrared_id
+        self.infrared_index = infrared_index
+        self.infrared_version = infrared_version
+        self.multi_key_switch_ext = multi_key_switch_ext
+        self.name = name
+        self.number = number
+        self.pk = pk
+        self.province = province
+        self.service_provider = service_provider
+        self.status = status
+
+    def validate(self):
+        if self.multi_key_switch_ext:
+            self.multi_key_switch_ext.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_list is not None:
+            result['AliasList'] = self.alias_list
+        if self.brand is not None:
+            result['Brand'] = self.brand
+        if self.city is not None:
+            result['City'] = self.city
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_status is not None:
+            result['DeviceStatus'] = self.device_status
+        if self.dn is not None:
+            result['Dn'] = self.dn
+        if self.infrared_id is not None:
+            result['InfraredId'] = self.infrared_id
+        if self.infrared_index is not None:
+            result['InfraredIndex'] = self.infrared_index
+        if self.infrared_version is not None:
+            result['InfraredVersion'] = self.infrared_version
+        if self.multi_key_switch_ext is not None:
+            result['MultiKeySwitchExt'] = self.multi_key_switch_ext.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.pk is not None:
+            result['Pk'] = self.pk
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.service_provider is not None:
+            result['ServiceProvider'] = self.service_provider
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliasList') is not None:
+            self.alias_list = m.get('AliasList')
+        if m.get('Brand') is not None:
+            self.brand = m.get('Brand')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('ConnectType') is not None:
+            self.connect_type = m.get('ConnectType')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DeviceStatus') is not None:
+            self.device_status = m.get('DeviceStatus')
+        if m.get('Dn') is not None:
+            self.dn = m.get('Dn')
+        if m.get('InfraredId') is not None:
+            self.infrared_id = m.get('InfraredId')
+        if m.get('InfraredIndex') is not None:
+            self.infrared_index = m.get('InfraredIndex')
+        if m.get('InfraredVersion') is not None:
+            self.infrared_version = m.get('InfraredVersion')
+        if m.get('MultiKeySwitchExt') is not None:
+            temp_model = QueryRoomControlDevicesAndStatusResponseBodyResultDevicesMultiKeySwitchExt()
+            self.multi_key_switch_ext = temp_model.from_map(m['MultiKeySwitchExt'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('Pk') is not None:
+            self.pk = m.get('Pk')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('ServiceProvider') is not None:
+            self.service_provider = m.get('ServiceProvider')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        devices: List[QueryRoomControlDevicesAndStatusResponseBodyResultDevices] = None,
+        location: str = None,
+        location_name: str = None,
+        room_no: str = None,
+    ):
+        self.devices = devices
+        self.location = location
+        self.location_name = location_name
+        self.room_no = room_no
+
+    def validate(self):
+        if self.devices:
+            for k in self.devices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Devices'] = []
+        if self.devices is not None:
+            for k in self.devices:
+                result['Devices'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.location_name is not None:
+            result['LocationName'] = self.location_name
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.devices = []
+        if m.get('Devices') is not None:
+            for k in m.get('Devices'):
+                temp_model = QueryRoomControlDevicesAndStatusResponseBodyResultDevices()
+                self.devices.append(temp_model.from_map(k))
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('LocationName') is not None:
+            self.location_name = m.get('LocationName')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: List[QueryRoomControlDevicesAndStatusResponseBodyResult] = None,
+        status_code: int = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = QueryRoomControlDevicesAndStatusResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class QueryRoomControlDevicesAndStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryRoomControlDevicesAndStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryRoomControlDevicesAndStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryRoomStatusHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class QueryRoomStatusRequest(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+    ):
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        return self
+
+
+class QueryRoomStatusResponseBodyResultSceneList(TeaModel):
+    def __init__(
+        self,
+        scene_name: str = None,
+    ):
+        self.scene_name = scene_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        return self
+
+
+class QueryRoomStatusResponseBodyResultStatusList(TeaModel):
+    def __init__(
+        self,
+        status_name: str = None,
+        status_value: str = None,
+        update_time: str = None,
+    ):
+        self.status_name = status_name
+        self.status_value = status_value
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status_name is not None:
+            result['StatusName'] = self.status_name
+        if self.status_value is not None:
+            result['StatusValue'] = self.status_value
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StatusName') is not None:
+            self.status_name = m.get('StatusName')
+        if m.get('StatusValue') is not None:
+            self.status_value = m.get('StatusValue')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class QueryRoomStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        hotel_id: str = None,
+        room_no: str = None,
+        scene_list: List[QueryRoomStatusResponseBodyResultSceneList] = None,
+        status_list: List[QueryRoomStatusResponseBodyResultStatusList] = None,
+    ):
+        self.hotel_id = hotel_id
+        self.room_no = room_no
+        self.scene_list = scene_list
+        self.status_list = status_list
+
+    def validate(self):
+        if self.scene_list:
+            for k in self.scene_list:
+                if k:
+                    k.validate()
+        if self.status_list:
+            for k in self.status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hotel_id is not None:
+            result['HotelId'] = self.hotel_id
+        if self.room_no is not None:
+            result['RoomNo'] = self.room_no
+        result['SceneList'] = []
+        if self.scene_list is not None:
+            for k in self.scene_list:
+                result['SceneList'].append(k.to_map() if k else None)
+        result['StatusList'] = []
+        if self.status_list is not None:
+            for k in self.status_list:
+                result['StatusList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HotelId') is not None:
+            self.hotel_id = m.get('HotelId')
+        if m.get('RoomNo') is not None:
+            self.room_no = m.get('RoomNo')
+        self.scene_list = []
+        if m.get('SceneList') is not None:
+            for k in m.get('SceneList'):
+                temp_model = QueryRoomStatusResponseBodyResultSceneList()
+                self.scene_list.append(temp_model.from_map(k))
+        self.status_list = []
+        if m.get('StatusList') is not None:
+            for k in m.get('StatusList'):
+                temp_model = QueryRoomStatusResponseBodyResultStatusList()
+                self.status_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryRoomStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: QueryRoomStatusResponseBodyResult = None,
+        status_code: int = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.status_code = status_code
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryRoomStatusResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        return self
+
+
+class QueryRoomStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryRoomStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryRoomStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QuerySceneListHeaders(TeaModel):
     def __init__(
         self,
@@ -21379,6 +22627,7 @@ class QuerySceneListRequest(TeaModel):
         scene_types: List[str] = None,
         template_info_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.scene_states = scene_states
         self.scene_types = scene_types
@@ -21424,6 +22673,7 @@ class QuerySceneListShrinkRequest(TeaModel):
         scene_types_shrink: str = None,
         template_info_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.scene_states_shrink = scene_states_shrink
         self.scene_types_shrink = scene_types_shrink
@@ -21718,9 +22968,13 @@ class RemoveChildAccountAuthRequest(TeaModel):
         hotel_id: str = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.child_account_name = child_account_name
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -21888,8 +23142,12 @@ class RemoveHotelRequest(TeaModel):
         tb_open_id: str = None,
     ):
         # appkey
+        # 
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -22057,6 +23315,7 @@ class ResetWelcomeTextAndMusicRequest(TeaModel):
         self,
         hotel_id: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
 
     def validate(self):
@@ -22219,9 +23478,13 @@ class RoomCheckOutRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -22270,9 +23533,13 @@ class RoomCheckOutRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -22514,7 +23781,9 @@ class SubmitHotelOrderRequestPayloadItemList(TeaModel):
         item_id: int = None,
         quantity: int = None,
     ):
+        # This parameter is required.
         self.item_id = item_id
+        # This parameter is required.
         self.quantity = quantity
 
     def validate(self):
@@ -22547,7 +23816,9 @@ class SubmitHotelOrderRequestPayload(TeaModel):
         item_list: List[SubmitHotelOrderRequestPayloadItemList] = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.item_list = item_list
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -22591,9 +23862,13 @@ class SubmitHotelOrderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -22639,7 +23914,9 @@ class SubmitHotelOrderRequest(TeaModel):
         payload: SubmitHotelOrderRequestPayload = None,
         user_info: SubmitHotelOrderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -22677,7 +23954,9 @@ class SubmitHotelOrderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -22854,13 +24133,19 @@ class SyncDeviceStatusWithAkRequest(TeaModel):
         value: int = None,
     ):
         self.category_cn_name = category_cn_name
+        # This parameter is required.
         self.category_en_name = category_en_name
         self.device_name = device_name
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.location = location
         self.location_cn_name = location_cn_name
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.room_no = room_no
+        # This parameter is required.
         self.switch = switch
         self.fan_speed = fan_speed
         self.mode = mode
@@ -23081,17 +24366,26 @@ class UpdateBasicInfoQARequest(TeaModel):
         wifi_name: str = None,
         wifi_password: str = None,
     ):
+        # This parameter is required.
         self.check_in_time = check_in_time
+        # This parameter is required.
         self.check_out_time = check_out_time
+        # This parameter is required.
         self.hotel_address = hotel_address
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.hotel_introduction = hotel_introduction
         self.hotel_member = hotel_member
         self.hotel_service = hotel_service
+        # This parameter is required.
         self.parking_expenses = parking_expenses
+        # This parameter is required.
         self.parking_position = parking_position
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.wifi_name = wifi_name
+        # This parameter is required.
         self.wifi_password = wifi_password
 
     def validate(self):
@@ -23294,7 +24588,9 @@ class UpdateCustomQARequest(TeaModel):
         supplementary_questions: List[str] = None,
     ):
         self.answers = answers
+        # This parameter is required.
         self.custom_qaid = custom_qaid
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words = key_words
         self.major_question = major_question
@@ -23351,7 +24647,9 @@ class UpdateCustomQAShrinkRequest(TeaModel):
         supplementary_questions_shrink: str = None,
     ):
         self.answers_shrink = answers_shrink
+        # This parameter is required.
         self.custom_qaid = custom_qaid
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.key_words_shrink = key_words_shrink
         self.major_question = major_question
@@ -23537,16 +24835,19 @@ class UpdateHotelRequest(TeaModel):
         room_num: int = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
         self.est_open_time = est_open_time
         self.hotel_address = hotel_address
         self.hotel_email = hotel_email
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.hotel_name = hotel_name
         self.phone_number = phone_number
         self.related_pks = related_pks
         self.remark = remark
         self.room_num = room_num
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -23624,16 +24925,19 @@ class UpdateHotelShrinkRequest(TeaModel):
         room_num: int = None,
         tb_open_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
         self.est_open_time = est_open_time
         self.hotel_address = hotel_address
         self.hotel_email = hotel_email
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.hotel_name = hotel_name
         self.phone_number = phone_number
         self.related_pks_shrink = related_pks_shrink
         self.remark = remark
         self.room_num = room_num
+        # This parameter is required.
         self.tb_open_id = tb_open_id
 
     def validate(self):
@@ -23836,9 +25140,12 @@ class UpdateHotelAlarmRequestAlarms(TeaModel):
         room_no: str = None,
         user_open_id: str = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
+        # This parameter is required.
         self.device_open_id = device_open_id
         self.room_no = room_no
+        # This parameter is required.
         self.user_open_id = user_open_id
 
     def validate(self):
@@ -24015,7 +25322,9 @@ class UpdateHotelAlarmRequest(TeaModel):
         hotel_id: str = None,
         schedule_info: UpdateHotelAlarmRequestScheduleInfo = None,
     ):
+        # This parameter is required.
         self.alarms = alarms
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.schedule_info = schedule_info
 
@@ -24065,7 +25374,9 @@ class UpdateHotelAlarmShrinkRequest(TeaModel):
         hotel_id: str = None,
         schedule_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.alarms_shrink = alarms_shrink
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.schedule_info_shrink = schedule_info_shrink
 
@@ -24237,9 +25548,12 @@ class UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq(TeaModel):
         price: int = None,
     ):
         # icon
+        # 
+        # This parameter is required.
         self.icon = icon
         self.id = id
         self.name = name
+        # This parameter is required.
         self.price = price
 
     def validate(self):
@@ -24281,8 +25595,12 @@ class UpdateHotelSceneBookItemRequest(TeaModel):
         update_hotel_scene_book_req: UpdateHotelSceneBookItemRequestUpdateHotelSceneBookReq = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # updateHotelSceneBookReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_book_req = update_hotel_scene_book_req
 
     def validate(self):
@@ -24318,8 +25636,12 @@ class UpdateHotelSceneBookItemShrinkRequest(TeaModel):
         update_hotel_scene_book_req_shrink: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # updateHotelSceneBookReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_book_req_shrink = update_hotel_scene_book_req_shrink
 
     def validate(self):
@@ -24477,7 +25799,9 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneOperateReq(TeaModel):
         is_use_template_answer: bool = None,
         operate_type: str = None,
     ):
+        # This parameter is required.
         self.is_use_template_answer = is_use_template_answer
+        # This parameter is required.
         self.operate_type = operate_type
 
     def validate(self):
@@ -24592,8 +25916,11 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
     ):
         self.beyond_limit_reply = beyond_limit_reply
         self.delivery_method = delivery_method
+        # This parameter is required.
         self.dialogue_list = dialogue_list
         # icon
+        # 
+        # This parameter is required.
         self.icon = icon
         # itemID
         self.id = id
@@ -24601,8 +25928,10 @@ class UpdateHotelSceneItemRequestUpdateHotelSceneReq(TeaModel):
         self.limit_switch = limit_switch
         self.name = name
         self.payment_method = payment_method
+        # This parameter is required.
         self.price = price
         self.robot_name = robot_name
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -24685,10 +26014,16 @@ class UpdateHotelSceneItemRequest(TeaModel):
         update_hotel_scene_req: UpdateHotelSceneItemRequestUpdateHotelSceneReq = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # updateHotelSceneReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_operate_req = update_hotel_scene_operate_req
         # UpdateHotelSceneReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_req = update_hotel_scene_req
 
     def validate(self):
@@ -24732,10 +26067,16 @@ class UpdateHotelSceneItemShrinkRequest(TeaModel):
         update_hotel_scene_req_shrink: str = None,
     ):
         # hotelID
+        # 
+        # This parameter is required.
         self.hotel_id = hotel_id
         # updateHotelSceneReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_operate_req_shrink = update_hotel_scene_operate_req_shrink
         # UpdateHotelSceneReq
+        # 
+        # This parameter is required.
         self.update_hotel_scene_req_shrink = update_hotel_scene_req_shrink
 
     def validate(self):
@@ -24899,6 +26240,7 @@ class UpdateMessageTemplateRequest(TeaModel):
         template_name: str = None,
     ):
         self.template_detail = template_detail
+        # This parameter is required.
         self.template_id = template_id
         self.template_name = template_name
 
@@ -25107,8 +26449,11 @@ class UpdateRcuSceneRequest(TeaModel):
         scene_id: str = None,
         scene_relation_ext_dto: UpdateRcuSceneRequestSceneRelationExtDTO = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.scene_relation_ext_dto = scene_relation_ext_dto
 
     def validate(self):
@@ -25148,8 +26493,11 @@ class UpdateRcuSceneShrinkRequest(TeaModel):
         scene_id: str = None,
         scene_relation_ext_dtoshrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.scene_id = scene_id
+        # This parameter is required.
         self.scene_relation_ext_dtoshrink = scene_relation_ext_dtoshrink
 
     def validate(self):
@@ -25314,6 +26662,7 @@ class UpdateServiceQARequest(TeaModel):
         is_active: bool = None,
     ):
         self.answer = answer
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.service_qaid = service_qaid
         self.is_active = is_active
@@ -25482,8 +26831,11 @@ class UpdateTicketRequest(TeaModel):
         hotel_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.group_key = group_key
+        # This parameter is required.
         self.hotel_id = hotel_id
+        # This parameter is required.
         self.status = status
 
     def validate(self):

@@ -1,3 +1,10 @@
+2025-01-10 Version: 2.8.0
+- Support API ExecuteScene.
+- Support API PmsEventReport.
+- Support API QueryRoomControlDevicesAndStatus.
+- Support API QueryRoomStatus.
+
+
 2024-02-29 Version: 2.7.0
 - Support API PmsEventReport.
 

@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCartoonResponse:
+        """
+        @summary 添加动画
+        
+        @param request: AddCartoonRequest
+        @param headers: AddCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -88,6 +96,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCartoonResponse:
+        """
+        @summary 添加动画
+        
+        @param request: AddCartoonRequest
+        @param headers: AddCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -127,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCartoonRequest,
     ) -> ali_genieip__1__0_models.AddCartoonResponse:
+        """
+        @summary 添加动画
+        
+        @param request: AddCartoonRequest
+        @return: AddCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCartoonHeaders()
         return self.add_cartoon_with_options(request, headers, runtime)
@@ -135,6 +157,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCartoonRequest,
     ) -> ali_genieip__1__0_models.AddCartoonResponse:
+        """
+        @summary 添加动画
+        
+        @param request: AddCartoonRequest
+        @return: AddCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCartoonHeaders()
         return await self.add_cartoon_with_options_async(request, headers, runtime)
@@ -145,6 +173,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCustomQAResponse:
+        """
+        @summary 新增自定义问答
+        
+        @param tmp_req: AddCustomQARequest
+        @param headers: AddCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -198,6 +234,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCustomQAResponse:
+        """
+        @summary 新增自定义问答
+        
+        @param tmp_req: AddCustomQARequest
+        @param headers: AddCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -249,6 +293,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCustomQARequest,
     ) -> ali_genieip__1__0_models.AddCustomQAResponse:
+        """
+        @summary 新增自定义问答
+        
+        @param request: AddCustomQARequest
+        @return: AddCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCustomQAHeaders()
         return self.add_custom_qawith_options(request, headers, runtime)
@@ -257,6 +307,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCustomQARequest,
     ) -> ali_genieip__1__0_models.AddCustomQAResponse:
+        """
+        @summary 新增自定义问答
+        
+        @param request: AddCustomQARequest
+        @return: AddCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCustomQAHeaders()
         return await self.add_custom_qawith_options_async(request, headers, runtime)
@@ -267,6 +323,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCustomQAV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        """
+        @summary 添加问答V2
+        
+        @param tmp_req: AddCustomQAV2Request
+        @param headers: AddCustomQAV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomQAV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddCustomQAV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -320,6 +384,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddCustomQAV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        """
+        @summary 添加问答V2
+        
+        @param tmp_req: AddCustomQAV2Request
+        @param headers: AddCustomQAV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomQAV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddCustomQAV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -371,6 +443,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCustomQAV2Request,
     ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        """
+        @summary 添加问答V2
+        
+        @param request: AddCustomQAV2Request
+        @return: AddCustomQAV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCustomQAV2Headers()
         return self.add_custom_qav2with_options(request, headers, runtime)
@@ -379,6 +457,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddCustomQAV2Request,
     ) -> ali_genieip__1__0_models.AddCustomQAV2Response:
+        """
+        @summary 添加问答V2
+        
+        @param request: AddCustomQAV2Request
+        @return: AddCustomQAV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddCustomQAV2Headers()
         return await self.add_custom_qav2with_options_async(request, headers, runtime)
@@ -389,6 +473,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddMessageTemplateResponse:
+        """
+        @summary 添加消息模板
+        
+        @param request: AddMessageTemplateRequest
+        @param headers: AddMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_detail):
@@ -428,6 +520,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddMessageTemplateResponse:
+        """
+        @summary 添加消息模板
+        
+        @param request: AddMessageTemplateRequest
+        @param headers: AddMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_detail):
@@ -465,6 +565,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.AddMessageTemplateResponse:
+        """
+        @summary 添加消息模板
+        
+        @param request: AddMessageTemplateRequest
+        @return: AddMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddMessageTemplateHeaders()
         return self.add_message_template_with_options(request, headers, runtime)
@@ -473,6 +579,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.AddMessageTemplateResponse:
+        """
+        @summary 添加消息模板
+        
+        @param request: AddMessageTemplateRequest
+        @return: AddMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddMessageTemplateHeaders()
         return await self.add_message_template_with_options_async(request, headers, runtime)
@@ -483,6 +595,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateDisPlayModesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse:
+        """
+        @summary 新增或者编辑带屏展示模式
+        
+        @param tmp_req: AddOrUpdateDisPlayModesRequest
+        @param headers: AddOrUpdateDisPlayModesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateDisPlayModesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateDisPlayModesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -526,6 +646,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateDisPlayModesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse:
+        """
+        @summary 新增或者编辑带屏展示模式
+        
+        @param tmp_req: AddOrUpdateDisPlayModesRequest
+        @param headers: AddOrUpdateDisPlayModesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateDisPlayModesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateDisPlayModesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -567,6 +695,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateDisPlayModesRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse:
+        """
+        @summary 新增或者编辑带屏展示模式
+        
+        @param request: AddOrUpdateDisPlayModesRequest
+        @return: AddOrUpdateDisPlayModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateDisPlayModesHeaders()
         return self.add_or_update_dis_play_modes_with_options(request, headers, runtime)
@@ -575,6 +709,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateDisPlayModesRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateDisPlayModesResponse:
+        """
+        @summary 新增或者编辑带屏展示模式
+        
+        @param request: AddOrUpdateDisPlayModesRequest
+        @return: AddOrUpdateDisPlayModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateDisPlayModesHeaders()
         return await self.add_or_update_dis_play_modes_with_options_async(request, headers, runtime)
@@ -585,6 +725,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse:
+        """
+        @summary 新增或者编辑定制配置
+        
+        @param tmp_req: AddOrUpdateHotelSettingRequest
+        @param headers: AddOrUpdateHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateHotelSettingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateHotelSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -640,6 +788,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse:
+        """
+        @summary 新增或者编辑定制配置
+        
+        @param tmp_req: AddOrUpdateHotelSettingRequest
+        @param headers: AddOrUpdateHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateHotelSettingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateHotelSettingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -693,6 +849,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateHotelSettingRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse:
+        """
+        @summary 新增或者编辑定制配置
+        
+        @param request: AddOrUpdateHotelSettingRequest
+        @return: AddOrUpdateHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateHotelSettingHeaders()
         return self.add_or_update_hotel_setting_with_options(request, headers, runtime)
@@ -701,6 +863,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateHotelSettingRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateHotelSettingResponse:
+        """
+        @summary 新增或者编辑定制配置
+        
+        @param request: AddOrUpdateHotelSettingRequest
+        @return: AddOrUpdateHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateHotelSettingHeaders()
         return await self.add_or_update_hotel_setting_with_options_async(request, headers, runtime)
@@ -711,6 +879,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateScreenSaverHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse:
+        """
+        @summary 新增或者编辑带屏屏保
+        
+        @param tmp_req: AddOrUpdateScreenSaverRequest
+        @param headers: AddOrUpdateScreenSaverHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateScreenSaverResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateScreenSaverShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -754,6 +930,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateScreenSaverHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse:
+        """
+        @summary 新增或者编辑带屏屏保
+        
+        @param tmp_req: AddOrUpdateScreenSaverRequest
+        @param headers: AddOrUpdateScreenSaverHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateScreenSaverResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AddOrUpdateScreenSaverShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -795,6 +979,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateScreenSaverRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse:
+        """
+        @summary 新增或者编辑带屏屏保
+        
+        @param request: AddOrUpdateScreenSaverRequest
+        @return: AddOrUpdateScreenSaverResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateScreenSaverHeaders()
         return self.add_or_update_screen_saver_with_options(request, headers, runtime)
@@ -803,6 +993,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateScreenSaverRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateScreenSaverResponse:
+        """
+        @summary 新增或者编辑带屏屏保
+        
+        @param request: AddOrUpdateScreenSaverRequest
+        @return: AddOrUpdateScreenSaverResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateScreenSaverHeaders()
         return await self.add_or_update_screen_saver_with_options_async(request, headers, runtime)
@@ -813,6 +1009,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateWelcomeTextHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse:
+        """
+        @summary 添加/更新欢迎语信息
+        
+        @param request: AddOrUpdateWelcomeTextRequest
+        @param headers: AddOrUpdateWelcomeTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateWelcomeTextResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -854,6 +1058,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AddOrUpdateWelcomeTextHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse:
+        """
+        @summary 添加/更新欢迎语信息
+        
+        @param request: AddOrUpdateWelcomeTextRequest
+        @param headers: AddOrUpdateWelcomeTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddOrUpdateWelcomeTextResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -893,6 +1105,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateWelcomeTextRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse:
+        """
+        @summary 添加/更新欢迎语信息
+        
+        @param request: AddOrUpdateWelcomeTextRequest
+        @return: AddOrUpdateWelcomeTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateWelcomeTextHeaders()
         return self.add_or_update_welcome_text_with_options(request, headers, runtime)
@@ -901,6 +1119,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AddOrUpdateWelcomeTextRequest,
     ) -> ali_genieip__1__0_models.AddOrUpdateWelcomeTextResponse:
+        """
+        @summary 添加/更新欢迎语信息
+        
+        @param request: AddOrUpdateWelcomeTextRequest
+        @return: AddOrUpdateWelcomeTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AddOrUpdateWelcomeTextHeaders()
         return await self.add_or_update_welcome_text_with_options_async(request, headers, runtime)
@@ -911,6 +1135,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AuditHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AuditHotelResponse:
+        """
+        @summary 审批酒店
+        
+        @param tmp_req: AuditHotelRequest
+        @param headers: AuditHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AuditHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -952,6 +1184,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.AuditHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.AuditHotelResponse:
+        """
+        @summary 审批酒店
+        
+        @param tmp_req: AuditHotelRequest
+        @param headers: AuditHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.AuditHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -991,6 +1231,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AuditHotelRequest,
     ) -> ali_genieip__1__0_models.AuditHotelResponse:
+        """
+        @summary 审批酒店
+        
+        @param request: AuditHotelRequest
+        @return: AuditHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AuditHotelHeaders()
         return self.audit_hotel_with_options(request, headers, runtime)
@@ -999,6 +1245,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.AuditHotelRequest,
     ) -> ali_genieip__1__0_models.AuditHotelResponse:
+        """
+        @summary 审批酒店
+        
+        @param request: AuditHotelRequest
+        @return: AuditHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.AuditHotelHeaders()
         return await self.audit_hotel_with_options_async(request, headers, runtime)
@@ -1009,6 +1261,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.BatchAddHotelRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.BatchAddHotelRoomResponse:
+        """
+        @summary 批量创建房间
+        
+        @param tmp_req: BatchAddHotelRoomRequest
+        @param headers: BatchAddHotelRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddHotelRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.BatchAddHotelRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1052,6 +1312,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.BatchAddHotelRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.BatchAddHotelRoomResponse:
+        """
+        @summary 批量创建房间
+        
+        @param tmp_req: BatchAddHotelRoomRequest
+        @param headers: BatchAddHotelRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddHotelRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.BatchAddHotelRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1093,6 +1361,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.BatchAddHotelRoomRequest,
     ) -> ali_genieip__1__0_models.BatchAddHotelRoomResponse:
+        """
+        @summary 批量创建房间
+        
+        @param request: BatchAddHotelRoomRequest
+        @return: BatchAddHotelRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.BatchAddHotelRoomHeaders()
         return self.batch_add_hotel_room_with_options(request, headers, runtime)
@@ -1101,6 +1375,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.BatchAddHotelRoomRequest,
     ) -> ali_genieip__1__0_models.BatchAddHotelRoomResponse:
+        """
+        @summary 批量创建房间
+        
+        @param request: BatchAddHotelRoomRequest
+        @return: BatchAddHotelRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.BatchAddHotelRoomHeaders()
         return await self.batch_add_hotel_room_with_options_async(request, headers, runtime)
@@ -1111,6 +1391,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.BatchDeleteHotelRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.BatchDeleteHotelRoomResponse:
+        """
+        @summary 批量删除房间
+        
+        @param tmp_req: BatchDeleteHotelRoomRequest
+        @param headers: BatchDeleteHotelRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteHotelRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.BatchDeleteHotelRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1154,6 +1442,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.BatchDeleteHotelRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.BatchDeleteHotelRoomResponse:
+        """
+        @summary 批量删除房间
+        
+        @param tmp_req: BatchDeleteHotelRoomRequest
+        @param headers: BatchDeleteHotelRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteHotelRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.BatchDeleteHotelRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1195,6 +1491,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.BatchDeleteHotelRoomRequest,
     ) -> ali_genieip__1__0_models.BatchDeleteHotelRoomResponse:
+        """
+        @summary 批量删除房间
+        
+        @param request: BatchDeleteHotelRoomRequest
+        @return: BatchDeleteHotelRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.BatchDeleteHotelRoomHeaders()
         return self.batch_delete_hotel_room_with_options(request, headers, runtime)
@@ -1203,6 +1505,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.BatchDeleteHotelRoomRequest,
     ) -> ali_genieip__1__0_models.BatchDeleteHotelRoomResponse:
+        """
+        @summary 批量删除房间
+        
+        @param request: BatchDeleteHotelRoomRequest
+        @return: BatchDeleteHotelRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.BatchDeleteHotelRoomHeaders()
         return await self.batch_delete_hotel_room_with_options_async(request, headers, runtime)
@@ -1213,6 +1521,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CheckoutWithAKHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CheckoutWithAKResponse:
+        """
+        @summary 酒店退房，清楚例如闹钟等定时信息
+        
+        @param request: CheckoutWithAKRequest
+        @param headers: CheckoutWithAKHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckoutWithAKResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -1252,6 +1568,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CheckoutWithAKHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CheckoutWithAKResponse:
+        """
+        @summary 酒店退房，清楚例如闹钟等定时信息
+        
+        @param request: CheckoutWithAKRequest
+        @param headers: CheckoutWithAKHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckoutWithAKResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -1289,6 +1613,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CheckoutWithAKRequest,
     ) -> ali_genieip__1__0_models.CheckoutWithAKResponse:
+        """
+        @summary 酒店退房，清楚例如闹钟等定时信息
+        
+        @param request: CheckoutWithAKRequest
+        @return: CheckoutWithAKResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CheckoutWithAKHeaders()
         return self.checkout_with_akwith_options(request, headers, runtime)
@@ -1297,6 +1627,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CheckoutWithAKRequest,
     ) -> ali_genieip__1__0_models.CheckoutWithAKResponse:
+        """
+        @summary 酒店退房，清楚例如闹钟等定时信息
+        
+        @param request: CheckoutWithAKRequest
+        @return: CheckoutWithAKResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CheckoutWithAKHeaders()
         return await self.checkout_with_akwith_options_async(request, headers, runtime)
@@ -1307,6 +1643,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ChildAccountAuthHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ChildAccountAuthResponse:
+        """
+        @summary 子账号授权
+        
+        @param request: ChildAccountAuthRequest
+        @param headers: ChildAccountAuthHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChildAccountAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -1350,6 +1694,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ChildAccountAuthHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ChildAccountAuthResponse:
+        """
+        @summary 子账号授权
+        
+        @param request: ChildAccountAuthRequest
+        @param headers: ChildAccountAuthHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChildAccountAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account):
@@ -1391,6 +1743,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ChildAccountAuthRequest,
     ) -> ali_genieip__1__0_models.ChildAccountAuthResponse:
+        """
+        @summary 子账号授权
+        
+        @param request: ChildAccountAuthRequest
+        @return: ChildAccountAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ChildAccountAuthHeaders()
         return self.child_account_auth_with_options(request, headers, runtime)
@@ -1399,6 +1757,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ChildAccountAuthRequest,
     ) -> ali_genieip__1__0_models.ChildAccountAuthResponse:
+        """
+        @summary 子账号授权
+        
+        @param request: ChildAccountAuthRequest
+        @return: ChildAccountAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ChildAccountAuthHeaders()
         return await self.child_account_auth_with_options_async(request, headers, runtime)
@@ -1409,6 +1773,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ControlRoomDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        """
+        @summary 控制房间内设备
+        
+        @param tmp_req: ControlRoomDeviceRequest
+        @param headers: ControlRoomDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ControlRoomDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ControlRoomDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1460,6 +1832,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ControlRoomDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        """
+        @summary 控制房间内设备
+        
+        @param tmp_req: ControlRoomDeviceRequest
+        @param headers: ControlRoomDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ControlRoomDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ControlRoomDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1509,6 +1889,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ControlRoomDeviceRequest,
     ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        """
+        @summary 控制房间内设备
+        
+        @param request: ControlRoomDeviceRequest
+        @return: ControlRoomDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ControlRoomDeviceHeaders()
         return self.control_room_device_with_options(request, headers, runtime)
@@ -1517,6 +1903,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ControlRoomDeviceRequest,
     ) -> ali_genieip__1__0_models.ControlRoomDeviceResponse:
+        """
+        @summary 控制房间内设备
+        
+        @param request: ControlRoomDeviceRequest
+        @return: ControlRoomDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ControlRoomDeviceHeaders()
         return await self.control_room_device_with_options_async(request, headers, runtime)
@@ -1527,6 +1919,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
+        """
+        @summary 创建酒店项目
+        
+        @param tmp_req: CreateHotelRequest
+        @param headers: CreateHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1588,6 +1988,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
+        """
+        @summary 创建酒店项目
+        
+        @param tmp_req: CreateHotelRequest
+        @param headers: CreateHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1647,6 +2055,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateHotelRequest,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
+        """
+        @summary 创建酒店项目
+        
+        @param request: CreateHotelRequest
+        @return: CreateHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateHotelHeaders()
         return self.create_hotel_with_options(request, headers, runtime)
@@ -1655,6 +2069,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateHotelRequest,
     ) -> ali_genieip__1__0_models.CreateHotelResponse:
+        """
+        @summary 创建酒店项目
+        
+        @param request: CreateHotelRequest
+        @return: CreateHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateHotelHeaders()
         return await self.create_hotel_with_options_async(request, headers, runtime)
@@ -1665,6 +2085,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelAlarmResponse:
+        """
+        @summary 批量创建闹钟
+        
+        @param tmp_req: CreateHotelAlarmRequest
+        @param headers: CreateHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1714,6 +2142,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateHotelAlarmResponse:
+        """
+        @summary 批量创建闹钟
+        
+        @param tmp_req: CreateHotelAlarmRequest
+        @param headers: CreateHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1761,6 +2197,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.CreateHotelAlarmResponse:
+        """
+        @summary 批量创建闹钟
+        
+        @param request: CreateHotelAlarmRequest
+        @return: CreateHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateHotelAlarmHeaders()
         return self.create_hotel_alarm_with_options(request, headers, runtime)
@@ -1769,6 +2211,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.CreateHotelAlarmResponse:
+        """
+        @summary 批量创建闹钟
+        
+        @param request: CreateHotelAlarmRequest
+        @return: CreateHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateHotelAlarmHeaders()
         return await self.create_hotel_alarm_with_options_async(request, headers, runtime)
@@ -1779,6 +2227,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        """
+        @summary 酒店rcu自定义场景创建
+        
+        @param tmp_req: CreateRcuSceneRequest
+        @param headers: CreateRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRcuSceneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateRcuSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1824,6 +2280,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.CreateRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        """
+        @summary 酒店rcu自定义场景创建
+        
+        @param tmp_req: CreateRcuSceneRequest
+        @param headers: CreateRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRcuSceneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.CreateRcuSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1867,6 +2331,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateRcuSceneRequest,
     ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        """
+        @summary 酒店rcu自定义场景创建
+        
+        @param request: CreateRcuSceneRequest
+        @return: CreateRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateRcuSceneHeaders()
         return self.create_rcu_scene_with_options(request, headers, runtime)
@@ -1875,6 +2345,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.CreateRcuSceneRequest,
     ) -> ali_genieip__1__0_models.CreateRcuSceneResponse:
+        """
+        @summary 酒店rcu自定义场景创建
+        
+        @param request: CreateRcuSceneRequest
+        @return: CreateRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.CreateRcuSceneHeaders()
         return await self.create_rcu_scene_with_options_async(request, headers, runtime)
@@ -1885,6 +2361,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteCartoonResponse:
+        """
+        @summary 删除动画
+        
+        @param request: DeleteCartoonRequest
+        @param headers: DeleteCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -1922,6 +2406,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteCartoonResponse:
+        """
+        @summary 删除动画
+        
+        @param request: DeleteCartoonRequest
+        @param headers: DeleteCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -1957,6 +2449,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteCartoonRequest,
     ) -> ali_genieip__1__0_models.DeleteCartoonResponse:
+        """
+        @summary 删除动画
+        
+        @param request: DeleteCartoonRequest
+        @return: DeleteCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteCartoonHeaders()
         return self.delete_cartoon_with_options(request, headers, runtime)
@@ -1965,6 +2463,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteCartoonRequest,
     ) -> ali_genieip__1__0_models.DeleteCartoonResponse:
+        """
+        @summary 删除动画
+        
+        @param request: DeleteCartoonRequest
+        @return: DeleteCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteCartoonHeaders()
         return await self.delete_cartoon_with_options_async(request, headers, runtime)
@@ -1975,6 +2479,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteCustomQAResponse:
+        """
+        @summary 删除自定义问答
+        
+        @param tmp_req: DeleteCustomQARequest
+        @param headers: DeleteCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeleteCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2018,6 +2530,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteCustomQAResponse:
+        """
+        @summary 删除自定义问答
+        
+        @param tmp_req: DeleteCustomQARequest
+        @param headers: DeleteCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeleteCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2059,6 +2579,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteCustomQARequest,
     ) -> ali_genieip__1__0_models.DeleteCustomQAResponse:
+        """
+        @summary 删除自定义问答
+        
+        @param request: DeleteCustomQARequest
+        @return: DeleteCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteCustomQAHeaders()
         return self.delete_custom_qawith_options(request, headers, runtime)
@@ -2067,6 +2593,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteCustomQARequest,
     ) -> ali_genieip__1__0_models.DeleteCustomQAResponse:
+        """
+        @summary 删除自定义问答
+        
+        @param request: DeleteCustomQARequest
+        @return: DeleteCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteCustomQAHeaders()
         return await self.delete_custom_qawith_options_async(request, headers, runtime)
@@ -2077,6 +2609,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelAlarmResponse:
+        """
+        @summary 删除酒店闹钟
+        
+        @param tmp_req: DeleteHotelAlarmRequest
+        @param headers: DeleteHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeleteHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2120,6 +2660,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelAlarmResponse:
+        """
+        @summary 删除酒店闹钟
+        
+        @param tmp_req: DeleteHotelAlarmRequest
+        @param headers: DeleteHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeleteHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2161,6 +2709,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelAlarmResponse:
+        """
+        @summary 删除酒店闹钟
+        
+        @param request: DeleteHotelAlarmRequest
+        @return: DeleteHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelAlarmHeaders()
         return self.delete_hotel_alarm_with_options(request, headers, runtime)
@@ -2169,6 +2723,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelAlarmResponse:
+        """
+        @summary 删除酒店闹钟
+        
+        @param request: DeleteHotelAlarmRequest
+        @return: DeleteHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelAlarmHeaders()
         return await self.delete_hotel_alarm_with_options_async(request, headers, runtime)
@@ -2179,6 +2739,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订删除
+        
+        @param request: DeleteHotelSceneBookItemRequest
+        @param headers: DeleteHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2220,6 +2788,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订删除
+        
+        @param request: DeleteHotelSceneBookItemRequest
+        @param headers: DeleteHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2259,6 +2835,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订删除
+        
+        @param request: DeleteHotelSceneBookItemRequest
+        @return: DeleteHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelSceneBookItemHeaders()
         return self.delete_hotel_scene_book_item_with_options(request, headers, runtime)
@@ -2267,6 +2849,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订删除
+        
+        @param request: DeleteHotelSceneBookItemRequest
+        @return: DeleteHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelSceneBookItemHeaders()
         return await self.delete_hotel_scene_book_item_with_options_async(request, headers, runtime)
@@ -2277,6 +2865,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelSettingResponse:
+        """
+        @summary 删除定制配置
+        
+        @param request: DeleteHotelSettingRequest
+        @param headers: DeleteHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelSettingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2316,6 +2912,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteHotelSettingResponse:
+        """
+        @summary 删除定制配置
+        
+        @param request: DeleteHotelSettingRequest
+        @param headers: DeleteHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHotelSettingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2353,6 +2957,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelSettingRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelSettingResponse:
+        """
+        @summary 删除定制配置
+        
+        @param request: DeleteHotelSettingRequest
+        @return: DeleteHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelSettingHeaders()
         return self.delete_hotel_setting_with_options(request, headers, runtime)
@@ -2361,6 +2971,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteHotelSettingRequest,
     ) -> ali_genieip__1__0_models.DeleteHotelSettingResponse:
+        """
+        @summary 删除定制配置
+        
+        @param request: DeleteHotelSettingRequest
+        @return: DeleteHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteHotelSettingHeaders()
         return await self.delete_hotel_setting_with_options_async(request, headers, runtime)
@@ -2371,6 +2987,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteMessageTemplateResponse:
+        """
+        @summary 删除消息通知模板
+        
+        @param request: DeleteMessageTemplateRequest
+        @param headers: DeleteMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2408,6 +3032,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteMessageTemplateResponse:
+        """
+        @summary 删除消息通知模板
+        
+        @param request: DeleteMessageTemplateRequest
+        @param headers: DeleteMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2443,6 +3075,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.DeleteMessageTemplateResponse:
+        """
+        @summary 删除消息通知模板
+        
+        @param request: DeleteMessageTemplateRequest
+        @return: DeleteMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteMessageTemplateHeaders()
         return self.delete_message_template_with_options(request, headers, runtime)
@@ -2451,6 +3089,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.DeleteMessageTemplateResponse:
+        """
+        @summary 删除消息通知模板
+        
+        @param request: DeleteMessageTemplateRequest
+        @return: DeleteMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteMessageTemplateHeaders()
         return await self.delete_message_template_with_options_async(request, headers, runtime)
@@ -2461,6 +3105,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        """
+        @summary 删除酒店自定义rcu场景
+        
+        @param request: DeleteRcuSceneRequest
+        @param headers: DeleteRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRcuSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2500,6 +3152,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeleteRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        """
+        @summary 删除酒店自定义rcu场景
+        
+        @param request: DeleteRcuSceneRequest
+        @param headers: DeleteRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRcuSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2537,6 +3197,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
     ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        """
+        @summary 删除酒店自定义rcu场景
+        
+        @param request: DeleteRcuSceneRequest
+        @return: DeleteRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteRcuSceneHeaders()
         return self.delete_rcu_scene_with_options(request, headers, runtime)
@@ -2545,6 +3211,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeleteRcuSceneRequest,
     ) -> ali_genieip__1__0_models.DeleteRcuSceneResponse:
+        """
+        @summary 删除酒店自定义rcu场景
+        
+        @param request: DeleteRcuSceneRequest
+        @return: DeleteRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeleteRcuSceneHeaders()
         return await self.delete_rcu_scene_with_options_async(request, headers, runtime)
@@ -2555,6 +3227,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeviceControlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeviceControlResponse:
+        """
+        @summary 设备控制
+        
+        @param tmp_req: DeviceControlRequest
+        @param headers: DeviceControlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeviceControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeviceControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2600,6 +3280,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.DeviceControlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.DeviceControlResponse:
+        """
+        @summary 设备控制
+        
+        @param tmp_req: DeviceControlRequest
+        @param headers: DeviceControlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeviceControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.DeviceControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2643,6 +3331,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeviceControlRequest,
     ) -> ali_genieip__1__0_models.DeviceControlResponse:
+        """
+        @summary 设备控制
+        
+        @param request: DeviceControlRequest
+        @return: DeviceControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeviceControlHeaders()
         return self.device_control_with_options(request, headers, runtime)
@@ -2651,9 +3345,141 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.DeviceControlRequest,
     ) -> ali_genieip__1__0_models.DeviceControlResponse:
+        """
+        @summary 设备控制
+        
+        @param request: DeviceControlRequest
+        @return: DeviceControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.DeviceControlHeaders()
         return await self.device_control_with_options_async(request, headers, runtime)
+
+    def execute_scene_with_options(
+        self,
+        request: ali_genieip__1__0_models.ExecuteSceneRequest,
+        headers: ali_genieip__1__0_models.ExecuteSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ExecuteSceneResponse:
+        """
+        @summary 控制房间场景
+        
+        @param request: ExecuteSceneRequest
+        @param headers: ExecuteSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSceneResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.scene_name):
+            body['SceneName'] = request.scene_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/executeScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ExecuteSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_scene_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.ExecuteSceneRequest,
+        headers: ali_genieip__1__0_models.ExecuteSceneHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.ExecuteSceneResponse:
+        """
+        @summary 控制房间场景
+        
+        @param request: ExecuteSceneRequest
+        @param headers: ExecuteSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSceneResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        if not UtilClient.is_unset(request.scene_name):
+            body['SceneName'] = request.scene_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteScene',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/executeScene',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.ExecuteSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_scene(
+        self,
+        request: ali_genieip__1__0_models.ExecuteSceneRequest,
+    ) -> ali_genieip__1__0_models.ExecuteSceneResponse:
+        """
+        @summary 控制房间场景
+        
+        @param request: ExecuteSceneRequest
+        @return: ExecuteSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ExecuteSceneHeaders()
+        return self.execute_scene_with_options(request, headers, runtime)
+
+    async def execute_scene_async(
+        self,
+        request: ali_genieip__1__0_models.ExecuteSceneRequest,
+    ) -> ali_genieip__1__0_models.ExecuteSceneResponse:
+        """
+        @summary 控制房间场景
+        
+        @param request: ExecuteSceneRequest
+        @return: ExecuteSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.ExecuteSceneHeaders()
+        return await self.execute_scene_with_options_async(request, headers, runtime)
 
     def get_basic_info_qawith_options(
         self,
@@ -2661,6 +3487,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetBasicInfoQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetBasicInfoQAResponse:
+        """
+        @summary 获取基础信息问答
+        
+        @param request: GetBasicInfoQARequest
+        @param headers: GetBasicInfoQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBasicInfoQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2698,6 +3532,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetBasicInfoQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetBasicInfoQAResponse:
+        """
+        @summary 获取基础信息问答
+        
+        @param request: GetBasicInfoQARequest
+        @param headers: GetBasicInfoQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBasicInfoQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2733,6 +3575,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetBasicInfoQARequest,
     ) -> ali_genieip__1__0_models.GetBasicInfoQAResponse:
+        """
+        @summary 获取基础信息问答
+        
+        @param request: GetBasicInfoQARequest
+        @return: GetBasicInfoQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetBasicInfoQAHeaders()
         return self.get_basic_info_qawith_options(request, headers, runtime)
@@ -2741,6 +3589,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetBasicInfoQARequest,
     ) -> ali_genieip__1__0_models.GetBasicInfoQAResponse:
+        """
+        @summary 获取基础信息问答
+        
+        @param request: GetBasicInfoQARequest
+        @return: GetBasicInfoQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetBasicInfoQAHeaders()
         return await self.get_basic_info_qawith_options_async(request, headers, runtime)
@@ -2751,6 +3605,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetCartoonResponse:
+        """
+        @summary 查询动画
+        
+        @param request: GetCartoonRequest
+        @param headers: GetCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2788,6 +3650,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetCartoonHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetCartoonResponse:
+        """
+        @summary 查询动画
+        
+        @param request: GetCartoonRequest
+        @param headers: GetCartoonHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCartoonResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -2823,6 +3693,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetCartoonRequest,
     ) -> ali_genieip__1__0_models.GetCartoonResponse:
+        """
+        @summary 查询动画
+        
+        @param request: GetCartoonRequest
+        @return: GetCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetCartoonHeaders()
         return self.get_cartoon_with_options(request, headers, runtime)
@@ -2831,6 +3707,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetCartoonRequest,
     ) -> ali_genieip__1__0_models.GetCartoonResponse:
+        """
+        @summary 查询动画
+        
+        @param request: GetCartoonRequest
+        @return: GetCartoonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetCartoonHeaders()
         return await self.get_cartoon_with_options_async(request, headers, runtime)
@@ -2841,6 +3723,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        """
+        @summary 获取当前设备的通话信息
+        
+        @param tmp_req: GetHotelContactByGenieDeviceRequest
+        @param headers: GetHotelContactByGenieDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactByGenieDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactByGenieDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2886,6 +3776,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        """
+        @summary 获取当前设备的通话信息
+        
+        @param tmp_req: GetHotelContactByGenieDeviceRequest
+        @param headers: GetHotelContactByGenieDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactByGenieDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactByGenieDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2929,6 +3827,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        """
+        @summary 获取当前设备的通话信息
+        
+        @param request: GetHotelContactByGenieDeviceRequest
+        @return: GetHotelContactByGenieDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders()
         return self.get_hotel_contact_by_genie_device_with_options(request, headers, runtime)
@@ -2937,6 +3841,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactByGenieDeviceRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactByGenieDeviceResponse:
+        """
+        @summary 获取当前设备的通话信息
+        
+        @param request: GetHotelContactByGenieDeviceRequest
+        @return: GetHotelContactByGenieDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactByGenieDeviceHeaders()
         return await self.get_hotel_contact_by_genie_device_with_options_async(request, headers, runtime)
@@ -2947,6 +3857,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactByNumberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactByNumberResponse:
+        """
+        @summary 根据号码获取酒店联系人
+        
+        @param tmp_req: GetHotelContactByNumberRequest
+        @param headers: GetHotelContactByNumberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactByNumberResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactByNumberShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2992,6 +3910,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactByNumberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactByNumberResponse:
+        """
+        @summary 根据号码获取酒店联系人
+        
+        @param tmp_req: GetHotelContactByNumberRequest
+        @param headers: GetHotelContactByNumberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactByNumberResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactByNumberShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3035,6 +3961,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactByNumberRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactByNumberResponse:
+        """
+        @summary 根据号码获取酒店联系人
+        
+        @param request: GetHotelContactByNumberRequest
+        @return: GetHotelContactByNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactByNumberHeaders()
         return self.get_hotel_contact_by_number_with_options(request, headers, runtime)
@@ -3043,6 +3975,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactByNumberRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactByNumberResponse:
+        """
+        @summary 根据号码获取酒店联系人
+        
+        @param request: GetHotelContactByNumberRequest
+        @return: GetHotelContactByNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactByNumberHeaders()
         return await self.get_hotel_contact_by_number_with_options_async(request, headers, runtime)
@@ -3053,6 +3991,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactsResponse:
+        """
+        @summary 获取酒店联系人
+        
+        @param tmp_req: GetHotelContactsRequest
+        @param headers: GetHotelContactsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3094,6 +4040,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelContactsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelContactsResponse:
+        """
+        @summary 获取酒店联系人
+        
+        @param tmp_req: GetHotelContactsRequest
+        @param headers: GetHotelContactsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelContactsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelContactsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3133,6 +4087,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactsRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactsResponse:
+        """
+        @summary 获取酒店联系人
+        
+        @param request: GetHotelContactsRequest
+        @return: GetHotelContactsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactsHeaders()
         return self.get_hotel_contacts_with_options(request, headers, runtime)
@@ -3141,6 +4101,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelContactsRequest,
     ) -> ali_genieip__1__0_models.GetHotelContactsResponse:
+        """
+        @summary 获取酒店联系人
+        
+        @param request: GetHotelContactsRequest
+        @return: GetHotelContactsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelContactsHeaders()
         return await self.get_hotel_contacts_with_options_async(request, headers, runtime)
@@ -3151,6 +4117,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelHomeBackImageAndModesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse:
+        """
+        @summary 获取首页背景图和场景模式
+        
+        @param tmp_req: GetHotelHomeBackImageAndModesRequest
+        @param headers: GetHotelHomeBackImageAndModesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelHomeBackImageAndModesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelHomeBackImageAndModesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3192,6 +4166,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelHomeBackImageAndModesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse:
+        """
+        @summary 获取首页背景图和场景模式
+        
+        @param tmp_req: GetHotelHomeBackImageAndModesRequest
+        @param headers: GetHotelHomeBackImageAndModesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelHomeBackImageAndModesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelHomeBackImageAndModesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3231,6 +4213,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelHomeBackImageAndModesRequest,
     ) -> ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse:
+        """
+        @summary 获取首页背景图和场景模式
+        
+        @param request: GetHotelHomeBackImageAndModesRequest
+        @return: GetHotelHomeBackImageAndModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelHomeBackImageAndModesHeaders()
         return self.get_hotel_home_back_image_and_modes_with_options(request, headers, runtime)
@@ -3239,6 +4227,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelHomeBackImageAndModesRequest,
     ) -> ali_genieip__1__0_models.GetHotelHomeBackImageAndModesResponse:
+        """
+        @summary 获取首页背景图和场景模式
+        
+        @param request: GetHotelHomeBackImageAndModesRequest
+        @return: GetHotelHomeBackImageAndModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelHomeBackImageAndModesHeaders()
         return await self.get_hotel_home_back_image_and_modes_with_options_async(request, headers, runtime)
@@ -3249,6 +4243,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelNoticeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelNoticeResponse:
+        """
+        @summary 获取酒店通知
+        
+        @param tmp_req: GetHotelNoticeRequest
+        @param headers: GetHotelNoticeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelNoticeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelNoticeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3290,6 +4292,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelNoticeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelNoticeResponse:
+        """
+        @summary 获取酒店通知
+        
+        @param tmp_req: GetHotelNoticeRequest
+        @param headers: GetHotelNoticeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelNoticeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelNoticeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3329,6 +4339,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelNoticeRequest,
     ) -> ali_genieip__1__0_models.GetHotelNoticeResponse:
+        """
+        @summary 获取酒店通知
+        
+        @param request: GetHotelNoticeRequest
+        @return: GetHotelNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelNoticeHeaders()
         return self.get_hotel_notice_with_options(request, headers, runtime)
@@ -3337,6 +4353,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelNoticeRequest,
     ) -> ali_genieip__1__0_models.GetHotelNoticeResponse:
+        """
+        @summary 获取酒店通知
+        
+        @param request: GetHotelNoticeRequest
+        @return: GetHotelNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelNoticeHeaders()
         return await self.get_hotel_notice_with_options_async(request, headers, runtime)
@@ -3347,6 +4369,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelNoticeV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelNoticeV2Response:
+        """
+        @summary 获取酒店通知
+        
+        @param tmp_req: GetHotelNoticeV2Request
+        @param headers: GetHotelNoticeV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelNoticeV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelNoticeV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3388,6 +4418,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelNoticeV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelNoticeV2Response:
+        """
+        @summary 获取酒店通知
+        
+        @param tmp_req: GetHotelNoticeV2Request
+        @param headers: GetHotelNoticeV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelNoticeV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelNoticeV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3427,6 +4465,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelNoticeV2Request,
     ) -> ali_genieip__1__0_models.GetHotelNoticeV2Response:
+        """
+        @summary 获取酒店通知
+        
+        @param request: GetHotelNoticeV2Request
+        @return: GetHotelNoticeV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelNoticeV2Headers()
         return self.get_hotel_notice_v2with_options(request, headers, runtime)
@@ -3435,6 +4479,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelNoticeV2Request,
     ) -> ali_genieip__1__0_models.GetHotelNoticeV2Response:
+        """
+        @summary 获取酒店通知
+        
+        @param request: GetHotelNoticeV2Request
+        @return: GetHotelNoticeV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelNoticeV2Headers()
         return await self.get_hotel_notice_v2with_options_async(request, headers, runtime)
@@ -3445,6 +4495,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelOrderDetailResponse:
+        """
+        @summary 获取酒店订单详情
+        
+        @param tmp_req: GetHotelOrderDetailRequest
+        @param headers: GetHotelOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelOrderDetailResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelOrderDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3486,6 +4544,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelOrderDetailResponse:
+        """
+        @summary 获取酒店订单详情
+        
+        @param tmp_req: GetHotelOrderDetailRequest
+        @param headers: GetHotelOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelOrderDetailResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelOrderDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3525,6 +4591,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelOrderDetailRequest,
     ) -> ali_genieip__1__0_models.GetHotelOrderDetailResponse:
+        """
+        @summary 获取酒店订单详情
+        
+        @param request: GetHotelOrderDetailRequest
+        @return: GetHotelOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelOrderDetailHeaders()
         return self.get_hotel_order_detail_with_options(request, headers, runtime)
@@ -3533,6 +4605,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelOrderDetailRequest,
     ) -> ali_genieip__1__0_models.GetHotelOrderDetailResponse:
+        """
+        @summary 获取酒店订单详情
+        
+        @param request: GetHotelOrderDetailRequest
+        @return: GetHotelOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelOrderDetailHeaders()
         return await self.get_hotel_order_detail_with_options_async(request, headers, runtime)
@@ -3543,6 +4621,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelRoomDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelRoomDeviceResponse:
+        """
+        @summary 获取酒店房间猫精设备信息
+        
+        @param request: GetHotelRoomDeviceRequest
+        @param headers: GetHotelRoomDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelRoomDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -3582,6 +4668,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelRoomDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelRoomDeviceResponse:
+        """
+        @summary 获取酒店房间猫精设备信息
+        
+        @param request: GetHotelRoomDeviceRequest
+        @param headers: GetHotelRoomDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelRoomDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -3619,6 +4713,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelRoomDeviceRequest,
     ) -> ali_genieip__1__0_models.GetHotelRoomDeviceResponse:
+        """
+        @summary 获取酒店房间猫精设备信息
+        
+        @param request: GetHotelRoomDeviceRequest
+        @return: GetHotelRoomDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelRoomDeviceHeaders()
         return self.get_hotel_room_device_with_options(request, headers, runtime)
@@ -3627,6 +4727,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelRoomDeviceRequest,
     ) -> ali_genieip__1__0_models.GetHotelRoomDeviceResponse:
+        """
+        @summary 获取酒店房间猫精设备信息
+        
+        @param request: GetHotelRoomDeviceRequest
+        @return: GetHotelRoomDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelRoomDeviceHeaders()
         return await self.get_hotel_room_device_with_options_async(request, headers, runtime)
@@ -3637,6 +4743,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSampleUtterancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSampleUtterancesResponse:
+        """
+        @summary 获取推荐语料
+        
+        @param tmp_req: GetHotelSampleUtterancesRequest
+        @param headers: GetHotelSampleUtterancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSampleUtterancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelSampleUtterancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3678,6 +4792,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSampleUtterancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSampleUtterancesResponse:
+        """
+        @summary 获取推荐语料
+        
+        @param tmp_req: GetHotelSampleUtterancesRequest
+        @param headers: GetHotelSampleUtterancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSampleUtterancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelSampleUtterancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3717,6 +4839,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSampleUtterancesRequest,
     ) -> ali_genieip__1__0_models.GetHotelSampleUtterancesResponse:
+        """
+        @summary 获取推荐语料
+        
+        @param request: GetHotelSampleUtterancesRequest
+        @return: GetHotelSampleUtterancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSampleUtterancesHeaders()
         return self.get_hotel_sample_utterances_with_options(request, headers, runtime)
@@ -3725,6 +4853,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSampleUtterancesRequest,
     ) -> ali_genieip__1__0_models.GetHotelSampleUtterancesResponse:
+        """
+        @summary 获取推荐语料
+        
+        @param request: GetHotelSampleUtterancesRequest
+        @return: GetHotelSampleUtterancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSampleUtterancesHeaders()
         return await self.get_hotel_sample_utterances_with_options_async(request, headers, runtime)
@@ -3735,6 +4869,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSceneItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSceneItemDetailResponse:
+        """
+        @summary 酒店场景详情
+        
+        @param request: GetHotelSceneItemDetailRequest
+        @param headers: GetHotelSceneItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSceneItemDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -3776,6 +4918,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSceneItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSceneItemDetailResponse:
+        """
+        @summary 酒店场景详情
+        
+        @param request: GetHotelSceneItemDetailRequest
+        @param headers: GetHotelSceneItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSceneItemDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -3815,6 +4965,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSceneItemDetailRequest,
     ) -> ali_genieip__1__0_models.GetHotelSceneItemDetailResponse:
+        """
+        @summary 酒店场景详情
+        
+        @param request: GetHotelSceneItemDetailRequest
+        @return: GetHotelSceneItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSceneItemDetailHeaders()
         return self.get_hotel_scene_item_detail_with_options(request, headers, runtime)
@@ -3823,6 +4979,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSceneItemDetailRequest,
     ) -> ali_genieip__1__0_models.GetHotelSceneItemDetailResponse:
+        """
+        @summary 酒店场景详情
+        
+        @param request: GetHotelSceneItemDetailRequest
+        @return: GetHotelSceneItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSceneItemDetailHeaders()
         return await self.get_hotel_scene_item_detail_with_options_async(request, headers, runtime)
@@ -3833,6 +4995,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelScreenSaverHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverResponse:
+        """
+        @summary 获取酒店屏保
+        
+        @param tmp_req: GetHotelScreenSaverRequest
+        @param headers: GetHotelScreenSaverHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelScreenSaverResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelScreenSaverShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3874,6 +5044,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelScreenSaverHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverResponse:
+        """
+        @summary 获取酒店屏保
+        
+        @param tmp_req: GetHotelScreenSaverRequest
+        @param headers: GetHotelScreenSaverHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelScreenSaverResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.GetHotelScreenSaverShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3913,6 +5091,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelScreenSaverRequest,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverResponse:
+        """
+        @summary 获取酒店屏保
+        
+        @param request: GetHotelScreenSaverRequest
+        @return: GetHotelScreenSaverResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelScreenSaverHeaders()
         return self.get_hotel_screen_saver_with_options(request, headers, runtime)
@@ -3921,6 +5105,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelScreenSaverRequest,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverResponse:
+        """
+        @summary 获取酒店屏保
+        
+        @param request: GetHotelScreenSaverRequest
+        @return: GetHotelScreenSaverResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelScreenSaverHeaders()
         return await self.get_hotel_screen_saver_with_options_async(request, headers, runtime)
@@ -3931,6 +5121,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelScreenSaverStyleHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse:
+        """
+        @summary 获取屏保列表
+        
+        @param request: GetHotelScreenSaverStyleRequest
+        @param headers: GetHotelScreenSaverStyleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelScreenSaverStyleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -3968,6 +5166,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelScreenSaverStyleHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse:
+        """
+        @summary 获取屏保列表
+        
+        @param request: GetHotelScreenSaverStyleRequest
+        @param headers: GetHotelScreenSaverStyleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelScreenSaverStyleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4003,6 +5209,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelScreenSaverStyleRequest,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse:
+        """
+        @summary 获取屏保列表
+        
+        @param request: GetHotelScreenSaverStyleRequest
+        @return: GetHotelScreenSaverStyleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelScreenSaverStyleHeaders()
         return self.get_hotel_screen_saver_style_with_options(request, headers, runtime)
@@ -4011,6 +5223,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelScreenSaverStyleRequest,
     ) -> ali_genieip__1__0_models.GetHotelScreenSaverStyleResponse:
+        """
+        @summary 获取屏保列表
+        
+        @param request: GetHotelScreenSaverStyleRequest
+        @return: GetHotelScreenSaverStyleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelScreenSaverStyleHeaders()
         return await self.get_hotel_screen_saver_style_with_options_async(request, headers, runtime)
@@ -4021,6 +5239,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSettingResponse:
+        """
+        @summary 查询定制配置
+        
+        @param request: GetHotelSettingRequest
+        @param headers: GetHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSettingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4060,6 +5286,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetHotelSettingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetHotelSettingResponse:
+        """
+        @summary 查询定制配置
+        
+        @param request: GetHotelSettingRequest
+        @param headers: GetHotelSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotelSettingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4097,6 +5331,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSettingRequest,
     ) -> ali_genieip__1__0_models.GetHotelSettingResponse:
+        """
+        @summary 查询定制配置
+        
+        @param request: GetHotelSettingRequest
+        @return: GetHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSettingHeaders()
         return self.get_hotel_setting_with_options(request, headers, runtime)
@@ -4105,6 +5345,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetHotelSettingRequest,
     ) -> ali_genieip__1__0_models.GetHotelSettingResponse:
+        """
+        @summary 查询定制配置
+        
+        @param request: GetHotelSettingRequest
+        @return: GetHotelSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetHotelSettingHeaders()
         return await self.get_hotel_setting_with_options_async(request, headers, runtime)
@@ -4114,6 +5360,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetRelationProductListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetRelationProductListResponse:
+        """
+        @summary 关联产品列表查看
+        
+        @param headers: GetRelationProductListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRelationProductListResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4145,6 +5398,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetRelationProductListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetRelationProductListResponse:
+        """
+        @summary 关联产品列表查看
+        
+        @param headers: GetRelationProductListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRelationProductListResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -4172,11 +5432,21 @@ class Client(OpenApiClient):
         )
 
     def get_relation_product_list(self) -> ali_genieip__1__0_models.GetRelationProductListResponse:
+        """
+        @summary 关联产品列表查看
+        
+        @return: GetRelationProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetRelationProductListHeaders()
         return self.get_relation_product_list_with_options(headers, runtime)
 
     async def get_relation_product_list_async(self) -> ali_genieip__1__0_models.GetRelationProductListResponse:
+        """
+        @summary 关联产品列表查看
+        
+        @return: GetRelationProductListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetRelationProductListHeaders()
         return await self.get_relation_product_list_with_options_async(headers, runtime)
@@ -4187,6 +5457,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetUnionIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        """
+        @summary 获取组织下unionId列表
+        
+        @param request: GetUnionIdRequest
+        @param headers: GetUnionIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUnionIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encode_key):
@@ -4230,6 +5508,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetUnionIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        """
+        @summary 获取组织下unionId列表
+        
+        @param request: GetUnionIdRequest
+        @param headers: GetUnionIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUnionIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encode_key):
@@ -4271,6 +5557,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetUnionIdRequest,
     ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        """
+        @summary 获取组织下unionId列表
+        
+        @param request: GetUnionIdRequest
+        @return: GetUnionIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetUnionIdHeaders()
         return self.get_union_id_with_options(request, headers, runtime)
@@ -4279,6 +5571,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetUnionIdRequest,
     ) -> ali_genieip__1__0_models.GetUnionIdResponse:
+        """
+        @summary 获取组织下unionId列表
+        
+        @param request: GetUnionIdRequest
+        @return: GetUnionIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetUnionIdHeaders()
         return await self.get_union_id_with_options_async(request, headers, runtime)
@@ -4289,6 +5587,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse:
+        """
+        @summary 查询欢迎语信息
+        
+        @param request: GetWelcomeTextAndMusicRequest
+        @param headers: GetWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4326,6 +5632,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.GetWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse:
+        """
+        @summary 查询欢迎语信息
+        
+        @param request: GetWelcomeTextAndMusicRequest
+        @param headers: GetWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4361,6 +5675,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse:
+        """
+        @summary 查询欢迎语信息
+        
+        @param request: GetWelcomeTextAndMusicRequest
+        @return: GetWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetWelcomeTextAndMusicHeaders()
         return self.get_welcome_text_and_music_with_options(request, headers, runtime)
@@ -4369,6 +5689,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.GetWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.GetWelcomeTextAndMusicResponse:
+        """
+        @summary 查询欢迎语信息
+        
+        @param request: GetWelcomeTextAndMusicRequest
+        @return: GetWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.GetWelcomeTextAndMusicHeaders()
         return await self.get_welcome_text_and_music_with_options_async(request, headers, runtime)
@@ -4379,6 +5705,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.HotelQrBindHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.HotelQrBindResponse:
+        """
+        @summary 酒店带屏设备扫码绑定
+        
+        @param request: HotelQrBindRequest
+        @param headers: HotelQrBindHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelQrBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_id):
@@ -4424,6 +5758,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.HotelQrBindHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.HotelQrBindResponse:
+        """
+        @summary 酒店带屏设备扫码绑定
+        
+        @param request: HotelQrBindRequest
+        @param headers: HotelQrBindHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelQrBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_id):
@@ -4467,6 +5809,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.HotelQrBindRequest,
     ) -> ali_genieip__1__0_models.HotelQrBindResponse:
+        """
+        @summary 酒店带屏设备扫码绑定
+        
+        @param request: HotelQrBindRequest
+        @return: HotelQrBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.HotelQrBindHeaders()
         return self.hotel_qr_bind_with_options(request, headers, runtime)
@@ -4475,6 +5823,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.HotelQrBindRequest,
     ) -> ali_genieip__1__0_models.HotelQrBindResponse:
+        """
+        @summary 酒店带屏设备扫码绑定
+        
+        @param request: HotelQrBindRequest
+        @return: HotelQrBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.HotelQrBindHeaders()
         return await self.hotel_qr_bind_with_options_async(request, headers, runtime)
@@ -4485,6 +5839,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportHotelConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        """
+        @summary 批量导入酒店配置
+        
+        @param tmp_req: ImportHotelConfigRequest
+        @param headers: ImportHotelConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportHotelConfigResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4528,6 +5890,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportHotelConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        """
+        @summary 批量导入酒店配置
+        
+        @param tmp_req: ImportHotelConfigRequest
+        @param headers: ImportHotelConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportHotelConfigResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportHotelConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4569,6 +5939,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportHotelConfigRequest,
     ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        """
+        @summary 批量导入酒店配置
+        
+        @param request: ImportHotelConfigRequest
+        @return: ImportHotelConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportHotelConfigHeaders()
         return self.import_hotel_config_with_options(request, headers, runtime)
@@ -4577,6 +5953,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportHotelConfigRequest,
     ) -> ali_genieip__1__0_models.ImportHotelConfigResponse:
+        """
+        @summary 批量导入酒店配置
+        
+        @param request: ImportHotelConfigRequest
+        @return: ImportHotelConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportHotelConfigHeaders()
         return await self.import_hotel_config_with_options_async(request, headers, runtime)
@@ -4587,6 +5969,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportRoomControlDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportRoomControlDevicesResponse:
+        """
+        @summary 批量导入设备（同时补充房型）
+        
+        @param tmp_req: ImportRoomControlDevicesRequest
+        @param headers: ImportRoomControlDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRoomControlDevicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportRoomControlDevicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4634,6 +6024,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportRoomControlDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportRoomControlDevicesResponse:
+        """
+        @summary 批量导入设备（同时补充房型）
+        
+        @param tmp_req: ImportRoomControlDevicesRequest
+        @param headers: ImportRoomControlDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRoomControlDevicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportRoomControlDevicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4679,6 +6077,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportRoomControlDevicesRequest,
     ) -> ali_genieip__1__0_models.ImportRoomControlDevicesResponse:
+        """
+        @summary 批量导入设备（同时补充房型）
+        
+        @param request: ImportRoomControlDevicesRequest
+        @return: ImportRoomControlDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportRoomControlDevicesHeaders()
         return self.import_room_control_devices_with_options(request, headers, runtime)
@@ -4687,6 +6091,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportRoomControlDevicesRequest,
     ) -> ali_genieip__1__0_models.ImportRoomControlDevicesResponse:
+        """
+        @summary 批量导入设备（同时补充房型）
+        
+        @param request: ImportRoomControlDevicesRequest
+        @return: ImportRoomControlDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportRoomControlDevicesHeaders()
         return await self.import_room_control_devices_with_options_async(request, headers, runtime)
@@ -4697,6 +6107,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportRoomGenieScenesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        """
+        @summary 导入房间内精灵场景
+        
+        @param tmp_req: ImportRoomGenieScenesRequest
+        @param headers: ImportRoomGenieScenesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRoomGenieScenesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportRoomGenieScenesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4742,6 +6160,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ImportRoomGenieScenesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        """
+        @summary 导入房间内精灵场景
+        
+        @param tmp_req: ImportRoomGenieScenesRequest
+        @param headers: ImportRoomGenieScenesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportRoomGenieScenesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ImportRoomGenieScenesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4785,6 +6211,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
     ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        """
+        @summary 导入房间内精灵场景
+        
+        @param request: ImportRoomGenieScenesRequest
+        @return: ImportRoomGenieScenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportRoomGenieScenesHeaders()
         return self.import_room_genie_scenes_with_options(request, headers, runtime)
@@ -4793,6 +6225,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ImportRoomGenieScenesRequest,
     ) -> ali_genieip__1__0_models.ImportRoomGenieScenesResponse:
+        """
+        @summary 导入房间内精灵场景
+        
+        @param request: ImportRoomGenieScenesRequest
+        @return: ImportRoomGenieScenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ImportRoomGenieScenesHeaders()
         return await self.import_room_genie_scenes_with_options_async(request, headers, runtime)
@@ -4803,6 +6241,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.InsertHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.InsertHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订新增
+        
+        @param tmp_req: InsertHotelSceneBookItemRequest
+        @param headers: InsertHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.InsertHotelSceneBookItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4848,6 +6294,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.InsertHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.InsertHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订新增
+        
+        @param tmp_req: InsertHotelSceneBookItemRequest
+        @param headers: InsertHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.InsertHotelSceneBookItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4891,6 +6345,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.InsertHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.InsertHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订新增
+        
+        @param request: InsertHotelSceneBookItemRequest
+        @return: InsertHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.InsertHotelSceneBookItemHeaders()
         return self.insert_hotel_scene_book_item_with_options(request, headers, runtime)
@@ -4899,6 +6359,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.InsertHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.InsertHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订新增
+        
+        @param request: InsertHotelSceneBookItemRequest
+        @return: InsertHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.InsertHotelSceneBookItemHeaders()
         return await self.insert_hotel_scene_book_item_with_options_async(request, headers, runtime)
@@ -4909,6 +6375,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.InvokeRobotPushHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.InvokeRobotPushResponse:
+        """
+        @summary 机器人服务，消息推送
+        
+        @param request: InvokeRobotPushRequest
+        @param headers: InvokeRobotPushHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeRobotPushResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4950,6 +6424,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.InvokeRobotPushHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.InvokeRobotPushResponse:
+        """
+        @summary 机器人服务，消息推送
+        
+        @param request: InvokeRobotPushRequest
+        @param headers: InvokeRobotPushHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvokeRobotPushResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -4989,6 +6471,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.InvokeRobotPushRequest,
     ) -> ali_genieip__1__0_models.InvokeRobotPushResponse:
+        """
+        @summary 机器人服务，消息推送
+        
+        @param request: InvokeRobotPushRequest
+        @return: InvokeRobotPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.InvokeRobotPushHeaders()
         return self.invoke_robot_push_with_options(request, headers, runtime)
@@ -4997,6 +6485,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.InvokeRobotPushRequest,
     ) -> ali_genieip__1__0_models.InvokeRobotPushResponse:
+        """
+        @summary 机器人服务，消息推送
+        
+        @param request: InvokeRobotPushRequest
+        @return: InvokeRobotPushResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.InvokeRobotPushHeaders()
         return await self.invoke_robot_push_with_options_async(request, headers, runtime)
@@ -5006,6 +6500,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListAllProvincesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        """
+        @summary 查询省份
+        
+        @param headers: ListAllProvincesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllProvincesResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5037,6 +6538,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListAllProvincesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        """
+        @summary 查询省份
+        
+        @param headers: ListAllProvincesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllProvincesResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5064,11 +6572,21 @@ class Client(OpenApiClient):
         )
 
     def list_all_provinces(self) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        """
+        @summary 查询省份
+        
+        @return: ListAllProvincesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListAllProvincesHeaders()
         return self.list_all_provinces_with_options(headers, runtime)
 
     async def list_all_provinces_async(self) -> ali_genieip__1__0_models.ListAllProvincesResponse:
+        """
+        @summary 查询省份
+        
+        @return: ListAllProvincesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListAllProvincesHeaders()
         return await self.list_all_provinces_with_options_async(headers, runtime)
@@ -5079,6 +6597,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListCitiesByProvinceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        """
+        @summary 查询城市
+        
+        @param request: ListCitiesByProvinceRequest
+        @param headers: ListCitiesByProvinceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCitiesByProvinceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.province):
@@ -5116,6 +6642,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListCitiesByProvinceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        """
+        @summary 查询城市
+        
+        @param request: ListCitiesByProvinceRequest
+        @param headers: ListCitiesByProvinceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCitiesByProvinceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.province):
@@ -5151,6 +6685,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
     ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        """
+        @summary 查询城市
+        
+        @param request: ListCitiesByProvinceRequest
+        @return: ListCitiesByProvinceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListCitiesByProvinceHeaders()
         return self.list_cities_by_province_with_options(request, headers, runtime)
@@ -5159,6 +6699,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListCitiesByProvinceRequest,
     ) -> ali_genieip__1__0_models.ListCitiesByProvinceResponse:
+        """
+        @summary 查询城市
+        
+        @param request: ListCitiesByProvinceRequest
+        @return: ListCitiesByProvinceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListCitiesByProvinceHeaders()
         return await self.list_cities_by_province_with_options_async(request, headers, runtime)
@@ -5169,6 +6715,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListCustomQAResponse:
+        """
+        @summary 查询自定义问答列表
+        
+        @param tmp_req: ListCustomQARequest
+        @param headers: ListCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5214,6 +6768,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListCustomQAResponse:
+        """
+        @summary 查询自定义问答列表
+        
+        @param tmp_req: ListCustomQARequest
+        @param headers: ListCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5257,6 +6819,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListCustomQARequest,
     ) -> ali_genieip__1__0_models.ListCustomQAResponse:
+        """
+        @summary 查询自定义问答列表
+        
+        @param request: ListCustomQARequest
+        @return: ListCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListCustomQAHeaders()
         return self.list_custom_qawith_options(request, headers, runtime)
@@ -5265,6 +6833,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListCustomQARequest,
     ) -> ali_genieip__1__0_models.ListCustomQAResponse:
+        """
+        @summary 查询自定义问答列表
+        
+        @param request: ListCustomQARequest
+        @return: ListCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListCustomQAHeaders()
         return await self.list_custom_qawith_options_async(request, headers, runtime)
@@ -5275,6 +6849,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListDialogueTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListDialogueTemplateResponse:
+        """
+        @summary 酒店场景对话模板
+        
+        @param request: ListDialogueTemplateRequest
+        @param headers: ListDialogueTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDialogueTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -5312,6 +6894,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListDialogueTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListDialogueTemplateResponse:
+        """
+        @summary 酒店场景对话模板
+        
+        @param request: ListDialogueTemplateRequest
+        @param headers: ListDialogueTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDialogueTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -5347,6 +6937,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListDialogueTemplateRequest,
     ) -> ali_genieip__1__0_models.ListDialogueTemplateResponse:
+        """
+        @summary 酒店场景对话模板
+        
+        @param request: ListDialogueTemplateRequest
+        @return: ListDialogueTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListDialogueTemplateHeaders()
         return self.list_dialogue_template_with_options(request, headers, runtime)
@@ -5355,6 +6951,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListDialogueTemplateRequest,
     ) -> ali_genieip__1__0_models.ListDialogueTemplateResponse:
+        """
+        @summary 酒店场景对话模板
+        
+        @param request: ListDialogueTemplateRequest
+        @return: ListDialogueTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListDialogueTemplateHeaders()
         return await self.list_dialogue_template_with_options_async(request, headers, runtime)
@@ -5365,6 +6967,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelAlarmResponse:
+        """
+        @summary 查询酒店闹钟
+        
+        @param tmp_req: ListHotelAlarmRequest
+        @param headers: ListHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5408,6 +7018,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelAlarmResponse:
+        """
+        @summary 查询酒店闹钟
+        
+        @param tmp_req: ListHotelAlarmRequest
+        @param headers: ListHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5449,6 +7067,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.ListHotelAlarmResponse:
+        """
+        @summary 查询酒店闹钟
+        
+        @param request: ListHotelAlarmRequest
+        @return: ListHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelAlarmHeaders()
         return self.list_hotel_alarm_with_options(request, headers, runtime)
@@ -5457,6 +7081,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.ListHotelAlarmResponse:
+        """
+        @summary 查询酒店闹钟
+        
+        @param request: ListHotelAlarmRequest
+        @return: ListHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelAlarmHeaders()
         return await self.list_hotel_alarm_with_options_async(request, headers, runtime)
@@ -5467,6 +7097,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelControlDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelControlDeviceResponse:
+        """
+        @summary 酒店设备列表
+        
+        @param tmp_req: ListHotelControlDeviceRequest
+        @param headers: ListHotelControlDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelControlDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelControlDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5508,6 +7146,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelControlDeviceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelControlDeviceResponse:
+        """
+        @summary 酒店设备列表
+        
+        @param tmp_req: ListHotelControlDeviceRequest
+        @param headers: ListHotelControlDeviceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelControlDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelControlDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5547,6 +7193,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelControlDeviceRequest,
     ) -> ali_genieip__1__0_models.ListHotelControlDeviceResponse:
+        """
+        @summary 酒店设备列表
+        
+        @param request: ListHotelControlDeviceRequest
+        @return: ListHotelControlDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelControlDeviceHeaders()
         return self.list_hotel_control_device_with_options(request, headers, runtime)
@@ -5555,6 +7207,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelControlDeviceRequest,
     ) -> ali_genieip__1__0_models.ListHotelControlDeviceResponse:
+        """
+        @summary 酒店设备列表
+        
+        @param request: ListHotelControlDeviceRequest
+        @return: ListHotelControlDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelControlDeviceHeaders()
         return await self.list_hotel_control_device_with_options_async(request, headers, runtime)
@@ -5564,6 +7222,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelInfoResponse:
+        """
+        @summary 获取酒店列表
+        
+        @param headers: ListHotelInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelInfoResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5595,6 +7260,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelInfoResponse:
+        """
+        @summary 获取酒店列表
+        
+        @param headers: ListHotelInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelInfoResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5622,11 +7294,21 @@ class Client(OpenApiClient):
         )
 
     def list_hotel_info(self) -> ali_genieip__1__0_models.ListHotelInfoResponse:
+        """
+        @summary 获取酒店列表
+        
+        @return: ListHotelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelInfoHeaders()
         return self.list_hotel_info_with_options(headers, runtime)
 
     async def list_hotel_info_async(self) -> ali_genieip__1__0_models.ListHotelInfoResponse:
+        """
+        @summary 获取酒店列表
+        
+        @return: ListHotelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelInfoHeaders()
         return await self.list_hotel_info_with_options_async(headers, runtime)
@@ -5636,6 +7318,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelMessageTemplateResponse:
+        """
+        @summary 获取消息模板
+        
+        @param headers: ListHotelMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelMessageTemplateResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5667,6 +7356,13 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelMessageTemplateResponse:
+        """
+        @summary 获取消息模板
+        
+        @param headers: ListHotelMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelMessageTemplateResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5694,11 +7390,21 @@ class Client(OpenApiClient):
         )
 
     def list_hotel_message_template(self) -> ali_genieip__1__0_models.ListHotelMessageTemplateResponse:
+        """
+        @summary 获取消息模板
+        
+        @return: ListHotelMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelMessageTemplateHeaders()
         return self.list_hotel_message_template_with_options(headers, runtime)
 
     async def list_hotel_message_template_async(self) -> ali_genieip__1__0_models.ListHotelMessageTemplateResponse:
+        """
+        @summary 获取消息模板
+        
+        @return: ListHotelMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelMessageTemplateHeaders()
         return await self.list_hotel_message_template_with_options_async(headers, runtime)
@@ -5709,6 +7415,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelOrderResponse:
+        """
+        @summary 酒店订单列表
+        
+        @param tmp_req: ListHotelOrderRequest
+        @param headers: ListHotelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5754,6 +7468,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelOrderResponse:
+        """
+        @summary 酒店订单列表
+        
+        @param tmp_req: ListHotelOrderRequest
+        @param headers: ListHotelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5797,6 +7519,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelOrderRequest,
     ) -> ali_genieip__1__0_models.ListHotelOrderResponse:
+        """
+        @summary 酒店订单列表
+        
+        @param request: ListHotelOrderRequest
+        @return: ListHotelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelOrderHeaders()
         return self.list_hotel_order_with_options(request, headers, runtime)
@@ -5805,6 +7533,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelOrderRequest,
     ) -> ali_genieip__1__0_models.ListHotelOrderResponse:
+        """
+        @summary 酒店订单列表
+        
+        @param request: ListHotelOrderRequest
+        @return: ListHotelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelOrderHeaders()
         return await self.list_hotel_order_with_options_async(request, headers, runtime)
@@ -5815,6 +7549,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
+        """
+        @summary 获取酒店的所有房间
+        
+        @param tmp_req: ListHotelRoomsRequest
+        @param headers: ListHotelRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5858,6 +7600,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
+        """
+        @summary 获取酒店的所有房间
+        
+        @param tmp_req: ListHotelRoomsRequest
+        @param headers: ListHotelRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5899,6 +7649,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelRoomsRequest,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
+        """
+        @summary 获取酒店的所有房间
+        
+        @param request: ListHotelRoomsRequest
+        @return: ListHotelRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelRoomsHeaders()
         return self.list_hotel_rooms_with_options(request, headers, runtime)
@@ -5907,6 +7663,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelRoomsRequest,
     ) -> ali_genieip__1__0_models.ListHotelRoomsResponse:
+        """
+        @summary 获取酒店的所有房间
+        
+        @param request: ListHotelRoomsRequest
+        @return: ListHotelRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelRoomsHeaders()
         return await self.list_hotel_rooms_with_options_async(request, headers, runtime)
@@ -5917,6 +7679,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneBookItemsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneBookItemsResponse:
+        """
+        @summary 酒店场景预订列表（餐饮/SPA休闲/打车）
+        
+        @param tmp_req: ListHotelSceneBookItemsRequest
+        @param headers: ListHotelSceneBookItemsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneBookItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneBookItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5964,6 +7734,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneBookItemsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneBookItemsResponse:
+        """
+        @summary 酒店场景预订列表（餐饮/SPA休闲/打车）
+        
+        @param tmp_req: ListHotelSceneBookItemsRequest
+        @param headers: ListHotelSceneBookItemsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneBookItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneBookItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6009,6 +7787,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneBookItemsRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneBookItemsResponse:
+        """
+        @summary 酒店场景预订列表（餐饮/SPA休闲/打车）
+        
+        @param request: ListHotelSceneBookItemsRequest
+        @return: ListHotelSceneBookItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneBookItemsHeaders()
         return self.list_hotel_scene_book_items_with_options(request, headers, runtime)
@@ -6017,6 +7801,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneBookItemsRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneBookItemsResponse:
+        """
+        @summary 酒店场景预订列表（餐饮/SPA休闲/打车）
+        
+        @param request: ListHotelSceneBookItemsRequest
+        @return: ListHotelSceneBookItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneBookItemsHeaders()
         return await self.list_hotel_scene_book_items_with_options_async(request, headers, runtime)
@@ -6027,6 +7817,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemResponse:
+        """
+        @summary 服务项目
+        
+        @param tmp_req: ListHotelSceneItemRequest
+        @param headers: ListHotelSceneItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6072,6 +7870,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemResponse:
+        """
+        @summary 服务项目
+        
+        @param tmp_req: ListHotelSceneItemRequest
+        @param headers: ListHotelSceneItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6115,6 +7921,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneItemRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemResponse:
+        """
+        @summary 服务项目
+        
+        @param request: ListHotelSceneItemRequest
+        @return: ListHotelSceneItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneItemHeaders()
         return self.list_hotel_scene_item_with_options(request, headers, runtime)
@@ -6123,6 +7935,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneItemRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemResponse:
+        """
+        @summary 服务项目
+        
+        @param request: ListHotelSceneItemRequest
+        @return: ListHotelSceneItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneItemHeaders()
         return await self.list_hotel_scene_item_with_options_async(request, headers, runtime)
@@ -6133,6 +7951,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneItemsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemsResponse:
+        """
+        @summary 酒店场景列表（物品/服务/维修）
+        
+        @param tmp_req: ListHotelSceneItemsRequest
+        @param headers: ListHotelSceneItemsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6178,6 +8004,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelSceneItemsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemsResponse:
+        """
+        @summary 酒店场景列表（物品/服务/维修）
+        
+        @param tmp_req: ListHotelSceneItemsRequest
+        @param headers: ListHotelSceneItemsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelSceneItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelSceneItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6221,6 +8055,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneItemsRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemsResponse:
+        """
+        @summary 酒店场景列表（物品/服务/维修）
+        
+        @param request: ListHotelSceneItemsRequest
+        @return: ListHotelSceneItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneItemsHeaders()
         return self.list_hotel_scene_items_with_options(request, headers, runtime)
@@ -6229,6 +8069,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelSceneItemsRequest,
     ) -> ali_genieip__1__0_models.ListHotelSceneItemsResponse:
+        """
+        @summary 酒店场景列表（物品/服务/维修）
+        
+        @param request: ListHotelSceneItemsRequest
+        @return: ListHotelSceneItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelSceneItemsHeaders()
         return await self.list_hotel_scene_items_with_options_async(request, headers, runtime)
@@ -6239,6 +8085,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelServiceCategoryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelServiceCategoryResponse:
+        """
+        @summary 服务分类列表
+        
+        @param tmp_req: ListHotelServiceCategoryRequest
+        @param headers: ListHotelServiceCategoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelServiceCategoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelServiceCategoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6280,6 +8134,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelServiceCategoryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelServiceCategoryResponse:
+        """
+        @summary 服务分类列表
+        
+        @param tmp_req: ListHotelServiceCategoryRequest
+        @param headers: ListHotelServiceCategoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelServiceCategoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelServiceCategoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6319,6 +8181,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelServiceCategoryRequest,
     ) -> ali_genieip__1__0_models.ListHotelServiceCategoryResponse:
+        """
+        @summary 服务分类列表
+        
+        @param request: ListHotelServiceCategoryRequest
+        @return: ListHotelServiceCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelServiceCategoryHeaders()
         return self.list_hotel_service_category_with_options(request, headers, runtime)
@@ -6327,6 +8195,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelServiceCategoryRequest,
     ) -> ali_genieip__1__0_models.ListHotelServiceCategoryResponse:
+        """
+        @summary 服务分类列表
+        
+        @param request: ListHotelServiceCategoryRequest
+        @return: ListHotelServiceCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelServiceCategoryHeaders()
         return await self.list_hotel_service_category_with_options_async(request, headers, runtime)
@@ -6337,6 +8211,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelsResponse:
+        """
+        @summary 酒店列表(待审批/已拒绝/已通过)
+        
+        @param tmp_req: ListHotelsRequest
+        @param headers: ListHotelsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6386,6 +8268,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListHotelsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListHotelsResponse:
+        """
+        @summary 酒店列表(待审批/已拒绝/已通过)
+        
+        @param tmp_req: ListHotelsRequest
+        @param headers: ListHotelsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotelsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListHotelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6433,6 +8323,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelsRequest,
     ) -> ali_genieip__1__0_models.ListHotelsResponse:
+        """
+        @summary 酒店列表(待审批/已拒绝/已通过)
+        
+        @param request: ListHotelsRequest
+        @return: ListHotelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelsHeaders()
         return self.list_hotels_with_options(request, headers, runtime)
@@ -6441,6 +8337,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListHotelsRequest,
     ) -> ali_genieip__1__0_models.ListHotelsResponse:
+        """
+        @summary 酒店列表(待审批/已拒绝/已通过)
+        
+        @param request: ListHotelsRequest
+        @return: ListHotelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListHotelsHeaders()
         return await self.list_hotels_with_options_async(request, headers, runtime)
@@ -6451,6 +8353,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        """
+        @summary 查询红外品牌列表
+        
+        @param request: ListInfraredDeviceBrandsRequest
+        @param headers: ListInfraredDeviceBrandsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInfraredDeviceBrandsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -6490,6 +8400,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        """
+        @summary 查询红外品牌列表
+        
+        @param request: ListInfraredDeviceBrandsRequest
+        @param headers: ListInfraredDeviceBrandsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInfraredDeviceBrandsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -6527,6 +8445,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
     ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        """
+        @summary 查询红外品牌列表
+        
+        @param request: ListInfraredDeviceBrandsRequest
+        @return: ListInfraredDeviceBrandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders()
         return self.list_infrared_device_brands_with_options(request, headers, runtime)
@@ -6535,6 +8459,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListInfraredDeviceBrandsRequest,
     ) -> ali_genieip__1__0_models.ListInfraredDeviceBrandsResponse:
+        """
+        @summary 查询红外品牌列表
+        
+        @param request: ListInfraredDeviceBrandsRequest
+        @return: ListInfraredDeviceBrandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListInfraredDeviceBrandsHeaders()
         return await self.list_infrared_device_brands_with_options_async(request, headers, runtime)
@@ -6545,6 +8475,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        """
+        @summary 查询红外码库列表
+        
+        @param request: ListInfraredRemoteControllersRequest
+        @param headers: ListInfraredRemoteControllersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInfraredRemoteControllersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.brand):
@@ -6592,6 +8530,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        """
+        @summary 查询红外码库列表
+        
+        @param request: ListInfraredRemoteControllersRequest
+        @param headers: ListInfraredRemoteControllersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInfraredRemoteControllersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.brand):
@@ -6637,6 +8583,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
     ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        """
+        @summary 查询红外码库列表
+        
+        @param request: ListInfraredRemoteControllersRequest
+        @return: ListInfraredRemoteControllersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders()
         return self.list_infrared_remote_controllers_with_options(request, headers, runtime)
@@ -6645,6 +8597,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListInfraredRemoteControllersRequest,
     ) -> ali_genieip__1__0_models.ListInfraredRemoteControllersResponse:
+        """
+        @summary 查询红外码库列表
+        
+        @param request: ListInfraredRemoteControllersRequest
+        @return: ListInfraredRemoteControllersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListInfraredRemoteControllersHeaders()
         return await self.list_infrared_remote_controllers_with_options_async(request, headers, runtime)
@@ -6655,6 +8613,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListSTBServiceProvidersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        """
+        @summary 查询服务提供商
+        
+        @param request: ListSTBServiceProvidersRequest
+        @param headers: ListSTBServiceProvidersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSTBServiceProvidersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.city):
@@ -6694,6 +8660,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListSTBServiceProvidersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        """
+        @summary 查询服务提供商
+        
+        @param request: ListSTBServiceProvidersRequest
+        @param headers: ListSTBServiceProvidersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSTBServiceProvidersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.city):
@@ -6731,6 +8705,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
     ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        """
+        @summary 查询服务提供商
+        
+        @param request: ListSTBServiceProvidersRequest
+        @return: ListSTBServiceProvidersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListSTBServiceProvidersHeaders()
         return self.list_stbservice_providers_with_options(request, headers, runtime)
@@ -6739,6 +8719,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListSTBServiceProvidersRequest,
     ) -> ali_genieip__1__0_models.ListSTBServiceProvidersResponse:
+        """
+        @summary 查询服务提供商
+        
+        @param request: ListSTBServiceProvidersRequest
+        @return: ListSTBServiceProvidersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListSTBServiceProvidersHeaders()
         return await self.list_stbservice_providers_with_options_async(request, headers, runtime)
@@ -6749,6 +8735,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListSceneCategoryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListSceneCategoryResponse:
+        """
+        @summary 酒店场景分类
+        
+        @param request: ListSceneCategoryRequest
+        @param headers: ListSceneCategoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSceneCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -6788,6 +8782,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListSceneCategoryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListSceneCategoryResponse:
+        """
+        @summary 酒店场景分类
+        
+        @param request: ListSceneCategoryRequest
+        @param headers: ListSceneCategoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSceneCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -6825,6 +8827,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListSceneCategoryRequest,
     ) -> ali_genieip__1__0_models.ListSceneCategoryResponse:
+        """
+        @summary 酒店场景分类
+        
+        @param request: ListSceneCategoryRequest
+        @return: ListSceneCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListSceneCategoryHeaders()
         return self.list_scene_category_with_options(request, headers, runtime)
@@ -6833,6 +8841,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListSceneCategoryRequest,
     ) -> ali_genieip__1__0_models.ListSceneCategoryResponse:
+        """
+        @summary 酒店场景分类
+        
+        @param request: ListSceneCategoryRequest
+        @return: ListSceneCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListSceneCategoryHeaders()
         return await self.list_scene_category_with_options_async(request, headers, runtime)
@@ -6843,6 +8857,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListServiceQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListServiceQAResponse:
+        """
+        @summary 查询服务设施问答列表
+        
+        @param tmp_req: ListServiceQARequest
+        @param headers: ListServiceQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListServiceQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6890,6 +8912,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListServiceQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListServiceQAResponse:
+        """
+        @summary 查询服务设施问答列表
+        
+        @param tmp_req: ListServiceQARequest
+        @param headers: ListServiceQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListServiceQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6935,6 +8965,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListServiceQARequest,
     ) -> ali_genieip__1__0_models.ListServiceQAResponse:
+        """
+        @summary 查询服务设施问答列表
+        
+        @param request: ListServiceQARequest
+        @return: ListServiceQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListServiceQAHeaders()
         return self.list_service_qawith_options(request, headers, runtime)
@@ -6943,6 +8979,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListServiceQARequest,
     ) -> ali_genieip__1__0_models.ListServiceQAResponse:
+        """
+        @summary 查询服务设施问答列表
+        
+        @param request: ListServiceQARequest
+        @return: ListServiceQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListServiceQAHeaders()
         return await self.list_service_qawith_options_async(request, headers, runtime)
@@ -6953,6 +8995,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListTicketsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListTicketsResponse:
+        """
+        @summary 查询工单列表
+        
+        @param tmp_req: ListTicketsRequest
+        @param headers: ListTicketsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListTicketsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7014,6 +9064,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ListTicketsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ListTicketsResponse:
+        """
+        @summary 查询工单列表
+        
+        @param tmp_req: ListTicketsRequest
+        @param headers: ListTicketsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTicketsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.ListTicketsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7073,6 +9131,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListTicketsRequest,
     ) -> ali_genieip__1__0_models.ListTicketsResponse:
+        """
+        @summary 查询工单列表
+        
+        @param request: ListTicketsRequest
+        @return: ListTicketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListTicketsHeaders()
         return self.list_tickets_with_options(request, headers, runtime)
@@ -7081,6 +9145,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ListTicketsRequest,
     ) -> ali_genieip__1__0_models.ListTicketsResponse:
+        """
+        @summary 查询工单列表
+        
+        @param request: ListTicketsRequest
+        @return: ListTicketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ListTicketsHeaders()
         return await self.list_tickets_with_options_async(request, headers, runtime)
@@ -7091,6 +9161,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PageGetHotelRoomDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse:
+        """
+        @summary 分页查询酒店房间主控设备
+        
+        @param request: PageGetHotelRoomDevicesRequest
+        @param headers: PageGetHotelRoomDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageGetHotelRoomDevicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7132,6 +9210,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PageGetHotelRoomDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse:
+        """
+        @summary 分页查询酒店房间主控设备
+        
+        @param request: PageGetHotelRoomDevicesRequest
+        @param headers: PageGetHotelRoomDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageGetHotelRoomDevicesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7171,6 +9257,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PageGetHotelRoomDevicesRequest,
     ) -> ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse:
+        """
+        @summary 分页查询酒店房间主控设备
+        
+        @param request: PageGetHotelRoomDevicesRequest
+        @return: PageGetHotelRoomDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PageGetHotelRoomDevicesHeaders()
         return self.page_get_hotel_room_devices_with_options(request, headers, runtime)
@@ -7179,6 +9271,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PageGetHotelRoomDevicesRequest,
     ) -> ali_genieip__1__0_models.PageGetHotelRoomDevicesResponse:
+        """
+        @summary 分页查询酒店房间主控设备
+        
+        @param request: PageGetHotelRoomDevicesRequest
+        @return: PageGetHotelRoomDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PageGetHotelRoomDevicesHeaders()
         return await self.page_get_hotel_room_devices_with_options_async(request, headers, runtime)
@@ -7189,6 +9287,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PmsEventReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        """
+        @summary pms事件上报
+        
+        @param request: PmsEventReportRequest
+        @param headers: PmsEventReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PmsEventReportResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.payload):
@@ -7226,6 +9332,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PmsEventReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        """
+        @summary pms事件上报
+        
+        @param request: PmsEventReportRequest
+        @param headers: PmsEventReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PmsEventReportResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.payload):
@@ -7261,6 +9375,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PmsEventReportRequest,
     ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        """
+        @summary pms事件上报
+        
+        @param request: PmsEventReportRequest
+        @return: PmsEventReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PmsEventReportHeaders()
         return self.pms_event_report_with_options(request, headers, runtime)
@@ -7269,6 +9389,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PmsEventReportRequest,
     ) -> ali_genieip__1__0_models.PmsEventReportResponse:
+        """
+        @summary pms事件上报
+        
+        @param request: PmsEventReportRequest
+        @return: PmsEventReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PmsEventReportHeaders()
         return await self.pms_event_report_with_options_async(request, headers, runtime)
@@ -7279,6 +9405,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushHotelMessageHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushHotelMessageResponse:
+        """
+        @summary 推送酒店消息
+        
+        @param tmp_req: PushHotelMessageRequest
+        @param headers: PushHotelMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushHotelMessageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushHotelMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7320,6 +9454,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushHotelMessageHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushHotelMessageResponse:
+        """
+        @summary 推送酒店消息
+        
+        @param tmp_req: PushHotelMessageRequest
+        @param headers: PushHotelMessageHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushHotelMessageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushHotelMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7359,6 +9501,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushHotelMessageRequest,
     ) -> ali_genieip__1__0_models.PushHotelMessageResponse:
+        """
+        @summary 推送酒店消息
+        
+        @param request: PushHotelMessageRequest
+        @return: PushHotelMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushHotelMessageHeaders()
         return self.push_hotel_message_with_options(request, headers, runtime)
@@ -7367,6 +9515,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushHotelMessageRequest,
     ) -> ali_genieip__1__0_models.PushHotelMessageResponse:
+        """
+        @summary 推送酒店消息
+        
+        @param request: PushHotelMessageRequest
+        @return: PushHotelMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushHotelMessageHeaders()
         return await self.push_hotel_message_with_options_async(request, headers, runtime)
@@ -7377,6 +9531,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        """
+        @summary 推送音箱指令
+        
+        @param tmp_req: PushVoiceBoxCommandsRequest
+        @param headers: PushVoiceBoxCommandsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushVoiceBoxCommandsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushVoiceBoxCommandsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7422,6 +9584,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        """
+        @summary 推送音箱指令
+        
+        @param tmp_req: PushVoiceBoxCommandsRequest
+        @param headers: PushVoiceBoxCommandsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushVoiceBoxCommandsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushVoiceBoxCommandsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7465,6 +9635,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
     ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        """
+        @summary 推送音箱指令
+        
+        @param request: PushVoiceBoxCommandsRequest
+        @return: PushVoiceBoxCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders()
         return self.push_voice_box_commands_with_options(request, headers, runtime)
@@ -7473,6 +9649,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
     ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        """
+        @summary 推送音箱指令
+        
+        @param request: PushVoiceBoxCommandsRequest
+        @return: PushVoiceBoxCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders()
         return await self.push_voice_box_commands_with_options_async(request, headers, runtime)
@@ -7483,6 +9665,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushWelcomeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        """
+        @summary 直接推送欢迎语
+        
+        @param request: PushWelcomeRequest
+        @param headers: PushWelcomeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushWelcomeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7526,6 +9716,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushWelcomeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        """
+        @summary 直接推送欢迎语
+        
+        @param request: PushWelcomeRequest
+        @param headers: PushWelcomeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushWelcomeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7567,6 +9765,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushWelcomeRequest,
     ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        """
+        @summary 直接推送欢迎语
+        
+        @param request: PushWelcomeRequest
+        @return: PushWelcomeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushWelcomeHeaders()
         return self.push_welcome_with_options(request, headers, runtime)
@@ -7575,6 +9779,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushWelcomeRequest,
     ) -> ali_genieip__1__0_models.PushWelcomeResponse:
+        """
+        @summary 直接推送欢迎语
+        
+        @param request: PushWelcomeRequest
+        @return: PushWelcomeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushWelcomeHeaders()
         return await self.push_welcome_with_options_async(request, headers, runtime)
@@ -7585,6 +9795,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse:
+        """
+        @summary 推送欢迎语
+        
+        @param tmp_req: PushWelcomeTextAndMusicRequest
+        @param headers: PushWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushWelcomeTextAndMusicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7630,6 +9848,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.PushWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse:
+        """
+        @summary 推送欢迎语
+        
+        @param tmp_req: PushWelcomeTextAndMusicRequest
+        @param headers: PushWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.PushWelcomeTextAndMusicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7673,6 +9899,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse:
+        """
+        @summary 推送欢迎语
+        
+        @param request: PushWelcomeTextAndMusicRequest
+        @return: PushWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushWelcomeTextAndMusicHeaders()
         return self.push_welcome_text_and_music_with_options(request, headers, runtime)
@@ -7681,6 +9913,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.PushWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.PushWelcomeTextAndMusicResponse:
+        """
+        @summary 推送欢迎语
+        
+        @param request: PushWelcomeTextAndMusicRequest
+        @return: PushWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.PushWelcomeTextAndMusicHeaders()
         return await self.push_welcome_text_and_music_with_options_async(request, headers, runtime)
@@ -7691,6 +9929,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryDeviceStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryDeviceStatusResponse:
+        """
+        @summary 查询酒店设备状态/模式状态查询
+        
+        @param tmp_req: QueryDeviceStatusRequest
+        @param headers: QueryDeviceStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.QueryDeviceStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7736,6 +9982,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryDeviceStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryDeviceStatusResponse:
+        """
+        @summary 查询酒店设备状态/模式状态查询
+        
+        @param tmp_req: QueryDeviceStatusRequest
+        @param headers: QueryDeviceStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDeviceStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.QueryDeviceStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7779,6 +10033,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryDeviceStatusRequest,
     ) -> ali_genieip__1__0_models.QueryDeviceStatusResponse:
+        """
+        @summary 查询酒店设备状态/模式状态查询
+        
+        @param request: QueryDeviceStatusRequest
+        @return: QueryDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryDeviceStatusHeaders()
         return self.query_device_status_with_options(request, headers, runtime)
@@ -7787,6 +10047,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryDeviceStatusRequest,
     ) -> ali_genieip__1__0_models.QueryDeviceStatusResponse:
+        """
+        @summary 查询酒店设备状态/模式状态查询
+        
+        @param request: QueryDeviceStatusRequest
+        @return: QueryDeviceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryDeviceStatusHeaders()
         return await self.query_device_status_with_options_async(request, headers, runtime)
@@ -7797,6 +10063,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryHotelRoomDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        """
+        @summary 查询房间详细信息
+        
+        @param request: QueryHotelRoomDetailRequest
+        @param headers: QueryHotelRoomDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelRoomDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7842,6 +10116,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryHotelRoomDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        """
+        @summary 查询房间详细信息
+        
+        @param request: QueryHotelRoomDetailRequest
+        @param headers: QueryHotelRoomDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelRoomDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7885,6 +10167,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
     ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        """
+        @summary 查询房间详细信息
+        
+        @param request: QueryHotelRoomDetailRequest
+        @return: QueryHotelRoomDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryHotelRoomDetailHeaders()
         return self.query_hotel_room_detail_with_options(request, headers, runtime)
@@ -7893,6 +10181,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryHotelRoomDetailRequest,
     ) -> ali_genieip__1__0_models.QueryHotelRoomDetailResponse:
+        """
+        @summary 查询房间详细信息
+        
+        @param request: QueryHotelRoomDetailRequest
+        @return: QueryHotelRoomDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryHotelRoomDetailHeaders()
         return await self.query_hotel_room_detail_with_options_async(request, headers, runtime)
@@ -7903,6 +10197,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryRoomControlDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryRoomControlDevicesResponse:
+        """
+        @summary 查询酒店房间客控设备
+        
+        @param request: QueryRoomControlDevicesRequest
+        @param headers: QueryRoomControlDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomControlDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7942,6 +10244,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QueryRoomControlDevicesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QueryRoomControlDevicesResponse:
+        """
+        @summary 查询酒店房间客控设备
+        
+        @param request: QueryRoomControlDevicesRequest
+        @param headers: QueryRoomControlDevicesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomControlDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -7979,6 +10289,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryRoomControlDevicesRequest,
     ) -> ali_genieip__1__0_models.QueryRoomControlDevicesResponse:
+        """
+        @summary 查询酒店房间客控设备
+        
+        @param request: QueryRoomControlDevicesRequest
+        @return: QueryRoomControlDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryRoomControlDevicesHeaders()
         return self.query_room_control_devices_with_options(request, headers, runtime)
@@ -7987,9 +10303,259 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QueryRoomControlDevicesRequest,
     ) -> ali_genieip__1__0_models.QueryRoomControlDevicesResponse:
+        """
+        @summary 查询酒店房间客控设备
+        
+        @param request: QueryRoomControlDevicesRequest
+        @return: QueryRoomControlDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QueryRoomControlDevicesHeaders()
         return await self.query_room_control_devices_with_options_async(request, headers, runtime)
+
+    def query_room_control_devices_and_status_with_options(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusRequest,
+        headers: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse:
+        """
+        @summary 查询房间被控设备包含设备状态
+        
+        @param request: QueryRoomControlDevicesAndStatusRequest
+        @param headers: QueryRoomControlDevicesAndStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomControlDevicesAndStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRoomControlDevicesAndStatus',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/queryRoomControlDevicesAndStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_room_control_devices_and_status_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusRequest,
+        headers: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse:
+        """
+        @summary 查询房间被控设备包含设备状态
+        
+        @param request: QueryRoomControlDevicesAndStatusRequest
+        @param headers: QueryRoomControlDevicesAndStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomControlDevicesAndStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRoomControlDevicesAndStatus',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/queryRoomControlDevicesAndStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_room_control_devices_and_status(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusRequest,
+    ) -> ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse:
+        """
+        @summary 查询房间被控设备包含设备状态
+        
+        @param request: QueryRoomControlDevicesAndStatusRequest
+        @return: QueryRoomControlDevicesAndStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusHeaders()
+        return self.query_room_control_devices_and_status_with_options(request, headers, runtime)
+
+    async def query_room_control_devices_and_status_async(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusRequest,
+    ) -> ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusResponse:
+        """
+        @summary 查询房间被控设备包含设备状态
+        
+        @param request: QueryRoomControlDevicesAndStatusRequest
+        @return: QueryRoomControlDevicesAndStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QueryRoomControlDevicesAndStatusHeaders()
+        return await self.query_room_control_devices_and_status_with_options_async(request, headers, runtime)
+
+    def query_room_status_with_options(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomStatusRequest,
+        headers: ali_genieip__1__0_models.QueryRoomStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QueryRoomStatusResponse:
+        """
+        @summary 查询房态信息
+        
+        @param request: QueryRoomStatusRequest
+        @param headers: QueryRoomStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRoomStatus',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/queryRoomStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QueryRoomStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_room_status_with_options_async(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomStatusRequest,
+        headers: ali_genieip__1__0_models.QueryRoomStatusHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.QueryRoomStatusResponse:
+        """
+        @summary 查询房态信息
+        
+        @param request: QueryRoomStatusRequest
+        @param headers: QueryRoomStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRoomStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRoomStatus',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/queryRoomStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.QueryRoomStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_room_status(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomStatusRequest,
+    ) -> ali_genieip__1__0_models.QueryRoomStatusResponse:
+        """
+        @summary 查询房态信息
+        
+        @param request: QueryRoomStatusRequest
+        @return: QueryRoomStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QueryRoomStatusHeaders()
+        return self.query_room_status_with_options(request, headers, runtime)
+
+    async def query_room_status_async(
+        self,
+        request: ali_genieip__1__0_models.QueryRoomStatusRequest,
+    ) -> ali_genieip__1__0_models.QueryRoomStatusResponse:
+        """
+        @summary 查询房态信息
+        
+        @param request: QueryRoomStatusRequest
+        @return: QueryRoomStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.QueryRoomStatusHeaders()
+        return await self.query_room_status_with_options_async(request, headers, runtime)
 
     def query_scene_list_with_options(
         self,
@@ -7997,6 +10563,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QuerySceneListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        """
+        @summary 查询酒店场景列表
+        
+        @param tmp_req: QuerySceneListRequest
+        @param headers: QuerySceneListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySceneListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.QuerySceneListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8048,6 +10622,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.QuerySceneListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        """
+        @summary 查询酒店场景列表
+        
+        @param tmp_req: QuerySceneListRequest
+        @param headers: QuerySceneListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySceneListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.QuerySceneListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8097,6 +10679,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QuerySceneListRequest,
     ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        """
+        @summary 查询酒店场景列表
+        
+        @param request: QuerySceneListRequest
+        @return: QuerySceneListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QuerySceneListHeaders()
         return self.query_scene_list_with_options(request, headers, runtime)
@@ -8105,6 +10693,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.QuerySceneListRequest,
     ) -> ali_genieip__1__0_models.QuerySceneListResponse:
+        """
+        @summary 查询酒店场景列表
+        
+        @param request: QuerySceneListRequest
+        @return: QuerySceneListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.QuerySceneListHeaders()
         return await self.query_scene_list_with_options_async(request, headers, runtime)
@@ -8115,6 +10709,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RemoveChildAccountAuthHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RemoveChildAccountAuthResponse:
+        """
+        @summary 删除子账号授权
+        
+        @param request: RemoveChildAccountAuthRequest
+        @param headers: RemoveChildAccountAuthHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveChildAccountAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_key):
@@ -8158,6 +10760,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RemoveChildAccountAuthHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RemoveChildAccountAuthResponse:
+        """
+        @summary 删除子账号授权
+        
+        @param request: RemoveChildAccountAuthRequest
+        @param headers: RemoveChildAccountAuthHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveChildAccountAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_key):
@@ -8199,6 +10809,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RemoveChildAccountAuthRequest,
     ) -> ali_genieip__1__0_models.RemoveChildAccountAuthResponse:
+        """
+        @summary 删除子账号授权
+        
+        @param request: RemoveChildAccountAuthRequest
+        @return: RemoveChildAccountAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RemoveChildAccountAuthHeaders()
         return self.remove_child_account_auth_with_options(request, headers, runtime)
@@ -8207,6 +10823,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RemoveChildAccountAuthRequest,
     ) -> ali_genieip__1__0_models.RemoveChildAccountAuthResponse:
+        """
+        @summary 删除子账号授权
+        
+        @param request: RemoveChildAccountAuthRequest
+        @return: RemoveChildAccountAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RemoveChildAccountAuthHeaders()
         return await self.remove_child_account_auth_with_options_async(request, headers, runtime)
@@ -8217,6 +10839,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RemoveHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RemoveHotelResponse:
+        """
+        @summary 删除酒店项目
+        
+        @param request: RemoveHotelRequest
+        @param headers: RemoveHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveHotelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_key):
@@ -8258,6 +10888,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RemoveHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RemoveHotelResponse:
+        """
+        @summary 删除酒店项目
+        
+        @param request: RemoveHotelRequest
+        @param headers: RemoveHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveHotelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_key):
@@ -8297,6 +10935,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RemoveHotelRequest,
     ) -> ali_genieip__1__0_models.RemoveHotelResponse:
+        """
+        @summary 删除酒店项目
+        
+        @param request: RemoveHotelRequest
+        @return: RemoveHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RemoveHotelHeaders()
         return self.remove_hotel_with_options(request, headers, runtime)
@@ -8305,6 +10949,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RemoveHotelRequest,
     ) -> ali_genieip__1__0_models.RemoveHotelResponse:
+        """
+        @summary 删除酒店项目
+        
+        @param request: RemoveHotelRequest
+        @return: RemoveHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RemoveHotelHeaders()
         return await self.remove_hotel_with_options_async(request, headers, runtime)
@@ -8315,6 +10965,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ResetWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse:
+        """
+        @summary 重置欢迎语信息
+        
+        @param request: ResetWelcomeTextAndMusicRequest
+        @param headers: ResetWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -8352,6 +11010,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.ResetWelcomeTextAndMusicHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse:
+        """
+        @summary 重置欢迎语信息
+        
+        @param request: ResetWelcomeTextAndMusicRequest
+        @param headers: ResetWelcomeTextAndMusicHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetWelcomeTextAndMusicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hotel_id):
@@ -8387,6 +11053,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ResetWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse:
+        """
+        @summary 重置欢迎语信息
+        
+        @param request: ResetWelcomeTextAndMusicRequest
+        @return: ResetWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ResetWelcomeTextAndMusicHeaders()
         return self.reset_welcome_text_and_music_with_options(request, headers, runtime)
@@ -8395,6 +11067,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.ResetWelcomeTextAndMusicRequest,
     ) -> ali_genieip__1__0_models.ResetWelcomeTextAndMusicResponse:
+        """
+        @summary 重置欢迎语信息
+        
+        @param request: ResetWelcomeTextAndMusicRequest
+        @return: ResetWelcomeTextAndMusicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.ResetWelcomeTextAndMusicHeaders()
         return await self.reset_welcome_text_and_music_with_options_async(request, headers, runtime)
@@ -8405,6 +11083,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RoomCheckOutHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RoomCheckOutResponse:
+        """
+        @summary 退房
+        
+        @param tmp_req: RoomCheckOutRequest
+        @param headers: RoomCheckOutHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RoomCheckOutResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.RoomCheckOutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8450,6 +11136,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.RoomCheckOutHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.RoomCheckOutResponse:
+        """
+        @summary 退房
+        
+        @param tmp_req: RoomCheckOutRequest
+        @param headers: RoomCheckOutHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RoomCheckOutResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.RoomCheckOutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8493,6 +11187,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RoomCheckOutRequest,
     ) -> ali_genieip__1__0_models.RoomCheckOutResponse:
+        """
+        @summary 退房
+        
+        @param request: RoomCheckOutRequest
+        @return: RoomCheckOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RoomCheckOutHeaders()
         return self.room_check_out_with_options(request, headers, runtime)
@@ -8501,6 +11201,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.RoomCheckOutRequest,
     ) -> ali_genieip__1__0_models.RoomCheckOutResponse:
+        """
+        @summary 退房
+        
+        @param request: RoomCheckOutRequest
+        @return: RoomCheckOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.RoomCheckOutHeaders()
         return await self.room_check_out_with_options_async(request, headers, runtime)
@@ -8511,6 +11217,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.SubmitHotelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.SubmitHotelOrderResponse:
+        """
+        @summary 提交酒店订单
+        
+        @param tmp_req: SubmitHotelOrderRequest
+        @param headers: SubmitHotelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitHotelOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.SubmitHotelOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8556,6 +11270,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.SubmitHotelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.SubmitHotelOrderResponse:
+        """
+        @summary 提交酒店订单
+        
+        @param tmp_req: SubmitHotelOrderRequest
+        @param headers: SubmitHotelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitHotelOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.SubmitHotelOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8599,6 +11321,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.SubmitHotelOrderRequest,
     ) -> ali_genieip__1__0_models.SubmitHotelOrderResponse:
+        """
+        @summary 提交酒店订单
+        
+        @param request: SubmitHotelOrderRequest
+        @return: SubmitHotelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.SubmitHotelOrderHeaders()
         return self.submit_hotel_order_with_options(request, headers, runtime)
@@ -8607,6 +11335,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.SubmitHotelOrderRequest,
     ) -> ali_genieip__1__0_models.SubmitHotelOrderResponse:
+        """
+        @summary 提交酒店订单
+        
+        @param request: SubmitHotelOrderRequest
+        @return: SubmitHotelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.SubmitHotelOrderHeaders()
         return await self.submit_hotel_order_with_options_async(request, headers, runtime)
@@ -8617,6 +11351,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.SyncDeviceStatusWithAkHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse:
+        """
+        @summary 同步客控设备状态到主控设备
+        
+        @param request: SyncDeviceStatusWithAkRequest
+        @param headers: SyncDeviceStatusWithAkHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDeviceStatusWithAkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_cn_name):
@@ -8680,6 +11422,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.SyncDeviceStatusWithAkHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse:
+        """
+        @summary 同步客控设备状态到主控设备
+        
+        @param request: SyncDeviceStatusWithAkRequest
+        @param headers: SyncDeviceStatusWithAkHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDeviceStatusWithAkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_cn_name):
@@ -8741,6 +11491,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.SyncDeviceStatusWithAkRequest,
     ) -> ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse:
+        """
+        @summary 同步客控设备状态到主控设备
+        
+        @param request: SyncDeviceStatusWithAkRequest
+        @return: SyncDeviceStatusWithAkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.SyncDeviceStatusWithAkHeaders()
         return self.sync_device_status_with_ak_with_options(request, headers, runtime)
@@ -8749,6 +11505,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.SyncDeviceStatusWithAkRequest,
     ) -> ali_genieip__1__0_models.SyncDeviceStatusWithAkResponse:
+        """
+        @summary 同步客控设备状态到主控设备
+        
+        @param request: SyncDeviceStatusWithAkRequest
+        @return: SyncDeviceStatusWithAkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.SyncDeviceStatusWithAkHeaders()
         return await self.sync_device_status_with_ak_with_options_async(request, headers, runtime)
@@ -8759,6 +11521,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateBasicInfoQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateBasicInfoQAResponse:
+        """
+        @summary 修改基础信息问答
+        
+        @param request: UpdateBasicInfoQARequest
+        @param headers: UpdateBasicInfoQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBasicInfoQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_in_time):
@@ -8818,6 +11588,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateBasicInfoQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateBasicInfoQAResponse:
+        """
+        @summary 修改基础信息问答
+        
+        @param request: UpdateBasicInfoQARequest
+        @param headers: UpdateBasicInfoQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBasicInfoQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_in_time):
@@ -8875,6 +11653,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateBasicInfoQARequest,
     ) -> ali_genieip__1__0_models.UpdateBasicInfoQAResponse:
+        """
+        @summary 修改基础信息问答
+        
+        @param request: UpdateBasicInfoQARequest
+        @return: UpdateBasicInfoQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateBasicInfoQAHeaders()
         return self.update_basic_info_qawith_options(request, headers, runtime)
@@ -8883,6 +11667,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateBasicInfoQARequest,
     ) -> ali_genieip__1__0_models.UpdateBasicInfoQAResponse:
+        """
+        @summary 修改基础信息问答
+        
+        @param request: UpdateBasicInfoQARequest
+        @return: UpdateBasicInfoQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateBasicInfoQAHeaders()
         return await self.update_basic_info_qawith_options_async(request, headers, runtime)
@@ -8893,6 +11683,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateCustomQAResponse:
+        """
+        @summary 修改自定义问答
+        
+        @param tmp_req: UpdateCustomQARequest
+        @param headers: UpdateCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8948,6 +11746,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateCustomQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateCustomQAResponse:
+        """
+        @summary 修改自定义问答
+        
+        @param tmp_req: UpdateCustomQARequest
+        @param headers: UpdateCustomQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomQAResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateCustomQAShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9001,6 +11807,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateCustomQARequest,
     ) -> ali_genieip__1__0_models.UpdateCustomQAResponse:
+        """
+        @summary 修改自定义问答
+        
+        @param request: UpdateCustomQARequest
+        @return: UpdateCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateCustomQAHeaders()
         return self.update_custom_qawith_options(request, headers, runtime)
@@ -9009,6 +11821,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateCustomQARequest,
     ) -> ali_genieip__1__0_models.UpdateCustomQAResponse:
+        """
+        @summary 修改自定义问答
+        
+        @param request: UpdateCustomQARequest
+        @return: UpdateCustomQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateCustomQAHeaders()
         return await self.update_custom_qawith_options_async(request, headers, runtime)
@@ -9019,6 +11837,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
+        """
+        @summary 修改酒店项目
+        
+        @param tmp_req: UpdateHotelRequest
+        @param headers: UpdateHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9080,6 +11906,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
+        """
+        @summary 修改酒店项目
+        
+        @param tmp_req: UpdateHotelRequest
+        @param headers: UpdateHotelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9139,6 +11973,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
+        """
+        @summary 修改酒店项目
+        
+        @param request: UpdateHotelRequest
+        @return: UpdateHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelHeaders()
         return self.update_hotel_with_options(request, headers, runtime)
@@ -9147,6 +11987,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelResponse:
+        """
+        @summary 修改酒店项目
+        
+        @param request: UpdateHotelRequest
+        @return: UpdateHotelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelHeaders()
         return await self.update_hotel_with_options_async(request, headers, runtime)
@@ -9157,6 +12003,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelAlarmResponse:
+        """
+        @summary 修改酒店闹钟
+        
+        @param tmp_req: UpdateHotelAlarmRequest
+        @param headers: UpdateHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9204,6 +12058,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelAlarmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelAlarmResponse:
+        """
+        @summary 修改酒店闹钟
+        
+        @param tmp_req: UpdateHotelAlarmRequest
+        @param headers: UpdateHotelAlarmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelAlarmResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelAlarmShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9249,6 +12111,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelAlarmResponse:
+        """
+        @summary 修改酒店闹钟
+        
+        @param request: UpdateHotelAlarmRequest
+        @return: UpdateHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelAlarmHeaders()
         return self.update_hotel_alarm_with_options(request, headers, runtime)
@@ -9257,6 +12125,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelAlarmRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelAlarmResponse:
+        """
+        @summary 修改酒店闹钟
+        
+        @param request: UpdateHotelAlarmRequest
+        @return: UpdateHotelAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelAlarmHeaders()
         return await self.update_hotel_alarm_with_options_async(request, headers, runtime)
@@ -9267,6 +12141,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订编辑
+        
+        @param tmp_req: UpdateHotelSceneBookItemRequest
+        @param headers: UpdateHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelSceneBookItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9312,6 +12194,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelSceneBookItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订编辑
+        
+        @param tmp_req: UpdateHotelSceneBookItemRequest
+        @param headers: UpdateHotelSceneBookItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelSceneBookItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelSceneBookItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9355,6 +12245,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订编辑
+        
+        @param request: UpdateHotelSceneBookItemRequest
+        @return: UpdateHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelSceneBookItemHeaders()
         return self.update_hotel_scene_book_item_with_options(request, headers, runtime)
@@ -9363,6 +12259,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelSceneBookItemRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneBookItemResponse:
+        """
+        @summary 酒店场景预订编辑
+        
+        @param request: UpdateHotelSceneBookItemRequest
+        @return: UpdateHotelSceneBookItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelSceneBookItemHeaders()
         return await self.update_hotel_scene_book_item_with_options_async(request, headers, runtime)
@@ -9373,6 +12275,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelSceneItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneItemResponse:
+        """
+        @summary 酒店场景修改（开启/关闭/编辑）
+        
+        @param tmp_req: UpdateHotelSceneItemRequest
+        @param headers: UpdateHotelSceneItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelSceneItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelSceneItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9422,6 +12332,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateHotelSceneItemHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneItemResponse:
+        """
+        @summary 酒店场景修改（开启/关闭/编辑）
+        
+        @param tmp_req: UpdateHotelSceneItemRequest
+        @param headers: UpdateHotelSceneItemHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHotelSceneItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateHotelSceneItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9469,6 +12387,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelSceneItemRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneItemResponse:
+        """
+        @summary 酒店场景修改（开启/关闭/编辑）
+        
+        @param request: UpdateHotelSceneItemRequest
+        @return: UpdateHotelSceneItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelSceneItemHeaders()
         return self.update_hotel_scene_item_with_options(request, headers, runtime)
@@ -9477,6 +12401,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateHotelSceneItemRequest,
     ) -> ali_genieip__1__0_models.UpdateHotelSceneItemResponse:
+        """
+        @summary 酒店场景修改（开启/关闭/编辑）
+        
+        @param request: UpdateHotelSceneItemRequest
+        @return: UpdateHotelSceneItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateHotelSceneItemHeaders()
         return await self.update_hotel_scene_item_with_options_async(request, headers, runtime)
@@ -9487,6 +12417,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateMessageTemplateResponse:
+        """
+        @summary 更新消息通知模板
+        
+        @param request: UpdateMessageTemplateRequest
+        @param headers: UpdateMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_detail):
@@ -9528,6 +12466,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateMessageTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateMessageTemplateResponse:
+        """
+        @summary 更新消息通知模板
+        
+        @param request: UpdateMessageTemplateRequest
+        @param headers: UpdateMessageTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_detail):
@@ -9567,6 +12513,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.UpdateMessageTemplateResponse:
+        """
+        @summary 更新消息通知模板
+        
+        @param request: UpdateMessageTemplateRequest
+        @return: UpdateMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateMessageTemplateHeaders()
         return self.update_message_template_with_options(request, headers, runtime)
@@ -9575,6 +12527,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateMessageTemplateRequest,
     ) -> ali_genieip__1__0_models.UpdateMessageTemplateResponse:
+        """
+        @summary 更新消息通知模板
+        
+        @param request: UpdateMessageTemplateRequest
+        @return: UpdateMessageTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateMessageTemplateHeaders()
         return await self.update_message_template_with_options_async(request, headers, runtime)
@@ -9585,6 +12543,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        """
+        @summary 修改酒店自定义rcu场景
+        
+        @param tmp_req: UpdateRcuSceneRequest
+        @param headers: UpdateRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRcuSceneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateRcuSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9630,6 +12596,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateRcuSceneHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        """
+        @summary 修改酒店自定义rcu场景
+        
+        @param tmp_req: UpdateRcuSceneRequest
+        @param headers: UpdateRcuSceneHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRcuSceneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ali_genieip__1__0_models.UpdateRcuSceneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9673,6 +12647,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateRcuSceneRequest,
     ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        """
+        @summary 修改酒店自定义rcu场景
+        
+        @param request: UpdateRcuSceneRequest
+        @return: UpdateRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateRcuSceneHeaders()
         return self.update_rcu_scene_with_options(request, headers, runtime)
@@ -9681,6 +12661,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateRcuSceneRequest,
     ) -> ali_genieip__1__0_models.UpdateRcuSceneResponse:
+        """
+        @summary 修改酒店自定义rcu场景
+        
+        @param request: UpdateRcuSceneRequest
+        @return: UpdateRcuSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateRcuSceneHeaders()
         return await self.update_rcu_scene_with_options_async(request, headers, runtime)
@@ -9691,6 +12677,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateServiceQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateServiceQAResponse:
+        """
+        @summary 修改服务设施问答
+        
+        @param request: UpdateServiceQARequest
+        @param headers: UpdateServiceQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.answer):
@@ -9734,6 +12728,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateServiceQAHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateServiceQAResponse:
+        """
+        @summary 修改服务设施问答
+        
+        @param request: UpdateServiceQARequest
+        @param headers: UpdateServiceQAHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceQAResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.answer):
@@ -9775,6 +12777,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateServiceQARequest,
     ) -> ali_genieip__1__0_models.UpdateServiceQAResponse:
+        """
+        @summary 修改服务设施问答
+        
+        @param request: UpdateServiceQARequest
+        @return: UpdateServiceQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateServiceQAHeaders()
         return self.update_service_qawith_options(request, headers, runtime)
@@ -9783,6 +12791,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateServiceQARequest,
     ) -> ali_genieip__1__0_models.UpdateServiceQAResponse:
+        """
+        @summary 修改服务设施问答
+        
+        @param request: UpdateServiceQARequest
+        @return: UpdateServiceQAResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateServiceQAHeaders()
         return await self.update_service_qawith_options_async(request, headers, runtime)
@@ -9793,6 +12807,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateTicketHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateTicketResponse:
+        """
+        @summary 修改工单
+        
+        @param request: UpdateTicketRequest
+        @param headers: UpdateTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_key):
@@ -9834,6 +12856,14 @@ class Client(OpenApiClient):
         headers: ali_genieip__1__0_models.UpdateTicketHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> ali_genieip__1__0_models.UpdateTicketResponse:
+        """
+        @summary 修改工单
+        
+        @param request: UpdateTicketRequest
+        @param headers: UpdateTicketHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_key):
@@ -9873,6 +12903,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateTicketRequest,
     ) -> ali_genieip__1__0_models.UpdateTicketResponse:
+        """
+        @summary 修改工单
+        
+        @param request: UpdateTicketRequest
+        @return: UpdateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateTicketHeaders()
         return self.update_ticket_with_options(request, headers, runtime)
@@ -9881,6 +12917,12 @@ class Client(OpenApiClient):
         self,
         request: ali_genieip__1__0_models.UpdateTicketRequest,
     ) -> ali_genieip__1__0_models.UpdateTicketResponse:
+        """
+        @summary 修改工单
+        
+        @param request: UpdateTicketRequest
+        @return: UpdateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = ali_genieip__1__0_models.UpdateTicketHeaders()
         return await self.update_ticket_with_options_async(request, headers, runtime)
