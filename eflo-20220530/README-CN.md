@@ -6,7 +6,7 @@
 
 ## 要求
 
-- Python >= 3.6
+- Python >= 3.7
 
 ## 安装
 
@@ -29,7 +29,7 @@ pip install alibabacloud_eflo20220530
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/eflo-20220530/ChangeLog.md)中。
 
 ## 相关
 
