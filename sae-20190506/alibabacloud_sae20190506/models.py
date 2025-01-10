@@ -11943,6 +11943,7 @@ class CreateApplicationRequest(TeaModel):
         config_map_mount_desc: str = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        custom_image_network_type: str = None,
         deploy: bool = None,
         dotnet: str = None,
         edas_container_version: str = None,
@@ -12025,6 +12026,7 @@ class CreateApplicationRequest(TeaModel):
         self.cpu = cpu
         # [{"hostName":"samplehost","ip":"127.0.0.1"}]
         self.custom_host_alias = custom_host_alias
+        self.custom_image_network_type = custom_image_network_type
         # true
         self.deploy = deploy
         self.dotnet = dotnet
@@ -12158,6 +12160,8 @@ class CreateApplicationRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.custom_image_network_type is not None:
+            result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
         if self.dotnet is not None:
@@ -12300,6 +12304,8 @@ class CreateApplicationRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('CustomImageNetworkType') is not None:
+            self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
         if m.get('Dotnet') is not None:
@@ -12432,6 +12438,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         config_map_mount_desc: str = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        custom_image_network_type: str = None,
         deploy: bool = None,
         dotnet: str = None,
         edas_container_version: str = None,
@@ -12514,6 +12521,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.cpu = cpu
         # [{"hostName":"samplehost","ip":"127.0.0.1"}]
         self.custom_host_alias = custom_host_alias
+        self.custom_image_network_type = custom_image_network_type
         # true
         self.deploy = deploy
         self.dotnet = dotnet
@@ -12644,6 +12652,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.custom_image_network_type is not None:
+            result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
         if self.dotnet is not None:
@@ -12784,6 +12794,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('CustomImageNetworkType') is not None:
+            self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
         if m.get('Dotnet') is not None:
@@ -13953,6 +13965,7 @@ class CreateGreyTagRouteResponse(TeaModel):
 class CreateIngressRequest(TeaModel):
     def __init__(
         self,
+        address_type: str = None,
         cert_id: str = None,
         cert_ids: str = None,
         default_rule: str = None,
@@ -13966,12 +13979,15 @@ class CreateIngressRequest(TeaModel):
         listener_port: int = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
+        load_balancer_edition: str = None,
         namespace_id: str = None,
         request_timeout: int = None,
         rules: str = None,
         security_policy_id: str = None,
         slb_id: str = None,
+        zone_mappings: str = None,
     ):
+        self.address_type = address_type
         # The ID of the certificate that is associated with the **CLB** instance.
         # 
         # *   If you set **LoadBalanceType** to **clb**, you can use CertId to configure a certificate for the HTTPS listener.
@@ -14013,6 +14029,7 @@ class CreateIngressRequest(TeaModel):
         # *   **clb**\
         # *   **alb**\
         self.load_balance_type = load_balance_type
+        self.load_balancer_edition = load_balancer_edition
         # The ID of the namespace where the application is located. Currently, cross-namespace applications are not supported.
         # 
         # This parameter is required.
@@ -14038,9 +14055,8 @@ class CreateIngressRequest(TeaModel):
         # The Server Load Balancer (SLB) instance that is used by the routing rule.
         # 
         # >  The SLB instance can be a Classic Load Balancer (CLB) instance or an Application Load Balancer (ALB) instance.
-        # 
-        # This parameter is required.
         self.slb_id = slb_id
+        self.zone_mappings = zone_mappings
 
     def validate(self):
         pass
@@ -14051,6 +14067,8 @@ class CreateIngressRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
         if self.cert_ids is not None:
@@ -14077,6 +14095,8 @@ class CreateIngressRequest(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.load_balance_type is not None:
             result['LoadBalanceType'] = self.load_balance_type
+        if self.load_balancer_edition is not None:
+            result['LoadBalancerEdition'] = self.load_balancer_edition
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.request_timeout is not None:
@@ -14087,10 +14107,14 @@ class CreateIngressRequest(TeaModel):
             result['SecurityPolicyId'] = self.security_policy_id
         if self.slb_id is not None:
             result['SlbId'] = self.slb_id
+        if self.zone_mappings is not None:
+            result['ZoneMappings'] = self.zone_mappings
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
         if m.get('CertIds') is not None:
@@ -14117,6 +14141,8 @@ class CreateIngressRequest(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('LoadBalanceType') is not None:
             self.load_balance_type = m.get('LoadBalanceType')
+        if m.get('LoadBalancerEdition') is not None:
+            self.load_balancer_edition = m.get('LoadBalancerEdition')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('RequestTimeout') is not None:
@@ -14127,6 +14153,8 @@ class CreateIngressRequest(TeaModel):
             self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('SlbId') is not None:
             self.slb_id = m.get('SlbId')
+        if m.get('ZoneMappings') is not None:
+            self.zone_mappings = m.get('ZoneMappings')
         return self
 
 
@@ -17381,6 +17409,7 @@ class DeployApplicationRequest(TeaModel):
         config_map_mount_desc: str = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        custom_image_network_type: str = None,
         deploy: str = None,
         dotnet: str = None,
         edas_container_version: str = None,
@@ -17490,6 +17519,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        self.custom_image_network_type = custom_image_network_type
         # This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
         # 
         # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
@@ -17754,6 +17784,8 @@ class DeployApplicationRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.custom_image_network_type is not None:
+            result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
         if self.dotnet is not None:
@@ -17894,6 +17926,8 @@ class DeployApplicationRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('CustomImageNetworkType') is not None:
+            self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
         if m.get('Dotnet') is not None:
@@ -18025,6 +18059,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         config_map_mount_desc: str = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        custom_image_network_type: str = None,
         deploy: str = None,
         dotnet: str = None,
         edas_container_version: str = None,
@@ -18134,6 +18169,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        self.custom_image_network_type = custom_image_network_type
         # This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
         # 
         # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
@@ -18395,6 +18431,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.custom_image_network_type is not None:
+            result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.deploy is not None:
             result['Deploy'] = self.deploy
         if self.dotnet is not None:
@@ -18533,6 +18571,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('CustomImageNetworkType') is not None:
+            self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Deploy') is not None:
             self.deploy = m.get('Deploy')
         if m.get('Dotnet') is not None:
@@ -19716,6 +19756,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataConfigMapMountDesc] = None,
         cpu: int = None,
         custom_host_alias: str = None,
+        custom_image_network_type: str = None,
         dotnet: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
@@ -19723,6 +19764,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
         enable_new_arms: bool = None,
+        enabledle: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -19833,6 +19875,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **hostName**: the domain name or hostname.
         # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        self.custom_image_network_type = custom_image_network_type
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
@@ -19849,6 +19892,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.enable_grey_tag_route = enable_grey_tag_route
         self.enable_idle = enable_idle
         self.enable_new_arms = enable_new_arms
+        self.enabledle = enabledle
         # The environment variables. Variable description:
         # 
         # *   **name**: the name of the environment variable.
@@ -20143,6 +20187,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.custom_image_network_type is not None:
+            result['CustomImageNetworkType'] = self.custom_image_network_type
         if self.dotnet is not None:
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
@@ -20157,6 +20203,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableIdle'] = self.enable_idle
         if self.enable_new_arms is not None:
             result['EnableNewArms'] = self.enable_new_arms
+        if self.enabledle is not None:
+            result['Enabledle'] = self.enabledle
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -20308,6 +20356,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('CustomImageNetworkType') is not None:
+            self.custom_image_network_type = m.get('CustomImageNetworkType')
         if m.get('Dotnet') is not None:
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
@@ -20322,6 +20372,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_idle = m.get('EnableIdle')
         if m.get('EnableNewArms') is not None:
             self.enable_new_arms = m.get('EnableNewArms')
+        if m.get('Enabledle') is not None:
+            self.enabledle = m.get('Enabledle')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -21120,6 +21172,7 @@ class DescribeApplicationInstancesRequest(TeaModel):
         app_id: str = None,
         current_page: int = None,
         group_id: str = None,
+        instance_id: str = None,
         page_size: int = None,
         reverse: bool = None,
     ):
@@ -21133,6 +21186,7 @@ class DescribeApplicationInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.group_id = group_id
+        self.instance_id = instance_id
         # 10
         self.page_size = page_size
         # true
@@ -21153,6 +21207,8 @@ class DescribeApplicationInstancesRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.reverse is not None:
@@ -21167,6 +21223,8 @@ class DescribeApplicationInstancesRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('Reverse') is not None:
@@ -21227,8 +21285,10 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         instance_container_status: str = None,
         instance_health_status: str = None,
         instance_id: str = None,
+        main_container_status: str = None,
         package_version: str = None,
         sidecar_containers_status: List[DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus] = None,
+        unhealthy_message: str = None,
         v_switch_id: str = None,
     ):
         # The start time of the instance creation process. Unit: milliseconds.
@@ -21275,9 +21335,11 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         self.instance_health_status = instance_health_status
         # The ID of the instance.
         self.instance_id = instance_id
+        self.main_container_status = main_container_status
         # The version of the package.
         self.package_version = package_version
         self.sidecar_containers_status = sidecar_containers_status
+        self.unhealthy_message = unhealthy_message
         # The ID of the zone where the instance is deployed.
         self.v_switch_id = v_switch_id
 
@@ -21315,12 +21377,16 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             result['InstanceHealthStatus'] = self.instance_health_status
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.main_container_status is not None:
+            result['MainContainerStatus'] = self.main_container_status
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
         result['SidecarContainersStatus'] = []
         if self.sidecar_containers_status is not None:
             for k in self.sidecar_containers_status:
                 result['SidecarContainersStatus'].append(k.to_map() if k else None)
+        if self.unhealthy_message is not None:
+            result['UnhealthyMessage'] = self.unhealthy_message
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -21349,6 +21415,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             self.instance_health_status = m.get('InstanceHealthStatus')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MainContainerStatus') is not None:
+            self.main_container_status = m.get('MainContainerStatus')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
         self.sidecar_containers_status = []
@@ -21356,6 +21424,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             for k in m.get('SidecarContainersStatus'):
                 temp_model = DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus()
                 self.sidecar_containers_status.append(temp_model.from_map(k))
+        if m.get('UnhealthyMessage') is not None:
+            self.unhealthy_message = m.get('UnhealthyMessage')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -26633,6 +26703,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         self,
         cert_id: str = None,
         cert_ids: str = None,
+        created_by_sae: bool = None,
         default_rule: DescribeIngressResponseBodyDataDefaultRule = None,
         description: str = None,
         enable_xforwarded_for: bool = None,
@@ -26656,6 +26727,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         # The name of the application specified in the default rule.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
+        self.created_by_sae = created_by_sae
         # The forwarding rules.
         self.default_rule = default_rule
         # The name of the routing rule.
@@ -26715,6 +26787,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             result['CertId'] = self.cert_id
         if self.cert_ids is not None:
             result['CertIds'] = self.cert_ids
+        if self.created_by_sae is not None:
+            result['CreatedBySae'] = self.created_by_sae
         if self.default_rule is not None:
             result['DefaultRule'] = self.default_rule.to_map()
         if self.description is not None:
@@ -26763,6 +26837,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             self.cert_id = m.get('CertId')
         if m.get('CertIds') is not None:
             self.cert_ids = m.get('CertIds')
+        if m.get('CreatedBySae') is not None:
+            self.created_by_sae = m.get('CreatedBySae')
         if m.get('DefaultRule') is not None:
             temp_model = DescribeIngressResponseBodyDataDefaultRule()
             self.default_rule = temp_model.from_map(m['DefaultRule'])
@@ -33512,10 +33588,12 @@ class GetWebshellTokenRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        container_name: str = None,
         pod_name: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.container_name = container_name
         # This parameter is required.
         self.pod_name = pod_name
 
@@ -33530,6 +33608,8 @@ class GetWebshellTokenRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.container_name is not None:
+            result['ContainerName'] = self.container_name
         if self.pod_name is not None:
             result['PodName'] = self.pod_name
         return result
@@ -33538,6 +33618,8 @@ class GetWebshellTokenRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('ContainerName') is not None:
+            self.container_name = m.get('ContainerName')
         if m.get('PodName') is not None:
             self.pod_name = m.get('PodName')
         return self

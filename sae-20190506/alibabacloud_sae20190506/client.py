@@ -721,6 +721,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.custom_image_network_type):
+            query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.dotnet):
@@ -897,6 +899,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.custom_image_network_type):
+            query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.dotnet):
@@ -1489,6 +1493,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.cert_id):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
@@ -1515,6 +1521,8 @@ class Client(OpenApiClient):
             query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balance_type):
             query['LoadBalanceType'] = request.load_balance_type
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_timeout):
@@ -1523,6 +1531,8 @@ class Client(OpenApiClient):
             query['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.slb_id):
             query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules
@@ -1563,6 +1573,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.cert_id):
             query['CertId'] = request.cert_id
         if not UtilClient.is_unset(request.cert_ids):
@@ -1589,6 +1601,8 @@ class Client(OpenApiClient):
             query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balance_type):
             query['LoadBalanceType'] = request.load_balance_type
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_timeout):
@@ -1597,6 +1611,8 @@ class Client(OpenApiClient):
             query['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.slb_id):
             query['SlbId'] = request.slb_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules
@@ -3711,6 +3727,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.custom_image_network_type):
+            query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.dotnet):
@@ -3887,6 +3905,8 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.custom_image_network_type):
+            query['CustomImageNetworkType'] = request.custom_image_network_type
         if not UtilClient.is_unset(request.deploy):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.dotnet):
@@ -4523,6 +4543,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.reverse):
@@ -4569,6 +4591,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.reverse):
@@ -8875,6 +8899,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.pod_name):
             query['PodName'] = request.pod_name
         req = open_api_models.OpenApiRequest(
@@ -8913,6 +8939,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.pod_name):
             query['PodName'] = request.pod_name
         req = open_api_models.OpenApiRequest(
