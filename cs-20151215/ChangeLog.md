@@ -1,3 +1,7 @@
+2025-01-10 Version: 4.8.8
+- Update API CreateAutoscalingConfig: update param body.
+
+
 2024-12-30 Version: 4.8.7
 - Update API ListOperationPlans: update response param.
 

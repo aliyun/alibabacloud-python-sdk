@@ -1233,6 +1233,8 @@ class Client(OpenApiClient):
             body['max_graceful_termination_sec'] = request.max_graceful_termination_sec
         if not UtilClient.is_unset(request.min_replica_count):
             body['min_replica_count'] = request.min_replica_count
+        if not UtilClient.is_unset(request.priorities):
+            body['priorities'] = request.priorities
         if not UtilClient.is_unset(request.recycle_node_deletion_enabled):
             body['recycle_node_deletion_enabled'] = request.recycle_node_deletion_enabled
         if not UtilClient.is_unset(request.scale_down_enabled):
@@ -1300,6 +1302,8 @@ class Client(OpenApiClient):
             body['max_graceful_termination_sec'] = request.max_graceful_termination_sec
         if not UtilClient.is_unset(request.min_replica_count):
             body['min_replica_count'] = request.min_replica_count
+        if not UtilClient.is_unset(request.priorities):
+            body['priorities'] = request.priorities
         if not UtilClient.is_unset(request.recycle_node_deletion_enabled):
             body['recycle_node_deletion_enabled'] = request.recycle_node_deletion_enabled
         if not UtilClient.is_unset(request.scale_down_enabled):
@@ -10491,7 +10495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary Queries the auto O\\&M schedules of a cluster.
+        @summary Queries the automated maintenance schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @param headers: map
@@ -10531,7 +10535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary Queries the auto O\\&M schedules of a cluster.
+        @summary Queries the automated maintenance schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @param headers: map
@@ -10569,7 +10573,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary Queries the auto O\\&M schedules of a cluster.
+        @summary Queries the automated maintenance schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @return: ListOperationPlansResponse
@@ -10583,7 +10587,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
         """
-        @summary Queries the auto O\\&M schedules of a cluster.
+        @summary Queries the automated maintenance schedules of a cluster.
         
         @param request: ListOperationPlansRequest
         @return: ListOperationPlansResponse
@@ -14484,7 +14488,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @param headers: map
@@ -14527,7 +14531,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @param headers: map
@@ -14568,7 +14572,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @return: UpdateClusterAuditLogConfigResponse
@@ -14585,7 +14589,7 @@ class Client(OpenApiClient):
         """
         @summary You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
         
-        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
+        @description Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.alibabacloud.com/product/log-service/pricing) (SLS).
         
         @param request: UpdateClusterAuditLogConfigRequest
         @return: UpdateClusterAuditLogConfigResponse
