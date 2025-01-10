@@ -277,6 +277,8 @@ class Client(OpenApiClient):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.click_trace):
             query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.headers):
+            query['Headers'] = request.headers
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.receivers_name):
@@ -336,6 +338,8 @@ class Client(OpenApiClient):
             query['AddressType'] = request.address_type
         if not UtilClient.is_unset(request.click_trace):
             query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.headers):
+            query['Headers'] = request.headers
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.receivers_name):
@@ -1075,7 +1079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateUserSuppressionResponse:
         """
-        @summary 创建用户无效地址
+        @summary Create User\\"s Invalid Address
         
         @param request: CreateUserSuppressionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1116,7 +1120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateUserSuppressionResponse:
         """
-        @summary 创建用户无效地址
+        @summary Create User\\"s Invalid Address
         
         @param request: CreateUserSuppressionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1156,7 +1160,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateUserSuppressionRequest,
     ) -> dm_20151123_models.CreateUserSuppressionResponse:
         """
-        @summary 创建用户无效地址
+        @summary Create User\\"s Invalid Address
         
         @param request: CreateUserSuppressionRequest
         @return: CreateUserSuppressionResponse
@@ -1169,7 +1173,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.CreateUserSuppressionRequest,
     ) -> dm_20151123_models.CreateUserSuppressionResponse:
         """
-        @summary 创建用户无效地址
+        @summary Create User\\"s Invalid Address
         
         @param request: CreateUserSuppressionRequest
         @return: CreateUserSuppressionResponse
@@ -1947,6 +1951,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         """
+        @summary Retrieve account information.
+        
         @param request: DescAccountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescAccountSummaryResponse
@@ -1984,6 +1990,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         """
+        @summary Retrieve account information.
+        
         @param request: DescAccountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescAccountSummaryResponse
@@ -2020,6 +2028,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DescAccountSummaryRequest,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         """
+        @summary Retrieve account information.
+        
         @param request: DescAccountSummaryRequest
         @return: DescAccountSummaryResponse
         """
@@ -2031,6 +2041,8 @@ class Client(OpenApiClient):
         request: dm_20151123_models.DescAccountSummaryRequest,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         """
+        @summary Retrieve account information.
+        
         @param request: DescAccountSummaryRequest
         @return: DescAccountSummaryResponse
         """
@@ -2754,7 +2766,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetUserResponse:
         """
-        @summary 获取账号详情
+        @summary Get Account Details
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2782,7 +2794,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetUserResponse:
         """
-        @summary 获取账号详情
+        @summary Get Account Details
         
         @param request: GetUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2807,7 +2819,7 @@ class Client(OpenApiClient):
 
     def get_user(self) -> dm_20151123_models.GetUserResponse:
         """
-        @summary 获取账号详情
+        @summary Get Account Details
         
         @return: GetUserResponse
         """
@@ -2816,7 +2828,7 @@ class Client(OpenApiClient):
 
     async def get_user_async(self) -> dm_20151123_models.GetUserResponse:
         """
-        @summary 获取账号详情
+        @summary Get Account Details
         
         @return: GetUserResponse
         """
@@ -2829,7 +2841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ListUserSuppressionResponse:
         """
-        @summary 列出用户无效地址
+        @summary List User Invalid Addresses.
         
         @param request: ListUserSuppressionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2882,7 +2894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ListUserSuppressionResponse:
         """
-        @summary 列出用户无效地址
+        @summary List User Invalid Addresses.
         
         @param request: ListUserSuppressionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2934,7 +2946,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ListUserSuppressionRequest,
     ) -> dm_20151123_models.ListUserSuppressionResponse:
         """
-        @summary 列出用户无效地址
+        @summary List User Invalid Addresses.
         
         @param request: ListUserSuppressionRequest
         @return: ListUserSuppressionResponse
@@ -2947,7 +2959,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.ListUserSuppressionRequest,
     ) -> dm_20151123_models.ListUserSuppressionResponse:
         """
-        @summary 列出用户无效地址
+        @summary List User Invalid Addresses.
         
         @param request: ListUserSuppressionRequest
         @return: ListUserSuppressionResponse
@@ -4857,6 +4869,8 @@ class Client(OpenApiClient):
             query['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.from_alias):
             query['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.headers):
+            query['Headers'] = request.headers
         if not UtilClient.is_unset(request.html_body):
             query['HtmlBody'] = request.html_body
         if not UtilClient.is_unset(request.owner_id):
@@ -4924,6 +4938,8 @@ class Client(OpenApiClient):
             query['ClickTrace'] = request.click_trace
         if not UtilClient.is_unset(request.from_alias):
             query['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.headers):
+            query['Headers'] = request.headers
         if not UtilClient.is_unset(request.html_body):
             query['HtmlBody'] = request.html_body
         if not UtilClient.is_unset(request.owner_id):
@@ -5109,7 +5125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateUserResponse:
         """
-        @summary 更新帐号信息
+        @summary Update account information
         
         @param tmp_req: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5148,7 +5164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateUserResponse:
         """
-        @summary 更新帐号信息
+        @summary Update account information
         
         @param tmp_req: UpdateUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5186,7 +5202,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.UpdateUserRequest,
     ) -> dm_20151123_models.UpdateUserResponse:
         """
-        @summary 更新帐号信息
+        @summary Update account information
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse
@@ -5199,7 +5215,7 @@ class Client(OpenApiClient):
         request: dm_20151123_models.UpdateUserRequest,
     ) -> dm_20151123_models.UpdateUserResponse:
         """
-        @summary 更新帐号信息
+        @summary Update account information
         
         @param request: UpdateUserRequest
         @return: UpdateUserResponse

@@ -244,6 +244,7 @@ class BatchSendMailRequest(TeaModel):
         account_name: str = None,
         address_type: int = None,
         click_trace: str = None,
+        headers: str = None,
         owner_id: int = None,
         receivers_name: str = None,
         reply_address: str = None,
@@ -260,6 +261,7 @@ class BatchSendMailRequest(TeaModel):
         # This parameter is required.
         self.address_type = address_type
         self.click_trace = click_trace
+        self.headers = headers
         self.owner_id = owner_id
         # This parameter is required.
         self.receivers_name = receivers_name
@@ -288,6 +290,8 @@ class BatchSendMailRequest(TeaModel):
             result['AddressType'] = self.address_type
         if self.click_trace is not None:
             result['ClickTrace'] = self.click_trace
+        if self.headers is not None:
+            result['Headers'] = self.headers
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.receivers_name is not None:
@@ -318,6 +322,8 @@ class BatchSendMailRequest(TeaModel):
             self.address_type = m.get('AddressType')
         if m.get('ClickTrace') is not None:
             self.click_trace = m.get('ClickTrace')
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ReceiversName') is not None:
@@ -1191,6 +1197,7 @@ class CreateUserSuppressionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Email address or domain name
         self.address = address
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1234,7 +1241,9 @@ class CreateUserSuppressionResponseBody(TeaModel):
         request_id: str = None,
         suppression_id: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Invalid address number
         self.suppression_id = suppression_id
 
     def validate(self):
@@ -2177,23 +2186,45 @@ class DescAccountSummaryResponseBody(TeaModel):
         templates: int = None,
         user_status: int = None,
     ):
+        # Daily quota
         self.daily_quota = daily_quota
+        # remaining amount of daily free quota
         self.daily_remain_free_quota = daily_remain_free_quota
+        # Dayu status (deprecated, retained for compatibility reasons.)
         self.dayu_status = dayu_status
+        # Number of domains
         self.domains = domains
+        # Effective time
         self.enable_times = enable_times
+        # Number of sending addresses
         self.mail_addresses = mail_addresses
+        # Maximum level
         self.max_quota_level = max_quota_level
+        # Monthly quota
         self.month_quota = month_quota
+        # Credit level
         self.quota_level = quota_level
+        # Number of recipients
         self.receivers = receivers
+        # Remaining amount of total free quota
         self.remain_free_quota = remain_free_quota
+        # Request ID
         self.request_id = request_id
+        # Deprecated, retained for compatibility reasons.
         self.sms_record = sms_record
+        # Deprecated, retained for compatibility reasons.
         self.sms_sign = sms_sign
+        # Deprecated, retained for compatibility reasons.
         self.sms_templates = sms_templates
+        # Number of tags
         self.tags = tags
+        # Number of templates
         self.templates = templates
+        # User status:
+        # 1 Frozen
+        # 2 In arrears
+        # 4 Restricted from sending
+        # 8 Logically deleted
         self.user_status = user_status
 
     def validate(self):
@@ -2334,9 +2365,12 @@ class DescDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the domain name.
+        # 
         # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
+        # Determine whether to perform real-time DNS resolution
         self.require_real_time_dns_records = require_real_time_dns_records
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2410,34 +2444,73 @@ class DescDomainResponseBody(TeaModel):
         tl_domain_name: str = None,
         tracef_record: str = None,
     ):
+        # Track verification
         self.cname_auth_status = cname_auth_status
+        # CName verification flag, success: 0, failure: 1.
         self.cname_confirm_status = cname_confirm_status
+        # CNAME records
         self.cname_record = cname_record
+        # Creation time
         self.create_time = create_time
+        # Default domain name
         self.default_domain = default_domain
+        # DKIM validation flag, success: 0, failure: 1.
         self.dkim_auth_status = dkim_auth_status
+        # DKIM public key
         self.dkim_public_key = dkim_public_key
+        # DKIM HostRecord
         self.dkim_rr = dkim_rr
+        # DMARC validation flag, success: 0, failure: 1.
         self.dmarc_auth_status = dmarc_auth_status
+        # DMARC host record
         self.dmarc_host_record = dmarc_host_record
+        # DMARC record
         self.dmarc_record = dmarc_record
+        # dmarc record value resolved through public DNS
         self.dns_dmarc = dns_dmarc
+        # MX record value resolved through public DNS
         self.dns_mx = dns_mx
+        # SPF record value resolved through public DNS
         self.dns_spf = dns_spf
+        # TXT record value resolved through public DNS.
         self.dns_txt = dns_txt
+        # The ID of the domain name.
         self.domain_id = domain_id
+        # domain
         self.domain_name = domain_name
+        # The status of the domain name. Indicates whether the domain name is verified and available. Valid values:
+        # 
+        # 0: indicates that the domain name is verified and available.
+        # 
+        # 1: indicates that the domain name fails to be verified and is unavailable.
+        # 
+        # 2: indicates that the domain name is available, but not filed or configured with a CNAME record.
+        # 
+        # 3: indicates that the domain name is available but not filed.
+        # 
+        # 4: indicates that the domain name is available but not configured with a CNAME record.
         self.domain_status = domain_status
+        # TXT records provided by the Direct Mail console.
         self.domain_type = domain_type
+        # host record
         self.host_record = host_record
+        # Filing status. 1 indicates that it has been filed, and 0 indicates that it has not been filed.
         self.icp_status = icp_status
+        # MX validation flag, success: 0, failure: 1.
         self.mx_auth_status = mx_auth_status
+        # MX record
         self.mx_record = mx_record
+        # The ID of the request.
         self.request_id = request_id
+        # SPF validation flag, success: 0, failure: 1.
         self.spf_auth_status = spf_auth_status
+        # Spf record
         self.spf_record = spf_record
+        # SpfRecord
         self.spf_record_v2 = spf_record_v2
+        # The primary domain name.
         self.tl_domain_name = tl_domain_name
+        # The CNAME verification record provided by the Direct Mail console.
         self.tracef_record = tracef_record
 
     def validate(self):
@@ -3697,6 +3770,7 @@ class GetUserResponseBodyData(TeaModel):
         self,
         enable_eventbridge: bool = None,
     ):
+        # Whether EventBridge is enabled
         self.enable_eventbridge = enable_eventbridge
 
     def validate(self):
@@ -3725,7 +3799,9 @@ class GetUserResponseBody(TeaModel):
         data: GetUserResponseBodyData = None,
         request_id: str = None,
     ):
+        # Returned Content
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -3809,15 +3885,22 @@ class ListUserSuppressionRequest(TeaModel):
         start_bounce_time: int = None,
         start_create_time: int = None,
     ):
+        # Email address or domain name
         self.address = address
+        # End time of the last bounce hit, timestamp, accurate to the second. The span between start and end times cannot exceed 7 days.
         self.end_bounce_time = end_bounce_time
+        # End creation time, timestamp, accurate to the second. The span between start and end times cannot exceed 7 days.
         self.end_create_time = end_create_time
         self.owner_id = owner_id
+        # Current page number
         self.page_no = page_no
+        # Page size
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Start time of the last bounce hit, timestamp, accurate to the second.
         self.start_bounce_time = start_bounce_time
+        # Start creation time, timestamp, accurate to the second.
         self.start_create_time = start_create_time
 
     def validate(self):
@@ -3885,10 +3968,17 @@ class ListUserSuppressionResponseBodyDataUserSuppressions(TeaModel):
         suppression_id: int = None,
         type: str = None,
     ):
+        # Email address or domain name
         self.address = address
+        # Creation time, timestamp, accurate to the second.
         self.create_time = create_time
+        # Last bounce hit time, timestamp, accurate to the second.
         self.last_bounce_time = last_bounce_time
+        # Invalid address ID
         self.suppression_id = suppression_id
+        # Source of entry, invalid address type
+        # - system
+        # - user
         self.type = type
 
     def validate(self):
@@ -3971,10 +4061,15 @@ class ListUserSuppressionResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Returned results.
         self.data = data
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -6973,16 +7068,24 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
         tag_name: str = None,
         to_address: str = None,
     ):
+        # Sending address. Not filled in represents all addresses.
         self.account_name = account_name
+        # The end time. The difference between the start time and the end time cannot exceed 30 days. Format: yyyy-MM-dd.
         self.end_time = end_time
+        # The number of entries to return in the request. Valid values: 1 to 100.
         self.length = length
+        # The start position of the next page. The offset for the request. If you want to obtain more records, specify the return value of the NextStart parameter for this parameter.
         self.next_start = next_start
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time. The start time can be up to 30 days earlier than the current time. Format: yyyy-MM-dd.
         self.start_time = start_time
+        # The delivery status. If you leave this parameter empty, all states are included. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
         self.status = status
+        # The email tag. If you leave this parameter empty, all email tags are included.
         self.tag_name = tag_name
+        # The recipient address. If you leave this parameter empty, all recipient addresses are included.
         self.to_address = to_address
 
     def validate(self):
@@ -7057,13 +7160,26 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         to_address: str = None,
         utc_last_update_time: str = None,
     ):
+        # The sender address.
         self.account_name = account_name
+        # Detailed classification of error causes:
+        # 
+        # - SendOk
+        # - SmtpNxBox
+        # 
+        # etc.
         self.error_classification = error_classification
+        # The most recent update time.
         self.last_update_time = last_update_time
+        # The details of the email.
         self.message = message
+        # The delivery status. Valid values: 0: successful, 2 invalid email address, 3: spam, and 4: failed.
         self.status = status
+        # the subject of email.
         self.subject = subject
+        # The recipient address.
         self.to_address = to_address
+        # The most recent update time (timestamp format)
         self.utc_last_update_time = utc_last_update_time
 
     def validate(self):
@@ -7156,8 +7272,11 @@ class SenderStatisticsDetailByParamResponseBody(TeaModel):
         request_id: str = None,
         data: SenderStatisticsDetailByParamResponseBodyData = None,
     ):
+        # The start position of the next page. The return value of the NextStart parameter indicates the start position of the next page. If you want to obtain more records, specify the return value in the next request.
         self.next_start = next_start
+        # The ID of the request.
         self.request_id = request_id
+        # The response parameters.
         self.data = data
 
     def validate(self):
@@ -7357,6 +7476,7 @@ class SingleSendMailRequest(TeaModel):
         address_type: int = None,
         click_trace: str = None,
         from_alias: str = None,
+        headers: str = None,
         html_body: str = None,
         owner_id: int = None,
         reply_address: str = None,
@@ -7377,6 +7497,7 @@ class SingleSendMailRequest(TeaModel):
         self.address_type = address_type
         self.click_trace = click_trace
         self.from_alias = from_alias
+        self.headers = headers
         self.html_body = html_body
         self.owner_id = owner_id
         self.reply_address = reply_address
@@ -7411,6 +7532,8 @@ class SingleSendMailRequest(TeaModel):
             result['ClickTrace'] = self.click_trace
         if self.from_alias is not None:
             result['FromAlias'] = self.from_alias
+        if self.headers is not None:
+            result['Headers'] = self.headers
         if self.html_body is not None:
             result['HtmlBody'] = self.html_body
         if self.owner_id is not None:
@@ -7449,6 +7572,8 @@ class SingleSendMailRequest(TeaModel):
             self.click_trace = m.get('ClickTrace')
         if m.get('FromAlias') is not None:
             self.from_alias = m.get('FromAlias')
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
         if m.get('HtmlBody') is not None:
             self.html_body = m.get('HtmlBody')
         if m.get('OwnerId') is not None:
@@ -7670,6 +7795,7 @@ class UpdateUserRequestUser(TeaModel):
         self,
         enable_eventbridge: bool = None,
     ):
+        # Whether EventBridge is enabled
         self.enable_eventbridge = enable_eventbridge
 
     def validate(self):
@@ -7697,6 +7823,7 @@ class UpdateUserRequest(TeaModel):
         self,
         user: UpdateUserRequestUser = None,
     ):
+        # User Information
         self.user = user
 
     def validate(self):
@@ -7726,6 +7853,7 @@ class UpdateUserShrinkRequest(TeaModel):
         self,
         user_shrink: str = None,
     ):
+        # User Information
         self.user_shrink = user_shrink
 
     def validate(self):

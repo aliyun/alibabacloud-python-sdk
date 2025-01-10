@@ -1,3 +1,9 @@
+2025-01-10 Version: 1.2.3
+- Update API BatchSendMail: add param Headers.
+- Update API SingleSendMail: add param Headers.
+- Update API SingleSendMail: update param ResourceOwnerAccount.
+
+
 2024-07-31 Version: 1.2.2
 - Update API DescAccountSummary: update response param.
 
