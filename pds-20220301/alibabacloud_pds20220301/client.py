@@ -5379,7 +5379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoResponse:
         """
-        @summary 获取用户认证方式详情
+        @summary Queries the information about an account.
         
         @param request: GetLinkInfoRequest
         @param headers: map
@@ -5421,7 +5421,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetLinkInfoResponse:
         """
-        @summary 获取用户认证方式详情
+        @summary Queries the information about an account.
         
         @param request: GetLinkInfoRequest
         @param headers: map
@@ -5461,7 +5461,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetLinkInfoRequest,
     ) -> pds_20220301_models.GetLinkInfoResponse:
         """
-        @summary 获取用户认证方式详情
+        @summary Queries the information about an account.
         
         @param request: GetLinkInfoRequest
         @return: GetLinkInfoResponse
@@ -5475,7 +5475,7 @@ class Client(OpenApiClient):
         request: pds_20220301_models.GetLinkInfoRequest,
     ) -> pds_20220301_models.GetLinkInfoResponse:
         """
-        @summary 获取用户认证方式详情
+        @summary Queries the information about an account.
         
         @param request: GetLinkInfoRequest
         @return: GetLinkInfoResponse

@@ -8709,22 +8709,112 @@ class VideoPreviewPlayInfoOfflineVideoTranscodingList(TeaModel):
         return self
 
 
+class VideoPreviewPlayInfoQuickVideoList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        template_id: str = None,
+        url: str = None,
+    ):
+        self.status = status
+        self.template_id = template_id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['template_id'] = self.template_id
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('template_id') is not None:
+            self.template_id = m.get('template_id')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class VideoPreviewSubtitleInfo(TeaModel):
+    def __init__(
+        self,
+        language: str = None,
+        status: str = None,
+        url: str = None,
+    ):
+        self.language = language
+        self.status = status
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language is not None:
+            result['language'] = self.language
+        if self.status is not None:
+            result['status'] = self.status
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
 class VideoPreviewPlayInfo(TeaModel):
     def __init__(
         self,
         category: str = None,
+        live_transcoding_subtitle_task_list: List[VideoPreviewSubtitleInfo] = None,
         live_transcoding_task_list: List[VideoPreviewPlayInfoLiveTranscodingTaskList] = None,
         master_url: str = None,
         meta: VideoPreviewPlayInfoMeta = None,
         offline_video_transcoding_list: List[VideoPreviewPlayInfoOfflineVideoTranscodingList] = None,
+        offline_video_transcoding_subtitle_list: List[VideoPreviewSubtitleInfo] = None,
+        quick_video_list: List[VideoPreviewPlayInfoQuickVideoList] = None,
+        quick_video_subtitle_list: List[VideoPreviewSubtitleInfo] = None,
     ):
         self.category = category
+        self.live_transcoding_subtitle_task_list = live_transcoding_subtitle_task_list
         self.live_transcoding_task_list = live_transcoding_task_list
         self.master_url = master_url
         self.meta = meta
         self.offline_video_transcoding_list = offline_video_transcoding_list
+        self.offline_video_transcoding_subtitle_list = offline_video_transcoding_subtitle_list
+        self.quick_video_list = quick_video_list
+        self.quick_video_subtitle_list = quick_video_subtitle_list
 
     def validate(self):
+        if self.live_transcoding_subtitle_task_list:
+            for k in self.live_transcoding_subtitle_task_list:
+                if k:
+                    k.validate()
         if self.live_transcoding_task_list:
             for k in self.live_transcoding_task_list:
                 if k:
@@ -8733,6 +8823,18 @@ class VideoPreviewPlayInfo(TeaModel):
             self.meta.validate()
         if self.offline_video_transcoding_list:
             for k in self.offline_video_transcoding_list:
+                if k:
+                    k.validate()
+        if self.offline_video_transcoding_subtitle_list:
+            for k in self.offline_video_transcoding_subtitle_list:
+                if k:
+                    k.validate()
+        if self.quick_video_list:
+            for k in self.quick_video_list:
+                if k:
+                    k.validate()
+        if self.quick_video_subtitle_list:
+            for k in self.quick_video_subtitle_list:
                 if k:
                     k.validate()
 
@@ -8744,6 +8846,10 @@ class VideoPreviewPlayInfo(TeaModel):
         result = dict()
         if self.category is not None:
             result['category'] = self.category
+        result['live_transcoding_subtitle_task_list'] = []
+        if self.live_transcoding_subtitle_task_list is not None:
+            for k in self.live_transcoding_subtitle_task_list:
+                result['live_transcoding_subtitle_task_list'].append(k.to_map() if k else None)
         result['live_transcoding_task_list'] = []
         if self.live_transcoding_task_list is not None:
             for k in self.live_transcoding_task_list:
@@ -8756,12 +8862,29 @@ class VideoPreviewPlayInfo(TeaModel):
         if self.offline_video_transcoding_list is not None:
             for k in self.offline_video_transcoding_list:
                 result['offline_video_transcoding_list'].append(k.to_map() if k else None)
+        result['offline_video_transcoding_subtitle_list'] = []
+        if self.offline_video_transcoding_subtitle_list is not None:
+            for k in self.offline_video_transcoding_subtitle_list:
+                result['offline_video_transcoding_subtitle_list'].append(k.to_map() if k else None)
+        result['quick_video_list'] = []
+        if self.quick_video_list is not None:
+            for k in self.quick_video_list:
+                result['quick_video_list'].append(k.to_map() if k else None)
+        result['quick_video_subtitle_list'] = []
+        if self.quick_video_subtitle_list is not None:
+            for k in self.quick_video_subtitle_list:
+                result['quick_video_subtitle_list'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('category') is not None:
             self.category = m.get('category')
+        self.live_transcoding_subtitle_task_list = []
+        if m.get('live_transcoding_subtitle_task_list') is not None:
+            for k in m.get('live_transcoding_subtitle_task_list'):
+                temp_model = VideoPreviewSubtitleInfo()
+                self.live_transcoding_subtitle_task_list.append(temp_model.from_map(k))
         self.live_transcoding_task_list = []
         if m.get('live_transcoding_task_list') is not None:
             for k in m.get('live_transcoding_task_list'):
@@ -8777,6 +8900,21 @@ class VideoPreviewPlayInfo(TeaModel):
             for k in m.get('offline_video_transcoding_list'):
                 temp_model = VideoPreviewPlayInfoOfflineVideoTranscodingList()
                 self.offline_video_transcoding_list.append(temp_model.from_map(k))
+        self.offline_video_transcoding_subtitle_list = []
+        if m.get('offline_video_transcoding_subtitle_list') is not None:
+            for k in m.get('offline_video_transcoding_subtitle_list'):
+                temp_model = VideoPreviewSubtitleInfo()
+                self.offline_video_transcoding_subtitle_list.append(temp_model.from_map(k))
+        self.quick_video_list = []
+        if m.get('quick_video_list') is not None:
+            for k in m.get('quick_video_list'):
+                temp_model = VideoPreviewPlayInfoQuickVideoList()
+                self.quick_video_list.append(temp_model.from_map(k))
+        self.quick_video_subtitle_list = []
+        if m.get('quick_video_subtitle_list') is not None:
+            for k in m.get('quick_video_subtitle_list'):
+                temp_model = VideoPreviewSubtitleInfo()
+                self.quick_video_subtitle_list.append(temp_model.from_map(k))
         return self
 
 
@@ -8858,16 +8996,92 @@ class VideoPreviewPlayMetaMeta(TeaModel):
         return self
 
 
+class VideoPreviewPlayMetaOfflineVideoTranscodingList(TeaModel):
+    def __init__(
+        self,
+        keep_original_resolution: str = None,
+        status: str = None,
+        template_id: str = None,
+    ):
+        self.keep_original_resolution = keep_original_resolution
+        self.status = status
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keep_original_resolution is not None:
+            result['keep_original_resolution'] = self.keep_original_resolution
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['template_id'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keep_original_resolution') is not None:
+            self.keep_original_resolution = m.get('keep_original_resolution')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('template_id') is not None:
+            self.template_id = m.get('template_id')
+        return self
+
+
+class VideoPreviewPlayMetaQuickVideoList(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        template_id: str = None,
+    ):
+        self.status = status
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['template_id'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('template_id') is not None:
+            self.template_id = m.get('template_id')
+        return self
+
+
 class VideoPreviewPlayMeta(TeaModel):
     def __init__(
         self,
         category: str = None,
         live_transcoding_task_list: List[VideoPreviewPlayMetaLiveTranscodingTaskList] = None,
         meta: VideoPreviewPlayMetaMeta = None,
+        offline_video_transcoding_list: List[VideoPreviewPlayMetaOfflineVideoTranscodingList] = None,
+        quick_video_list: List[VideoPreviewPlayMetaQuickVideoList] = None,
     ):
         self.category = category
         self.live_transcoding_task_list = live_transcoding_task_list
         self.meta = meta
+        self.offline_video_transcoding_list = offline_video_transcoding_list
+        self.quick_video_list = quick_video_list
 
     def validate(self):
         if self.live_transcoding_task_list:
@@ -8876,6 +9090,14 @@ class VideoPreviewPlayMeta(TeaModel):
                     k.validate()
         if self.meta:
             self.meta.validate()
+        if self.offline_video_transcoding_list:
+            for k in self.offline_video_transcoding_list:
+                if k:
+                    k.validate()
+        if self.quick_video_list:
+            for k in self.quick_video_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8891,6 +9113,14 @@ class VideoPreviewPlayMeta(TeaModel):
                 result['live_transcoding_task_list'].append(k.to_map() if k else None)
         if self.meta is not None:
             result['meta'] = self.meta.to_map()
+        result['offline_video_transcoding_list'] = []
+        if self.offline_video_transcoding_list is not None:
+            for k in self.offline_video_transcoding_list:
+                result['offline_video_transcoding_list'].append(k.to_map() if k else None)
+        result['quick_video_list'] = []
+        if self.quick_video_list is not None:
+            for k in self.quick_video_list:
+                result['quick_video_list'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8905,6 +9135,16 @@ class VideoPreviewPlayMeta(TeaModel):
         if m.get('meta') is not None:
             temp_model = VideoPreviewPlayMetaMeta()
             self.meta = temp_model.from_map(m['meta'])
+        self.offline_video_transcoding_list = []
+        if m.get('offline_video_transcoding_list') is not None:
+            for k in m.get('offline_video_transcoding_list'):
+                temp_model = VideoPreviewPlayMetaOfflineVideoTranscodingList()
+                self.offline_video_transcoding_list.append(temp_model.from_map(k))
+        self.quick_video_list = []
+        if m.get('quick_video_list') is not None:
+            for k in m.get('quick_video_list'):
+                temp_model = VideoPreviewPlayMetaQuickVideoList()
+                self.quick_video_list.append(temp_model.from_map(k))
         return self
 
 
@@ -15257,9 +15497,22 @@ class GetLinkInfoRequest(TeaModel):
         identity: str = None,
         type: str = None,
     ):
+        # The additional information about the unique identifier of the account. For example, if type is set to mobile, set the value of extra to a country code.
         self.extra = extra
+        # The unique identifier of the account, such as a mobile number.
+        # 
         # This parameter is required.
         self.identity = identity
+        # The account type. Valid values:
+        # 
+        # *   mobile: a mobile number.
+        # *   email: an email address.
+        # *   ding: a DingTalk account.
+        # *   ram: an Alibaba Cloud Resource Access Management (RAM) user.
+        # *   wechat: a WeCom account.
+        # *   ldap: a Lightweight Directory Access Protocol (LDAP) account.
+        # *   custom: a custom account.
+        # 
         # This parameter is required.
         self.type = type
 
