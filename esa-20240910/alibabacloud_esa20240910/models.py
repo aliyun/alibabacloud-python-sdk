@@ -30241,16 +30241,88 @@ class ListOriginPoolsResponse(TeaModel):
         return self
 
 
+class ListPagesRequestQueryArgs(TeaModel):
+    def __init__(
+        self,
+        name_description_like: str = None,
+    ):
+        self.name_description_like = name_description_like
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name_description_like is not None:
+            result['NameDescriptionLike'] = self.name_description_like
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NameDescriptionLike') is not None:
+            self.name_description_like = m.get('NameDescriptionLike')
+        return self
+
+
 class ListPagesRequest(TeaModel):
     def __init__(
         self,
         page_number: int = None,
         page_size: int = None,
+        query_args: ListPagesRequestQueryArgs = None,
     ):
         # The page number. Valid values: **1 to 100000**. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        self.query_args = query_args
+
+    def validate(self):
+        if self.query_args:
+            self.query_args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_args is not None:
+            result['QueryArgs'] = self.query_args.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryArgs') is not None:
+            temp_model = ListPagesRequestQueryArgs()
+            self.query_args = temp_model.from_map(m['QueryArgs'])
+        return self
+
+
+class ListPagesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        query_args_shrink: str = None,
+    ):
+        # The page number. Valid values: **1 to 100000**. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20.
+        self.page_size = page_size
+        self.query_args_shrink = query_args_shrink
 
     def validate(self):
         pass
@@ -30265,6 +30337,8 @@ class ListPagesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_args_shrink is not None:
+            result['QueryArgs'] = self.query_args_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -30273,6 +30347,8 @@ class ListPagesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryArgs') is not None:
+            self.query_args_shrink = m.get('QueryArgs')
         return self
 
 
@@ -31990,10 +32066,14 @@ class ListSitesRequest(TeaModel):
         self.coverage = coverage
         # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        # null
+        # 
+        # *   null
+        # *   null
         self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
+        # The number of entries per page. Default value: 500.
         self.page_size = page_size
         # The plan type. Valid values:
         # 
@@ -32010,7 +32090,7 @@ class ListSitesRequest(TeaModel):
         # 
         # *   **prefix**: match by prefix.
         # *   **suffix**: match by suffix.
-        # *   **exact**: exact match.
+        # *   **null**\
         # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
         # The website status. This parameter specifies a filter condition for the query.
@@ -32119,10 +32199,14 @@ class ListSitesShrinkRequest(TeaModel):
         self.coverage = coverage
         # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
         self.only_enterprise = only_enterprise
+        # null
+        # 
+        # *   null
+        # *   null
         self.order_by = order_by
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
+        # The number of entries per page. Default value: 500.
         self.page_size = page_size
         # The plan type. Valid values:
         # 
@@ -32139,7 +32223,7 @@ class ListSitesShrinkRequest(TeaModel):
         # 
         # *   **prefix**: match by prefix.
         # *   **suffix**: match by suffix.
-        # *   **exact**: exact match.
+        # *   **null**\
         # *   **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
         # The website status. This parameter specifies a filter condition for the query.
@@ -32273,6 +32357,7 @@ class ListSitesResponseBodySites(TeaModel):
         self.update_time = update_time
         # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
         self.verify_code = verify_code
+        # null
         self.visit_time = visit_time
 
     def validate(self):
@@ -32518,7 +32603,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The website information. Valid values of he number of website IDs: **1** to **50**.
+        # The website ID.
         self.resource_id = resource_id
         # The resource type.
         # 
@@ -33306,6 +33391,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         self,
         billing_mode: str = None,
         bot_instance_level: str = None,
+        bot_request: str = None,
         coverages: str = None,
         create_time: str = None,
         crossborder_traffic: str = None,
@@ -33334,6 +33420,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         # *   POSTPAY: pay-as-you-go.
         self.billing_mode = billing_mode
         self.bot_instance_level = bot_instance_level
+        self.bot_request = bot_request
         # The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         # 
         # *   domestic: the Chinese mainland.
@@ -33393,6 +33480,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
             result['BillingMode'] = self.billing_mode
         if self.bot_instance_level is not None:
             result['BotInstanceLevel'] = self.bot_instance_level
+        if self.bot_request is not None:
+            result['BotRequest'] = self.bot_request
         if self.coverages is not None:
             result['Coverages'] = self.coverages
         if self.create_time is not None:
@@ -33445,6 +33534,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
             self.billing_mode = m.get('BillingMode')
         if m.get('BotInstanceLevel') is not None:
             self.bot_instance_level = m.get('BotInstanceLevel')
+        if m.get('BotRequest') is not None:
+            self.bot_request = m.get('BotRequest')
         if m.get('Coverages') is not None:
             self.coverages = m.get('Coverages')
         if m.get('CreateTime') is not None:
@@ -37383,8 +37474,10 @@ class SetCertificateRequest(TeaModel):
 class SetCertificateResponseBody(TeaModel):
     def __init__(
         self,
+        id: str = None,
         request_id: str = None,
     ):
+        self.id = id
         # The request ID.
         self.request_id = request_id
 
@@ -37397,12 +37490,16 @@ class SetCertificateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

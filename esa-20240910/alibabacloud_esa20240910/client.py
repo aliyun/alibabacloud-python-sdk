@@ -14195,22 +14195,28 @@ class Client(OpenApiClient):
 
     def list_pages_with_options(
         self,
-        request: esa20240910_models.ListPagesRequest,
+        tmp_req: esa20240910_models.ListPagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListPagesResponse:
         """
         @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
-        @param request: ListPagesRequest
+        @param tmp_req: ListPagesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPagesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListPagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14232,22 +14238,28 @@ class Client(OpenApiClient):
 
     async def list_pages_with_options_async(
         self,
-        request: esa20240910_models.ListPagesRequest,
+        tmp_req: esa20240910_models.ListPagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> esa20240910_models.ListPagesResponse:
         """
         @summary Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
         
-        @param request: ListPagesRequest
+        @param tmp_req: ListPagesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPagesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.ListPagesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.query_args):
+            request.query_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19181,9 +19193,9 @@ class Client(OpenApiClient):
         """
         @summary Converts the DNS setup option of a website.
         
-        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
-        Make sure that the website has only proxied A/AAAA and CNAME records.
-        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+        @description When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
+        The website only has proxied A/AAAA and CNAME records.
+        The DNS passthrough mode and custom nameserver features are not enabled for the website.
         
         @param request: UpdateSiteAccessTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19222,9 +19234,9 @@ class Client(OpenApiClient):
         """
         @summary Converts the DNS setup option of a website.
         
-        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
-        Make sure that the website has only proxied A/AAAA and CNAME records.
-        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+        @description When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
+        The website only has proxied A/AAAA and CNAME records.
+        The DNS passthrough mode and custom nameserver features are not enabled for the website.
         
         @param request: UpdateSiteAccessTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19262,9 +19274,9 @@ class Client(OpenApiClient):
         """
         @summary Converts the DNS setup option of a website.
         
-        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
-        Make sure that the website has only proxied A/AAAA and CNAME records.
-        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+        @description When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
+        The website only has proxied A/AAAA and CNAME records.
+        The DNS passthrough mode and custom nameserver features are not enabled for the website.
         
         @param request: UpdateSiteAccessTypeRequest
         @return: UpdateSiteAccessTypeResponse
@@ -19279,9 +19291,9 @@ class Client(OpenApiClient):
         """
         @summary Converts the DNS setup option of a website.
         
-        @description When you change the DNS setup of a website from NS to CNAME, take note of the following items:
-        Make sure that the website has only proxied A/AAAA and CNAME records.
-        Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
+        @description When you change the DNS setup of a website from NS to CNAME, note the following prerequisites:
+        The website only has proxied A/AAAA and CNAME records.
+        The DNS passthrough mode and custom nameserver features are not enabled for the website.
         
         @param request: UpdateSiteAccessTypeRequest
         @return: UpdateSiteAccessTypeResponse
