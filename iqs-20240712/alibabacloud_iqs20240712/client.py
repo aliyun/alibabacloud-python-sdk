@@ -749,6 +749,8 @@ class Client(OpenApiClient):
             query['radius'] = request.radius
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.sort_rule):
+            query['sortRule'] = request.sort_rule
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
         req = open_api_models.OpenApiRequest(
@@ -801,6 +803,8 @@ class Client(OpenApiClient):
             query['radius'] = request.radius
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.sort_rule):
+            query['sortRule'] = request.sort_rule
         if not UtilClient.is_unset(request.types):
             query['types'] = request.types
         req = open_api_models.OpenApiRequest(

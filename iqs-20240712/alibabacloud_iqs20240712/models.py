@@ -2338,6 +2338,7 @@ class NearbySearchNovaRequest(TeaModel):
         page: int = None,
         radius: int = None,
         size: int = None,
+        sort_rule: str = None,
         types: str = None,
     ):
         self.city_limit = city_limit
@@ -2347,6 +2348,7 @@ class NearbySearchNovaRequest(TeaModel):
         self.page = page
         self.radius = radius
         self.size = size
+        self.sort_rule = sort_rule
         self.types = types
 
     def validate(self):
@@ -2372,6 +2374,8 @@ class NearbySearchNovaRequest(TeaModel):
             result['radius'] = self.radius
         if self.size is not None:
             result['size'] = self.size
+        if self.sort_rule is not None:
+            result['sortRule'] = self.sort_rule
         if self.types is not None:
             result['types'] = self.types
         return result
@@ -2392,6 +2396,8 @@ class NearbySearchNovaRequest(TeaModel):
             self.radius = m.get('radius')
         if m.get('size') is not None:
             self.size = m.get('size')
+        if m.get('sortRule') is not None:
+            self.sort_rule = m.get('sortRule')
         if m.get('types') is not None:
             self.types = m.get('types')
         return self

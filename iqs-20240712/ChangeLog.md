@@ -1,3 +1,7 @@
+2025-01-10 Version: 2.0.5
+- Update API NearbySearchNova: add param sortRule.
+
+
 2025-01-06 Version: 2.0.4
 - Update API NearbySearchNova: add param cityLimit.
 - Update API PlaceSearchNova: add param cityLimit.
