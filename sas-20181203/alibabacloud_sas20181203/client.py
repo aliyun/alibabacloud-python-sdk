@@ -17184,6 +17184,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
@@ -17219,6 +17221,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
@@ -35472,6 +35476,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cmdline):
+            query['Cmdline'] = request.cmdline
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
@@ -35515,6 +35523,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.cmdline):
+            query['Cmdline'] = request.cmdline
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):

@@ -1,3 +1,9 @@
+2025-01-10 Version: 4.0.1
+- Update API DescribeAssetsScaProcessNum: add param BizType.
+- Update API DescribePropertyScaProcessDetail: add param BizType.
+- Update API DescribePropertyScaProcessDetail: add param Cmdline.
+
+
 2025-01-07 Version: 4.0.0
 - Support API GetBuildRiskDefineRuleConfig.
 - Support API GetTenantCheckAvailable.
