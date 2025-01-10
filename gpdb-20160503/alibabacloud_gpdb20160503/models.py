@@ -1616,6 +1616,108 @@ class CreateAccountResponse(TeaModel):
         return self
 
 
+class CreateBackupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class CreateBackupResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_job_id: int = None,
+        request_id: str = None,
+    ):
+        self.backup_job_id = backup_job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBackupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBackupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBackupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCollectionRequest(TeaModel):
     def __init__(
         self,
@@ -1659,7 +1761,7 @@ class CreateCollectionRequest(TeaModel):
         # 
         # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
         self.external_storage = external_storage
-        # Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+        # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
         # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
         # 
@@ -1697,13 +1799,13 @@ class CreateCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.metadata = metadata
+        # The scalar index fields. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
         self.metadata_indices = metadata_indices
-        # Method used when building the vector index.
+        # The method that is used to create vector indexes. Valid values:
         # 
-        # Value description:
-        # - **l2**: Euclidean distance.
-        # - **ip**: Inner product (dot product) distance.
-        # - **cosine** (default): Cosine similarity.
+        # *   l2: Euclidean distance.
+        # *   ip: inner product distance.
+        # *   cosine: cosine similarity.
         self.metrics = metrics
         # The name of the namespace.
         # 
@@ -1815,7 +1917,7 @@ class CreateCollectionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Return message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -2889,85 +2991,112 @@ class CreateDocumentCollectionRequest(TeaModel):
         pq_enable: int = None,
         region_id: str = None,
     ):
-        # Name of the document library to be created.
+        # The name of the document collection that you want to create.
         # 
         # > The name must comply with PostgreSQL object naming restrictions.
         # 
         # This parameter is required.
         self.collection = collection
-        # Instance ID.
+        # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Vectorization algorithm.
+        # The vectorization algorithm.
         # 
-        # > Supported algorithms:
-        # > - text-embedding-v1: 1536 dimensions
-        # > - text-embedding-v2: 1536 dimensions
-        # > - text2vec: 1024 dimensions
-        # > - m3e-base: 768 dimensions
-        # > - m3e-small: 512 dimensions
-        # > - clip-vit-b-32: CLIP ViT-B/32 model, 512 dimensions, image vectorization algorithm
-        # > - clip-vit-b-16: CLIP ViT-B/16 model, 512 dimensions, image vectorization algorithm
-        # > - clip-vit-l-14: CLIP ViT-L/14 model, 768 dimensions, image vectorization algorithm
-        # > - clip-vit-l-14-336px: CLIP ViT-L/14@336px model, 768 dimensions, image vectorization algorithm
-        # > - clip-rn50: CLIP RN50 model, 1024 dimensions, image vectorization algorithm
-        # > - clip-rn101: CLIP RN101 model, 512 dimensions, image vectorization algorithm
-        # > - clip-rn50x4: CLIP RN50x4 model, 640 dimensions, image vectorization algorithm
-        # > - clip-rn50x16: CLIP RN50x16 model, 768 dimensions, image vectorization algorithm
-        # > - clip-rn50x64: CLIP RN50x64 model, 1024 dimensions, image vectorization algorithm
+        # >  Supported algorithms:
+        # 
+        # *   text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text2vec: the algorithm that produces 1024-dimensional vectors.
+        # 
+        # *   m3e-base: the algorithm that produces 768-dimensional vectors.
+        # 
+        # *   m3e-small: the algorithm that produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
+        # 
+        # *   clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
+        # 
+        # *   clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
         self.embedding_model = embedding_model
-        # Whether to use mmap to build HNSW index, default is 0. If the data does not need to be deleted and there are requirements for the speed of uploading data, it is recommended to set this to 1.
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
         # 
         # > 
-        # > - When set to 0, segment-page storage will be used by default to build the index. This mode can use PostgreSQL\\"s shared_buffer as a cache and supports operations such as deletion and updates.
-        # > - When set to 1, the index will be built using mmap. This mode does not support deletion or update operations.
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
         self.external_storage = external_storage
-        # Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+        # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
-        # The maximum number of neighbors in the HNSW algorithm, ranging from 1 to 1000. The interface will automatically set this value based on the vector dimension, and it generally does not need to be manually configured.
-        # > It is recommended to set according to the vector dimension: >- For dimensions less than or equal to 384: 16 >- For dimensions greater than 384 but less than or equal to 768: 32 >- For dimensions greater than 768 but less than or equal to 1024: 64 >- For dimensions greater than 1024: 128
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *   If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *   If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *   If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
         self.hnsw_m = hnsw_m
-        # Name of the management account with rds_superuser permissions.
+        # The name of the manager account that has the rds_superuser permission.
         # 
         # > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
         # 
         # This parameter is required.
         self.manager_account = manager_account
-        # Management account password.
+        # The password of the management account.
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # Metadata of vector data, in the form of a MAP JSON string. The key represents the field name, and the value represents the data type.
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
         # 
-        # > Supported data types
-        # > - For a list of data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
-        # > - The money type is not supported at this time.
+        # > Supported data types:
+        # > - For information about data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+        # > - The money type is not supported.
         # 
         # >Warning: The fields id, vector, doc_name, content, loader_metadata, source, and to_tsvector are reserved and should not be used.
         self.metadata = metadata
         self.metadata_indices = metadata_indices
-        # Method used when building the vector index.
+        # The method that is used to create vector indexes.
         # 
-        # Value description:
-        # - **l2**: Euclidean distance.
-        # - **ip**: Inner product (dot product) distance.
-        # - **cosine** (default): Cosine similarity.
+        # Valid values:
+        # 
+        # *   **l2**: Euclidean distance.
+        # *   **ip**: inner product distance.
+        # *   **cosine** (default): cosine similarity.
         self.metrics = metrics
-        # Namespace, default is public.
+        # The name of the namespace. Default value: public.
         # 
-        # > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         self.owner_id = owner_id
-        # Tokenizer used for full-text search, default is zh_cn.
+        # The analyzer that is used for full-text search. Default value: zh_cn.
         self.parser = parser
-        # Whether to enable PQ (Product Quantization) algorithm for index acceleration. It is recommended to enable this when the data volume exceeds 500,000. Value description:
-        # - 0: Disabled.
-        # - 1: Enabled (default).
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
         self.pq_enable = pq_enable
-        # ID of the region where the instance is located.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3059,13 +3188,13 @@ class CreateDocumentCollectionResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Return message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # API execution status, with the following values:
-        # - **success**: Execution succeeded.
-        # - **fail**: Execution failed.
+        # The status of the operation. Valid values:
+        # - **success**\
+        # - **fail**\
         self.status = status
 
     def validate(self):
@@ -5745,6 +5874,109 @@ class DeleteAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBackupRequest(TeaModel):
+    def __init__(
+        self,
+        backup_id: str = None,
+        dbinstance_id: str = None,
+    ):
+        # This parameter is required.
+        self.backup_id = backup_id
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class DeleteBackupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBackupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBackupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBackupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9189,6 +9421,145 @@ class DescribeAvailableResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAvailableResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBackupJobRequest(TeaModel):
+    def __init__(
+        self,
+        backup_job_id: int = None,
+        dbinstance_id: str = None,
+    ):
+        # This parameter is required.
+        self.backup_job_id = backup_job_id
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class DescribeBackupJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        backup_id: str = None,
+        backup_job_id: str = None,
+        backup_mode: str = None,
+        backup_status: str = None,
+        process: str = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.backup_id = backup_id
+        self.backup_job_id = backup_job_id
+        self.backup_mode = backup_mode
+        self.backup_status = backup_status
+        self.process = process
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
+        if self.backup_mode is not None:
+            result['BackupMode'] = self.backup_mode
+        if self.backup_status is not None:
+            result['BackupStatus'] = self.backup_status
+        if self.process is not None:
+            result['Process'] = self.process
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
+        if m.get('BackupMode') is not None:
+            self.backup_mode = m.get('BackupMode')
+        if m.get('BackupStatus') is not None:
+            self.backup_status = m.get('BackupStatus')
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeBackupJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBackupJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBackupJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27321,6 +27692,202 @@ class InitVectorDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InitVectorDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListBackupJobsRequest(TeaModel):
+    def __init__(
+        self,
+        backup_mode: str = None,
+        dbinstance_id: str = None,
+    ):
+        self.backup_mode = backup_mode
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_mode is not None:
+            result['BackupMode'] = self.backup_mode
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupMode') is not None:
+            self.backup_mode = m.get('BackupMode')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        return self
+
+
+class ListBackupJobsResponseBodyItemsBackupJob(TeaModel):
+    def __init__(
+        self,
+        backup_job_id: str = None,
+        backup_mode: str = None,
+        backup_status: str = None,
+        process: str = None,
+        start_time: str = None,
+    ):
+        self.backup_job_id = backup_job_id
+        self.backup_mode = backup_mode
+        self.backup_status = backup_status
+        self.process = process
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
+        if self.backup_mode is not None:
+            result['BackupMode'] = self.backup_mode
+        if self.backup_status is not None:
+            result['BackupStatus'] = self.backup_status
+        if self.process is not None:
+            result['Process'] = self.process
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
+        if m.get('BackupMode') is not None:
+            self.backup_mode = m.get('BackupMode')
+        if m.get('BackupStatus') is not None:
+            self.backup_status = m.get('BackupStatus')
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListBackupJobsResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        backup_job: List[ListBackupJobsResponseBodyItemsBackupJob] = None,
+    ):
+        self.backup_job = backup_job
+
+    def validate(self):
+        if self.backup_job:
+            for k in self.backup_job:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BackupJob'] = []
+        if self.backup_job is not None:
+            for k in self.backup_job:
+                result['BackupJob'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.backup_job = []
+        if m.get('BackupJob') is not None:
+            for k in m.get('BackupJob'):
+                temp_model = ListBackupJobsResponseBodyItemsBackupJob()
+                self.backup_job.append(temp_model.from_map(k))
+        return self
+
+
+class ListBackupJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: ListBackupJobsResponseBodyItems = None,
+        request_id: str = None,
+    ):
+        self.items = items
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Items') is not None:
+            temp_model = ListBackupJobsResponseBodyItems()
+            self.items = temp_model.from_map(m['Items'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListBackupJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListBackupJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListBackupJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

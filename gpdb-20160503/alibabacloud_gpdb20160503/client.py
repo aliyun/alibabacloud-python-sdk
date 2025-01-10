@@ -1150,6 +1150,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
+    def create_backup_with_options(
+        self,
+        request: gpdb_20160503_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateBackupResponse:
+        """
+        @summary 创建备份
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backup_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateBackupResponse:
+        """
+        @summary 创建备份
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backup(
+        self,
+        request: gpdb_20160503_models.CreateBackupRequest,
+    ) -> gpdb_20160503_models.CreateBackupResponse:
+        """
+        @summary 创建备份
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_backup_with_options(request, runtime)
+
+    async def create_backup_async(
+        self,
+        request: gpdb_20160503_models.CreateBackupRequest,
+    ) -> gpdb_20160503_models.CreateBackupResponse:
+        """
+        @summary 创建备份
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backup_with_options_async(request, runtime)
+
     def create_collection_with_options(
         self,
         request: gpdb_20160503_models.CreateCollectionRequest,
@@ -1840,7 +1936,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Create Knowledge Base
+        @summary Creates a document collection.
         
         @param request: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1905,7 +2001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Create Knowledge Base
+        @summary Creates a document collection.
         
         @param request: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1969,7 +2065,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Create Knowledge Base
+        @summary Creates a document collection.
         
         @param request: CreateDocumentCollectionRequest
         @return: CreateDocumentCollectionResponse
@@ -1982,7 +2078,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
-        @summary Create Knowledge Base
+        @summary Creates a document collection.
         
         @param request: CreateDocumentCollectionRequest
         @return: CreateDocumentCollectionResponse
@@ -3741,6 +3837,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
+
+    def delete_backup_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteBackupResponse:
+        """
+        @summary 删除备份
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteBackupResponse:
+        """
+        @summary 删除备份
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup(
+        self,
+        request: gpdb_20160503_models.DeleteBackupRequest,
+    ) -> gpdb_20160503_models.DeleteBackupResponse:
+        """
+        @summary 删除备份
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_with_options(request, runtime)
+
+    async def delete_backup_async(
+        self,
+        request: gpdb_20160503_models.DeleteBackupRequest,
+    ) -> gpdb_20160503_models.DeleteBackupResponse:
+        """
+        @summary 删除备份
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_with_options_async(request, runtime)
 
     def delete_collection_with_options(
         self,
@@ -6125,6 +6321,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resources_with_options_async(request, runtime)
+
+    def describe_backup_job_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeBackupJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeBackupJobResponse:
+        """
+        @summary 获取备份任务详情
+        
+        @param request: DescribeBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeBackupJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_job_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeBackupJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeBackupJobResponse:
+        """
+        @summary 获取备份任务详情
+        
+        @param request: DescribeBackupJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeBackupJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_job(
+        self,
+        request: gpdb_20160503_models.DescribeBackupJobRequest,
+    ) -> gpdb_20160503_models.DescribeBackupJobResponse:
+        """
+        @summary 获取备份任务详情
+        
+        @param request: DescribeBackupJobRequest
+        @return: DescribeBackupJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_job_with_options(request, runtime)
+
+    async def describe_backup_job_async(
+        self,
+        request: gpdb_20160503_models.DescribeBackupJobRequest,
+    ) -> gpdb_20160503_models.DescribeBackupJobResponse:
+        """
+        @summary 获取备份任务详情
+        
+        @param request: DescribeBackupJobRequest
+        @return: DescribeBackupJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_job_with_options_async(request, runtime)
 
     def describe_backup_policy_with_options(
         self,
@@ -14693,6 +14989,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.init_vector_database_with_options_async(request, runtime)
+
+    def list_backup_jobs_with_options(
+        self,
+        request: gpdb_20160503_models.ListBackupJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListBackupJobsResponse:
+        """
+        @summary 获取备份任务列表
+        
+        @param request: ListBackupJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackupJobs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListBackupJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_backup_jobs_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListBackupJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListBackupJobsResponse:
+        """
+        @summary 获取备份任务列表
+        
+        @param request: ListBackupJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackupJobs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListBackupJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_backup_jobs(
+        self,
+        request: gpdb_20160503_models.ListBackupJobsRequest,
+    ) -> gpdb_20160503_models.ListBackupJobsResponse:
+        """
+        @summary 获取备份任务列表
+        
+        @param request: ListBackupJobsRequest
+        @return: ListBackupJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_backup_jobs_with_options(request, runtime)
+
+    async def list_backup_jobs_async(
+        self,
+        request: gpdb_20160503_models.ListBackupJobsRequest,
+    ) -> gpdb_20160503_models.ListBackupJobsResponse:
+        """
+        @summary 获取备份任务列表
+        
+        @param request: ListBackupJobsRequest
+        @return: ListBackupJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_backup_jobs_with_options_async(request, runtime)
 
     def list_collections_with_options(
         self,
