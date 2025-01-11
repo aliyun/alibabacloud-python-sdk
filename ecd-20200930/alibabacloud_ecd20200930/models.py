@@ -15461,6 +15461,7 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         client_ip: str = None,
         client_os: str = None,
         client_version: str = None,
+        description: str = None,
         desktop_group_id: str = None,
         desktop_group_name: str = None,
         desktop_id: str = None,
@@ -15490,6 +15491,7 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         self.client_os = client_os
         # The client version.
         self.client_version = client_version
+        self.description = description
         # The desktop group ID.
         self.desktop_group_id = desktop_group_id
         # The desktop group name.
@@ -15565,6 +15567,8 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
             result['ClientOS'] = self.client_os
         if self.client_version is not None:
             result['ClientVersion'] = self.client_version
+        if self.description is not None:
+            result['Description'] = self.description
         if self.desktop_group_id is not None:
             result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_group_name is not None:
@@ -15613,6 +15617,8 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
             self.client_os = m.get('ClientOS')
         if m.get('ClientVersion') is not None:
             self.client_version = m.get('ClientVersion')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('DesktopGroupId') is not None:
             self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopGroupName') is not None:
