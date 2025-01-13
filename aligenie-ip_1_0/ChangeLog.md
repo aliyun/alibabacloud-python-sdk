@@ -1,3 +1,6 @@
+2025-01-13 Version: 2.8.1
+- Generated python ip_1.0 for AliGenie.
+
 2025-01-10 Version: 2.8.0
 - Support API ExecuteScene.
 - Support API PmsEventReport.
