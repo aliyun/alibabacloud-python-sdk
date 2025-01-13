@@ -7740,6 +7740,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.add_account):
             query['AddAccount'] = request.add_account
+        if not UtilClient.is_unset(request.advanced_options):
+            query['AdvancedOptions'] = request.advanced_options
         if not UtilClient.is_unset(request.base_image):
             query['BaseImage'] = request.base_image
         if not UtilClient.is_unset(request.base_image_type):
@@ -7756,12 +7758,16 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.import_image_options):
+            query['ImportImageOptions'] = request.import_image_options
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nvme_support):
+            query['NvmeSupport'] = request.nvme_support
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -7835,6 +7841,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.add_account):
             query['AddAccount'] = request.add_account
+        if not UtilClient.is_unset(request.advanced_options):
+            query['AdvancedOptions'] = request.advanced_options
         if not UtilClient.is_unset(request.base_image):
             query['BaseImage'] = request.base_image
         if not UtilClient.is_unset(request.base_image_type):
@@ -7851,12 +7859,16 @@ class Client(OpenApiClient):
             query['ImageFamily'] = request.image_family
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.import_image_options):
+            query['ImportImageOptions'] = request.import_image_options
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nvme_support):
+            query['NvmeSupport'] = request.nvme_support
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

@@ -1,3 +1,12 @@
+2025-01-13 Version: 5.0.2
+- Update API CreateImagePipeline: add param AdvancedOptions.
+- Update API CreateImagePipeline: add param ImportImageOptions.
+- Update API CreateImagePipeline: add param NvmeSupport.
+- Update API CreateImagePipeline: update param BaseImage.
+- Update API CreateKeyPair: update response param.
+- Update API DescribeImagePipelines: update response param.
+
+
 2025-01-09 Version: 5.0.1
 - Update API CreateNetworkInterface: update param EnhancedNetwork.
 - Update API DescribeInstanceTypes: update response param.
