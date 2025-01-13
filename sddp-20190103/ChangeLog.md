@@ -1,3 +1,11 @@
+2025-01-13 Version: 1.4.2
+- Update API CreateRule: add param ModelRuleIds.
+- Update API CreateRule: add param TemplateRuleIds.
+- Update API DescribeRules: update response param.
+- Update API ModifyRule: add param ModelRuleIds.
+- Update API ModifyRule: add param TemplateRuleIds.
+
+
 2024-12-17 Version: 1.4.1
 - Update API DescribeRules: add param CooperationChannel.
 - Update API DescribeRules: add param Simplify.

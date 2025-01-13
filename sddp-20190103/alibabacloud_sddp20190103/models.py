@@ -445,6 +445,7 @@ class CreateRuleRequest(TeaModel):
         description: str = None,
         lang: str = None,
         match_type: int = None,
+        model_rule_ids: str = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
@@ -455,6 +456,7 @@ class CreateRuleRequest(TeaModel):
         status: int = None,
         support_form: int = None,
         target: str = None,
+        template_rule_ids: str = None,
         warn_level: int = None,
     ):
         # The content type of the sensitive data detection rule. Valid values:
@@ -480,6 +482,7 @@ class CreateRuleRequest(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         # 
         # This parameter is required.
@@ -522,6 +525,7 @@ class CreateRuleRequest(TeaModel):
         self.support_form = support_form
         # The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.target = target
+        self.template_rule_ids = template_rule_ids
         # The risk level of the alert that is triggered. Valid values:
         # 
         # *   **1**: low
@@ -550,6 +554,8 @@ class CreateRuleRequest(TeaModel):
             result['Lang'] = self.lang
         if self.match_type is not None:
             result['MatchType'] = self.match_type
+        if self.model_rule_ids is not None:
+            result['ModelRuleIds'] = self.model_rule_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -570,6 +576,8 @@ class CreateRuleRequest(TeaModel):
             result['SupportForm'] = self.support_form
         if self.target is not None:
             result['Target'] = self.target
+        if self.template_rule_ids is not None:
+            result['TemplateRuleIds'] = self.template_rule_ids
         if self.warn_level is not None:
             result['WarnLevel'] = self.warn_level
         return result
@@ -588,6 +596,8 @@ class CreateRuleRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('MatchType') is not None:
             self.match_type = m.get('MatchType')
+        if m.get('ModelRuleIds') is not None:
+            self.model_rule_ids = m.get('ModelRuleIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -608,6 +618,8 @@ class CreateRuleRequest(TeaModel):
             self.support_form = m.get('SupportForm')
         if m.get('Target') is not None:
             self.target = m.get('Target')
+        if m.get('TemplateRuleIds') is not None:
+            self.template_rule_ids = m.get('TemplateRuleIds')
         if m.get('WarnLevel') is not None:
             self.warn_level = m.get('WarnLevel')
         return self
@@ -11208,6 +11220,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         login_name: str = None,
         major_key: str = None,
         match_type: int = None,
+        model_rule_ids: str = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
@@ -11217,6 +11230,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         status: int = None,
         support_form: int = None,
         target: str = None,
+        template_rule_ids: str = None,
         user_id: int = None,
         warn_level: int = None,
     ):
@@ -11261,6 +11275,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         self.name = name
         # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
@@ -11298,6 +11313,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         self.support_form = support_form
         # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.target = target
+        self.template_rule_ids = template_rule_ids
         # The ID of the account that is used to create the sensitive data detection rule.
         self.user_id = user_id
         # The severity level. Valid values:
@@ -11346,6 +11362,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             result['MajorKey'] = self.major_key
         if self.match_type is not None:
             result['MatchType'] = self.match_type
+        if self.model_rule_ids is not None:
+            result['ModelRuleIds'] = self.model_rule_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -11364,6 +11382,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             result['SupportForm'] = self.support_form
         if self.target is not None:
             result['Target'] = self.target
+        if self.template_rule_ids is not None:
+            result['TemplateRuleIds'] = self.template_rule_ids
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.warn_level is not None:
@@ -11402,6 +11422,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             self.major_key = m.get('MajorKey')
         if m.get('MatchType') is not None:
             self.match_type = m.get('MatchType')
+        if m.get('ModelRuleIds') is not None:
+            self.model_rule_ids = m.get('ModelRuleIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -11420,6 +11442,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
             self.support_form = m.get('SupportForm')
         if m.get('Target') is not None:
             self.target = m.get('Target')
+        if m.get('TemplateRuleIds') is not None:
+            self.template_rule_ids = m.get('TemplateRuleIds')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WarnLevel') is not None:
@@ -13549,12 +13573,14 @@ class ModifyRuleRequest(TeaModel):
         id: int = None,
         lang: str = None,
         match_type: int = None,
+        model_rule_ids: str = None,
         name: str = None,
         product_code: str = None,
         product_id: int = None,
         risk_level_id: int = None,
         rule_type: int = None,
         support_form: int = None,
+        template_rule_ids: str = None,
         warn_level: int = None,
     ):
         # The content type of the sensitive data detection rule. Valid values:
@@ -13583,6 +13609,7 @@ class ModifyRuleRequest(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         # 
         # You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule name.
@@ -13613,6 +13640,7 @@ class ModifyRuleRequest(TeaModel):
         # *   **1**: structured data assets
         # *   **2**: unstructured data assets
         self.support_form = support_form
+        self.template_rule_ids = template_rule_ids
         # The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
         # 
         # *   **1**: low level
@@ -13639,6 +13667,8 @@ class ModifyRuleRequest(TeaModel):
             result['Lang'] = self.lang
         if self.match_type is not None:
             result['MatchType'] = self.match_type
+        if self.model_rule_ids is not None:
+            result['ModelRuleIds'] = self.model_rule_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.product_code is not None:
@@ -13651,6 +13681,8 @@ class ModifyRuleRequest(TeaModel):
             result['RuleType'] = self.rule_type
         if self.support_form is not None:
             result['SupportForm'] = self.support_form
+        if self.template_rule_ids is not None:
+            result['TemplateRuleIds'] = self.template_rule_ids
         if self.warn_level is not None:
             result['WarnLevel'] = self.warn_level
         return result
@@ -13667,6 +13699,8 @@ class ModifyRuleRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('MatchType') is not None:
             self.match_type = m.get('MatchType')
+        if m.get('ModelRuleIds') is not None:
+            self.model_rule_ids = m.get('ModelRuleIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductCode') is not None:
@@ -13679,6 +13713,8 @@ class ModifyRuleRequest(TeaModel):
             self.rule_type = m.get('RuleType')
         if m.get('SupportForm') is not None:
             self.support_form = m.get('SupportForm')
+        if m.get('TemplateRuleIds') is not None:
+            self.template_rule_ids = m.get('TemplateRuleIds')
         if m.get('WarnLevel') is not None:
             self.warn_level = m.get('WarnLevel')
         return self
