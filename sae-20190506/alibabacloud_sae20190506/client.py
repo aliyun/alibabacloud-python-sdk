@@ -793,6 +793,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sae_version):
             query['SaeVersion'] = request.sae_version
         if not UtilClient.is_unset(request.secret_mount_desc):
@@ -971,6 +973,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.sae_version):
             query['SaeVersion'] = request.sae_version
         if not UtilClient.is_unset(request.secret_mount_desc):

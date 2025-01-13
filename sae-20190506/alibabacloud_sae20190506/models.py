@@ -11986,6 +11986,7 @@ class CreateApplicationRequest(TeaModel):
         python_modules: str = None,
         readiness: str = None,
         replicas: int = None,
+        resource_type: str = None,
         sae_version: str = None,
         secret_mount_desc: str = None,
         security_group_id: str = None,
@@ -12099,6 +12100,7 @@ class CreateApplicationRequest(TeaModel):
         # 
         # This parameter is required.
         self.replicas = replicas
+        self.resource_type = resource_type
         self.sae_version = sae_version
         self.secret_mount_desc = secret_mount_desc
         # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
@@ -12246,6 +12248,8 @@ class CreateApplicationRequest(TeaModel):
             result['Readiness'] = self.readiness
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.sae_version is not None:
             result['SaeVersion'] = self.sae_version
         if self.secret_mount_desc is not None:
@@ -12390,6 +12394,8 @@ class CreateApplicationRequest(TeaModel):
             self.readiness = m.get('Readiness')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('SaeVersion') is not None:
             self.sae_version = m.get('SaeVersion')
         if m.get('SecretMountDesc') is not None:
@@ -12481,6 +12487,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         python_modules: str = None,
         readiness: str = None,
         replicas: int = None,
+        resource_type: str = None,
         sae_version: str = None,
         secret_mount_desc: str = None,
         security_group_id: str = None,
@@ -12594,6 +12601,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.replicas = replicas
+        self.resource_type = resource_type
         self.sae_version = sae_version
         self.secret_mount_desc = secret_mount_desc
         # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
@@ -12738,6 +12746,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Readiness'] = self.readiness
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.sae_version is not None:
             result['SaeVersion'] = self.sae_version
         if self.secret_mount_desc is not None:
@@ -12880,6 +12890,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.readiness = m.get('Readiness')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('SaeVersion') is not None:
             self.sae_version = m.get('SaeVersion')
         if m.get('SecretMountDesc') is not None:
@@ -19805,6 +19817,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         readiness: str = None,
         region_id: str = None,
         replicas: int = None,
+        resource_type: str = None,
         secret_mount_desc: List[DescribeApplicationConfigResponseBodyDataSecretMountDesc] = None,
         security_group_id: str = None,
         service_tags: Dict[str, str] = None,
@@ -20061,6 +20074,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.region_id = region_id
         # The number of application instances.
         self.replicas = replicas
+        self.resource_type = resource_type
         self.secret_mount_desc = secret_mount_desc
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -20289,6 +20303,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['RegionId'] = self.region_id
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         result['SecretMountDesc'] = []
         if self.secret_mount_desc is not None:
             for k in self.secret_mount_desc:
@@ -20460,6 +20476,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         self.secret_mount_desc = []
         if m.get('SecretMountDesc') is not None:
             for k in m.get('SecretMountDesc'):
