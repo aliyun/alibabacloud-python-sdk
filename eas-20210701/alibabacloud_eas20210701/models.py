@@ -101,6 +101,7 @@ class Group(TeaModel):
         intranet_endpoint: str = None,
         name: str = None,
         queue_service: str = None,
+        traffic_mode: str = None,
         update_time: str = None,
     ):
         self.access_token = access_token
@@ -110,6 +111,7 @@ class Group(TeaModel):
         self.intranet_endpoint = intranet_endpoint
         self.name = name
         self.queue_service = queue_service
+        self.traffic_mode = traffic_mode
         self.update_time = update_time
 
     def validate(self):
@@ -135,6 +137,8 @@ class Group(TeaModel):
             result['Name'] = self.name
         if self.queue_service is not None:
             result['QueueService'] = self.queue_service
+        if self.traffic_mode is not None:
+            result['TrafficMode'] = self.traffic_mode
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -155,6 +159,8 @@ class Group(TeaModel):
             self.name = m.get('Name')
         if m.get('QueueService') is not None:
             self.queue_service = m.get('QueueService')
+        if m.get('TrafficMode') is not None:
+            self.traffic_mode = m.get('TrafficMode')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -776,6 +782,7 @@ class Service(TeaModel):
         source: str = None,
         status: str = None,
         total_instance: int = None,
+        traffic_state: str = None,
         update_time: str = None,
         weight: int = None,
         workspace_id: str = None,
@@ -820,6 +827,7 @@ class Service(TeaModel):
         self.source = source
         self.status = status
         self.total_instance = total_instance
+        self.traffic_state = traffic_state
         self.update_time = update_time
         self.weight = weight
         self.workspace_id = workspace_id
@@ -918,6 +926,8 @@ class Service(TeaModel):
             result['Status'] = self.status
         if self.total_instance is not None:
             result['TotalInstance'] = self.total_instance
+        if self.traffic_state is not None:
+            result['TrafficState'] = self.traffic_state
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         if self.weight is not None:
@@ -1011,6 +1021,8 @@ class Service(TeaModel):
             self.status = m.get('Status')
         if m.get('TotalInstance') is not None:
             self.total_instance = m.get('TotalInstance')
+        if m.get('TrafficState') is not None:
+            self.traffic_state = m.get('TrafficState')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         if m.get('Weight') is not None:
@@ -6388,11 +6400,30 @@ class DescribeGroupEndpointsResponseBodyEndpoints(TeaModel):
         path_type: str = None,
         port: int = None,
     ):
+        # The backend access ID, which varies based on the value of the EndpointType parameter.
+        # 
+        # *   If you set EndpointType to DefaultGateway, the value of this parameter is default.
+        # *   If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+        # *   If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+        # *   If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
+        # The service endpoint type. Valid values:
+        # 
+        # *   DefaultGateway: the shared gateway.
+        # *   PrivateGateway: the dedicated gateway.
+        # *   Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+        # *   Nacos: Associate the service with the Nacos instance.
         self.endpoint_type = endpoint_type
+        # The public endpoints.
         self.internet_endpoints = internet_endpoints
+        # The internal endpoints.
         self.intranet_endpoints = intranet_endpoints
+        # The path type. Valid values:
+        # 
+        # *   Group: the path of the service group.
+        # *   Service: the path of the service.
         self.path_type = path_type
+        # The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
         self.port = port
 
     def validate(self):
@@ -6443,9 +6474,13 @@ class DescribeGroupEndpointsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The service token.
         self.access_token = access_token
+        # The endpoints of service groups.
         self.endpoints = endpoints
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7491,11 +7526,30 @@ class DescribeServiceEndpointsResponseBodyEndpoints(TeaModel):
         path_type: str = None,
         port: int = None,
     ):
+        # The backend access ID, which varies based on the value of the EndpointType parameter.
+        # 
+        # *   If you set EndpointType to DefaultGateway, the value of this parameter is default.
+        # *   If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+        # *   If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+        # *   If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
+        # The service endpoint type. Valid values:
+        # 
+        # *   DefaultGateway: the shared gateway.
+        # *   PrivateGateway: the dedicated gateway.
+        # *   Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+        # *   Nacos: Associate the service with the Nacos instance.
         self.endpoint_type = endpoint_type
+        # The public endpoints.
         self.internet_endpoints = internet_endpoints
+        # The internal endpoints.
         self.intranet_endpoints = intranet_endpoints
+        # The path type. Valid values:
+        # 
+        # *   Group: the path of the service group.
+        # *   Service: the path of the service.
         self.path_type = path_type
+        # The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
         self.port = port
 
     def validate(self):
@@ -7546,9 +7600,13 @@ class DescribeServiceEndpointsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The service token.
         self.access_token = access_token
+        # The service endpoints.
         self.endpoints = endpoints
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8265,8 +8323,16 @@ class DescribeServiceSignedUrlRequest(TeaModel):
         internal: bool = None,
         type: str = None,
     ):
+        # The period of time for which the URL expires.
         self.expire = expire
+        # Specifies whether to use the VPC connection.
         self.internal = internal
+        # The page type.
+        # 
+        # Valid values:
+        # 
+        # *   webview
+        # *   monitor
         self.type = type
 
     def validate(self):
@@ -8305,6 +8371,7 @@ class DescribeServiceSignedUrlResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The service URL.
         self.signed_url = signed_url
 
     def validate(self):

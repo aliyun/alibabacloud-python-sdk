@@ -1,3 +1,7 @@
+2025-01-13 Version: 6.4.1
+- Update API ReleaseService: update param body.
+
+
 2024-12-26 Version: 6.4.0
 - Support API DescribeServiceSignedUrl.
 

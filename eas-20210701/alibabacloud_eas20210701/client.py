@@ -4176,7 +4176,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
         """
-        @summary 获取群组端点列表
+        @summary Obtains a list of endpoints of service groups.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4209,7 +4209,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
         """
-        @summary 获取群组端点列表
+        @summary Obtains a list of endpoints of service groups.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4240,7 +4240,7 @@ class Client(OpenApiClient):
         group_name: str,
     ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
         """
-        @summary 获取群组端点列表
+        @summary Obtains a list of endpoints of service groups.
         
         @return: DescribeGroupEndpointsResponse
         """
@@ -4254,7 +4254,7 @@ class Client(OpenApiClient):
         group_name: str,
     ) -> eas_20210701_models.DescribeGroupEndpointsResponse:
         """
-        @summary 获取群组端点列表
+        @summary Obtains a list of endpoints of service groups.
         
         @return: DescribeGroupEndpointsResponse
         """
@@ -4928,7 +4928,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
         """
-        @summary 获取服务端点列表
+        @summary Obtains a list of service endpoints.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4961,7 +4961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
         """
-        @summary 获取服务端点列表
+        @summary Obtains a list of service endpoints.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4992,7 +4992,7 @@ class Client(OpenApiClient):
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
         """
-        @summary 获取服务端点列表
+        @summary Obtains a list of service endpoints.
         
         @return: DescribeServiceEndpointsResponse
         """
@@ -5006,7 +5006,7 @@ class Client(OpenApiClient):
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceEndpointsResponse:
         """
-        @summary 获取服务端点列表
+        @summary Obtains a list of service endpoints.
         
         @return: DescribeServiceEndpointsResponse
         """
@@ -5491,7 +5491,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
         """
-        @summary 获取服务监控签名地址
+        @summary Obtains the logon-free URL of the service.
         
         @param request: DescribeServiceSignedUrlRequest
         @param headers: map
@@ -5535,7 +5535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
         """
-        @summary 获取服务监控签名地址
+        @summary Obtains the logon-free URL of the service.
         
         @param request: DescribeServiceSignedUrlRequest
         @param headers: map
@@ -5577,7 +5577,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DescribeServiceSignedUrlRequest,
     ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
         """
-        @summary 获取服务监控签名地址
+        @summary Obtains the logon-free URL of the service.
         
         @param request: DescribeServiceSignedUrlRequest
         @return: DescribeServiceSignedUrlResponse
@@ -5593,7 +5593,7 @@ class Client(OpenApiClient):
         request: eas_20210701_models.DescribeServiceSignedUrlRequest,
     ) -> eas_20210701_models.DescribeServiceSignedUrlResponse:
         """
-        @summary 获取服务监控签名地址
+        @summary Obtains the logon-free URL of the service.
         
         @param request: DescribeServiceSignedUrlRequest
         @return: DescribeServiceSignedUrlResponse
