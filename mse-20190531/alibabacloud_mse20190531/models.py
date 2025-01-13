@@ -9466,6 +9466,7 @@ class CreateFlowRuleRequest(TeaModel):
         app_name: str = None,
         control_behavior: int = None,
         enable: bool = None,
+        limit_app: str = None,
         max_queueing_time_ms: int = None,
         namespace: str = None,
         region_id: str = None,
@@ -9513,6 +9514,7 @@ class CreateFlowRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.enable = enable
+        self.limit_app = limit_app
         # The timeout period. Unit: milliseconds. This value is required if the ControlBehavior parameter is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
@@ -9550,6 +9552,8 @@ class CreateFlowRuleRequest(TeaModel):
             result['ControlBehavior'] = self.control_behavior
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.max_queueing_time_ms is not None:
             result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
         if self.namespace is not None:
@@ -9576,6 +9580,8 @@ class CreateFlowRuleRequest(TeaModel):
             self.control_behavior = m.get('ControlBehavior')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('MaxQueueingTimeMs') is not None:
             self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
         if m.get('Namespace') is not None:
@@ -9599,6 +9605,7 @@ class CreateFlowRuleResponseBodyData(TeaModel):
         control_behavior: int = None,
         enable: bool = None,
         id: int = None,
+        limit_app: str = None,
         max_queueing_time_ms: int = None,
         namespace: str = None,
         region_id: str = None,
@@ -9659,6 +9666,7 @@ class CreateFlowRuleResponseBodyData(TeaModel):
         self.enable = enable
         # The ID.
         self.id = id
+        self.limit_app = limit_app
         # The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
@@ -9689,6 +9697,8 @@ class CreateFlowRuleResponseBodyData(TeaModel):
             result['Enable'] = self.enable
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.max_queueing_time_ms is not None:
             result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
         if self.namespace is not None:
@@ -9713,6 +9723,8 @@ class CreateFlowRuleResponseBodyData(TeaModel):
             self.enable = m.get('Enable')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('MaxQueueingTimeMs') is not None:
             self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
         if m.get('Namespace') is not None:
@@ -10435,6 +10447,7 @@ class CreateIsolationRuleRequest(TeaModel):
         app_id: str = None,
         app_name: str = None,
         enable: bool = None,
+        limit_app: str = None,
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
@@ -10446,6 +10459,7 @@ class CreateIsolationRuleRequest(TeaModel):
         self.app_name = app_name
         # This parameter is required.
         self.enable = enable
+        self.limit_app = limit_app
         # This parameter is required.
         self.namespace = namespace
         self.region_id = region_id
@@ -10471,6 +10485,8 @@ class CreateIsolationRuleRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region_id is not None:
@@ -10491,6 +10507,8 @@ class CreateIsolationRuleRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
@@ -10509,6 +10527,7 @@ class CreateIsolationRuleResponseBodyData(TeaModel):
         app_name: str = None,
         enable: bool = None,
         id: int = None,
+        limit_app: str = None,
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
@@ -10518,6 +10537,7 @@ class CreateIsolationRuleResponseBodyData(TeaModel):
         self.app_name = app_name
         self.enable = enable
         self.id = id
+        self.limit_app = limit_app
         self.namespace = namespace
         self.region_id = region_id
         self.resource = resource
@@ -10540,6 +10560,8 @@ class CreateIsolationRuleResponseBodyData(TeaModel):
             result['Enable'] = self.enable
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region_id is not None:
@@ -10560,6 +10582,8 @@ class CreateIsolationRuleResponseBodyData(TeaModel):
             self.enable = m.get('Enable')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
@@ -27718,6 +27742,162 @@ class GetKubernetesSourceResponse(TeaModel):
         return self
 
 
+class GetLocalityRuleRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        namespace: str = None,
+        region: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        self.namespace = namespace
+        # This parameter is required.
+        self.region = region
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class GetLocalityRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetLocalityRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLocalityRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLocalityRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLosslessRuleByAppRequest(TeaModel):
     def __init__(
         self,
@@ -39286,6 +39466,7 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
         control_behavior: int = None,
         enable: bool = None,
         fallback_object: str = None,
+        limit_app: str = None,
         max_queueing_time_ms: int = None,
         metric_type: int = None,
         namespace: str = None,
@@ -39350,6 +39531,7 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
         self.enable = enable
         # The throttling behavior.
         self.fallback_object = fallback_object
+        self.limit_app = limit_app
         # The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The statistical dimension. The value 1 indicates that the number of accepted requests is used for statistics.
@@ -39387,6 +39569,8 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
             result['Enable'] = self.enable
         if self.fallback_object is not None:
             result['FallbackObject'] = self.fallback_object
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.max_queueing_time_ms is not None:
             result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
         if self.metric_type is not None:
@@ -39419,6 +39603,8 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
             self.enable = m.get('Enable')
         if m.get('FallbackObject') is not None:
             self.fallback_object = m.get('FallbackObject')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('MaxQueueingTimeMs') is not None:
             self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
         if m.get('MetricType') is not None:
@@ -46471,6 +46657,7 @@ class ListIsolationRulesResponseBodyDataResult(TeaModel):
         app_name: str = None,
         enable: bool = None,
         fallback_object: str = None,
+        limit_app: str = None,
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
@@ -46481,6 +46668,7 @@ class ListIsolationRulesResponseBodyDataResult(TeaModel):
         self.app_name = app_name
         self.enable = enable
         self.fallback_object = fallback_object
+        self.limit_app = limit_app
         self.namespace = namespace
         self.region_id = region_id
         self.resource = resource
@@ -46504,6 +46692,8 @@ class ListIsolationRulesResponseBodyDataResult(TeaModel):
             result['Enable'] = self.enable
         if self.fallback_object is not None:
             result['FallbackObject'] = self.fallback_object
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region_id is not None:
@@ -46526,6 +46716,8 @@ class ListIsolationRulesResponseBodyDataResult(TeaModel):
             self.enable = m.get('Enable')
         if m.get('FallbackObject') is not None:
             self.fallback_object = m.get('FallbackObject')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
@@ -61006,6 +61198,7 @@ class UpdateFlowRuleRequest(TeaModel):
         app_name: str = None,
         control_behavior: int = None,
         enable: bool = None,
+        limit_app: str = None,
         max_queueing_time_ms: int = None,
         namespace: str = None,
         rule_id: int = None,
@@ -61070,6 +61263,7 @@ class UpdateFlowRuleRequest(TeaModel):
         # 
         #     <!-- -->
         self.enable = enable
+        self.limit_app = limit_app
         # The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
@@ -61102,6 +61296,8 @@ class UpdateFlowRuleRequest(TeaModel):
             result['ControlBehavior'] = self.control_behavior
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.max_queueing_time_ms is not None:
             result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
         if self.namespace is not None:
@@ -61124,6 +61320,8 @@ class UpdateFlowRuleRequest(TeaModel):
             self.control_behavior = m.get('ControlBehavior')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('MaxQueueingTimeMs') is not None:
             self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
         if m.get('Namespace') is not None:
@@ -61143,6 +61341,7 @@ class UpdateFlowRuleResponseBodyData(TeaModel):
         control_behavior: int = None,
         enable: bool = None,
         id: int = None,
+        limit_app: str = None,
         max_queueing_time_ms: int = None,
         namespace: str = None,
         resource: str = None,
@@ -61202,6 +61401,7 @@ class UpdateFlowRuleResponseBodyData(TeaModel):
         self.enable = enable
         # The rule ID.
         self.id = id
+        self.limit_app = limit_app
         # The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
@@ -61230,6 +61430,8 @@ class UpdateFlowRuleResponseBodyData(TeaModel):
             result['Enable'] = self.enable
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.max_queueing_time_ms is not None:
             result['MaxQueueingTimeMs'] = self.max_queueing_time_ms
         if self.namespace is not None:
@@ -61252,6 +61454,8 @@ class UpdateFlowRuleResponseBodyData(TeaModel):
             self.enable = m.get('Enable')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('MaxQueueingTimeMs') is not None:
             self.max_queueing_time_ms = m.get('MaxQueueingTimeMs')
         if m.get('Namespace') is not None:
@@ -68747,6 +68951,7 @@ class UpdateIsolationRuleRequest(TeaModel):
         app_id: str = None,
         app_name: str = None,
         enable: bool = None,
+        limit_app: str = None,
         namespace: str = None,
         rule_id: int = None,
         threshold: float = None,
@@ -68756,6 +68961,7 @@ class UpdateIsolationRuleRequest(TeaModel):
         # This parameter is required.
         self.app_name = app_name
         self.enable = enable
+        self.limit_app = limit_app
         # This parameter is required.
         self.namespace = namespace
         # This parameter is required.
@@ -68779,6 +68985,8 @@ class UpdateIsolationRuleRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.enable is not None:
             result['Enable'] = self.enable
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.rule_id is not None:
@@ -68797,6 +69005,8 @@ class UpdateIsolationRuleRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RuleId') is not None:
@@ -68813,6 +69023,7 @@ class UpdateIsolationRuleResponseBodyData(TeaModel):
         app_name: str = None,
         enable: bool = None,
         id: int = None,
+        limit_app: str = None,
         namespace: str = None,
         resource: str = None,
         threshold: float = None,
@@ -68821,6 +69032,7 @@ class UpdateIsolationRuleResponseBodyData(TeaModel):
         self.app_name = app_name
         self.enable = enable
         self.id = id
+        self.limit_app = limit_app
         self.namespace = namespace
         self.resource = resource
         self.threshold = threshold
@@ -68842,6 +69054,8 @@ class UpdateIsolationRuleResponseBodyData(TeaModel):
             result['Enable'] = self.enable
         if self.id is not None:
             result['Id'] = self.id
+        if self.limit_app is not None:
+            result['LimitApp'] = self.limit_app
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.resource is not None:
@@ -68860,6 +69074,8 @@ class UpdateIsolationRuleResponseBodyData(TeaModel):
             self.enable = m.get('Enable')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LimitApp') is not None:
+            self.limit_app = m.get('LimitApp')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('Resource') is not None:
@@ -68959,6 +69175,181 @@ class UpdateIsolationRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIsolationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLocalityRuleRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        enable: bool = None,
+        namespace: str = None,
+        region: str = None,
+        rules: str = None,
+        source: str = None,
+        threshold: float = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        # This parameter is required.
+        self.enable = enable
+        self.namespace = namespace
+        # This parameter is required.
+        self.region = region
+        self.rules = rules
+        self.source = source
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class UpdateLocalityRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateLocalityRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLocalityRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLocalityRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -3506,6 +3506,8 @@ class Client(OpenApiClient):
             query['ControlBehavior'] = request.control_behavior
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.max_queueing_time_ms):
             query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
         if not UtilClient.is_unset(request.namespace):
@@ -3561,6 +3563,8 @@ class Client(OpenApiClient):
             query['ControlBehavior'] = request.control_behavior
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.max_queueing_time_ms):
             query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
         if not UtilClient.is_unset(request.namespace):
@@ -4080,6 +4084,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
@@ -4129,6 +4135,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
@@ -11157,6 +11165,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_kubernetes_source_with_options_async(request, runtime)
+
+    def get_locality_rule_with_options(
+        self,
+        request: mse_20190531_models.GetLocalityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetLocalityRuleResponse:
+        """
+        @summary 获取同AZ路由规则
+        
+        @param request: GetLocalityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLocalityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLocalityRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetLocalityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_locality_rule_with_options_async(
+        self,
+        request: mse_20190531_models.GetLocalityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetLocalityRuleResponse:
+        """
+        @summary 获取同AZ路由规则
+        
+        @param request: GetLocalityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLocalityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLocalityRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetLocalityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_locality_rule(
+        self,
+        request: mse_20190531_models.GetLocalityRuleRequest,
+    ) -> mse_20190531_models.GetLocalityRuleResponse:
+        """
+        @summary 获取同AZ路由规则
+        
+        @param request: GetLocalityRuleRequest
+        @return: GetLocalityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_locality_rule_with_options(request, runtime)
+
+    async def get_locality_rule_async(
+        self,
+        request: mse_20190531_models.GetLocalityRuleRequest,
+    ) -> mse_20190531_models.GetLocalityRuleResponse:
+        """
+        @summary 获取同AZ路由规则
+        
+        @param request: GetLocalityRuleRequest
+        @return: GetLocalityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_locality_rule_with_options_async(request, runtime)
 
     def get_lossless_rule_by_app_with_options(
         self,
@@ -23230,6 +23354,8 @@ class Client(OpenApiClient):
             query['ControlBehavior'] = request.control_behavior
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.max_queueing_time_ms):
             query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
         if not UtilClient.is_unset(request.namespace):
@@ -23281,6 +23407,8 @@ class Client(OpenApiClient):
             query['ControlBehavior'] = request.control_behavior
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.max_queueing_time_ms):
             query['MaxQueueingTimeMs'] = request.max_queueing_time_ms
         if not UtilClient.is_unset(request.namespace):
@@ -26364,6 +26492,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.rule_id):
@@ -26411,6 +26541,8 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.limit_app):
+            query['LimitApp'] = request.limit_app
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.rule_id):
@@ -26461,6 +26593,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_isolation_rule_with_options_async(request, runtime)
+
+    def update_locality_rule_with_options(
+        self,
+        request: mse_20190531_models.UpdateLocalityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateLocalityRuleResponse:
+        """
+        @summary 更新同AZ路由规则
+        
+        @param request: UpdateLocalityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLocalityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLocalityRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateLocalityRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_locality_rule_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateLocalityRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateLocalityRuleResponse:
+        """
+        @summary 更新同AZ路由规则
+        
+        @param request: UpdateLocalityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLocalityRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLocalityRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateLocalityRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_locality_rule(
+        self,
+        request: mse_20190531_models.UpdateLocalityRuleRequest,
+    ) -> mse_20190531_models.UpdateLocalityRuleResponse:
+        """
+        @summary 更新同AZ路由规则
+        
+        @param request: UpdateLocalityRuleRequest
+        @return: UpdateLocalityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_locality_rule_with_options(request, runtime)
+
+    async def update_locality_rule_async(
+        self,
+        request: mse_20190531_models.UpdateLocalityRuleRequest,
+    ) -> mse_20190531_models.UpdateLocalityRuleResponse:
+        """
+        @summary 更新同AZ路由规则
+        
+        @param request: UpdateLocalityRuleRequest
+        @return: UpdateLocalityRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_locality_rule_with_options_async(request, runtime)
 
     def update_message_queue_route_with_options(
         self,

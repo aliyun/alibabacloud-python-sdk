@@ -1,3 +1,21 @@
+2025-01-13 Version: 6.17.0
+- Support API GetLocalityRule.
+- Support API UpdateLocalityRule.
+- Update API AddGatewayRoute: update param EnableWaf.
+- Update API CreateFlowRule: add param LimitApp.
+- Update API CreateFlowRule: update response param.
+- Update API CreateIsolationRule: add param LimitApp.
+- Update API CreateIsolationRule: update response param.
+- Update API ListFlowRules: update response param.
+- Update API ListIsolationRules: update response param.
+- Update API QueryAllSwimmingLane: update response param.
+- Update API UpdateFlowRule: add param LimitApp.
+- Update API UpdateFlowRule: update response param.
+- Update API UpdateGatewayRoute: update param EnableWaf.
+- Update API UpdateIsolationRule: add param LimitApp.
+- Update API UpdateIsolationRule: update response param.
+
+
 2024-12-26 Version: 6.16.2
 - Update API QueryAllSwimmingLane: update response param.
 
