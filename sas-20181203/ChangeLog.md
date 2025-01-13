@@ -1,3 +1,7 @@
+2025-01-13 Version: 4.0.2
+- Update API DescribeVulList: update response param.
+
+
 2025-01-10 Version: 4.0.1
 - Update API DescribeAssetsScaProcessNum: add param BizType.
 - Update API DescribePropertyScaProcessDetail: add param BizType.
