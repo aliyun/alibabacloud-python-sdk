@@ -31679,7 +31679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
         """
-        @summary 更新基线
+        @summary Updates a baseline.
         
         @param tmp_req: UpdateBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31744,7 +31744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
         """
-        @summary 更新基线
+        @summary Updates a baseline.
         
         @param tmp_req: UpdateBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31808,7 +31808,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateBaselineRequest,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
         """
-        @summary 更新基线
+        @summary Updates a baseline.
         
         @param request: UpdateBaselineRequest
         @return: UpdateBaselineResponse
@@ -31821,7 +31821,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateBaselineRequest,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
         """
-        @summary 更新基线
+        @summary Updates a baseline.
         
         @param request: UpdateBaselineRequest
         @return: UpdateBaselineResponse

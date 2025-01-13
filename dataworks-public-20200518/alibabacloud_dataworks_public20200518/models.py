@@ -6374,9 +6374,7 @@ class CreateFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The type of the code in the file.
-        # 
-        # Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 24 (ODPS Script), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), and 1221 (PyODPS 3).
+        # The type of the code for the file. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         # 
         # You can call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) operation to query the type of the code for the file.
         # 
@@ -6449,6 +6447,7 @@ class CreateFileRequest(TeaModel):
         # 
         # This parameter corresponds to the Recurrence parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
+        # The timeout period.
         self.timeout = timeout
 
     def validate(self):
@@ -25330,6 +25329,170 @@ class GetDISyncTaskRequest(TeaModel):
         return self
 
 
+class GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList(TeaModel):
+    def __init__(
+        self,
+        aggregator: str = None,
+        comparator: str = None,
+        duration: int = None,
+        level: str = None,
+        threshold: int = None,
+    ):
+        self.aggregator = aggregator
+        self.comparator = comparator
+        self.duration = duration
+        self.level = level
+        self.threshold = threshold
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator is not None:
+            result['Aggregator'] = self.aggregator
+        if self.comparator is not None:
+            result['Comparator'] = self.comparator
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aggregator') is not None:
+            self.aggregator = m.get('Aggregator')
+        if m.get('Comparator') is not None:
+            self.comparator = m.get('Comparator')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        return self
+
+
+class GetDISyncTaskResponseBodyDataAlarmListNotifyRule(TeaModel):
+    def __init__(
+        self,
+        critical: List[str] = None,
+        interval: int = None,
+        warning: List[str] = None,
+    ):
+        self.critical = critical
+        self.interval = interval
+        self.warning = warning
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.critical is not None:
+            result['Critical'] = self.critical
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.warning is not None:
+            result['Warning'] = self.warning
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Critical') is not None:
+            self.critical = m.get('Critical')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Warning') is not None:
+            self.warning = m.get('Warning')
+        return self
+
+
+class GetDISyncTaskResponseBodyDataAlarmList(TeaModel):
+    def __init__(
+        self,
+        alarm_rule_list: List[GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList] = None,
+        description: str = None,
+        enabled: bool = None,
+        id: int = None,
+        metric: str = None,
+        notify_rule: GetDISyncTaskResponseBodyDataAlarmListNotifyRule = None,
+        rule_name: str = None,
+    ):
+        self.alarm_rule_list = alarm_rule_list
+        self.description = description
+        self.enabled = enabled
+        self.id = id
+        self.metric = metric
+        self.notify_rule = notify_rule
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.alarm_rule_list:
+            for k in self.alarm_rule_list:
+                if k:
+                    k.validate()
+        if self.notify_rule:
+            self.notify_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlarmRuleList'] = []
+        if self.alarm_rule_list is not None:
+            for k in self.alarm_rule_list:
+                result['AlarmRuleList'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.notify_rule is not None:
+            result['NotifyRule'] = self.notify_rule.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alarm_rule_list = []
+        if m.get('AlarmRuleList') is not None:
+            for k in m.get('AlarmRuleList'):
+                temp_model = GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList()
+                self.alarm_rule_list.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('NotifyRule') is not None:
+            temp_model = GetDISyncTaskResponseBodyDataAlarmListNotifyRule()
+            self.notify_rule = temp_model.from_map(m['NotifyRule'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
 class GetDISyncTaskResponseBodyDataSolutionDetail(TeaModel):
     def __init__(
         self,
@@ -25442,11 +25605,13 @@ class GetDISyncTaskResponseBodyDataSolutionDetail(TeaModel):
 class GetDISyncTaskResponseBodyData(TeaModel):
     def __init__(
         self,
+        alarm_list: List[GetDISyncTaskResponseBodyDataAlarmList] = None,
         code: str = None,
         message: str = None,
         solution_detail: GetDISyncTaskResponseBodyDataSolutionDetail = None,
         status: str = None,
     ):
+        self.alarm_list = alarm_list
         # *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
         # *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
         self.code = code
@@ -25463,6 +25628,10 @@ class GetDISyncTaskResponseBodyData(TeaModel):
         self.status = status
 
     def validate(self):
+        if self.alarm_list:
+            for k in self.alarm_list:
+                if k:
+                    k.validate()
         if self.solution_detail:
             self.solution_detail.validate()
 
@@ -25472,6 +25641,10 @@ class GetDISyncTaskResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['AlarmList'] = []
+        if self.alarm_list is not None:
+            for k in self.alarm_list:
+                result['AlarmList'].append(k.to_map() if k else None)
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -25484,6 +25657,11 @@ class GetDISyncTaskResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.alarm_list = []
+        if m.get('AlarmList') is not None:
+            for k in m.get('AlarmList'):
+                temp_model = GetDISyncTaskResponseBodyDataAlarmList()
+                self.alarm_list.append(temp_model.from_map(k))
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -29960,7 +30138,7 @@ class GetFileResponseBodyDataFile(TeaModel):
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The type of the code for the file. Valid values: 6 (Shell), 10 (ODPS SQL), 11 (ODPS MR), 23 (Data Integration), 24 (ODPS Script), 99 (zero load), 221 (PyODPS 2), 225 (ODPS Spark), 227 (EMR Hive), 228 (EMR Spark), 229 (EMR Spark SQL), 230 (EMR MR), 239 (OSS object inspection), 257 (EMR Shell), 258 (EMR Spark Shell), 259 (EMR Presto), 260 (EMR Impala), 900 (real-time synchronization), 1089 (cross-tenant collaboration), 1091 (Hologres development), 1093 (Hologres SQL), 1100 (assignment), and 1221 (PyODPS 3).
+        # The type of the code for the file. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
         # Indicates whether the file needs to be uploaded to MaxCompute.
         # 
@@ -32320,9 +32498,11 @@ class GetInstanceResponseBodyData(TeaModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
+        # The owner of the instance.
         self.owner = owner
         # The parameters related to the node.
         self.param_values = param_values
+        # The sequence number of the cycle. This parameter indicates the sequence number of the cycle of the instance on the current day.
         self.period_number = period_number
         # The priority of the instance. Valid values: 1, 3, 5, 7, and 8. A greater value indicates a higher priority. Default value: 1.
         self.priority = priority
@@ -76088,7 +76268,7 @@ class UpdateBaselineRequestAlertSettings(TeaModel):
         topic_types: List[str] = None,
         webhooks: List[str] = None,
     ):
-        # The interval at which an event alert notification is sent. Unit: seconds. Minimum value: 900.
+        # The interval at which an event alert notification is sent. Unit: minutes. Minimum value: 5. Maximum value: 1,440.
         self.alert_interval = alert_interval
         # The maximum number of times an event alert notification is sent. Maximum value: 24.
         self.alert_maximum = alert_maximum
@@ -79460,7 +79640,7 @@ class UpdateFileRequest(TeaModel):
         # 
         # The value of this parameter corresponds to the ID of the node that you specified after you select Previous Cycle and set Depend On to Other Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.dependent_node_id_list = dependent_node_id_list
-        # The type of the cross-cycle scheduling dependency of the node that corresponds to the file. Valid values:
+        # The type of the cross-cycle scheduling dependency of the node. Valid values:
         # 
         # *   SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
         # *   CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
@@ -79529,7 +79709,7 @@ class UpdateFileRequest(TeaModel):
         # *   NORMAL: The node is an auto triggered node.
         # *   MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
         # *   PAUSE: The node is a paused node.
-        # *   SKIP: The inner node is a dry-run node. Dry-run nodes are started as scheduled but the scheduling system sets the status of the nodes to succeeded when the scheduling system starts to run the nodes.
+        # *   SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
         self.scheduler_type = scheduler_type
         # The start time of automatic scheduling. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 

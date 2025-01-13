@@ -1,3 +1,7 @@
+2025-01-13 Version: 6.2.2
+- Update API GetDISyncTask: update response param.
+
+
 2024-12-13 Version: 6.2.1
 - Update API CreateFile: add param Timeout.
 - Update API GetFile: update response param.
