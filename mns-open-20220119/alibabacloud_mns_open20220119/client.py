@@ -41,6 +41,118 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def authorize_endpoint_acl_with_options(
+        self,
+        tmp_req: mns_open_20220119_models.AuthorizeEndpointAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
+        """
+        @summary AuthorizeEndpointAcl
+        
+        @param tmp_req: AuthorizeEndpointAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeEndpointAclResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.AuthorizeEndpointAclShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cidr_list):
+            request.cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cidr_list, 'CidrList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.acl_strategy):
+            query['AclStrategy'] = request.acl_strategy
+        if not UtilClient.is_unset(request.cidr_list_shrink):
+            query['CidrList'] = request.cidr_list_shrink
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AuthorizeEndpointAcl',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.AuthorizeEndpointAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_endpoint_acl_with_options_async(
+        self,
+        tmp_req: mns_open_20220119_models.AuthorizeEndpointAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
+        """
+        @summary AuthorizeEndpointAcl
+        
+        @param tmp_req: AuthorizeEndpointAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeEndpointAclResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.AuthorizeEndpointAclShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cidr_list):
+            request.cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cidr_list, 'CidrList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.acl_strategy):
+            query['AclStrategy'] = request.acl_strategy
+        if not UtilClient.is_unset(request.cidr_list_shrink):
+            query['CidrList'] = request.cidr_list_shrink
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AuthorizeEndpointAcl',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.AuthorizeEndpointAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_endpoint_acl(
+        self,
+        request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
+    ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
+        """
+        @summary AuthorizeEndpointAcl
+        
+        @param request: AuthorizeEndpointAclRequest
+        @return: AuthorizeEndpointAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.authorize_endpoint_acl_with_options(request, runtime)
+
+    async def authorize_endpoint_acl_async(
+        self,
+        request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
+    ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
+        """
+        @summary AuthorizeEndpointAcl
+        
+        @param request: AuthorizeEndpointAclRequest
+        @return: AuthorizeEndpointAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.authorize_endpoint_acl_with_options_async(request, runtime)
+
     def create_queue_with_options(
         self,
         request: mns_open_20220119_models.CreateQueueRequest,
@@ -468,6 +580,294 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_topic_with_options_async(request, runtime)
+
+    def disable_endpoint_with_options(
+        self,
+        request: mns_open_20220119_models.DisableEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.DisableEndpointResponse:
+        """
+        @summary DisableEndpoint
+        
+        @param request: DisableEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableEndpoint',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.DisableEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_endpoint_with_options_async(
+        self,
+        request: mns_open_20220119_models.DisableEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.DisableEndpointResponse:
+        """
+        @summary DisableEndpoint
+        
+        @param request: DisableEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableEndpoint',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.DisableEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_endpoint(
+        self,
+        request: mns_open_20220119_models.DisableEndpointRequest,
+    ) -> mns_open_20220119_models.DisableEndpointResponse:
+        """
+        @summary DisableEndpoint
+        
+        @param request: DisableEndpointRequest
+        @return: DisableEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_endpoint_with_options(request, runtime)
+
+    async def disable_endpoint_async(
+        self,
+        request: mns_open_20220119_models.DisableEndpointRequest,
+    ) -> mns_open_20220119_models.DisableEndpointResponse:
+        """
+        @summary DisableEndpoint
+        
+        @param request: DisableEndpointRequest
+        @return: DisableEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_endpoint_with_options_async(request, runtime)
+
+    def enable_endpoint_with_options(
+        self,
+        request: mns_open_20220119_models.EnableEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.EnableEndpointResponse:
+        """
+        @summary EnableEndpoint
+        
+        @param request: EnableEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableEndpoint',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.EnableEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_endpoint_with_options_async(
+        self,
+        request: mns_open_20220119_models.EnableEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.EnableEndpointResponse:
+        """
+        @summary EnableEndpoint
+        
+        @param request: EnableEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableEndpoint',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.EnableEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_endpoint(
+        self,
+        request: mns_open_20220119_models.EnableEndpointRequest,
+    ) -> mns_open_20220119_models.EnableEndpointResponse:
+        """
+        @summary EnableEndpoint
+        
+        @param request: EnableEndpointRequest
+        @return: EnableEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_endpoint_with_options(request, runtime)
+
+    async def enable_endpoint_async(
+        self,
+        request: mns_open_20220119_models.EnableEndpointRequest,
+    ) -> mns_open_20220119_models.EnableEndpointResponse:
+        """
+        @summary EnableEndpoint
+        
+        @param request: EnableEndpointRequest
+        @return: EnableEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_endpoint_with_options_async(request, runtime)
+
+    def get_endpoint_attribute_with_options(
+        self,
+        request: mns_open_20220119_models.GetEndpointAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.GetEndpointAttributeResponse:
+        """
+        @summary GetEndpointAttribute
+        
+        @param request: GetEndpointAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEndpointAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointAttribute',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.GetEndpointAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_endpoint_attribute_with_options_async(
+        self,
+        request: mns_open_20220119_models.GetEndpointAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.GetEndpointAttributeResponse:
+        """
+        @summary GetEndpointAttribute
+        
+        @param request: GetEndpointAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEndpointAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEndpointAttribute',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.GetEndpointAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_endpoint_attribute(
+        self,
+        request: mns_open_20220119_models.GetEndpointAttributeRequest,
+    ) -> mns_open_20220119_models.GetEndpointAttributeResponse:
+        """
+        @summary GetEndpointAttribute
+        
+        @param request: GetEndpointAttributeRequest
+        @return: GetEndpointAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_endpoint_attribute_with_options(request, runtime)
+
+    async def get_endpoint_attribute_async(
+        self,
+        request: mns_open_20220119_models.GetEndpointAttributeRequest,
+    ) -> mns_open_20220119_models.GetEndpointAttributeResponse:
+        """
+        @summary GetEndpointAttribute
+        
+        @param request: GetEndpointAttributeRequest
+        @return: GetEndpointAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_endpoint_attribute_with_options_async(request, runtime)
 
     def get_queue_attributes_with_options(
         self,
@@ -1092,6 +1492,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_topic_with_options_async(request, runtime)
+
+    def revoke_endpoint_acl_with_options(
+        self,
+        tmp_req: mns_open_20220119_models.RevokeEndpointAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
+        """
+        @summary RevokeEndpointAcl
+        
+        @param tmp_req: RevokeEndpointAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeEndpointAclResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.RevokeEndpointAclShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cidr_list):
+            request.cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cidr_list, 'CidrList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.acl_strategy):
+            query['AclStrategy'] = request.acl_strategy
+        if not UtilClient.is_unset(request.cidr_list_shrink):
+            query['CidrList'] = request.cidr_list_shrink
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeEndpointAcl',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.RevokeEndpointAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_endpoint_acl_with_options_async(
+        self,
+        tmp_req: mns_open_20220119_models.RevokeEndpointAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
+        """
+        @summary RevokeEndpointAcl
+        
+        @param tmp_req: RevokeEndpointAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeEndpointAclResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.RevokeEndpointAclShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cidr_list):
+            request.cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cidr_list, 'CidrList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.acl_strategy):
+            query['AclStrategy'] = request.acl_strategy
+        if not UtilClient.is_unset(request.cidr_list_shrink):
+            query['CidrList'] = request.cidr_list_shrink
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeEndpointAcl',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.RevokeEndpointAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_endpoint_acl(
+        self,
+        request: mns_open_20220119_models.RevokeEndpointAclRequest,
+    ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
+        """
+        @summary RevokeEndpointAcl
+        
+        @param request: RevokeEndpointAclRequest
+        @return: RevokeEndpointAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_endpoint_acl_with_options(request, runtime)
+
+    async def revoke_endpoint_acl_async(
+        self,
+        request: mns_open_20220119_models.RevokeEndpointAclRequest,
+    ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
+        """
+        @summary RevokeEndpointAcl
+        
+        @param request: RevokeEndpointAclRequest
+        @return: RevokeEndpointAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_endpoint_acl_with_options_async(request, runtime)
 
     def set_queue_attributes_with_options(
         self,

@@ -4,6 +4,221 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class EventMatchRule(TeaModel):
+    def __init__(
+        self,
+        match_state: bool = None,
+        name: str = None,
+        prefix: str = None,
+        suffix: str = None,
+    ):
+        self.match_state = match_state
+        self.name = name
+        self.prefix = prefix
+        self.suffix = suffix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_state is not None:
+            result['MatchState'] = self.match_state
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        if self.suffix is not None:
+            result['Suffix'] = self.suffix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchState') is not None:
+            self.match_state = m.get('MatchState')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        if m.get('Suffix') is not None:
+            self.suffix = m.get('Suffix')
+        return self
+
+
+class AuthorizeEndpointAclRequest(TeaModel):
+    def __init__(
+        self,
+        acl_strategy: str = None,
+        cidr_list: List[str] = None,
+        endpoint_type: str = None,
+    ):
+        self.acl_strategy = acl_strategy
+        self.cidr_list = cidr_list
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_strategy is not None:
+            result['AclStrategy'] = self.acl_strategy
+        if self.cidr_list is not None:
+            result['CidrList'] = self.cidr_list
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclStrategy') is not None:
+            self.acl_strategy = m.get('AclStrategy')
+        if m.get('CidrList') is not None:
+            self.cidr_list = m.get('CidrList')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class AuthorizeEndpointAclShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        acl_strategy: str = None,
+        cidr_list_shrink: str = None,
+        endpoint_type: str = None,
+    ):
+        self.acl_strategy = acl_strategy
+        self.cidr_list_shrink = cidr_list_shrink
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_strategy is not None:
+            result['AclStrategy'] = self.acl_strategy
+        if self.cidr_list_shrink is not None:
+            result['CidrList'] = self.cidr_list_shrink
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclStrategy') is not None:
+            self.acl_strategy = m.get('AclStrategy')
+        if m.get('CidrList') is not None:
+            self.cidr_list_shrink = m.get('CidrList')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class AuthorizeEndpointAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthorizeEndpointAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthorizeEndpointAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthorizeEndpointAclResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateQueueRequestTag(TeaModel):
     def __init__(
         self,
@@ -827,6 +1042,451 @@ class DeleteTopicResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteTopicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DisableEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class DisableEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DisableEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class EnableEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EnableEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetEndpointAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class GetEndpointAttributeResponseBodyDataCidrList(TeaModel):
+    def __init__(
+        self,
+        acl_strategy: str = None,
+        cidr: str = None,
+        create_time: int = None,
+    ):
+        self.acl_strategy = acl_strategy
+        self.cidr = cidr
+        self.create_time = create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_strategy is not None:
+            result['AclStrategy'] = self.acl_strategy
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclStrategy') is not None:
+            self.acl_strategy = m.get('AclStrategy')
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        return self
+
+
+class GetEndpointAttributeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cidr_list: List[GetEndpointAttributeResponseBodyDataCidrList] = None,
+        endpoint_enabled: bool = None,
+    ):
+        self.cidr_list = cidr_list
+        self.endpoint_enabled = endpoint_enabled
+
+    def validate(self):
+        if self.cidr_list:
+            for k in self.cidr_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CidrList'] = []
+        if self.cidr_list is not None:
+            for k in self.cidr_list:
+                result['CidrList'].append(k.to_map() if k else None)
+        if self.endpoint_enabled is not None:
+            result['EndpointEnabled'] = self.endpoint_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cidr_list = []
+        if m.get('CidrList') is not None:
+            for k in m.get('CidrList'):
+                temp_model = GetEndpointAttributeResponseBodyDataCidrList()
+                self.cidr_list.append(temp_model.from_map(k))
+        if m.get('EndpointEnabled') is not None:
+            self.endpoint_enabled = m.get('EndpointEnabled')
+        return self
+
+
+class GetEndpointAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetEndpointAttributeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetEndpointAttributeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetEndpointAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEndpointAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEndpointAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2826,6 +3486,176 @@ class ListTopicResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTopicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RevokeEndpointAclRequest(TeaModel):
+    def __init__(
+        self,
+        acl_strategy: str = None,
+        cidr_list: List[str] = None,
+        endpoint_type: str = None,
+    ):
+        self.acl_strategy = acl_strategy
+        self.cidr_list = cidr_list
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_strategy is not None:
+            result['AclStrategy'] = self.acl_strategy
+        if self.cidr_list is not None:
+            result['CidrList'] = self.cidr_list
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclStrategy') is not None:
+            self.acl_strategy = m.get('AclStrategy')
+        if m.get('CidrList') is not None:
+            self.cidr_list = m.get('CidrList')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class RevokeEndpointAclShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        acl_strategy: str = None,
+        cidr_list_shrink: str = None,
+        endpoint_type: str = None,
+    ):
+        self.acl_strategy = acl_strategy
+        self.cidr_list_shrink = cidr_list_shrink
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_strategy is not None:
+            result['AclStrategy'] = self.acl_strategy
+        if self.cidr_list_shrink is not None:
+            result['CidrList'] = self.cidr_list_shrink
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclStrategy') is not None:
+            self.acl_strategy = m.get('AclStrategy')
+        if m.get('CidrList') is not None:
+            self.cidr_list_shrink = m.get('CidrList')
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        return self
+
+
+class RevokeEndpointAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RevokeEndpointAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeEndpointAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeEndpointAclResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
