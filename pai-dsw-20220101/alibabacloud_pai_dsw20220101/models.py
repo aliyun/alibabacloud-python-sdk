@@ -2402,12 +2402,14 @@ class GetInstanceResponseBodyDatasets(TeaModel):
     def __init__(
         self,
         dataset_id: str = None,
+        mount_access: str = None,
         mount_path: str = None,
         option_type: str = None,
         options: str = None,
         uri: str = None,
     ):
         self.dataset_id = dataset_id
+        self.mount_access = mount_access
         self.mount_path = mount_path
         self.option_type = option_type
         self.options = options
@@ -2424,6 +2426,8 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         result = dict()
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
         if self.option_type is not None:
@@ -2438,6 +2442,8 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         m = m or dict()
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
         if m.get('OptionType') is not None:
