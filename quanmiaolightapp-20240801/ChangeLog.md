@@ -1,3 +1,14 @@
+2025-01-14 Version: 2.2.0
+- Support API GetVideoAnalysisConfig.
+- Support API GetVideoAnalysisTask.
+- Support API SubmitVideoAnalysisTask.
+- Support API UpdateVideoAnalysisConfig.
+- Update API RunVideoAnalysis: add param frameSampleMethod.
+- Update API RunVideoAnalysis: add param language.
+- Update API RunVideoAnalysis: add param videoRoles.
+- Update API RunVideoAnalysis: update response param.
+
+
 2024-12-26 Version: 2.1.0
 - Support API GenerateOutputFormat.
 - Support API RunTagMiningAnalysis.

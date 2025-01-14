@@ -281,6 +281,204 @@ class Client(OpenApiClient):
         headers = {}
         return await self.generate_output_format_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_video_analysis_config_with_options(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-获取配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoAnalysisConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetVideoAnalysisConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoAnalysisConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_analysis_config_with_options_async(
+        self,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-获取配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoAnalysisConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetVideoAnalysisConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoAnalysisConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_analysis_config(
+        self,
+        workspace_id: str,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-获取配置
+        
+        @return: GetVideoAnalysisConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_analysis_config_with_options(workspace_id, headers, runtime)
+
+    async def get_video_analysis_config_async(
+        self,
+        workspace_id: str,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-获取配置
+        
+        @return: GetVideoAnalysisConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_analysis_config_with_options_async(workspace_id, headers, runtime)
+
+    def get_video_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-获取视频理解异步任务结果
+        
+        @param request: GetVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-获取视频理解异步任务结果
+        
+        @param request: GetVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/getVideoAnalysisTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-获取视频理解异步任务结果
+        
+        @param request: GetVideoAnalysisTaskRequest
+        @return: GetVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_video_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def get_video_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-获取视频理解异步任务结果
+        
+        @param request: GetVideoAnalysisTaskRequest
+        @return: GetVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
     def list_hot_topic_summaries_with_options(
         self,
         workspace_id: str,
@@ -1503,11 +1701,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.frame_sample_method):
+            request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.video_roles):
+            request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.frame_sample_method_shrink):
+            body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
             body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
         if not UtilClient.is_unset(request.model_custom_prompt_template):
             body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
         if not UtilClient.is_unset(request.model_custom_prompt_template_id):
@@ -1526,6 +1732,8 @@ class Client(OpenApiClient):
             body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
         if not UtilClient.is_unset(request.video_model_id):
             body['videoModelId'] = request.video_model_id
+        if not UtilClient.is_unset(request.video_roles_shrink):
+            body['videoRoles'] = request.video_roles_shrink
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -1566,11 +1774,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = quan_miao_light_app_20240801_models.RunVideoAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.frame_sample_method):
+            request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
         if not UtilClient.is_unset(tmp_req.generate_options):
             request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.video_roles):
+            request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
         body = {}
+        if not UtilClient.is_unset(request.frame_sample_method_shrink):
+            body['frameSampleMethod'] = request.frame_sample_method_shrink
         if not UtilClient.is_unset(request.generate_options_shrink):
             body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
         if not UtilClient.is_unset(request.model_custom_prompt_template):
             body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
         if not UtilClient.is_unset(request.model_custom_prompt_template_id):
@@ -1589,6 +1805,8 @@ class Client(OpenApiClient):
             body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
         if not UtilClient.is_unset(request.video_model_id):
             body['videoModelId'] = request.video_model_id
+        if not UtilClient.is_unset(request.video_roles_shrink):
+            body['videoRoles'] = request.video_roles_shrink
         if not UtilClient.is_unset(request.video_url):
             body['videoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -1640,3 +1858,279 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_video_analysis_with_options_async(workspace_id, request, headers, runtime)
+
+    def submit_video_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-提交视频理解任务
+        
+        @param tmp_req: SubmitVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.frame_sample_method):
+            request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
+        if not UtilClient.is_unset(tmp_req.generate_options):
+            request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.video_roles):
+            request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.frame_sample_method_shrink):
+            body['frameSampleMethod'] = request.frame_sample_method_shrink
+        if not UtilClient.is_unset(request.generate_options_shrink):
+            body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template):
+            body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.snapshot_interval):
+            body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.video_extra_info):
+            body['videoExtraInfo'] = request.video_extra_info
+        if not UtilClient.is_unset(request.video_model_custom_prompt_template):
+            body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
+        if not UtilClient.is_unset(request.video_model_id):
+            body['videoModelId'] = request.video_model_id
+        if not UtilClient.is_unset(request.video_roles_shrink):
+            body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/submitVideoAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-提交视频理解任务
+        
+        @param tmp_req: SubmitVideoAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.frame_sample_method):
+            request.frame_sample_method_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.frame_sample_method, 'frameSampleMethod', 'json')
+        if not UtilClient.is_unset(tmp_req.generate_options):
+            request.generate_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.generate_options, 'generateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.video_roles):
+            request.video_roles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.frame_sample_method_shrink):
+            body['frameSampleMethod'] = request.frame_sample_method_shrink
+        if not UtilClient.is_unset(request.generate_options_shrink):
+            body['generateOptions'] = request.generate_options_shrink
+        if not UtilClient.is_unset(request.language):
+            body['language'] = request.language
+        if not UtilClient.is_unset(request.model_custom_prompt_template):
+            body['modelCustomPromptTemplate'] = request.model_custom_prompt_template
+        if not UtilClient.is_unset(request.model_custom_prompt_template_id):
+            body['modelCustomPromptTemplateId'] = request.model_custom_prompt_template_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.snapshot_interval):
+            body['snapshotInterval'] = request.snapshot_interval
+        if not UtilClient.is_unset(request.video_extra_info):
+            body['videoExtraInfo'] = request.video_extra_info
+        if not UtilClient.is_unset(request.video_model_custom_prompt_template):
+            body['videoModelCustomPromptTemplate'] = request.video_model_custom_prompt_template
+        if not UtilClient.is_unset(request.video_model_id):
+            body['videoModelId'] = request.video_model_id
+        if not UtilClient.is_unset(request.video_roles_shrink):
+            body['videoRoles'] = request.video_roles_shrink
+        if not UtilClient.is_unset(request.video_url):
+            body['videoUrl'] = request.video_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoAnalysisTask',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/submitVideoAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_analysis_task(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-提交视频理解任务
+        
+        @param request: SubmitVideoAnalysisTaskRequest
+        @return: SubmitVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_video_analysis_task_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_video_analysis_task_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskRequest,
+    ) -> quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse:
+        """
+        @summary 轻应用-提交视频理解任务
+        
+        @param request: SubmitVideoAnalysisTaskRequest
+        @return: SubmitVideoAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_video_analysis_task_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_video_analysis_config_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-更新配置
+        
+        @param request: UpdateVideoAnalysisConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoAnalysisConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.async_concurrency):
+            body['asyncConcurrency'] = request.async_concurrency
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoAnalysisConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisConfig',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_analysis_config_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-更新配置
+        
+        @param request: UpdateVideoAnalysisConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoAnalysisConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.async_concurrency):
+            body['asyncConcurrency'] = request.async_concurrency
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoAnalysisConfig',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisConfig',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_analysis_config(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-更新配置
+        
+        @param request: UpdateVideoAnalysisConfigRequest
+        @return: UpdateVideoAnalysisConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_video_analysis_config_with_options(workspace_id, request, headers, runtime)
+
+    async def update_video_analysis_config_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigRequest,
+    ) -> quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse:
+        """
+        @summary 视频理解-更新配置
+        
+        @param request: UpdateVideoAnalysisConfigRequest
+        @return: UpdateVideoAnalysisConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_video_analysis_config_with_options_async(workspace_id, request, headers, runtime)
