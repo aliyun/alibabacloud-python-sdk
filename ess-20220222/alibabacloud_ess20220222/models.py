@@ -19215,6 +19215,51 @@ class DescribeScalingActivitiesRequest(TeaModel):
         return self
 
 
+class DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        description: str = None,
+        failed_instance_ids: List[str] = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.description = description
+        self.failed_instance_ids = failed_instance_ids
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.failed_instance_ids is not None:
+            result['FailedInstanceIds'] = self.failed_instance_ids
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FailedInstanceIds') is not None:
+            self.failed_instance_ids = m.get('FailedInstanceIds')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
 class DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext(TeaModel):
     def __init__(
         self,
@@ -19269,6 +19314,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         end_time: str = None,
         error_code: str = None,
         error_message: str = None,
+        error_messages: List[DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages] = None,
         instance_refresh_task_id: str = None,
         lifecycle_hook_context: DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext = None,
         progress: int = None,
@@ -19312,6 +19358,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.error_code = error_code
         # The error message that is returned when the scaling activity failed.
         self.error_message = error_message
+        self.error_messages = error_messages
         # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
         # The context of the lifecycle hook.
@@ -19361,6 +19408,10 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.trigger_source_type = trigger_source_type
 
     def validate(self):
+        if self.error_messages:
+            for k in self.error_messages:
+                if k:
+                    k.validate()
         if self.lifecycle_hook_context:
             self.lifecycle_hook_context.validate()
 
@@ -19396,6 +19447,10 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+        result['ErrorMessages'] = []
+        if self.error_messages is not None:
+            for k in self.error_messages:
+                result['ErrorMessages'].append(k.to_map() if k else None)
         if self.instance_refresh_task_id is not None:
             result['InstanceRefreshTaskId'] = self.instance_refresh_task_id
         if self.lifecycle_hook_context is not None:
@@ -19458,6 +19513,11 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
+        self.error_messages = []
+        if m.get('ErrorMessages') is not None:
+            for k in m.get('ErrorMessages'):
+                temp_model = DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages()
+                self.error_messages.append(temp_model.from_map(k))
         if m.get('InstanceRefreshTaskId') is not None:
             self.instance_refresh_task_id = m.get('InstanceRefreshTaskId')
         if m.get('LifecycleHookContext') is not None:
