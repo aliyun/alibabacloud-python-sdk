@@ -1999,6 +1999,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.commit_routine_staging_code_with_options_async(request, runtime)
 
+    def create_cache_rule_with_options(
+        self,
+        request: esa20240910_models.CreateCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateCacheRuleResponse:
+        """
+        @summary 新增站点缓存配置
+        
+        @param request: CreateCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.additional_cacheable_ports):
+            query['AdditionalCacheablePorts'] = request.additional_cacheable_ports
+        if not UtilClient.is_unset(request.browser_cache_mode):
+            query['BrowserCacheMode'] = request.browser_cache_mode
+        if not UtilClient.is_unset(request.browser_cache_ttl):
+            query['BrowserCacheTtl'] = request.browser_cache_ttl
+        if not UtilClient.is_unset(request.bypass_cache):
+            query['BypassCache'] = request.bypass_cache
+        if not UtilClient.is_unset(request.cache_deception_armor):
+            query['CacheDeceptionArmor'] = request.cache_deception_armor
+        if not UtilClient.is_unset(request.cache_reserve_eligibility):
+            query['CacheReserveEligibility'] = request.cache_reserve_eligibility
+        if not UtilClient.is_unset(request.check_presence_cookie):
+            query['CheckPresenceCookie'] = request.check_presence_cookie
+        if not UtilClient.is_unset(request.check_presence_header):
+            query['CheckPresenceHeader'] = request.check_presence_header
+        if not UtilClient.is_unset(request.edge_cache_mode):
+            query['EdgeCacheMode'] = request.edge_cache_mode
+        if not UtilClient.is_unset(request.edge_cache_ttl):
+            query['EdgeCacheTtl'] = request.edge_cache_ttl
+        if not UtilClient.is_unset(request.edge_status_code_cache_ttl):
+            query['EdgeStatusCodeCacheTtl'] = request.edge_status_code_cache_ttl
+        if not UtilClient.is_unset(request.include_cookie):
+            query['IncludeCookie'] = request.include_cookie
+        if not UtilClient.is_unset(request.include_header):
+            query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.query_string_mode):
+            query['QueryStringMode'] = request.query_string_mode
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.serve_stale):
+            query['ServeStale'] = request.serve_stale
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.sort_query_string_for_cache):
+            query['SortQueryStringForCache'] = request.sort_query_string_for_cache
+        if not UtilClient.is_unset(request.user_device_type):
+            query['UserDeviceType'] = request.user_device_type
+        if not UtilClient.is_unset(request.user_geo):
+            query['UserGeo'] = request.user_geo
+        if not UtilClient.is_unset(request.user_language):
+            query['UserLanguage'] = request.user_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateCacheRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cache_rule_with_options_async(
+        self,
+        request: esa20240910_models.CreateCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateCacheRuleResponse:
+        """
+        @summary 新增站点缓存配置
+        
+        @param request: CreateCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.additional_cacheable_ports):
+            query['AdditionalCacheablePorts'] = request.additional_cacheable_ports
+        if not UtilClient.is_unset(request.browser_cache_mode):
+            query['BrowserCacheMode'] = request.browser_cache_mode
+        if not UtilClient.is_unset(request.browser_cache_ttl):
+            query['BrowserCacheTtl'] = request.browser_cache_ttl
+        if not UtilClient.is_unset(request.bypass_cache):
+            query['BypassCache'] = request.bypass_cache
+        if not UtilClient.is_unset(request.cache_deception_armor):
+            query['CacheDeceptionArmor'] = request.cache_deception_armor
+        if not UtilClient.is_unset(request.cache_reserve_eligibility):
+            query['CacheReserveEligibility'] = request.cache_reserve_eligibility
+        if not UtilClient.is_unset(request.check_presence_cookie):
+            query['CheckPresenceCookie'] = request.check_presence_cookie
+        if not UtilClient.is_unset(request.check_presence_header):
+            query['CheckPresenceHeader'] = request.check_presence_header
+        if not UtilClient.is_unset(request.edge_cache_mode):
+            query['EdgeCacheMode'] = request.edge_cache_mode
+        if not UtilClient.is_unset(request.edge_cache_ttl):
+            query['EdgeCacheTtl'] = request.edge_cache_ttl
+        if not UtilClient.is_unset(request.edge_status_code_cache_ttl):
+            query['EdgeStatusCodeCacheTtl'] = request.edge_status_code_cache_ttl
+        if not UtilClient.is_unset(request.include_cookie):
+            query['IncludeCookie'] = request.include_cookie
+        if not UtilClient.is_unset(request.include_header):
+            query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.query_string_mode):
+            query['QueryStringMode'] = request.query_string_mode
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.serve_stale):
+            query['ServeStale'] = request.serve_stale
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.sort_query_string_for_cache):
+            query['SortQueryStringForCache'] = request.sort_query_string_for_cache
+        if not UtilClient.is_unset(request.user_device_type):
+            query['UserDeviceType'] = request.user_device_type
+        if not UtilClient.is_unset(request.user_geo):
+            query['UserGeo'] = request.user_geo
+        if not UtilClient.is_unset(request.user_language):
+            query['UserLanguage'] = request.user_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateCacheRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cache_rule(
+        self,
+        request: esa20240910_models.CreateCacheRuleRequest,
+    ) -> esa20240910_models.CreateCacheRuleResponse:
+        """
+        @summary 新增站点缓存配置
+        
+        @param request: CreateCacheRuleRequest
+        @return: CreateCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cache_rule_with_options(request, runtime)
+
+    async def create_cache_rule_async(
+        self,
+        request: esa20240910_models.CreateCacheRuleRequest,
+    ) -> esa20240910_models.CreateCacheRuleResponse:
+        """
+        @summary 新增站点缓存配置
+        
+        @param request: CreateCacheRuleRequest
+        @return: CreateCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cache_rule_with_options_async(request, runtime)
+
     def create_client_certificate_with_options(
         self,
         request: esa20240910_models.CreateClientCertificateRequest,
@@ -2110,6 +2302,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_client_certificate_with_options_async(request, runtime)
+
+    def create_compression_rule_with_options(
+        self,
+        request: esa20240910_models.CreateCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateCompressionRuleResponse:
+        """
+        @summary 新增压缩规则
+        
+        @param request: CreateCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brotli):
+            query['Brotli'] = request.brotli
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateCompressionRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compression_rule_with_options_async(
+        self,
+        request: esa20240910_models.CreateCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateCompressionRuleResponse:
+        """
+        @summary 新增压缩规则
+        
+        @param request: CreateCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brotli):
+            query['Brotli'] = request.brotli
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateCompressionRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compression_rule(
+        self,
+        request: esa20240910_models.CreateCompressionRuleRequest,
+    ) -> esa20240910_models.CreateCompressionRuleResponse:
+        """
+        @summary 新增压缩规则
+        
+        @param request: CreateCompressionRuleRequest
+        @return: CreateCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_compression_rule_with_options(request, runtime)
+
+    async def create_compression_rule_async(
+        self,
+        request: esa20240910_models.CreateCompressionRuleRequest,
+    ) -> esa20240910_models.CreateCompressionRuleResponse:
+        """
+        @summary 新增压缩规则
+        
+        @param request: CreateCompressionRuleRequest
+        @return: CreateCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_compression_rule_with_options_async(request, runtime)
 
     def create_custom_scene_policy_with_options(
         self,
@@ -2591,6 +2903,402 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_edge_container_app_version_with_options_async(request, runtime)
 
+    def create_http_request_header_modification_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP请求头规则
+        
+        @param tmp_req: CreateHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateHttpRequestHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_header_modification):
+            request.request_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_header_modification, 'RequestHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.request_header_modification_shrink):
+            query['RequestHeaderModification'] = request.request_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_http_request_header_modification_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP请求头规则
+        
+        @param tmp_req: CreateHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateHttpRequestHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_header_modification):
+            request.request_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_header_modification, 'RequestHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.request_header_modification_shrink):
+            query['RequestHeaderModification'] = request.request_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_http_request_header_modification_rule(
+        self,
+        request: esa20240910_models.CreateHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP请求头规则
+        
+        @param request: CreateHttpRequestHeaderModificationRuleRequest
+        @return: CreateHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_http_request_header_modification_rule_with_options(request, runtime)
+
+    async def create_http_request_header_modification_rule_async(
+        self,
+        request: esa20240910_models.CreateHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.CreateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP请求头规则
+        
+        @param request: CreateHttpRequestHeaderModificationRuleRequest
+        @return: CreateHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_http_request_header_modification_rule_with_options_async(request, runtime)
+
+    def create_http_response_header_modification_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.CreateHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP响应头规则
+        
+        @param tmp_req: CreateHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateHttpResponseHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.response_header_modification):
+            request.response_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.response_header_modification, 'ResponseHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.response_header_modification_shrink):
+            query['ResponseHeaderModification'] = request.response_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_http_response_header_modification_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.CreateHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP响应头规则
+        
+        @param tmp_req: CreateHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.CreateHttpResponseHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.response_header_modification):
+            request.response_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.response_header_modification, 'ResponseHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.response_header_modification_shrink):
+            query['ResponseHeaderModification'] = request.response_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_http_response_header_modification_rule(
+        self,
+        request: esa20240910_models.CreateHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP响应头规则
+        
+        @param request: CreateHttpResponseHeaderModificationRuleRequest
+        @return: CreateHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_http_response_header_modification_rule_with_options(request, runtime)
+
+    async def create_http_response_header_modification_rule_async(
+        self,
+        request: esa20240910_models.CreateHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.CreateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 新增HTTP响应头规则
+        
+        @param request: CreateHttpResponseHeaderModificationRuleRequest
+        @return: CreateHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_http_response_header_modification_rule_with_options_async(request, runtime)
+
+    def create_https_basic_configuration_with_options(
+        self,
+        request: esa20240910_models.CreateHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpsBasicConfigurationResponse:
+        """
+        @summary 新增站点HTTPS基础配置
+        
+        @param request: CreateHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphersuite):
+            query['Ciphersuite'] = request.ciphersuite
+        if not UtilClient.is_unset(request.ciphersuite_group):
+            query['CiphersuiteGroup'] = request.ciphersuite_group
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.http_3):
+            query['Http3'] = request.http_3
+        if not UtilClient.is_unset(request.https):
+            query['Https'] = request.https
+        if not UtilClient.is_unset(request.ocsp_stapling):
+            query['OcspStapling'] = request.ocsp_stapling
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.tls_10):
+            query['Tls10'] = request.tls_10
+        if not UtilClient.is_unset(request.tls_11):
+            query['Tls11'] = request.tls_11
+        if not UtilClient.is_unset(request.tls_12):
+            query['Tls12'] = request.tls_12
+        if not UtilClient.is_unset(request.tls_13):
+            query['Tls13'] = request.tls_13
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpsBasicConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_https_basic_configuration_with_options_async(
+        self,
+        request: esa20240910_models.CreateHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateHttpsBasicConfigurationResponse:
+        """
+        @summary 新增站点HTTPS基础配置
+        
+        @param request: CreateHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphersuite):
+            query['Ciphersuite'] = request.ciphersuite
+        if not UtilClient.is_unset(request.ciphersuite_group):
+            query['CiphersuiteGroup'] = request.ciphersuite_group
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.http_3):
+            query['Http3'] = request.http_3
+        if not UtilClient.is_unset(request.https):
+            query['Https'] = request.https
+        if not UtilClient.is_unset(request.ocsp_stapling):
+            query['OcspStapling'] = request.ocsp_stapling
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.tls_10):
+            query['Tls10'] = request.tls_10
+        if not UtilClient.is_unset(request.tls_11):
+            query['Tls11'] = request.tls_11
+        if not UtilClient.is_unset(request.tls_12):
+            query['Tls12'] = request.tls_12
+        if not UtilClient.is_unset(request.tls_13):
+            query['Tls13'] = request.tls_13
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateHttpsBasicConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_https_basic_configuration(
+        self,
+        request: esa20240910_models.CreateHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.CreateHttpsBasicConfigurationResponse:
+        """
+        @summary 新增站点HTTPS基础配置
+        
+        @param request: CreateHttpsBasicConfigurationRequest
+        @return: CreateHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_https_basic_configuration_with_options(request, runtime)
+
+    async def create_https_basic_configuration_async(
+        self,
+        request: esa20240910_models.CreateHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.CreateHttpsBasicConfigurationResponse:
+        """
+        @summary 新增站点HTTPS基础配置
+        
+        @param request: CreateHttpsBasicConfigurationRequest
+        @return: CreateHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_https_basic_configuration_with_options_async(request, runtime)
+
     def create_kv_namespace_with_options(
         self,
         request: esa20240910_models.CreateKvNamespaceRequest,
@@ -3019,6 +3727,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_origin_protection_with_options_async(request, runtime)
 
+    def create_origin_rule_with_options(
+        self,
+        request: esa20240910_models.CreateOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginRuleResponse:
+        """
+        @summary 新增站点回源规则配置
+        
+        @param request: CreateOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_record):
+            query['DnsRecord'] = request.dns_record
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.origin_http_port):
+            query['OriginHttpPort'] = request.origin_http_port
+        if not UtilClient.is_unset(request.origin_https_port):
+            query['OriginHttpsPort'] = request.origin_https_port
+        if not UtilClient.is_unset(request.origin_scheme):
+            query['OriginScheme'] = request.origin_scheme
+        if not UtilClient.is_unset(request.origin_sni):
+            query['OriginSni'] = request.origin_sni
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_origin_rule_with_options_async(
+        self,
+        request: esa20240910_models.CreateOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateOriginRuleResponse:
+        """
+        @summary 新增站点回源规则配置
+        
+        @param request: CreateOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_record):
+            query['DnsRecord'] = request.dns_record
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.origin_http_port):
+            query['OriginHttpPort'] = request.origin_http_port
+        if not UtilClient.is_unset(request.origin_https_port):
+            query['OriginHttpsPort'] = request.origin_https_port
+        if not UtilClient.is_unset(request.origin_scheme):
+            query['OriginScheme'] = request.origin_scheme
+        if not UtilClient.is_unset(request.origin_sni):
+            query['OriginSni'] = request.origin_sni
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateOriginRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_origin_rule(
+        self,
+        request: esa20240910_models.CreateOriginRuleRequest,
+    ) -> esa20240910_models.CreateOriginRuleResponse:
+        """
+        @summary 新增站点回源规则配置
+        
+        @param request: CreateOriginRuleRequest
+        @return: CreateOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_origin_rule_with_options(request, runtime)
+
+    async def create_origin_rule_async(
+        self,
+        request: esa20240910_models.CreateOriginRuleRequest,
+    ) -> esa20240910_models.CreateOriginRuleResponse:
+        """
+        @summary 新增站点回源规则配置
+        
+        @param request: CreateOriginRuleRequest
+        @return: CreateOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_origin_rule_with_options_async(request, runtime)
+
     def create_page_with_options(
         self,
         request: esa20240910_models.CreatePageRequest,
@@ -3274,6 +4122,262 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_record_with_options_async(request, runtime)
+
+    def create_redirect_rule_with_options(
+        self,
+        request: esa20240910_models.CreateRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRedirectRuleResponse:
+        """
+        @summary 新增重定向规则
+        
+        @param request: CreateRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reserve_query_string):
+            query['ReserveQueryString'] = request.reserve_query_string
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.target_url):
+            query['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_redirect_rule_with_options_async(
+        self,
+        request: esa20240910_models.CreateRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRedirectRuleResponse:
+        """
+        @summary 新增重定向规则
+        
+        @param request: CreateRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reserve_query_string):
+            query['ReserveQueryString'] = request.reserve_query_string
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.target_url):
+            query['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_redirect_rule(
+        self,
+        request: esa20240910_models.CreateRedirectRuleRequest,
+    ) -> esa20240910_models.CreateRedirectRuleResponse:
+        """
+        @summary 新增重定向规则
+        
+        @param request: CreateRedirectRuleRequest
+        @return: CreateRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_redirect_rule_with_options(request, runtime)
+
+    async def create_redirect_rule_async(
+        self,
+        request: esa20240910_models.CreateRedirectRuleRequest,
+    ) -> esa20240910_models.CreateRedirectRuleResponse:
+        """
+        @summary 新增重定向规则
+        
+        @param request: CreateRedirectRuleRequest
+        @return: CreateRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_redirect_rule_with_options_async(request, runtime)
+
+    def create_rewrite_url_rule_with_options(
+        self,
+        request: esa20240910_models.CreateRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRewriteUrlRuleResponse:
+        """
+        @summary 新增重写Url规则
+        
+        @param request: CreateRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.rewrite_query_string_type):
+            query['RewriteQueryStringType'] = request.rewrite_query_string_type
+        if not UtilClient.is_unset(request.rewrite_uri_type):
+            query['RewriteUriType'] = request.rewrite_uri_type
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateRewriteUrlRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rewrite_url_rule_with_options_async(
+        self,
+        request: esa20240910_models.CreateRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateRewriteUrlRuleResponse:
+        """
+        @summary 新增重写Url规则
+        
+        @param request: CreateRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.rewrite_query_string_type):
+            query['RewriteQueryStringType'] = request.rewrite_query_string_type
+        if not UtilClient.is_unset(request.rewrite_uri_type):
+            query['RewriteUriType'] = request.rewrite_uri_type
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.CreateRewriteUrlRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rewrite_url_rule(
+        self,
+        request: esa20240910_models.CreateRewriteUrlRuleRequest,
+    ) -> esa20240910_models.CreateRewriteUrlRuleResponse:
+        """
+        @summary 新增重写Url规则
+        
+        @param request: CreateRewriteUrlRuleRequest
+        @return: CreateRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_rewrite_url_rule_with_options(request, runtime)
+
+    async def create_rewrite_url_rule_async(
+        self,
+        request: esa20240910_models.CreateRewriteUrlRuleRequest,
+    ) -> esa20240910_models.CreateRewriteUrlRuleResponse:
+        """
+        @summary 新增重写Url规则
+        
+        @param request: CreateRewriteUrlRuleRequest
+        @return: CreateRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rewrite_url_rule_with_options_async(request, runtime)
 
     def create_routine_with_options(
         self,
@@ -4899,6 +6003,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_waiting_room_rule_with_options_async(request, runtime)
 
+    def delete_cache_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCacheRuleResponse:
+        """
+        @summary 删除缓存配置
+        
+        @param request: DeleteCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCacheRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cache_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCacheRuleResponse:
+        """
+        @summary 删除缓存配置
+        
+        @param request: DeleteCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCacheRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cache_rule(
+        self,
+        request: esa20240910_models.DeleteCacheRuleRequest,
+    ) -> esa20240910_models.DeleteCacheRuleResponse:
+        """
+        @summary 删除缓存配置
+        
+        @param request: DeleteCacheRuleRequest
+        @return: DeleteCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cache_rule_with_options(request, runtime)
+
+    async def delete_cache_rule_async(
+        self,
+        request: esa20240910_models.DeleteCacheRuleRequest,
+    ) -> esa20240910_models.DeleteCacheRuleResponse:
+        """
+        @summary 删除缓存配置
+        
+        @param request: DeleteCacheRuleRequest
+        @return: DeleteCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cache_rule_with_options_async(request, runtime)
+
     def delete_certificate_with_options(
         self,
         request: esa20240910_models.DeleteCertificateRequest,
@@ -5174,6 +6378,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_client_certificate_with_options_async(request, runtime)
+
+    def delete_compression_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCompressionRuleResponse:
+        """
+        @summary Deletes the compression rule configuration for a website.
+        
+        @param request: DeleteCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCompressionRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compression_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteCompressionRuleResponse:
+        """
+        @summary Deletes the compression rule configuration for a website.
+        
+        @param request: DeleteCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteCompressionRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compression_rule(
+        self,
+        request: esa20240910_models.DeleteCompressionRuleRequest,
+    ) -> esa20240910_models.DeleteCompressionRuleResponse:
+        """
+        @summary Deletes the compression rule configuration for a website.
+        
+        @param request: DeleteCompressionRuleRequest
+        @return: DeleteCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_compression_rule_with_options(request, runtime)
+
+    async def delete_compression_rule_async(
+        self,
+        request: esa20240910_models.DeleteCompressionRuleRequest,
+    ) -> esa20240910_models.DeleteCompressionRuleResponse:
+        """
+        @summary Deletes the compression rule configuration for a website.
+        
+        @param request: DeleteCompressionRuleRequest
+        @return: DeleteCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_compression_rule_with_options_async(request, runtime)
 
     def delete_custom_scene_policy_with_options(
         self,
@@ -5570,6 +6874,306 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edge_container_app_version_with_options_async(request, runtime)
+
+    def delete_http_request_header_modification_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 删除HTTP请求头规则
+        
+        @param request: DeleteHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_http_request_header_modification_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 删除HTTP请求头规则
+        
+        @param request: DeleteHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_http_request_header_modification_rule(
+        self,
+        request: esa20240910_models.DeleteHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 删除HTTP请求头规则
+        
+        @param request: DeleteHttpRequestHeaderModificationRuleRequest
+        @return: DeleteHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_http_request_header_modification_rule_with_options(request, runtime)
+
+    async def delete_http_request_header_modification_rule_async(
+        self,
+        request: esa20240910_models.DeleteHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.DeleteHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 删除HTTP请求头规则
+        
+        @param request: DeleteHttpRequestHeaderModificationRuleRequest
+        @return: DeleteHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_http_request_header_modification_rule_with_options_async(request, runtime)
+
+    def delete_http_response_header_modification_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
+        
+        @param request: DeleteHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_http_response_header_modification_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
+        
+        @param request: DeleteHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_http_response_header_modification_rule(
+        self,
+        request: esa20240910_models.DeleteHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
+        
+        @param request: DeleteHttpResponseHeaderModificationRuleRequest
+        @return: DeleteHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_http_response_header_modification_rule_with_options(request, runtime)
+
+    async def delete_http_response_header_modification_rule_async(
+        self,
+        request: esa20240910_models.DeleteHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.DeleteHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Deletes the configuration of modifying HTTP response headers for a website.
+        
+        @param request: DeleteHttpResponseHeaderModificationRuleRequest
+        @return: DeleteHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_http_response_header_modification_rule_with_options_async(request, runtime)
+
+    def delete_https_basic_configuration_with_options(
+        self,
+        request: esa20240910_models.DeleteHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpsBasicConfigurationResponse:
+        """
+        @summary 删除HTTPS基础配置
+        
+        @param request: DeleteHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpsBasicConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_https_basic_configuration_with_options_async(
+        self,
+        request: esa20240910_models.DeleteHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteHttpsBasicConfigurationResponse:
+        """
+        @summary 删除HTTPS基础配置
+        
+        @param request: DeleteHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteHttpsBasicConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_https_basic_configuration(
+        self,
+        request: esa20240910_models.DeleteHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.DeleteHttpsBasicConfigurationResponse:
+        """
+        @summary 删除HTTPS基础配置
+        
+        @param request: DeleteHttpsBasicConfigurationRequest
+        @return: DeleteHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_https_basic_configuration_with_options(request, runtime)
+
+    async def delete_https_basic_configuration_async(
+        self,
+        request: esa20240910_models.DeleteHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.DeleteHttpsBasicConfigurationResponse:
+        """
+        @summary 删除HTTPS基础配置
+        
+        @param request: DeleteHttpsBasicConfigurationRequest
+        @return: DeleteHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_https_basic_configuration_with_options_async(request, runtime)
 
     def delete_kv_with_options(
         self,
@@ -6051,6 +7655,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_origin_protection_with_options_async(request, runtime)
 
+    def delete_origin_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginRuleResponse:
+        """
+        @summary 删除回源规则配置
+        
+        @param request: DeleteOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_origin_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteOriginRuleResponse:
+        """
+        @summary 删除回源规则配置
+        
+        @param request: DeleteOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteOriginRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_origin_rule(
+        self,
+        request: esa20240910_models.DeleteOriginRuleRequest,
+    ) -> esa20240910_models.DeleteOriginRuleResponse:
+        """
+        @summary 删除回源规则配置
+        
+        @param request: DeleteOriginRuleRequest
+        @return: DeleteOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_origin_rule_with_options(request, runtime)
+
+    async def delete_origin_rule_async(
+        self,
+        request: esa20240910_models.DeleteOriginRuleRequest,
+    ) -> esa20240910_models.DeleteOriginRuleResponse:
+        """
+        @summary 删除回源规则配置
+        
+        @param request: DeleteOriginRuleRequest
+        @return: DeleteOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_origin_rule_with_options_async(request, runtime)
+
     def delete_page_with_options(
         self,
         request: esa20240910_models.DeletePageRequest,
@@ -6242,6 +7946,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_with_options_async(request, runtime)
+
+    def delete_redirect_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRedirectRuleResponse:
+        """
+        @summary Deletes a URL redirect rule for a website.
+        
+        @param request: DeleteRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_redirect_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRedirectRuleResponse:
+        """
+        @summary Deletes a URL redirect rule for a website.
+        
+        @param request: DeleteRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_redirect_rule(
+        self,
+        request: esa20240910_models.DeleteRedirectRuleRequest,
+    ) -> esa20240910_models.DeleteRedirectRuleResponse:
+        """
+        @summary Deletes a URL redirect rule for a website.
+        
+        @param request: DeleteRedirectRuleRequest
+        @return: DeleteRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_redirect_rule_with_options(request, runtime)
+
+    async def delete_redirect_rule_async(
+        self,
+        request: esa20240910_models.DeleteRedirectRuleRequest,
+    ) -> esa20240910_models.DeleteRedirectRuleResponse:
+        """
+        @summary Deletes a URL redirect rule for a website.
+        
+        @param request: DeleteRedirectRuleRequest
+        @return: DeleteRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_redirect_rule_with_options_async(request, runtime)
+
+    def delete_rewrite_url_rule_with_options(
+        self,
+        request: esa20240910_models.DeleteRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRewriteUrlRuleResponse:
+        """
+        @summary Deletes a URL rewrite rule for a website.
+        
+        @param request: DeleteRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteRewriteUrlRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rewrite_url_rule_with_options_async(
+        self,
+        request: esa20240910_models.DeleteRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteRewriteUrlRuleResponse:
+        """
+        @summary Deletes a URL rewrite rule for a website.
+        
+        @param request: DeleteRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.DeleteRewriteUrlRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rewrite_url_rule(
+        self,
+        request: esa20240910_models.DeleteRewriteUrlRuleRequest,
+    ) -> esa20240910_models.DeleteRewriteUrlRuleResponse:
+        """
+        @summary Deletes a URL rewrite rule for a website.
+        
+        @param request: DeleteRewriteUrlRuleRequest
+        @return: DeleteRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rewrite_url_rule_with_options(request, runtime)
+
+    async def delete_rewrite_url_rule_async(
+        self,
+        request: esa20240910_models.DeleteRewriteUrlRuleRequest,
+    ) -> esa20240910_models.DeleteRewriteUrlRuleResponse:
+        """
+        @summary Deletes a URL rewrite rule for a website.
+        
+        @param request: DeleteRewriteUrlRuleRequest
+        @return: DeleteRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rewrite_url_rule_with_options_async(request, runtime)
 
     def delete_routine_with_options(
         self,
@@ -8819,6 +10723,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cache_reserve_specification_with_options_async(runtime)
 
+    def get_cache_rule_with_options(
+        self,
+        request: esa20240910_models.GetCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCacheRuleResponse:
+        """
+        @summary 查询单条缓存配置
+        
+        @param request: GetCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCacheRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cache_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCacheRuleResponse:
+        """
+        @summary 查询单条缓存配置
+        
+        @param request: GetCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCacheRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cache_rule(
+        self,
+        request: esa20240910_models.GetCacheRuleRequest,
+    ) -> esa20240910_models.GetCacheRuleResponse:
+        """
+        @summary 查询单条缓存配置
+        
+        @param request: GetCacheRuleRequest
+        @return: GetCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_cache_rule_with_options(request, runtime)
+
+    async def get_cache_rule_async(
+        self,
+        request: esa20240910_models.GetCacheRuleRequest,
+    ) -> esa20240910_models.GetCacheRuleResponse:
+        """
+        @summary 查询单条缓存配置
+        
+        @param request: GetCacheRuleRequest
+        @return: GetCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cache_rule_with_options_async(request, runtime)
+
     def get_certificate_with_options(
         self,
         request: esa20240910_models.GetCertificateRequest,
@@ -9278,6 +11274,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_client_certificate_hostnames_with_options_async(request, runtime)
+
+    def get_compression_rule_with_options(
+        self,
+        request: esa20240910_models.GetCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCompressionRuleResponse:
+        """
+        @summary 查询压缩规则详情
+        
+        @param request: GetCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCompressionRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compression_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetCompressionRuleResponse:
+        """
+        @summary 查询压缩规则详情
+        
+        @param request: GetCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetCompressionRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compression_rule(
+        self,
+        request: esa20240910_models.GetCompressionRuleRequest,
+    ) -> esa20240910_models.GetCompressionRuleResponse:
+        """
+        @summary 查询压缩规则详情
+        
+        @param request: GetCompressionRuleRequest
+        @return: GetCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_compression_rule_with_options(request, runtime)
+
+    async def get_compression_rule_async(
+        self,
+        request: esa20240910_models.GetCompressionRuleRequest,
+    ) -> esa20240910_models.GetCompressionRuleResponse:
+        """
+        @summary 查询压缩规则详情
+        
+        @param request: GetCompressionRuleRequest
+        @return: GetCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_compression_rule_with_options_async(request, runtime)
 
     def get_edge_container_app_with_options(
         self,
@@ -9939,6 +12027,374 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_edge_container_terminal_with_options_async(request, runtime)
 
+    def get_http_request_header_modification_rule_with_options(
+        self,
+        request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        
+        @param request: GetHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpRequestHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_http_request_header_modification_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        
+        @param request: GetHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpRequestHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_http_request_header_modification_rule(
+        self,
+        request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        
+        @param request: GetHttpRequestHeaderModificationRuleRequest
+        @return: GetHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_http_request_header_modification_rule_with_options(request, runtime)
+
+    async def get_http_request_header_modification_rule_async(
+        self,
+        request: esa20240910_models.GetHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.GetHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP request header modification rule for a website.
+        
+        @param request: GetHttpRequestHeaderModificationRuleRequest
+        @return: GetHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_http_request_header_modification_rule_with_options_async(request, runtime)
+
+    def get_http_response_header_modification_rule_with_options(
+        self,
+        request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        
+        @param request: GetHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpResponseHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_http_response_header_modification_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        
+        @param request: GetHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpResponseHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_http_response_header_modification_rule(
+        self,
+        request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        
+        @param request: GetHttpResponseHeaderModificationRuleRequest
+        @return: GetHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_http_response_header_modification_rule_with_options(request, runtime)
+
+    async def get_http_response_header_modification_rule_async(
+        self,
+        request: esa20240910_models.GetHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.GetHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary Queries the configuration details of an HTTP response header modification rule for a website.
+        
+        @param request: GetHttpResponseHeaderModificationRuleRequest
+        @return: GetHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_http_response_header_modification_rule_with_options_async(request, runtime)
+
+    def get_https_basic_configuration_with_options(
+        self,
+        request: esa20240910_models.GetHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpsBasicConfigurationResponse:
+        """
+        @summary 查询单条HTTPS基础配置
+        
+        @param request: GetHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpsBasicConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_https_basic_configuration_with_options_async(
+        self,
+        request: esa20240910_models.GetHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetHttpsBasicConfigurationResponse:
+        """
+        @summary 查询单条HTTPS基础配置
+        
+        @param request: GetHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetHttpsBasicConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_https_basic_configuration(
+        self,
+        request: esa20240910_models.GetHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.GetHttpsBasicConfigurationResponse:
+        """
+        @summary 查询单条HTTPS基础配置
+        
+        @param request: GetHttpsBasicConfigurationRequest
+        @return: GetHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_https_basic_configuration_with_options(request, runtime)
+
+    async def get_https_basic_configuration_async(
+        self,
+        request: esa20240910_models.GetHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.GetHttpsBasicConfigurationResponse:
+        """
+        @summary 查询单条HTTPS基础配置
+        
+        @param request: GetHttpsBasicConfigurationRequest
+        @return: GetHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_https_basic_configuration_with_options_async(request, runtime)
+
+    def get_ipv_6with_options(
+        self,
+        request: esa20240910_models.GetIPv6Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetIPv6Response:
+        """
+        @summary 查询站点IPv6配置
+        
+        @param request: GetIPv6Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIPv6Response
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIPv6',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetIPv6Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ipv_6with_options_async(
+        self,
+        request: esa20240910_models.GetIPv6Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetIPv6Response:
+        """
+        @summary 查询站点IPv6配置
+        
+        @param request: GetIPv6Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIPv6Response
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIPv6',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetIPv6Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ipv_6(
+        self,
+        request: esa20240910_models.GetIPv6Request,
+    ) -> esa20240910_models.GetIPv6Response:
+        """
+        @summary 查询站点IPv6配置
+        
+        @param request: GetIPv6Request
+        @return: GetIPv6Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ipv_6with_options(request, runtime)
+
+    async def get_ipv_6_async(
+        self,
+        request: esa20240910_models.GetIPv6Request,
+    ) -> esa20240910_models.GetIPv6Response:
+        """
+        @summary 查询站点IPv6配置
+        
+        @param request: GetIPv6Request
+        @return: GetIPv6Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ipv_6with_options_async(request, runtime)
+
     def get_kv_with_options(
         self,
         request: esa20240910_models.GetKvRequest,
@@ -10293,6 +12749,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_list_with_options_async(request, runtime)
 
+    def get_managed_transform_with_options(
+        self,
+        request: esa20240910_models.GetManagedTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetManagedTransformResponse:
+        """
+        @summary Query the configuration of managed transforms for your website.
+        
+        @param request: GetManagedTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManagedTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetManagedTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetManagedTransformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_managed_transform_with_options_async(
+        self,
+        request: esa20240910_models.GetManagedTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetManagedTransformResponse:
+        """
+        @summary Query the configuration of managed transforms for your website.
+        
+        @param request: GetManagedTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManagedTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetManagedTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetManagedTransformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_managed_transform(
+        self,
+        request: esa20240910_models.GetManagedTransformRequest,
+    ) -> esa20240910_models.GetManagedTransformResponse:
+        """
+        @summary Query the configuration of managed transforms for your website.
+        
+        @param request: GetManagedTransformRequest
+        @return: GetManagedTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_managed_transform_with_options(request, runtime)
+
+    async def get_managed_transform_async(
+        self,
+        request: esa20240910_models.GetManagedTransformRequest,
+    ) -> esa20240910_models.GetManagedTransformResponse:
+        """
+        @summary Query the configuration of managed transforms for your website.
+        
+        @param request: GetManagedTransformRequest
+        @return: GetManagedTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_managed_transform_with_options_async(request, runtime)
+
     def get_origin_pool_with_options(
         self,
         request: esa20240910_models.GetOriginPoolRequest,
@@ -10476,6 +13024,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_origin_protection_with_options_async(request, runtime)
+
+    def get_origin_rule_with_options(
+        self,
+        request: esa20240910_models.GetOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginRuleResponse:
+        """
+        @summary 查询单条回源规则配置
+        
+        @param request: GetOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_origin_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetOriginRuleResponse:
+        """
+        @summary 查询单条回源规则配置
+        
+        @param request: GetOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetOriginRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_origin_rule(
+        self,
+        request: esa20240910_models.GetOriginRuleRequest,
+    ) -> esa20240910_models.GetOriginRuleResponse:
+        """
+        @summary 查询单条回源规则配置
+        
+        @param request: GetOriginRuleRequest
+        @return: GetOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_origin_rule_with_options(request, runtime)
+
+    async def get_origin_rule_async(
+        self,
+        request: esa20240910_models.GetOriginRuleRequest,
+    ) -> esa20240910_models.GetOriginRuleResponse:
+        """
+        @summary 查询单条回源规则配置
+        
+        @param request: GetOriginRuleRequest
+        @return: GetOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_origin_rule_with_options_async(request, runtime)
 
     def get_page_with_options(
         self,
@@ -10848,6 +13488,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_record_with_options_async(request, runtime)
+
+    def get_redirect_rule_with_options(
+        self,
+        request: esa20240910_models.GetRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRedirectRuleResponse:
+        """
+        @summary Queries the configuration details of a URL redirect rule for a website.
+        
+        @param request: GetRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_redirect_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRedirectRuleResponse:
+        """
+        @summary Queries the configuration details of a URL redirect rule for a website.
+        
+        @param request: GetRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_redirect_rule(
+        self,
+        request: esa20240910_models.GetRedirectRuleRequest,
+    ) -> esa20240910_models.GetRedirectRuleResponse:
+        """
+        @summary Queries the configuration details of a URL redirect rule for a website.
+        
+        @param request: GetRedirectRuleRequest
+        @return: GetRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_redirect_rule_with_options(request, runtime)
+
+    async def get_redirect_rule_async(
+        self,
+        request: esa20240910_models.GetRedirectRuleRequest,
+    ) -> esa20240910_models.GetRedirectRuleResponse:
+        """
+        @summary Queries the configuration details of a URL redirect rule for a website.
+        
+        @param request: GetRedirectRuleRequest
+        @return: GetRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_redirect_rule_with_options_async(request, runtime)
+
+    def get_rewrite_url_rule_with_options(
+        self,
+        request: esa20240910_models.GetRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRewriteUrlRuleResponse:
+        """
+        @summary Queries the configuration details of a URL rewrite rule.
+        
+        @param request: GetRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRewriteUrlRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rewrite_url_rule_with_options_async(
+        self,
+        request: esa20240910_models.GetRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetRewriteUrlRuleResponse:
+        """
+        @summary Queries the configuration details of a URL rewrite rule.
+        
+        @param request: GetRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetRewriteUrlRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rewrite_url_rule(
+        self,
+        request: esa20240910_models.GetRewriteUrlRuleRequest,
+    ) -> esa20240910_models.GetRewriteUrlRuleResponse:
+        """
+        @summary Queries the configuration details of a URL rewrite rule.
+        
+        @param request: GetRewriteUrlRuleRequest
+        @return: GetRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_rewrite_url_rule_with_options(request, runtime)
+
+    async def get_rewrite_url_rule_async(
+        self,
+        request: esa20240910_models.GetRewriteUrlRuleRequest,
+    ) -> esa20240910_models.GetRewriteUrlRuleResponse:
+        """
+        @summary Queries the configuration details of a URL rewrite rule.
+        
+        @param request: GetRewriteUrlRuleRequest
+        @return: GetRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rewrite_url_rule_with_options_async(request, runtime)
 
     def get_routine_with_options(
         self,
@@ -11909,6 +14733,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_site_waf_settings_with_options_async(request, runtime)
 
+    def get_tiered_cache_with_options(
+        self,
+        request: esa20240910_models.GetTieredCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetTieredCacheResponse:
+        """
+        @summary Queries the tiered cache configuration of your website.
+        
+        @param request: GetTieredCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTieredCacheResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTieredCache',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetTieredCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tiered_cache_with_options_async(
+        self,
+        request: esa20240910_models.GetTieredCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetTieredCacheResponse:
+        """
+        @summary Queries the tiered cache configuration of your website.
+        
+        @param request: GetTieredCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTieredCacheResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTieredCache',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.GetTieredCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tiered_cache(
+        self,
+        request: esa20240910_models.GetTieredCacheRequest,
+    ) -> esa20240910_models.GetTieredCacheResponse:
+        """
+        @summary Queries the tiered cache configuration of your website.
+        
+        @param request: GetTieredCacheRequest
+        @return: GetTieredCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_tiered_cache_with_options(request, runtime)
+
+    async def get_tiered_cache_async(
+        self,
+        request: esa20240910_models.GetTieredCacheRequest,
+    ) -> esa20240910_models.GetTieredCacheResponse:
+        """
+        @summary Queries the tiered cache configuration of your website.
+        
+        @param request: GetTieredCacheRequest
+        @return: GetTieredCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_tiered_cache_with_options_async(request, runtime)
+
     def get_upload_task_with_options(
         self,
         request: esa20240910_models.GetUploadTaskRequest,
@@ -12579,6 +15495,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cache_reserve_instances_with_options_async(request, runtime)
 
+    def list_cache_rules_with_options(
+        self,
+        request: esa20240910_models.ListCacheRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCacheRulesResponse:
+        """
+        @summary 查询多条缓存配置
+        
+        @param request: ListCacheRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCacheRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCacheRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCacheRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cache_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListCacheRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCacheRulesResponse:
+        """
+        @summary 查询多条缓存配置
+        
+        @param request: ListCacheRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCacheRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCacheRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCacheRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cache_rules(
+        self,
+        request: esa20240910_models.ListCacheRulesRequest,
+    ) -> esa20240910_models.ListCacheRulesResponse:
+        """
+        @summary 查询多条缓存配置
+        
+        @param request: ListCacheRulesRequest
+        @return: ListCacheRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cache_rules_with_options(request, runtime)
+
+    async def list_cache_rules_async(
+        self,
+        request: esa20240910_models.ListCacheRulesRequest,
+    ) -> esa20240910_models.ListCacheRulesResponse:
+        """
+        @summary 查询多条缓存配置
+        
+        @param request: ListCacheRulesRequest
+        @return: ListCacheRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cache_rules_with_options_async(request, runtime)
+
     def list_certificates_with_options(
         self,
         request: esa20240910_models.ListCertificatesRequest,
@@ -12946,6 +15954,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_client_certificates_with_options_async(request, runtime)
+
+    def list_compression_rules_with_options(
+        self,
+        request: esa20240910_models.ListCompressionRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCompressionRulesResponse:
+        """
+        @summary Queries compression rules that are configured for a website.
+        
+        @param request: ListCompressionRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCompressionRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCompressionRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCompressionRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compression_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListCompressionRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListCompressionRulesResponse:
+        """
+        @summary Queries compression rules that are configured for a website.
+        
+        @param request: ListCompressionRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCompressionRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCompressionRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListCompressionRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compression_rules(
+        self,
+        request: esa20240910_models.ListCompressionRulesRequest,
+    ) -> esa20240910_models.ListCompressionRulesResponse:
+        """
+        @summary Queries compression rules that are configured for a website.
+        
+        @param request: ListCompressionRulesRequest
+        @return: ListCompressionRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_compression_rules_with_options(request, runtime)
+
+    async def list_compression_rules_async(
+        self,
+        request: esa20240910_models.ListCompressionRulesRequest,
+    ) -> esa20240910_models.ListCompressionRulesResponse:
+        """
+        @summary Queries compression rules that are configured for a website.
+        
+        @param request: ListCompressionRulesRequest
+        @return: ListCompressionRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_compression_rules_with_options_async(request, runtime)
 
     def list_edge_container_app_records_with_options(
         self,
@@ -13512,6 +16612,282 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_edge_routine_records_with_options_async(request, runtime)
+
+    def list_http_request_header_modification_rules_with_options(
+        self,
+        request: esa20240910_models.ListHttpRequestHeaderModificationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpRequestHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP请求头规则列表
+        
+        @param request: ListHttpRequestHeaderModificationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpRequestHeaderModificationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpRequestHeaderModificationRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpRequestHeaderModificationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_http_request_header_modification_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListHttpRequestHeaderModificationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpRequestHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP请求头规则列表
+        
+        @param request: ListHttpRequestHeaderModificationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpRequestHeaderModificationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpRequestHeaderModificationRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpRequestHeaderModificationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_http_request_header_modification_rules(
+        self,
+        request: esa20240910_models.ListHttpRequestHeaderModificationRulesRequest,
+    ) -> esa20240910_models.ListHttpRequestHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP请求头规则列表
+        
+        @param request: ListHttpRequestHeaderModificationRulesRequest
+        @return: ListHttpRequestHeaderModificationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_http_request_header_modification_rules_with_options(request, runtime)
+
+    async def list_http_request_header_modification_rules_async(
+        self,
+        request: esa20240910_models.ListHttpRequestHeaderModificationRulesRequest,
+    ) -> esa20240910_models.ListHttpRequestHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP请求头规则列表
+        
+        @param request: ListHttpRequestHeaderModificationRulesRequest
+        @return: ListHttpRequestHeaderModificationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_http_request_header_modification_rules_with_options_async(request, runtime)
+
+    def list_http_response_header_modification_rules_with_options(
+        self,
+        request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP响应头规则列表
+        
+        @param request: ListHttpResponseHeaderModificationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpResponseHeaderModificationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpResponseHeaderModificationRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpResponseHeaderModificationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_http_response_header_modification_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP响应头规则列表
+        
+        @param request: ListHttpResponseHeaderModificationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpResponseHeaderModificationRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpResponseHeaderModificationRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpResponseHeaderModificationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_http_response_header_modification_rules(
+        self,
+        request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
+    ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP响应头规则列表
+        
+        @param request: ListHttpResponseHeaderModificationRulesRequest
+        @return: ListHttpResponseHeaderModificationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_http_response_header_modification_rules_with_options(request, runtime)
+
+    async def list_http_response_header_modification_rules_async(
+        self,
+        request: esa20240910_models.ListHttpResponseHeaderModificationRulesRequest,
+    ) -> esa20240910_models.ListHttpResponseHeaderModificationRulesResponse:
+        """
+        @summary 查询HTTP响应头规则列表
+        
+        @param request: ListHttpResponseHeaderModificationRulesRequest
+        @return: ListHttpResponseHeaderModificationRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_http_response_header_modification_rules_with_options_async(request, runtime)
+
+    def list_https_basic_configurations_with_options(
+        self,
+        request: esa20240910_models.ListHttpsBasicConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpsBasicConfigurationsResponse:
+        """
+        @summary 查询多条HTTPS基础配置
+        
+        @param request: ListHttpsBasicConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpsBasicConfigurationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpsBasicConfigurations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpsBasicConfigurationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_https_basic_configurations_with_options_async(
+        self,
+        request: esa20240910_models.ListHttpsBasicConfigurationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListHttpsBasicConfigurationsResponse:
+        """
+        @summary 查询多条HTTPS基础配置
+        
+        @param request: ListHttpsBasicConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHttpsBasicConfigurationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListHttpsBasicConfigurations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListHttpsBasicConfigurationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_https_basic_configurations(
+        self,
+        request: esa20240910_models.ListHttpsBasicConfigurationsRequest,
+    ) -> esa20240910_models.ListHttpsBasicConfigurationsResponse:
+        """
+        @summary 查询多条HTTPS基础配置
+        
+        @param request: ListHttpsBasicConfigurationsRequest
+        @return: ListHttpsBasicConfigurationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_https_basic_configurations_with_options(request, runtime)
+
+    async def list_https_basic_configurations_async(
+        self,
+        request: esa20240910_models.ListHttpsBasicConfigurationsRequest,
+    ) -> esa20240910_models.ListHttpsBasicConfigurationsResponse:
+        """
+        @summary 查询多条HTTPS基础配置
+        
+        @param request: ListHttpsBasicConfigurationsRequest
+        @return: ListHttpsBasicConfigurationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_https_basic_configurations_with_options_async(request, runtime)
 
     def list_instance_quotas_with_options(
         self,
@@ -14193,6 +17569,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_origin_pools_with_options_async(request, runtime)
 
+    def list_origin_rules_with_options(
+        self,
+        request: esa20240910_models.ListOriginRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginRulesResponse:
+        """
+        @summary 查询多条回源规则配置
+        
+        @param request: ListOriginRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListOriginRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_origin_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListOriginRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListOriginRulesResponse:
+        """
+        @summary 查询多条回源规则配置
+        
+        @param request: ListOriginRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOriginRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOriginRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListOriginRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_origin_rules(
+        self,
+        request: esa20240910_models.ListOriginRulesRequest,
+    ) -> esa20240910_models.ListOriginRulesResponse:
+        """
+        @summary 查询多条回源规则配置
+        
+        @param request: ListOriginRulesRequest
+        @return: ListOriginRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_origin_rules_with_options(request, runtime)
+
+    async def list_origin_rules_async(
+        self,
+        request: esa20240910_models.ListOriginRulesRequest,
+    ) -> esa20240910_models.ListOriginRulesResponse:
+        """
+        @summary 查询多条回源规则配置
+        
+        @param request: ListOriginRulesRequest
+        @return: ListOriginRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_origin_rules_with_options_async(request, runtime)
+
     def list_pages_with_options(
         self,
         tmp_req: esa20240910_models.ListPagesRequest,
@@ -14404,6 +17872,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_records_with_options_async(request, runtime)
+
+    def list_redirect_rules_with_options(
+        self,
+        request: esa20240910_models.ListRedirectRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRedirectRulesResponse:
+        """
+        @summary 查询重定向规则列表
+        
+        @param request: ListRedirectRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRedirectRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRedirectRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRedirectRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_redirect_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListRedirectRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRedirectRulesResponse:
+        """
+        @summary 查询重定向规则列表
+        
+        @param request: ListRedirectRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRedirectRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRedirectRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRedirectRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_redirect_rules(
+        self,
+        request: esa20240910_models.ListRedirectRulesRequest,
+    ) -> esa20240910_models.ListRedirectRulesResponse:
+        """
+        @summary 查询重定向规则列表
+        
+        @param request: ListRedirectRulesRequest
+        @return: ListRedirectRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_redirect_rules_with_options(request, runtime)
+
+    async def list_redirect_rules_async(
+        self,
+        request: esa20240910_models.ListRedirectRulesRequest,
+    ) -> esa20240910_models.ListRedirectRulesResponse:
+        """
+        @summary 查询重定向规则列表
+        
+        @param request: ListRedirectRulesRequest
+        @return: ListRedirectRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_redirect_rules_with_options_async(request, runtime)
+
+    def list_rewrite_url_rules_with_options(
+        self,
+        request: esa20240910_models.ListRewriteUrlRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRewriteUrlRulesResponse:
+        """
+        @summary 查询重写Url规则列表
+        
+        @param request: ListRewriteUrlRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRewriteUrlRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRewriteUrlRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRewriteUrlRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rewrite_url_rules_with_options_async(
+        self,
+        request: esa20240910_models.ListRewriteUrlRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListRewriteUrlRulesResponse:
+        """
+        @summary 查询重写Url规则列表
+        
+        @param request: ListRewriteUrlRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRewriteUrlRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRewriteUrlRules',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.ListRewriteUrlRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rewrite_url_rules(
+        self,
+        request: esa20240910_models.ListRewriteUrlRulesRequest,
+    ) -> esa20240910_models.ListRewriteUrlRulesResponse:
+        """
+        @summary 查询重写Url规则列表
+        
+        @param request: ListRewriteUrlRulesRequest
+        @return: ListRewriteUrlRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rewrite_url_rules_with_options(request, runtime)
+
+    async def list_rewrite_url_rules_async(
+        self,
+        request: esa20240910_models.ListRewriteUrlRulesRequest,
+    ) -> esa20240910_models.ListRewriteUrlRulesResponse:
+        """
+        @summary 查询重写Url规则列表
+        
+        @param request: ListRewriteUrlRulesRequest
+        @return: ListRewriteUrlRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rewrite_url_rules_with_options_async(request, runtime)
 
     def list_routine_canary_areas_with_options(
         self,
@@ -18257,6 +21909,318 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
+    def update_cache_rule_with_options(
+        self,
+        request: esa20240910_models.UpdateCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCacheRuleResponse:
+        """
+        @summary 修改缓存配置
+        
+        @param request: UpdateCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.additional_cacheable_ports):
+            query['AdditionalCacheablePorts'] = request.additional_cacheable_ports
+        if not UtilClient.is_unset(request.browser_cache_mode):
+            query['BrowserCacheMode'] = request.browser_cache_mode
+        if not UtilClient.is_unset(request.browser_cache_ttl):
+            query['BrowserCacheTtl'] = request.browser_cache_ttl
+        if not UtilClient.is_unset(request.bypass_cache):
+            query['BypassCache'] = request.bypass_cache
+        if not UtilClient.is_unset(request.cache_deception_armor):
+            query['CacheDeceptionArmor'] = request.cache_deception_armor
+        if not UtilClient.is_unset(request.cache_reserve_eligibility):
+            query['CacheReserveEligibility'] = request.cache_reserve_eligibility
+        if not UtilClient.is_unset(request.check_presence_cookie):
+            query['CheckPresenceCookie'] = request.check_presence_cookie
+        if not UtilClient.is_unset(request.check_presence_header):
+            query['CheckPresenceHeader'] = request.check_presence_header
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.edge_cache_mode):
+            query['EdgeCacheMode'] = request.edge_cache_mode
+        if not UtilClient.is_unset(request.edge_cache_ttl):
+            query['EdgeCacheTtl'] = request.edge_cache_ttl
+        if not UtilClient.is_unset(request.edge_status_code_cache_ttl):
+            query['EdgeStatusCodeCacheTtl'] = request.edge_status_code_cache_ttl
+        if not UtilClient.is_unset(request.include_cookie):
+            query['IncludeCookie'] = request.include_cookie
+        if not UtilClient.is_unset(request.include_header):
+            query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.query_string_mode):
+            query['QueryStringMode'] = request.query_string_mode
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.serve_stale):
+            query['ServeStale'] = request.serve_stale
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.sort_query_string_for_cache):
+            query['SortQueryStringForCache'] = request.sort_query_string_for_cache
+        if not UtilClient.is_unset(request.user_device_type):
+            query['UserDeviceType'] = request.user_device_type
+        if not UtilClient.is_unset(request.user_geo):
+            query['UserGeo'] = request.user_geo
+        if not UtilClient.is_unset(request.user_language):
+            query['UserLanguage'] = request.user_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateCacheRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cache_rule_with_options_async(
+        self,
+        request: esa20240910_models.UpdateCacheRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCacheRuleResponse:
+        """
+        @summary 修改缓存配置
+        
+        @param request: UpdateCacheRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCacheRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.additional_cacheable_ports):
+            query['AdditionalCacheablePorts'] = request.additional_cacheable_ports
+        if not UtilClient.is_unset(request.browser_cache_mode):
+            query['BrowserCacheMode'] = request.browser_cache_mode
+        if not UtilClient.is_unset(request.browser_cache_ttl):
+            query['BrowserCacheTtl'] = request.browser_cache_ttl
+        if not UtilClient.is_unset(request.bypass_cache):
+            query['BypassCache'] = request.bypass_cache
+        if not UtilClient.is_unset(request.cache_deception_armor):
+            query['CacheDeceptionArmor'] = request.cache_deception_armor
+        if not UtilClient.is_unset(request.cache_reserve_eligibility):
+            query['CacheReserveEligibility'] = request.cache_reserve_eligibility
+        if not UtilClient.is_unset(request.check_presence_cookie):
+            query['CheckPresenceCookie'] = request.check_presence_cookie
+        if not UtilClient.is_unset(request.check_presence_header):
+            query['CheckPresenceHeader'] = request.check_presence_header
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.edge_cache_mode):
+            query['EdgeCacheMode'] = request.edge_cache_mode
+        if not UtilClient.is_unset(request.edge_cache_ttl):
+            query['EdgeCacheTtl'] = request.edge_cache_ttl
+        if not UtilClient.is_unset(request.edge_status_code_cache_ttl):
+            query['EdgeStatusCodeCacheTtl'] = request.edge_status_code_cache_ttl
+        if not UtilClient.is_unset(request.include_cookie):
+            query['IncludeCookie'] = request.include_cookie
+        if not UtilClient.is_unset(request.include_header):
+            query['IncludeHeader'] = request.include_header
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.query_string_mode):
+            query['QueryStringMode'] = request.query_string_mode
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.serve_stale):
+            query['ServeStale'] = request.serve_stale
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.sort_query_string_for_cache):
+            query['SortQueryStringForCache'] = request.sort_query_string_for_cache
+        if not UtilClient.is_unset(request.user_device_type):
+            query['UserDeviceType'] = request.user_device_type
+        if not UtilClient.is_unset(request.user_geo):
+            query['UserGeo'] = request.user_geo
+        if not UtilClient.is_unset(request.user_language):
+            query['UserLanguage'] = request.user_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCacheRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateCacheRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cache_rule(
+        self,
+        request: esa20240910_models.UpdateCacheRuleRequest,
+    ) -> esa20240910_models.UpdateCacheRuleResponse:
+        """
+        @summary 修改缓存配置
+        
+        @param request: UpdateCacheRuleRequest
+        @return: UpdateCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cache_rule_with_options(request, runtime)
+
+    async def update_cache_rule_async(
+        self,
+        request: esa20240910_models.UpdateCacheRuleRequest,
+    ) -> esa20240910_models.UpdateCacheRuleResponse:
+        """
+        @summary 修改缓存配置
+        
+        @param request: UpdateCacheRuleRequest
+        @return: UpdateCacheRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cache_rule_with_options_async(request, runtime)
+
+    def update_compression_rule_with_options(
+        self,
+        request: esa20240910_models.UpdateCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCompressionRuleResponse:
+        """
+        @summary 修改压缩规则
+        
+        @param request: UpdateCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brotli):
+            query['Brotli'] = request.brotli
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateCompressionRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compression_rule_with_options_async(
+        self,
+        request: esa20240910_models.UpdateCompressionRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateCompressionRuleResponse:
+        """
+        @summary 修改压缩规则
+        
+        @param request: UpdateCompressionRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCompressionRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.brotli):
+            query['Brotli'] = request.brotli
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.gzip):
+            query['Gzip'] = request.gzip
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCompressionRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateCompressionRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compression_rule(
+        self,
+        request: esa20240910_models.UpdateCompressionRuleRequest,
+    ) -> esa20240910_models.UpdateCompressionRuleResponse:
+        """
+        @summary 修改压缩规则
+        
+        @param request: UpdateCompressionRuleRequest
+        @return: UpdateCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_compression_rule_with_options(request, runtime)
+
+    async def update_compression_rule_async(
+        self,
+        request: esa20240910_models.UpdateCompressionRuleRequest,
+    ) -> esa20240910_models.UpdateCompressionRuleResponse:
+        """
+        @summary 修改压缩规则
+        
+        @param request: UpdateCompressionRuleRequest
+        @return: UpdateCompressionRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_compression_rule_with_options_async(request, runtime)
+
     def update_custom_scene_policy_with_options(
         self,
         request: esa20240910_models.UpdateCustomScenePolicyRequest,
@@ -18373,6 +22337,506 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_scene_policy_with_options_async(request, runtime)
 
+    def update_http_request_header_modification_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP请求头规则
+        
+        @param tmp_req: UpdateHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateHttpRequestHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_header_modification):
+            request.request_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_header_modification, 'RequestHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.request_header_modification_shrink):
+            query['RequestHeaderModification'] = request.request_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_http_request_header_modification_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateHttpRequestHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP请求头规则
+        
+        @param tmp_req: UpdateHttpRequestHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpRequestHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateHttpRequestHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_header_modification):
+            request.request_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_header_modification, 'RequestHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.request_header_modification_shrink):
+            query['RequestHeaderModification'] = request.request_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpRequestHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_http_request_header_modification_rule(
+        self,
+        request: esa20240910_models.UpdateHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP请求头规则
+        
+        @param request: UpdateHttpRequestHeaderModificationRuleRequest
+        @return: UpdateHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_http_request_header_modification_rule_with_options(request, runtime)
+
+    async def update_http_request_header_modification_rule_async(
+        self,
+        request: esa20240910_models.UpdateHttpRequestHeaderModificationRuleRequest,
+    ) -> esa20240910_models.UpdateHttpRequestHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP请求头规则
+        
+        @param request: UpdateHttpRequestHeaderModificationRuleRequest
+        @return: UpdateHttpRequestHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_http_request_header_modification_rule_with_options_async(request, runtime)
+
+    def update_http_response_header_modification_rule_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP响应头规则
+        
+        @param tmp_req: UpdateHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateHttpResponseHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.response_header_modification):
+            request.response_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.response_header_modification, 'ResponseHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.response_header_modification_shrink):
+            query['ResponseHeaderModification'] = request.response_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_http_response_header_modification_rule_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP响应头规则
+        
+        @param tmp_req: UpdateHttpResponseHeaderModificationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpResponseHeaderModificationRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateHttpResponseHeaderModificationRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.response_header_modification):
+            request.response_header_modification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.response_header_modification, 'ResponseHeaderModification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.response_header_modification_shrink):
+            query['ResponseHeaderModification'] = request.response_header_modification_shrink
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpResponseHeaderModificationRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_http_response_header_modification_rule(
+        self,
+        request: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP响应头规则
+        
+        @param request: UpdateHttpResponseHeaderModificationRuleRequest
+        @return: UpdateHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_http_response_header_modification_rule_with_options(request, runtime)
+
+    async def update_http_response_header_modification_rule_async(
+        self,
+        request: esa20240910_models.UpdateHttpResponseHeaderModificationRuleRequest,
+    ) -> esa20240910_models.UpdateHttpResponseHeaderModificationRuleResponse:
+        """
+        @summary 修改HTTP响应头规则
+        
+        @param request: UpdateHttpResponseHeaderModificationRuleRequest
+        @return: UpdateHttpResponseHeaderModificationRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_http_response_header_modification_rule_with_options_async(request, runtime)
+
+    def update_https_basic_configuration_with_options(
+        self,
+        request: esa20240910_models.UpdateHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpsBasicConfigurationResponse:
+        """
+        @summary 修改HTTPS基础配置
+        
+        @param request: UpdateHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphersuite):
+            query['Ciphersuite'] = request.ciphersuite
+        if not UtilClient.is_unset(request.ciphersuite_group):
+            query['CiphersuiteGroup'] = request.ciphersuite_group
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.http_3):
+            query['Http3'] = request.http_3
+        if not UtilClient.is_unset(request.https):
+            query['Https'] = request.https
+        if not UtilClient.is_unset(request.ocsp_stapling):
+            query['OcspStapling'] = request.ocsp_stapling
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.tls_10):
+            query['Tls10'] = request.tls_10
+        if not UtilClient.is_unset(request.tls_11):
+            query['Tls11'] = request.tls_11
+        if not UtilClient.is_unset(request.tls_12):
+            query['Tls12'] = request.tls_12
+        if not UtilClient.is_unset(request.tls_13):
+            query['Tls13'] = request.tls_13
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpsBasicConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_https_basic_configuration_with_options_async(
+        self,
+        request: esa20240910_models.UpdateHttpsBasicConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateHttpsBasicConfigurationResponse:
+        """
+        @summary 修改HTTPS基础配置
+        
+        @param request: UpdateHttpsBasicConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHttpsBasicConfigurationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ciphersuite):
+            query['Ciphersuite'] = request.ciphersuite
+        if not UtilClient.is_unset(request.ciphersuite_group):
+            query['CiphersuiteGroup'] = request.ciphersuite_group
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.http_3):
+            query['Http3'] = request.http_3
+        if not UtilClient.is_unset(request.https):
+            query['Https'] = request.https
+        if not UtilClient.is_unset(request.ocsp_stapling):
+            query['OcspStapling'] = request.ocsp_stapling
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.tls_10):
+            query['Tls10'] = request.tls_10
+        if not UtilClient.is_unset(request.tls_11):
+            query['Tls11'] = request.tls_11
+        if not UtilClient.is_unset(request.tls_12):
+            query['Tls12'] = request.tls_12
+        if not UtilClient.is_unset(request.tls_13):
+            query['Tls13'] = request.tls_13
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateHttpsBasicConfiguration',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateHttpsBasicConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_https_basic_configuration(
+        self,
+        request: esa20240910_models.UpdateHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.UpdateHttpsBasicConfigurationResponse:
+        """
+        @summary 修改HTTPS基础配置
+        
+        @param request: UpdateHttpsBasicConfigurationRequest
+        @return: UpdateHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_https_basic_configuration_with_options(request, runtime)
+
+    async def update_https_basic_configuration_async(
+        self,
+        request: esa20240910_models.UpdateHttpsBasicConfigurationRequest,
+    ) -> esa20240910_models.UpdateHttpsBasicConfigurationResponse:
+        """
+        @summary 修改HTTPS基础配置
+        
+        @param request: UpdateHttpsBasicConfigurationRequest
+        @return: UpdateHttpsBasicConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_https_basic_configuration_with_options_async(request, runtime)
+
+    def update_ipv_6with_options(
+        self,
+        request: esa20240910_models.UpdateIPv6Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateIPv6Response:
+        """
+        @summary 修改站点IPv6配置
+        
+        @param request: UpdateIPv6Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIPv6Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIPv6',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateIPv6Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ipv_6with_options_async(
+        self,
+        request: esa20240910_models.UpdateIPv6Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateIPv6Response:
+        """
+        @summary 修改站点IPv6配置
+        
+        @param request: UpdateIPv6Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIPv6Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIPv6',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateIPv6Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ipv_6(
+        self,
+        request: esa20240910_models.UpdateIPv6Request,
+    ) -> esa20240910_models.UpdateIPv6Response:
+        """
+        @summary 修改站点IPv6配置
+        
+        @param request: UpdateIPv6Request
+        @return: UpdateIPv6Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_ipv_6with_options(request, runtime)
+
+    async def update_ipv_6_async(
+        self,
+        request: esa20240910_models.UpdateIPv6Request,
+    ) -> esa20240910_models.UpdateIPv6Response:
+        """
+        @summary 修改站点IPv6配置
+        
+        @param request: UpdateIPv6Request
+        @return: UpdateIPv6Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ipv_6with_options_async(request, runtime)
+
     def update_kv_namespace_with_options(
         self,
         request: esa20240910_models.UpdateKvNamespaceRequest,
@@ -18472,6 +22936,230 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_kv_namespace_with_options_async(request, runtime)
+
+    def update_list_with_options(
+        self,
+        tmp_req: esa20240910_models.UpdateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateListResponse:
+        """
+        @summary Updates a custom list.
+        
+        @param tmp_req: UpdateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.items):
+            request.items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.items, 'Items', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.items_shrink):
+            body['Items'] = request.items_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_list_with_options_async(
+        self,
+        tmp_req: esa20240910_models.UpdateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateListResponse:
+        """
+        @summary Updates a custom list.
+        
+        @param tmp_req: UpdateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = esa20240910_models.UpdateListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.items):
+            request.items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.items, 'Items', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.items_shrink):
+            body['Items'] = request.items_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateList',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_list(
+        self,
+        request: esa20240910_models.UpdateListRequest,
+    ) -> esa20240910_models.UpdateListResponse:
+        """
+        @summary Updates a custom list.
+        
+        @param request: UpdateListRequest
+        @return: UpdateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_list_with_options(request, runtime)
+
+    async def update_list_async(
+        self,
+        request: esa20240910_models.UpdateListRequest,
+    ) -> esa20240910_models.UpdateListResponse:
+        """
+        @summary Updates a custom list.
+        
+        @param request: UpdateListRequest
+        @return: UpdateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_list_with_options_async(request, runtime)
+
+    def update_managed_transform_with_options(
+        self,
+        request: esa20240910_models.UpdateManagedTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateManagedTransformResponse:
+        """
+        @summary 修改站点托管转换配置
+        
+        @param request: UpdateManagedTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateManagedTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_client_geolocation_header):
+            query['AddClientGeolocationHeader'] = request.add_client_geolocation_header
+        if not UtilClient.is_unset(request.add_real_client_ip_header):
+            query['AddRealClientIpHeader'] = request.add_real_client_ip_header
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateManagedTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateManagedTransformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_managed_transform_with_options_async(
+        self,
+        request: esa20240910_models.UpdateManagedTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateManagedTransformResponse:
+        """
+        @summary 修改站点托管转换配置
+        
+        @param request: UpdateManagedTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateManagedTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_client_geolocation_header):
+            query['AddClientGeolocationHeader'] = request.add_client_geolocation_header
+        if not UtilClient.is_unset(request.add_real_client_ip_header):
+            query['AddRealClientIpHeader'] = request.add_real_client_ip_header
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateManagedTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateManagedTransformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_managed_transform(
+        self,
+        request: esa20240910_models.UpdateManagedTransformRequest,
+    ) -> esa20240910_models.UpdateManagedTransformResponse:
+        """
+        @summary 修改站点托管转换配置
+        
+        @param request: UpdateManagedTransformRequest
+        @return: UpdateManagedTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_managed_transform_with_options(request, runtime)
+
+    async def update_managed_transform_async(
+        self,
+        request: esa20240910_models.UpdateManagedTransformRequest,
+    ) -> esa20240910_models.UpdateManagedTransformResponse:
+        """
+        @summary 修改站点托管转换配置
+        
+        @param request: UpdateManagedTransformRequest
+        @return: UpdateManagedTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_managed_transform_with_options_async(request, runtime)
 
     def update_origin_pool_with_options(
         self,
@@ -18785,6 +23473,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_origin_protection_ip_white_list_with_options_async(request, runtime)
 
+    def update_origin_rule_with_options(
+        self,
+        request: esa20240910_models.UpdateOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginRuleResponse:
+        """
+        @summary 修改站点回源规则配置
+        
+        @param request: UpdateOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.dns_record):
+            query['DnsRecord'] = request.dns_record
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.origin_http_port):
+            query['OriginHttpPort'] = request.origin_http_port
+        if not UtilClient.is_unset(request.origin_https_port):
+            query['OriginHttpsPort'] = request.origin_https_port
+        if not UtilClient.is_unset(request.origin_scheme):
+            query['OriginScheme'] = request.origin_scheme
+        if not UtilClient.is_unset(request.origin_sni):
+            query['OriginSni'] = request.origin_sni
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_origin_rule_with_options_async(
+        self,
+        request: esa20240910_models.UpdateOriginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateOriginRuleResponse:
+        """
+        @summary 修改站点回源规则配置
+        
+        @param request: UpdateOriginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOriginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.dns_record):
+            query['DnsRecord'] = request.dns_record
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.origin_http_port):
+            query['OriginHttpPort'] = request.origin_http_port
+        if not UtilClient.is_unset(request.origin_https_port):
+            query['OriginHttpsPort'] = request.origin_https_port
+        if not UtilClient.is_unset(request.origin_scheme):
+            query['OriginScheme'] = request.origin_scheme
+        if not UtilClient.is_unset(request.origin_sni):
+            query['OriginSni'] = request.origin_sni
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOriginRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateOriginRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_origin_rule(
+        self,
+        request: esa20240910_models.UpdateOriginRuleRequest,
+    ) -> esa20240910_models.UpdateOriginRuleResponse:
+        """
+        @summary 修改站点回源规则配置
+        
+        @param request: UpdateOriginRuleRequest
+        @return: UpdateOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_origin_rule_with_options(request, runtime)
+
+    async def update_origin_rule_async(
+        self,
+        request: esa20240910_models.UpdateOriginRuleRequest,
+    ) -> esa20240910_models.UpdateOriginRuleResponse:
+        """
+        @summary 修改站点回源规则配置
+        
+        @param request: UpdateOriginRuleRequest
+        @return: UpdateOriginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_origin_rule_with_options_async(request, runtime)
+
     def update_page_with_options(
         self,
         request: esa20240910_models.UpdatePageRequest,
@@ -19068,6 +23896,262 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_record_with_options_async(request, runtime)
+
+    def update_redirect_rule_with_options(
+        self,
+        request: esa20240910_models.UpdateRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRedirectRuleResponse:
+        """
+        @summary 更新重定向规则
+        
+        @param request: UpdateRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.reserve_query_string):
+            query['ReserveQueryString'] = request.reserve_query_string
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.target_url):
+            query['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRedirectRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_redirect_rule_with_options_async(
+        self,
+        request: esa20240910_models.UpdateRedirectRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRedirectRuleResponse:
+        """
+        @summary 更新重定向规则
+        
+        @param request: UpdateRedirectRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRedirectRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.reserve_query_string):
+            query['ReserveQueryString'] = request.reserve_query_string
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.status_code):
+            query['StatusCode'] = request.status_code
+        if not UtilClient.is_unset(request.target_url):
+            query['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRedirectRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRedirectRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_redirect_rule(
+        self,
+        request: esa20240910_models.UpdateRedirectRuleRequest,
+    ) -> esa20240910_models.UpdateRedirectRuleResponse:
+        """
+        @summary 更新重定向规则
+        
+        @param request: UpdateRedirectRuleRequest
+        @return: UpdateRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_redirect_rule_with_options(request, runtime)
+
+    async def update_redirect_rule_async(
+        self,
+        request: esa20240910_models.UpdateRedirectRuleRequest,
+    ) -> esa20240910_models.UpdateRedirectRuleResponse:
+        """
+        @summary 更新重定向规则
+        
+        @param request: UpdateRedirectRuleRequest
+        @return: UpdateRedirectRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_redirect_rule_with_options_async(request, runtime)
+
+    def update_rewrite_url_rule_with_options(
+        self,
+        request: esa20240910_models.UpdateRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRewriteUrlRuleResponse:
+        """
+        @summary 修改重写Url规则
+        
+        @param request: UpdateRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.rewrite_query_string_type):
+            query['RewriteQueryStringType'] = request.rewrite_query_string_type
+        if not UtilClient.is_unset(request.rewrite_uri_type):
+            query['RewriteUriType'] = request.rewrite_uri_type
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRewriteUrlRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rewrite_url_rule_with_options_async(
+        self,
+        request: esa20240910_models.UpdateRewriteUrlRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateRewriteUrlRuleResponse:
+        """
+        @summary 修改重写Url规则
+        
+        @param request: UpdateRewriteUrlRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRewriteUrlRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.query_string):
+            query['QueryString'] = request.query_string
+        if not UtilClient.is_unset(request.rewrite_query_string_type):
+            query['RewriteQueryStringType'] = request.rewrite_query_string_type
+        if not UtilClient.is_unset(request.rewrite_uri_type):
+            query['RewriteUriType'] = request.rewrite_uri_type
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.uri):
+            query['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRewriteUrlRule',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateRewriteUrlRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rewrite_url_rule(
+        self,
+        request: esa20240910_models.UpdateRewriteUrlRuleRequest,
+    ) -> esa20240910_models.UpdateRewriteUrlRuleResponse:
+        """
+        @summary 修改重写Url规则
+        
+        @param request: UpdateRewriteUrlRuleRequest
+        @return: UpdateRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_rewrite_url_rule_with_options(request, runtime)
+
+    async def update_rewrite_url_rule_async(
+        self,
+        request: esa20240910_models.UpdateRewriteUrlRuleRequest,
+    ) -> esa20240910_models.UpdateRewriteUrlRuleResponse:
+        """
+        @summary 修改重写Url规则
+        
+        @param request: UpdateRewriteUrlRuleRequest
+        @return: UpdateRewriteUrlRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rewrite_url_rule_with_options_async(request, runtime)
 
     def update_scheduled_preload_execution_with_options(
         self,
@@ -19828,6 +24912,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_site_vanity_nswith_options_async(request, runtime)
+
+    def update_tiered_cache_with_options(
+        self,
+        request: esa20240910_models.UpdateTieredCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateTieredCacheResponse:
+        """
+        @summary 修改站点多级缓存配置
+        
+        @param request: UpdateTieredCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTieredCacheResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_architecture_mode):
+            query['CacheArchitectureMode'] = request.cache_architecture_mode
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTieredCache',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateTieredCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tiered_cache_with_options_async(
+        self,
+        request: esa20240910_models.UpdateTieredCacheRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateTieredCacheResponse:
+        """
+        @summary 修改站点多级缓存配置
+        
+        @param request: UpdateTieredCacheRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTieredCacheResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_architecture_mode):
+            query['CacheArchitectureMode'] = request.cache_architecture_mode
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTieredCache',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            esa20240910_models.UpdateTieredCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tiered_cache(
+        self,
+        request: esa20240910_models.UpdateTieredCacheRequest,
+    ) -> esa20240910_models.UpdateTieredCacheResponse:
+        """
+        @summary 修改站点多级缓存配置
+        
+        @param request: UpdateTieredCacheRequest
+        @return: UpdateTieredCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_tiered_cache_with_options(request, runtime)
+
+    async def update_tiered_cache_async(
+        self,
+        request: esa20240910_models.UpdateTieredCacheRequest,
+    ) -> esa20240910_models.UpdateTieredCacheResponse:
+        """
+        @summary 修改站点多级缓存配置
+        
+        @param request: UpdateTieredCacheRequest
+        @return: UpdateTieredCacheResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_tiered_cache_with_options_async(request, runtime)
 
     def update_user_delivery_task_with_options(
         self,

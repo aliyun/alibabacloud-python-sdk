@@ -1,3 +1,53 @@
+2025-01-14 Version: 2.11.0
+- Support API CreateCacheRule.
+- Support API CreateCompressionRule.
+- Support API CreateHttpRequestHeaderModificationRule.
+- Support API CreateHttpResponseHeaderModificationRule.
+- Support API CreateHttpsBasicConfiguration.
+- Support API CreateOriginRule.
+- Support API CreateRedirectRule.
+- Support API CreateRewriteUrlRule.
+- Support API DeleteCacheRule.
+- Support API DeleteCompressionRule.
+- Support API DeleteHttpRequestHeaderModificationRule.
+- Support API DeleteHttpResponseHeaderModificationRule.
+- Support API DeleteHttpsBasicConfiguration.
+- Support API DeleteOriginRule.
+- Support API DeleteRedirectRule.
+- Support API DeleteRewriteUrlRule.
+- Support API GetCacheRule.
+- Support API GetCompressionRule.
+- Support API GetHttpRequestHeaderModificationRule.
+- Support API GetHttpResponseHeaderModificationRule.
+- Support API GetHttpsBasicConfiguration.
+- Support API GetIPv6.
+- Support API GetManagedTransform.
+- Support API GetOriginRule.
+- Support API GetRedirectRule.
+- Support API GetRewriteUrlRule.
+- Support API GetTieredCache.
+- Support API ListCacheRules.
+- Support API ListCompressionRules.
+- Support API ListHttpRequestHeaderModificationRules.
+- Support API ListHttpResponseHeaderModificationRules.
+- Support API ListHttpsBasicConfigurations.
+- Support API ListOriginRules.
+- Support API ListRedirectRules.
+- Support API ListRewriteUrlRules.
+- Support API UpdateCacheRule.
+- Support API UpdateCompressionRule.
+- Support API UpdateHttpRequestHeaderModificationRule.
+- Support API UpdateHttpResponseHeaderModificationRule.
+- Support API UpdateHttpsBasicConfiguration.
+- Support API UpdateIPv6.
+- Support API UpdateList.
+- Support API UpdateManagedTransform.
+- Support API UpdateOriginRule.
+- Support API UpdateRedirectRule.
+- Support API UpdateRewriteUrlRule.
+- Support API UpdateTieredCache.
+
+
 2025-01-10 Version: 2.10.2
 - Update API ListPages: add param QueryArgs.
 - Update API ListUserRatePlanInstances: update response param.
