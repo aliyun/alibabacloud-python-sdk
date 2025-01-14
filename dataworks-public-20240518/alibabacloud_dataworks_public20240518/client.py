@@ -747,6 +747,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDIJobResponse
@@ -794,6 +796,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDIJobResponse
@@ -840,6 +844,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
         """
@@ -853,11 +859,137 @@ class Client(OpenApiClient):
         """
         @summary Creates a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_dijob_with_options_async(request, runtime)
+
+    def create_data_asset_tag_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
+        """
+        @summary 创建标签
+        
+        @param tmp_req: CreateDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.managers_shrink):
+            query['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.value_type):
+            query['ValueType'] = request.value_type
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_asset_tag_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
+        """
+        @summary 创建标签
+        
+        @param tmp_req: CreateDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.managers_shrink):
+            query['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.value_type):
+            query['ValueType'] = request.value_type
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_asset_tag(
+        self,
+        request: dataworks_public_20240518_models.CreateDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateDataAssetTagRequest
+        @return: CreateDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_asset_tag_with_options(request, runtime)
+
+    async def create_data_asset_tag_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.CreateDataAssetTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateDataAssetTagRequest
+        @return: CreateDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_asset_tag_with_options_async(request, runtime)
 
     def create_data_quality_evaluation_task_with_options(
         self,
@@ -865,7 +997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
         """
-        @summary 创建DataWorks数据质量监控
+        @summary Creates a monitor in DataWorks Data Quality.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param tmp_req: CreateDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -930,7 +1064,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
         """
-        @summary 创建DataWorks数据质量监控
+        @summary Creates a monitor in DataWorks Data Quality.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param tmp_req: CreateDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -994,7 +1130,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
         """
-        @summary 创建DataWorks数据质量监控
+        @summary Creates a monitor in DataWorks Data Quality.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param request: CreateDataQualityEvaluationTaskRequest
         @return: CreateDataQualityEvaluationTaskResponse
@@ -1007,7 +1145,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.CreateDataQualityEvaluationTaskResponse:
         """
-        @summary 创建DataWorks数据质量监控
+        @summary Creates a monitor in DataWorks Data Quality.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param request: CreateDataQualityEvaluationTaskRequest
         @return: CreateDataQualityEvaluationTaskResponse
@@ -2269,7 +2409,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary Adds a member to a workspace.
+        @summary Adds a workspace member and assigns a workspace-level role to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2312,7 +2454,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary Adds a member to a workspace.
+        @summary Adds a workspace member and assigns a workspace-level role to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2354,7 +2498,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary Adds a member to a workspace.
+        @summary Adds a workspace member and assigns a workspace-level role to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
@@ -2367,7 +2513,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20240518_models.CreateProjectMemberResponse:
         """
-        @summary Adds a member to a workspace.
+        @summary Adds a workspace member and assigns a workspace-level role to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
@@ -2485,23 +2633,31 @@ class Client(OpenApiClient):
 
     def create_resource_group_with_options(
         self,
-        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+        tmp_req: dataworks_public_20240518_models.CreateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
         @summary Creates a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
-        @param request: CreateResourceGroupRequest
+        @param tmp_req: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateResourceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
         body = {}
-        if not UtilClient.is_unset(request.auto_renew):
-            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.auto_renew_enabled):
+            body['AutoRenewEnabled'] = request.auto_renew_enabled
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.name):
@@ -2541,23 +2697,31 @@ class Client(OpenApiClient):
 
     async def create_resource_group_with_options_async(
         self,
-        request: dataworks_public_20240518_models.CreateResourceGroupRequest,
+        tmp_req: dataworks_public_20240518_models.CreateResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.CreateResourceGroupResponse:
         """
         @summary Creates a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
-        @param request: CreateResourceGroupRequest
+        @param tmp_req: CreateResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateResourceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
         body = {}
-        if not UtilClient.is_unset(request.auto_renew):
-            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
+        if not UtilClient.is_unset(request.aliyun_resource_tags_shrink):
+            body['AliyunResourceTags'] = request.aliyun_resource_tags_shrink
+        if not UtilClient.is_unset(request.auto_renew_enabled):
+            body['AutoRenewEnabled'] = request.auto_renew_enabled
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.name):
@@ -2603,7 +2767,7 @@ class Client(OpenApiClient):
         @summary Creates a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -2619,7 +2783,7 @@ class Client(OpenApiClient):
         @summary Creates a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: CreateResourceGroupRequest
         @return: CreateResourceGroupResponse
@@ -3039,6 +3203,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDIJobResponse
@@ -3072,6 +3238,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDIJobResponse
@@ -3104,6 +3272,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
         """
@@ -3117,11 +3287,121 @@ class Client(OpenApiClient):
         """
         @summary Deletes a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dijob_with_options_async(request, runtime)
+
+    def delete_data_asset_tag_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
+        """
+        @summary 删除标签
+        
+        @param tmp_req: DeleteDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.DeleteDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_asset_tag_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
+        """
+        @summary 删除标签
+        
+        @param tmp_req: DeleteDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.DeleteDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_asset_tag(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteDataAssetTagRequest
+        @return: DeleteDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_asset_tag_with_options(request, runtime)
+
+    async def delete_data_asset_tag_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataAssetTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteDataAssetTagRequest
+        @return: DeleteDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_asset_tag_with_options_async(request, runtime)
 
     def delete_data_quality_evaluation_task_with_options(
         self,
@@ -3971,6 +4251,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectResponse
@@ -4006,6 +4288,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectResponse
@@ -4040,6 +4324,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
         """
@@ -4053,6 +4339,8 @@ class Client(OpenApiClient):
         """
         @summary Deletes a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: DeleteProjectRequest
         @return: DeleteProjectResponse
         """
@@ -4065,7 +4353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary Removes a member from a workspace.
+        @summary Removes a workspace member and the workspace-level roles that are assigned to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4102,7 +4392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary Removes a member from a workspace.
+        @summary Removes a workspace member and the workspace-level roles that are assigned to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4138,7 +4430,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary Removes a member from a workspace.
+        @summary Removes a workspace member and the workspace-level roles that are assigned to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
@@ -4151,7 +4445,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20240518_models.DeleteProjectMemberResponse:
         """
-        @summary Removes a member from a workspace.
+        @summary Removes a workspace member and the workspace-level roles that are assigned to the member.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
@@ -4276,7 +4572,7 @@ class Client(OpenApiClient):
         @summary Deletes a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4314,7 +4610,7 @@ class Client(OpenApiClient):
         @summary Deletes a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: DeleteResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4351,7 +4647,7 @@ class Client(OpenApiClient):
         @summary Deletes a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse
@@ -4367,7 +4663,7 @@ class Client(OpenApiClient):
         @summary Deletes a serverless resource group.
         
         @description 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
-        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+        2.  *Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/document_detail/2680173.html) of serverless resource groups.
         
         @param request: DeleteResourceGroupRequest
         @return: DeleteResourceGroupResponse
@@ -5143,6 +5439,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDIJobResponse
@@ -5176,6 +5474,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDIJobResponse
@@ -5208,6 +5508,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
         """
@@ -5220,6 +5522,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetDIJobResponse:
         """
         @summary Queries the information about a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
@@ -5234,6 +5538,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
         @summary Obtains logs generated for a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDIJobLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5268,6 +5574,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains logs generated for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetDIJobLogRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDIJobLogResponse
@@ -5300,6 +5608,8 @@ class Client(OpenApiClient):
         """
         @summary Obtains logs generated for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetDIJobLogRequest
         @return: GetDIJobLogResponse
         """
@@ -5312,6 +5622,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetDIJobLogResponse:
         """
         @summary Obtains logs generated for a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetDIJobLogRequest
         @return: GetDIJobLogResponse
@@ -6287,6 +6599,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetProjectResponse
@@ -6320,6 +6634,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetProjectResponse
@@ -6352,6 +6668,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about a DataWorks workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetProjectRequest
         @return: GetProjectResponse
         """
@@ -6364,6 +6682,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetProjectResponse:
         """
         @summary Queries the information about a DataWorks workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetProjectRequest
         @return: GetProjectResponse
@@ -6979,6 +7299,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an instance.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceResponse
@@ -7012,6 +7334,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an instance.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTaskInstanceResponse
@@ -7044,6 +7368,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the information about an instance.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: GetTaskInstanceRequest
         @return: GetTaskInstanceResponse
         """
@@ -7056,6 +7382,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.GetTaskInstanceResponse:
         """
         @summary Queries the information about an instance.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: GetTaskInstanceRequest
         @return: GetTaskInstanceResponse
@@ -7719,6 +8047,8 @@ class Client(OpenApiClient):
         """
         @summary Queries events for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDIJobEventsResponse
@@ -7752,6 +8082,8 @@ class Client(OpenApiClient):
         """
         @summary Queries events for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDIJobEventsResponse
@@ -7784,6 +8116,8 @@ class Client(OpenApiClient):
         """
         @summary Queries events for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobEventsRequest
         @return: ListDIJobEventsResponse
         """
@@ -7796,6 +8130,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobEventsResponse:
         """
         @summary Queries events for a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDIJobEventsRequest
         @return: ListDIJobEventsResponse
@@ -7810,6 +8146,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
         @summary Queries metrics for a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param tmp_req: ListDIJobMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7848,6 +8186,8 @@ class Client(OpenApiClient):
         """
         @summary Queries metrics for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListDIJobMetricsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDIJobMetricsResponse
@@ -7884,6 +8224,8 @@ class Client(OpenApiClient):
         """
         @summary Queries metrics for a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobMetricsRequest
         @return: ListDIJobMetricsResponse
         """
@@ -7896,6 +8238,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobMetricsResponse:
         """
         @summary Queries metrics for a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDIJobMetricsRequest
         @return: ListDIJobMetricsResponse
@@ -7910,6 +8254,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
         @summary Queries the running information about a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDIJobRunDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7944,6 +8290,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the running information about a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobRunDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDIJobRunDetailsResponse
@@ -7976,6 +8324,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the running information about a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobRunDetailsRequest
         @return: ListDIJobRunDetailsResponse
         """
@@ -7988,6 +8338,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobRunDetailsResponse:
         """
         @summary Queries the running information about a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDIJobRunDetailsRequest
         @return: ListDIJobRunDetailsResponse
@@ -8002,6 +8354,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDIJobsResponse:
         """
         @summary Queries a list of synchronization tasks.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8036,6 +8390,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of synchronization tasks.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDIJobsResponse
@@ -8068,6 +8424,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of synchronization tasks.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
         """
@@ -8081,11 +8439,209 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of synchronization tasks.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dijobs_with_options_async(request, runtime)
+
+    def list_data_asset_tags_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListDataAssetTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataAssetTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataAssetTags',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_asset_tags_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListDataAssetTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataAssetTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataAssetTags',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_asset_tags(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
+    ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListDataAssetTagsRequest
+        @return: ListDataAssetTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_asset_tags_with_options(request, runtime)
+
+    async def list_data_asset_tags_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetTagsRequest,
+    ) -> dataworks_public_20240518_models.ListDataAssetTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListDataAssetTagsRequest
+        @return: ListDataAssetTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_asset_tags_with_options_async(request, runtime)
+
+    def list_data_assets_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
+        """
+        @summary ListDataAssets
+        
+        @param tmp_req: ListDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_assets_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.ListDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
+        """
+        @summary ListDataAssets
+        
+        @param tmp_req: ListDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.ListDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_assets(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
+        """
+        @summary ListDataAssets
+        
+        @param request: ListDataAssetsRequest
+        @return: ListDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_assets_with_options(request, runtime)
+
+    async def list_data_assets_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.ListDataAssetsResponse:
+        """
+        @summary ListDataAssets
+        
+        @param request: ListDataAssetsRequest
+        @return: ListDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_assets_with_options_async(request, runtime)
 
     def list_data_quality_evaluation_task_instances_with_options(
         self,
@@ -8379,17 +8935,17 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_quality_results_with_options_async(request, runtime)
 
-    def list_data_quality_rule_template_with_options(
+    def list_data_quality_rule_templates_with_options(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary Queries a list of data quality monitoring rule templates.
+        @summary 查询质量规则模版列表
         
-        @param request: ListDataQualityRuleTemplateRequest
+        @param request: ListDataQualityRuleTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDataQualityRuleTemplateResponse
+        @return: ListDataQualityRuleTemplatesResponse
         """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
@@ -8397,7 +8953,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListDataQualityRuleTemplate',
+            action='ListDataQualityRuleTemplates',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -8408,21 +8964,21 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse(),
+            dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_data_quality_rule_template_with_options_async(
+    async def list_data_quality_rule_templates_with_options_async(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary Queries a list of data quality monitoring rule templates.
+        @summary 查询质量规则模版列表
         
-        @param request: ListDataQualityRuleTemplateRequest
+        @param request: ListDataQualityRuleTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDataQualityRuleTemplateResponse
+        @return: ListDataQualityRuleTemplatesResponse
         """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
@@ -8430,7 +8986,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListDataQualityRuleTemplate',
+            action='ListDataQualityRuleTemplates',
             version='2024-05-18',
             protocol='HTTPS',
             pathname='/',
@@ -8441,35 +8997,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse(),
+            dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_quality_rule_template(
+    def list_data_quality_rule_templates(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
-    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary Queries a list of data quality monitoring rule templates.
+        @summary 查询质量规则模版列表
         
-        @param request: ListDataQualityRuleTemplateRequest
-        @return: ListDataQualityRuleTemplateResponse
+        @param request: ListDataQualityRuleTemplatesRequest
+        @return: ListDataQualityRuleTemplatesResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.list_data_quality_rule_template_with_options(request, runtime)
+        return self.list_data_quality_rule_templates_with_options(request, runtime)
 
-    async def list_data_quality_rule_template_async(
+    async def list_data_quality_rule_templates_async(
         self,
-        request: dataworks_public_20240518_models.ListDataQualityRuleTemplateRequest,
-    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplateResponse:
+        request: dataworks_public_20240518_models.ListDataQualityRuleTemplatesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityRuleTemplatesResponse:
         """
-        @summary Queries a list of data quality monitoring rule templates.
+        @summary 查询质量规则模版列表
         
-        @param request: ListDataQualityRuleTemplateRequest
-        @return: ListDataQualityRuleTemplateResponse
+        @param request: ListDataQualityRuleTemplatesRequest
+        @return: ListDataQualityRuleTemplatesResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.list_data_quality_rule_template_with_options_async(request, runtime)
+        return await self.list_data_quality_rule_templates_with_options_async(request, runtime)
 
     def list_data_quality_rules_with_options(
         self,
@@ -8895,6 +9451,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of descendant instances of an instance by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTaskInstancesResponse
@@ -8928,6 +9486,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of descendant instances of an instance by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDownstreamTaskInstancesResponse
@@ -8960,6 +9520,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of descendant instances of an instance by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListDownstreamTaskInstancesRequest
         @return: ListDownstreamTaskInstancesResponse
         """
@@ -8972,6 +9534,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListDownstreamTaskInstancesResponse:
         """
         @summary Queries a list of descendant instances of an instance by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListDownstreamTaskInstancesRequest
         @return: ListDownstreamTaskInstancesResponse
@@ -9878,6 +10442,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20240518_models.ListResourceGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
         if not UtilClient.is_unset(tmp_req.resource_group_types):
             request.resource_group_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_types, 'ResourceGroupTypes', 'json')
         if not UtilClient.is_unset(tmp_req.statuses):
@@ -9917,6 +10483,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20240518_models.ListResourceGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.aliyun_resource_tags):
+            request.aliyun_resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aliyun_resource_tags, 'AliyunResourceTags', 'json')
         if not UtilClient.is_unset(tmp_req.resource_group_types):
             request.resource_group_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_types, 'ResourceGroupTypes', 'json')
         if not UtilClient.is_unset(tmp_req.statuses):
@@ -10271,6 +10839,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstancesResponse
@@ -10348,6 +10918,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: ListTaskInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTaskInstancesResponse
@@ -10424,6 +10996,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListTaskInstancesRequest
         @return: ListTaskInstancesResponse
         """
@@ -10436,6 +11010,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListTaskInstancesResponse:
         """
         @summary Queries a list of instances. You can also specify filter conditions to query specific instances.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListTaskInstancesRequest
         @return: ListTaskInstancesResponse
@@ -10787,6 +11363,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of ancestor tasks of a task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListUpstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTasksResponse
@@ -10820,6 +11398,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of ancestor tasks of a task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListUpstreamTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListUpstreamTasksResponse
@@ -10852,6 +11432,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of ancestor tasks of a task by page.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: ListUpstreamTasksRequest
         @return: ListUpstreamTasksResponse
         """
@@ -10864,6 +11446,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.ListUpstreamTasksResponse:
         """
         @summary Queries a list of ancestor tasks of a task by page.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: ListUpstreamTasksRequest
         @return: ListUpstreamTasksResponse
@@ -12143,6 +12727,8 @@ class Client(OpenApiClient):
         """
         @summary Revokes roles that are assigned to a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RevokeMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeMemberProjectRolesResponse
@@ -12186,6 +12772,8 @@ class Client(OpenApiClient):
         """
         @summary Revokes roles that are assigned to a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: RevokeMemberProjectRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeMemberProjectRolesResponse
@@ -12228,6 +12816,8 @@ class Client(OpenApiClient):
         """
         @summary Revokes roles that are assigned to a member in a workspace.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: RevokeMemberProjectRolesRequest
         @return: RevokeMemberProjectRolesResponse
         """
@@ -12240,6 +12830,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.RevokeMemberProjectRolesResponse:
         """
         @summary Revokes roles that are assigned to a member in a workspace.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: RevokeMemberProjectRolesRequest
         @return: RevokeMemberProjectRolesResponse
@@ -12363,6 +12955,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartDIJobResponse
@@ -12400,6 +12994,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartDIJobResponse
@@ -12436,6 +13032,8 @@ class Client(OpenApiClient):
         """
         @summary Starts a new-version synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
         """
@@ -12448,6 +13046,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.StartDIJobResponse:
         """
         @summary Starts a new-version synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
@@ -12462,6 +13062,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.StopDIJobResponse:
         """
         @summary Stops a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: StopDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12496,6 +13098,8 @@ class Client(OpenApiClient):
         """
         @summary Stops a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopDIJobResponse
@@ -12528,6 +13132,8 @@ class Client(OpenApiClient):
         """
         @summary Stops a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: StopDIJobRequest
         @return: StopDIJobResponse
         """
@@ -12540,6 +13146,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20240518_models.StopDIJobResponse:
         """
         @summary Stops a synchronization task.
+        
+        @description This API operation is available for all DataWorks editions.
         
         @param request: StopDIJobRequest
         @return: StopDIJobResponse
@@ -12763,6 +13371,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.suspend_task_instances_with_options_async(request, runtime)
 
+    def tag_data_assets_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.TagDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
+        """
+        @summary 为资产绑定标签
+        
+        @param tmp_req: TagDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.TagDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_trace_enabled):
+            query['AutoTraceEnabled'] = request.auto_trace_enabled
+        if not UtilClient.is_unset(request.data_asset_ids_shrink):
+            query['DataAssetIds'] = request.data_asset_ids_shrink
+        if not UtilClient.is_unset(request.data_asset_type):
+            query['DataAssetType'] = request.data_asset_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TagDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_data_assets_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.TagDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
+        """
+        @summary 为资产绑定标签
+        
+        @param tmp_req: TagDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.TagDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_trace_enabled):
+            query['AutoTraceEnabled'] = request.auto_trace_enabled
+        if not UtilClient.is_unset(request.data_asset_ids_shrink):
+            query['DataAssetIds'] = request.data_asset_ids_shrink
+        if not UtilClient.is_unset(request.data_asset_type):
+            query['DataAssetType'] = request.data_asset_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.TagDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_data_assets(
+        self,
+        request: dataworks_public_20240518_models.TagDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
+        """
+        @summary 为资产绑定标签
+        
+        @param request: TagDataAssetsRequest
+        @return: TagDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_data_assets_with_options(request, runtime)
+
+    async def tag_data_assets_async(
+        self,
+        request: dataworks_public_20240518_models.TagDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.TagDataAssetsResponse:
+        """
+        @summary 为资产绑定标签
+        
+        @param request: TagDataAssetsRequest
+        @return: TagDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_data_assets_with_options_async(request, runtime)
+
     def trigger_scheduler_task_instance_with_options(
         self,
         request: dataworks_public_20240518_models.TriggerSchedulerTaskInstanceRequest,
@@ -12778,12 +13514,16 @@ class Client(OpenApiClient):
         @return: TriggerSchedulerTaskInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
         body = {}
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.trigger_time):
             body['TriggerTime'] = request.trigger_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -12817,12 +13557,16 @@ class Client(OpenApiClient):
         @return: TriggerSchedulerTaskInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
         body = {}
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.trigger_time):
             body['TriggerTime'] = request.trigger_time
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -12870,6 +13614,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_scheduler_task_instance_with_options_async(request, runtime)
+
+    def un_tag_data_assets_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UnTagDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
+        """
+        @summary 为资产解绑标签关系
+        
+        @param tmp_req: UnTagDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UnTagDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.data_asset_ids_shrink):
+            query['DataAssetIds'] = request.data_asset_ids_shrink
+        if not UtilClient.is_unset(request.data_asset_type):
+            query['DataAssetType'] = request.data_asset_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UnTagDataAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_tag_data_assets_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UnTagDataAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
+        """
+        @summary 为资产解绑标签关系
+        
+        @param tmp_req: UnTagDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagDataAssetsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UnTagDataAssetsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_asset_ids):
+            request.data_asset_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_asset_ids, 'DataAssetIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.data_asset_ids_shrink):
+            query['DataAssetIds'] = request.data_asset_ids_shrink
+        if not UtilClient.is_unset(request.data_asset_type):
+            query['DataAssetType'] = request.data_asset_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnTagDataAssets',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UnTagDataAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_tag_data_assets(
+        self,
+        request: dataworks_public_20240518_models.UnTagDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
+        """
+        @summary 为资产解绑标签关系
+        
+        @param request: UnTagDataAssetsRequest
+        @return: UnTagDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.un_tag_data_assets_with_options(request, runtime)
+
+    async def un_tag_data_assets_async(
+        self,
+        request: dataworks_public_20240518_models.UnTagDataAssetsRequest,
+    ) -> dataworks_public_20240518_models.UnTagDataAssetsResponse:
+        """
+        @summary 为资产解绑标签关系
+        
+        @param request: UnTagDataAssetsRequest
+        @return: UnTagDataAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.un_tag_data_assets_with_options_async(request, runtime)
 
     def update_alert_rule_with_options(
         self,
@@ -13111,6 +13979,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDIJobResponse
@@ -13154,6 +14024,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDIJobResponse
@@ -13196,6 +14068,8 @@ class Client(OpenApiClient):
         """
         @summary Updates a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
         """
@@ -13209,11 +14083,133 @@ class Client(OpenApiClient):
         """
         @summary Updates a synchronization task.
         
+        @description This API operation is available for all DataWorks editions.
+        
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_dijob_with_options_async(request, runtime)
+
+    def update_data_asset_tag_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
+        """
+        @summary 更新标签
+        
+        @param tmp_req: UpdateDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.managers_shrink):
+            query['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_asset_tag_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
+        """
+        @summary 更新标签
+        
+        @param tmp_req: UpdateDataAssetTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataAssetTagResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataAssetTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.values):
+            request.values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.values, 'Values', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.managers_shrink):
+            query['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.values_shrink):
+            query['Values'] = request.values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataAssetTag',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataAssetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_asset_tag(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateDataAssetTagRequest
+        @return: UpdateDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_asset_tag_with_options(request, runtime)
+
+    async def update_data_asset_tag_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataAssetTagRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataAssetTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateDataAssetTagRequest
+        @return: UpdateDataAssetTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_asset_tag_with_options_async(request, runtime)
 
     def update_data_quality_evaluation_task_with_options(
         self,
@@ -13221,7 +14217,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
         """
-        @summary 更新数据质量校验任务
+        @summary Updates a monitor.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13288,7 +14286,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
         """
-        @summary 更新数据质量校验任务
+        @summary Updates a monitor.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param tmp_req: UpdateDataQualityEvaluationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13354,7 +14354,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
         """
-        @summary 更新数据质量校验任务
+        @summary Updates a monitor.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param request: UpdateDataQualityEvaluationTaskRequest
         @return: UpdateDataQualityEvaluationTaskResponse
@@ -13367,7 +14369,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
     ) -> dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskResponse:
         """
-        @summary 更新数据质量校验任务
+        @summary Updates a monitor.
+        
+        @description This API operation is supported in all DataWorks editions.
         
         @param request: UpdateDataQualityEvaluationTaskRequest
         @return: UpdateDataQualityEvaluationTaskResponse
@@ -14243,6 +15247,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.name):
@@ -14284,6 +15290,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.aliyun_resource_group_id):
+            body['AliyunResourceGroupId'] = request.aliyun_resource_group_id
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.name):
