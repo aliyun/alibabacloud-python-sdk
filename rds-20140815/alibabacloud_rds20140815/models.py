@@ -748,8 +748,13 @@ class AssociateEipAddressWithRCInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The EIP ID.
+        # 
+        # >  If no EIP is available, create an EIP. For more information, see [Create an EIP](https://help.aliyun.com/document_detail/292841.html).
         self.allocation_id = allocation_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -785,6 +790,7 @@ class AssociateEipAddressWithRCInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2663,11 +2669,13 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
         self,
         has_service_linked_role: str = None,
         request_id: str = None,
+        require_service_linked_role: str = None,
     ):
         # Indicates whether an SLR is created.
         self.has_service_linked_role = has_service_linked_role
         # The request ID.
         self.request_id = request_id
+        self.require_service_linked_role = require_service_linked_role
 
     def validate(self):
         pass
@@ -2682,6 +2690,8 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
             result['HasServiceLinkedRole'] = self.has_service_linked_role
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.require_service_linked_role is not None:
+            result['RequireServiceLinkedRole'] = self.require_service_linked_role
         return result
 
     def from_map(self, m: dict = None):
@@ -2690,6 +2700,8 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
             self.has_service_linked_role = m.get('HasServiceLinkedRole')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RequireServiceLinkedRole') is not None:
+            self.require_service_linked_role = m.get('RequireServiceLinkedRole')
         return self
 
 
@@ -11704,9 +11716,11 @@ class CreateRCNodePoolRequestSystemDisk(TeaModel):
     def __init__(
         self,
         category: str = None,
+        performance_level: str = None,
         size: int = None,
     ):
         self.category = category
+        self.performance_level = performance_level
         self.size = size
 
     def validate(self):
@@ -11720,6 +11734,8 @@ class CreateRCNodePoolRequestSystemDisk(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.size is not None:
             result['Size'] = self.size
         return result
@@ -11728,6 +11744,8 @@ class CreateRCNodePoolRequestSystemDisk(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -51558,6 +51576,7 @@ class DescribeRCImageListRequest(TeaModel):
         architecture: str = None,
         image_id: str = None,
         image_name: str = None,
+        instance_type: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -51570,6 +51589,7 @@ class DescribeRCImageListRequest(TeaModel):
         self.architecture = architecture
         self.image_id = image_id
         self.image_name = image_name
+        self.instance_type = instance_type
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
@@ -51596,6 +51616,8 @@ class DescribeRCImageListRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.image_name is not None:
             result['ImageName'] = self.image_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -51614,6 +51636,8 @@ class DescribeRCImageListRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -51639,6 +51663,7 @@ class DescribeRCImageListResponseBodyImages(TeaModel):
         osname: str = None,
         osname_en: str = None,
         ostype: str = None,
+        platform: str = None,
         size: int = None,
         status: str = None,
         usage: str = None,
@@ -51673,6 +51698,7 @@ class DescribeRCImageListResponseBodyImages(TeaModel):
         # *   **windows**\
         # *   **linux**\
         self.ostype = ostype
+        self.platform = platform
         # The image size. Unit: GiB.
         self.size = size
         # The image status. Valid values:
@@ -51719,6 +51745,8 @@ class DescribeRCImageListResponseBodyImages(TeaModel):
             result['OSNameEn'] = self.osname_en
         if self.ostype is not None:
             result['OSType'] = self.ostype
+        if self.platform is not None:
+            result['Platform'] = self.platform
         if self.size is not None:
             result['Size'] = self.size
         if self.status is not None:
@@ -51751,6 +51779,8 @@ class DescribeRCImageListResponseBodyImages(TeaModel):
             self.osname_en = m.get('OSNameEn')
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('Status') is not None:
@@ -52249,6 +52279,57 @@ class DescribeRCInstanceAttributeResponseBodySecurityGroupIds(TeaModel):
         return self
 
 
+class DescribeRCInstanceAttributeResponseBodySystemDisk(TeaModel):
+    def __init__(
+        self,
+        delete_with_instance: bool = None,
+        encrypted: str = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+    ):
+        self.delete_with_instance = delete_with_instance
+        self.encrypted = encrypted
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_with_instance is not None:
+            result['DeleteWithInstance'] = self.delete_with_instance
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeleteWithInstance') is not None:
+            self.delete_with_instance = m.get('DeleteWithInstance')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        return self
+
+
 class DescribeRCInstanceAttributeResponseBodyTagsTag(TeaModel):
     def __init__(
         self,
@@ -52449,6 +52530,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         spot_strategy: str = None,
         status: str = None,
         stopped_mode: str = None,
+        system_disk: DescribeRCInstanceAttributeResponseBodySystemDisk = None,
         tags: DescribeRCInstanceAttributeResponseBodyTags = None,
         vlan_id: str = None,
         vpc_attributes: DescribeRCInstanceAttributeResponseBodyVpcAttributes = None,
@@ -52557,6 +52639,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         # *   **StopCharging**: The billing of the instance stops after the instance is stopped. After the instance is stopped, resources such as CPU cores, memory resources, and public IP address are released. The instance may be unable to restart if some required resources are out of stock in the current region.
         # *   **Not-applicable**: The No Fees for Stopped Instances feature is not supported for the instance.
         self.stopped_mode = stopped_mode
+        self.system_disk = system_disk
         self.tags = tags
         # The virtual LAN (VLAN) ID of the instance.
         # 
@@ -52582,6 +52665,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.public_ip_address.validate()
         if self.security_group_ids:
             self.security_group_ids.validate()
+        if self.system_disk:
+            self.system_disk.validate()
         if self.tags:
             self.tags.validate()
         if self.vpc_attributes:
@@ -52671,6 +52756,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['Status'] = self.status
         if self.stopped_mode is not None:
             result['StoppedMode'] = self.stopped_mode
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.vlan_id is not None:
@@ -52768,6 +52855,9 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('StoppedMode') is not None:
             self.stopped_mode = m.get('StoppedMode')
+        if m.get('SystemDisk') is not None:
+            temp_model = DescribeRCInstanceAttributeResponseBodySystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('Tags') is not None:
             temp_model = DescribeRCInstanceAttributeResponseBodyTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -53668,9 +53758,11 @@ class DescribeRCNodePoolResponseBodyNodePoolListSystemDisk(TeaModel):
     def __init__(
         self,
         category: str = None,
+        performance_level: str = None,
         size: int = None,
     ):
         self.category = category
+        self.performance_level = performance_level
         self.size = size
 
     def validate(self):
@@ -53684,6 +53776,8 @@ class DescribeRCNodePoolResponseBodyNodePoolListSystemDisk(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.size is not None:
             result['Size'] = self.size
         return result
@@ -53692,6 +53786,8 @@ class DescribeRCNodePoolResponseBodyNodePoolListSystemDisk(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -54159,7 +54255,7 @@ class DescribeRCSnapshotsResponseBodySnapshots(TeaModel):
         # *   SYSTEM: system disk
         # *   DATA: data disk
         self.source_disk_type = source_disk_type
-        # The type of the original disk.
+        # The type of the source disk.
         # 
         # >  This parameter will be removed in the future. To ensure future compatibility, we recommend that you use other parameters.
         self.source_storage_type = source_storage_type
@@ -56639,6 +56735,7 @@ class DescribeResourceUsageResponseBody(TeaModel):
         self,
         archive_backup_size: int = None,
         backup_data_size: int = None,
+        backup_ecs_snapshot_size: str = None,
         backup_log_size: int = None,
         backup_oss_data_size: int = None,
         backup_oss_log_size: int = None,
@@ -56657,6 +56754,7 @@ class DescribeResourceUsageResponseBody(TeaModel):
         self.archive_backup_size = archive_backup_size
         # The storage that is occupied by data backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_data_size = backup_data_size
+        self.backup_ecs_snapshot_size = backup_ecs_snapshot_size
         # The storage that is occupied by log backup files, excluding archived backup files, on the instance. Unit: bytes.
         self.backup_log_size = backup_log_size
         # The size of data backup files that are stored in Object Storage Service (OSS) buckets. Unit: bytes. The value 0 indicates no data backup files are stored in OSS buckets.
@@ -56697,6 +56795,8 @@ class DescribeResourceUsageResponseBody(TeaModel):
             result['ArchiveBackupSize'] = self.archive_backup_size
         if self.backup_data_size is not None:
             result['BackupDataSize'] = self.backup_data_size
+        if self.backup_ecs_snapshot_size is not None:
+            result['BackupEcsSnapshotSize'] = self.backup_ecs_snapshot_size
         if self.backup_log_size is not None:
             result['BackupLogSize'] = self.backup_log_size
         if self.backup_oss_data_size is not None:
@@ -56731,6 +56831,8 @@ class DescribeResourceUsageResponseBody(TeaModel):
             self.archive_backup_size = m.get('ArchiveBackupSize')
         if m.get('BackupDataSize') is not None:
             self.backup_data_size = m.get('BackupDataSize')
+        if m.get('BackupEcsSnapshotSize') is not None:
+            self.backup_ecs_snapshot_size = m.get('BackupEcsSnapshotSize')
         if m.get('BackupLogSize') is not None:
             self.backup_log_size = m.get('BackupLogSize')
         if m.get('BackupOssDataSize') is not None:
@@ -70311,12 +70413,22 @@ class ModifyDBInstanceReplicationSwitchRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to enable the native replication feature. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
+        # 
         # This parameter is required.
         self.external_replication = external_replication
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 
@@ -70361,7 +70473,7 @@ class ModifyDBInstanceReplicationSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
