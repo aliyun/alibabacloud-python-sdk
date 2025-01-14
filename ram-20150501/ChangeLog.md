@@ -1,3 +1,12 @@
+2025-01-14 Version: 1.1.2
+- Update API CreatePolicy: add param Tag.
+- Update API CreateRole: add param Tag.
+- Update API ListPolicies: add param Tag.
+- Update API ListPolicies: update response param.
+- Update API ListRoles: add param Tag.
+- Update API ListRoles: update response param.
+
+
 2025-01-08 Version: 1.1.1
 - Update API DeletePolicy: add param CascadingDelete.
 

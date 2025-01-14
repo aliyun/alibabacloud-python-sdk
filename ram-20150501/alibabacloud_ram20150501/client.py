@@ -1017,7 +1017,7 @@ class Client(OpenApiClient):
 
     def create_policy_with_options(
         self,
-        request: ram_20150501_models.CreatePolicyRequest,
+        tmp_req: ram_20150501_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyResponse:
         """
@@ -1026,11 +1026,15 @@ class Client(OpenApiClient):
         @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
         This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
         
-        @param request: CreatePolicyRequest
+        @param tmp_req: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.CreatePolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
@@ -1038,6 +1042,8 @@ class Client(OpenApiClient):
             query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1059,7 +1065,7 @@ class Client(OpenApiClient):
 
     async def create_policy_with_options_async(
         self,
-        request: ram_20150501_models.CreatePolicyRequest,
+        tmp_req: ram_20150501_models.CreatePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreatePolicyResponse:
         """
@@ -1068,11 +1074,15 @@ class Client(OpenApiClient):
         @description For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
         This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
         
-        @param request: CreatePolicyRequest
+        @param tmp_req: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.CreatePolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
@@ -1080,6 +1090,8 @@ class Client(OpenApiClient):
             query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1233,7 +1245,7 @@ class Client(OpenApiClient):
 
     def create_role_with_options(
         self,
-        request: ram_20150501_models.CreateRoleRequest,
+        tmp_req: ram_20150501_models.CreateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
@@ -1242,11 +1254,15 @@ class Client(OpenApiClient):
         @description ## Description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
-        @param request: CreateRoleRequest
+        @param tmp_req: CreateRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRoleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.CreateRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.assume_role_policy_document):
             query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
@@ -1256,6 +1272,8 @@ class Client(OpenApiClient):
             query['MaxSessionDuration'] = request.max_session_duration
         if not UtilClient.is_unset(request.role_name):
             query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1277,7 +1295,7 @@ class Client(OpenApiClient):
 
     async def create_role_with_options_async(
         self,
-        request: ram_20150501_models.CreateRoleRequest,
+        tmp_req: ram_20150501_models.CreateRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.CreateRoleResponse:
         """
@@ -1286,11 +1304,15 @@ class Client(OpenApiClient):
         @description ## Description
         For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
         
-        @param request: CreateRoleRequest
+        @param tmp_req: CreateRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRoleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.CreateRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.assume_role_policy_document):
             query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
@@ -1300,6 +1322,8 @@ class Client(OpenApiClient):
             query['MaxSessionDuration'] = request.max_session_duration
         if not UtilClient.is_unset(request.role_name):
             query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4067,17 +4091,21 @@ class Client(OpenApiClient):
 
     def list_policies_with_options(
         self,
-        request: ram_20150501_models.ListPoliciesRequest,
+        tmp_req: ram_20150501_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesResponse:
         """
         @summary Queries a list of policies.
         
-        @param request: ListPoliciesRequest
+        @param tmp_req: ListPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPoliciesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListPoliciesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.marker):
             query['Marker'] = request.marker
@@ -4085,6 +4113,8 @@ class Client(OpenApiClient):
             query['MaxItems'] = request.max_items
         if not UtilClient.is_unset(request.policy_type):
             query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4106,17 +4136,21 @@ class Client(OpenApiClient):
 
     async def list_policies_with_options_async(
         self,
-        request: ram_20150501_models.ListPoliciesRequest,
+        tmp_req: ram_20150501_models.ListPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListPoliciesResponse:
         """
         @summary Queries a list of policies.
         
-        @param request: ListPoliciesRequest
+        @param tmp_req: ListPoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPoliciesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListPoliciesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.marker):
             query['Marker'] = request.marker
@@ -4124,6 +4158,8 @@ class Client(OpenApiClient):
             query['MaxItems'] = request.max_items
         if not UtilClient.is_unset(request.policy_type):
             query['PolicyType'] = request.policy_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4567,22 +4603,28 @@ class Client(OpenApiClient):
 
     def list_roles_with_options(
         self,
-        request: ram_20150501_models.ListRolesRequest,
+        tmp_req: ram_20150501_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
         """
         @summary Queries the list of all RAM roles.
         
-        @param request: ListRolesRequest
+        @param tmp_req: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRolesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListRolesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.marker):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4604,22 +4646,28 @@ class Client(OpenApiClient):
 
     async def list_roles_with_options_async(
         self,
-        request: ram_20150501_models.ListRolesRequest,
+        tmp_req: ram_20150501_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ram_20150501_models.ListRolesResponse:
         """
         @summary Queries the list of all RAM roles.
         
-        @param request: ListRolesRequest
+        @param tmp_req: ListRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRolesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ram_20150501_models.ListRolesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.marker):
             query['Marker'] = request.marker
         if not UtilClient.is_unset(request.max_items):
             query['MaxItems'] = request.max_items
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

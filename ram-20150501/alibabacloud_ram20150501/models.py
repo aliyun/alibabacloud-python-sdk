@@ -1231,12 +1231,46 @@ class CreateLoginProfileResponse(TeaModel):
         return self
 
 
+class CreatePolicyRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreatePolicyRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
         policy_document: str = None,
         policy_name: str = None,
+        tag: List[CreatePolicyRequestTag] = None,
     ):
         # The description of the policy.
         # 
@@ -1252,6 +1286,71 @@ class CreatePolicyRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.policy_document is not None:
+            result['PolicyDocument'] = self.policy_document
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PolicyDocument') is not None:
+            self.policy_document = m.get('PolicyDocument')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreatePolicyRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreatePolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        policy_document: str = None,
+        policy_name: str = None,
+        tag_shrink: str = None,
+    ):
+        # The description of the policy.
+        # 
+        # The description must be 1 to 1,024 characters in length.
+        self.description = description
+        # The document of the policy.
+        # 
+        # The document must be 1 to 6,144 characters in length.
+        # 
+        # For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+        self.policy_document = policy_document
+        # The name of the policy.
+        # 
+        # The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
+        self.policy_name = policy_name
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -1268,6 +1367,8 @@ class CreatePolicyRequest(TeaModel):
             result['PolicyDocument'] = self.policy_document
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1278,6 +1379,8 @@ class CreatePolicyRequest(TeaModel):
             self.policy_document = m.get('PolicyDocument')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -1601,6 +1704,39 @@ class CreatePolicyVersionResponse(TeaModel):
         return self
 
 
+class CreateRoleRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateRoleRequest(TeaModel):
     def __init__(
         self,
@@ -1608,6 +1744,7 @@ class CreateRoleRequest(TeaModel):
         description: str = None,
         max_session_duration: int = None,
         role_name: str = None,
+        tag: List[CreateRoleRequestTag] = None,
     ):
         # The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         # 
@@ -1627,6 +1764,80 @@ class CreateRoleRequest(TeaModel):
         # 
         # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.role_name = role_name
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_policy_document is not None:
+            result['AssumeRolePolicyDocument'] = self.assume_role_policy_document
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_session_duration is not None:
+            result['MaxSessionDuration'] = self.max_session_duration
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRolePolicyDocument') is not None:
+            self.assume_role_policy_document = m.get('AssumeRolePolicyDocument')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxSessionDuration') is not None:
+            self.max_session_duration = m.get('MaxSessionDuration')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateRoleRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRoleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assume_role_policy_document: str = None,
+        description: str = None,
+        max_session_duration: int = None,
+        role_name: str = None,
+        tag_shrink: str = None,
+    ):
+        # The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        # 
+        # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+        self.assume_role_policy_document = assume_role_policy_document
+        # The description of the RAM role.
+        # 
+        # The description must be 1 to 1,024 characters in length.
+        self.description = description
+        # The maximum session duration of the RAM role.
+        # 
+        # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
+        # 
+        # If you do not specify this parameter, the default value is used.
+        self.max_session_duration = max_session_duration
+        # The name of the RAM role.
+        # 
+        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        self.role_name = role_name
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -1645,6 +1856,8 @@ class CreateRoleRequest(TeaModel):
             result['MaxSessionDuration'] = self.max_session_duration
         if self.role_name is not None:
             result['RoleName'] = self.role_name
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1657,6 +1870,8 @@ class CreateRoleRequest(TeaModel):
             self.max_session_duration = m.get('MaxSessionDuration')
         if m.get('RoleName') is not None:
             self.role_name = m.get('RoleName')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -6633,12 +6848,46 @@ class ListGroupsForUserResponse(TeaModel):
         return self
 
 
+class ListPoliciesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListPoliciesRequest(TeaModel):
     def __init__(
         self,
         marker: str = None,
         max_items: int = None,
         policy_type: str = None,
+        tag: List[ListPoliciesRequestTag] = None,
     ):
         # The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
@@ -6648,6 +6897,65 @@ class ListPoliciesRequest(TeaModel):
         self.max_items = max_items
         # The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
         self.policy_type = policy_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.max_items is not None:
+            result['MaxItems'] = self.max_items
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('MaxItems') is not None:
+            self.max_items = m.get('MaxItems')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListPoliciesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListPoliciesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        marker: str = None,
+        max_items: int = None,
+        policy_type: str = None,
+        tag_shrink: str = None,
+    ):
+        # The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
+        self.max_items = max_items
+        # The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
+        self.policy_type = policy_type
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -6664,6 +6972,8 @@ class ListPoliciesRequest(TeaModel):
             result['MaxItems'] = self.max_items
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -6674,6 +6984,76 @@ class ListPoliciesRequest(TeaModel):
             self.max_items = m.get('MaxItems')
         if m.get('PolicyType') is not None:
             self.policy_type = m.get('PolicyType')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListPoliciesResponseBodyPoliciesPolicyTagsTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListPoliciesResponseBodyPoliciesPolicyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[ListPoliciesResponseBodyPoliciesPolicyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListPoliciesResponseBodyPoliciesPolicyTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -6686,6 +7066,7 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         description: str = None,
         policy_name: str = None,
         policy_type: str = None,
+        tags: ListPoliciesResponseBodyPoliciesPolicyTags = None,
         update_date: str = None,
     ):
         # The number of references to the policy.
@@ -6700,11 +7081,13 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
         self.policy_name = policy_name
         # The type of the policy.
         self.policy_type = policy_type
+        self.tags = tags
         # The time when the policy was modified.
         self.update_date = update_date
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6724,6 +7107,8 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
             result['PolicyName'] = self.policy_name
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
         return result
@@ -6742,6 +7127,9 @@ class ListPoliciesResponseBodyPoliciesPolicy(TeaModel):
             self.policy_name = m.get('PolicyName')
         if m.get('PolicyType') is not None:
             self.policy_type = m.get('PolicyType')
+        if m.get('Tags') is not None:
+            temp_model = ListPoliciesResponseBodyPoliciesPolicyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
         return self
@@ -7665,11 +8053,45 @@ class ListPolicyVersionsResponse(TeaModel):
         return self
 
 
+class ListRolesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListRolesRequest(TeaModel):
     def __init__(
         self,
         marker: str = None,
         max_items: int = None,
+        tag: List[ListRolesRequestTag] = None,
     ):
         # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
@@ -7677,6 +8099,58 @@ class ListRolesRequest(TeaModel):
         # 
         # Valid values: 1 to 1000. Default value: 100.
         self.max_items = max_items
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.max_items is not None:
+            result['MaxItems'] = self.max_items
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('MaxItems') is not None:
+            self.max_items = m.get('MaxItems')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListRolesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListRolesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        marker: str = None,
+        max_items: int = None,
+        tag_shrink: str = None,
+    ):
+        # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+        self.marker = marker
+        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+        # 
+        # Valid values: 1 to 1000. Default value: 100.
+        self.max_items = max_items
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -7691,6 +8165,8 @@ class ListRolesRequest(TeaModel):
             result['Marker'] = self.marker
         if self.max_items is not None:
             result['MaxItems'] = self.max_items
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -7699,6 +8175,76 @@ class ListRolesRequest(TeaModel):
             self.marker = m.get('Marker')
         if m.get('MaxItems') is not None:
             self.max_items = m.get('MaxItems')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListRolesResponseBodyRolesRoleTagsTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListRolesResponseBodyRolesRoleTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[ListRolesResponseBodyRolesRoleTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListRolesResponseBodyRolesRoleTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -7711,6 +8257,7 @@ class ListRolesResponseBodyRolesRole(TeaModel):
         max_session_duration: int = None,
         role_id: str = None,
         role_name: str = None,
+        tags: ListRolesResponseBodyRolesRoleTags = None,
         update_date: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
@@ -7725,11 +8272,13 @@ class ListRolesResponseBodyRolesRole(TeaModel):
         self.role_id = role_id
         # The name of the RAM role.
         self.role_name = role_name
+        self.tags = tags
         # The time when the RAM role was modified.
         self.update_date = update_date
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7749,6 +8298,8 @@ class ListRolesResponseBodyRolesRole(TeaModel):
             result['RoleId'] = self.role_id
         if self.role_name is not None:
             result['RoleName'] = self.role_name
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
         return result
@@ -7767,6 +8318,9 @@ class ListRolesResponseBodyRolesRole(TeaModel):
             self.role_id = m.get('RoleId')
         if m.get('RoleName') is not None:
             self.role_name = m.get('RoleName')
+        if m.get('Tags') is not None:
+            temp_model = ListRolesResponseBodyRolesRoleTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
         return self
