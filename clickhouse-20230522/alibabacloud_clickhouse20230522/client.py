@@ -2109,7 +2109,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.KillProcessResponse:
         """
-        @summary 终止正在进行的任务
+        @summary Terminates an ongoing query.
         
         @param request: KillProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2148,7 +2148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.KillProcessResponse:
         """
-        @summary 终止正在进行的任务
+        @summary Terminates an ongoing query.
         
         @param request: KillProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2186,7 +2186,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.KillProcessRequest,
     ) -> clickhouse_20230522_models.KillProcessResponse:
         """
-        @summary 终止正在进行的任务
+        @summary Terminates an ongoing query.
         
         @param request: KillProcessRequest
         @return: KillProcessResponse
@@ -2199,7 +2199,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.KillProcessRequest,
     ) -> clickhouse_20230522_models.KillProcessResponse:
         """
-        @summary 终止正在进行的任务
+        @summary Terminates an ongoing query.
         
         @param request: KillProcessRequest
         @return: KillProcessResponse
@@ -2641,7 +2641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary 修改链接地址
+        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2655,6 +2655,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.disable_ports):
+            query['DisablePorts'] = request.disable_ports
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2682,7 +2684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary 修改链接地址
+        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2696,6 +2698,8 @@ class Client(OpenApiClient):
             query['ConnectionStringPrefix'] = request.connection_string_prefix
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.disable_ports):
+            query['DisablePorts'] = request.disable_ports
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2722,7 +2726,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary 修改链接地址
+        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse
@@ -2735,7 +2739,7 @@ class Client(OpenApiClient):
         request: clickhouse_20230522_models.ModifyDBInstanceConnectionStringRequest,
     ) -> clickhouse_20230522_models.ModifyDBInstanceConnectionStringResponse:
         """
-        @summary 修改链接地址
+        @summary Modifies the endpoint of an ApsaraDB for ClickHouse cluster.
         
         @param request: ModifyDBInstanceConnectionStringRequest
         @return: ModifyDBInstanceConnectionStringResponse

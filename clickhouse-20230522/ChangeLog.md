@@ -1,3 +1,9 @@
+2025-01-14 Version: 1.0.2
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API ModifyDBInstanceConnectionString: add param DisablePorts.
+- Update API ModifyDBInstanceConnectionString: update response param.
+
+
 2024-10-11 Version: 1.0.1
 - Generated python 2023-05-22 for clickhouse.
 
