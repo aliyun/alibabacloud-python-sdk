@@ -5867,7 +5867,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetInstanceLicenseResponse:
         """
-        @summary 查询实例当前生效的 License 信息
+        @summary Query the currently effective License information of the instance
+        
+        @description Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
         
         @param request: GetInstanceLicenseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5902,7 +5904,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetInstanceLicenseResponse:
         """
-        @summary 查询实例当前生效的 License 信息
+        @summary Query the currently effective License information of the instance
+        
+        @description Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
         
         @param request: GetInstanceLicenseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5936,7 +5940,9 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetInstanceLicenseRequest,
     ) -> eiam_20211201_models.GetInstanceLicenseResponse:
         """
-        @summary 查询实例当前生效的 License 信息
+        @summary Query the currently effective License information of the instance
+        
+        @description Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
         
         @param request: GetInstanceLicenseRequest
         @return: GetInstanceLicenseResponse
@@ -5949,7 +5955,9 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetInstanceLicenseRequest,
     ) -> eiam_20211201_models.GetInstanceLicenseResponse:
         """
-        @summary 查询实例当前生效的 License 信息
+        @summary Query the currently effective License information of the instance
+        
+        @description Please ensure that your current instance is no longer in use. When the EIAM instance is deleted, all related data will be deleted.
         
         @param request: GetInstanceLicenseRequest
         @return: GetInstanceLicenseResponse

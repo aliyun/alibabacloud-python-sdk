@@ -1558,11 +1558,15 @@ class CreateIdentityProviderRequestLarkConfig(TeaModel):
         self,
         app_id: str = None,
         app_secret: str = None,
+        encrypt_key: str = None,
         enterprise_number: str = None,
+        verification_token: str = None,
     ):
         self.app_id = app_id
         self.app_secret = app_secret
+        self.encrypt_key = encrypt_key
         self.enterprise_number = enterprise_number
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -1577,8 +1581,12 @@ class CreateIdentityProviderRequestLarkConfig(TeaModel):
             result['AppId'] = self.app_id
         if self.app_secret is not None:
             result['AppSecret'] = self.app_secret
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
         if self.enterprise_number is not None:
             result['EnterpriseNumber'] = self.enterprise_number
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -1587,8 +1595,12 @@ class CreateIdentityProviderRequestLarkConfig(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppSecret') is not None:
             self.app_secret = m.get('AppSecret')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
         if m.get('EnterpriseNumber') is not None:
             self.enterprise_number = m.get('EnterpriseNumber')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
@@ -8863,14 +8875,18 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(TeaModel):
         self,
         app_id: str = None,
         app_secret: str = None,
+        encrypt_key: str = None,
         enterprise_number: str = None,
+        verification_token: str = None,
     ):
         # IDaaS EIAM 飞书自建应用的corpId
         self.app_id = app_id
         # IDaaS EIAM 飞书自建应用的AppSecret
         self.app_secret = app_secret
+        self.encrypt_key = encrypt_key
         # IDaaS EIAM 飞书企业编码
         self.enterprise_number = enterprise_number
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -8885,8 +8901,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(TeaModel):
             result['AppId'] = self.app_id
         if self.app_secret is not None:
             result['AppSecret'] = self.app_secret
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
         if self.enterprise_number is not None:
             result['EnterpriseNumber'] = self.enterprise_number
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -8895,8 +8915,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppSecret') is not None:
             self.app_secret = m.get('AppSecret')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
         if m.get('EnterpriseNumber') is not None:
             self.enterprise_number = m.get('EnterpriseNumber')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
@@ -10269,7 +10293,7 @@ class GetInstanceLicenseRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM的实例id
+        # Instance ID
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -10309,27 +10333,27 @@ class GetInstanceLicenseResponseBodyLicense(TeaModel):
         start_time: int = None,
         user_quota: int = None,
     ):
-        # License 的版本型号,free-免费版，trail-试用版，enterprise-企业版
+        # Edition of the License
         self.edition = edition
-        # License 的有效期终止日期
+        # End date of the validity period of the License, timestamp
         self.end_time = end_time
-        # License 的付费类型，prepay-预付费，postpay-后付费
+        # Payment type of the License
         self.license_charge_type = license_charge_type
-        # License 详细配置JSON
+        # Detailed configuration JSON string of the License
         self.license_config_json = license_config_json
-        # License 的创建时间
+        # Creation time of the License, timestamp
         self.license_create_time = license_create_time
-        # License 的唯一标识
+        # Unique identifier of the License
         self.license_id = license_id
-        # License 的状态，valid-有效，expired-已过期，released-已释放
+        # Status of the License
         self.license_status = license_status
-        # License 的购买渠道
+        # Purchase channel of the License
         self.purchase_channel = purchase_channel
-        # License 对应的外部商品唯一标识
+        # Unique external product identifier corresponding to the License
         self.purchase_instance_id = purchase_instance_id
-        # License 的有效期开始日期
+        # Start date of the validity period of the License, timestamp
         self.start_time = start_time
-        # License 的用户配额
+        # User quota of the License
         self.user_quota = user_quota
 
     def validate(self):
@@ -10398,7 +10422,9 @@ class GetInstanceLicenseResponseBody(TeaModel):
         license: GetInstanceLicenseResponseBodyLicense = None,
         request_id: str = None,
     ):
+        # Returned result.
         self.license = license
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -16368,6 +16394,7 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
         last_status_check_job_result: str = None,
         lock_reason: str = None,
         logo_url: str = None,
+        periodic_sync_status: str = None,
         ud_pull_status: str = None,
         ud_pull_target_scope: str = None,
         ud_push_status: str = None,
@@ -16400,6 +16427,7 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
         # 锁定原因
         self.lock_reason = lock_reason
         self.logo_url = logo_url
+        self.periodic_sync_status = periodic_sync_status
         # IDaaS EIAM 是否支持UD同步
         self.ud_pull_status = ud_pull_status
         # 当支持ud_pullIDaaS侧UD中的范围
@@ -16447,6 +16475,8 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
             result['LockReason'] = self.lock_reason
         if self.logo_url is not None:
             result['LogoUrl'] = self.logo_url
+        if self.periodic_sync_status is not None:
+            result['PeriodicSyncStatus'] = self.periodic_sync_status
         if self.ud_pull_status is not None:
             result['UdPullStatus'] = self.ud_pull_status
         if self.ud_pull_target_scope is not None:
@@ -16489,6 +16519,8 @@ class ListIdentityProvidersResponseBodyIdentityProviders(TeaModel):
             self.lock_reason = m.get('LockReason')
         if m.get('LogoUrl') is not None:
             self.logo_url = m.get('LogoUrl')
+        if m.get('PeriodicSyncStatus') is not None:
+            self.periodic_sync_status = m.get('PeriodicSyncStatus')
         if m.get('UdPullStatus') is not None:
             self.ud_pull_status = m.get('UdPullStatus')
         if m.get('UdPullTargetScope') is not None:
@@ -25174,9 +25206,13 @@ class UpdateIdentityProviderRequestLarkConfig(TeaModel):
         self,
         app_id: str = None,
         app_secret: str = None,
+        encrypt_key: str = None,
+        verification_token: str = None,
     ):
         self.app_id = app_id
         self.app_secret = app_secret
+        self.encrypt_key = encrypt_key
+        self.verification_token = verification_token
 
     def validate(self):
         pass
@@ -25191,6 +25227,10 @@ class UpdateIdentityProviderRequestLarkConfig(TeaModel):
             result['AppId'] = self.app_id
         if self.app_secret is not None:
             result['AppSecret'] = self.app_secret
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
@@ -25199,6 +25239,10 @@ class UpdateIdentityProviderRequestLarkConfig(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppSecret') is not None:
             self.app_secret = m.get('AppSecret')
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 

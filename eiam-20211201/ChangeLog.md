@@ -1,3 +1,11 @@
+2025-01-15 Version: 1.8.0
+- Support API GetInstanceLicense.
+- Update API CreateIdentityProvider: update param LarkConfig.
+- Update API GetIdentityProvider: update response param.
+- Update API ListIdentityProviders: update response param.
+- Update API UpdateIdentityProvider: update param LarkConfig.
+
+
 2025-01-09 Version: 1.7.0
 - Support API GetInstanceLicense.
 
