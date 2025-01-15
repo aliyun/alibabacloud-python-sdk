@@ -363,6 +363,39 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateEaiRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaiRequest(TeaModel):
     def __init__(
         self,
@@ -373,6 +406,7 @@ class CreateEaiRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -384,10 +418,14 @@ class CreateEaiRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
+        self.tag = tag
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -409,6 +447,10 @@ class CreateEaiRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -429,6 +471,11 @@ class CreateEaiRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -612,6 +659,39 @@ class CreateEaiEciRequestEci(TeaModel):
         return self
 
 
+class CreateEaiEciRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaiEciRequest(TeaModel):
     def __init__(
         self,
@@ -622,6 +702,7 @@ class CreateEaiEciRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiEciRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -634,12 +715,17 @@ class CreateEaiEciRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.eci:
             self.eci.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -661,6 +747,10 @@ class CreateEaiEciRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -682,8 +772,46 @@ class CreateEaiEciRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiEciRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateEaiEciShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -697,6 +825,7 @@ class CreateEaiEciShrinkRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiEciShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -709,11 +838,15 @@ class CreateEaiEciShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -735,6 +868,10 @@ class CreateEaiEciShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -755,6 +892,11 @@ class CreateEaiEciShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiEciShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -915,6 +1057,39 @@ class CreateEaiEcsRequestEcs(TeaModel):
         return self
 
 
+class CreateEaiEcsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaiEcsRequest(TeaModel):
     def __init__(
         self,
@@ -925,6 +1100,7 @@ class CreateEaiEcsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiEcsRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -937,12 +1113,17 @@ class CreateEaiEcsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.ecs:
             self.ecs.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -964,6 +1145,10 @@ class CreateEaiEcsRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -985,8 +1170,46 @@ class CreateEaiEcsRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiEcsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateEaiEcsShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1000,6 +1223,7 @@ class CreateEaiEcsShrinkRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiEcsShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -1012,11 +1236,15 @@ class CreateEaiEcsShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1038,6 +1266,10 @@ class CreateEaiEcsShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -1058,6 +1290,11 @@ class CreateEaiEcsShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiEcsShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -1176,6 +1413,39 @@ class CreateEaiJupyterRequestEnvironmentVar(TeaModel):
         return self
 
 
+class CreateEaiJupyterRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaiJupyterRequest(TeaModel):
     def __init__(
         self,
@@ -1186,6 +1456,7 @@ class CreateEaiJupyterRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiJupyterRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -1198,12 +1469,17 @@ class CreateEaiJupyterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.environment_var:
             for k in self.environment_var:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -1229,6 +1505,10 @@ class CreateEaiJupyterRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -1252,8 +1532,46 @@ class CreateEaiJupyterRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiJupyterRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateEaiJupyterShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1267,6 +1585,7 @@ class CreateEaiJupyterShrinkRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaiJupyterShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -1279,11 +1598,15 @@ class CreateEaiJupyterShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1305,6 +1628,10 @@ class CreateEaiJupyterShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -1325,6 +1652,11 @@ class CreateEaiJupyterShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaiJupyterShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -1404,6 +1736,39 @@ class CreateEaiJupyterResponse(TeaModel):
         return self
 
 
+class CreateEaisEiRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaisEiRequest(TeaModel):
     def __init__(
         self,
@@ -1413,6 +1778,7 @@ class CreateEaisEiRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         security_group_id: str = None,
+        tag: List[CreateEaisEiRequestTag] = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
@@ -1424,11 +1790,15 @@ class CreateEaisEiRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # This parameter is required.
         self.security_group_id = security_group_id
+        self.tag = tag
         # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1448,6 +1818,10 @@ class CreateEaisEiRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -1466,6 +1840,11 @@ class CreateEaisEiRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateEaisEiRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self

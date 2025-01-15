@@ -1,3 +1,12 @@
+2025-01-15 Version: 3.0.2
+- Update API CreateEai: add param Tag.
+- Update API CreateEaiEci: add param Tag.
+- Update API CreateEaiEcs: add param Tag.
+- Update API CreateEaiEcs: update param Ecs.
+- Update API CreateEaiJupyter: add param Tag.
+- Update API CreateEaisEi: add param Tag.
+
+
 2024-12-23 Version: 3.0.1
 - Generated python 2019-06-24 for eais.
 
