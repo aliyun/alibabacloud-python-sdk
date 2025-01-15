@@ -53122,6 +53122,7 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
     def __init__(
         self,
         canary_model: int = None,
+        condition: str = None,
         conditions: List[QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions] = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
@@ -53131,6 +53132,7 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
         route_independent_percentage_list: List[QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList] = None,
     ):
         self.canary_model = canary_model
+        self.condition = condition
         self.conditions = conditions
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
@@ -53157,6 +53159,8 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
         result = dict()
         if self.canary_model is not None:
             result['CanaryModel'] = self.canary_model
+        if self.condition is not None:
+            result['Condition'] = self.condition
         result['Conditions'] = []
         if self.conditions is not None:
             for k in self.conditions:
@@ -53181,6 +53185,8 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
         m = m or dict()
         if m.get('CanaryModel') is not None:
             self.canary_model = m.get('CanaryModel')
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
         self.conditions = []
         if m.get('Conditions') is not None:
             for k in m.get('Conditions'):
@@ -53210,6 +53216,7 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         enable: str = None,
         entry_rules: List[QueryAllSwimmingLaneResponseBodyDataEntryRules] = None,
         gateway_swimming_lane_route: QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute = None,
+        gateway_swimming_lane_route_json: str = None,
         group_id: str = None,
         id: int = None,
         message_queue_filter_side: str = None,
@@ -53228,6 +53235,7 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         self.enable = enable
         self.entry_rules = entry_rules
         self.gateway_swimming_lane_route = gateway_swimming_lane_route
+        self.gateway_swimming_lane_route_json = gateway_swimming_lane_route_json
         self.group_id = group_id
         self.id = id
         self.message_queue_filter_side = message_queue_filter_side
@@ -53265,6 +53273,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
                 result['EntryRules'].append(k.to_map() if k else None)
         if self.gateway_swimming_lane_route is not None:
             result['GatewaySwimmingLaneRoute'] = self.gateway_swimming_lane_route.to_map()
+        if self.gateway_swimming_lane_route_json is not None:
+            result['GatewaySwimmingLaneRouteJson'] = self.gateway_swimming_lane_route_json
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.id is not None:
@@ -53307,6 +53317,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         if m.get('GatewaySwimmingLaneRoute') is not None:
             temp_model = QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute()
             self.gateway_swimming_lane_route = temp_model.from_map(m['GatewaySwimmingLaneRoute'])
+        if m.get('GatewaySwimmingLaneRouteJson') is not None:
+            self.gateway_swimming_lane_route_json = m.get('GatewaySwimmingLaneRouteJson')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('Id') is not None:
