@@ -5423,6 +5423,7 @@ class ListMachineTypesRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # Machine name
         self.name = name
 
     def validate(self):
@@ -5459,15 +5460,25 @@ class ListMachineTypesResponseBodyMachineTypes(TeaModel):
         total_cpu_core: int = None,
         type: str = None,
     ):
+        # Number of bonds
         self.bond_num = bond_num
+        # CPU information
         self.cpu_info = cpu_info
+        # Disk information
         self.disk_info = disk_info
+        # GPU information
         self.gpu_info = gpu_info
+        # Memory information
         self.memory_info = memory_info
+        # Machine name
         self.name = name
+        # Network information
         self.network_info = network_info
+        # Number of nodes
         self.node_count = node_count
+        # Number of CPU cores
         self.total_cpu_core = total_cpu_core
+        # Type of machine
         self.type = type
 
     def validate(self):
@@ -5533,7 +5544,9 @@ class ListMachineTypesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # Details of the machine types
         self.machine_types = machine_types
+        # NextToken for the next page, include this value when requesting the next page
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -6561,6 +6574,7 @@ class RunCommandRequest(TeaModel):
         # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
         # - A single custom parameter name cannot exceed 64 bytes.
         self.command_content = command_content
+        # Command ID
         self.command_id = command_id
         # Encoding method for the script content. Valid values:
         # 
@@ -6595,6 +6609,7 @@ class RunCommandRequest(TeaModel):
         # 
         # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
         self.frequency = frequency
+        # Bootstrap for script execution. The length must not exceed 1 KB.
         self.launcher = launcher
         # Command name.
         self.name = name
@@ -6622,6 +6637,8 @@ class RunCommandRequest(TeaModel):
         # - If the `Frequency` parameter is not specified, the default value is `Once`.
         # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
         self.repeat_mode = repeat_mode
+        # The mode when stopping a task (manually or due to execution timeout). Possible values:
+        # Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
         self.termination_mode = termination_mode
         # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
         self.timeout = timeout
@@ -6744,6 +6761,7 @@ class RunCommandShrinkRequest(TeaModel):
         # - Custom parameter names can only contain a-zA-Z0-9-_, and are case-insensitive.
         # - A single custom parameter name cannot exceed 64 bytes.
         self.command_content = command_content
+        # Command ID
         self.command_id = command_id
         # Encoding method for the script content. Valid values:
         # 
@@ -6778,6 +6796,7 @@ class RunCommandShrinkRequest(TeaModel):
         # 
         # For example, to execute the command at 10:15 AM every day in 2022 in Shanghai, China, the format would be 0 15 10 ? * * 2022 Asia/Shanghai; to execute the command every 30 minutes between 10:00 AM and 11:30 AM every day in 2022 in the GMT+8:00 timezone, the format would be 0 0/30 10-11 * * ? 2022 GMT+8:00; to execute the command every 5 minutes between 2:00 PM and 2:55 PM every day in October every two years starting from 2022 in UTC, the format would be 0 0/5 14 * 10 ? 2022/2 UTC.
         self.frequency = frequency
+        # Bootstrap for script execution. The length must not exceed 1 KB.
         self.launcher = launcher
         # Command name.
         self.name = name
@@ -6805,6 +6824,8 @@ class RunCommandShrinkRequest(TeaModel):
         # - If the `Frequency` parameter is not specified, the default value is `Once`.
         # - If the `Frequency` parameter is specified, regardless of whether this parameter is already set, it will be processed as `Period`.
         self.repeat_mode = repeat_mode
+        # The mode when stopping a task (manually or due to execution timeout). Possible values:
+        # Process: Stops the current script process. ProcessTree: Stops the current process tree (a collection of the script process and all its child processes).
         self.termination_mode = termination_mode
         # Timeout for executing the command, in seconds. If the command cannot run due to process issues, missing modules, or the absence of the Cloud Assistant Agent, a timeout will occur. After a timeout, the command process will be forcibly terminated. Default value: 60.
         self.timeout = timeout
@@ -7680,6 +7701,146 @@ class StopInvocationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopInvocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopNodesRequest(TeaModel):
+    def __init__(
+        self,
+        ignore_failed_node_tasks: bool = None,
+        nodes: List[str] = None,
+    ):
+        self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.nodes = nodes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignore_failed_node_tasks is not None:
+            result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        if self.nodes is not None:
+            result['Nodes'] = self.nodes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoreFailedNodeTasks') is not None:
+            self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        if m.get('Nodes') is not None:
+            self.nodes = m.get('Nodes')
+        return self
+
+
+class StopNodesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ignore_failed_node_tasks: bool = None,
+        nodes_shrink: str = None,
+    ):
+        self.ignore_failed_node_tasks = ignore_failed_node_tasks
+        self.nodes_shrink = nodes_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignore_failed_node_tasks is not None:
+            result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
+        if self.nodes_shrink is not None:
+            result['Nodes'] = self.nodes_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoreFailedNodeTasks') is not None:
+            self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
+        if m.get('Nodes') is not None:
+            self.nodes_shrink = m.get('Nodes')
+        return self
+
+
+class StopNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

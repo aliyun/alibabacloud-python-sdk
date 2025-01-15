@@ -1775,7 +1775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary 查询用户可用的机型列表
+        @summary Query the list of machine types available to the user
         
         @param request: ListMachineTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1810,7 +1810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary 查询用户可用的机型列表
+        @summary Query the list of machine types available to the user
         
         @param request: ListMachineTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1844,7 +1844,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineTypesRequest,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary 查询用户可用的机型列表
+        @summary Query the list of machine types available to the user
         
         @param request: ListMachineTypesRequest
         @return: ListMachineTypesResponse
@@ -1857,7 +1857,7 @@ class Client(OpenApiClient):
         request: eflo_controller_20221215_models.ListMachineTypesRequest,
     ) -> eflo_controller_20221215_models.ListMachineTypesResponse:
         """
-        @summary 查询用户可用的机型列表
+        @summary Query the list of machine types available to the user
         
         @param request: ListMachineTypesRequest
         @return: ListMachineTypesResponse
@@ -2844,6 +2844,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_invocation_with_options_async(request, runtime)
+
+    def stop_nodes_with_options(
+        self,
+        tmp_req: eflo_controller_20221215_models.StopNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.StopNodesResponse:
+        """
+        @summary 关机节点
+        
+        @param tmp_req: StopNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopNodesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.StopNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ignore_failed_node_tasks):
+            body['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.StopNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_nodes_with_options_async(
+        self,
+        tmp_req: eflo_controller_20221215_models.StopNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.StopNodesResponse:
+        """
+        @summary 关机节点
+        
+        @param tmp_req: StopNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopNodesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eflo_controller_20221215_models.StopNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ignore_failed_node_tasks):
+            body['IgnoreFailedNodeTasks'] = request.ignore_failed_node_tasks
+        if not UtilClient.is_unset(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopNodes',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.StopNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_nodes(
+        self,
+        request: eflo_controller_20221215_models.StopNodesRequest,
+    ) -> eflo_controller_20221215_models.StopNodesResponse:
+        """
+        @summary 关机节点
+        
+        @param request: StopNodesRequest
+        @return: StopNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_nodes_with_options(request, runtime)
+
+    async def stop_nodes_async(
+        self,
+        request: eflo_controller_20221215_models.StopNodesRequest,
+    ) -> eflo_controller_20221215_models.StopNodesResponse:
+        """
+        @summary 关机节点
+        
+        @param request: StopNodesRequest
+        @return: StopNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_nodes_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
