@@ -259,6 +259,8 @@ class Client(OpenApiClient):
             body['DurationDay'] = request.duration_day
         if not UtilClient.is_unset(request.is_attachment):
             body['IsAttachment'] = request.is_attachment
+        if not UtilClient.is_unset(request.is_milestone):
+            body['IsMilestone'] = request.is_milestone
         if not UtilClient.is_unset(request.is_work_order_notify):
             body['IsWorkOrderNotify'] = request.is_work_order_notify
         if not UtilClient.is_unset(request.notify_day):
@@ -326,6 +328,8 @@ class Client(OpenApiClient):
             body['DurationDay'] = request.duration_day
         if not UtilClient.is_unset(request.is_attachment):
             body['IsAttachment'] = request.is_attachment
+        if not UtilClient.is_unset(request.is_milestone):
+            body['IsMilestone'] = request.is_milestone
         if not UtilClient.is_unset(request.is_work_order_notify):
             body['IsWorkOrderNotify'] = request.is_work_order_notify
         if not UtilClient.is_unset(request.notify_day):

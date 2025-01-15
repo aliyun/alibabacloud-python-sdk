@@ -240,6 +240,7 @@ class CreateServiceWorkOrderRequest(TeaModel):
         customer_id: str = None,
         duration_day: str = None,
         is_attachment: str = None,
+        is_milestone: str = None,
         is_work_order_notify: str = None,
         notify_day: str = None,
         notify_id: int = None,
@@ -270,6 +271,7 @@ class CreateServiceWorkOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.is_attachment = is_attachment
+        self.is_milestone = is_milestone
         # Whether a reminder is needed.
         # 
         # This parameter is required.
@@ -334,6 +336,8 @@ class CreateServiceWorkOrderRequest(TeaModel):
             result['DurationDay'] = self.duration_day
         if self.is_attachment is not None:
             result['IsAttachment'] = self.is_attachment
+        if self.is_milestone is not None:
+            result['IsMilestone'] = self.is_milestone
         if self.is_work_order_notify is not None:
             result['IsWorkOrderNotify'] = self.is_work_order_notify
         if self.notify_day is not None:
@@ -372,6 +376,8 @@ class CreateServiceWorkOrderRequest(TeaModel):
             self.duration_day = m.get('DurationDay')
         if m.get('IsAttachment') is not None:
             self.is_attachment = m.get('IsAttachment')
+        if m.get('IsMilestone') is not None:
+            self.is_milestone = m.get('IsMilestone')
         if m.get('IsWorkOrderNotify') is not None:
             self.is_work_order_notify = m.get('IsWorkOrderNotify')
         if m.get('NotifyDay') is not None:
@@ -2495,6 +2501,7 @@ class GetDocumentDownloadUrlRequest(TeaModel):
         # 
         # This parameter is required.
         self.id = id
+        # Report type.
         self.report_type = report_type
 
     def validate(self):
@@ -2712,8 +2719,9 @@ class GetDocumentPageResponseBodyData(TeaModel):
         self.document_name = document_name
         # Service report type.
         self.document_type = document_type
-        # Document primary key ID.
+        # Primary key ID of the document.
         self.id = id
+        # Report status.
         self.report_status = report_status
         # Report generation time.
         self.upload_time = upload_time
@@ -2767,9 +2775,9 @@ class GetDocumentPageResponseBodyPageInfo(TeaModel):
     ):
         # The current page number in pagination queries.
         self.current_page = current_page
-        # The number of data items displayed per page.
+        # Number of items per page in the returned data.
         self.page_size = page_size
-        # The total number of data items found.
+        # Total number of queried items.
         self.total_count = total_count
 
     def validate(self):
@@ -2811,13 +2819,13 @@ class GetDocumentPageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Interface response code.
+        # API response code.
         self.code = code
         # Response data.
         self.data = data
         # HTTP status code.
         self.http_status_code = http_status_code
-        # Prompt message for the response result.
+        # Prompt message for the result.
         self.message = message
         # Pagination information.
         self.page_info = page_info
