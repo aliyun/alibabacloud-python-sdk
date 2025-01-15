@@ -18,13 +18,10 @@ class AddIpRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+        # The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following fields:
         # 
         # *   **ip**: required. The IP address that you want to add. Data type: string.
-        # 
-        #     **\
-        # 
-        #     **Note** The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+        # *   **member_uid**: optional. The member to which the asset belongs. Data type: string. This field is required only if the asset of a member is queried. Example: [{"ip":"121.41.XX.XX","member_uid":"120100811162\\*\\*\\*\\*"}].
         # 
         # This parameter is required.
         self.ip_list = ip_list
@@ -2910,6 +2907,7 @@ class DescribeDdosOriginInstanceBillResponseBodyFlowList(TeaModel):
         member_flow: str = None,
         region_flow: str = None,
         time: int = None,
+        total_bill_flow: int = None,
         total_flow: int = None,
     ):
         # The traffic distribution by region. The JSON struct contains the following fields:
@@ -2931,6 +2929,7 @@ class DescribeDdosOriginInstanceBillResponseBodyFlowList(TeaModel):
         self.region_flow = region_flow
         # The timestamp. Unit: milliseconds.
         self.time = time
+        self.total_bill_flow = total_bill_flow
         # The traffic of EIPs with Anti-DDoS (Enhanced) enabled. Unit: bytes.
         self.total_flow = total_flow
 
@@ -2949,6 +2948,8 @@ class DescribeDdosOriginInstanceBillResponseBodyFlowList(TeaModel):
             result['RegionFlow'] = self.region_flow
         if self.time is not None:
             result['Time'] = self.time
+        if self.total_bill_flow is not None:
+            result['TotalBillFlow'] = self.total_bill_flow
         if self.total_flow is not None:
             result['TotalFlow'] = self.total_flow
         return result
@@ -2961,6 +2962,8 @@ class DescribeDdosOriginInstanceBillResponseBodyFlowList(TeaModel):
             self.region_flow = m.get('RegionFlow')
         if m.get('Time') is not None:
             self.time = m.get('Time')
+        if m.get('TotalBillFlow') is not None:
+            self.total_bill_flow = m.get('TotalBillFlow')
         if m.get('TotalFlow') is not None:
             self.total_flow = m.get('TotalFlow')
         return self
@@ -3543,9 +3546,12 @@ class DescribeInstanceListRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the Anti-DDoS Origin instance.
+        # The mitigation plan of the Anti-DDoS Origin instance.
         self.key = key
-        # The value of the tag that is added to the Anti-DDoS Origin instance.
+        # The mitigation plan of the Anti-DDoS Origin instance. Valid values:
+        # 
+        # *   0: the Professional mitigation plan.
+        # *   1: the Enterprise mitigation plan.
         self.value = value
 
     def validate(self):
@@ -3589,50 +3595,48 @@ class DescribeInstanceListRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[DescribeInstanceListRequestTag] = None,
     ):
-        # The IDs of the Anti-DDoS Origin instances to query. Specify the value is in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
+        # The number of the page to return.
         self.instance_id_list = instance_id_list
-        # The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
-        # 
-        # *   **0**: the Professional mitigation plan
-        # *   **1**: the Enterprise mitigation plan
-        self.instance_type = instance_type
-        # The mitigation plan of the Anti-DDoS Origin instance.
-        self.instance_type_list = instance_type_list
-        # The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
-        self.ip = ip
-        # The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
-        # 
-        # *   **Ipv4**: IPv4
-        # *   **Ipv6**: IPv6
-        self.ip_version = ip_version
         # The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
         # 
         # You can set the **Orderdire** parameter to specify the sorting method.
-        self.orderby = orderby
+        self.instance_type = instance_type
+        # The total number of Anti-DDoS Origin instances.
+        self.instance_type_list = instance_type_list
         # The sorting method. Valid values:
         # 
         # *   **desc**: the descending order. This is the default value.
         # *   **asc**: the ascending order.
-        self.orderdire = orderdire
-        # The number of the page to return.
-        # 
-        # This parameter is required.
-        self.page_no = page_no
-        # The number of entries to return on each page.
-        # 
-        # This parameter is required.
-        self.page_size = page_size
+        self.ip = ip
+        # The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+        self.ip_version = ip_version
         # The ID of the region where the Anti-DDoS Origin instance to query resides.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
-        self.region_id = region_id
-        # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
-        self.remark = remark
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
-        # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
-        self.resource_group_id = resource_group_id
+        self.orderby = orderby
         # The tags that are added to the Anti-DDoS Origin instance.
+        self.orderdire = orderdire
+        # The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
+        # 
+        # *   **Ipv4**: IPv4
+        # *   **Ipv6**: IPv6
+        # 
+        # This parameter is required.
+        self.page_no = page_no
+        # The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
+        # 
+        # *   **0**: the Professional mitigation plan
+        # *   **1**: the Enterprise mitigation plan
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # The tag that is added to the Anti-DDoS Origin instance.
+        self.region_id = region_id
+        # The number of entries to return on each page.
+        self.remark = remark
+        # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+        self.resource_group_id = resource_group_id
+        # The key of the tag that is added to the Anti-DDoS Origin instance.
         self.tag = tag
 
     def validate(self):
@@ -3716,7 +3720,7 @@ class DescribeInstanceListResponseBodyInstanceListAutoProtectCondition(TeaModel)
         self,
         events: List[str] = None,
     ):
-        # The events that trigger automatic association.
+        # Events which result in auto binding.
         self.events = events
 
     def validate(self):
@@ -3758,61 +3762,63 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         resource_group_id: str = None,
         status: str = None,
     ):
-        # The condition that triggers automatic association of the instance with an object.
+        # The event that triggers automatic association. Valid values:
+        # 
+        # *   **any**: The instance is automatically associated with an object based on traffic scrubbing events or blackhole filtering events.
+        # *   **clean**: The instance is automatically associated with an object based on traffic scrubbing events.
+        # *   **blackhole**: The instance is automatically associated with an object based on blackhole filtering events.
         self.auto_protect_condition = auto_protect_condition
-        # Indicates whether auto-renewal is enabled for the instance. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
+        # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
         self.auto_renewal = auto_renewal
-        # The number of protected public IP addresses for which blackhole filtering is triggered.
-        # 
-        # >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
-        self.blackholding_count = blackholding_count
         # The type of the instance.
         # 
         # *   **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com).
         # *   **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com).
+        self.blackholding_count = blackholding_count
+        # The condition that triggers automatic association of the instance with an object.
         self.commodity_type = commodity_type
+        # Indicates whether overdue payments exist. Valid values:
+        # 
+        # *   **0**: Overdue payments do not exist.
+        # *   **1**: Overdue payments exist.
+        self.coverage_type = coverage_type
+        # The events that trigger automatic association.
+        self.debt_status = debt_status
+        # The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
+        self.expire_time = expire_time
+        # The mitigation plan of the instance. Valid values:
+        # 
+        # *   **0**: the Professional mitigation plan
+        # *   **1**: the Enterprise mitigation plan
+        self.gmt_create = gmt_create
+        # The number of protected public IP addresses for which blackhole filtering is triggered.
+        # 
+        # >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
+        self.instance_id = instance_id
         # The application scope of the instance.
         # 
         # *   **1**: The instance supports public IP addresses in all regions.
         # *   **2**: The instance supports public IP addresses in regions in the Chinese mainland.
         # *   **3**: The instance supports public IP addresses in regions outside the Chinese mainland.
         # *   **4**: The instance supports public IP addresses in a region in or outside the Chinese mainland.
-        self.coverage_type = coverage_type
-        self.debt_status = debt_status
-        # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
-        self.expire_time = expire_time
-        # The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
-        self.gmt_create = gmt_create
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # The mitigation plan of the instance. Valid values:
-        # 
-        # *   **0**: the Professional mitigation plan
-        # *   **1**: the Enterprise mitigation plan
         self.instance_type = instance_type
-        # The protocol type of the IP address asset that is protected by the instance. Valid values:
-        # 
-        # *   **Ipv4**\
-        # *   **Ipv6**\
+        # The description of the instance.
         self.ip_type = ip_type
+        # The ID of the instance.
+        self.product = product
         # The type of the cloud service that is associated with the Anti-DDoS Origin instance By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
         # 
         # Valid values:
         # 
         # *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
         # *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
-        self.product = product
-        # The description of the instance.
         self.remark = remark
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the instance. Valid values:
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
         # 
-        # *   **1**: normal
-        # *   **2**: expired
-        # *   **3**: released
+        # *   **true**\
+        # *   **false**\
         self.status = status
 
     def validate(self):
@@ -3902,9 +3908,9 @@ class DescribeInstanceListResponseBody(TeaModel):
     ):
         # The details about the Anti-DDoS Origin instances.
         self.instance_list = instance_list
-        # The ID of the request.
+        # The details about the Anti-DDoS Origin instance.
         self.request_id = request_id
-        # The total number of Anti-DDoS Origin instances.
+        # The details about the Anti-DDoS Origin instances.
         self.total = total
 
     def validate(self):
@@ -4788,6 +4794,23 @@ class DescribeOpEntitiesRequest(TeaModel):
         # 
         # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The type of the operation. Valid values:
+        # 
+        # *   **3**: Add an IP address to the instance.
+        # *   **4**: Remove an IP address from the instance.
+        # *   **5**: Downgrade the instance.
+        # *   **6**: Deactivate blackhole filtering.
+        # *   **7**: Reset the number of times that you can deactivate blackhole filtering.
+        # *   **8**: Restore the mitigation capability.
+        # *   **9**: Add an asset group.
+        # *   **10**: Remove an asset group.
+        # *   **11**: Enable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+        # *   **12**: Enable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+        # *   **13**: Periodically switch between the metering methods of daily 95th percentile and monthly 95th percentile for the burstable clean bandwidth feature.
+        # *   **14**: Disable the metering method of daily 95th percentile for the burstable clean bandwidth feature.
+        # *   **15**: Disable the metering method of monthly 95th percentile for the burstable clean bandwidth feature.
+        # *   **16**: Disable burstable clean bandwidth due to overdue payments.
+        # *   **17**: Disable burstable clean bandwidth due to instance expiration.
         self.op_action = op_action
         # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
         self.order_by = order_by
@@ -5556,9 +5579,9 @@ class DescribeRdStatusResponseBody(TeaModel):
         self.current_uid = current_uid
         # The type of the Alibaba Cloud account. Valid values:
         # 
-        # *   **MasterAccount**: management account
-        # *   **DelegatedAdminAccount**: delegated administrator account
-        # *   **MasterAccount**: member
+        # *   **MasterAccount**: management account.
+        # *   **DelegatedAdminAccount**: delegated administrator account.
+        # *   **MemberAccount**: member.
         self.current_uid_type = current_uid_type
         # Indicates whether the multi-account management feature is enabled for Anti-DDoS Origin.
         self.enabled = enabled
@@ -5869,8 +5892,14 @@ class DescribeTrafficRequest(TeaModel):
         self.end_time = end_time
         # The type of the traffic statistics to query. Valid values:
         # 
-        # *   **max**: the peak traffic within the specified interval
-        # *   **avg**: the average traffic within the specified interval
+        # *   **max**: the peak traffic within the specified interval.
+        # *   **avg**: the average traffic within the specified interval.
+        # 
+        # Enumerated values:
+        # 
+        # *   all
+        # *   avg
+        # *   max
         self.flow_type = flow_type
         # The ID of the Anti-DDoS Origin instance to query.
         # 
@@ -10371,12 +10400,20 @@ class MoveResourceGroupRequest(TeaModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the resource group to which you want to move the resource.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The region ID of the resource.
+        # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
+        # The resource type. Set the value to **instance**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -10417,6 +10454,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

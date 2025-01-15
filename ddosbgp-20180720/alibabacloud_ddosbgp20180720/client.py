@@ -717,7 +717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
-        @summary Modifies a scheduling rule of an on-demand instance.
+        @summary Modifies a scheduling rule of an anti-DDoS diversion instance.
         
         @param request: ConfigSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -774,7 +774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
-        @summary Modifies a scheduling rule of an on-demand instance.
+        @summary Modifies a scheduling rule of an anti-DDoS diversion instance.
         
         @param request: ConfigSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -830,7 +830,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ConfigSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
-        @summary Modifies a scheduling rule of an on-demand instance.
+        @summary Modifies a scheduling rule of an anti-DDoS diversion instance.
         
         @param request: ConfigSchedruleOnDemandRequest
         @return: ConfigSchedruleOnDemandResponse
@@ -843,7 +843,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ConfigSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
-        @summary Modifies a scheduling rule of an on-demand instance.
+        @summary Modifies a scheduling rule of an anti-DDoS diversion instance.
         
         @param request: ConfigSchedruleOnDemandRequest
         @return: ConfigSchedruleOnDemandResponse
@@ -957,7 +957,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CreateSchedruleOnDemandResponse:
         """
-        @summary Creates a scheduling rule for an on-demand instance.
+        @summary Creates a scheduling rule for an anti-DDoS diversion instance.
         
         @param request: CreateSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1014,7 +1014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CreateSchedruleOnDemandResponse:
         """
-        @summary Creates a scheduling rule for an on-demand instance.
+        @summary Creates a scheduling rule for an anti-DDoS diversion instance.
         
         @param request: CreateSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1070,7 +1070,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CreateSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.CreateSchedruleOnDemandResponse:
         """
-        @summary Creates a scheduling rule for an on-demand instance.
+        @summary Creates a scheduling rule for an anti-DDoS diversion instance.
         
         @param request: CreateSchedruleOnDemandRequest
         @return: CreateSchedruleOnDemandResponse
@@ -1083,7 +1083,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CreateSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.CreateSchedruleOnDemandResponse:
         """
-        @summary Creates a scheduling rule for an on-demand instance.
+        @summary Creates a scheduling rule for an anti-DDoS diversion instance.
         
         @param request: CreateSchedruleOnDemandRequest
         @return: CreateSchedruleOnDemandResponse
@@ -2247,9 +2247,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of all Anti-DDoS Origin instances.
         
-        @description You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description Queries the details of all Anti-DDoS Origin instances.
         
         @param request: DescribeInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2310,9 +2308,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of all Anti-DDoS Origin instances.
         
-        @description You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description Queries the details of all Anti-DDoS Origin instances.
         
         @param request: DescribeInstanceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2372,9 +2368,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of all Anti-DDoS Origin instances.
         
-        @description You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description Queries the details of all Anti-DDoS Origin instances.
         
         @param request: DescribeInstanceListRequest
         @return: DescribeInstanceListResponse
@@ -2389,9 +2383,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of all Anti-DDoS Origin instances.
         
-        @description You can call the DescribeInstanceList operation to query the details of all Anti-DDoS Origin instances within your Alibaba Cloud account by page. The details include the ID, validity period, and status of each instance.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description Queries the details of all Anti-DDoS Origin instances.
         
         @param request: DescribeInstanceListRequest
         @return: DescribeInstanceListResponse
@@ -4365,6 +4357,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a mitigation policy.
         
+        @description Modifies a mitigation policy.
+        
         @param tmp_req: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyPolicyResponse
@@ -4410,6 +4404,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a mitigation policy.
         
+        @description Modifies a mitigation policy.
+        
         @param tmp_req: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyPolicyResponse
@@ -4454,6 +4450,8 @@ class Client(OpenApiClient):
         """
         @summary Modifies a mitigation policy.
         
+        @description Modifies a mitigation policy.
+        
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
         """
@@ -4466,6 +4464,8 @@ class Client(OpenApiClient):
     ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
         """
         @summary Modifies a mitigation policy.
+        
+        @description Modifies a mitigation policy.
         
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
@@ -4723,7 +4723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
         """
-        @summary 移动资源组
+        @summary Changes the resource group to which a cloud resource belongs.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4764,7 +4764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
         """
-        @summary 移动资源组
+        @summary Changes the resource group to which a cloud resource belongs.
         
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4804,7 +4804,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.MoveResourceGroupRequest,
     ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
         """
-        @summary 移动资源组
+        @summary Changes the resource group to which a cloud resource belongs.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -4817,7 +4817,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.MoveResourceGroupRequest,
     ) -> ddosbgp_20180720_models.MoveResourceGroupResponse:
         """
-        @summary 移动资源组
+        @summary Changes the resource group to which a cloud resource belongs.
         
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
@@ -4831,7 +4831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.QuerySchedruleOnDemandResponse:
         """
-        @summary Queries the scheduling rule of an on-demand instance.
+        @summary Queries the scheduling rule of an anti-DDoS diversion instance.
         
         @param request: QuerySchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4868,7 +4868,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.QuerySchedruleOnDemandResponse:
         """
-        @summary Queries the scheduling rule of an on-demand instance.
+        @summary Queries the scheduling rule of an anti-DDoS diversion instance.
         
         @param request: QuerySchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4904,7 +4904,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.QuerySchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.QuerySchedruleOnDemandResponse:
         """
-        @summary Queries the scheduling rule of an on-demand instance.
+        @summary Queries the scheduling rule of an anti-DDoS diversion instance.
         
         @param request: QuerySchedruleOnDemandRequest
         @return: QuerySchedruleOnDemandResponse
@@ -4917,7 +4917,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.QuerySchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.QuerySchedruleOnDemandResponse:
         """
-        @summary Queries the scheduling rule of an on-demand instance.
+        @summary Queries the scheduling rule of an anti-DDoS diversion instance.
         
         @param request: QuerySchedruleOnDemandRequest
         @return: QuerySchedruleOnDemandResponse

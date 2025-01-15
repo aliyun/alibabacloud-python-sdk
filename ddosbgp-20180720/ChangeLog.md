@@ -1,3 +1,8 @@
+2025-01-15 Version: 2.8.2
+- Update API DescribeDdosOriginInstanceBill: update response param.
+- Update API DescribeInstanceList: update response param.
+
+
 2024-12-12 Version: 2.8.1
 - Update API DescribeInstanceList: update response param.
 
