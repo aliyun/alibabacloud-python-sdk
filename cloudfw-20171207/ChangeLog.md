@@ -1,3 +1,7 @@
+2025-01-15 Version: 5.0.2
+- Update API DescribePostpayTrafficTotal: update response param.
+
+
 2025-01-08 Version: 5.0.1
 - Update API DescribeDefaultIPSConfig: update response param.
 - Update API DescribeUserBuyVersion: update response param.

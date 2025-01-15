@@ -12645,6 +12645,8 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
         total_internet_traffic: int = None,
         total_nat_assets: int = None,
         total_nat_traffic: int = None,
+        total_sdl_bill_traffic: int = None,
+        total_sdl_free_traffic: int = None,
         total_traffic: int = None,
         total_vpc_assets: int = None,
         total_vpc_traffic: int = None,
@@ -12663,6 +12665,8 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
         self.total_nat_assets = total_nat_assets
         # The total traffic for NAT firewalls. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic on the NAT boundary. Unit: bytes.
         self.total_nat_traffic = total_nat_traffic
+        self.total_sdl_bill_traffic = total_sdl_bill_traffic
+        self.total_sdl_free_traffic = total_sdl_free_traffic
         # The total volume of traffic. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic. Unit: bytes.
         self.total_traffic = total_traffic
         # The total number of assets protected by virtual private cloud (VPC) firewalls.
@@ -12693,6 +12697,10 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
             result['TotalNatAssets'] = self.total_nat_assets
         if self.total_nat_traffic is not None:
             result['TotalNatTraffic'] = self.total_nat_traffic
+        if self.total_sdl_bill_traffic is not None:
+            result['TotalSdlBillTraffic'] = self.total_sdl_bill_traffic
+        if self.total_sdl_free_traffic is not None:
+            result['TotalSdlFreeTraffic'] = self.total_sdl_free_traffic
         if self.total_traffic is not None:
             result['TotalTraffic'] = self.total_traffic
         if self.total_vpc_assets is not None:
@@ -12717,6 +12725,10 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
             self.total_nat_assets = m.get('TotalNatAssets')
         if m.get('TotalNatTraffic') is not None:
             self.total_nat_traffic = m.get('TotalNatTraffic')
+        if m.get('TotalSdlBillTraffic') is not None:
+            self.total_sdl_bill_traffic = m.get('TotalSdlBillTraffic')
+        if m.get('TotalSdlFreeTraffic') is not None:
+            self.total_sdl_free_traffic = m.get('TotalSdlFreeTraffic')
         if m.get('TotalTraffic') is not None:
             self.total_traffic = m.get('TotalTraffic')
         if m.get('TotalVpcAssets') is not None:
