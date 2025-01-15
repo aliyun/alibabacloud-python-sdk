@@ -14363,6 +14363,7 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         bundle_name: str = None,
         bundle_type: str = None,
         creation_time: str = None,
+        data_disk_category: str = None,
         description: str = None,
         desktop_type: str = None,
         desktop_type_attribute: DescribeBundlesResponseBodyBundlesDesktopTypeAttribute = None,
@@ -14377,6 +14378,7 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         protocol_type: str = None,
         session_type: str = None,
         stock_state: str = None,
+        system_disk_category: str = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
@@ -14406,6 +14408,7 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.bundle_type = bundle_type
         # The time when the cloud computer template was created.
         self.creation_time = creation_time
+        self.data_disk_category = data_disk_category
         # The description of the cloud computer template.
         self.description = description
         # The instance type of the cloud computer.
@@ -14518,6 +14521,7 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
         self.session_type = session_type
         # The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
         self.stock_state = stock_state
+        self.system_disk_category = system_disk_category
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled.
@@ -14545,6 +14549,8 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
             result['BundleType'] = self.bundle_type
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
         if self.description is not None:
             result['Description'] = self.description
         if self.desktop_type is not None:
@@ -14575,6 +14581,8 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
             result['SessionType'] = self.session_type
         if self.stock_state is not None:
             result['StockState'] = self.stock_state
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
         if self.volume_encryption_enabled is not None:
             result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
         if self.volume_encryption_key is not None:
@@ -14591,6 +14599,8 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
             self.bundle_type = m.get('BundleType')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DesktopType') is not None:
@@ -14623,6 +14633,8 @@ class DescribeBundlesResponseBodyBundles(TeaModel):
             self.session_type = m.get('SessionType')
         if m.get('StockState') is not None:
             self.stock_state = m.get('StockState')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
         if m.get('VolumeEncryptionEnabled') is not None:
             self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
         if m.get('VolumeEncryptionKey') is not None:
@@ -31521,6 +31533,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         progress: str = None,
         protocol_type: str = None,
         remain_time: int = None,
+        restore_point_id: str = None,
+        restore_point_name: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         snapshot_type: str = None,
@@ -31581,6 +31595,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         # 
         # >  When the `Status` value is `PROGRESSING`, the `RemainTime` value is `-1`. A value of -1 indicates that the system is calculating the remaining time.
         self.remain_time = remain_time
+        self.restore_point_id = restore_point_id
+        self.restore_point_name = restore_point_name
         # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The name of the snapshot.
@@ -31689,6 +31705,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             result['ProtocolType'] = self.protocol_type
         if self.remain_time is not None:
             result['RemainTime'] = self.remain_time
+        if self.restore_point_id is not None:
+            result['RestorePointId'] = self.restore_point_id
+        if self.restore_point_name is not None:
+            result['RestorePointName'] = self.restore_point_name
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         if self.snapshot_name is not None:
@@ -31729,6 +31749,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             self.protocol_type = m.get('ProtocolType')
         if m.get('RemainTime') is not None:
             self.remain_time = m.get('RemainTime')
+        if m.get('RestorePointId') is not None:
+            self.restore_point_id = m.get('RestorePointId')
+        if m.get('RestorePointName') is not None:
+            self.restore_point_name = m.get('RestorePointName')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotName') is not None:

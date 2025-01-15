@@ -1,3 +1,9 @@
+2025-01-15 Version: 4.2.3
+- Update API ApplyAutoSnapshotPolicy: update param DesktopId.
+- Update API DescribeBundles: update response param.
+- Update API DescribeSnapshots: update response param.
+
+
 2025-01-11 Version: 4.2.2
 - Update API CreateDesktops: update param BundleId.
 - Update API DescribeClientEvents: update response param.
