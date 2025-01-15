@@ -53,10 +53,7 @@ class Client(OpenApiClient):
         """
         @summary Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
-        @description ### [](#)Prerequisites
-        The rule is in the `INACTIVE` state.
-        ### [](#)Description
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @description Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -66,6 +63,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -95,10 +94,7 @@ class Client(OpenApiClient):
         """
         @summary Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
-        @description ### [](#)Prerequisites
-        The rule is in the `INACTIVE` state.
-        ### [](#)Description
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @description Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
         @param request: ActiveAggregateConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -108,6 +104,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -136,10 +134,7 @@ class Client(OpenApiClient):
         """
         @summary Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
-        @description ### [](#)Prerequisites
-        The rule is in the `INACTIVE` state.
-        ### [](#)Description
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @description Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -154,10 +149,7 @@ class Client(OpenApiClient):
         """
         @summary Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
-        @description ### [](#)Prerequisites
-        The rule is in the `INACTIVE` state.
-        ### [](#)Description
-        This topic provides an example on how to enable the `cr-5772ba41209e007b***` rule in the `ca-a4e5626622af0079****` account group.
+        @description Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
         
         @param request: ActiveAggregateConfigRulesRequest
         @return: ActiveAggregateConfigRulesResponse
@@ -182,6 +174,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -220,6 +214,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -1297,6 +1293,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -1396,6 +1394,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.folder_ids_scope):
             body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
@@ -2129,6 +2129,11 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2147,6 +2152,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -2176,6 +2183,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2216,6 +2224,11 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2234,6 +2247,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -2263,6 +2278,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2618,6 +2634,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -2660,6 +2678,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -2736,6 +2756,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -2776,6 +2798,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.config_rule_ids):
             query['ConfigRuleIds'] = request.config_rule_ids
         req = open_api_models.OpenApiRequest(
@@ -5657,24 +5681,30 @@ class Client(OpenApiClient):
 
     def get_aggregate_config_rule_with_options(
         self,
-        request: config_20200907_models.GetAggregateConfigRuleRequest,
+        tmp_req: config_20200907_models.GetAggregateConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        @summary 获取账号组规则详情
+        @summary Queries the details of a rule in an account group.
         
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
-        @param request: GetAggregateConfigRuleRequest
+        @param tmp_req: GetAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAggregateConfigRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.GetAggregateConfigRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5696,24 +5726,30 @@ class Client(OpenApiClient):
 
     async def get_aggregate_config_rule_with_options_async(
         self,
-        request: config_20200907_models.GetAggregateConfigRuleRequest,
+        tmp_req: config_20200907_models.GetAggregateConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        @summary 获取账号组规则详情
+        @summary Queries the details of a rule in an account group.
         
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
-        @param request: GetAggregateConfigRuleRequest
+        @param tmp_req: GetAggregateConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAggregateConfigRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.GetAggregateConfigRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5738,7 +5774,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        @summary 获取账号组规则详情
+        @summary Queries the details of a rule in an account group.
         
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
@@ -5753,7 +5789,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateConfigRuleRequest,
     ) -> config_20200907_models.GetAggregateConfigRuleResponse:
         """
-        @summary 获取账号组规则详情
+        @summary Queries the details of a rule in an account group.
         
         @description This example shows how to query the details of the `cr-7f7d626622af0041***` rule in the `ca-7f00626622af0041****` account group.
         
@@ -7671,7 +7707,7 @@ class Client(OpenApiClient):
 
     def get_config_rule_with_options(
         self,
-        request: config_20200907_models.GetConfigRuleRequest,
+        tmp_req: config_20200907_models.GetConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
@@ -7679,14 +7715,20 @@ class Client(OpenApiClient):
         
         @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
-        @param request: GetConfigRuleRequest
+        @param tmp_req: GetConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetConfigRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.GetConfigRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7708,7 +7750,7 @@ class Client(OpenApiClient):
 
     async def get_config_rule_with_options_async(
         self,
-        request: config_20200907_models.GetConfigRuleRequest,
+        tmp_req: config_20200907_models.GetConfigRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetConfigRuleResponse:
         """
@@ -7716,14 +7758,20 @@ class Client(OpenApiClient):
         
         @description This topic provides an example on how to query the details of the `cr-7f7d626622af0041***` rule.
         
-        @param request: GetConfigRuleRequest
+        @param tmp_req: GetConfigRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetConfigRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.GetConfigRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9573,7 +9621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        @summary Ignores the evaluation results of some resources in an account group based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9623,7 +9671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        @summary Ignores the evaluation results of some resources in an account group based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9672,7 +9720,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        @summary Ignores the evaluation results of some resources in an account group based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9688,7 +9736,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreAggregateEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreAggregateEvaluationResultsResponse:
         """
-        @summary Ignores the compliance evaluation results of one or more non-compliant resources that are evaluated based on a rule in an account group.
+        @summary Ignores the evaluation results of some resources in an account group based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9705,7 +9753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        @summary Ignores the evaluation results of some resources based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9753,7 +9801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        @summary Ignores the evaluation results of some resources based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9800,7 +9848,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        @summary Ignores the evaluation results of some resources based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -9816,7 +9864,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.IgnoreEvaluationResultsRequest,
     ) -> config_20200907_models.IgnoreEvaluationResultsResponse:
         """
-        @summary Ignores one or more resources that are evaluated as non-compliant by using a rule.
+        @summary Ignores the evaluation results of some resources based on a specific rule. You can also specify a time period for ignoring the evaluation results. After the period elapses, the evaluation results of the resources based on the rule are automatically displayed.
         
         @description After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
         This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm***` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
@@ -10309,6 +10357,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.compliance_type):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_name):
@@ -10362,6 +10412,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.compliance_type):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_name):
@@ -11083,7 +11135,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11126,7 +11178,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11168,7 +11220,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11187,7 +11239,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see[ Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema)
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11205,7 +11257,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        @summary Queries all account groups within the current management account or delegated administrator account.
         
         @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
@@ -11244,7 +11296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        @summary Queries all account groups within the current management account or delegated administrator account.
         
         @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
@@ -11282,7 +11334,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregatorsRequest,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        @summary Queries all account groups within the current management account or delegated administrator account.
         
         @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
@@ -11297,7 +11349,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregatorsRequest,
     ) -> config_20200907_models.ListAggregatorsResponse:
         """
-        @summary Queries a list of account groups that the current account manages or to which the current account belongs.
+        @summary Queries all account groups within the current management account or delegated administrator account.
         
         @description The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
         
@@ -11315,7 +11367,7 @@ class Client(OpenApiClient):
         """
         @summary Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
         
-        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @description A compliance package template is a collection of rules that Cloud Config can create based on compliance scenarios.
         
         @param request: ListCompliancePackTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11358,7 +11410,7 @@ class Client(OpenApiClient):
         """
         @summary Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
         
-        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @description A compliance package template is a collection of rules that Cloud Config can create based on compliance scenarios.
         
         @param request: ListCompliancePackTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11400,7 +11452,7 @@ class Client(OpenApiClient):
         """
         @summary Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
         
-        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @description A compliance package template is a collection of rules that Cloud Config can create based on compliance scenarios.
         
         @param request: ListCompliancePackTemplatesRequest
         @return: ListCompliancePackTemplatesResponse
@@ -11415,7 +11467,7 @@ class Client(OpenApiClient):
         """
         @summary Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
         
-        @description This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf***`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+        @description A compliance package template is a collection of rules that Cloud Config can create based on compliance scenarios.
         
         @param request: ListCompliancePackTemplatesRequest
         @return: ListCompliancePackTemplatesResponse
@@ -11807,7 +11859,7 @@ class Client(OpenApiClient):
 
     def list_config_rules_with_options(
         self,
-        request: config_20200907_models.ListConfigRulesRequest,
+        tmp_req: config_20200907_models.ListConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
@@ -11815,12 +11867,18 @@ class Client(OpenApiClient):
         
         @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
-        @param request: ListConfigRulesRequest
+        @param tmp_req: ListConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConfigRulesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.ListConfigRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.compliance_type):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_name):
@@ -11837,6 +11895,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11858,7 +11918,7 @@ class Client(OpenApiClient):
 
     async def list_config_rules_with_options_async(
         self,
-        request: config_20200907_models.ListConfigRulesRequest,
+        tmp_req: config_20200907_models.ListConfigRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListConfigRulesResponse:
         """
@@ -11866,12 +11926,18 @@ class Client(OpenApiClient):
         
         @description This topic provides an example on how to query the rules of the current account. The response shows that the current account has a total of one rule and three evaluated resources. The resources are evaluated as compliant.
         
-        @param request: ListConfigRulesRequest
+        @param tmp_req: ListConfigRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListConfigRulesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = config_20200907_models.ListConfigRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.compliance_pack_id):
+            query['CompliancePackId'] = request.compliance_pack_id
         if not UtilClient.is_unset(request.compliance_type):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_name):
@@ -11888,6 +11954,8 @@ class Client(OpenApiClient):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.risk_level):
             query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12164,8 +12232,8 @@ class Client(OpenApiClient):
         @summary Queries a list of managed rules supported by Cloud Config.
         
         @description ### [](#)Background information
-        For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
-        ### [](#)Usage notes
+        For more information about how to define, execute, and integrate a managed rule, see [Definition and execution of rules](https://help.aliyun.com/document_detail/128273.html).
+        ### [](#)Description
         This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
         
         @param request: ListManagedRulesRequest
@@ -12212,8 +12280,8 @@ class Client(OpenApiClient):
         @summary Queries a list of managed rules supported by Cloud Config.
         
         @description ### [](#)Background information
-        For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
-        ### [](#)Usage notes
+        For more information about how to define, execute, and integrate a managed rule, see [Definition and execution of rules](https://help.aliyun.com/document_detail/128273.html).
+        ### [](#)Description
         This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
         
         @param request: ListManagedRulesRequest
@@ -12259,8 +12327,8 @@ class Client(OpenApiClient):
         @summary Queries a list of managed rules supported by Cloud Config.
         
         @description ### [](#)Background information
-        For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
-        ### [](#)Usage notes
+        For more information about how to define, execute, and integrate a managed rule, see [Definition and execution of rules](https://help.aliyun.com/document_detail/128273.html).
+        ### [](#)Description
         This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
         
         @param request: ListManagedRulesRequest
@@ -12277,8 +12345,8 @@ class Client(OpenApiClient):
         @summary Queries a list of managed rules supported by Cloud Config.
         
         @description ### [](#)Background information
-        For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
-        ### [](#)Usage notes
+        For more information about how to define, execute, and integrate a managed rule, see [Definition and execution of rules](https://help.aliyun.com/document_detail/128273.html).
+        ### [](#)Description
         This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
         
         @param request: ListManagedRulesRequest
@@ -12887,7 +12955,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of resources that associate with a specific resource.
         
-        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @description For information about the Alibaba Cloud services and resource types supported by Cloud Config, see [Alibaba Cloud services and resource types supported by Cloud Config](https://help.aliyun.com/document_detail/127411.html).
+        This topic provides an example on how to query the information about the disks that are attached to an Elastic Compute Service (ECS) instance named `i-j6cajg9yrfoh4sas***` that is created by the current Alibaba Cloud account in the China (Shanghai) region.
         
         @param request: ListResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12938,7 +13007,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of resources that associate with a specific resource.
         
-        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @description For information about the Alibaba Cloud services and resource types supported by Cloud Config, see [Alibaba Cloud services and resource types supported by Cloud Config](https://help.aliyun.com/document_detail/127411.html).
+        This topic provides an example on how to query the information about the disks that are attached to an Elastic Compute Service (ECS) instance named `i-j6cajg9yrfoh4sas***` that is created by the current Alibaba Cloud account in the China (Shanghai) region.
         
         @param request: ListResourceRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12988,7 +13058,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of resources that associate with a specific resource.
         
-        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @description For information about the Alibaba Cloud services and resource types supported by Cloud Config, see [Alibaba Cloud services and resource types supported by Cloud Config](https://help.aliyun.com/document_detail/127411.html).
+        This topic provides an example on how to query the information about the disks that are attached to an Elastic Compute Service (ECS) instance named `i-j6cajg9yrfoh4sas***` that is created by the current Alibaba Cloud account in the China (Shanghai) region.
         
         @param request: ListResourceRelationsRequest
         @return: ListResourceRelationsResponse
@@ -13003,7 +13074,8 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of resources that associate with a specific resource.
         
-        @description This topic provides an example on how to query the disks that are associated with an Elastic Compute Service (ECS) instance within the current Alibaba Cloud account.
+        @description For information about the Alibaba Cloud services and resource types supported by Cloud Config, see [Alibaba Cloud services and resource types supported by Cloud Config](https://help.aliyun.com/document_detail/127411.html).
+        This topic provides an example on how to query the information about the disks that are attached to an Elastic Compute Service (ECS) instance named `i-j6cajg9yrfoh4sas***` that is created by the current Alibaba Cloud account in the China (Shanghai) region.
         
         @param request: ListResourceRelationsRequest
         @return: ListResourceRelationsResponse
@@ -13019,7 +13091,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13060,7 +13132,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13100,7 +13172,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13119,7 +13191,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](https://github.com/aliyun/alibabacloud-config-resource-schema).
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -15567,7 +15639,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        @summary Modifies a delivery channel.
+        @summary Modifies a delivery channel by using the current account.
         
         @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
@@ -15628,7 +15700,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        @summary Modifies a delivery channel.
+        @summary Modifies a delivery channel by using the current account.
         
         @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
@@ -15688,7 +15760,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        @summary Modifies a delivery channel.
+        @summary Modifies a delivery channel by using the current account.
         
         @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
@@ -15703,7 +15775,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.UpdateConfigDeliveryChannelRequest,
     ) -> config_20200907_models.UpdateConfigDeliveryChannelResponse:
         """
-        @summary Modifies a delivery channel.
+        @summary Modifies a delivery channel by using the current account.
         
         @description In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8***```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
         
@@ -15734,6 +15806,11 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -15754,6 +15831,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -15779,6 +15858,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -15818,6 +15898,11 @@ class Client(OpenApiClient):
             request.input_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input_parameters, 'InputParameters', 'json')
         if not UtilClient.is_unset(tmp_req.resource_types_scope):
             request.resource_types_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_types_scope, 'ResourceTypesScope', 'simple')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -15838,6 +15923,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not UtilClient.is_unset(request.exclude_tags_scope):
             body_flat['ExcludeTagsScope'] = request.exclude_tags_scope
+        if not UtilClient.is_unset(request.extend_content):
+            body['ExtendContent'] = request.extend_content
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -15863,6 +15950,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -16189,6 +16277,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.aggregator_delivery_data_type):
+            body['AggregatorDeliveryDataType'] = request.aggregator_delivery_data_type
         if not UtilClient.is_unset(request.integrated_types):
             body['IntegratedTypes'] = request.integrated_types
         if not UtilClient.is_unset(request.service_code):
@@ -16228,6 +16318,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.aggregator_delivery_data_type):
+            body['AggregatorDeliveryDataType'] = request.aggregator_delivery_data_type
         if not UtilClient.is_unset(request.integrated_types):
             body['IntegratedTypes'] = request.integrated_types
         if not UtilClient.is_unset(request.service_code):

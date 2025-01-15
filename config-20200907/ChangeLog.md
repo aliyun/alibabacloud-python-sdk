@@ -1,3 +1,32 @@
+2025-01-15 Version: 3.0.9
+- Update API ActiveAggregateConfigRules: add param CompliancePackId.
+- Update API ActiveAggregateConfigRules: update param ConfigRuleIds.
+- Update API ActiveConfigRules: add param CompliancePackId.
+- Update API ActiveConfigRules: update param ConfigRuleIds.
+- Update API CreateAggregateConfigRule: add param ExtendContent.
+- Update API CreateConfigRule: add param ExtendContent.
+- Update API CreateConfigRule: add param Tag.
+- Update API DeactiveAggregateConfigRules: add param CompliancePackId.
+- Update API DeactiveAggregateConfigRules: update param ConfigRuleIds.
+- Update API DeactiveConfigRules: add param CompliancePackId.
+- Update API DeactiveConfigRules: update param ConfigRuleIds.
+- Update API GetAggregateConfigRule: add param Tag.
+- Update API GetAggregateConfigRule: update response param.
+- Update API GetAggregator: update response param.
+- Update API GetConfigRule: add param Tag.
+- Update API GetConfigRule: update response param.
+- Update API GetIntegratedServiceStatus: update response param.
+- Update API ListAggregateConfigRules: add param CompliancePackId.
+- Update API ListAggregateConfigRules: update param Keyword.
+- Update API ListConfigRules: add param CompliancePackId.
+- Update API ListConfigRules: add param Tag.
+- Update API ListConfigRules: update param Keyword.
+- Update API ListIntegratedService: update response param.
+- Update API UpdateConfigRule: add param ExtendContent.
+- Update API UpdateConfigRule: add param Tag.
+- Update API UpdateIntegratedServiceStatus: add param AggregatorDeliveryDataType.
+
+
 2024-08-29 Version: 3.0.8
 - Update API ListAggregateDiscoveredResources: add param EndUpdateTimestamp.
 - Update API ListAggregateDiscoveredResources: add param ExcludeResourceTypes.
