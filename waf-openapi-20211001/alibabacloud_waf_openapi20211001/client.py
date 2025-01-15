@@ -10133,6 +10133,8 @@ class Client(OpenApiClient):
             query['Domains'] = request.domains
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.punish_type):
+            query['PunishType'] = request.punish_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -10174,6 +10176,8 @@ class Client(OpenApiClient):
             query['Domains'] = request.domains
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.punish_type):
+            query['PunishType'] = request.punish_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -10665,7 +10669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
         """
-        @summary Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+        @summary Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
         
         @param request: DescribeResourceSupportRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10706,7 +10710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
         """
-        @summary Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+        @summary Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
         
         @param request: DescribeResourceSupportRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10746,7 +10750,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
     ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
         """
-        @summary Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+        @summary Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
         
         @param request: DescribeResourceSupportRegionsRequest
         @return: DescribeResourceSupportRegionsResponse
@@ -10759,7 +10763,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.DescribeResourceSupportRegionsRequest,
     ) -> waf_openapi_20211001_models.DescribeResourceSupportRegionsResponse:
         """
-        @summary Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+        @summary Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
         
         @param request: DescribeResourceSupportRegionsRequest
         @return: DescribeResourceSupportRegionsResponse
@@ -16993,7 +16997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse:
         """
-        @summary Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+        @summary Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
         
         @param request: ModifyHybridCloudClusterBypassStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17036,7 +17040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse:
         """
-        @summary Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+        @summary Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
         
         @param request: ModifyHybridCloudClusterBypassStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17078,7 +17082,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusRequest,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse:
         """
-        @summary Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+        @summary Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
         
         @param request: ModifyHybridCloudClusterBypassStatusRequest
         @return: ModifyHybridCloudClusterBypassStatusResponse
@@ -17091,7 +17095,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusRequest,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterBypassStatusResponse:
         """
-        @summary Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+        @summary Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
         
         @param request: ModifyHybridCloudClusterBypassStatusRequest
         @return: ModifyHybridCloudClusterBypassStatusResponse
@@ -17225,7 +17229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudGroupResponse:
         """
-        @summary 修改组信息
+        @summary Modifies a node group in a hybrid cloud cluster.
         
         @param request: ModifyHybridCloudGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17272,7 +17276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudGroupResponse:
         """
-        @summary 修改组信息
+        @summary Modifies a node group in a hybrid cloud cluster.
         
         @param request: ModifyHybridCloudGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17318,7 +17322,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyHybridCloudGroupRequest,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudGroupResponse:
         """
-        @summary 修改组信息
+        @summary Modifies a node group in a hybrid cloud cluster.
         
         @param request: ModifyHybridCloudGroupRequest
         @return: ModifyHybridCloudGroupResponse
@@ -17331,7 +17335,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ModifyHybridCloudGroupRequest,
     ) -> waf_openapi_20211001_models.ModifyHybridCloudGroupResponse:
         """
-        @summary 修改组信息
+        @summary Modifies a node group in a hybrid cloud cluster.
         
         @param request: ModifyHybridCloudGroupRequest
         @return: ModifyHybridCloudGroupResponse

@@ -2532,7 +2532,7 @@ class CreateHybridCloudGroupRequest(TeaModel):
         self.load_balance_ip = load_balance_ip
         # The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
         self.location_code = location_code
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
@@ -12474,12 +12474,14 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
         self.resource_type = resource_type
         # The ID of the protection rule.
         self.rule_id = rule_id
+        # The name of the rule.
         self.rule_name = rule_name
         # The type of the protection rule. Valid values:
         # 
         # *   **defense**: defense rule. This is the default value.
         # *   **whitelist**: whitelist rule.
         self.rule_type = rule_type
+        # The name of the protection rule template.
         self.template_name = template_name
 
     def validate(self):
@@ -12729,7 +12731,9 @@ class DescribeDefenseResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -12786,8 +12790,9 @@ class DescribeDefenseResourcesRequest(TeaModel):
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The tag of the resource. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -12862,25 +12867,22 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         resource_origin: str = None,
         xff_status: int = None,
     ):
-        # 跟踪cookie开关状态。
+        # The status of the tracking cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0**: disabled
+        # *   **1**: enabled. This is the default value.
         self.acw_cookie_status = acw_cookie_status
-        # 跟踪cookie的secure属性状态。
+        # The status of the secure attribute of the tracking cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0**: disabled. This is the default value.
+        # *   **1**: enabled.
         self.acw_secure_status = acw_secure_status
-        # 滑块cookie的secure属性状态。
+        # The status of the secure attribute of the slider CAPTCHA cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0**: disabled. This is the default value.
+        # *   **1**: enabled.
         self.acw_v3secure_status = acw_v3secure_status
-        # An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
+        # The custom header fields that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF header fields are used as the originating IP addresses of clients.
         self.custom_headers = custom_headers
         # The description of the protected object.
         self.description = description
@@ -12890,7 +12892,7 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         self.gmt_create = gmt_create
         # The most recent modification time of the protected object. Unit: seconds.
         self.gmt_modified = gmt_modified
-        # 多账号统一管理场景中防护对象资产归属账号。
+        # The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
         self.owner_user_id = owner_user_id
         # The protection pattern.
         self.pattern = pattern
@@ -12994,9 +12996,9 @@ class DescribeDefenseResourcesResponseBody(TeaModel):
         resources: List[DescribeDefenseResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array of protected objects.
+        # The protected objects.
         self.resources = resources
         # The total number of entries that are returned.
         self.total_count = total_count
@@ -14038,7 +14040,9 @@ class DescribeDefenseTemplatesRequest(TeaModel):
         self.resource_type = resource_type
         # The ID of the protection template.
         self.template_id = template_id
+        # The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
         self.template_ids = template_ids
+        # The name of the protection template.
         self.template_name = template_name
         # The type of the protection template. Valid values:
         # 
@@ -14774,6 +14778,7 @@ class DescribeDomainDetailResponseBodyRedirectBackupBackends(TeaModel):
         self,
         backend: str = None,
     ):
+        # The back-to-origin IP address or domain name.
         self.backend = backend
 
     def validate(self):
@@ -14852,6 +14857,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
     ):
         # An array of addresses of origin servers.
         self.backends = backends
+        # An array of HTTPS listener ports.
         self.backup_backends = backup_backends
         # The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
         self.connect_timeout = connect_timeout
@@ -20925,6 +20931,7 @@ class DescribePunishedDomainsRequest(TeaModel):
         self,
         domains: List[str] = None,
         instance_id: str = None,
+        punish_type: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
@@ -20936,6 +20943,7 @@ class DescribePunishedDomainsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.punish_type = punish_type
         # The region in which the WAF instance is deployed. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
@@ -20957,6 +20965,8 @@ class DescribePunishedDomainsRequest(TeaModel):
             result['Domains'] = self.domains
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.punish_type is not None:
+            result['PunishType'] = self.punish_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_manager_resource_group_id is not None:
@@ -20969,6 +20979,8 @@ class DescribePunishedDomainsRequest(TeaModel):
             self.domains = m.get('Domains')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PunishType') is not None:
+            self.punish_type = m.get('PunishType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceManagerResourceGroupId') is not None:
@@ -21738,11 +21750,16 @@ class DescribeResourceSupportRegionsRequest(TeaModel):
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **cn-hangzhou**: the Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The cloud service. Valid values:
+        # 
+        # *   **clb4**: Layer 4 CLB.
+        # *   **clb7**: Layer 7 CLB.
+        # *   **ecs**: ECS.
         self.resource_product = resource_product
 
     def validate(self):
@@ -21785,7 +21802,7 @@ class DescribeResourceSupportRegionsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The region IDs.
+        # An array of region IDs of the CLB and ECS instances that are added to WAF in cloud native mode.
         self.support_regions = support_regions
 
     def validate(self):
@@ -28265,13 +28282,14 @@ class DescribeVisitUasRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region ID of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The protected object.
         self.resource = resource
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
         # 
@@ -29044,6 +29062,10 @@ class ListTagValuesRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the WAF instance.
+        # 
+        # >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         # The tag key.
@@ -29052,13 +29074,14 @@ class ListTagValuesRequest(TeaModel):
         self.key = key
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
         # 
@@ -32814,7 +32837,12 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of manual bypass. Valid values:
         # 
@@ -33097,16 +33125,32 @@ class ModifyHybridCloudGroupRequest(TeaModel):
         remark: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the node group.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The name of the node group.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region in which the WAF instance is deployed. Valid value:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The remarks.
         self.remark = remark
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -33158,6 +33202,7 @@ class ModifyHybridCloudGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -34820,7 +34865,7 @@ class TagResourcesRequest(TeaModel):
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
         # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # *   **ap-southeast-1**: Outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id

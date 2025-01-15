@@ -1,3 +1,9 @@
+2025-01-15 Version: 5.0.4
+- Update API DescribePunishedDomains: add param PunishType.
+- Update API DescribePunishedDomains: update param Domains.
+- Update API DescribePunishedDomains: update response param.
+
+
 2024-12-30 Version: 5.0.3
 - Update API DescribeDefenseResourceTemplates: add param RuleName.
 - Update API DescribeDefenseResourceTemplates: add param TemplateName.
