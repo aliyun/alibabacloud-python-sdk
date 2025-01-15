@@ -160,18 +160,32 @@ class InstancePatterns(TeaModel):
         architectures: List[str] = None,
         burst_performance_option: str = None,
         core: int = None,
+        cores: int = None,
+        cpu_architectures: List[str] = None,
         excluded_instance_types: List[str] = None,
+        instance_categories: List[str] = None,
         instance_family_level: str = None,
+        max_cpu_cores: int = None,
+        max_memory_size: float = None,
         max_price: float = None,
         memory: float = None,
+        min_cpu_cores: int = None,
+        min_memory_size: float = None,
     ):
         self.architectures = architectures
         self.burst_performance_option = burst_performance_option
         self.core = core
+        self.cores = cores
+        self.cpu_architectures = cpu_architectures
         self.excluded_instance_types = excluded_instance_types
+        self.instance_categories = instance_categories
         self.instance_family_level = instance_family_level
+        self.max_cpu_cores = max_cpu_cores
+        self.max_memory_size = max_memory_size
         self.max_price = max_price
         self.memory = memory
+        self.min_cpu_cores = min_cpu_cores
+        self.min_memory_size = min_memory_size
 
     def validate(self):
         pass
@@ -188,14 +202,28 @@ class InstancePatterns(TeaModel):
             result['burst_performance_option'] = self.burst_performance_option
         if self.core is not None:
             result['core'] = self.core
+        if self.cores is not None:
+            result['cores'] = self.cores
+        if self.cpu_architectures is not None:
+            result['cpu_architectures'] = self.cpu_architectures
         if self.excluded_instance_types is not None:
             result['excluded_instance_types'] = self.excluded_instance_types
+        if self.instance_categories is not None:
+            result['instance_categories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['instance_family_level'] = self.instance_family_level
+        if self.max_cpu_cores is not None:
+            result['max_cpu_cores'] = self.max_cpu_cores
+        if self.max_memory_size is not None:
+            result['max_memory_size'] = self.max_memory_size
         if self.max_price is not None:
             result['max_price'] = self.max_price
         if self.memory is not None:
             result['memory'] = self.memory
+        if self.min_cpu_cores is not None:
+            result['min_cpu_cores'] = self.min_cpu_cores
+        if self.min_memory_size is not None:
+            result['min_memory_size'] = self.min_memory_size
         return result
 
     def from_map(self, m: dict = None):
@@ -206,14 +234,28 @@ class InstancePatterns(TeaModel):
             self.burst_performance_option = m.get('burst_performance_option')
         if m.get('core') is not None:
             self.core = m.get('core')
+        if m.get('cores') is not None:
+            self.cores = m.get('cores')
+        if m.get('cpu_architectures') is not None:
+            self.cpu_architectures = m.get('cpu_architectures')
         if m.get('excluded_instance_types') is not None:
             self.excluded_instance_types = m.get('excluded_instance_types')
+        if m.get('instance_categories') is not None:
+            self.instance_categories = m.get('instance_categories')
         if m.get('instance_family_level') is not None:
             self.instance_family_level = m.get('instance_family_level')
+        if m.get('max_cpu_cores') is not None:
+            self.max_cpu_cores = m.get('max_cpu_cores')
+        if m.get('max_memory_size') is not None:
+            self.max_memory_size = m.get('max_memory_size')
         if m.get('max_price') is not None:
             self.max_price = m.get('max_price')
         if m.get('memory') is not None:
             self.memory = m.get('memory')
+        if m.get('min_cpu_cores') is not None:
+            self.min_cpu_cores = m.get('min_cpu_cores')
+        if m.get('min_memory_size') is not None:
+            self.min_memory_size = m.get('min_memory_size')
         return self
 
 
@@ -290,6 +332,8 @@ class KubeletConfig(TeaModel):
         cluster_dns: List[str] = None,
         container_log_max_files: int = None,
         container_log_max_size: str = None,
+        container_log_max_workers: int = None,
+        container_log_monitor_interval: str = None,
         cpu_cfsquota: bool = None,
         cpu_cfsquota_period: str = None,
         cpu_manager_policy: str = None,
@@ -320,6 +364,8 @@ class KubeletConfig(TeaModel):
         self.cluster_dns = cluster_dns
         self.container_log_max_files = container_log_max_files
         self.container_log_max_size = container_log_max_size
+        self.container_log_max_workers = container_log_max_workers
+        self.container_log_monitor_interval = container_log_monitor_interval
         self.cpu_cfsquota = cpu_cfsquota
         self.cpu_cfsquota_period = cpu_cfsquota_period
         self.cpu_manager_policy = cpu_manager_policy
@@ -368,6 +414,10 @@ class KubeletConfig(TeaModel):
             result['containerLogMaxFiles'] = self.container_log_max_files
         if self.container_log_max_size is not None:
             result['containerLogMaxSize'] = self.container_log_max_size
+        if self.container_log_max_workers is not None:
+            result['containerLogMaxWorkers'] = self.container_log_max_workers
+        if self.container_log_monitor_interval is not None:
+            result['containerLogMonitorInterval'] = self.container_log_monitor_interval
         if self.cpu_cfsquota is not None:
             result['cpuCFSQuota'] = self.cpu_cfsquota
         if self.cpu_cfsquota_period is not None:
@@ -432,6 +482,10 @@ class KubeletConfig(TeaModel):
             self.container_log_max_files = m.get('containerLogMaxFiles')
         if m.get('containerLogMaxSize') is not None:
             self.container_log_max_size = m.get('containerLogMaxSize')
+        if m.get('containerLogMaxWorkers') is not None:
+            self.container_log_max_workers = m.get('containerLogMaxWorkers')
+        if m.get('containerLogMonitorInterval') is not None:
+            self.container_log_monitor_interval = m.get('containerLogMonitorInterval')
         if m.get('cpuCFSQuota') is not None:
             self.cpu_cfsquota = m.get('cpuCFSQuota')
         if m.get('cpuCFSQuotaPeriod') is not None:

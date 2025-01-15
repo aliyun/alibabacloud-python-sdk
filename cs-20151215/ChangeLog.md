@@ -1,3 +1,7 @@
+2025-01-15 Version: 4.8.9
+- Update API CreateAutoscalingConfig: update param body.
+
+
 2025-01-10 Version: 4.8.8
 - Update API CreateAutoscalingConfig: update param body.
 
