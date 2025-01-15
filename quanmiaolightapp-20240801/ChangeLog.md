@@ -1,3 +1,10 @@
+2025-01-15 Version: 2.3.0
+- Support API RunScriptChat.
+- Support API RunScriptRefine.
+- Update API GetVideoAnalysisTask: update response param.
+- Update API RunVideoAnalysis: update response param.
+
+
 2025-01-14 Version: 2.2.0
 - Support API GetVideoAnalysisConfig.
 - Support API GetVideoAnalysisTask.

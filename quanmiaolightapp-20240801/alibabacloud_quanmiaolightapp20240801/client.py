@@ -1163,6 +1163,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_marketing_information_writing_with_options_async(workspace_id, request, headers, runtime)
 
+    def run_script_chat_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunScriptChatResponse:
+        """
+        @summary 长剧本创作
+        
+        @param request: RunScriptChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunScriptChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunScriptChat',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runScriptChat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_script_chat_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptChatRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunScriptChatResponse:
+        """
+        @summary 长剧本创作
+        
+        @param request: RunScriptChatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunScriptChatResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.prompt):
+            body['prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunScriptChat',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runScriptChat',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_script_chat(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptChatRequest,
+    ) -> quan_miao_light_app_20240801_models.RunScriptChatResponse:
+        """
+        @summary 长剧本创作
+        
+        @param request: RunScriptChatRequest
+        @return: RunScriptChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_script_chat_with_options(workspace_id, request, headers, runtime)
+
+    async def run_script_chat_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptChatRequest,
+    ) -> quan_miao_light_app_20240801_models.RunScriptChatResponse:
+        """
+        @summary 长剧本创作
+        
+        @param request: RunScriptChatRequest
+        @return: RunScriptChatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_script_chat_with_options_async(workspace_id, request, headers, runtime)
+
     def run_script_continue_with_options(
         self,
         workspace_id: str,
@@ -1410,6 +1522,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_script_planning_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_script_refine_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptRefineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunScriptRefineResponse:
+        """
+        @summary 剧本对话内容的整理
+        
+        @param request: RunScriptRefineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunScriptRefineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunScriptRefine',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runScriptRefine',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_script_refine_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptRefineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunScriptRefineResponse:
+        """
+        @summary 剧本对话内容的整理
+        
+        @param request: RunScriptRefineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunScriptRefineResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunScriptRefine',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runScriptRefine',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_script_refine(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptRefineRequest,
+    ) -> quan_miao_light_app_20240801_models.RunScriptRefineResponse:
+        """
+        @summary 剧本对话内容的整理
+        
+        @param request: RunScriptRefineRequest
+        @return: RunScriptRefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_script_refine_with_options(workspace_id, request, headers, runtime)
+
+    async def run_script_refine_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunScriptRefineRequest,
+    ) -> quan_miao_light_app_20240801_models.RunScriptRefineResponse:
+        """
+        @summary 剧本对话内容的整理
+        
+        @param request: RunScriptRefineRequest
+        @return: RunScriptRefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_script_refine_with_options_async(workspace_id, request, headers, runtime)
 
     def run_style_writing_with_options(
         self,
