@@ -1,3 +1,8 @@
+2025-01-15 Version: 1.3.1
+- Update API ResyncTable: update param body.
+- Update API SyncRemoteTables: update param body.
+
+
 2024-12-25 Version: 1.3.0
 - Support API RunDataResultAnalysis.
 - Support API RunSqlGeneration.

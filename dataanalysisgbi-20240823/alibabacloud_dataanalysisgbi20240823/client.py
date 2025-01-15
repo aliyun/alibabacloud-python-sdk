@@ -2024,6 +2024,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
+        if not UtilClient.is_unset(request.keep):
+            body['keep'] = request.keep
         if not UtilClient.is_unset(request.table_id_key):
             body['tableIdKey'] = request.table_id_key
         req = open_api_models.OpenApiRequest(
@@ -2066,6 +2068,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
+        if not UtilClient.is_unset(request.keep):
+            body['keep'] = request.keep
         if not UtilClient.is_unset(request.table_id_key):
             body['tableIdKey'] = request.table_id_key
         req = open_api_models.OpenApiRequest(
@@ -2622,6 +2626,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.keep_table_names):
             body['keepTableNames'] = request.keep_table_names
+        if not UtilClient.is_unset(request.no_modified_table_names):
+            body['noModifiedTableNames'] = request.no_modified_table_names
         if not UtilClient.is_unset(request.pull_samples):
             body['pullSamples'] = request.pull_samples
         if not UtilClient.is_unset(request.table_names):
@@ -2668,6 +2674,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.keep_table_names):
             body['keepTableNames'] = request.keep_table_names
+        if not UtilClient.is_unset(request.no_modified_table_names):
+            body['noModifiedTableNames'] = request.no_modified_table_names
         if not UtilClient.is_unset(request.pull_samples):
             body['pullSamples'] = request.pull_samples
         if not UtilClient.is_unset(request.table_names):

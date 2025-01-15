@@ -2258,9 +2258,11 @@ class RecoverColumnResponse(TeaModel):
 class ResyncTableRequest(TeaModel):
     def __init__(
         self,
+        keep: bool = None,
         table_id_key: str = None,
         workspace_id: str = None,
     ):
+        self.keep = keep
         # This parameter is required.
         self.table_id_key = table_id_key
         # This parameter is required.
@@ -2275,6 +2277,8 @@ class ResyncTableRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.keep is not None:
+            result['keep'] = self.keep
         if self.table_id_key is not None:
             result['tableIdKey'] = self.table_id_key
         if self.workspace_id is not None:
@@ -2283,6 +2287,8 @@ class ResyncTableRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('keep') is not None:
+            self.keep = m.get('keep')
         if m.get('tableIdKey') is not None:
             self.table_id_key = m.get('tableIdKey')
         if m.get('workspaceId') is not None:
@@ -3348,11 +3354,13 @@ class SyncRemoteTablesRequest(TeaModel):
     def __init__(
         self,
         keep_table_names: List[str] = None,
+        no_modified_table_names: List[str] = None,
         pull_samples: bool = None,
         table_names: List[str] = None,
         workspace_id: str = None,
     ):
         self.keep_table_names = keep_table_names
+        self.no_modified_table_names = no_modified_table_names
         self.pull_samples = pull_samples
         # This parameter is required.
         self.table_names = table_names
@@ -3370,6 +3378,8 @@ class SyncRemoteTablesRequest(TeaModel):
         result = dict()
         if self.keep_table_names is not None:
             result['keepTableNames'] = self.keep_table_names
+        if self.no_modified_table_names is not None:
+            result['noModifiedTableNames'] = self.no_modified_table_names
         if self.pull_samples is not None:
             result['pullSamples'] = self.pull_samples
         if self.table_names is not None:
@@ -3382,6 +3392,8 @@ class SyncRemoteTablesRequest(TeaModel):
         m = m or dict()
         if m.get('keepTableNames') is not None:
             self.keep_table_names = m.get('keepTableNames')
+        if m.get('noModifiedTableNames') is not None:
+            self.no_modified_table_names = m.get('noModifiedTableNames')
         if m.get('pullSamples') is not None:
             self.pull_samples = m.get('pullSamples')
         if m.get('tableNames') is not None:
