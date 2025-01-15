@@ -3612,6 +3612,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodRequest(TeaModel):
 class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        after_discount_amount: float = None,
         amortization_period: str = None,
         amortization_status: str = None,
         bill_account_id: int = None,
@@ -3622,6 +3623,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         consume_period: str = None,
         cost_unit: str = None,
         cost_unit_code: str = None,
+        current_amortization_after_discount_amount: float = None,
         current_amortization_deducted_by_cash_coupons: float = None,
         current_amortization_deducted_by_coupons: float = None,
         current_amortization_deducted_by_prepaid_card: float = None,
@@ -3640,6 +3642,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         invoice_discount: float = None,
         pretax_amount: float = None,
         pretax_gross_amount: float = None,
+        previously_amortized_after_discount_amount: float = None,
         previously_amortized_deducted_by_cash_coupons: float = None,
         previously_amortized_deducted_by_coupons: float = None,
         previously_amortized_deducted_by_prepaid_card: float = None,
@@ -3653,6 +3656,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         product_detail_code: str = None,
         product_name: str = None,
         region: str = None,
+        remaining_amortization_after_discount_amount: float = None,
         remaining_amortization_deducted_by_cash_coupons: float = None,
         remaining_amortization_deducted_by_coupons: float = None,
         remaining_amortization_deducted_by_prepaid_card: float = None,
@@ -3671,6 +3675,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         tag: str = None,
         zone: str = None,
     ):
+        self.after_discount_amount = after_discount_amount
         # The allocation month. Format: YYYYMM.
         self.amortization_period = amortization_period
         # The allocation status. Valid values:
@@ -3694,6 +3699,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         self.cost_unit = cost_unit
         # The code of the cost center.
         self.cost_unit_code = cost_unit_code
+        self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
         # The amount deducted by using vouchers and allocated to the current allocation month.
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
         # The amount deducted by using coupons and allocated to the current allocation month.
@@ -3730,6 +3736,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         self.pretax_amount = pretax_amount
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
+        self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
         # The amount deducted by using vouchers and allocated before the current allocation month.
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
         # The amount deducted by using coupons and allocated before the current allocation month.
@@ -3756,6 +3763,7 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
         self.product_name = product_name
         # The region.
         self.region = region
+        self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
         # The amount deducted by using vouchers and to be allocated to one or more future allocation months.
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
         # The amount deducted by using coupons and to be allocated to one or more future allocation months.
@@ -3803,6 +3811,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             return _map
 
         result = dict()
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.amortization_period is not None:
             result['AmortizationPeriod'] = self.amortization_period
         if self.amortization_status is not None:
@@ -3823,6 +3833,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             result['CostUnit'] = self.cost_unit
         if self.cost_unit_code is not None:
             result['CostUnitCode'] = self.cost_unit_code
+        if self.current_amortization_after_discount_amount is not None:
+            result['CurrentAmortizationAfterDiscountAmount'] = self.current_amortization_after_discount_amount
         if self.current_amortization_deducted_by_cash_coupons is not None:
             result['CurrentAmortizationDeductedByCashCoupons'] = self.current_amortization_deducted_by_cash_coupons
         if self.current_amortization_deducted_by_coupons is not None:
@@ -3859,6 +3871,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             result['PretaxAmount'] = self.pretax_amount
         if self.pretax_gross_amount is not None:
             result['PretaxGrossAmount'] = self.pretax_gross_amount
+        if self.previously_amortized_after_discount_amount is not None:
+            result['PreviouslyAmortizedAfterDiscountAmount'] = self.previously_amortized_after_discount_amount
         if self.previously_amortized_deducted_by_cash_coupons is not None:
             result['PreviouslyAmortizedDeductedByCashCoupons'] = self.previously_amortized_deducted_by_cash_coupons
         if self.previously_amortized_deducted_by_coupons is not None:
@@ -3885,6 +3899,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             result['ProductName'] = self.product_name
         if self.region is not None:
             result['Region'] = self.region
+        if self.remaining_amortization_after_discount_amount is not None:
+            result['RemainingAmortizationAfterDiscountAmount'] = self.remaining_amortization_after_discount_amount
         if self.remaining_amortization_deducted_by_cash_coupons is not None:
             result['RemainingAmortizationDeductedByCashCoupons'] = self.remaining_amortization_deducted_by_cash_coupons
         if self.remaining_amortization_deducted_by_coupons is not None:
@@ -3923,6 +3939,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('AmortizationPeriod') is not None:
             self.amortization_period = m.get('AmortizationPeriod')
         if m.get('AmortizationStatus') is not None:
@@ -3943,6 +3961,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             self.cost_unit = m.get('CostUnit')
         if m.get('CostUnitCode') is not None:
             self.cost_unit_code = m.get('CostUnitCode')
+        if m.get('CurrentAmortizationAfterDiscountAmount') is not None:
+            self.current_amortization_after_discount_amount = m.get('CurrentAmortizationAfterDiscountAmount')
         if m.get('CurrentAmortizationDeductedByCashCoupons') is not None:
             self.current_amortization_deducted_by_cash_coupons = m.get('CurrentAmortizationDeductedByCashCoupons')
         if m.get('CurrentAmortizationDeductedByCoupons') is not None:
@@ -3979,6 +3999,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             self.pretax_amount = m.get('PretaxAmount')
         if m.get('PretaxGrossAmount') is not None:
             self.pretax_gross_amount = m.get('PretaxGrossAmount')
+        if m.get('PreviouslyAmortizedAfterDiscountAmount') is not None:
+            self.previously_amortized_after_discount_amount = m.get('PreviouslyAmortizedAfterDiscountAmount')
         if m.get('PreviouslyAmortizedDeductedByCashCoupons') is not None:
             self.previously_amortized_deducted_by_cash_coupons = m.get('PreviouslyAmortizedDeductedByCashCoupons')
         if m.get('PreviouslyAmortizedDeductedByCoupons') is not None:
@@ -4005,6 +4027,8 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems(Tea
             self.product_name = m.get('ProductName')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('RemainingAmortizationAfterDiscountAmount') is not None:
+            self.remaining_amortization_after_discount_amount = m.get('RemainingAmortizationAfterDiscountAmount')
         if m.get('RemainingAmortizationDeductedByCashCoupons') is not None:
             self.remaining_amortization_deducted_by_cash_coupons = m.get('RemainingAmortizationDeductedByCashCoupons')
         if m.get('RemainingAmortizationDeductedByCoupons') is not None:
@@ -4944,6 +4968,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodRequest(TeaModel):
 class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        after_discount_amount: float = None,
         amortization_period: str = None,
         amortization_status: str = None,
         bill_account_id: int = None,
@@ -4954,6 +4979,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         consume_period: str = None,
         cost_unit: str = None,
         cost_unit_code: str = None,
+        current_amortization_after_discount_amount: float = None,
         current_amortization_deducted_by_cash_coupons: float = None,
         current_amortization_deducted_by_coupons: float = None,
         current_amortization_deducted_by_prepaid_card: float = None,
@@ -4972,6 +4998,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         invoice_discount: float = None,
         pretax_amount: float = None,
         pretax_gross_amount: float = None,
+        previously_amortized_after_discount_amount: float = None,
         previously_amortized_deducted_by_cash_coupons: float = None,
         previously_amortized_deducted_by_coupons: float = None,
         previously_amortized_deducted_by_prepaid_card: float = None,
@@ -4985,6 +5012,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         product_detail_code: str = None,
         product_name: str = None,
         region: str = None,
+        remaining_amortization_after_discount_amount: float = None,
         remaining_amortization_deducted_by_cash_coupons: float = None,
         remaining_amortization_deducted_by_coupons: float = None,
         remaining_amortization_deducted_by_prepaid_card: float = None,
@@ -5003,6 +5031,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         tag: str = None,
         zone: str = None,
     ):
+        self.after_discount_amount = after_discount_amount
         self.amortization_period = amortization_period
         self.amortization_status = amortization_status
         self.bill_account_id = bill_account_id
@@ -5013,6 +5042,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         self.consume_period = consume_period
         self.cost_unit = cost_unit
         self.cost_unit_code = cost_unit_code
+        self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
         self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
         self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
@@ -5031,6 +5061,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         self.invoice_discount = invoice_discount
         self.pretax_amount = pretax_amount
         self.pretax_gross_amount = pretax_gross_amount
+        self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
         self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
         self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
@@ -5044,6 +5075,7 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
         self.product_detail_code = product_detail_code
         self.product_name = product_name
         self.region = region
+        self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
         self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
         self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
@@ -5071,6 +5103,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             return _map
 
         result = dict()
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.amortization_period is not None:
             result['AmortizationPeriod'] = self.amortization_period
         if self.amortization_status is not None:
@@ -5091,6 +5125,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             result['CostUnit'] = self.cost_unit
         if self.cost_unit_code is not None:
             result['CostUnitCode'] = self.cost_unit_code
+        if self.current_amortization_after_discount_amount is not None:
+            result['CurrentAmortizationAfterDiscountAmount'] = self.current_amortization_after_discount_amount
         if self.current_amortization_deducted_by_cash_coupons is not None:
             result['CurrentAmortizationDeductedByCashCoupons'] = self.current_amortization_deducted_by_cash_coupons
         if self.current_amortization_deducted_by_coupons is not None:
@@ -5127,6 +5163,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             result['PretaxAmount'] = self.pretax_amount
         if self.pretax_gross_amount is not None:
             result['PretaxGrossAmount'] = self.pretax_gross_amount
+        if self.previously_amortized_after_discount_amount is not None:
+            result['PreviouslyAmortizedAfterDiscountAmount'] = self.previously_amortized_after_discount_amount
         if self.previously_amortized_deducted_by_cash_coupons is not None:
             result['PreviouslyAmortizedDeductedByCashCoupons'] = self.previously_amortized_deducted_by_cash_coupons
         if self.previously_amortized_deducted_by_coupons is not None:
@@ -5153,6 +5191,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             result['ProductName'] = self.product_name
         if self.region is not None:
             result['Region'] = self.region
+        if self.remaining_amortization_after_discount_amount is not None:
+            result['RemainingAmortizationAfterDiscountAmount'] = self.remaining_amortization_after_discount_amount
         if self.remaining_amortization_deducted_by_cash_coupons is not None:
             result['RemainingAmortizationDeductedByCashCoupons'] = self.remaining_amortization_deducted_by_cash_coupons
         if self.remaining_amortization_deducted_by_coupons is not None:
@@ -5191,6 +5231,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('AmortizationPeriod') is not None:
             self.amortization_period = m.get('AmortizationPeriod')
         if m.get('AmortizationStatus') is not None:
@@ -5211,6 +5253,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             self.cost_unit = m.get('CostUnit')
         if m.get('CostUnitCode') is not None:
             self.cost_unit_code = m.get('CostUnitCode')
+        if m.get('CurrentAmortizationAfterDiscountAmount') is not None:
+            self.current_amortization_after_discount_amount = m.get('CurrentAmortizationAfterDiscountAmount')
         if m.get('CurrentAmortizationDeductedByCashCoupons') is not None:
             self.current_amortization_deducted_by_cash_coupons = m.get('CurrentAmortizationDeductedByCashCoupons')
         if m.get('CurrentAmortizationDeductedByCoupons') is not None:
@@ -5247,6 +5291,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             self.pretax_amount = m.get('PretaxAmount')
         if m.get('PretaxGrossAmount') is not None:
             self.pretax_gross_amount = m.get('PretaxGrossAmount')
+        if m.get('PreviouslyAmortizedAfterDiscountAmount') is not None:
+            self.previously_amortized_after_discount_amount = m.get('PreviouslyAmortizedAfterDiscountAmount')
         if m.get('PreviouslyAmortizedDeductedByCashCoupons') is not None:
             self.previously_amortized_deducted_by_cash_coupons = m.get('PreviouslyAmortizedDeductedByCashCoupons')
         if m.get('PreviouslyAmortizedDeductedByCoupons') is not None:
@@ -5273,6 +5319,8 @@ class DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel
             self.product_name = m.get('ProductName')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('RemainingAmortizationAfterDiscountAmount') is not None:
+            self.remaining_amortization_after_discount_amount = m.get('RemainingAmortizationAfterDiscountAmount')
         if m.get('RemainingAmortizationDeductedByCashCoupons') is not None:
             self.remaining_amortization_deducted_by_cash_coupons = m.get('RemainingAmortizationDeductedByCashCoupons')
         if m.get('RemainingAmortizationDeductedByCoupons') is not None:
@@ -5610,7 +5658,7 @@ class DescribeInstanceBillResponseBodyDataItems(TeaModel):
     def __init__(
         self,
         adjust_amount: float = None,
-        after_discount_amount: str = None,
+        after_discount_amount: float = None,
         bill_account_id: str = None,
         bill_account_name: str = None,
         billing_date: str = None,
@@ -7275,6 +7323,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodRequest(TeaModel):
 class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        after_discount_amount: float = None,
         amortization_period: str = None,
         amortization_status: str = None,
         bill_account_id: int = None,
@@ -7283,6 +7332,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         bill_owner_name: str = None,
         biz_type: str = None,
         consume_period: str = None,
+        current_amortization_after_discount_amount: float = None,
         current_amortization_deducted_by_cash_coupons: float = None,
         current_amortization_deducted_by_coupons: float = None,
         current_amortization_deducted_by_prepaid_card: float = None,
@@ -7298,6 +7348,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         invoice_discount: float = None,
         pretax_amount: float = None,
         pretax_gross_amount: float = None,
+        previously_amortized_after_discount_amount: float = None,
         previously_amortized_deducted_by_cash_coupons: float = None,
         previously_amortized_deducted_by_coupons: float = None,
         previously_amortized_deducted_by_prepaid_card: float = None,
@@ -7310,6 +7361,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         product_detail: str = None,
         product_detail_code: str = None,
         product_name: str = None,
+        remaining_amortization_after_discount_amount: float = None,
         remaining_amortization_deducted_by_cash_coupons: float = None,
         remaining_amortization_deducted_by_coupons: float = None,
         remaining_amortization_deducted_by_prepaid_card: float = None,
@@ -7321,6 +7373,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         round_down_discount: float = None,
         subscription_type: str = None,
     ):
+        self.after_discount_amount = after_discount_amount
         # The allocation month. Format: YYYYMM.
         self.amortization_period = amortization_period
         # The allocation status. Valid values:
@@ -7340,6 +7393,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         self.biz_type = biz_type
         # The billing cycle. Format: YYYYMM.
         self.consume_period = consume_period
+        self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
         # The amount deducted by using vouchers and allocated to the current allocation month.
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
         # The amount deducted by using coupons and allocated to the current allocation month.
@@ -7370,6 +7424,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         self.pretax_amount = pretax_amount
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
+        self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
         # The amount deducted by using vouchers and allocated before the current allocation month.
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
         # The amount deducted by using coupons and allocated before the current allocation month.
@@ -7394,6 +7449,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
         self.product_detail_code = product_detail_code
         # The name of the service.
         self.product_name = product_name
+        self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
         # The amount deducted by using vouchers and to be allocated to one or more future allocation months.
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
         # The amount deducted by using coupons and to be allocated to one or more future allocation months.
@@ -7427,6 +7483,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             return _map
 
         result = dict()
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.amortization_period is not None:
             result['AmortizationPeriod'] = self.amortization_period
         if self.amortization_status is not None:
@@ -7443,6 +7501,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             result['BizType'] = self.biz_type
         if self.consume_period is not None:
             result['ConsumePeriod'] = self.consume_period
+        if self.current_amortization_after_discount_amount is not None:
+            result['CurrentAmortizationAfterDiscountAmount'] = self.current_amortization_after_discount_amount
         if self.current_amortization_deducted_by_cash_coupons is not None:
             result['CurrentAmortizationDeductedByCashCoupons'] = self.current_amortization_deducted_by_cash_coupons
         if self.current_amortization_deducted_by_coupons is not None:
@@ -7473,6 +7533,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             result['PretaxAmount'] = self.pretax_amount
         if self.pretax_gross_amount is not None:
             result['PretaxGrossAmount'] = self.pretax_gross_amount
+        if self.previously_amortized_after_discount_amount is not None:
+            result['PreviouslyAmortizedAfterDiscountAmount'] = self.previously_amortized_after_discount_amount
         if self.previously_amortized_deducted_by_cash_coupons is not None:
             result['PreviouslyAmortizedDeductedByCashCoupons'] = self.previously_amortized_deducted_by_cash_coupons
         if self.previously_amortized_deducted_by_coupons is not None:
@@ -7497,6 +7559,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             result['ProductDetailCode'] = self.product_detail_code
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.remaining_amortization_after_discount_amount is not None:
+            result['RemainingAmortizationAfterDiscountAmount'] = self.remaining_amortization_after_discount_amount
         if self.remaining_amortization_deducted_by_cash_coupons is not None:
             result['RemainingAmortizationDeductedByCashCoupons'] = self.remaining_amortization_deducted_by_cash_coupons
         if self.remaining_amortization_deducted_by_coupons is not None:
@@ -7521,6 +7585,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('AmortizationPeriod') is not None:
             self.amortization_period = m.get('AmortizationPeriod')
         if m.get('AmortizationStatus') is not None:
@@ -7537,6 +7603,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             self.biz_type = m.get('BizType')
         if m.get('ConsumePeriod') is not None:
             self.consume_period = m.get('ConsumePeriod')
+        if m.get('CurrentAmortizationAfterDiscountAmount') is not None:
+            self.current_amortization_after_discount_amount = m.get('CurrentAmortizationAfterDiscountAmount')
         if m.get('CurrentAmortizationDeductedByCashCoupons') is not None:
             self.current_amortization_deducted_by_cash_coupons = m.get('CurrentAmortizationDeductedByCashCoupons')
         if m.get('CurrentAmortizationDeductedByCoupons') is not None:
@@ -7567,6 +7635,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             self.pretax_amount = m.get('PretaxAmount')
         if m.get('PretaxGrossAmount') is not None:
             self.pretax_gross_amount = m.get('PretaxGrossAmount')
+        if m.get('PreviouslyAmortizedAfterDiscountAmount') is not None:
+            self.previously_amortized_after_discount_amount = m.get('PreviouslyAmortizedAfterDiscountAmount')
         if m.get('PreviouslyAmortizedDeductedByCashCoupons') is not None:
             self.previously_amortized_deducted_by_cash_coupons = m.get('PreviouslyAmortizedDeductedByCashCoupons')
         if m.get('PreviouslyAmortizedDeductedByCoupons') is not None:
@@ -7591,6 +7661,8 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(TeaM
             self.product_detail_code = m.get('ProductDetailCode')
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('RemainingAmortizationAfterDiscountAmount') is not None:
+            self.remaining_amortization_after_discount_amount = m.get('RemainingAmortizationAfterDiscountAmount')
         if m.get('RemainingAmortizationDeductedByCashCoupons') is not None:
             self.remaining_amortization_deducted_by_cash_coupons = m.get('RemainingAmortizationDeductedByCashCoupons')
         if m.get('RemainingAmortizationDeductedByCoupons') is not None:
@@ -7869,6 +7941,7 @@ class DescribeProductAmortizedCostByConsumePeriodRequest(TeaModel):
 class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel):
     def __init__(
         self,
+        after_discount_amount: float = None,
         amortization_period: str = None,
         amortization_status: str = None,
         bill_account_id: int = None,
@@ -7877,6 +7950,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         bill_owner_name: str = None,
         biz_type: str = None,
         consume_period: str = None,
+        current_amortization_after_discount_amount: float = None,
         current_amortization_deducted_by_cash_coupons: float = None,
         current_amortization_deducted_by_coupons: float = None,
         current_amortization_deducted_by_prepaid_card: float = None,
@@ -7892,6 +7966,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         invoice_discount: float = None,
         pretax_amount: float = None,
         pretax_gross_amount: float = None,
+        previously_amortized_after_discount_amount: float = None,
         previously_amortized_deducted_by_cash_coupons: float = None,
         previously_amortized_deducted_by_coupons: float = None,
         previously_amortized_deducted_by_prepaid_card: float = None,
@@ -7904,6 +7979,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         product_detail: str = None,
         product_detail_code: str = None,
         product_name: str = None,
+        remaining_amortization_after_discount_amount: float = None,
         remaining_amortization_deducted_by_cash_coupons: float = None,
         remaining_amortization_deducted_by_coupons: float = None,
         remaining_amortization_deducted_by_prepaid_card: float = None,
@@ -7915,6 +7991,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         round_down_discount: float = None,
         subscription_type: str = None,
     ):
+        self.after_discount_amount = after_discount_amount
         self.amortization_period = amortization_period
         self.amortization_status = amortization_status
         self.bill_account_id = bill_account_id
@@ -7923,6 +8000,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         self.bill_owner_name = bill_owner_name
         self.biz_type = biz_type
         self.consume_period = consume_period
+        self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
         self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
         self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
@@ -7938,6 +8016,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         self.invoice_discount = invoice_discount
         self.pretax_amount = pretax_amount
         self.pretax_gross_amount = pretax_gross_amount
+        self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
         self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
         self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
@@ -7950,6 +8029,7 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
         self.product_detail = product_detail
         self.product_detail_code = product_detail_code
         self.product_name = product_name
+        self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
         self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
         self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
@@ -7970,6 +8050,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             return _map
 
         result = dict()
+        if self.after_discount_amount is not None:
+            result['AfterDiscountAmount'] = self.after_discount_amount
         if self.amortization_period is not None:
             result['AmortizationPeriod'] = self.amortization_period
         if self.amortization_status is not None:
@@ -7986,6 +8068,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             result['BizType'] = self.biz_type
         if self.consume_period is not None:
             result['ConsumePeriod'] = self.consume_period
+        if self.current_amortization_after_discount_amount is not None:
+            result['CurrentAmortizationAfterDiscountAmount'] = self.current_amortization_after_discount_amount
         if self.current_amortization_deducted_by_cash_coupons is not None:
             result['CurrentAmortizationDeductedByCashCoupons'] = self.current_amortization_deducted_by_cash_coupons
         if self.current_amortization_deducted_by_coupons is not None:
@@ -8016,6 +8100,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             result['PretaxAmount'] = self.pretax_amount
         if self.pretax_gross_amount is not None:
             result['PretaxGrossAmount'] = self.pretax_gross_amount
+        if self.previously_amortized_after_discount_amount is not None:
+            result['PreviouslyAmortizedAfterDiscountAmount'] = self.previously_amortized_after_discount_amount
         if self.previously_amortized_deducted_by_cash_coupons is not None:
             result['PreviouslyAmortizedDeductedByCashCoupons'] = self.previously_amortized_deducted_by_cash_coupons
         if self.previously_amortized_deducted_by_coupons is not None:
@@ -8040,6 +8126,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             result['ProductDetailCode'] = self.product_detail_code
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.remaining_amortization_after_discount_amount is not None:
+            result['RemainingAmortizationAfterDiscountAmount'] = self.remaining_amortization_after_discount_amount
         if self.remaining_amortization_deducted_by_cash_coupons is not None:
             result['RemainingAmortizationDeductedByCashCoupons'] = self.remaining_amortization_deducted_by_cash_coupons
         if self.remaining_amortization_deducted_by_coupons is not None:
@@ -8064,6 +8152,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AfterDiscountAmount') is not None:
+            self.after_discount_amount = m.get('AfterDiscountAmount')
         if m.get('AmortizationPeriod') is not None:
             self.amortization_period = m.get('AmortizationPeriod')
         if m.get('AmortizationStatus') is not None:
@@ -8080,6 +8170,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             self.biz_type = m.get('BizType')
         if m.get('ConsumePeriod') is not None:
             self.consume_period = m.get('ConsumePeriod')
+        if m.get('CurrentAmortizationAfterDiscountAmount') is not None:
+            self.current_amortization_after_discount_amount = m.get('CurrentAmortizationAfterDiscountAmount')
         if m.get('CurrentAmortizationDeductedByCashCoupons') is not None:
             self.current_amortization_deducted_by_cash_coupons = m.get('CurrentAmortizationDeductedByCashCoupons')
         if m.get('CurrentAmortizationDeductedByCoupons') is not None:
@@ -8110,6 +8202,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             self.pretax_amount = m.get('PretaxAmount')
         if m.get('PretaxGrossAmount') is not None:
             self.pretax_gross_amount = m.get('PretaxGrossAmount')
+        if m.get('PreviouslyAmortizedAfterDiscountAmount') is not None:
+            self.previously_amortized_after_discount_amount = m.get('PreviouslyAmortizedAfterDiscountAmount')
         if m.get('PreviouslyAmortizedDeductedByCashCoupons') is not None:
             self.previously_amortized_deducted_by_cash_coupons = m.get('PreviouslyAmortizedDeductedByCashCoupons')
         if m.get('PreviouslyAmortizedDeductedByCoupons') is not None:
@@ -8134,6 +8228,8 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(TeaModel)
             self.product_detail_code = m.get('ProductDetailCode')
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('RemainingAmortizationAfterDiscountAmount') is not None:
+            self.remaining_amortization_after_discount_amount = m.get('RemainingAmortizationAfterDiscountAmount')
         if m.get('RemainingAmortizationDeductedByCashCoupons') is not None:
             self.remaining_amortization_deducted_by_cash_coupons = m.get('RemainingAmortizationDeductedByCashCoupons')
         if m.get('RemainingAmortizationDeductedByCoupons') is not None:
@@ -11688,7 +11784,7 @@ class DescribeSplitItemBillResponseBodyDataItems(TeaModel):
     def __init__(
         self,
         adjust_amount: float = None,
-        after_discount_amount: str = None,
+        after_discount_amount: float = None,
         bill_account_id: str = None,
         bill_account_name: str = None,
         billing_date: str = None,
