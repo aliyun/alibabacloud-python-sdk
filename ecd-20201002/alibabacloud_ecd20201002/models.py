@@ -2052,6 +2052,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         desktop_id: str = None,
         progress: str = None,
         remain_time: int = None,
+        restore_point_id: str = None,
+        restore_point_name: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         snapshot_type: str = None,
@@ -2064,6 +2066,8 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         self.desktop_id = desktop_id
         self.progress = progress
         self.remain_time = remain_time
+        self.restore_point_id = restore_point_id
+        self.restore_point_name = restore_point_name
         self.snapshot_id = snapshot_id
         self.snapshot_name = snapshot_name
         self.snapshot_type = snapshot_type
@@ -2090,6 +2094,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             result['Progress'] = self.progress
         if self.remain_time is not None:
             result['RemainTime'] = self.remain_time
+        if self.restore_point_id is not None:
+            result['RestorePointId'] = self.restore_point_id
+        if self.restore_point_name is not None:
+            result['RestorePointName'] = self.restore_point_name
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
         if self.snapshot_name is not None:
@@ -2116,6 +2124,10 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
             self.progress = m.get('Progress')
         if m.get('RemainTime') is not None:
             self.remain_time = m.get('RemainTime')
+        if m.get('RestorePointId') is not None:
+            self.restore_point_id = m.get('RestorePointId')
+        if m.get('RestorePointName') is not None:
+            self.restore_point_name = m.get('RestorePointName')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
         if m.get('SnapshotName') is not None:
@@ -4225,6 +4237,7 @@ class ResetSnapshotRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
         snapshot_id: str = None,
+        stop_desktop: bool = None,
     ):
         # This parameter is required.
         self.client_id = client_id
@@ -4236,6 +4249,7 @@ class ResetSnapshotRequest(TeaModel):
         self.session_id = session_id
         # This parameter is required.
         self.snapshot_id = snapshot_id
+        self.stop_desktop = stop_desktop
 
     def validate(self):
         pass
@@ -4258,6 +4272,8 @@ class ResetSnapshotRequest(TeaModel):
             result['SessionId'] = self.session_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.stop_desktop is not None:
+            result['StopDesktop'] = self.stop_desktop
         return result
 
     def from_map(self, m: dict = None):
@@ -4274,6 +4290,8 @@ class ResetSnapshotRequest(TeaModel):
             self.session_id = m.get('SessionId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('StopDesktop') is not None:
+            self.stop_desktop = m.get('StopDesktop')
         return self
 
 

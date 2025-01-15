@@ -2396,6 +2396,8 @@ class Client(OpenApiClient):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.stop_desktop):
+            query['StopDesktop'] = request.stop_desktop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2441,6 +2443,8 @@ class Client(OpenApiClient):
             query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.stop_desktop):
+            query['StopDesktop'] = request.stop_desktop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

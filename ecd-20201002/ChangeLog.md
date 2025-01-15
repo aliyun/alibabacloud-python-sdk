@@ -1,3 +1,8 @@
+2025-01-15 Version: 1.1.6
+- Update API DescribeSnapshots: update response param.
+- Update API ResetSnapshot: add param StopDesktop.
+
+
 2024-11-24 Version: 1.1.5
 - Update API GetConnectionTicket: add param Tag.
 
