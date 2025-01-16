@@ -9280,6 +9280,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_play_info_with_options_async(request, runtime)
 
+    def get_project_export_job_with_options(
+        self,
+        request: ice20201109_models.GetProjectExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetProjectExportJobResponse:
+        """
+        @summary 查询工程导出任务
+        
+        @param request: GetProjectExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectExportJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_export_job_with_options_async(
+        self,
+        request: ice20201109_models.GetProjectExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetProjectExportJobResponse:
+        """
+        @summary 查询工程导出任务
+        
+        @param request: GetProjectExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectExportJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_export_job(
+        self,
+        request: ice20201109_models.GetProjectExportJobRequest,
+    ) -> ice20201109_models.GetProjectExportJobResponse:
+        """
+        @summary 查询工程导出任务
+        
+        @param request: GetProjectExportJobRequest
+        @return: GetProjectExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_export_job_with_options(request, runtime)
+
+    async def get_project_export_job_async(
+        self,
+        request: ice20201109_models.GetProjectExportJobRequest,
+    ) -> ice20201109_models.GetProjectExportJobResponse:
+        """
+        @summary 查询工程导出任务
+        
+        @param request: GetProjectExportJobRequest
+        @return: GetProjectExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_export_job_with_options_async(request, runtime)
+
     def get_public_media_info_with_options(
         self,
         request: ice20201109_models.GetPublicMediaInfoRequest,
@@ -21841,6 +21937,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_package_job_with_options_async(request, runtime)
+
+    def submit_project_export_job_with_options(
+        self,
+        request: ice20201109_models.SubmitProjectExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitProjectExportJobResponse:
+        """
+        @summary 提交工程导出任务
+        
+        @param request: SubmitProjectExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitProjectExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitProjectExportJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_project_export_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitProjectExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitProjectExportJobResponse:
+        """
+        @summary 提交工程导出任务
+        
+        @param request: SubmitProjectExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitProjectExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.output_media_config):
+            query['OutputMediaConfig'] = request.output_media_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitProjectExportJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_project_export_job(
+        self,
+        request: ice20201109_models.SubmitProjectExportJobRequest,
+    ) -> ice20201109_models.SubmitProjectExportJobResponse:
+        """
+        @summary 提交工程导出任务
+        
+        @param request: SubmitProjectExportJobRequest
+        @return: SubmitProjectExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_project_export_job_with_options(request, runtime)
+
+    async def submit_project_export_job_async(
+        self,
+        request: ice20201109_models.SubmitProjectExportJobRequest,
+    ) -> ice20201109_models.SubmitProjectExportJobResponse:
+        """
+        @summary 提交工程导出任务
+        
+        @param request: SubmitProjectExportJobRequest
+        @return: SubmitProjectExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_project_export_job_with_options_async(request, runtime)
 
     def submit_screen_media_highlights_job_with_options(
         self,

@@ -219,6 +219,7 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
+        voice_id_list: List[str] = None,
         voiceprint_id: str = None,
         volume: int = None,
         wake_up_query: str = None,
@@ -239,6 +240,7 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
         self.volume = volume
         self.wake_up_query = wake_up_query
@@ -288,6 +290,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voice_id_list is not None:
+            result['VoiceIdList'] = self.voice_id_list
         if self.voiceprint_id is not None:
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
@@ -333,6 +337,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceIdList') is not None:
+            self.voice_id_list = m.get('VoiceIdList')
         if m.get('VoiceprintId') is not None:
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
@@ -394,6 +400,7 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
+        voice_id_list: List[str] = None,
         voiceprint_id: str = None,
         volume: int = None,
         wake_up_query: str = None,
@@ -413,6 +420,7 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
         self.volume = volume
         self.wake_up_query = wake_up_query
@@ -460,6 +468,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voice_id_list is not None:
+            result['VoiceIdList'] = self.voice_id_list
         if self.voiceprint_id is not None:
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
@@ -503,6 +513,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceIdList') is not None:
+            self.voice_id_list = m.get('VoiceIdList')
         if m.get('VoiceprintId') is not None:
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
@@ -566,6 +578,7 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         user_offline_timeout: int = None,
         user_online_timeout: int = None,
         voice_id: str = None,
+        voice_id_list: List[str] = None,
         voiceprint_id: str = None,
         volume: int = None,
         wake_up_query: str = None,
@@ -587,6 +600,7 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
         self.voice_id = voice_id
+        self.voice_id_list = voice_id_list
         self.voiceprint_id = voiceprint_id
         self.volume = volume
         self.wake_up_query = wake_up_query
@@ -638,6 +652,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             result['UserOnlineTimeout'] = self.user_online_timeout
         if self.voice_id is not None:
             result['VoiceId'] = self.voice_id
+        if self.voice_id_list is not None:
+            result['VoiceIdList'] = self.voice_id_list
         if self.voiceprint_id is not None:
             result['VoiceprintId'] = self.voiceprint_id
         if self.volume is not None:
@@ -685,6 +701,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             self.user_online_timeout = m.get('UserOnlineTimeout')
         if m.get('VoiceId') is not None:
             self.voice_id = m.get('VoiceId')
+        if m.get('VoiceIdList') is not None:
+            self.voice_id_list = m.get('VoiceIdList')
         if m.get('VoiceprintId') is not None:
             self.voiceprint_id = m.get('VoiceprintId')
         if m.get('Volume') is not None:
@@ -20948,6 +20966,208 @@ class GetPlayInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPlayInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetProjectExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        # This parameter is required.
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class GetProjectExportJobResponseBodyProjectExportJobExportResult(TeaModel):
+    def __init__(
+        self,
+        timeline: str = None,
+    ):
+        self.timeline = timeline
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timeline is not None:
+            result['Timeline'] = self.timeline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timeline') is not None:
+            self.timeline = m.get('Timeline')
+        return self
+
+
+class GetProjectExportJobResponseBodyProjectExportJob(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        export_result: GetProjectExportJobResponseBodyProjectExportJobExportResult = None,
+        export_type: str = None,
+        job_id: str = None,
+        message: str = None,
+        project_id: str = None,
+        status: str = None,
+        user_data: str = None,
+    ):
+        self.code = code
+        self.export_result = export_result
+        self.export_type = export_type
+        self.job_id = job_id
+        self.message = message
+        self.project_id = project_id
+        self.status = status
+        self.user_data = user_data
+
+    def validate(self):
+        if self.export_result:
+            self.export_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.export_result is not None:
+            result['ExportResult'] = self.export_result.to_map()
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExportResult') is not None:
+            temp_model = GetProjectExportJobResponseBodyProjectExportJobExportResult()
+            self.export_result = temp_model.from_map(m['ExportResult'])
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetProjectExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        project_export_job: GetProjectExportJobResponseBodyProjectExportJob = None,
+        request_id: str = None,
+    ):
+        self.project_export_job = project_export_job
+        self.request_id = request_id
+
+    def validate(self):
+        if self.project_export_job:
+            self.project_export_job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_export_job is not None:
+            result['ProjectExportJob'] = self.project_export_job.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectExportJob') is not None:
+            temp_model = GetProjectExportJobResponseBodyProjectExportJob()
+            self.project_export_job = temp_model.from_map(m['ProjectExportJob'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProjectExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProjectExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProjectExportJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -58643,6 +58863,132 @@ class SubmitPackageJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitPackageJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitProjectExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        export_type: str = None,
+        output_media_config: str = None,
+        project_id: str = None,
+        timeline: str = None,
+        user_data: str = None,
+    ):
+        self.export_type = export_type
+        # This parameter is required.
+        self.output_media_config = output_media_config
+        self.project_id = project_id
+        self.timeline = timeline
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.output_media_config is not None:
+            result['OutputMediaConfig'] = self.output_media_config
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.timeline is not None:
+            result['Timeline'] = self.timeline
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('OutputMediaConfig') is not None:
+            self.output_media_config = m.get('OutputMediaConfig')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Timeline') is not None:
+            self.timeline = m.get('Timeline')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitProjectExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitProjectExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitProjectExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitProjectExportJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

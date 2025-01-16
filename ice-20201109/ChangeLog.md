@@ -1,3 +1,8 @@
+2025-01-16 Version: 3.10.0
+- Support API GetProjectExportJob.
+- Support API SubmitProjectExportJob.
+
+
 2024-12-30 Version: 3.9.1
 - Update API SubmitMediaAiAnalysisJob: add param UserData.
 
