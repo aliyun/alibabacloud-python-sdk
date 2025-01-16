@@ -495,6 +495,8 @@ class Client(OpenApiClient):
             query['ScriptType'] = request.script_type
         if not UtilClient.is_unset(request.scripts):
             query['Scripts'] = request.scripts
+        if not UtilClient.is_unset(request.timeout_secs):
+            query['TimeoutSecs'] = request.timeout_secs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -536,6 +538,8 @@ class Client(OpenApiClient):
             query['ScriptType'] = request.script_type
         if not UtilClient.is_unset(request.scripts):
             query['Scripts'] = request.scripts
+        if not UtilClient.is_unset(request.timeout_secs):
+            query['TimeoutSecs'] = request.timeout_secs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6547,8 +6551,14 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_name):
+            query['ScriptName'] = request.script_name
         if not UtilClient.is_unset(request.script_type):
             query['ScriptType'] = request.script_type
+        if not UtilClient.is_unset(request.statuses):
+            query['Statuses'] = request.statuses
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6590,8 +6600,14 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_name):
+            query['ScriptName'] = request.script_name
         if not UtilClient.is_unset(request.script_type):
             query['ScriptType'] = request.script_type
+        if not UtilClient.is_unset(request.statuses):
+            query['Statuses'] = request.statuses
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

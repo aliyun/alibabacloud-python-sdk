@@ -1622,17 +1622,17 @@ class AutoScalingPolicyConstraints(TeaModel):
 
         result = dict()
         if self.max_capacity is not None:
-            result['maxCapacity'] = self.max_capacity
+            result['MaxCapacity'] = self.max_capacity
         if self.min_capacity is not None:
-            result['minCapacity'] = self.min_capacity
+            result['MinCapacity'] = self.min_capacity
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('maxCapacity') is not None:
-            self.max_capacity = m.get('maxCapacity')
-        if m.get('minCapacity') is not None:
-            self.min_capacity = m.get('minCapacity')
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
         return self
 
 
@@ -1660,21 +1660,21 @@ class AutoScalingPolicy(TeaModel):
 
         result = dict()
         if self.constraints is not None:
-            result['constraints'] = self.constraints.to_map()
-        result['scalingRules'] = []
+            result['Constraints'] = self.constraints.to_map()
+        result['ScalingRules'] = []
         if self.scaling_rules is not None:
             for k in self.scaling_rules:
-                result['scalingRules'].append(k.to_map() if k else None)
+                result['ScalingRules'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('constraints') is not None:
+        if m.get('Constraints') is not None:
             temp_model = AutoScalingPolicyConstraints()
-            self.constraints = temp_model.from_map(m['constraints'])
+            self.constraints = temp_model.from_map(m['Constraints'])
         self.scaling_rules = []
-        if m.get('scalingRules') is not None:
-            for k in m.get('scalingRules'):
+        if m.get('ScalingRules') is not None:
+            for k in m.get('ScalingRules'):
                 temp_model = ScalingRule()
                 self.scaling_rules.append(temp_model.from_map(k))
         return self
@@ -8204,6 +8204,7 @@ class CreateScriptRequest(TeaModel):
         region_id: str = None,
         script_type: str = None,
         scripts: List[Script] = None,
+        timeout_secs: str = None,
     ):
         # The cluster ID.
         # 
@@ -8224,6 +8225,7 @@ class CreateScriptRequest(TeaModel):
         # 
         # This parameter is required.
         self.scripts = scripts
+        self.timeout_secs = timeout_secs
 
     def validate(self):
         if self.scripts:
@@ -8247,6 +8249,8 @@ class CreateScriptRequest(TeaModel):
         if self.scripts is not None:
             for k in self.scripts:
                 result['Scripts'].append(k.to_map() if k else None)
+        if self.timeout_secs is not None:
+            result['TimeoutSecs'] = self.timeout_secs
         return result
 
     def from_map(self, m: dict = None):
@@ -8262,6 +8266,8 @@ class CreateScriptRequest(TeaModel):
             for k in m.get('Scripts'):
                 temp_model = Script()
                 self.scripts.append(temp_model.from_map(k))
+        if m.get('TimeoutSecs') is not None:
+            self.timeout_secs = m.get('TimeoutSecs')
         return self
 
 
@@ -10209,6 +10215,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         cluster_id: str = None,
         constraints: GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints = None,
         node_group_id: str = None,
+        node_group_name: str = None,
         scaling_policy_id: str = None,
         scaling_policy_type: str = None,
         scaling_rules: List[GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules] = None,
@@ -10219,6 +10226,7 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
         self.constraints = constraints
         # The node group ID.
         self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
         # The ID of the auto scaling policy.
         self.scaling_policy_id = scaling_policy_id
         # The type of the auto scaling policy.
@@ -10246,6 +10254,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
             result['Constraints'] = self.constraints.to_map()
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
         if self.scaling_policy_id is not None:
             result['ScalingPolicyId'] = self.scaling_policy_id
         if self.scaling_policy_type is not None:
@@ -10265,6 +10275,8 @@ class GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies(TeaModel):
             self.constraints = temp_model.from_map(m['Constraints'])
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
         if m.get('ScalingPolicyId') is not None:
             self.scaling_policy_id = m.get('ScalingPolicyId')
         if m.get('ScalingPolicyType') is not None:
@@ -47425,7 +47437,10 @@ class ListScriptsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        script_id: str = None,
+        script_name: str = None,
         script_type: str = None,
+        statuses: List[str] = None,
     ):
         # Cluster ID.
         # 
@@ -47439,6 +47454,8 @@ class ListScriptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.script_id = script_id
+        self.script_name = script_name
         # Type of cluster script. Possible values:
         # 
         # - BOOTSTRAP: Bootstrap script.
@@ -47446,6 +47463,7 @@ class ListScriptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.script_type = script_type
+        self.statuses = statuses
 
     def validate(self):
         pass
@@ -47464,8 +47482,14 @@ class ListScriptsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.script_id is not None:
+            result['ScriptId'] = self.script_id
+        if self.script_name is not None:
+            result['ScriptName'] = self.script_name
         if self.script_type is not None:
             result['ScriptType'] = self.script_type
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
         return result
 
     def from_map(self, m: dict = None):
@@ -47478,8 +47502,14 @@ class ListScriptsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ScriptId') is not None:
+            self.script_id = m.get('ScriptId')
+        if m.get('ScriptName') is not None:
+            self.script_name = m.get('ScriptName')
         if m.get('ScriptType') is not None:
             self.script_type = m.get('ScriptType')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
         return self
 
 

@@ -1,3 +1,11 @@
+2025-01-16 Version: 2.2.1
+- Update API CreateScript: add param TimeoutSecs.
+- Update API GetClusterCloneMeta: update response param.
+- Update API ListScripts: add param ScriptId.
+- Update API ListScripts: add param ScriptName.
+- Update API ListScripts: add param Statuses.
+
+
 2024-12-23 Version: 2.2.0
 - Support API UpdateClusterAttribute.
 
