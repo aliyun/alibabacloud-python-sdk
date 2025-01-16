@@ -1,3 +1,39 @@
+2025-01-16 Version: 5.0.4
+- Update API AddAddressBook: update param AddressList.
+- Update API AddAddressBook: update param Description.
+- Update API AddAddressBook: update param GroupName.
+- Update API AddControlPolicy: update param ApplicationName.
+- Update API CreateVpcFirewallControlPolicy: update param ApplicationName.
+- Update API DescribeControlPolicy: add param Direction.
+- Update API DescribeControlPolicy: update param Direction.
+- Update API ModifyAddressBook: update param Description.
+- Update API ModifyAddressBook: update param GroupName.
+- Update API ModifyControlPolicy: update param AclAction.
+- Update API ModifyControlPolicy: update param ApplicationName.
+- Update API ModifyControlPolicy: update param Description.
+- Update API ModifyControlPolicy: update param Destination.
+- Update API ModifyControlPolicy: update param DestinationType.
+- Update API ModifyControlPolicy: update param Direction.
+- Update API ModifyControlPolicy: update param Proto.
+- Update API ModifyControlPolicy: update param Source.
+- Update API ModifyControlPolicy: update param SourceType.
+- Update API ModifyNatFirewallControlPolicy: update param AclAction.
+- Update API ModifyNatFirewallControlPolicy: update param Description.
+- Update API ModifyNatFirewallControlPolicy: update param Destination.
+- Update API ModifyNatFirewallControlPolicy: update param DestinationType.
+- Update API ModifyNatFirewallControlPolicy: update param Proto.
+- Update API ModifyNatFirewallControlPolicy: update param Source.
+- Update API ModifyNatFirewallControlPolicy: update param SourceType.
+- Update API ModifyVpcFirewallControlPolicy: update param AclAction.
+- Update API ModifyVpcFirewallControlPolicy: update param ApplicationName.
+- Update API ModifyVpcFirewallControlPolicy: update param Description.
+- Update API ModifyVpcFirewallControlPolicy: update param Destination.
+- Update API ModifyVpcFirewallControlPolicy: update param DestinationType.
+- Update API ModifyVpcFirewallControlPolicy: update param Proto.
+- Update API ModifyVpcFirewallControlPolicy: update param Source.
+- Update API ModifyVpcFirewallControlPolicy: update param SourceType.
+
+
 2025-01-16 Version: 5.0.3
 - Generated python 2017-12-07 for Cloudfw.
 

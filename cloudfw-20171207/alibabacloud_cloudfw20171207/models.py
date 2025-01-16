@@ -21267,8 +21267,6 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
-        # 
-        # This parameter is required.
         self.acl_action = acl_action
         # The UUID of the access control policy.
         # 
@@ -21302,8 +21300,6 @@ class ModifyControlPolicyRequest(TeaModel):
         # >  You must specify one of the ApplicationNameList and ApplicationName parameters. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name_list = application_name_list
         # The description of the access control policy.
-        # 
-        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         self.dest_port = dest_port
@@ -21320,8 +21316,6 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group.
         # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \\*.aliyuncs.com.
         # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"].
-        # 
-        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
@@ -21329,15 +21323,11 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         # *   **location**: location
-        # 
-        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
-        # 
-        # This parameter is required.
         self.direction = direction
         # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
@@ -21364,8 +21354,6 @@ class ModifyControlPolicyRequest(TeaModel):
         # >  The value **ANY** indicates all types of applications.
         # 
         # >  If the traffic direction is outbound and the destination address is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP or ANY. If you set Proto to TCP, you can set ApplicationName to HTTP, HTTPS, SMTP, SMTPS, and SSL. If you set Proto to ANY, you can set ApplicationName to ANY.
-        # 
-        # This parameter is required.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
@@ -21404,16 +21392,12 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24.
         # *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group.
         # *   If **SourceType** is set to location, the value of **Source** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
-        # 
-        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **location**: location
-        # 
-        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
@@ -22211,8 +22195,6 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
-        # 
-        # This parameter is required.
         self.acl_action = acl_action
         # The UUID of the access control policy.
         # 
@@ -22225,8 +22207,6 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # The description of the access control policy. Fuzzy match is supported.
         # 
         # > If you do not specify this parameter, the descriptions of all policies are queried.
-        # 
-        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         # 
@@ -22245,8 +22225,6 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
         # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \\*.aliyuncs.com
         # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
-        # 
-        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
@@ -22254,8 +22232,6 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         # *   **location**: destination location
-        # 
-        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid value:
         # 
@@ -22290,8 +22266,6 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # >  The value **ANY** indicates all types of applications.
         # 
         # >  If the destination address type is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP. If you set Proto to TCP, you can set application types to HTTP, HTTPS, SMTP, SMTPS, and SSL.
-        # 
-        # This parameter is required.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
@@ -22329,15 +22303,11 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block. Example: 10.2.XX.XX/24.
         # *   If **SourceType** is set to `group`, the value of this parameter is an address book name. Example: db_group.
-        # 
-        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
-        # 
-        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
@@ -23947,8 +23917,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: blocks the traffic.
         # *   **log**: monitors the traffic.
-        # 
-        # This parameter is required.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         # 
@@ -23979,8 +23947,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy.
-        # 
-        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         self.dest_port = dest_port
@@ -24004,8 +23970,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   If **DestinationType** is set to `domain`, the value of this parameter must be a domain name.
         # 
         #     Example: \\*.aliyuncs.com
-        # 
-        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy.
         # 
@@ -24014,8 +23978,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **domain**: domain name
-        # 
-        # This parameter is required.
         self.destination_type = destination_type
         # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
@@ -24042,8 +24004,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   TCP
         # *   UDP
         # *   ICMP
-        # 
-        # This parameter is required.
         self.proto = proto
         # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
@@ -24088,8 +24048,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
         # 
         #     Example: db_group
-        # 
-        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy.
         # 
@@ -24097,8 +24055,6 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
-        # 
-        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
