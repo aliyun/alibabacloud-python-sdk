@@ -124,6 +124,7 @@ class ScorePageItem(TeaModel):
         images: List[IncludeImage] = None,
         link: str = None,
         main_text: str = None,
+        markdown_text: str = None,
         mime: str = None,
         page_map: Dict[str, str] = None,
         publish_time: int = None,
@@ -145,6 +146,7 @@ class ScorePageItem(TeaModel):
         # This parameter is required.
         self.link = link
         self.main_text = main_text
+        self.markdown_text = markdown_text
         self.mime = mime
         self.page_map = page_map
         # This parameter is required.
@@ -186,6 +188,8 @@ class ScorePageItem(TeaModel):
             result['link'] = self.link
         if self.main_text is not None:
             result['mainText'] = self.main_text
+        if self.markdown_text is not None:
+            result['markdownText'] = self.markdown_text
         if self.mime is not None:
             result['mime'] = self.mime
         if self.page_map is not None:
@@ -223,6 +227,8 @@ class ScorePageItem(TeaModel):
             self.link = m.get('link')
         if m.get('mainText') is not None:
             self.main_text = m.get('mainText')
+        if m.get('markdownText') is not None:
+            self.markdown_text = m.get('markdownText')
         if m.get('mime') is not None:
             self.mime = m.get('mime')
         if m.get('pageMap') is not None:

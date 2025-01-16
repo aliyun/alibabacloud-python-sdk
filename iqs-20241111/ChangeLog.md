@@ -1,3 +1,6 @@
+2025-01-16 Version: 1.1.3
+- Generated python 2024-11-11 for IQS.
+
 2024-12-20 Version: 1.1.2
 - Update API AiSearch: update response param.
 
