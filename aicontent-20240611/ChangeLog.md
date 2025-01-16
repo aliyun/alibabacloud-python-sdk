@@ -1,3 +1,19 @@
+2025-01-16 Version: 1.4.0
+- Support API ExecuteTextbookAssistantDialogue.
+- Support API ExecuteTextbookAssistantDifficulty.
+- Support API ExecuteTextbookAssistantGrammarCheck.
+- Support API ExecuteTextbookAssistantRefineByContext.
+- Support API ExecuteTextbookAssistantRetryConversation.
+- Support API ExecuteTextbookAssistantStartConversation.
+- Support API ExecuteTextbookAssistantSuggestion.
+- Support API ExecuteTextbookAssistantTranslate.
+- Support API GetTextbookAssistantToken.
+- Support API ListTextbookAssistantArticles.
+- Support API ListTextbookAssistantBookDirectories.
+- Support API ListTextbookAssistantBooks.
+- Support API ListTextbookAssistantGradeVolumes.
+
+
 2025-01-02 Version: 1.3.1
 - Update API GetAITeacherSyncDialogueSuggestion: update response param.
 

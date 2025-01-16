@@ -1197,6 +1197,934 @@ class Client(OpenApiClient):
         headers = {}
         return await self.execute_aiteacher_sync_dialogue_translate_with_options_async(request, headers, runtime)
 
+    def execute_textbook_assistant_dialogue_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse:
+        """
+        @summary 进行AI对话
+        
+        @param request: ExecuteTextbookAssistantDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user_message):
+            body['userMessage'] = request.user_message
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteDialogue',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_dialogue_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDialogueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse:
+        """
+        @summary 进行AI对话
+        
+        @param request: ExecuteTextbookAssistantDialogueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantDialogueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user_message):
+            body['userMessage'] = request.user_message
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantDialogue',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteDialogue',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_dialogue(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse:
+        """
+        @summary 进行AI对话
+        
+        @param request: ExecuteTextbookAssistantDialogueRequest
+        @return: ExecuteTextbookAssistantDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_dialogue_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_dialogue_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDialogueRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDialogueResponse:
+        """
+        @summary 进行AI对话
+        
+        @param request: ExecuteTextbookAssistantDialogueRequest
+        @return: ExecuteTextbookAssistantDialogueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_dialogue_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_difficulty_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDifficultyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse:
+        """
+        @summary 调整难度
+        
+        @param request: ExecuteTextbookAssistantDifficultyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantDifficultyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantDifficulty',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteDifficulty',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_difficulty_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDifficultyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse:
+        """
+        @summary 调整难度
+        
+        @param request: ExecuteTextbookAssistantDifficultyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantDifficultyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.action):
+            body['action'] = request.action
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantDifficulty',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteDifficulty',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_difficulty(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDifficultyRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse:
+        """
+        @summary 调整难度
+        
+        @param request: ExecuteTextbookAssistantDifficultyRequest
+        @return: ExecuteTextbookAssistantDifficultyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_difficulty_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_difficulty_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantDifficultyRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantDifficultyResponse:
+        """
+        @summary 调整难度
+        
+        @param request: ExecuteTextbookAssistantDifficultyRequest
+        @return: ExecuteTextbookAssistantDifficultyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_difficulty_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_grammar_check_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteTextbookAssistantGrammarCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantGrammarCheckResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantGrammarCheck',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteGrammarCheck',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_grammar_check_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteTextbookAssistantGrammarCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantGrammarCheckResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantGrammarCheck',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteGrammarCheck',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_grammar_check(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteTextbookAssistantGrammarCheckRequest
+        @return: ExecuteTextbookAssistantGrammarCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_grammar_check_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_grammar_check_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantGrammarCheckResponse:
+        """
+        @summary 语法检测
+        
+        @param request: ExecuteTextbookAssistantGrammarCheckRequest
+        @return: ExecuteTextbookAssistantGrammarCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_grammar_check_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_refine_by_context_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse:
+        """
+        @summary 句子润色
+        
+        @param request: ExecuteTextbookAssistantRefineByContextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantRefineByContextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantRefineByContext',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/RefineByContext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_refine_by_context_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse:
+        """
+        @summary 句子润色
+        
+        @param request: ExecuteTextbookAssistantRefineByContextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantRefineByContextResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantRefineByContext',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/RefineByContext',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_refine_by_context(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse:
+        """
+        @summary 句子润色
+        
+        @param request: ExecuteTextbookAssistantRefineByContextRequest
+        @return: ExecuteTextbookAssistantRefineByContextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_refine_by_context_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_refine_by_context_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRefineByContextResponse:
+        """
+        @summary 句子润色
+        
+        @param request: ExecuteTextbookAssistantRefineByContextRequest
+        @return: ExecuteTextbookAssistantRefineByContextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_refine_by_context_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_retry_conversation_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse:
+        """
+        @summary 对话重试
+        
+        @param request: ExecuteTextbookAssistantRetryConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantRetryConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantRetryConversation',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/RetryConversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_retry_conversation_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse:
+        """
+        @summary 对话重试
+        
+        @param request: ExecuteTextbookAssistantRetryConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantRetryConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantRetryConversation',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/RetryConversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_retry_conversation(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse:
+        """
+        @summary 对话重试
+        
+        @param request: ExecuteTextbookAssistantRetryConversationRequest
+        @return: ExecuteTextbookAssistantRetryConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_retry_conversation_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_retry_conversation_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantRetryConversationResponse:
+        """
+        @summary 对话重试
+        
+        @param request: ExecuteTextbookAssistantRetryConversationRequest
+        @return: ExecuteTextbookAssistantRetryConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_retry_conversation_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_start_conversation_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantStartConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse:
+        """
+        @summary 开启自由对话
+        
+        @param request: ExecuteTextbookAssistantStartConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantStartConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.article_id):
+            body['articleId'] = request.article_id
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantStartConversation',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/StartConversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_start_conversation_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantStartConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse:
+        """
+        @summary 开启自由对话
+        
+        @param request: ExecuteTextbookAssistantStartConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantStartConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.article_id):
+            body['articleId'] = request.article_id
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantStartConversation',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/StartConversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_start_conversation(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantStartConversationRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse:
+        """
+        @summary 开启自由对话
+        
+        @param request: ExecuteTextbookAssistantStartConversationRequest
+        @return: ExecuteTextbookAssistantStartConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_start_conversation_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_start_conversation_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantStartConversationRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantStartConversationResponse:
+        """
+        @summary 开启自由对话
+        
+        @param request: ExecuteTextbookAssistantStartConversationRequest
+        @return: ExecuteTextbookAssistantStartConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_start_conversation_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_suggestion_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse:
+        """
+        @summary 获取鉴权参数
+        
+        @param request: ExecuteTextbookAssistantSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/Suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_suggestion_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantSuggestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse:
+        """
+        @summary 获取鉴权参数
+        
+        @param request: ExecuteTextbookAssistantSuggestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantSuggestionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantSuggestion',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/Suggestion',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_suggestion(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantSuggestionRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse:
+        """
+        @summary 获取鉴权参数
+        
+        @param request: ExecuteTextbookAssistantSuggestionRequest
+        @return: ExecuteTextbookAssistantSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_suggestion_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_suggestion_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantSuggestionRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantSuggestionResponse:
+        """
+        @summary 获取鉴权参数
+        
+        @param request: ExecuteTextbookAssistantSuggestionRequest
+        @return: ExecuteTextbookAssistantSuggestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_suggestion_with_options_async(request, headers, runtime)
+
+    def execute_textbook_assistant_translate_with_options(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse:
+        """
+        @summary 翻译消息内容
+        
+        @param request: ExecuteTextbookAssistantTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteTranslate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_textbook_assistant_translate_with_options_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantTranslateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse:
+        """
+        @summary 翻译消息内容
+        
+        @param request: ExecuteTextbookAssistantTranslateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTextbookAssistantTranslateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.assistant):
+            body['assistant'] = request.assistant
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTextbookAssistantTranslate',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/dialogue/ExecuteTranslate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_textbook_assistant_translate(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse:
+        """
+        @summary 翻译消息内容
+        
+        @param request: ExecuteTextbookAssistantTranslateRequest
+        @return: ExecuteTextbookAssistantTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_textbook_assistant_translate_with_options(request, headers, runtime)
+
+    async def execute_textbook_assistant_translate_async(
+        self,
+        request: ai_content_20240611_models.ExecuteTextbookAssistantTranslateRequest,
+    ) -> ai_content_20240611_models.ExecuteTextbookAssistantTranslateResponse:
+        """
+        @summary 翻译消息内容
+        
+        @param request: ExecuteTextbookAssistantTranslateRequest
+        @return: ExecuteTextbookAssistantTranslateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_textbook_assistant_translate_with_options_async(request, headers, runtime)
+
     def get_aiteacher_expansion_dialogue_suggestion_with_options(
         self,
         request: ai_content_20240611_models.GetAITeacherExpansionDialogueSuggestionRequest,
@@ -1444,6 +2372,570 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_aiteacher_sync_dialogue_suggestion_with_options_async(request, headers, runtime)
+
+    def get_textbook_assistant_token_with_options(
+        self,
+        request: ai_content_20240611_models.GetTextbookAssistantTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetTextbookAssistantTokenResponse:
+        """
+        @summary 获取请求鉴权参数
+        
+        @param request: GetTextbookAssistantTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTextbookAssistantTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_id):
+            body['deviceId'] = request.device_id
+        if not UtilClient.is_unset(request.model):
+            body['model'] = request.model
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTextbookAssistantToken',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/GetToken',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_textbook_assistant_token_with_options_async(
+        self,
+        request: ai_content_20240611_models.GetTextbookAssistantTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.GetTextbookAssistantTokenResponse:
+        """
+        @summary 获取请求鉴权参数
+        
+        @param request: GetTextbookAssistantTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTextbookAssistantTokenResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_id):
+            body['deviceId'] = request.device_id
+        if not UtilClient.is_unset(request.model):
+            body['model'] = request.model
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTextbookAssistantToken',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/GetToken',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.GetTextbookAssistantTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_textbook_assistant_token(
+        self,
+        request: ai_content_20240611_models.GetTextbookAssistantTokenRequest,
+    ) -> ai_content_20240611_models.GetTextbookAssistantTokenResponse:
+        """
+        @summary 获取请求鉴权参数
+        
+        @param request: GetTextbookAssistantTokenRequest
+        @return: GetTextbookAssistantTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_textbook_assistant_token_with_options(request, headers, runtime)
+
+    async def get_textbook_assistant_token_async(
+        self,
+        request: ai_content_20240611_models.GetTextbookAssistantTokenRequest,
+    ) -> ai_content_20240611_models.GetTextbookAssistantTokenResponse:
+        """
+        @summary 获取请求鉴权参数
+        
+        @param request: GetTextbookAssistantTokenRequest
+        @return: GetTextbookAssistantTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_textbook_assistant_token_with_options_async(request, headers, runtime)
+
+    def list_textbook_assistant_articles_with_options(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantArticlesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantArticlesResponse:
+        """
+        @summary 获取文章列表
+        
+        @param request: ListTextbookAssistantArticlesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantArticlesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.directory_id):
+            body['directoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantArticles',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListArticles',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_textbook_assistant_articles_with_options_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantArticlesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantArticlesResponse:
+        """
+        @summary 获取文章列表
+        
+        @param request: ListTextbookAssistantArticlesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantArticlesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.directory_id):
+            body['directoryId'] = request.directory_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantArticles',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListArticles',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantArticlesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_textbook_assistant_articles(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantArticlesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantArticlesResponse:
+        """
+        @summary 获取文章列表
+        
+        @param request: ListTextbookAssistantArticlesRequest
+        @return: ListTextbookAssistantArticlesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_textbook_assistant_articles_with_options(request, headers, runtime)
+
+    async def list_textbook_assistant_articles_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantArticlesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantArticlesResponse:
+        """
+        @summary 获取文章列表
+        
+        @param request: ListTextbookAssistantArticlesRequest
+        @return: ListTextbookAssistantArticlesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_textbook_assistant_articles_with_options_async(request, headers, runtime)
+
+    def list_textbook_assistant_book_directories_with_options(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBookDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse:
+        """
+        @summary 获取书本下的目录信息
+        
+        @param request: ListTextbookAssistantBookDirectoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantBookDirectoriesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.book_id):
+            body['bookId'] = request.book_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantBookDirectories',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListBookDirectories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_textbook_assistant_book_directories_with_options_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBookDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse:
+        """
+        @summary 获取书本下的目录信息
+        
+        @param request: ListTextbookAssistantBookDirectoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantBookDirectoriesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.book_id):
+            body['bookId'] = request.book_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantBookDirectories',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListBookDirectories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_textbook_assistant_book_directories(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBookDirectoriesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse:
+        """
+        @summary 获取书本下的目录信息
+        
+        @param request: ListTextbookAssistantBookDirectoriesRequest
+        @return: ListTextbookAssistantBookDirectoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_textbook_assistant_book_directories_with_options(request, headers, runtime)
+
+    async def list_textbook_assistant_book_directories_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBookDirectoriesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBookDirectoriesResponse:
+        """
+        @summary 获取书本下的目录信息
+        
+        @param request: ListTextbookAssistantBookDirectoriesRequest
+        @return: ListTextbookAssistantBookDirectoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_textbook_assistant_book_directories_with_options_async(request, headers, runtime)
+
+    def list_textbook_assistant_books_with_options(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBooksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBooksResponse:
+        """
+        @summary 获取包含年级下的书本列表
+        
+        @param request: ListTextbookAssistantBooksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantBooksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.book_id):
+            body['bookId'] = request.book_id
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
+        if not UtilClient.is_unset(request.volume):
+            body['volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantBooks',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListBooks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_textbook_assistant_books_with_options_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBooksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBooksResponse:
+        """
+        @summary 获取包含年级下的书本列表
+        
+        @param request: ListTextbookAssistantBooksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantBooksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.book_id):
+            body['bookId'] = request.book_id
+        if not UtilClient.is_unset(request.grade):
+            body['grade'] = request.grade
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page):
+            body['page'] = request.page
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
+        if not UtilClient.is_unset(request.volume):
+            body['volume'] = request.volume
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantBooks',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListBooks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantBooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_textbook_assistant_books(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBooksRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBooksResponse:
+        """
+        @summary 获取包含年级下的书本列表
+        
+        @param request: ListTextbookAssistantBooksRequest
+        @return: ListTextbookAssistantBooksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_textbook_assistant_books_with_options(request, headers, runtime)
+
+    async def list_textbook_assistant_books_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantBooksRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantBooksResponse:
+        """
+        @summary 获取包含年级下的书本列表
+        
+        @param request: ListTextbookAssistantBooksRequest
+        @return: ListTextbookAssistantBooksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_textbook_assistant_books_with_options_async(request, headers, runtime)
+
+    def list_textbook_assistant_grade_volumes_with_options(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantGradeVolumesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse:
+        """
+        @summary 获取有资源的年级信息
+        
+        @param request: ListTextbookAssistantGradeVolumesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantGradeVolumesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantGradeVolumes',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListGradeVolumes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_textbook_assistant_grade_volumes_with_options_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantGradeVolumesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse:
+        """
+        @summary 获取有资源的年级信息
+        
+        @param request: ListTextbookAssistantGradeVolumesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextbookAssistantGradeVolumesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auth_token):
+            body['authToken'] = request.auth_token
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTextbookAssistantGradeVolumes',
+            version='20240611',
+            protocol='HTTPS',
+            pathname=f'/api/v1/textbookAssistant/teachingResource/ListGradeVolumes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_textbook_assistant_grade_volumes(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantGradeVolumesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse:
+        """
+        @summary 获取有资源的年级信息
+        
+        @param request: ListTextbookAssistantGradeVolumesRequest
+        @return: ListTextbookAssistantGradeVolumesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_textbook_assistant_grade_volumes_with_options(request, headers, runtime)
+
+    async def list_textbook_assistant_grade_volumes_async(
+        self,
+        request: ai_content_20240611_models.ListTextbookAssistantGradeVolumesRequest,
+    ) -> ai_content_20240611_models.ListTextbookAssistantGradeVolumesResponse:
+        """
+        @summary 获取有资源的年级信息
+        
+        @param request: ListTextbookAssistantGradeVolumesRequest
+        @return: ListTextbookAssistantGradeVolumesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_textbook_assistant_grade_volumes_with_options_async(request, headers, runtime)
 
     def personalized_text_to_image_add_inference_job_with_options(
         self,
