@@ -1,3 +1,6 @@
+2025-01-16 Version: 2.0.1
+- Generated python 2022-05-30 for eflo.
+
 2025-01-10 Version: 2.0.0
 - Support API AssignLeniPrivateIpAddress.
 - Support API AssociateVpdCidrBlock.
