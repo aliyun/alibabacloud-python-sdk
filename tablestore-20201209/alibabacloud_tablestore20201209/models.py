@@ -934,6 +934,7 @@ class GetInstanceResponseBody(TeaModel):
         self,
         alias_name: str = None,
         create_time: str = None,
+        elastic_vcuupper_limit: float = None,
         instance_description: str = None,
         instance_name: str = None,
         instance_specification: str = None,
@@ -955,10 +956,11 @@ class GetInstanceResponseBody(TeaModel):
         user_id: str = None,
         vcuquota: int = None,
     ):
-        # The alias of the instance.
+        # The instance alias.
         self.alias_name = alias_name
         # The time when the instance was created.
         self.create_time = create_time
+        self.elastic_vcuupper_limit = elastic_vcuupper_limit
         # The description of the instance.
         self.instance_description = instance_description
         # The name of the instance.
@@ -974,6 +976,10 @@ class GetInstanceResponseBody(TeaModel):
         # *   forbidden: The instance is disabled.
         # *   Deleting: The instance is being deleted.
         self.instance_status = instance_status
+        # Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
+        # 
+        # *   true: ZRS is enabled for the instance.
+        # *   false: Locally redundant storage (LRS) is enabled for the instance.
         self.is_multi_az = is_multi_az
         # The network type of the instance. Valid values:
         # 
@@ -1038,6 +1044,8 @@ class GetInstanceResponseBody(TeaModel):
             result['AliasName'] = self.alias_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.elastic_vcuupper_limit is not None:
+            result['ElasticVCUUpperLimit'] = self.elastic_vcuupper_limit
         if self.instance_description is not None:
             result['InstanceDescription'] = self.instance_description
         if self.instance_name is not None:
@@ -1088,6 +1096,8 @@ class GetInstanceResponseBody(TeaModel):
             self.alias_name = m.get('AliasName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ElasticVCUUpperLimit') is not None:
+            self.elastic_vcuupper_limit = m.get('ElasticVCUUpperLimit')
         if m.get('InstanceDescription') is not None:
             self.instance_description = m.get('InstanceDescription')
         if m.get('InstanceName') is not None:
@@ -1342,6 +1352,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.instance_specification = instance_specification
         # The instance status.
         self.instance_status = instance_status
+        # Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
+        # 
+        # *   true: ZRS is enabled for the instance.
+        # *   false: Locally redundant storage (LRS) is enabled for the instance.
         self.is_multi_az = is_multi_az
         # The billing method.
         # 
@@ -1352,7 +1366,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the instance.
+        # The instance ID.
         self.spinstance_id = spinstance_id
         # The storage type.
         # 
@@ -1444,7 +1458,7 @@ class ListInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The instances.
+        # The details about the instances.
         self.instances = instances
         # The token that determines the start position of the next query. If this parameter is empty, all instances that you want to query are returned.
         self.next_token = next_token
