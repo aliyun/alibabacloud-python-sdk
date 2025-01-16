@@ -1504,7 +1504,9 @@ class CreateControlPolicyRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1566,6 +1568,7 @@ class CreateControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.policy_name = policy_name
+        # The tag to add to the access control policy.
         self.tag = tag
 
     def validate(self):
@@ -1778,7 +1781,9 @@ class CreateFolderRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1820,6 +1825,7 @@ class CreateFolderRequest(TeaModel):
         self.folder_name = folder_name
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
+        # The tag to add to the folder.
         self.tag = tag
 
     def validate(self):
@@ -6289,6 +6295,8 @@ class ListAccountsRequest(TeaModel):
     def __init__(
         self,
         include_tags: bool = None,
+        max_results: int = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         query_keyword: str = None,
@@ -6299,6 +6307,8 @@ class ListAccountsRequest(TeaModel):
         # *   false (default value)
         # *   true
         self.include_tags = include_tags
+        self.max_results = max_results
+        self.next_token = next_token
         # The number of the page to return.
         # 
         # Pages start from page 1. Default value: 1.
@@ -6328,6 +6338,10 @@ class ListAccountsRequest(TeaModel):
         result = dict()
         if self.include_tags is not None:
             result['IncludeTags'] = self.include_tags
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6344,6 +6358,10 @@ class ListAccountsRequest(TeaModel):
         m = m or dict()
         if m.get('IncludeTags') is not None:
             self.include_tags = m.get('IncludeTags')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6602,6 +6620,7 @@ class ListAccountsResponseBody(TeaModel):
     def __init__(
         self,
         accounts: ListAccountsResponseBodyAccounts = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
@@ -6609,6 +6628,7 @@ class ListAccountsResponseBody(TeaModel):
     ):
         # The information about the members.
         self.accounts = accounts
+        self.next_token = next_token
         # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
@@ -6630,6 +6650,8 @@ class ListAccountsResponseBody(TeaModel):
         result = dict()
         if self.accounts is not None:
             result['Accounts'] = self.accounts.to_map()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -6645,6 +6667,8 @@ class ListAccountsResponseBody(TeaModel):
         if m.get('Accounts') is not None:
             temp_model = ListAccountsResponseBodyAccounts()
             self.accounts = temp_model.from_map(m['Accounts'])
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8274,7 +8298,9 @@ class ListFoldersForParentRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8326,6 +8352,7 @@ class ListFoldersForParentRequest(TeaModel):
         # 
         # Fuzzy match is supported.
         self.query_keyword = query_keyword
+        # The tags. This parameter specifies a filter condition.
         self.tag = tag
 
     def validate(self):
@@ -8378,7 +8405,9 @@ class ListFoldersForParentResponseBodyFoldersFolderTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8454,6 +8483,7 @@ class ListFoldersForParentResponseBodyFoldersFolder(TeaModel):
         self.folder_id = folder_id
         # The name of the folder.
         self.folder_name = folder_name
+        # The tags added to the folder.
         self.tags = tags
 
     def validate(self):
@@ -8534,7 +8564,7 @@ class ListFoldersForParentResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of the folders.
+        # The folders.
         self.folders = folders
         # The page number of the returned page.
         self.page_number = page_number
@@ -12947,6 +12977,109 @@ class UpdateMessageContactResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMessageContactResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePayerForAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        payer_account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+        # This parameter is required.
+        self.payer_account_id = payer_account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.payer_account_id is not None:
+            result['PayerAccountId'] = self.payer_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('PayerAccountId') is not None:
+            self.payer_account_id = m.get('PayerAccountId')
+        return self
+
+
+class UpdatePayerForAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePayerForAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePayerForAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePayerForAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

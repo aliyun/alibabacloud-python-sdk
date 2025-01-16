@@ -1,3 +1,10 @@
+2025-01-16 Version: 2.1.0
+- Support API UpdatePayerForAccount.
+- Update API ListAccounts: add param MaxResults.
+- Update API ListAccounts: add param NextToken.
+- Update API ListAccounts: update response param.
+
+
 2024-09-29 Version: 2.0.5
 - Update API ListFoldersForParent: add param Tag.
 - Update API ListFoldersForParent: update response param.
