@@ -1,3 +1,15 @@
+2025-01-16 Version: 1.1.1
+- Update API AuthorizeEndpointAcl: update param AclStrategy.
+- Update API AuthorizeEndpointAcl: update param CidrList.
+- Update API AuthorizeEndpointAcl: update param EndpointType.
+- Update API DisableEndpoint: update param EndpointType.
+- Update API EnableEndpoint: update param EndpointType.
+- Update API GetEndpointAttribute: update param EndpointType.
+- Update API RevokeEndpointAcl: update param AclStrategy.
+- Update API RevokeEndpointAcl: update param CidrList.
+- Update API RevokeEndpointAcl: update param EndpointType.
+
+
 2025-01-14 Version: 1.1.0
 - Support API AuthorizeEndpointAcl.
 - Support API DisableEndpoint.

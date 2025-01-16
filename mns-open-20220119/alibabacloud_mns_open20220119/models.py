@@ -56,8 +56,21 @@ class AuthorizeEndpointAclRequest(TeaModel):
         cidr_list: List[str] = None,
         endpoint_type: str = None,
     ):
+        # The ACL policy. Valid value:
+        # 
+        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # 
+        # This parameter is required.
         self.acl_strategy = acl_strategy
+        # The CIDR blocks.
+        # 
+        # This parameter is required.
         self.cidr_list = cidr_list
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -95,8 +108,21 @@ class AuthorizeEndpointAclShrinkRequest(TeaModel):
         cidr_list_shrink: str = None,
         endpoint_type: str = None,
     ):
+        # The ACL policy. Valid value:
+        # 
+        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # 
+        # This parameter is required.
         self.acl_strategy = acl_strategy
+        # The CIDR blocks.
+        # 
+        # This parameter is required.
         self.cidr_list_shrink = cidr_list_shrink
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -136,10 +162,15 @@ class AuthorizeEndpointAclResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -266,10 +297,12 @@ class CreateQueueRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
-        # Specifies whether to enable the logging feature. Valid values:
+        # Specifies whether to enable the log management feature. Valid values:
         # 
-        # *   True
-        # *   False (default)
+        # *   true: enabled.
+        # *   false: disabled.
+        # 
+        # Default value: false.
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
@@ -532,10 +565,10 @@ class CreateTopicRequest(TeaModel):
         tag: List[CreateTopicRequestTag] = None,
         topic_name: str = None,
     ):
-        # Specifies whether to enable the logging feature. Valid values:
+        # Specifies whether to enable the log management feature. Valid values:
         # 
-        # *   True
-        # *   False (default)
+        # *   true: enabled.
+        # *   false: disabled. Default value: false.
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.max_message_size = max_message_size
@@ -1051,6 +1084,11 @@ class DisableEndpointRequest(TeaModel):
         self,
         endpoint_type: str = None,
     ):
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -1082,10 +1120,15 @@ class DisableEndpointResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1170,6 +1213,11 @@ class EnableEndpointRequest(TeaModel):
         self,
         endpoint_type: str = None,
     ):
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -1201,10 +1249,15 @@ class EnableEndpointResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1289,6 +1342,11 @@ class GetEndpointAttributeRequest(TeaModel):
         self,
         endpoint_type: str = None,
     ):
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates a public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -1318,8 +1376,13 @@ class GetEndpointAttributeResponseBodyDataCidrList(TeaModel):
         cidr: str = None,
         create_time: int = None,
     ):
+        # The ACL policy. Valid value:
+        # 
+        # *   **allow**: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
         self.acl_strategy = acl_strategy
+        # The CIDR block.
         self.cidr = cidr
+        # The time when the list was created.
         self.create_time = create_time
 
     def validate(self):
@@ -1356,7 +1419,9 @@ class GetEndpointAttributeResponseBodyData(TeaModel):
         cidr_list: List[GetEndpointAttributeResponseBodyDataCidrList] = None,
         endpoint_enabled: bool = None,
     ):
+        # The CIDR blocks.
         self.cidr_list = cidr_list
+        # Specifies whether the endpoint is enabled.
         self.endpoint_enabled = endpoint_enabled
 
     def validate(self):
@@ -1401,11 +1466,17 @@ class GetEndpointAttributeResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1618,15 +1689,15 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         tags: List[GetQueueAttributesResponseBodyDataTags] = None,
         visibility_timeout: int = None,
     ):
-        # The total number of messages that are in the Active state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.active_messages = active_messages
         # The time when the queue was created.
         self.create_time = create_time
-        # The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
-        # The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
         # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
@@ -1735,7 +1806,7 @@ class GetQueueAttributesResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -2148,7 +2219,9 @@ class GetTopicAttributesResponseBodyDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2202,6 +2275,7 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         self.message_count = message_count
         # The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The tags added to the resources.
         self.tags = tags
         # The name of the topic.
         self.topic_name = topic_name
@@ -2274,7 +2348,7 @@ class GetTopicAttributesResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -2463,7 +2537,9 @@ class ListQueueResponseBodyDataPageDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2507,15 +2583,15 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         tags: List[ListQueueResponseBodyDataPageDataTags] = None,
         visibility_timeout: int = None,
     ):
-        # The total number of messages that are in the Active state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Active state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.active_messages = active_messages
         # The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Delayed state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
-        # The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+        # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
         # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
@@ -2532,6 +2608,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         self.queue_name = queue_name
+        # The tags added to the resources.
         self.tags = tags
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
@@ -2695,7 +2772,7 @@ class ListQueueResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -2803,7 +2880,7 @@ class ListSubscriptionByTopicRequest(TeaModel):
         self.page_size = page_size
         # The name of the subscription.
         self.subscription_name = subscription_name
-        # The name of the topic.
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):
@@ -3201,7 +3278,9 @@ class ListTopicResponseBodyDataPageDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3257,10 +3336,13 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         self.message_count = message_count
         # The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The tags added to the resources.
         self.tags = tags
+        # The internal URL of the message topic. The internal URL can be accessed over an internal network.
         self.topic_inner_url = topic_inner_url
         # The name of the topic.
         self.topic_name = topic_name
+        # The URL of the message topic.
         self.topic_url = topic_url
 
     def validate(self):
@@ -3396,7 +3478,7 @@ class ListTopicResponseBody(TeaModel):
     ):
         # The response code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -3497,8 +3579,21 @@ class RevokeEndpointAclRequest(TeaModel):
         cidr_list: List[str] = None,
         endpoint_type: str = None,
     ):
+        # The ACL policy. Valid value:
+        # 
+        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # 
+        # This parameter is required.
         self.acl_strategy = acl_strategy
+        # The CIDR blocks.
+        # 
+        # This parameter is required.
         self.cidr_list = cidr_list
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates an public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -3536,8 +3631,21 @@ class RevokeEndpointAclShrinkRequest(TeaModel):
         cidr_list_shrink: str = None,
         endpoint_type: str = None,
     ):
+        # The ACL policy. Valid value:
+        # 
+        # *   **allow**: indicates that the operation is initiated from an endpoint in CIDR whitelist. (Only allow is supported)
+        # 
+        # This parameter is required.
         self.acl_strategy = acl_strategy
+        # The CIDR blocks.
+        # 
+        # This parameter is required.
         self.cidr_list_shrink = cidr_list_shrink
+        # The type of the endpoint. Valid value:
+        # 
+        # *   **public**: indicates an public endpoint. (Only public endpoint is supported.)
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -3577,10 +3685,15 @@ class RevokeEndpointAclResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3673,10 +3786,10 @@ class SetQueueAttributesRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
-        # Specifies whether to enable the logging feature. Valid values:
+        # Specifies whether to enable the log management feature. Valid values:
         # 
-        # *   True
-        # *   False (default)
+        # *   true: enabled.
+        # *   false: disabled. Default value: false.
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
@@ -4087,10 +4200,10 @@ class SetTopicAttributesRequest(TeaModel):
         max_message_size: int = None,
         topic_name: str = None,
     ):
-        # Specifies whether to enable the logging feature. Valid values:
+        # Specifies whether to enable the log management feature. Valid values:
         # 
-        # *   True
-        # *   False (default)
+        # *   true: enabled.
+        # *   false: disabled. Default value: false.
         self.enable_logging = enable_logging
         # The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.max_message_size = max_message_size

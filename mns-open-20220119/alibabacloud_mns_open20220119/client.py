@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary AuthorizeEndpointAcl
+        @summary Adds one or more ACLrules for an endpoint of a specified type.
         
         @param tmp_req: AuthorizeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -90,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary AuthorizeEndpointAcl
+        @summary Adds one or more ACLrules for an endpoint of a specified type.
         
         @param tmp_req: AuthorizeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -132,7 +132,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary AuthorizeEndpointAcl
+        @summary Adds one or more ACLrules for an endpoint of a specified type.
         
         @param request: AuthorizeEndpointAclRequest
         @return: AuthorizeEndpointAclResponse
@@ -145,7 +145,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.AuthorizeEndpointAclRequest,
     ) -> mns_open_20220119_models.AuthorizeEndpointAclResponse:
         """
-        @summary AuthorizeEndpointAcl
+        @summary Adds one or more ACLrules for an endpoint of a specified type.
         
         @param request: AuthorizeEndpointAclRequest
         @return: AuthorizeEndpointAclResponse
@@ -587,7 +587,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary DisableEndpoint
+        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -622,7 +622,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary DisableEndpoint
+        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -656,7 +656,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DisableEndpointRequest,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary DisableEndpoint
+        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @return: DisableEndpointResponse
@@ -669,7 +669,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DisableEndpointRequest,
     ) -> mns_open_20220119_models.DisableEndpointResponse:
         """
-        @summary DisableEndpoint
+        @summary You can call this operation to disable an endpoint of a specified type. After the endpoint is disabled, requests from the endpoint are blocked and an error is returned.
         
         @param request: DisableEndpointRequest
         @return: DisableEndpointResponse
@@ -683,7 +683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary EnableEndpoint
+        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -718,7 +718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary EnableEndpoint
+        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -752,7 +752,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.EnableEndpointRequest,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary EnableEndpoint
+        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @return: EnableEndpointResponse
@@ -765,7 +765,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.EnableEndpointRequest,
     ) -> mns_open_20220119_models.EnableEndpointResponse:
         """
-        @summary EnableEndpoint
+        @summary You can call this operation to enable an endpoint of a specified type. If the endpoint is enabled, requests from the endpoint that are included in the access control lists (ACLs) are not blocked.
         
         @param request: EnableEndpointRequest
         @return: EnableEndpointResponse
@@ -1499,7 +1499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary RevokeEndpointAcl
+        @summary Deletes one or more ACLs from an endpoint of a specified type.
         
         @param tmp_req: RevokeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1542,7 +1542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary RevokeEndpointAcl
+        @summary Deletes one or more ACLs from an endpoint of a specified type.
         
         @param tmp_req: RevokeEndpointAclRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1584,7 +1584,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.RevokeEndpointAclRequest,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary RevokeEndpointAcl
+        @summary Deletes one or more ACLs from an endpoint of a specified type.
         
         @param request: RevokeEndpointAclRequest
         @return: RevokeEndpointAclResponse
@@ -1597,7 +1597,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.RevokeEndpointAclRequest,
     ) -> mns_open_20220119_models.RevokeEndpointAclResponse:
         """
-        @summary RevokeEndpointAcl
+        @summary Deletes one or more ACLs from an endpoint of a specified type.
         
         @param request: RevokeEndpointAclRequest
         @return: RevokeEndpointAclResponse
