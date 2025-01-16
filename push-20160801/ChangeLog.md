@@ -1,3 +1,8 @@
+2025-01-16 Version: 1.0.16
+- Update API MassPush: add param IdempotentToken.
+- Update API Push: add param IdempotentToken.
+
+
 2024-11-13 Version: 1.0.15
 - Update API MassPush: update param PushTask.
 - Update API Push: add param AndroidMessageOppoCategory.

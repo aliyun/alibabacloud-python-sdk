@@ -2047,10 +2047,12 @@ class MassPushRequest(TeaModel):
     def __init__(
         self,
         app_key: int = None,
+        idempotent_token: str = None,
         push_task: List[MassPushRequestPushTask] = None,
     ):
         # This parameter is required.
         self.app_key = app_key
+        self.idempotent_token = idempotent_token
         # This parameter is required.
         self.push_task = push_task
 
@@ -2068,6 +2070,8 @@ class MassPushRequest(TeaModel):
         result = dict()
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
         result['PushTask'] = []
         if self.push_task is not None:
             for k in self.push_task:
@@ -2078,6 +2082,8 @@ class MassPushRequest(TeaModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
         self.push_task = []
         if m.get('PushTask') is not None:
             for k in m.get('PushTask'):
@@ -2260,6 +2266,7 @@ class PushRequest(TeaModel):
         harmony_render_style: str = None,
         harmony_test_message: bool = None,
         harmony_uri: str = None,
+        idempotent_token: str = None,
         job_key: str = None,
         push_time: str = None,
         push_type: str = None,
@@ -2362,6 +2369,7 @@ class PushRequest(TeaModel):
         self.harmony_render_style = harmony_render_style
         self.harmony_test_message = harmony_test_message
         self.harmony_uri = harmony_uri
+        self.idempotent_token = idempotent_token
         self.job_key = job_key
         self.push_time = push_time
         # This parameter is required.
@@ -2541,6 +2549,8 @@ class PushRequest(TeaModel):
             result['HarmonyTestMessage'] = self.harmony_test_message
         if self.harmony_uri is not None:
             result['HarmonyUri'] = self.harmony_uri
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
         if self.job_key is not None:
             result['JobKey'] = self.job_key
         if self.push_time is not None:
@@ -2741,6 +2751,8 @@ class PushRequest(TeaModel):
             self.harmony_test_message = m.get('HarmonyTestMessage')
         if m.get('HarmonyUri') is not None:
             self.harmony_uri = m.get('HarmonyUri')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
         if m.get('JobKey') is not None:
             self.job_key = m.get('JobKey')
         if m.get('PushTime') is not None:

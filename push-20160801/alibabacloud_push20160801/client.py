@@ -1219,6 +1219,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
         body = {}
         if not UtilClient.is_unset(request.push_task):
             body['PushTask'] = request.push_task
@@ -1258,6 +1260,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
         body = {}
         if not UtilClient.is_unset(request.push_task):
             body['PushTask'] = request.push_task
@@ -1457,6 +1461,8 @@ class Client(OpenApiClient):
             query['HarmonyTestMessage'] = request.harmony_test_message
         if not UtilClient.is_unset(request.harmony_uri):
             query['HarmonyUri'] = request.harmony_uri
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
         if not UtilClient.is_unset(request.push_time):
@@ -1686,6 +1692,8 @@ class Client(OpenApiClient):
             query['HarmonyTestMessage'] = request.harmony_test_message
         if not UtilClient.is_unset(request.harmony_uri):
             query['HarmonyUri'] = request.harmony_uri
+        if not UtilClient.is_unset(request.idempotent_token):
+            query['IdempotentToken'] = request.idempotent_token
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
         if not UtilClient.is_unset(request.push_time):
