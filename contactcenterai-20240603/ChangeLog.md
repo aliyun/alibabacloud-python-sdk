@@ -1,3 +1,9 @@
+2025-01-16 Version: 3.3.4
+- Update API CreateTask: update param body.
+- Update API GetTaskResult: update param requiredFieldList.
+- Update API GetTaskResult: update response param.
+
+
 2024-12-20 Version: 3.3.3
 - Update API AnalyzeConversation: update param body.
 

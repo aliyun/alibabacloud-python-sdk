@@ -1141,17 +1141,21 @@ class CreateTaskRequestServiceInspection(TeaModel):
 class CreateTaskRequestTranscription(TeaModel):
     def __init__(
         self,
+        asr_model_code: str = None,
         auto_split: int = None,
         client_channel: int = None,
         file_name: str = None,
+        level: str = None,
         service_channel: int = None,
         service_channel_keywords: List[str] = None,
         voice_file_url: str = None,
     ):
+        self.asr_model_code = asr_model_code
         self.auto_split = auto_split
         self.client_channel = client_channel
         # This parameter is required.
         self.file_name = file_name
+        self.level = level
         self.service_channel = service_channel
         self.service_channel_keywords = service_channel_keywords
         # This parameter is required.
@@ -1166,12 +1170,16 @@ class CreateTaskRequestTranscription(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_model_code is not None:
+            result['asrModelCode'] = self.asr_model_code
         if self.auto_split is not None:
             result['autoSplit'] = self.auto_split
         if self.client_channel is not None:
             result['clientChannel'] = self.client_channel
         if self.file_name is not None:
             result['fileName'] = self.file_name
+        if self.level is not None:
+            result['level'] = self.level
         if self.service_channel is not None:
             result['serviceChannel'] = self.service_channel
         if self.service_channel_keywords is not None:
@@ -1182,12 +1190,16 @@ class CreateTaskRequestTranscription(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('asrModelCode') is not None:
+            self.asr_model_code = m.get('asrModelCode')
         if m.get('autoSplit') is not None:
             self.auto_split = m.get('autoSplit')
         if m.get('clientChannel') is not None:
             self.client_channel = m.get('clientChannel')
         if m.get('fileName') is not None:
             self.file_name = m.get('fileName')
+        if m.get('level') is not None:
+            self.level = m.get('level')
         if m.get('serviceChannel') is not None:
             self.service_channel = m.get('serviceChannel')
         if m.get('serviceChannelKeywords') is not None:
@@ -1530,12 +1542,14 @@ class GetTaskResultResponseBodyData(TeaModel):
     def __init__(
         self,
         asr_result: List[GetTaskResultResponseBodyDataAsrResult] = None,
+        extra: str = None,
         task_error_message: str = None,
         task_id: str = None,
         task_status: str = None,
         text: str = None,
     ):
         self.asr_result = asr_result
+        self.extra = extra
         self.task_error_message = task_error_message
         self.task_id = task_id
         self.task_status = task_status
@@ -1557,6 +1571,8 @@ class GetTaskResultResponseBodyData(TeaModel):
         if self.asr_result is not None:
             for k in self.asr_result:
                 result['asrResult'].append(k.to_map() if k else None)
+        if self.extra is not None:
+            result['extra'] = self.extra
         if self.task_error_message is not None:
             result['taskErrorMessage'] = self.task_error_message
         if self.task_id is not None:
@@ -1574,6 +1590,8 @@ class GetTaskResultResponseBodyData(TeaModel):
             for k in m.get('asrResult'):
                 temp_model = GetTaskResultResponseBodyDataAsrResult()
                 self.asr_result.append(temp_model.from_map(k))
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
         if m.get('taskErrorMessage') is not None:
             self.task_error_message = m.get('taskErrorMessage')
         if m.get('taskId') is not None:
