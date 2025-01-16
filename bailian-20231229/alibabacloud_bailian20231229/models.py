@@ -8887,7 +8887,7 @@ class UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig(TeaModel):
         answer_scope: str = None,
         enable_citation: bool = None,
         enable_search: bool = None,
-        enable_web_search: str = None,
+        enable_web_search: bool = None,
         fixed_reply_detail: str = None,
         knowledge_base_code_list: List[str] = None,
         prompt_strategy: str = None,

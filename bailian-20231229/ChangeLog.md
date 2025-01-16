@@ -1,3 +1,7 @@
+2025-01-16 Version: 2.0.0
+- Update API UpdateAndPublishAgentSelective: update param applicationConfig.
+
+
 2025-01-03 Version: 1.11.2
 - Update API AddFile: add param CategoryType.
 - Update API ApplyFileUploadLease: add param CategoryType.
