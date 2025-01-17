@@ -3252,10 +3252,12 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
         self,
         dialog_exec_plan: str = None,
         dialog_labels: List[GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels] = None,
+        dialog_sop: str = None,
         dialog_summary: str = None,
     ):
         self.dialog_exec_plan = dialog_exec_plan
         self.dialog_labels = dialog_labels
+        self.dialog_sop = dialog_sop
         self.dialog_summary = dialog_summary
 
     def validate(self):
@@ -3276,6 +3278,8 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
         if self.dialog_labels is not None:
             for k in self.dialog_labels:
                 result['dialogLabels'].append(k.to_map() if k else None)
+        if self.dialog_sop is not None:
+            result['dialogSop'] = self.dialog_sop
         if self.dialog_summary is not None:
             result['dialogSummary'] = self.dialog_summary
         return result
@@ -3289,6 +3293,8 @@ class GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp(
             for k in m.get('dialogLabels'):
                 temp_model = GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels()
                 self.dialog_labels.append(temp_model.from_map(k))
+        if m.get('dialogSop') is not None:
+            self.dialog_sop = m.get('dialogSop')
         if m.get('dialogSummary') is not None:
             self.dialog_summary = m.get('dialogSummary')
         return self
