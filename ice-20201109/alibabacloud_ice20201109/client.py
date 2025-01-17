@@ -8576,6 +8576,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_template_with_options_async(request, runtime)
 
+    def get_media_convert_job_with_options(
+        self,
+        request: ice20201109_models.GetMediaConvertJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConvertJobResponse:
+        """
+        @summary 获取 MediaConvert 任务详情
+        
+        @param request: GetMediaConvertJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConvertJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaConvertJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConvertJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_convert_job_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaConvertJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConvertJobResponse:
+        """
+        @summary 获取 MediaConvert 任务详情
+        
+        @param request: GetMediaConvertJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConvertJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaConvertJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConvertJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_convert_job(
+        self,
+        request: ice20201109_models.GetMediaConvertJobRequest,
+    ) -> ice20201109_models.GetMediaConvertJobResponse:
+        """
+        @summary 获取 MediaConvert 任务详情
+        
+        @param request: GetMediaConvertJobRequest
+        @return: GetMediaConvertJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_convert_job_with_options(request, runtime)
+
+    async def get_media_convert_job_async(
+        self,
+        request: ice20201109_models.GetMediaConvertJobRequest,
+    ) -> ice20201109_models.GetMediaConvertJobResponse:
+        """
+        @summary 获取 MediaConvert 任务详情
+        
+        @param request: GetMediaConvertJobRequest
+        @return: GetMediaConvertJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_convert_job_with_options_async(request, runtime)
+
     def get_media_info_with_options(
         self,
         request: ice20201109_models.GetMediaInfoRequest,
@@ -21477,6 +21573,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_censor_job_with_options_async(request, runtime)
+
+    def submit_media_convert_job_with_options(
+        self,
+        request: ice20201109_models.SubmitMediaConvertJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMediaConvertJobResponse:
+        """
+        @summary 提交媒体处理任务
+        
+        @param request: SubmitMediaConvertJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaConvertJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaConvertJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMediaConvertJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_media_convert_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitMediaConvertJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMediaConvertJobResponse:
+        """
+        @summary 提交媒体处理任务
+        
+        @param request: SubmitMediaConvertJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaConvertJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaConvertJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMediaConvertJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_media_convert_job(
+        self,
+        request: ice20201109_models.SubmitMediaConvertJobRequest,
+    ) -> ice20201109_models.SubmitMediaConvertJobResponse:
+        """
+        @summary 提交媒体处理任务
+        
+        @param request: SubmitMediaConvertJobRequest
+        @return: SubmitMediaConvertJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_media_convert_job_with_options(request, runtime)
+
+    async def submit_media_convert_job_async(
+        self,
+        request: ice20201109_models.SubmitMediaConvertJobRequest,
+    ) -> ice20201109_models.SubmitMediaConvertJobResponse:
+        """
+        @summary 提交媒体处理任务
+        
+        @param request: SubmitMediaConvertJobRequest
+        @return: SubmitMediaConvertJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_media_convert_job_with_options_async(request, runtime)
 
     def submit_media_info_job_with_options(
         self,

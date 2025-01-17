@@ -1,3 +1,8 @@
+2025-01-17 Version: 3.11.0
+- Support API GetMediaConvertJob.
+- Support API SubmitMediaConvertJob.
+
+
 2025-01-16 Version: 3.10.0
 - Support API GetProjectExportJob.
 - Support API SubmitProjectExportJob.
