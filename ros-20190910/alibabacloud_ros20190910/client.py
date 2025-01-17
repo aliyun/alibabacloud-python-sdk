@@ -1324,6 +1324,8 @@ class Client(OpenApiClient):
             query['AccountIds'] = request.account_ids_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_options):
+            query['DeploymentOptions'] = request.deployment_options
         if not UtilClient.is_unset(request.deployment_targets_shrink):
             query['DeploymentTargets'] = request.deployment_targets_shrink
         if not UtilClient.is_unset(request.disable_rollback):
@@ -1392,6 +1394,8 @@ class Client(OpenApiClient):
             query['AccountIds'] = request.account_ids_shrink
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_options):
+            query['DeploymentOptions'] = request.deployment_options
         if not UtilClient.is_unset(request.deployment_targets_shrink):
             query['DeploymentTargets'] = request.deployment_targets_shrink
         if not UtilClient.is_unset(request.disable_rollback):
@@ -6131,6 +6135,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ImportStacksToStackGroupResponse:
         """
+        @summary Import stacks from multiple different accounts into a stack group.
+        
         @param tmp_req: ImportStacksToStackGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ImportStacksToStackGroupResponse
@@ -6184,6 +6190,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ImportStacksToStackGroupResponse:
         """
+        @summary Import stacks from multiple different accounts into a stack group.
+        
         @param tmp_req: ImportStacksToStackGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ImportStacksToStackGroupResponse
@@ -6236,6 +6244,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.ImportStacksToStackGroupRequest,
     ) -> ros20190910_models.ImportStacksToStackGroupResponse:
         """
+        @summary Import stacks from multiple different accounts into a stack group.
+        
         @param request: ImportStacksToStackGroupRequest
         @return: ImportStacksToStackGroupResponse
         """
@@ -6247,6 +6257,8 @@ class Client(OpenApiClient):
         request: ros20190910_models.ImportStacksToStackGroupRequest,
     ) -> ros20190910_models.ImportStacksToStackGroupResponse:
         """
+        @summary Import stacks from multiple different accounts into a stack group.
+        
         @param request: ImportStacksToStackGroupRequest
         @return: ImportStacksToStackGroupResponse
         """
@@ -8759,6 +8771,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.include_tags):
             query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
@@ -8806,6 +8820,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.include_tags):
             query['IncludeTags'] = request.include_tags
         if not UtilClient.is_unset(request.page_number):
@@ -10432,6 +10448,8 @@ class Client(OpenApiClient):
             query['Capabilities'] = request.capabilities
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_options):
+            query['DeploymentOptions'] = request.deployment_options
         if not UtilClient.is_unset(request.deployment_targets_shrink):
             query['DeploymentTargets'] = request.deployment_targets_shrink
         if not UtilClient.is_unset(request.description):
@@ -10520,6 +10538,8 @@ class Client(OpenApiClient):
             query['Capabilities'] = request.capabilities
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_options):
+            query['DeploymentOptions'] = request.deployment_options
         if not UtilClient.is_unset(request.deployment_targets_shrink):
             query['DeploymentTargets'] = request.deployment_targets_shrink
         if not UtilClient.is_unset(request.description):

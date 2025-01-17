@@ -2634,6 +2634,7 @@ class CreateStackInstancesRequest(TeaModel):
         self,
         account_ids: List[str] = None,
         client_token: str = None,
+        deployment_options: List[str] = None,
         deployment_targets: CreateStackInstancesRequestDeploymentTargets = None,
         disable_rollback: bool = None,
         operation_description: str = None,
@@ -2652,6 +2653,7 @@ class CreateStackInstancesRequest(TeaModel):
         # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
         # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
+        self.deployment_options = deployment_options
         # The folders in which ROS deploy stacks in service-managed permission model.
         # 
         # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
@@ -2752,6 +2754,8 @@ class CreateStackInstancesRequest(TeaModel):
             result['AccountIds'] = self.account_ids
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deployment_options is not None:
+            result['DeploymentOptions'] = self.deployment_options
         if self.deployment_targets is not None:
             result['DeploymentTargets'] = self.deployment_targets.to_map()
         if self.disable_rollback is not None:
@@ -2780,6 +2784,8 @@ class CreateStackInstancesRequest(TeaModel):
             self.account_ids = m.get('AccountIds')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeploymentOptions') is not None:
+            self.deployment_options = m.get('DeploymentOptions')
         if m.get('DeploymentTargets') is not None:
             temp_model = CreateStackInstancesRequestDeploymentTargets()
             self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
@@ -2859,6 +2865,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         self,
         account_ids_shrink: str = None,
         client_token: str = None,
+        deployment_options: List[str] = None,
         deployment_targets_shrink: str = None,
         disable_rollback: bool = None,
         operation_description: str = None,
@@ -2877,6 +2884,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
         # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
+        self.deployment_options = deployment_options
         # The folders in which ROS deploy stacks in service-managed permission model.
         # 
         # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
@@ -2975,6 +2983,8 @@ class CreateStackInstancesShrinkRequest(TeaModel):
             result['AccountIds'] = self.account_ids_shrink
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deployment_options is not None:
+            result['DeploymentOptions'] = self.deployment_options
         if self.deployment_targets_shrink is not None:
             result['DeploymentTargets'] = self.deployment_targets_shrink
         if self.disable_rollback is not None:
@@ -3003,6 +3013,8 @@ class CreateStackInstancesShrinkRequest(TeaModel):
             self.account_ids_shrink = m.get('AccountIds')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeploymentOptions') is not None:
+            self.deployment_options = m.get('DeploymentOptions')
         if m.get('DeploymentTargets') is not None:
             self.deployment_targets_shrink = m.get('DeploymentTargets')
         if m.get('DisableRollback') is not None:
@@ -12044,6 +12056,7 @@ class GetTemplateResponseBodyTags(TeaModel):
 class GetTemplateResponseBody(TeaModel):
     def __init__(
         self,
+        additional_info: Dict[str, Any] = None,
         change_set_id: str = None,
         create_time: str = None,
         description: str = None,
@@ -12064,6 +12077,7 @@ class GetTemplateResponseBody(TeaModel):
         template_version: str = None,
         update_time: str = None,
     ):
+        self.additional_info = additional_info
         # The ID of the change set. This parameter is returned only if you specify ChangeSetId.
         self.change_set_id = change_set_id
         # The time when the template was created. This parameter is returned only if you specify TemplateId.
@@ -12141,6 +12155,8 @@ class GetTemplateResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_info is not None:
+            result['AdditionalInfo'] = self.additional_info
         if self.change_set_id is not None:
             result['ChangeSetId'] = self.change_set_id
         if self.create_time is not None:
@@ -12187,6 +12203,8 @@ class GetTemplateResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalInfo') is not None:
+            self.additional_info = m.get('AdditionalInfo')
         if m.get('ChangeSetId') is not None:
             self.change_set_id = m.get('ChangeSetId')
         if m.get('CreateTime') is not None:
@@ -12879,12 +12897,16 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
     def __init__(
         self,
         allowed_values: List[Any] = None,
+        behavior: str = None,
+        behavior_reason: str = None,
         property_name: str = None,
         resource_name: str = None,
         resource_type: str = None,
     ):
         # The values of the parameter.
         self.allowed_values = allowed_values
+        self.behavior = behavior
+        self.behavior_reason = behavior_reason
         # The name of the resource property.
         self.property_name = property_name
         # The name of the resource that is defined in the template.
@@ -12903,6 +12925,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
         result = dict()
         if self.allowed_values is not None:
             result['AllowedValues'] = self.allowed_values
+        if self.behavior is not None:
+            result['Behavior'] = self.behavior
+        if self.behavior_reason is not None:
+            result['BehaviorReason'] = self.behavior_reason
         if self.property_name is not None:
             result['PropertyName'] = self.property_name
         if self.resource_name is not None:
@@ -12915,6 +12941,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalCon
         m = m or dict()
         if m.get('AllowedValues') is not None:
             self.allowed_values = m.get('AllowedValues')
+        if m.get('Behavior') is not None:
+            self.behavior = m.get('Behavior')
+        if m.get('BehaviorReason') is not None:
+            self.behavior_reason = m.get('BehaviorReason')
         if m.get('PropertyName') is not None:
             self.property_name = m.get('PropertyName')
         if m.get('ResourceName') is not None:
@@ -14361,14 +14391,70 @@ class ImportStacksToStackGroupRequest(TeaModel):
         stack_arns: List[str] = None,
         stack_group_name: str = None,
     ):
+        # Ensures the idempotence of the request. This value is generated by the client and must be globally unique. 
+        # It cannot exceed 64 characters and can include letters, numbers, hyphens (-), and underscores (_). 
+        # For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
+        # Description of the operation.
         self.operation_description = operation_description
+        # Operation settings for importing stacks into the stack group.
+        # 
+        # Includes the following parameters:
+        # 
+        # - {"FailureToleranceCount": N}
+        # 
+        #   Failure tolerance count. The number of accounts in which the stack can fail in each region. If this number is exceeded, the operation in that region will stop. If the operation in one region stops, it will not continue in other regions.
+        #   
+        #    The range of N: 0~20.
+        # 
+        #    If FailureToleranceCount is not specified, the default value is 0.
+        # 
+        # - {"FailureTolerancePercentage": N}
+        # 
+        #    Failure tolerance percentage. The percentage of total accounts in which the stack can fail in each region. If this percentage is exceeded, the operation in that region will stop.
+        # 
+        #    The range of N: 0~100. If the percentage is not an integer, ROS will round down.
+        # 
+        #    If FailureTolerancePercentage is not specified, the default value is 0.
+        # 
+        # - {"MaxConcurrentCount": N}
+        # 
+        #    Maximum concurrent account count. The number of accounts in which the stack can be deployed simultaneously in each region.
+        # 
+        #    The range of N: 1~20.
+        # 
+        #    If MaxConcurrentCount is not specified, the default value is 1.
+        # 
+        # - {"MaxConcurrentPercentage": N} Maximum concurrent account percentage.
+        # 
+        #    The percentage of total accounts in which the stack can be deployed simultaneously in each region.
+        # 
+        #    The range of N: 1~100. If the percentage is not an integer, ROS will round down.
+        # 
+        #    If MaxConcurrentPercentage is not specified, the default value is 1.
+        # - {"RegionConcurrencyType": N}
+        # Region-level concurrency type for deploying stack instances, values:
+        #      - SEQUENTIAL (default): Deploy sequentially in each specified region, only one region at a time.
+        # 
+        #      - PARALLEL: Deploy in parallel across all specified regions.
+        # 
+        # Multiple parameters are separated by commas (,).
+        # 
+        # > - Do not specify both MaxConcurrentCount and MaxConcurrentPercentage.  
+        # >- Do not specify both FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences = operation_preferences
+        # The region ID of the stack group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) to view the latest list of Alibaba Cloud regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of resource directory folder IDs for the stacks to be imported. A maximum of 10 folders can be added.
         self.resource_directory_folder_ids = resource_directory_folder_ids
+        # A list of ARNs for the stacks to be imported into the stack group, in the format `acs:ros:${RegionId}:${AccountId}:stack/${StackId}`. A maximum of 10 stacks can be added.
+        # 
         # This parameter is required.
         self.stack_arns = stack_arns
+        # The name of the stack group. The name must be unique within a single region. It cannot exceed 255 characters and must start with a letter or number, and can include letters, numbers, hyphens (-), and underscores (_).
+        # 
         # This parameter is required.
         self.stack_group_name = stack_group_name
 
@@ -14427,14 +14513,70 @@ class ImportStacksToStackGroupShrinkRequest(TeaModel):
         stack_arns_shrink: str = None,
         stack_group_name: str = None,
     ):
+        # Ensures the idempotence of the request. This value is generated by the client and must be globally unique. 
+        # It cannot exceed 64 characters and can include letters, numbers, hyphens (-), and underscores (_). 
+        # For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
+        # Description of the operation.
         self.operation_description = operation_description
+        # Operation settings for importing stacks into the stack group.
+        # 
+        # Includes the following parameters:
+        # 
+        # - {"FailureToleranceCount": N}
+        # 
+        #   Failure tolerance count. The number of accounts in which the stack can fail in each region. If this number is exceeded, the operation in that region will stop. If the operation in one region stops, it will not continue in other regions.
+        #   
+        #    The range of N: 0~20.
+        # 
+        #    If FailureToleranceCount is not specified, the default value is 0.
+        # 
+        # - {"FailureTolerancePercentage": N}
+        # 
+        #    Failure tolerance percentage. The percentage of total accounts in which the stack can fail in each region. If this percentage is exceeded, the operation in that region will stop.
+        # 
+        #    The range of N: 0~100. If the percentage is not an integer, ROS will round down.
+        # 
+        #    If FailureTolerancePercentage is not specified, the default value is 0.
+        # 
+        # - {"MaxConcurrentCount": N}
+        # 
+        #    Maximum concurrent account count. The number of accounts in which the stack can be deployed simultaneously in each region.
+        # 
+        #    The range of N: 1~20.
+        # 
+        #    If MaxConcurrentCount is not specified, the default value is 1.
+        # 
+        # - {"MaxConcurrentPercentage": N} Maximum concurrent account percentage.
+        # 
+        #    The percentage of total accounts in which the stack can be deployed simultaneously in each region.
+        # 
+        #    The range of N: 1~100. If the percentage is not an integer, ROS will round down.
+        # 
+        #    If MaxConcurrentPercentage is not specified, the default value is 1.
+        # - {"RegionConcurrencyType": N}
+        # Region-level concurrency type for deploying stack instances, values:
+        #      - SEQUENTIAL (default): Deploy sequentially in each specified region, only one region at a time.
+        # 
+        #      - PARALLEL: Deploy in parallel across all specified regions.
+        # 
+        # Multiple parameters are separated by commas (,).
+        # 
+        # > - Do not specify both MaxConcurrentCount and MaxConcurrentPercentage.  
+        # >- Do not specify both FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences_shrink = operation_preferences_shrink
+        # The region ID of the stack group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) to view the latest list of Alibaba Cloud regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of resource directory folder IDs for the stacks to be imported. A maximum of 10 folders can be added.
         self.resource_directory_folder_ids_shrink = resource_directory_folder_ids_shrink
+        # A list of ARNs for the stacks to be imported into the stack group, in the format `acs:ros:${RegionId}:${AccountId}:stack/${StackId}`. A maximum of 10 stacks can be added.
+        # 
         # This parameter is required.
         self.stack_arns_shrink = stack_arns_shrink
+        # The name of the stack group. The name must be unique within a single region. It cannot exceed 255 characters and must start with a letter or number, and can include letters, numbers, hyphens (-), and underscores (_).
+        # 
         # This parameter is required.
         self.stack_group_name = stack_group_name
 
@@ -14488,7 +14630,9 @@ class ImportStacksToStackGroupResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
+        # Operation ID.
         self.operation_id = operation_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20555,6 +20699,39 @@ class ListTemplateVersionsResponse(TeaModel):
         return self
 
 
+class ListTemplatesRequestFilters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        values: List[str] = None,
+    ):
+        self.name = name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class ListTemplatesRequestTag(TeaModel):
     def __init__(
         self,
@@ -20597,6 +20774,7 @@ class ListTemplatesRequestTag(TeaModel):
 class ListTemplatesRequest(TeaModel):
     def __init__(
         self,
+        filters: List[ListTemplatesRequestFilters] = None,
         include_tags: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -20605,6 +20783,7 @@ class ListTemplatesRequest(TeaModel):
         tag: List[ListTemplatesRequestTag] = None,
         template_name: str = None,
     ):
+        self.filters = filters
         # Specifies whether to query the tag information. Valid values:
         # 
         # *   Enabled
@@ -20635,6 +20814,10 @@ class ListTemplatesRequest(TeaModel):
         self.template_name = template_name
 
     def validate(self):
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -20646,6 +20829,10 @@ class ListTemplatesRequest(TeaModel):
             return _map
 
         result = dict()
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
         if self.include_tags is not None:
             result['IncludeTags'] = self.include_tags
         if self.page_number is not None:
@@ -20666,6 +20853,11 @@ class ListTemplatesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = ListTemplatesRequestFilters()
+                self.filters.append(temp_model.from_map(k))
         if m.get('IncludeTags') is not None:
             self.include_tags = m.get('IncludeTags')
         if m.get('PageNumber') is not None:
@@ -20724,6 +20916,7 @@ class ListTemplatesResponseBodyTemplatesTags(TeaModel):
 class ListTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
+        additional_info: Dict[str, Any] = None,
         create_time: str = None,
         description: str = None,
         owner_id: str = None,
@@ -20733,9 +20926,11 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         template_arn: str = None,
         template_id: str = None,
         template_name: str = None,
+        template_url: str = None,
         template_version: str = None,
         update_time: str = None,
     ):
+        self.additional_info = additional_info
         # The time when the template was created.
         self.create_time = create_time
         # The description of the template.
@@ -20759,6 +20954,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
+        self.template_url = template_url
         # The latest version of the template.
         self.template_version = template_version
         # The time when the template was last updated.
@@ -20776,6 +20972,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_info is not None:
+            result['AdditionalInfo'] = self.additional_info
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -20796,6 +20994,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             result['TemplateId'] = self.template_id
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.template_url is not None:
+            result['TemplateUrl'] = self.template_url
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
         if self.update_time is not None:
@@ -20804,6 +21004,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalInfo') is not None:
+            self.additional_info = m.get('AdditionalInfo')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -20825,6 +21027,8 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
             self.template_id = m.get('TemplateId')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TemplateUrl') is not None:
+            self.template_url = m.get('TemplateUrl')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
         if m.get('UpdateTime') is not None:
@@ -23666,6 +23870,7 @@ class UpdateStackGroupRequest(TeaModel):
         auto_deployment: UpdateStackGroupRequestAutoDeployment = None,
         capabilities: List[str] = None,
         client_token: str = None,
+        deployment_options: List[str] = None,
         deployment_targets: UpdateStackGroupRequestDeploymentTargets = None,
         description: str = None,
         execution_role_name: str = None,
@@ -23703,6 +23908,7 @@ class UpdateStackGroupRequest(TeaModel):
         # 
         # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.client_token = client_token
+        self.deployment_options = deployment_options
         # The ID of the request.
         self.deployment_targets = deployment_targets
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
@@ -23794,6 +24000,8 @@ class UpdateStackGroupRequest(TeaModel):
             result['Capabilities'] = self.capabilities
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deployment_options is not None:
+            result['DeploymentOptions'] = self.deployment_options
         if self.deployment_targets is not None:
             result['DeploymentTargets'] = self.deployment_targets.to_map()
         if self.description is not None:
@@ -23839,6 +24047,8 @@ class UpdateStackGroupRequest(TeaModel):
             self.capabilities = m.get('Capabilities')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeploymentOptions') is not None:
+            self.deployment_options = m.get('DeploymentOptions')
         if m.get('DeploymentTargets') is not None:
             temp_model = UpdateStackGroupRequestDeploymentTargets()
             self.deployment_targets = temp_model.from_map(m['DeploymentTargets'])
@@ -23928,6 +24138,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         auto_deployment_shrink: str = None,
         capabilities: List[str] = None,
         client_token: str = None,
+        deployment_options: List[str] = None,
         deployment_targets_shrink: str = None,
         description: str = None,
         execution_role_name: str = None,
@@ -23965,6 +24176,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         # 
         # >  You must specify only one of the TemplateBody, TemplateURL, and TemplateId parameters.
         self.client_token = client_token
+        self.deployment_options = deployment_options
         # The ID of the request.
         self.deployment_targets_shrink = deployment_targets_shrink
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
@@ -24052,6 +24264,8 @@ class UpdateStackGroupShrinkRequest(TeaModel):
             result['Capabilities'] = self.capabilities
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deployment_options is not None:
+            result['DeploymentOptions'] = self.deployment_options
         if self.deployment_targets_shrink is not None:
             result['DeploymentTargets'] = self.deployment_targets_shrink
         if self.description is not None:
@@ -24096,6 +24310,8 @@ class UpdateStackGroupShrinkRequest(TeaModel):
             self.capabilities = m.get('Capabilities')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeploymentOptions') is not None:
+            self.deployment_options = m.get('DeploymentOptions')
         if m.get('DeploymentTargets') is not None:
             self.deployment_targets_shrink = m.get('DeploymentTargets')
         if m.get('Description') is not None:

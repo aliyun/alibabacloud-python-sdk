@@ -1,3 +1,12 @@
+2025-01-17 Version: 3.5.1
+- Update API CreateStackInstances: add param DeploymentOptions.
+- Update API GetTemplate: update response param.
+- Update API GetTemplateParameterConstraints: update response param.
+- Update API ListTemplates: add param Filters.
+- Update API ListTemplates: update response param.
+- Update API UpdateStackGroup: add param DeploymentOptions.
+
+
 2024-11-20 Version: 3.5.0
 - Support API ImportStacksToStackGroup.
 - Update API CreateStackGroup: add param StackArn.
