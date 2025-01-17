@@ -4045,8 +4045,6 @@ class CreateTransitRouteTableAggregationRequest(TeaModel):
         # The scope of networks that you want to advertise the aggregate route.
         # 
         # Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
-        # 
-        # This parameter is required.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
         # The ID of the route table of the Enterprise Edition transit router.
         # 
