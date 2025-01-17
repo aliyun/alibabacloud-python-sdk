@@ -1163,6 +1163,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_marketing_information_writing_with_options_async(workspace_id, request, headers, runtime)
 
+    def run_network_content_audit_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunNetworkContentAuditRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse:
+        """
+        @summary 轻应用-网络内容审核
+        
+        @param tmp_req: RunNetworkContentAuditRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunNetworkContentAuditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunNetworkContentAuditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunNetworkContentAudit',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runNetworkContentAudit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_network_content_audit_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: quan_miao_light_app_20240801_models.RunNetworkContentAuditRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse:
+        """
+        @summary 轻应用-网络内容审核
+        
+        @param tmp_req: RunNetworkContentAuditRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunNetworkContentAuditResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = quan_miao_light_app_20240801_models.RunNetworkContentAuditShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.business_type):
+            body['businessType'] = request.business_type
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.extra_info):
+            body['extraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_format):
+            body['outputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.task_description):
+            body['taskDescription'] = request.task_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunNetworkContentAudit',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/runNetworkContentAudit',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_network_content_audit(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunNetworkContentAuditRequest,
+    ) -> quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse:
+        """
+        @summary 轻应用-网络内容审核
+        
+        @param request: RunNetworkContentAuditRequest
+        @return: RunNetworkContentAuditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_network_content_audit_with_options(workspace_id, request, headers, runtime)
+
+    async def run_network_content_audit_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.RunNetworkContentAuditRequest,
+    ) -> quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse:
+        """
+        @summary 轻应用-网络内容审核
+        
+        @param request: RunNetworkContentAuditRequest
+        @return: RunNetworkContentAuditResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_network_content_audit_with_options_async(workspace_id, request, headers, runtime)
+
     def run_script_chat_with_options(
         self,
         workspace_id: str,
