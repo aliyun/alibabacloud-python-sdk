@@ -1,3 +1,26 @@
+2025-01-17 Version: 3.0.0
+- Support API ListBindInfo.
+- Delete API AccessPageGetAcl.
+- Delete API AskSessionPackageRenewPrice.
+- Delete API CancelOtaTask.
+- Delete API CreateProject.
+- Delete API DeleteProject.
+- Delete API GetProjectPolicies.
+- Delete API ListProjects.
+- Delete API MigrateSessionPackage.
+- Delete API ModifyProjectPolicy.
+- Delete API RefreshAccessUrl.
+- Delete API RenewSessionPackage.
+- Delete API UpdateAccessPageState.
+- Update API AuthorizeInstanceGroup: update param AuthorizeUserIds.
+- Update API AuthorizeInstanceGroup: update param UnAuthorizeUserIds.
+- Update API CreateAppInstanceGroup: add param AppPolicyId.
+- Update API GetAppInstanceGroup: update response param.
+- Update API ListAppInstanceGroup: update response param.
+- Update API ModifyAppInstanceGroupAttribute: add param PerSessionPerApp.
+- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
+
+
 2024-10-22 Version: 2.0.4
 - Update API AuthorizeInstanceGroup: add param UserMeta.
 - Update API CreateAppInstanceGroup: update param AppInstanceGroupName.
