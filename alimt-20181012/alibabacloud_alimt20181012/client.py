@@ -2919,3 +2919,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.translate_image_batch_with_options_async(request, runtime)
+
+    def translate_search_with_options(
+        self,
+        request: alimt_20181012_models.TranslateSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateSearchResponse:
+        """
+        @summary 搜索翻译
+        
+        @param request: TranslateSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateSearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateSearch',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def translate_search_with_options_async(
+        self,
+        request: alimt_20181012_models.TranslateSearchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alimt_20181012_models.TranslateSearchResponse:
+        """
+        @summary 搜索翻译
+        
+        @param request: TranslateSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TranslateSearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateSearch',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alimt_20181012_models.TranslateSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def translate_search(
+        self,
+        request: alimt_20181012_models.TranslateSearchRequest,
+    ) -> alimt_20181012_models.TranslateSearchResponse:
+        """
+        @summary 搜索翻译
+        
+        @param request: TranslateSearchRequest
+        @return: TranslateSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.translate_search_with_options(request, runtime)
+
+    async def translate_search_async(
+        self,
+        request: alimt_20181012_models.TranslateSearchRequest,
+    ) -> alimt_20181012_models.TranslateSearchResponse:
+        """
+        @summary 搜索翻译
+        
+        @param request: TranslateSearchRequest
+        @return: TranslateSearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.translate_search_with_options_async(request, runtime)

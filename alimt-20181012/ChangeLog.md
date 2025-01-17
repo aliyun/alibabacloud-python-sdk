@@ -1,3 +1,9 @@
+2025-01-17 Version: 1.4.0
+- Support API TranslateSearch.
+- Update API Translate: update param SourceText.
+- Update API TranslateImage: update response param.
+
+
 2024-06-06 Version: 1.3.0
 - Support API GetBatchTranslateByVPC.
 - Support API TranslateGeneralVpc.
