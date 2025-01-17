@@ -49,10 +49,6 @@ class Client(OpenApiClient):
         """
         @summary Activate CA Certificate
         
-        @description - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
-        
         @param request: ActiveCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ActiveCaCertificateResponse
@@ -90,10 +86,6 @@ class Client(OpenApiClient):
         """
         @summary Activate CA Certificate
         
-        @description - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
-        
         @param request: ActiveCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ActiveCaCertificateResponse
@@ -130,10 +122,6 @@ class Client(OpenApiClient):
         """
         @summary Activate CA Certificate
         
-        @description - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
-        
         @param request: ActiveCaCertificateRequest
         @return: ActiveCaCertificateResponse
         """
@@ -146,10 +134,6 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.ActiveCaCertificateResponse:
         """
         @summary Activate CA Certificate
-        
-        @description - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
         
         @param request: ActiveCaCertificateRequest
         @return: ActiveCaCertificateResponse
@@ -495,7 +479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.AddCustomAuthPermissionResponse:
         """
-        @summary Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+        @summary Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
         
         @param request: AddCustomAuthPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -540,7 +524,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.AddCustomAuthPermissionResponse:
         """
-        @summary Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+        @summary Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
         
         @param request: AddCustomAuthPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -584,7 +568,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.AddCustomAuthPermissionRequest,
     ) -> ons_mqtt_20200420_models.AddCustomAuthPermissionResponse:
         """
-        @summary Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+        @summary Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
         
         @param request: AddCustomAuthPermissionRequest
         @return: AddCustomAuthPermissionResponse
@@ -597,7 +581,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.AddCustomAuthPermissionRequest,
     ) -> ons_mqtt_20200420_models.AddCustomAuthPermissionResponse:
         """
-        @summary Adds permissions on topics. You must create a level-1 topic in the ApsaraMQ for MQTT console before you call this operation.
+        @summary Grants permissions on topics. You must create a parent topic in the console before you call this API operation.
         
         @param request: AddCustomAuthPermissionRequest
         @return: AddCustomAuthPermissionResponse
@@ -1725,9 +1709,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        
         @param request: GetCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetCaCertificateResponse
@@ -1761,9 +1742,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        
         @param request: GetCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetCaCertificateResponse
@@ -1796,9 +1774,6 @@ class Client(OpenApiClient):
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
         
-        @description - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
-        
         @param request: GetCaCertificateRequest
         @return: GetCaCertificateResponse
         """
@@ -1811,9 +1786,6 @@ class Client(OpenApiClient):
     ) -> ons_mqtt_20200420_models.GetCaCertificateResponse:
         """
         @summary Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
-        
-        @description - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
-        - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
         
         @param request: GetCaCertificateRequest
         @return: GetCaCertificateResponse
@@ -4151,9 +4123,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.RegisterCaCertificateResponse:
         """
-        @summary Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @summary RegisterCaCertificate
         
-        @description - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
         
         @param request: RegisterCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4194,9 +4166,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.RegisterCaCertificateResponse:
         """
-        @summary Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @summary RegisterCaCertificate
         
-        @description - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
         
         @param request: RegisterCaCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4236,9 +4208,9 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.RegisterCaCertificateRequest,
     ) -> ons_mqtt_20200420_models.RegisterCaCertificateResponse:
         """
-        @summary Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @summary RegisterCaCertificate
         
-        @description - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
         
         @param request: RegisterCaCertificateRequest
         @return: RegisterCaCertificateResponse
@@ -4251,9 +4223,9 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.RegisterCaCertificateRequest,
     ) -> ons_mqtt_20200420_models.RegisterCaCertificateResponse:
         """
-        @summary Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+        @summary RegisterCaCertificate
         
-        @description - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
+        @description Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
         
         @param request: RegisterCaCertificateRequest
         @return: RegisterCaCertificateResponse
@@ -4493,10 +4465,9 @@ class Client(OpenApiClient):
         """
         @summary Sends a single message from an application on a cloud server to ApsaraMQ for MQTT.
         
-        @description    The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
-        Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
-        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-        Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+        @description    The **SendMessage** operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage** operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+        Each successful call to the **SendMessage** operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
         
         @param request: SendMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4537,10 +4508,9 @@ class Client(OpenApiClient):
         """
         @summary Sends a single message from an application on a cloud server to ApsaraMQ for MQTT.
         
-        @description    The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
-        Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
-        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-        Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+        @description    The **SendMessage** operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage** operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+        Each successful call to the **SendMessage** operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
         
         @param request: SendMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4580,10 +4550,9 @@ class Client(OpenApiClient):
         """
         @summary Sends a single message from an application on a cloud server to ApsaraMQ for MQTT.
         
-        @description    The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
-        Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
-        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-        Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+        @description    The **SendMessage** operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage** operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+        Each successful call to the **SendMessage** operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
         
         @param request: SendMessageRequest
         @return: SendMessageResponse
@@ -4598,10 +4567,9 @@ class Client(OpenApiClient):
         """
         @summary Sends a single message from an application on a cloud server to ApsaraMQ for MQTT.
         
-        @description    The **SendMessage** operation is called by applications on cloud servers. It is complementary to the operation that is called by ApsaraMQ for MQTT clients to send messages. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
-        Before you call the **SendMessage** operation, make sure that the kernel version of your ApsaraMQ for MQTT instance is 3.3.0 or later. You can obtain the information about the kernel version on the [Instance Details](https://mqtt.console.aliyun.com) page that corresponds to the instance in the **ApsaraMQ for MQTT console**.
-        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT to forward messages to ApsaraMQ for RocketMQ, send the messages by using an SDK. For more information, see [Export data from ApsaraMQ for MQTT to other Alibaba Cloud services](https://help.aliyun.com/document_detail/174527.html). You can call the **SendMessage** operation up to 1,000 times per second. For more information, see [Limits on QPS](https://help.aliyun.com/document_detail/163047.html).
-        Each successful call to the **SendMessage** operation increases the messaging transactions per second (TPS) by one. This affects the billing of your instance. For information about the billing details, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
+        @description    The **SendMessage** operation is called by an application on a cloud server. This operation is complementary to the operation that is called to send a message from an ApsaraMQ for MQTT client. For information about the differences between the scenarios of sending messages from applications on cloud servers and the scenarios of sending messages from ApsaraMQ for MQTT clients, see [Developer guide](https://help.aliyun.com/document_detail/179160.html).
+        Messages that are sent by calling the **SendMessage** operation cannot be forwarded to ApsaraMQ for RocketMQ. If you want to use an ApsaraMQ for MQTT broker to forward messages to ApsaraMQ for RocketMQ, use [an SDK to send the messages](https://help.aliyun.com/document_detail/174527.html). The **SendMessage** operation supports up to 1,000 queries per second (QPS). For more information, see [QPS limits](https://help.aliyun.com/document_detail/163047.html).
+        Each successful call to the **SendMessage** operation is calculated as a message transaction per second (TPS). This affects the billing of your instance. For more information, see [Billing rules](https://help.aliyun.com/document_detail/52819.html).
         
         @param request: SendMessageRequest
         @return: SendMessageResponse
@@ -4615,7 +4583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.SetSniConfigResponse:
         """
-        @summary 配置多域名证书
+        @summary Configures a multi-domain certificate.
         
         @param request: SetSniConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4654,7 +4622,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ons_mqtt_20200420_models.SetSniConfigResponse:
         """
-        @summary 配置多域名证书
+        @summary Configures a multi-domain certificate.
         
         @param request: SetSniConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4692,7 +4660,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.SetSniConfigRequest,
     ) -> ons_mqtt_20200420_models.SetSniConfigResponse:
         """
-        @summary 配置多域名证书
+        @summary Configures a multi-domain certificate.
         
         @param request: SetSniConfigRequest
         @return: SetSniConfigResponse
@@ -4705,7 +4673,7 @@ class Client(OpenApiClient):
         request: ons_mqtt_20200420_models.SetSniConfigRequest,
     ) -> ons_mqtt_20200420_models.SetSniConfigResponse:
         """
-        @summary 配置多域名证书
+        @summary Configures a multi-domain certificate.
         
         @param request: SetSniConfigRequest
         @return: SetSniConfigResponse

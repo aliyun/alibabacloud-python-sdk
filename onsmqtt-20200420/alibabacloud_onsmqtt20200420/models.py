@@ -10,14 +10,8 @@ class ActiveCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
-        # CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。
-        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
-        # 待激活CA证书的SN序列号，用于唯一标识一个CA证书。
-        # 
-        # 取值范围：不超过128 Byte。
-        # 
         # This parameter is required.
         self.sn = sn
 
@@ -388,7 +382,10 @@ class AddCustomAuthIdentityRequest(TeaModel):
     ):
         # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
-        # The identity type. Valid values: USER and CLIENT.
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
         # 
         # This parameter is required.
         self.identity_type = identity_type
@@ -401,6 +398,8 @@ class AddCustomAuthIdentityRequest(TeaModel):
         # This parameter is required.
         self.secret = secret
         # The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
+        # 
+        # This parameter is required.
         self.sign_mode = sign_mode
         # The username.
         # 
@@ -547,7 +546,7 @@ class AddCustomAuthPermissionRequest(TeaModel):
         permit_action: str = None,
         topic: str = None,
     ):
-        # Specify whether to allow or deny the permissions.
+        # Specifies whether to allow or deny access.
         # 
         # This parameter is required.
         self.effect = effect
@@ -563,11 +562,11 @@ class AddCustomAuthPermissionRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The permissions that you want to add.
+        # The permissions that you want to grant.
         # 
         # This parameter is required.
         self.permit_action = permit_action
-        # The topic on which you want to add the permissions. Multi-level topics and wildcard characters are supported.
+        # The topics on which you want to grant permissions. Multi-level topics and wildcard characters are supported.
         # 
         # This parameter is required.
         self.topic = topic
@@ -4605,11 +4604,6 @@ class QueryCustomAuthIdentityRequest(TeaModel):
         # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
         # The identity type.
-        # 
-        # Valid values:
-        # 
-        # *   USER
-        # *   CLIENT
         self.identity_type = identity_type
         # The ID of the ApsaraMQ for MQTT instance.
         # 
@@ -4878,11 +4872,6 @@ class QueryCustomAuthPermissionRequest(TeaModel):
         # The username or client ID.
         self.identity = identity
         # The identity type.
-        # 
-        # Valid values:
-        # 
-        # *   USER
-        # *   CLIENT
         self.identity_type = identity_type
         # The ID of the ApsaraMQ for MQTT instance.
         # 
@@ -6615,22 +6604,16 @@ class RegisterCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         verification_content: str = None,
     ):
-        # Content of the CA certificate to be registered.
-        # > Note that \\n in the example represents a new line.
-        # 
         # This parameter is required.
         self.ca_content = ca_content
-        # Name of the CA certificate to be registered
+        # - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
         # 
         # This parameter is required.
         self.ca_name = ca_name
-        # The instance ID of the Cloud Message Queue MQTT version. When registering a CA certificate, you need to specify an instance to bind with.
+        # RegisterCaCertificate
         # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
-        # Content of the verification certificate for the CA certificate to be registered. It is used together with the registration code of the CA certificate to verify that the user possesses the private key of this CA certificate. 
-        # >  in the example represents a line break.
-        # 
         # This parameter is required.
         self.verification_content = verification_content
 
@@ -6672,9 +6655,7 @@ class RegisterCaCertificateResponseBody(TeaModel):
         request_id: str = None,
         sn: str = None,
     ):
-        # Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
         self.request_id = request_id
-        # The SN serial number of the registered CA certificate, used to uniquely identify a CA certificate.
         self.sn = sn
 
     def validate(self):
@@ -7161,10 +7142,15 @@ class SetSniConfigRequest(TeaModel):
         mqtt_instance_id: str = None,
         sni_config: str = None,
     ):
+        # The default certificate. If the domain name that you access cannot match the certificates of the broker, the default certificate is returned.
+        # 
         # This parameter is required.
         self.default_certificate = default_certificate
+        # The instance ID.
+        # 
         # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # The Server Name Indication (SNI) configuration. This parameter is used to map domain names and certificates. Format: Domain name#Certificate ID#Password (if available);Domain name#Certificate ID#Password (if available).
         self.sni_config = sni_config
 
     def validate(self):
@@ -7266,7 +7252,7 @@ class SetSniConfigResponseBody(TeaModel):
         success: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         self.success = success
 
@@ -7780,11 +7766,11 @@ class UpdateCustomAuthIdentityRequest(TeaModel):
         # 
         # This parameter is required.
         self.secret = secret
-        # The signature verification mode. ORIGIN: compares the password and AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
+        # The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
         # 
         # This parameter is required.
         self.sign_mode = sign_mode
-        # The username.
+        # The username. The value cannot exceed 64 characters in length.
         # 
         # This parameter is required.
         self.username = username

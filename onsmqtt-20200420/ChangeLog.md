@@ -1,3 +1,7 @@
+2025-01-17 Version: 1.5.1
+- Update API AddCustomAuthIdentity: update param SignMode.
+
+
 2024-12-26 Version: 1.5.0
 - Support API ListTagResources.
 - Support API TagResources.
