@@ -1,3 +1,40 @@
+2025-01-19 Version: 2.11.0
+- Support API DescribePhoneNumberAnalysisPai.
+- Support API DescribePhoneNumberOperatorAttributeAnnual.
+- Support API DescribePhoneNumberOperatorAttributeAnnualUse.
+- Update API CertNoThreeElementVerification: update param CertName.
+- Update API CertNoThreeElementVerification: update param CertNo.
+- Update API CertNoThreeElementVerification: update param CertPicture.
+- Update API CertNoTwoElementVerification: update param CertName.
+- Update API CertNoTwoElementVerification: update param CertNo.
+- Update API CompanyFourElementsVerification: update param EpCertName.
+- Update API CompanyFourElementsVerification: update param EpCertNo.
+- Update API CompanyFourElementsVerification: update param LegalPersonCertName.
+- Update API CompanyFourElementsVerification: update param LegalPersonCertNo.
+- Update API CompanyFourElementsVerification: update response param.
+- Update API CompanyThreeElementsVerification: update param EpCertName.
+- Update API CompanyThreeElementsVerification: update param EpCertNo.
+- Update API CompanyThreeElementsVerification: update param LegalPersonCertName.
+- Update API DescribeEmptyNumber: update param InputNumber.
+- Update API DescribeMobileOperatorAttribute: update param InputNumber.
+- Update API DescribePhoneNumberAnalysis: update response param.
+- Update API DescribePhoneNumberOperatorAttribute: update param InputNumber.
+- Update API DescribePhoneTwiceTelVerify: update param InputNumber.
+- Update API InvalidPhoneNumberFilter: update param InputNumber.
+- Update API PhoneNumberEncrypt: update param InputNumber.
+- Update API PhoneNumberStatusForAccount: update param InputNumber.
+- Update API PhoneNumberStatusForPublic: update param InputNumber.
+- Update API PhoneNumberStatusForReal: update param InputNumber.
+- Update API PhoneNumberStatusForVirtual: update param InputNumber.
+- Update API PhoneNumberStatusForVoice: update param InputNumber.
+- Update API QueryPhoneTwiceTelVerify: update param InputNumber.
+- Update API ThreeElementsVerification: update param CertCode.
+- Update API ThreeElementsVerification: update param InputNumber.
+- Update API ThreeElementsVerification: update param Name.
+- Update API TwoElementsVerification: update param InputNumber.
+- Update API TwoElementsVerification: update param Name.
+
+
 2024-08-14 Version: 2.10.0
 - Support API DescribeMobileOperatorAttribute.
 

@@ -1209,6 +1209,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_analysis_aiwith_options_async(request, runtime)
 
+    def describe_phone_number_analysis_pai_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse:
+        """
+        @summary 号码分析服务pai供应商批量查询接口
+        
+        @param request: DescribePhoneNumberAnalysisPaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberAnalysisPaiResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.model_config):
+            query['ModelConfig'] = request.model_config
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rate):
+            query['Rate'] = request.rate
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberAnalysisPai',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_phone_number_analysis_pai_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse:
+        """
+        @summary 号码分析服务pai供应商批量查询接口
+        
+        @param request: DescribePhoneNumberAnalysisPaiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberAnalysisPaiResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.model_config):
+            query['ModelConfig'] = request.model_config
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rate):
+            query['Rate'] = request.rate
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberAnalysisPai',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_phone_number_analysis_pai(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse:
+        """
+        @summary 号码分析服务pai供应商批量查询接口
+        
+        @param request: DescribePhoneNumberAnalysisPaiRequest
+        @return: DescribePhoneNumberAnalysisPaiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_phone_number_analysis_pai_with_options(request, runtime)
+
+    async def describe_phone_number_analysis_pai_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisPaiResponse:
+        """
+        @summary 号码分析服务pai供应商批量查询接口
+        
+        @param request: DescribePhoneNumberAnalysisPaiRequest
+        @return: DescribePhoneNumberAnalysisPaiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_phone_number_analysis_pai_with_options_async(request, runtime)
+
     def describe_phone_number_analysis_transparent_with_options(
         self,
         request: dytnsapi_20200217_models.DescribePhoneNumberAnalysisTransparentRequest,
@@ -1752,6 +1872,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_operator_attribute_with_options_async(request, runtime)
+
+    def describe_phone_number_operator_attribute_annual_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberOperatorAttributeAnnualResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttributeAnnual',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_phone_number_operator_attribute_annual_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberOperatorAttributeAnnualResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttributeAnnual',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_phone_number_operator_attribute_annual(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualRequest
+        @return: DescribePhoneNumberOperatorAttributeAnnualResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_phone_number_operator_attribute_annual_with_options(request, runtime)
+
+    async def describe_phone_number_operator_attribute_annual_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualRequest
+        @return: DescribePhoneNumberOperatorAttributeAnnualResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_phone_number_operator_attribute_annual_with_options_async(request, runtime)
+
+    def describe_phone_number_operator_attribute_annual_use_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualUseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberOperatorAttributeAnnualUseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttributeAnnualUse',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_phone_number_operator_attribute_annual_use_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualUseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePhoneNumberOperatorAttributeAnnualUseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOperatorAttributeAnnualUse',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_phone_number_operator_attribute_annual_use(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualUseRequest
+        @return: DescribePhoneNumberOperatorAttributeAnnualUseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_phone_number_operator_attribute_annual_use_with_options(request, runtime)
+
+    async def describe_phone_number_operator_attribute_annual_use_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOperatorAttributeAnnualUseResponse:
+        """
+        @summary 号码归属服务(包年包月客户专用)
+        
+        @param request: DescribePhoneNumberOperatorAttributeAnnualUseRequest
+        @return: DescribePhoneNumberOperatorAttributeAnnualUseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_phone_number_operator_attribute_annual_use_with_options_async(request, runtime)
 
     def describe_phone_number_risk_with_options(
         self,
