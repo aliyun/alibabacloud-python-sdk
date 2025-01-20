@@ -4595,7 +4595,15 @@ class CreateConfigRuleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag keys.
+        # 
+        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys in each call.
         self.key = key
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4763,6 +4771,7 @@ class CreateConfigRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        # rule attached tags
         self.tag = tag
         # The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
@@ -5090,6 +5099,7 @@ class CreateConfigRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        # rule attached tags
         self.tag_shrink = tag_shrink
         # The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
@@ -8463,6 +8473,7 @@ class EvaluatePreConfigRulesRequest(TeaModel):
         self,
         enable_managed_rules: bool = None,
         resource_evaluate_items: List[EvaluatePreConfigRulesRequestResourceEvaluateItems] = None,
+        resource_type_format: str = None,
     ):
         # Specifies whether to enable the managed rule. Valid values:
         # 
@@ -8475,6 +8486,7 @@ class EvaluatePreConfigRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_evaluate_items = resource_evaluate_items
+        self.resource_type_format = resource_type_format
 
     def validate(self):
         if self.resource_evaluate_items:
@@ -8494,6 +8506,8 @@ class EvaluatePreConfigRulesRequest(TeaModel):
         if self.resource_evaluate_items is not None:
             for k in self.resource_evaluate_items:
                 result['ResourceEvaluateItems'].append(k.to_map() if k else None)
+        if self.resource_type_format is not None:
+            result['ResourceTypeFormat'] = self.resource_type_format
         return result
 
     def from_map(self, m: dict = None):
@@ -8505,6 +8519,8 @@ class EvaluatePreConfigRulesRequest(TeaModel):
             for k in m.get('ResourceEvaluateItems'):
                 temp_model = EvaluatePreConfigRulesRequestResourceEvaluateItems()
                 self.resource_evaluate_items.append(temp_model.from_map(k))
+        if m.get('ResourceTypeFormat') is not None:
+            self.resource_type_format = m.get('ResourceTypeFormat')
         return self
 
 
@@ -8513,6 +8529,7 @@ class EvaluatePreConfigRulesShrinkRequest(TeaModel):
         self,
         enable_managed_rules: bool = None,
         resource_evaluate_items_shrink: str = None,
+        resource_type_format: str = None,
     ):
         # Specifies whether to enable the managed rule. Valid values:
         # 
@@ -8525,6 +8542,7 @@ class EvaluatePreConfigRulesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_evaluate_items_shrink = resource_evaluate_items_shrink
+        self.resource_type_format = resource_type_format
 
     def validate(self):
         pass
@@ -8539,6 +8557,8 @@ class EvaluatePreConfigRulesShrinkRequest(TeaModel):
             result['EnableManagedRules'] = self.enable_managed_rules
         if self.resource_evaluate_items_shrink is not None:
             result['ResourceEvaluateItems'] = self.resource_evaluate_items_shrink
+        if self.resource_type_format is not None:
+            result['ResourceTypeFormat'] = self.resource_type_format
         return result
 
     def from_map(self, m: dict = None):
@@ -8547,6 +8567,8 @@ class EvaluatePreConfigRulesShrinkRequest(TeaModel):
             self.enable_managed_rules = m.get('EnableManagedRules')
         if m.get('ResourceEvaluateItems') is not None:
             self.resource_evaluate_items_shrink = m.get('ResourceEvaluateItems')
+        if m.get('ResourceTypeFormat') is not None:
+            self.resource_type_format = m.get('ResourceTypeFormat')
         return self
 
 
@@ -11252,7 +11274,15 @@ class GetAggregateConfigRuleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):
@@ -11298,6 +11328,9 @@ class GetAggregateConfigRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -11355,6 +11388,9 @@ class GetAggregateConfigRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -11856,7 +11892,9 @@ class GetAggregateConfigRuleResponseBodyConfigRuleTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -12054,6 +12092,7 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.tag_key_scope = tag_key_scope
         # The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
         self.tag_value_scope = tag_value_scope
+        # The list of tags.
         self.tags = tags
         # The tag scope.
         self.tags_scope = tags_scope
@@ -16751,7 +16790,13 @@ class GetConfigRuleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -16790,6 +16835,9 @@ class GetConfigRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -16836,6 +16884,9 @@ class GetConfigRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -17344,7 +17395,9 @@ class GetConfigRuleResponseBodyConfigRuleTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -17528,6 +17581,7 @@ class GetConfigRuleResponseBodyConfigRule(TeaModel):
         # 
         # > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
         self.tag_value_scope = tag_value_scope
+        # The tag list.
         self.tags = tags
         # TagsScope
         self.tags_scope = tags_scope
@@ -27243,7 +27297,15 @@ class ListConfigRulesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
         self.key = key
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -27326,6 +27388,9 @@ class ListConfigRulesRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -27448,6 +27513,9 @@ class ListConfigRulesShrinkRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -35963,7 +36031,9 @@ class UpdateConfigRuleRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the key pair. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` and `acs:`.
         self.value = value
 
     def validate(self):
@@ -36114,6 +36184,9 @@ class UpdateConfigRuleRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag = tag
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
@@ -36420,6 +36493,9 @@ class UpdateConfigRuleShrinkRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
         self.tag_shrink = tag_shrink
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 

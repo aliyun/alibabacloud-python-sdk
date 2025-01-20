@@ -1,3 +1,8 @@
+2025-01-20 Version: 3.0.10
+- Update API EvaluatePreConfigRules: add param ResourceTypeFormat.
+- Update API EvaluatePreConfigRules: update param EnableManagedRules.
+
+
 2025-01-15 Version: 3.0.9
 - Update API ActiveAggregateConfigRules: add param CompliancePackId.
 - Update API ActiveAggregateConfigRules: update param ConfigRuleIds.

@@ -4215,6 +4215,8 @@ class Client(OpenApiClient):
             body['EnableManagedRules'] = request.enable_managed_rules
         if not UtilClient.is_unset(request.resource_evaluate_items_shrink):
             body['ResourceEvaluateItems'] = request.resource_evaluate_items_shrink
+        if not UtilClient.is_unset(request.resource_type_format):
+            body['ResourceTypeFormat'] = request.resource_type_format
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4256,6 +4258,8 @@ class Client(OpenApiClient):
             body['EnableManagedRules'] = request.enable_managed_rules
         if not UtilClient.is_unset(request.resource_evaluate_items_shrink):
             body['ResourceEvaluateItems'] = request.resource_evaluate_items_shrink
+        if not UtilClient.is_unset(request.resource_type_format):
+            body['ResourceTypeFormat'] = request.resource_type_format
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
