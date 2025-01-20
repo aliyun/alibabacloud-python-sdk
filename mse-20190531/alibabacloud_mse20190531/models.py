@@ -7890,6 +7890,7 @@ class CloneSentinelRuleFromAhasRequest(TeaModel):
         ahas_namespace: str = None,
         app_name: str = None,
         is_ahaspublic_region: bool = None,
+        mse_app_name: str = None,
         namespace: str = None,
     ):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
@@ -7902,6 +7903,7 @@ class CloneSentinelRuleFromAhasRequest(TeaModel):
         self.app_name = app_name
         # Specifies whether AHAS is deployed in the Internet region.
         self.is_ahaspublic_region = is_ahaspublic_region
+        self.mse_app_name = mse_app_name
         # The namespace.
         # 
         # This parameter is required.
@@ -7924,6 +7926,8 @@ class CloneSentinelRuleFromAhasRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.is_ahaspublic_region is not None:
             result['IsAHASPublicRegion'] = self.is_ahaspublic_region
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         return result
@@ -7938,6 +7942,8 @@ class CloneSentinelRuleFromAhasRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('IsAHASPublicRegion') is not None:
             self.is_ahaspublic_region = m.get('IsAHASPublicRegion')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         return self
