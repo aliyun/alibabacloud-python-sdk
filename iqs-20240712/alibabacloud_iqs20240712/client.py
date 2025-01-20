@@ -80,10 +80,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.BicyclingDirectionNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.BicyclingDirectionNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.BicyclingDirectionNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bicycling_direction_nova_with_options_async(
         self,
@@ -124,10 +130,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.BicyclingDirectionNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.BicyclingDirectionNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.BicyclingDirectionNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bicycling_direction_nova(
         self,
@@ -187,10 +199,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.CommonQueryBySceneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.CommonQueryBySceneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.CommonQueryBySceneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def common_query_by_scene_with_options_async(
         self,
@@ -222,10 +240,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.CommonQueryBySceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.CommonQueryBySceneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.CommonQueryBySceneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def common_query_by_scene(
         self,
@@ -298,10 +322,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.DrivingDirectionNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def driving_direction_nova_with_options_async(
         self,
@@ -346,10 +376,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.DrivingDirectionNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def driving_direction_nova(
         self,
@@ -418,10 +454,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.ElectrobikeDirectionNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.ElectrobikeDirectionNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.ElectrobikeDirectionNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def electrobike_direction_nova_with_options_async(
         self,
@@ -462,10 +504,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.ElectrobikeDirectionNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.ElectrobikeDirectionNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.ElectrobikeDirectionNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def electrobike_direction_nova(
         self,
@@ -530,10 +578,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.GeoCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.GeoCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.GeoCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def geo_code_with_options_async(
         self,
@@ -570,10 +624,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.GeoCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.GeoCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.GeoCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def geo_code(
         self,
@@ -652,10 +712,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.NearbySearchNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.NearbySearchNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.NearbySearchNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def nearby_search_nova_with_options_async(
         self,
@@ -706,10 +772,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.NearbySearchNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.NearbySearchNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.NearbySearchNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def nearby_search_nova(
         self,
@@ -782,10 +854,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.PlaceSearchNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.PlaceSearchNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.PlaceSearchNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def place_search_nova_with_options_async(
         self,
@@ -830,10 +908,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.PlaceSearchNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.PlaceSearchNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.PlaceSearchNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def place_search_nova(
         self,
@@ -862,6 +946,666 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.place_search_nova_with_options_async(request, headers, runtime)
+
+    def query_attractions_with_options(
+        self,
+        request: iqs20240712_models.QueryAttractionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryAttractionsResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAttractionsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryAttractions',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/attractions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_attractions_with_options_async(
+        self,
+        request: iqs20240712_models.QueryAttractionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryAttractionsResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAttractionsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryAttractions',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/attractions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_attractions(
+        self,
+        request: iqs20240712_models.QueryAttractionsRequest,
+    ) -> iqs20240712_models.QueryAttractionsResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsRequest
+        @return: QueryAttractionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_attractions_with_options(request, headers, runtime)
+
+    async def query_attractions_async(
+        self,
+        request: iqs20240712_models.QueryAttractionsRequest,
+    ) -> iqs20240712_models.QueryAttractionsResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsRequest
+        @return: QueryAttractionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_attractions_with_options_async(request, headers, runtime)
+
+    def query_attractions_nl_with_options(
+        self,
+        request: iqs20240712_models.QueryAttractionsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryAttractionsNlResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAttractionsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryAttractionsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/attractions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsNlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsNlResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_attractions_nl_with_options_async(
+        self,
+        request: iqs20240712_models.QueryAttractionsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryAttractionsNlResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAttractionsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryAttractionsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/attractions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsNlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryAttractionsNlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_attractions_nl(
+        self,
+        request: iqs20240712_models.QueryAttractionsNlRequest,
+    ) -> iqs20240712_models.QueryAttractionsNlResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsNlRequest
+        @return: QueryAttractionsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_attractions_nl_with_options(request, headers, runtime)
+
+    async def query_attractions_nl_async(
+        self,
+        request: iqs20240712_models.QueryAttractionsNlRequest,
+    ) -> iqs20240712_models.QueryAttractionsNlResponse:
+        """
+        @summary 景点查询
+        
+        @param request: QueryAttractionsNlRequest
+        @return: QueryAttractionsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_attractions_nl_with_options_async(request, headers, runtime)
+
+    def query_hotels_with_options(
+        self,
+        request: iqs20240712_models.QueryHotelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryHotelsResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryHotels',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/hotels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_hotels_with_options_async(
+        self,
+        request: iqs20240712_models.QueryHotelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryHotelsResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryHotels',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/hotels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_hotels(
+        self,
+        request: iqs20240712_models.QueryHotelsRequest,
+    ) -> iqs20240712_models.QueryHotelsResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsRequest
+        @return: QueryHotelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_hotels_with_options(request, headers, runtime)
+
+    async def query_hotels_async(
+        self,
+        request: iqs20240712_models.QueryHotelsRequest,
+    ) -> iqs20240712_models.QueryHotelsResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsRequest
+        @return: QueryHotelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_hotels_with_options_async(request, headers, runtime)
+
+    def query_hotels_nl_with_options(
+        self,
+        request: iqs20240712_models.QueryHotelsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryHotelsNlResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryHotelsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/hotels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsNlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsNlResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_hotels_nl_with_options_async(
+        self,
+        request: iqs20240712_models.QueryHotelsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryHotelsNlResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHotelsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryHotelsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/hotels',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsNlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryHotelsNlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_hotels_nl(
+        self,
+        request: iqs20240712_models.QueryHotelsNlRequest,
+    ) -> iqs20240712_models.QueryHotelsNlResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsNlRequest
+        @return: QueryHotelsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_hotels_nl_with_options(request, headers, runtime)
+
+    async def query_hotels_nl_async(
+        self,
+        request: iqs20240712_models.QueryHotelsNlRequest,
+    ) -> iqs20240712_models.QueryHotelsNlResponse:
+        """
+        @summary 酒店查询
+        
+        @param request: QueryHotelsNlRequest
+        @return: QueryHotelsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_hotels_nl_with_options_async(request, headers, runtime)
+
+    def query_restaurants_with_options(
+        self,
+        request: iqs20240712_models.QueryRestaurantsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryRestaurantsResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRestaurantsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryRestaurants',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/restaurants',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_restaurants_with_options_async(
+        self,
+        request: iqs20240712_models.QueryRestaurantsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryRestaurantsResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRestaurantsResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryRestaurants',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v1/nl/restaurants',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_restaurants(
+        self,
+        request: iqs20240712_models.QueryRestaurantsRequest,
+    ) -> iqs20240712_models.QueryRestaurantsResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsRequest
+        @return: QueryRestaurantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_restaurants_with_options(request, headers, runtime)
+
+    async def query_restaurants_async(
+        self,
+        request: iqs20240712_models.QueryRestaurantsRequest,
+    ) -> iqs20240712_models.QueryRestaurantsResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsRequest
+        @return: QueryRestaurantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_restaurants_with_options_async(request, headers, runtime)
+
+    def query_restaurants_nl_with_options(
+        self,
+        request: iqs20240712_models.QueryRestaurantsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryRestaurantsNlResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRestaurantsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryRestaurantsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/restaurants',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsNlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsNlResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def query_restaurants_nl_with_options_async(
+        self,
+        request: iqs20240712_models.QueryRestaurantsNlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.QueryRestaurantsNlResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsNlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRestaurantsNlResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='QueryRestaurantsNl',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/amap-function-call-agent/iqs-agent-service/v2/nl/restaurants',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsNlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.QueryRestaurantsNlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def query_restaurants_nl(
+        self,
+        request: iqs20240712_models.QueryRestaurantsNlRequest,
+    ) -> iqs20240712_models.QueryRestaurantsNlResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsNlRequest
+        @return: QueryRestaurantsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_restaurants_nl_with_options(request, headers, runtime)
+
+    async def query_restaurants_nl_async(
+        self,
+        request: iqs20240712_models.QueryRestaurantsNlRequest,
+    ) -> iqs20240712_models.QueryRestaurantsNlResponse:
+        """
+        @summary 餐厅查询
+        
+        @param request: QueryRestaurantsNlRequest
+        @return: QueryRestaurantsNlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_restaurants_nl_with_options_async(request, headers, runtime)
 
     def rgeo_code_with_options(
         self,
@@ -898,10 +1642,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.RgeoCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.RgeoCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.RgeoCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rgeo_code_with_options_async(
         self,
@@ -938,10 +1688,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.RgeoCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.RgeoCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.RgeoCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rgeo_code(
         self,
@@ -1014,10 +1770,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.TransitIntegratedDirectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.TransitIntegratedDirectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.TransitIntegratedDirectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def transit_integrated_direction_with_options_async(
         self,
@@ -1062,10 +1824,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.TransitIntegratedDirectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.TransitIntegratedDirectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.TransitIntegratedDirectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def transit_integrated_direction(
         self,
@@ -1134,10 +1902,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.WalkingDirectionNovaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.WalkingDirectionNovaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.WalkingDirectionNovaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def walking_direction_nova_with_options_async(
         self,
@@ -1178,10 +1952,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            iqs20240712_models.WalkingDirectionNovaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.WalkingDirectionNovaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.WalkingDirectionNovaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def walking_direction_nova(
         self,

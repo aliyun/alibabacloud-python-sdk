@@ -100,6 +100,7 @@ class QueryResultDataImages(TeaModel):
 class QueryResultDataMetadata(TeaModel):
     def __init__(
         self,
+        average_spend: str = None,
         business_area: str = None,
         daily_opening_hours: str = None,
         main_tag: str = None,
@@ -107,6 +108,7 @@ class QueryResultDataMetadata(TeaModel):
         score: str = None,
         weekly_opening_days: str = None,
     ):
+        self.average_spend = average_spend
         self.business_area = business_area
         self.daily_opening_hours = daily_opening_hours
         self.main_tag = main_tag
@@ -123,6 +125,8 @@ class QueryResultDataMetadata(TeaModel):
             return _map
 
         result = dict()
+        if self.average_spend is not None:
+            result['averageSpend'] = self.average_spend
         if self.business_area is not None:
             result['businessArea'] = self.business_area
         if self.daily_opening_hours is not None:
@@ -139,6 +143,8 @@ class QueryResultDataMetadata(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('averageSpend') is not None:
+            self.average_spend = m.get('averageSpend')
         if m.get('businessArea') is not None:
             self.business_area = m.get('businessArea')
         if m.get('dailyOpeningHours') is not None:
@@ -160,6 +166,7 @@ class QueryResultData(TeaModel):
         address: str = None,
         city_code: str = None,
         city_name: str = None,
+        distance_meter: str = None,
         district_code: str = None,
         district_name: str = None,
         id: str = None,
@@ -176,6 +183,7 @@ class QueryResultData(TeaModel):
         self.address = address
         self.city_code = city_code
         self.city_name = city_name
+        self.distance_meter = distance_meter
         self.district_code = district_code
         self.district_name = district_name
         self.id = id
@@ -209,6 +217,8 @@ class QueryResultData(TeaModel):
             result['cityCode'] = self.city_code
         if self.city_name is not None:
             result['cityName'] = self.city_name
+        if self.distance_meter is not None:
+            result['distanceMeter'] = self.distance_meter
         if self.district_code is not None:
             result['districtCode'] = self.district_code
         if self.district_name is not None:
@@ -245,6 +255,8 @@ class QueryResultData(TeaModel):
             self.city_code = m.get('cityCode')
         if m.get('cityName') is not None:
             self.city_name = m.get('cityName')
+        if m.get('distanceMeter') is not None:
+            self.distance_meter = m.get('distanceMeter')
         if m.get('districtCode') is not None:
             self.district_code = m.get('districtCode')
         if m.get('districtName') is not None:
@@ -280,8 +292,10 @@ class QueryResult(TeaModel):
     def __init__(
         self,
         data: List[QueryResultData] = None,
+        request_id: str = None,
     ):
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
@@ -299,6 +313,8 @@ class QueryResult(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -308,6 +324,8 @@ class QueryResult(TeaModel):
             for k in m.get('data'):
                 temp_model = QueryResultData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -2879,6 +2897,534 @@ class PlaceSearchNovaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PlaceSearchNovaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAttractionsRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAttractionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_result: QueryResult = None,
+        request_id: str = None,
+    ):
+        self.query_result = query_result
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.query_result:
+            self.query_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_result is not None:
+            result['queryResult'] = self.query_result.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queryResult') is not None:
+            temp_model = QueryResult()
+            self.query_result = temp_model.from_map(m['queryResult'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryAttractionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAttractionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAttractionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAttractionsNlRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAttractionsNlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryHotelsRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryHotelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_result: QueryResult = None,
+        request_id: str = None,
+    ):
+        self.query_result = query_result
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.query_result:
+            self.query_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_result is not None:
+            result['queryResult'] = self.query_result.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queryResult') is not None:
+            temp_model = QueryResult()
+            self.query_result = temp_model.from_map(m['queryResult'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryHotelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryHotelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryHotelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryHotelsNlRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryHotelsNlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryRestaurantsRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryRestaurantsResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_result: QueryResult = None,
+        request_id: str = None,
+    ):
+        self.query_result = query_result
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.query_result:
+            self.query_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_result is not None:
+            result['queryResult'] = self.query_result.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('queryResult') is not None:
+            temp_model = QueryResult()
+            self.query_result = temp_model.from_map(m['queryResult'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class QueryRestaurantsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryRestaurantsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryRestaurantsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryRestaurantsNlRequest(TeaModel):
+    def __init__(
+        self,
+        body: AgentBaseQuery = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = AgentBaseQuery()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryRestaurantsNlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryResult()
             self.body = temp_model.from_map(m['body'])
         return self
 

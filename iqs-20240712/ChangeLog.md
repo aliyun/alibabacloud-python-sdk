@@ -1,3 +1,12 @@
+2025-01-20 Version: 3.1.0
+- Support API QueryAttractions.
+- Support API QueryAttractionsNl.
+- Support API QueryHotels.
+- Support API QueryHotelsNl.
+- Support API QueryRestaurants.
+- Support API QueryRestaurantsNl.
+
+
 2025-01-17 Version: 3.0.0
 - Delete API ElectrobikeDirection.
 - Update API BicyclingDirectionNova: update response param.
