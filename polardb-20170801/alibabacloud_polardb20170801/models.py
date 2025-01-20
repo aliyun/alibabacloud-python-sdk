@@ -8631,9 +8631,9 @@ class DescribeBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of cluster.
+        # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -8709,7 +8709,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # Indicates whether backups are retained when you delete a cluster. Valid values:
         # 
         # *   **ALL**: permanently retains all backups.
-        # *   **LATEST**: permanently retains only the last backup.
+        # *   **LATEST**: permanently retains the most recent backup.
         # *   **NONE**: does not retain backups.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The backup frequency of level-1 backups. Default value: Normal. Valid values:
@@ -8749,9 +8749,9 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # *   **0**: The cross-region level-2 backup feature is disabled.
         # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
-        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # *   **1**: Cross-region level-2 backups are retained for a long period of time.
         # 
-        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+        # >  The default value of the parameter is **0**.
         self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
         # The backup cycle of level-2 backups. Valid values:
         # 
@@ -8771,9 +8771,9 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # *   0: The level-2 backup feature is disabled.
         # *   30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
-        # *   \\-1: Level-2 backups are permanently retained.
+        # *   \\-1: Level-2 backups are retained for a long period of time.
         # 
-        # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+        # >  The default value of this parameter is **0**.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
         # The backup cycle. Valid values:
         # 
@@ -10784,6 +10784,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         has_complete_standby_res: bool = None,
         hot_standby_cluster: str = None,
         imci_auto_index: str = None,
+        imperceptible_switch: str = None,
         inode_total: int = None,
         inode_used: int = None,
         is_latest_version: bool = None,
@@ -10803,6 +10804,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         resource_group_id: str = None,
         restore_data_point: str = None,
         restore_type: str = None,
+        row_compression: str = None,
         sqlsize: int = None,
         serverless_type: str = None,
         source_dbcluster: str = None,
@@ -10912,6 +10914,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # *   `ON`: enabled
         # *   `OFF`: disabled
         self.imci_auto_index = imci_auto_index
+        self.imperceptible_switch = imperceptible_switch
         # Maximum number of inodes in the file system.
         self.inode_total = inode_total
         # Current inode usage.
@@ -10986,6 +10989,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # * **RestoreByTime**: Restore from a time point based on primary backup. * **RestoreByBackupSet**: Restore from a backup set based on primary backup. * **RestoreByTimeOss**: Restore from a time point based on secondary backup. * **RestoreByBackupSetOss**: Restore from a backup set based on secondary backup. * **CloneFromSourceCluster**: Clone from the source cluster.
         # <note>This parameter is only supported for clusters restored from a backup set or time point after June 1, 2024.</note>
         self.restore_type = restore_type
+        self.row_compression = row_compression
         # Storage amount of SQL, in bytes. If the value is -1, it indicates no data.
         self.sqlsize = sqlsize
         # Serverless type. Valid values are as follows:
@@ -11107,6 +11111,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['HotStandbyCluster'] = self.hot_standby_cluster
         if self.imci_auto_index is not None:
             result['ImciAutoIndex'] = self.imci_auto_index
+        if self.imperceptible_switch is not None:
+            result['ImperceptibleSwitch'] = self.imperceptible_switch
         if self.inode_total is not None:
             result['InodeTotal'] = self.inode_total
         if self.inode_used is not None:
@@ -11145,6 +11151,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['RestoreDataPoint'] = self.restore_data_point
         if self.restore_type is not None:
             result['RestoreType'] = self.restore_type
+        if self.row_compression is not None:
+            result['RowCompression'] = self.row_compression
         if self.sqlsize is not None:
             result['SQLSize'] = self.sqlsize
         if self.serverless_type is not None:
@@ -11242,6 +11250,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.hot_standby_cluster = m.get('HotStandbyCluster')
         if m.get('ImciAutoIndex') is not None:
             self.imci_auto_index = m.get('ImciAutoIndex')
+        if m.get('ImperceptibleSwitch') is not None:
+            self.imperceptible_switch = m.get('ImperceptibleSwitch')
         if m.get('InodeTotal') is not None:
             self.inode_total = m.get('InodeTotal')
         if m.get('InodeUsed') is not None:
@@ -11280,6 +11290,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.restore_data_point = m.get('RestoreDataPoint')
         if m.get('RestoreType') is not None:
             self.restore_type = m.get('RestoreType')
+        if m.get('RowCompression') is not None:
+            self.row_compression = m.get('RowCompression')
         if m.get('SQLSize') is not None:
             self.sqlsize = m.get('SQLSize')
         if m.get('ServerlessType') is not None:
@@ -14211,9 +14223,9 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         self.dbcluster_id = dbcluster_id
         # Request ID.
         self.request_id = request_id
-        # Maximum limit for the number of read-only column storage nodes. Range: 0~7.
+        # The maximum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
-        # Minimum limit for the number of read-only column storage nodes. Range: 0~7.
+        # The minimum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
         # Maximum scaling limit for a single node. Range: 1 PCU~32 PCU.
         self.scale_max = scale_max
@@ -27514,6 +27526,7 @@ class ModifyDBClusterRequest(TeaModel):
         fault_injection_type: str = None,
         fault_simulate_mode: str = None,
         imci_auto_index: str = None,
+        modify_row_compression: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -27521,6 +27534,7 @@ class ModifyDBClusterRequest(TeaModel):
         standby_hamode: str = None,
         storage_auto_scale: str = None,
         storage_upper_bound: int = None,
+        table_meta: str = None,
     ):
         # Specifies whether to enable storage compression. Set the value to **ON**.
         self.compress_storage = compress_storage
@@ -27565,6 +27579,7 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # *   For information about the cluster version limits, see [Automatic IMCI-based query acceleration](https://help.aliyun.com/document_detail/2854119.html).
         self.imci_auto_index = imci_auto_index
+        self.modify_row_compression = modify_row_compression
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -27583,6 +27598,7 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # >  The maximum value of this parameter is 32000.
         self.storage_upper_bound = storage_upper_bound
+        self.table_meta = table_meta
 
     def validate(self):
         pass
@@ -27607,6 +27623,8 @@ class ModifyDBClusterRequest(TeaModel):
             result['FaultSimulateMode'] = self.fault_simulate_mode
         if self.imci_auto_index is not None:
             result['ImciAutoIndex'] = self.imci_auto_index
+        if self.modify_row_compression is not None:
+            result['ModifyRowCompression'] = self.modify_row_compression
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -27621,6 +27639,8 @@ class ModifyDBClusterRequest(TeaModel):
             result['StorageAutoScale'] = self.storage_auto_scale
         if self.storage_upper_bound is not None:
             result['StorageUpperBound'] = self.storage_upper_bound
+        if self.table_meta is not None:
+            result['TableMeta'] = self.table_meta
         return result
 
     def from_map(self, m: dict = None):
@@ -27639,6 +27659,8 @@ class ModifyDBClusterRequest(TeaModel):
             self.fault_simulate_mode = m.get('FaultSimulateMode')
         if m.get('ImciAutoIndex') is not None:
             self.imci_auto_index = m.get('ImciAutoIndex')
+        if m.get('ModifyRowCompression') is not None:
+            self.modify_row_compression = m.get('ModifyRowCompression')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -27653,6 +27675,8 @@ class ModifyDBClusterRequest(TeaModel):
             self.storage_auto_scale = m.get('StorageAutoScale')
         if m.get('StorageUpperBound') is not None:
             self.storage_upper_bound = m.get('StorageUpperBound')
+        if m.get('TableMeta') is not None:
+            self.table_meta = m.get('TableMeta')
         return self
 
 
@@ -29804,10 +29828,11 @@ class ModifyDBClusterSSLRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter is required for a PolarDB for MySQL cluster.
+        # *   This parameter is required for PolarDB for MySQL clusters.
         # 
-        # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
-        # *   You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/153414.html) operation to view the details of the endpoint.
+        # *   This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
+        # 
+        # *   You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
         self.dbendpoint_id = dbendpoint_id
         # The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
         # 
@@ -30209,6 +30234,150 @@ class ModifyDBClusterServerlessConfResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBClusterServerlessConfResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBClusterStoragePerformanceRequest(TeaModel):
+    def __init__(
+        self,
+        bursting_enabled: str = None,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        modify_type: str = None,
+        provisioned_iops: int = None,
+        resource_owner_id: int = None,
+        storage_type: str = None,
+    ):
+        self.bursting_enabled = bursting_enabled
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.modify_type = modify_type
+        self.provisioned_iops = provisioned_iops
+        self.resource_owner_id = resource_owner_id
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class ModifyDBClusterStoragePerformanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterStoragePerformanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterStoragePerformanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterStoragePerformanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

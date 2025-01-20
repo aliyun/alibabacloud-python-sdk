@@ -7745,7 +7745,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Query serverless configuration.
+        @summary Queries the serverless configurations of a serverless cluster.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7788,7 +7788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Query serverless configuration.
+        @summary Queries the serverless configurations of a serverless cluster.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7830,7 +7830,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Query serverless configuration.
+        @summary Queries the serverless configurations of a serverless cluster.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @return: DescribeDBClusterServerlessConfResponse
@@ -7843,7 +7843,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
     ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
         """
-        @summary Query serverless configuration.
+        @summary Queries the serverless configurations of a serverless cluster.
         
         @param request: DescribeDBClusterServerlessConfRequest
         @return: DescribeDBClusterServerlessConfResponse
@@ -13999,6 +13999,8 @@ class Client(OpenApiClient):
             query['FaultSimulateMode'] = request.fault_simulate_mode
         if not UtilClient.is_unset(request.imci_auto_index):
             query['ImciAutoIndex'] = request.imci_auto_index
+        if not UtilClient.is_unset(request.modify_row_compression):
+            query['ModifyRowCompression'] = request.modify_row_compression
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -14013,6 +14015,8 @@ class Client(OpenApiClient):
             query['StorageAutoScale'] = request.storage_auto_scale
         if not UtilClient.is_unset(request.storage_upper_bound):
             query['StorageUpperBound'] = request.storage_upper_bound
+        if not UtilClient.is_unset(request.table_meta):
+            query['TableMeta'] = request.table_meta
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14060,6 +14064,8 @@ class Client(OpenApiClient):
             query['FaultSimulateMode'] = request.fault_simulate_mode
         if not UtilClient.is_unset(request.imci_auto_index):
             query['ImciAutoIndex'] = request.imci_auto_index
+        if not UtilClient.is_unset(request.modify_row_compression):
+            query['ModifyRowCompression'] = request.modify_row_compression
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -14074,6 +14080,8 @@ class Client(OpenApiClient):
             query['StorageAutoScale'] = request.storage_auto_scale
         if not UtilClient.is_unset(request.storage_upper_bound):
             query['StorageUpperBound'] = request.storage_upper_bound
+        if not UtilClient.is_unset(request.table_meta):
+            query['TableMeta'] = request.table_meta
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15745,7 +15753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         """
-        @summary Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+        @summary Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15796,7 +15804,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         """
-        @summary Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+        @summary Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15846,7 +15854,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterSSLRequest,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         """
-        @summary Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+        @summary Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @return: ModifyDBClusterSSLResponse
@@ -15859,7 +15867,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.ModifyDBClusterSSLRequest,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         """
-        @summary Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+        @summary Enables or disables the SSL encryption feature for a PolarDB cluster, or updates the CA certificate of the cluster.
         
         @param request: ModifyDBClusterSSLRequest
         @return: ModifyDBClusterSSLResponse
@@ -16042,6 +16050,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_serverless_conf_with_options_async(request, runtime)
+
+    def modify_dbcluster_storage_performance_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStoragePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse:
+        """
+        @summary 修改存储性能
+        
+        @param request: ModifyDBClusterStoragePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterStoragePerformanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterStoragePerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_storage_performance_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStoragePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse:
+        """
+        @summary 修改存储性能
+        
+        @param request: ModifyDBClusterStoragePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterStoragePerformanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterStoragePerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_storage_performance(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStoragePerformanceRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse:
+        """
+        @summary 修改存储性能
+        
+        @param request: ModifyDBClusterStoragePerformanceRequest
+        @return: ModifyDBClusterStoragePerformanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_storage_performance_with_options(request, runtime)
+
+    async def modify_dbcluster_storage_performance_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterStoragePerformanceRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse:
+        """
+        @summary 修改存储性能
+        
+        @param request: ModifyDBClusterStoragePerformanceRequest
+        @return: ModifyDBClusterStoragePerformanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_storage_performance_with_options_async(request, runtime)
 
     def modify_dbcluster_storage_space_with_options(
         self,

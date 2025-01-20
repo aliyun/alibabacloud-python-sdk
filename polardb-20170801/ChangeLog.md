@@ -1,3 +1,10 @@
+2025-01-20 Version: 5.4.0
+- Support API ModifyDBClusterStoragePerformance.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API ModifyDBCluster: add param ModifyRowCompression.
+- Update API ModifyDBCluster: add param TableMeta.
+
+
 2024-12-31 Version: 5.3.2
 - Update API CreateDBCluster: add param StorageEncryption.
 - Update API CreateDBCluster: add param StorageEncryptionKey.
