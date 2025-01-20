@@ -1,3 +1,12 @@
+2025-01-20 Version: 1.65.2
+- Update API CreateDataCorrectOrder: update param Param.
+- Update API CreateFreeLockCorrectOrder: add param RealLoginUserUid.
+- Update API ModifyDataCorrectExecSQL: add param RealLoginUserUid.
+- Update API RestartDataCorrectSQLJob: add param RealLoginUserUid.
+- Update API RetryDataCorrectPreCheck: add param RealLoginUserUid.
+- Update API SkipDataCorrectRowCheck: add param RealLoginUserUid.
+
+
 2024-12-30 Version: 1.65.0
 - Support API BatchCreateDataLakePartitions.
 - Support API BatchDeleteDataLakePartitions.

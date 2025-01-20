@@ -6338,21 +6338,19 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
     def __init__(
         self,
         db_id: int = None,
+        instance_id: int = None,
         logic: bool = None,
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
         # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
-        # 
-        # This parameter is required.
         self.db_id = db_id
+        self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is a physical database.
-        # 
-        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -6366,6 +6364,8 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
         result = dict()
         if self.db_id is not None:
             result['DbId'] = self.db_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.logic is not None:
             result['Logic'] = self.logic
         return result
@@ -6374,6 +6374,8 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
         m = m or dict()
         if m.get('DbId') is not None:
             self.db_id = m.get('DbId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
         return self
@@ -9579,6 +9581,7 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateFreeLockCorrectOrderRequestParam = None,
+        real_login_user_uid: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
@@ -9592,6 +9595,7 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.param = param
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -9613,6 +9617,8 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -9628,6 +9634,8 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateFreeLockCorrectOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -9641,6 +9649,7 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        real_login_user_uid: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
@@ -9654,6 +9663,7 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.param_shrink = param_shrink
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -9674,6 +9684,8 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -9688,6 +9700,8 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -55749,6 +55763,7 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
         self,
         exec_sql: str = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The new SQL script.
@@ -55759,6 +55774,7 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
@@ -55775,6 +55791,8 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
             result['ExecSQL'] = self.exec_sql
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -55785,6 +55803,8 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
             self.exec_sql = m.get('ExecSQL')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -58701,6 +58721,7 @@ class RestartDataCorrectSQLJobRequest(TeaModel):
         self,
         job_id: int = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
         type: str = None,
     ):
@@ -58712,6 +58733,7 @@ class RestartDataCorrectSQLJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # The type of the rerun operation. Valid values:
@@ -58735,6 +58757,8 @@ class RestartDataCorrectSQLJobRequest(TeaModel):
             result['JobId'] = self.job_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.type is not None:
@@ -58747,6 +58771,8 @@ class RestartDataCorrectSQLJobRequest(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('Type') is not None:
@@ -59124,12 +59150,14 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The ID of the data change ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the data change ticket.
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
@@ -59144,6 +59172,8 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -59152,6 +59182,8 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -61381,6 +61413,7 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        real_login_user_uid: str = None,
         reason: str = None,
         tid: int = None,
     ):
@@ -61388,6 +61421,7 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The reason for skipping the verification on the number of rows in the precheck for data change.
         # 
         # This parameter is required.
@@ -61406,6 +61440,8 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.reason is not None:
             result['Reason'] = self.reason
         if self.tid is not None:
@@ -61416,6 +61452,8 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         if m.get('Tid') is not None:
