@@ -32572,6 +32572,528 @@ class RunSearchGenerationResponse(TeaModel):
         return self
 
 
+class RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class RunSearchSimilarArticlesRequestChatConfigSearchParam(TeaModel):
+    def __init__(
+        self,
+        search_sources: List[RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources] = None,
+    ):
+        self.search_sources = search_sources
+
+    def validate(self):
+        if self.search_sources:
+            for k in self.search_sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SearchSources'] = []
+        if self.search_sources is not None:
+            for k in self.search_sources:
+                result['SearchSources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.search_sources = []
+        if m.get('SearchSources') is not None:
+            for k in m.get('SearchSources'):
+                temp_model = RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources()
+                self.search_sources.append(temp_model.from_map(k))
+        return self
+
+
+class RunSearchSimilarArticlesRequestChatConfig(TeaModel):
+    def __init__(
+        self,
+        search_param: RunSearchSimilarArticlesRequestChatConfigSearchParam = None,
+    ):
+        self.search_param = search_param
+
+    def validate(self):
+        if self.search_param:
+            self.search_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.search_param is not None:
+            result['SearchParam'] = self.search_param.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SearchParam') is not None:
+            temp_model = RunSearchSimilarArticlesRequestChatConfigSearchParam()
+            self.search_param = temp_model.from_map(m['SearchParam'])
+        return self
+
+
+class RunSearchSimilarArticlesRequest(TeaModel):
+    def __init__(
+        self,
+        chat_config: RunSearchSimilarArticlesRequestChatConfig = None,
+        doc_type: str = None,
+        title: str = None,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        self.chat_config = chat_config
+        self.doc_type = doc_type
+        self.title = title
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.chat_config:
+            self.chat_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_config is not None:
+            result['ChatConfig'] = self.chat_config.to_map()
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatConfig') is not None:
+            temp_model = RunSearchSimilarArticlesRequestChatConfig()
+            self.chat_config = temp_model.from_map(m['ChatConfig'])
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunSearchSimilarArticlesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        chat_config_shrink: str = None,
+        doc_type: str = None,
+        title: str = None,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        self.chat_config_shrink = chat_config_shrink
+        self.doc_type = doc_type
+        self.title = title
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chat_config_shrink is not None:
+            result['ChatConfig'] = self.chat_config_shrink
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatConfig') is not None:
+            self.chat_config_shrink = m.get('ChatConfig')
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunSearchSimilarArticlesResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        task_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(TeaModel):
+    def __init__(
+        self,
+        doc_uuid: str = None,
+        pub_time: str = None,
+        search_source_name: str = None,
+        source: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.doc_uuid = doc_uuid
+        self.pub_time = pub_time
+        self.search_source_name = search_source_name
+        self.source = source
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.search_source_name is not None:
+            result['SearchSourceName'] = self.search_source_name
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('SearchSourceName') is not None:
+            self.search_source_name = m.get('SearchSourceName')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunSearchSimilarArticlesResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunSearchSimilarArticlesResponseBodyPayloadOutputArticles] = None,
+        text: str = None,
+    ):
+        self.articles = articles
+        self.text = text
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunSearchSimilarArticlesResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunSearchSimilarArticlesResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunSearchSimilarArticlesResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunSearchSimilarArticlesResponseBodyPayloadOutput = None,
+        usage: RunSearchSimilarArticlesResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunSearchSimilarArticlesResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunSearchSimilarArticlesResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunSearchSimilarArticlesResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunSearchSimilarArticlesResponseBodyHeader = None,
+        payload: RunSearchSimilarArticlesResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = RunSearchSimilarArticlesResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunSearchSimilarArticlesResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunSearchSimilarArticlesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunSearchSimilarArticlesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunSearchSimilarArticlesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunStepByStepWritingRequestReferenceDataArticles(TeaModel):
     def __init__(
         self,

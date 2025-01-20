@@ -1,3 +1,7 @@
+2025-01-20 Version: 1.18.0
+- Support API RunSearchSimilarArticles.
+
+
 2025-01-03 Version: 1.17.1
 - Generated python 2023-08-01 for AiMiaoBi.
 
