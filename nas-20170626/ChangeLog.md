@@ -1,3 +1,8 @@
+2025-01-20 Version: 2.5.2
+- Update API DescribeFilesets: add param OrderByField.
+- Update API DescribeFilesets: add param SortOrder.
+
+
 2024-12-19 Version: 2.5.1
 - Update API DescribeMountTargets: update response param.
 - Update API DescribeSnapshots: update response param.

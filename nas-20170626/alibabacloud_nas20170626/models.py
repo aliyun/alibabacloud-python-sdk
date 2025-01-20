@@ -13041,6 +13041,8 @@ class DescribeFilesetsRequest(TeaModel):
         filters: List[DescribeFilesetsRequestFilters] = None,
         max_results: int = None,
         next_token: str = None,
+        order_by_field: str = None,
+        sort_order: str = None,
     ):
         # The ID of the file system.
         # 
@@ -13059,6 +13061,8 @@ class DescribeFilesetsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.order_by_field = order_by_field
+        self.sort_order = sort_order
 
     def validate(self):
         if self.filters:
@@ -13082,6 +13086,10 @@ class DescribeFilesetsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.order_by_field is not None:
+            result['OrderByField'] = self.order_by_field
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
         return result
 
     def from_map(self, m: dict = None):
@@ -13097,6 +13105,10 @@ class DescribeFilesetsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('OrderByField') is not None:
+            self.order_by_field = m.get('OrderByField')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
         return self
 
 
@@ -15882,6 +15894,11 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         source_file_system_version: str = None,
         status: str = None,
     ):
+        # The time when snapshot creation was complete.
+        # 
+        # The time follows the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard in UTC. The time is displayed in the `yyyy-MM-ddThh:mmZ` format.
+        # 
+        # >  This parameter is valid only when the snapshot is created. During snapshot creation, the value of this parameter is the same as that of CreateTime.
         self.completed_time = completed_time
         # The time when the snapshot was created.
         # 
