@@ -153,6 +153,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_text_feedback_with_options_async(request, headers, runtime)
 
+    def batch_create_aicoach_task_with_options(
+        self,
+        request: intelligent_creation_20240313_models.BatchCreateAICoachTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse:
+        """
+        @summary 批量发布剧本任务
+        
+        @param request: BatchCreateAICoachTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateAICoachTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.script_record_id):
+            body['scriptRecordId'] = request.script_record_id
+        if not UtilClient.is_unset(request.student_ids):
+            body['studentIds'] = request.student_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateAICoachTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/batchCreateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_aicoach_task_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchCreateAICoachTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse:
+        """
+        @summary 批量发布剧本任务
+        
+        @param request: BatchCreateAICoachTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateAICoachTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.request_id):
+            body['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.script_record_id):
+            body['scriptRecordId'] = request.script_record_id
+        if not UtilClient.is_unset(request.student_ids):
+            body['studentIds'] = request.student_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateAICoachTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/aicoach/batchCreateTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_aicoach_task(
+        self,
+        request: intelligent_creation_20240313_models.BatchCreateAICoachTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse:
+        """
+        @summary 批量发布剧本任务
+        
+        @param request: BatchCreateAICoachTaskRequest
+        @return: BatchCreateAICoachTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_create_aicoach_task_with_options(request, headers, runtime)
+
+    async def batch_create_aicoach_task_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchCreateAICoachTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchCreateAICoachTaskResponse:
+        """
+        @summary 批量发布剧本任务
+        
+        @param request: BatchCreateAICoachTaskRequest
+        @return: BatchCreateAICoachTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_create_aicoach_task_with_options_async(request, headers, runtime)
+
     def batch_get_project_task_with_options(
         self,
         tmp_req: intelligent_creation_20240313_models.BatchGetProjectTaskRequest,
@@ -2989,12 +3101,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3031,12 +3147,16 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4475,6 +4595,8 @@ class Client(OpenApiClient):
             body['projectName'] = request.project_name
         if not UtilClient.is_unset(request.res_spec_type):
             body['resSpecType'] = request.res_spec_type
+        if not UtilClient.is_unset(request.resolution):
+            body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
         req = open_api_models.OpenApiRequest(
@@ -4525,6 +4647,8 @@ class Client(OpenApiClient):
             body['projectName'] = request.project_name
         if not UtilClient.is_unset(request.res_spec_type):
             body['resSpecType'] = request.res_spec_type
+        if not UtilClient.is_unset(request.resolution):
+            body['resolution'] = request.resolution
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
         req = open_api_models.OpenApiRequest(
@@ -5021,8 +5145,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.channel_token):
+            body['channelToken'] = request.channel_token
         if not UtilClient.is_unset(request.custom_push_url):
             body['customPushUrl'] = request.custom_push_url
+        if not UtilClient.is_unset(request.custom_user_id):
+            body['customUserId'] = request.custom_user_id
         if not UtilClient.is_unset(request.project_id):
             body['projectId'] = request.project_id
         if not UtilClient.is_unset(request.request_id):
@@ -5063,8 +5191,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.channel_token):
+            body['channelToken'] = request.channel_token
         if not UtilClient.is_unset(request.custom_push_url):
             body['customPushUrl'] = request.custom_push_url
+        if not UtilClient.is_unset(request.custom_user_id):
+            body['customUserId'] = request.custom_user_id
         if not UtilClient.is_unset(request.project_id):
             body['projectId'] = request.project_id
         if not UtilClient.is_unset(request.request_id):

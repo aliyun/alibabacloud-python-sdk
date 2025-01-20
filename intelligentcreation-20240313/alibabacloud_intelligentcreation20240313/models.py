@@ -345,6 +345,7 @@ class IllustrationTaskCreateCmd(TeaModel):
         dst_height: int = None,
         dst_width: int = None,
         idempotent_id: str = None,
+        image_urls: List[str] = None,
         nums: int = None,
         oss_paths: List[str] = None,
         sticker_text: str = None,
@@ -353,6 +354,7 @@ class IllustrationTaskCreateCmd(TeaModel):
         self.dst_height = dst_height
         self.dst_width = dst_width
         self.idempotent_id = idempotent_id
+        self.image_urls = image_urls
         self.nums = nums
         self.oss_paths = oss_paths
         self.sticker_text = sticker_text
@@ -374,6 +376,8 @@ class IllustrationTaskCreateCmd(TeaModel):
             result['dstWidth'] = self.dst_width
         if self.idempotent_id is not None:
             result['idempotentId'] = self.idempotent_id
+        if self.image_urls is not None:
+            result['imageUrls'] = self.image_urls
         if self.nums is not None:
             result['nums'] = self.nums
         if self.oss_paths is not None:
@@ -392,6 +396,8 @@ class IllustrationTaskCreateCmd(TeaModel):
             self.dst_width = m.get('dstWidth')
         if m.get('idempotentId') is not None:
             self.idempotent_id = m.get('idempotentId')
+        if m.get('imageUrls') is not None:
+            self.image_urls = m.get('imageUrls')
         if m.get('nums') is not None:
             self.nums = m.get('nums')
         if m.get('ossPaths') is not None:
@@ -705,7 +711,7 @@ class TextTask(TeaModel):
         nums: int = None,
         point: str = None,
         reference_tag: ReferenceTag = None,
-        related_rag_id: int = None,
+        related_rag_ids: List[int] = None,
         style: str = None,
         target: str = None,
         text_ids: List[int] = None,
@@ -726,7 +732,7 @@ class TextTask(TeaModel):
         self.nums = nums
         self.point = point
         self.reference_tag = reference_tag
-        self.related_rag_id = related_rag_id
+        self.related_rag_ids = related_rag_ids
         # This parameter is required.
         self.style = style
         self.target = target
@@ -771,8 +777,8 @@ class TextTask(TeaModel):
             result['point'] = self.point
         if self.reference_tag is not None:
             result['referenceTag'] = self.reference_tag.to_map()
-        if self.related_rag_id is not None:
-            result['relatedRagId'] = self.related_rag_id
+        if self.related_rag_ids is not None:
+            result['relatedRagIds'] = self.related_rag_ids
         if self.style is not None:
             result['style'] = self.style
         if self.target is not None:
@@ -816,8 +822,8 @@ class TextTask(TeaModel):
         if m.get('referenceTag') is not None:
             temp_model = ReferenceTag()
             self.reference_tag = temp_model.from_map(m['referenceTag'])
-        if m.get('relatedRagId') is not None:
-            self.related_rag_id = m.get('relatedRagId')
+        if m.get('relatedRagIds') is not None:
+            self.related_rag_ids = m.get('relatedRagIds')
         if m.get('style') is not None:
             self.style = m.get('style')
         if m.get('target') is not None:
@@ -1258,6 +1264,120 @@ class AddTextFeedbackResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddTextFeedbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchCreateAICoachTaskRequest(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        script_record_id: str = None,
+        student_ids: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.script_record_id = script_record_id
+        self.student_ids = student_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.script_record_id is not None:
+            result['scriptRecordId'] = self.script_record_id
+        if self.student_ids is not None:
+            result['studentIds'] = self.student_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scriptRecordId') is not None:
+            self.script_record_id = m.get('scriptRecordId')
+        if m.get('studentIds') is not None:
+            self.student_ids = m.get('studentIds')
+        return self
+
+
+class BatchCreateAICoachTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_ids: List[str] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_ids = task_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_ids is not None:
+            result['taskIds'] = self.task_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskIds') is not None:
+            self.task_ids = m.get('taskIds')
+        return self
+
+
+class BatchCreateAICoachTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchCreateAICoachTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchCreateAICoachTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4498,13 +4618,17 @@ class InteractTextResponse(TeaModel):
 class ListAICoachScriptPageRequest(TeaModel):
     def __init__(
         self,
+        name: str = None,
         page_number: int = None,
         page_size: int = None,
         status: int = None,
+        type: int = None,
     ):
+        self.name = name
         self.page_number = page_number
         self.page_size = page_size
         self.status = status
+        self.type = type
 
     def validate(self):
         pass
@@ -4515,22 +4639,30 @@ class ListAICoachScriptPageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.name is not None:
+            result['name'] = self.name
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
         if self.status is not None:
             result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -4611,11 +4743,17 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
         self,
         assessment_point: int = None,
         expressiveness: int = None,
+        expressiveness_enabled: bool = None,
+        point_deduction_rule: int = None,
+        point_deduction_rule_enabled: bool = None,
         standard: int = None,
         standard_enabled: bool = None,
     ):
         self.assessment_point = assessment_point
         self.expressiveness = expressiveness
+        self.expressiveness_enabled = expressiveness_enabled
+        self.point_deduction_rule = point_deduction_rule
+        self.point_deduction_rule_enabled = point_deduction_rule_enabled
         self.standard = standard
         self.standard_enabled = standard_enabled
 
@@ -4632,6 +4770,12 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             result['assessmentPoint'] = self.assessment_point
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
+        if self.expressiveness_enabled is not None:
+            result['expressivenessEnabled'] = self.expressiveness_enabled
+        if self.point_deduction_rule is not None:
+            result['pointDeductionRule'] = self.point_deduction_rule
+        if self.point_deduction_rule_enabled is not None:
+            result['pointDeductionRuleEnabled'] = self.point_deduction_rule_enabled
         if self.standard is not None:
             result['standard'] = self.standard
         if self.standard_enabled is not None:
@@ -4644,6 +4788,12 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
             self.assessment_point = m.get('assessmentPoint')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
+        if m.get('expressivenessEnabled') is not None:
+            self.expressiveness_enabled = m.get('expressivenessEnabled')
+        if m.get('pointDeductionRule') is not None:
+            self.point_deduction_rule = m.get('pointDeductionRule')
+        if m.get('pointDeductionRuleEnabled') is not None:
+            self.point_deduction_rule_enabled = m.get('pointDeductionRuleEnabled')
         if m.get('standard') is not None:
             self.standard = m.get('standard')
         if m.get('standardEnabled') is not None:
@@ -4654,8 +4804,12 @@ class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
 class ListAICoachScriptPageResponseBodyList(TeaModel):
     def __init__(
         self,
+        append_question_flag: str = None,
+        assessment_scope: str = None,
         complete_strategy: ListAICoachScriptPageResponseBodyListCompleteStrategy = None,
         cover_url: str = None,
+        dialogue_tip_flag: bool = None,
+        evaluate_report_flag: bool = None,
         expressiveness: Dict[str, str] = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -4663,13 +4817,22 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         interaction_type: str = None,
         introduce: str = None,
         name: str = None,
+        order_ack_flag: bool = None,
         sample_dialogue_list: List[ListAICoachScriptPageResponseBodyListSampleDialogueList] = None,
         script_record_id: str = None,
+        sparring_tip_content: str = None,
+        sparring_tip_title: str = None,
         status: int = None,
+        student_think_time_flag: bool = None,
+        type: int = None,
         weights: ListAICoachScriptPageResponseBodyListWeights = None,
     ):
+        self.append_question_flag = append_question_flag
+        self.assessment_scope = assessment_scope
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
+        self.dialogue_tip_flag = dialogue_tip_flag
+        self.evaluate_report_flag = evaluate_report_flag
         self.expressiveness = expressiveness
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -4677,9 +4840,14 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         self.interaction_type = interaction_type
         self.introduce = introduce
         self.name = name
+        self.order_ack_flag = order_ack_flag
         self.sample_dialogue_list = sample_dialogue_list
         self.script_record_id = script_record_id
+        self.sparring_tip_content = sparring_tip_content
+        self.sparring_tip_title = sparring_tip_title
         self.status = status
+        self.student_think_time_flag = student_think_time_flag
+        self.type = type
         self.weights = weights
 
     def validate(self):
@@ -4698,10 +4866,18 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             return _map
 
         result = dict()
+        if self.append_question_flag is not None:
+            result['appendQuestionFlag'] = self.append_question_flag
+        if self.assessment_scope is not None:
+            result['assessmentScope'] = self.assessment_scope
         if self.complete_strategy is not None:
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
             result['coverUrl'] = self.cover_url
+        if self.dialogue_tip_flag is not None:
+            result['dialogueTipFlag'] = self.dialogue_tip_flag
+        if self.evaluate_report_flag is not None:
+            result['evaluateReportFlag'] = self.evaluate_report_flag
         if self.expressiveness is not None:
             result['expressiveness'] = self.expressiveness
         if self.gmt_create is not None:
@@ -4716,25 +4892,43 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['introduce'] = self.introduce
         if self.name is not None:
             result['name'] = self.name
+        if self.order_ack_flag is not None:
+            result['orderAckFlag'] = self.order_ack_flag
         result['sampleDialogueList'] = []
         if self.sample_dialogue_list is not None:
             for k in self.sample_dialogue_list:
                 result['sampleDialogueList'].append(k.to_map() if k else None)
         if self.script_record_id is not None:
             result['scriptRecordId'] = self.script_record_id
+        if self.sparring_tip_content is not None:
+            result['sparringTipContent'] = self.sparring_tip_content
+        if self.sparring_tip_title is not None:
+            result['sparringTipTitle'] = self.sparring_tip_title
         if self.status is not None:
             result['status'] = self.status
+        if self.student_think_time_flag is not None:
+            result['studentThinkTimeFlag'] = self.student_think_time_flag
+        if self.type is not None:
+            result['type'] = self.type
         if self.weights is not None:
             result['weights'] = self.weights.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appendQuestionFlag') is not None:
+            self.append_question_flag = m.get('appendQuestionFlag')
+        if m.get('assessmentScope') is not None:
+            self.assessment_scope = m.get('assessmentScope')
         if m.get('completeStrategy') is not None:
             temp_model = ListAICoachScriptPageResponseBodyListCompleteStrategy()
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
         if m.get('coverUrl') is not None:
             self.cover_url = m.get('coverUrl')
+        if m.get('dialogueTipFlag') is not None:
+            self.dialogue_tip_flag = m.get('dialogueTipFlag')
+        if m.get('evaluateReportFlag') is not None:
+            self.evaluate_report_flag = m.get('evaluateReportFlag')
         if m.get('expressiveness') is not None:
             self.expressiveness = m.get('expressiveness')
         if m.get('gmtCreate') is not None:
@@ -4749,6 +4943,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.introduce = m.get('introduce')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('orderAckFlag') is not None:
+            self.order_ack_flag = m.get('orderAckFlag')
         self.sample_dialogue_list = []
         if m.get('sampleDialogueList') is not None:
             for k in m.get('sampleDialogueList'):
@@ -4756,8 +4952,16 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
                 self.sample_dialogue_list.append(temp_model.from_map(k))
         if m.get('scriptRecordId') is not None:
             self.script_record_id = m.get('scriptRecordId')
+        if m.get('sparringTipContent') is not None:
+            self.sparring_tip_content = m.get('sparringTipContent')
+        if m.get('sparringTipTitle') is not None:
+            self.sparring_tip_title = m.get('sparringTipTitle')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('studentThinkTimeFlag') is not None:
+            self.student_think_time_flag = m.get('studentThinkTimeFlag')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         if m.get('weights') is not None:
             temp_model = ListAICoachScriptPageResponseBodyListWeights()
             self.weights = temp_model.from_map(m['weights'])
@@ -7005,6 +7209,7 @@ class SaveAvatarProjectRequest(TeaModel):
         project_id: str = None,
         project_name: str = None,
         res_spec_type: str = None,
+        resolution: str = None,
         scale_type: str = None,
     ):
         self.agent_id = agent_id
@@ -7013,6 +7218,7 @@ class SaveAvatarProjectRequest(TeaModel):
         self.project_id = project_id
         self.project_name = project_name
         self.res_spec_type = res_spec_type
+        self.resolution = resolution
         self.scale_type = scale_type
 
     def validate(self):
@@ -7041,6 +7247,8 @@ class SaveAvatarProjectRequest(TeaModel):
             result['projectName'] = self.project_name
         if self.res_spec_type is not None:
             result['resSpecType'] = self.res_spec_type
+        if self.resolution is not None:
+            result['resolution'] = self.resolution
         if self.scale_type is not None:
             result['scaleType'] = self.scale_type
         return result
@@ -7062,6 +7270,8 @@ class SaveAvatarProjectRequest(TeaModel):
             self.project_name = m.get('projectName')
         if m.get('resSpecType') is not None:
             self.res_spec_type = m.get('resSpecType')
+        if m.get('resolution') is not None:
+            self.resolution = m.get('resolution')
         if m.get('scaleType') is not None:
             self.scale_type = m.get('scaleType')
         return self
@@ -7786,11 +7996,15 @@ class SendTextMsgResponse(TeaModel):
 class StartAvatarSessionRequest(TeaModel):
     def __init__(
         self,
+        channel_token: str = None,
         custom_push_url: str = None,
+        custom_user_id: str = None,
         project_id: str = None,
         request_id: str = None,
     ):
+        self.channel_token = channel_token
         self.custom_push_url = custom_push_url
+        self.custom_user_id = custom_user_id
         self.project_id = project_id
         self.request_id = request_id
 
@@ -7803,8 +8017,12 @@ class StartAvatarSessionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_token is not None:
+            result['channelToken'] = self.channel_token
         if self.custom_push_url is not None:
             result['customPushUrl'] = self.custom_push_url
+        if self.custom_user_id is not None:
+            result['customUserId'] = self.custom_user_id
         if self.project_id is not None:
             result['projectId'] = self.project_id
         if self.request_id is not None:
@@ -7813,8 +8031,12 @@ class StartAvatarSessionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('channelToken') is not None:
+            self.channel_token = m.get('channelToken')
         if m.get('customPushUrl') is not None:
             self.custom_push_url = m.get('customPushUrl')
+        if m.get('customUserId') is not None:
+            self.custom_user_id = m.get('customUserId')
         if m.get('projectId') is not None:
             self.project_id = m.get('projectId')
         if m.get('requestId') is not None:

@@ -1,3 +1,12 @@
+2025-01-20 Version: 2.10.0
+- Support API BatchCreateAICoachTask.
+- Update API ListAICoachScriptPage: add param name.
+- Update API ListAICoachScriptPage: add param type.
+- Update API ListAICoachScriptPage: update response param.
+- Update API SaveAvatarProject: update param body.
+- Update API StartAvatarSession: update param body.
+
+
 2024-12-25 Version: 2.9.0
 - Support API CreateAICoachTask.
 - Support API ListAICoachScriptPage.
