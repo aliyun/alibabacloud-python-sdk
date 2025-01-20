@@ -1,3 +1,7 @@
+2025-01-20 Version: 3.4.2
+- Update API InitFaceVerify: add param CameraSelection.
+
+
 2025-01-06 Version: 3.4.0
 - Support API Id2MetaPeriodVerify.
 - Support API Mobile3MetaDetailStandardVerify.

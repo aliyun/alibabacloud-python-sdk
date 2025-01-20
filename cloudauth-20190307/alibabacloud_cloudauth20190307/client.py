@@ -2785,6 +2785,8 @@ class Client(OpenApiClient):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.camera_selection):
+            query['CameraSelection'] = request.camera_selection
         if not UtilClient.is_unset(request.cert_name):
             query['CertName'] = request.cert_name
         if not UtilClient.is_unset(request.cert_no):
@@ -2890,6 +2892,8 @@ class Client(OpenApiClient):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.camera_selection):
+            query['CameraSelection'] = request.camera_selection
         if not UtilClient.is_unset(request.cert_name):
             query['CertName'] = request.cert_name
         if not UtilClient.is_unset(request.cert_no):

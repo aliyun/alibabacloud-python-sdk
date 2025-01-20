@@ -5035,6 +5035,7 @@ class InitFaceVerifyRequest(TeaModel):
         birthday: str = None,
         callback_token: str = None,
         callback_url: str = None,
+        camera_selection: str = None,
         cert_name: str = None,
         cert_no: str = None,
         cert_type: str = None,
@@ -5072,6 +5073,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.birthday = birthday
         self.callback_token = callback_token
         self.callback_url = callback_url
+        self.camera_selection = camera_selection
         self.cert_name = cert_name
         self.cert_no = cert_no
         self.cert_type = cert_type
@@ -5123,6 +5125,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.camera_selection is not None:
+            result['CameraSelection'] = self.camera_selection
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.cert_no is not None:
@@ -5199,6 +5203,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('CameraSelection') is not None:
+            self.camera_selection = m.get('CameraSelection')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('CertNo') is not None:
