@@ -13,10 +13,15 @@ class RegisterDeviceRequest(TeaModel):
         sdk_code: str = None,
         user_device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.extend = extend
+        # This parameter is required.
         self.sdk_code = sdk_code
+        # This parameter is required.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -64,10 +69,15 @@ class RegisterDeviceShrinkRequest(TeaModel):
         sdk_code: str = None,
         user_device_id: str = None,
     ):
+        # This parameter is required.
         self.app_key = app_key
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.extend_shrink = extend_shrink
+        # This parameter is required.
         self.sdk_code = sdk_code
+        # This parameter is required.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -216,9 +226,6 @@ class RegisterDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

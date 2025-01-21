@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: moguan_sdk_20210415_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> moguan_sdk_20210415_models.RegisterDeviceResponse:
+        """
+        @summary 注册设备
+        
+        @param tmp_req: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = moguan_sdk_20210415_models.RegisterDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -76,16 +83,29 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            moguan_sdk_20210415_models.RegisterDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                moguan_sdk_20210415_models.RegisterDeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                moguan_sdk_20210415_models.RegisterDeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def register_device_with_options_async(
         self,
         tmp_req: moguan_sdk_20210415_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> moguan_sdk_20210415_models.RegisterDeviceResponse:
+        """
+        @summary 注册设备
+        
+        @param tmp_req: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = moguan_sdk_20210415_models.RegisterDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -116,15 +136,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            moguan_sdk_20210415_models.RegisterDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                moguan_sdk_20210415_models.RegisterDeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                moguan_sdk_20210415_models.RegisterDeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def register_device(
         self,
         request: moguan_sdk_20210415_models.RegisterDeviceRequest,
     ) -> moguan_sdk_20210415_models.RegisterDeviceResponse:
+        """
+        @summary 注册设备
+        
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_device_with_options(request, runtime)
 
@@ -132,5 +164,11 @@ class Client(OpenApiClient):
         self,
         request: moguan_sdk_20210415_models.RegisterDeviceRequest,
     ) -> moguan_sdk_20210415_models.RegisterDeviceResponse:
+        """
+        @summary 注册设备
+        
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_device_with_options_async(request, runtime)
