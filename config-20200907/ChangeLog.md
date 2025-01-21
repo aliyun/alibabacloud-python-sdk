@@ -1,3 +1,27 @@
+2025-01-21 Version: 3.0.11
+- Update API CreateAggregateCompliancePack: add param Tag.
+- Update API CreateAggregateConfigRule: add param Tag.
+- Update API CreateAggregator: add param Tag.
+- Update API CreateCompliancePack: add param Tag.
+- Update API GetAggregateCompliancePack: add param Tag.
+- Update API GetAggregateCompliancePack: update response param.
+- Update API GetAggregator: add param Tag.
+- Update API GetAggregator: update response param.
+- Update API GetCompliancePack: add param Tag.
+- Update API GetCompliancePack: update response param.
+- Update API ListAggregateCompliancePacks: add param Tag.
+- Update API ListAggregateCompliancePacks: update response param.
+- Update API ListAggregateConfigRules: add param Tag.
+- Update API ListAggregators: add param Tag.
+- Update API ListAggregators: update response param.
+- Update API ListCompliancePacks: add param Tag.
+- Update API ListCompliancePacks: update response param.
+- Update API UpdateAggregateCompliancePack: add param Tag.
+- Update API UpdateAggregateConfigRule: add param Tag.
+- Update API UpdateAggregator: add param Tag.
+- Update API UpdateCompliancePack: add param Tag.
+
+
 2025-01-20 Version: 3.0.10
 - Update API EvaluatePreConfigRules: add param ResourceTypeFormat.
 - Update API EvaluatePreConfigRules: update param EnableManagedRules.

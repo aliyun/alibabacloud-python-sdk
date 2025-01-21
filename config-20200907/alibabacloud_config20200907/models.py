@@ -1514,6 +1514,39 @@ class CreateAggregateCompliancePackRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class CreateAggregateCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateAggregateCompliancePackRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -1567,6 +1600,7 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag: List[CreateAggregateCompliancePackRequestTag] = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[CreateAggregateCompliancePackRequestTagsScope] = None,
@@ -1619,6 +1653,7 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         # *   2 (default): medium
         # *   3: low
         self.risk_level = risk_level
+        self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -1639,6 +1674,10 @@ class CreateAggregateCompliancePackRequest(TeaModel):
                     k.validate()
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -1686,6 +1725,10 @@ class CreateAggregateCompliancePackRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1736,6 +1779,11 @@ class CreateAggregateCompliancePackRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAggregateCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -1838,6 +1886,7 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag_shrink: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[CreateAggregateCompliancePackShrinkRequestTagsScope] = None,
@@ -1890,6 +1939,7 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         # *   2 (default): medium
         # *   3: low
         self.risk_level = risk_level
+        self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -1951,6 +2001,8 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -1998,6 +2050,8 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -2373,6 +2427,39 @@ class CreateAggregateConfigRuleRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class CreateAggregateConfigRuleRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateAggregateConfigRuleRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -2434,6 +2521,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag: List[CreateAggregateConfigRuleRequestTag] = None,
         tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
@@ -2544,6 +2632,7 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        self.tag = tag
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
@@ -2563,6 +2652,10 @@ class CreateAggregateConfigRuleRequest(TeaModel):
     def validate(self):
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -2624,6 +2717,10 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_logic_scope is not None:
             result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
@@ -2687,6 +2784,11 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAggregateConfigRuleRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyLogicScope') is not None:
             self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
@@ -2797,6 +2899,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         risk_level: int = None,
         source_identifier: str = None,
         source_owner: str = None,
+        tag_shrink: str = None,
         tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
@@ -2907,6 +3010,7 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_owner = source_owner
+        self.tag_shrink = tag_shrink
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
@@ -2987,6 +3091,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             result['SourceIdentifier'] = self.source_identifier
         if self.source_owner is not None:
             result['SourceOwner'] = self.source_owner
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_logic_scope is not None:
             result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
@@ -3050,6 +3156,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             self.source_identifier = m.get('SourceIdentifier')
         if m.get('SourceOwner') is not None:
             self.source_owner = m.get('SourceOwner')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyLogicScope') is not None:
             self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
@@ -3368,6 +3476,39 @@ class CreateAggregatorRequestAggregatorAccounts(TeaModel):
         return self
 
 
+class CreateAggregatorRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateAggregatorRequest(TeaModel):
     def __init__(
         self,
@@ -3377,6 +3518,7 @@ class CreateAggregatorRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         folder_id: str = None,
+        tag: List[CreateAggregatorRequestTag] = None,
     ):
         # The information about the member accounts in the account group. Example:
         # 
@@ -3410,10 +3552,15 @@ class CreateAggregatorRequest(TeaModel):
         self.description = description
         # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
         self.folder_id = folder_id
+        self.tag = tag
 
     def validate(self):
         if self.aggregator_accounts:
             for k in self.aggregator_accounts:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -3437,6 +3584,10 @@ class CreateAggregatorRequest(TeaModel):
             result['Description'] = self.description
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3456,6 +3607,11 @@ class CreateAggregatorRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAggregatorRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -3468,6 +3624,7 @@ class CreateAggregatorShrinkRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         folder_id: str = None,
+        tag_shrink: str = None,
     ):
         # The information about the member accounts in the account group. Example:
         # 
@@ -3501,6 +3658,7 @@ class CreateAggregatorShrinkRequest(TeaModel):
         self.description = description
         # The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
         self.folder_id = folder_id
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -3523,6 +3681,8 @@ class CreateAggregatorShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -3539,6 +3699,8 @@ class CreateAggregatorShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -3771,6 +3933,39 @@ class CreateCompliancePackRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class CreateCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCompliancePackRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -3823,6 +4018,7 @@ class CreateCompliancePackRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag: List[CreateCompliancePackRequestTag] = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[CreateCompliancePackRequestTagsScope] = None,
@@ -3867,6 +4063,7 @@ class CreateCompliancePackRequest(TeaModel):
         # *   2: medium.
         # *   3: low.
         self.risk_level = risk_level
+        self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -3885,6 +4082,10 @@ class CreateCompliancePackRequest(TeaModel):
                     k.validate()
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -3930,6 +4131,10 @@ class CreateCompliancePackRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -3978,6 +4183,11 @@ class CreateCompliancePackRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -4079,6 +4289,7 @@ class CreateCompliancePackShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag_shrink: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[CreateCompliancePackShrinkRequestTagsScope] = None,
@@ -4123,6 +4334,7 @@ class CreateCompliancePackShrinkRequest(TeaModel):
         # *   2: medium.
         # *   3: low.
         self.risk_level = risk_level
+        self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -4180,6 +4392,8 @@ class CreateCompliancePackShrinkRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -4225,6 +4439,8 @@ class CreateCompliancePackShrinkRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -8486,6 +8702,7 @@ class EvaluatePreConfigRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_evaluate_items = resource_evaluate_items
+        # 下一个查询开始Token
         self.resource_type_format = resource_type_format
 
     def validate(self):
@@ -8542,6 +8759,7 @@ class EvaluatePreConfigRulesShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_evaluate_items_shrink = resource_evaluate_items_shrink
+        # 下一个查询开始Token
         self.resource_type_format = resource_type_format
 
     def validate(self):
@@ -9995,11 +10213,45 @@ class GetAggregateAdvancedSearchFileResponse(TeaModel):
         return self
 
 
+class GetAggregateCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetAggregateCompliancePackRequest(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
         compliance_pack_id: str = None,
+        tag: List[GetAggregateCompliancePackRequestTag] = None,
     ):
         # The ID of the account group.
         # 
@@ -10013,6 +10265,64 @@ class GetAggregateCompliancePackRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.compliance_pack_id is not None:
+            result['CompliancePackId'] = self.compliance_pack_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('CompliancePackId') is not None:
+            self.compliance_pack_id = m.get('CompliancePackId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetAggregateCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetAggregateCompliancePackShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        compliance_pack_id: str = None,
+        tag_shrink: str = None,
+    ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
+        # This parameter is required.
+        self.aggregator_id = aggregator_id
+        # The ID of the compliance package.
+        # 
+        # For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
+        # 
+        # This parameter is required.
+        self.compliance_pack_id = compliance_pack_id
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -10027,6 +10337,8 @@ class GetAggregateCompliancePackRequest(TeaModel):
             result['AggregatorId'] = self.aggregator_id
         if self.compliance_pack_id is not None:
             result['CompliancePackId'] = self.compliance_pack_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -10035,6 +10347,8 @@ class GetAggregateCompliancePackRequest(TeaModel):
             self.aggregator_id = m.get('AggregatorId')
         if m.get('CompliancePackId') is not None:
             self.compliance_pack_id = m.get('CompliancePackId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -10343,6 +10657,39 @@ class GetAggregateCompliancePackResponseBodyCompliancePackScope(TeaModel):
         return self
 
 
+class GetAggregateCompliancePackResponseBodyCompliancePackTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
     def __init__(
         self,
@@ -10357,6 +10704,7 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
         risk_level: int = None,
         scope: GetAggregateCompliancePackResponseBodyCompliancePackScope = None,
         status: str = None,
+        tags: List[GetAggregateCompliancePackResponseBodyCompliancePackTags] = None,
         template_content: str = None,
     ):
         # The ID of the management account to which the compliance package belongs.
@@ -10388,6 +10736,7 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
         # *   ACTIVE: The compliance package was normal.
         # *   CREATING: The compliance package was being created.
         self.status = status
+        self.tags = tags
         # The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
         self.template_content = template_content
 
@@ -10398,6 +10747,10 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
                     k.validate()
         if self.scope:
             self.scope.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10429,6 +10782,10 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
             result['Scope'] = self.scope.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_content is not None:
             result['TemplateContent'] = self.template_content
         return result
@@ -10461,6 +10818,11 @@ class GetAggregateCompliancePackResponseBodyCompliancePack(TeaModel):
             self.scope = temp_model.from_map(m['Scope'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetAggregateCompliancePackResponseBodyCompliancePackTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateContent') is not None:
             self.template_content = m.get('TemplateContent')
         return self
@@ -15314,15 +15676,94 @@ class GetAggregateResourceInventoryResponse(TeaModel):
         return self
 
 
+class GetAggregatorRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetAggregatorRequest(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
+        tag: List[GetAggregatorRequestTag] = None,
     ):
         # The ID of the account group.
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetAggregatorRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetAggregatorShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        tag_shrink: str = None,
+    ):
+        # The ID of the account group.
+        # 
+        # This parameter is required.
+        self.aggregator_id = aggregator_id
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -15335,12 +15776,16 @@ class GetAggregatorRequest(TeaModel):
         result = dict()
         if self.aggregator_id is not None:
             result['AggregatorId'] = self.aggregator_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AggregatorId') is not None:
             self.aggregator_id = m.get('AggregatorId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -15398,6 +15843,39 @@ class GetAggregatorResponseBodyAggregatorAggregatorAccounts(TeaModel):
         return self
 
 
+class GetAggregatorResponseBodyAggregatorTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetAggregatorResponseBodyAggregator(TeaModel):
     def __init__(
         self,
@@ -15411,6 +15889,7 @@ class GetAggregatorResponseBodyAggregator(TeaModel):
         aggregator_type: str = None,
         description: str = None,
         folder_id: str = None,
+        tags: List[GetAggregatorResponseBodyAggregatorTags] = None,
     ):
         # The ID of the management account that is used to create the account group.
         self.account_id = account_id
@@ -15441,10 +15920,15 @@ class GetAggregatorResponseBodyAggregator(TeaModel):
         self.description = description
         # The ID of the attached folder of the account group.
         self.folder_id = folder_id
+        self.tags = tags
 
     def validate(self):
         if self.aggregator_accounts:
             for k in self.aggregator_accounts:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -15476,6 +15960,10 @@ class GetAggregatorResponseBodyAggregator(TeaModel):
             result['Description'] = self.description
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15503,6 +15991,11 @@ class GetAggregatorResponseBodyAggregator(TeaModel):
             self.description = m.get('Description')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetAggregatorResponseBodyAggregatorTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -15584,10 +16077,44 @@ class GetAggregatorResponse(TeaModel):
         return self
 
 
+class GetCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class GetCompliancePackRequest(TeaModel):
     def __init__(
         self,
         compliance_pack_id: str = None,
+        tag: List[GetCompliancePackRequestTag] = None,
     ):
         # The ID of the compliance package.
         # 
@@ -15595,6 +16122,53 @@ class GetCompliancePackRequest(TeaModel):
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compliance_pack_id is not None:
+            result['CompliancePackId'] = self.compliance_pack_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompliancePackId') is not None:
+            self.compliance_pack_id = m.get('CompliancePackId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetCompliancePackShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        compliance_pack_id: str = None,
+        tag_shrink: str = None,
+    ):
+        # The ID of the compliance package.
+        # 
+        # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+        # 
+        # This parameter is required.
+        self.compliance_pack_id = compliance_pack_id
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -15607,12 +16181,16 @@ class GetCompliancePackRequest(TeaModel):
         result = dict()
         if self.compliance_pack_id is not None:
             result['CompliancePackId'] = self.compliance_pack_id
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CompliancePackId') is not None:
             self.compliance_pack_id = m.get('CompliancePackId')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -15925,6 +16503,39 @@ class GetCompliancePackResponseBodyCompliancePackScope(TeaModel):
         return self
 
 
+class GetCompliancePackResponseBodyCompliancePackTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetCompliancePackResponseBodyCompliancePack(TeaModel):
     def __init__(
         self,
@@ -15938,6 +16549,7 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
         risk_level: int = None,
         scope: GetCompliancePackResponseBodyCompliancePackScope = None,
         status: str = None,
+        tags: List[GetCompliancePackResponseBodyCompliancePackTags] = None,
         template_content: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the compliance package belongs.
@@ -15967,6 +16579,7 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
         # *   ACTIVE: The compliance package is normal.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        self.tags = tags
         # The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
         self.template_content = template_content
 
@@ -15977,6 +16590,10 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
                     k.validate()
         if self.scope:
             self.scope.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16006,6 +16623,10 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
             result['Scope'] = self.scope.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_content is not None:
             result['TemplateContent'] = self.template_content
         return result
@@ -16036,6 +16657,11 @@ class GetCompliancePackResponseBodyCompliancePack(TeaModel):
             self.scope = temp_model.from_map(m['Scope'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetCompliancePackResponseBodyCompliancePackTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateContent') is not None:
             self.template_content = m.get('TemplateContent')
         return self
@@ -21913,6 +22539,39 @@ class IgnoreEvaluationResultsResponse(TeaModel):
         return self
 
 
+class ListAggregateCompliancePacksRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAggregateCompliancePacksRequest(TeaModel):
     def __init__(
         self,
@@ -21920,6 +22579,7 @@ class ListAggregateCompliancePacksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         status: str = None,
+        tag: List[ListAggregateCompliancePacksRequestTag] = None,
     ):
         # The ID of the account group.
         # 
@@ -21940,6 +22600,81 @@ class ListAggregateCompliancePacksRequest(TeaModel):
         # *   ACTIVE: compliance packages that are available for use.
         # *   CREATING: compliance packages that are being created.
         self.status = status
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListAggregateCompliancePacksRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListAggregateCompliancePacksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        status: str = None,
+        tag_shrink: str = None,
+    ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
+        # This parameter is required.
+        self.aggregator_id = aggregator_id
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100. Default value: 10.
+        self.page_size = page_size
+        # The status of the one or more compliance packages to be queried. Valid values:
+        # 
+        # *   ACTIVE: compliance packages that are available for use.
+        # *   CREATING: compliance packages that are being created.
+        self.status = status
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -21958,6 +22693,8 @@ class ListAggregateCompliancePacksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -21970,6 +22707,41 @@ class ListAggregateCompliancePacksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -21985,6 +22757,7 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
         description: str = None,
         risk_level: int = None,
         status: str = None,
+        tags: List[ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags] = None,
     ):
         # The ID of the management account to which the compliance package belongs.
         self.account_id = account_id
@@ -22011,9 +22784,13 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
         # *   ACTIVE: The compliance package is available for use.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22039,6 +22816,10 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
             result['RiskLevel'] = self.risk_level
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -22061,6 +22842,11 @@ class ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePac
             self.risk_level = m.get('RiskLevel')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -23149,6 +23935,39 @@ class ListAggregateConfigRuleEvaluationStatisticsResponse(TeaModel):
         return self
 
 
+class ListAggregateConfigRulesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAggregateConfigRulesRequest(TeaModel):
     def __init__(
         self,
@@ -23162,6 +23981,7 @@ class ListAggregateConfigRulesRequest(TeaModel):
         page_size: int = None,
         resource_types: str = None,
         risk_level: int = None,
+        tag: List[ListAggregateConfigRulesRequestTag] = None,
     ):
         # The ID of the account group.
         # 
@@ -23207,6 +24027,136 @@ class ListAggregateConfigRulesRequest(TeaModel):
         # *   2: medium
         # *   3: low
         self.risk_level = risk_level
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.compliance_pack_id is not None:
+            result['CompliancePackId'] = self.compliance_pack_id
+        if self.compliance_type is not None:
+            result['ComplianceType'] = self.compliance_type
+        if self.config_rule_name is not None:
+            result['ConfigRuleName'] = self.config_rule_name
+        if self.config_rule_state is not None:
+            result['ConfigRuleState'] = self.config_rule_state
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('CompliancePackId') is not None:
+            self.compliance_pack_id = m.get('CompliancePackId')
+        if m.get('ComplianceType') is not None:
+            self.compliance_type = m.get('ComplianceType')
+        if m.get('ConfigRuleName') is not None:
+            self.config_rule_name = m.get('ConfigRuleName')
+        if m.get('ConfigRuleState') is not None:
+            self.config_rule_state = m.get('ConfigRuleState')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListAggregateConfigRulesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListAggregateConfigRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        compliance_pack_id: str = None,
+        compliance_type: str = None,
+        config_rule_name: str = None,
+        config_rule_state: str = None,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_types: str = None,
+        risk_level: int = None,
+        tag_shrink: str = None,
+    ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # 
+        # This parameter is required.
+        self.aggregator_id = aggregator_id
+        # The compliance package ID.
+        self.compliance_pack_id = compliance_pack_id
+        # The compliance evaluation result. Valid values:
+        # 
+        # *   COMPLIANT: The resources are evaluated as compliant.
+        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resources.
+        # *   INSUFFICIENT_DATA: No data is available.
+        self.compliance_type = compliance_type
+        # The name of the rule.
+        self.config_rule_name = config_rule_name
+        # The status of the rule. Valid values:
+        # 
+        # *   ACTIVE: The rule is being used to monitor resource configurations.
+        # *   DELETING: The rule is being deleted.
+        # *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+        # *   INACTIVE: The rule is disabled.
+        self.config_rule_state = config_rule_state
+        # The keyword that is used for queries.
+        # 
+        # You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+        self.keyword = keyword
+        # The page number.
+        # 
+        # Pages start from page 1. Default value: 1
+        self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10
+        self.page_size = page_size
+        # Resource type for the rule to evaluate.
+        self.resource_types = resource_types
+        # The risk level of the resources that do not comply with the rule. Valid values:
+        # 
+        # *   1: high
+        # *   2: medium
+        # *   3: low
+        self.risk_level = risk_level
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -23237,6 +24187,8 @@ class ListAggregateConfigRulesRequest(TeaModel):
             result['ResourceTypes'] = self.resource_types
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -23261,6 +24213,8 @@ class ListAggregateConfigRulesRequest(TeaModel):
             self.resource_types = m.get('ResourceTypes')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -25491,11 +26445,45 @@ class ListAggregateResourcesByAdvancedSearchResponse(TeaModel):
         return self
 
 
+class ListAggregatorsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListAggregatorsRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
+        tag: List[ListAggregatorsRequestTag] = None,
     ):
         # The maximum number of entries to return in a request. Valid values: 1 to 100.
         # 
@@ -25503,6 +26491,58 @@ class ListAggregatorsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListAggregatorsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListAggregatorsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        tag_shrink: str = None,
+    ):
+        # The maximum number of entries to return in a request. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+        self.next_token = next_token
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -25517,6 +26557,8 @@ class ListAggregatorsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -25525,6 +26567,41 @@ class ListAggregatorsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -25540,6 +26617,7 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(TeaModel):
         aggregator_type: str = None,
         description: str = None,
         folder_id: str = None,
+        tags: List[ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags] = None,
     ):
         # The ID of the management account that is used to create the account group.
         self.account_id = account_id
@@ -25566,9 +26644,13 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(TeaModel):
         self.description = description
         # The ID of the folder.
         self.folder_id = folder_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25594,6 +26676,10 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(TeaModel):
             result['Description'] = self.description
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -25616,6 +26702,11 @@ class ListAggregatorsResponseBodyAggregatorsResultAggregators(TeaModel):
             self.description = m.get('Description')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -26156,12 +27247,46 @@ class ListCompliancePackTemplatesResponse(TeaModel):
         return self
 
 
+class ListCompliancePacksRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListCompliancePacksRequest(TeaModel):
     def __init__(
         self,
         page_number: int = None,
         page_size: int = None,
         status: str = None,
+        tag: List[ListCompliancePacksRequestTag] = None,
     ):
         # The page number.
         # 
@@ -26176,6 +27301,70 @@ class ListCompliancePacksRequest(TeaModel):
         # *   ACTIVE: The compliance package is active.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListCompliancePacksRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListCompliancePacksShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        status: str = None,
+        tag_shrink: str = None,
+    ):
+        # The page number.
+        # 
+        # Pages start from page 1. Default value: 1
+        self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        self.page_size = page_size
+        # The status of the compliance package to be queried. Valid values:
+        # 
+        # *   ACTIVE: The compliance package is active.
+        # *   CREATING: The compliance package is being created.
+        self.status = status
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -26192,6 +27381,8 @@ class ListCompliancePacksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -26202,6 +27393,41 @@ class ListCompliancePacksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -26216,6 +27442,7 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(TeaMod
         description: str = None,
         risk_level: int = None,
         status: str = None,
+        tags: List[ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags] = None,
     ):
         # The ID of the Alibaba Cloud account to which the compliance package belongs.
         self.account_id = account_id
@@ -26240,9 +27467,13 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(TeaMod
         # *   ACTIVE: The compliance package is normal.
         # *   CREATING: The compliance package is being created.
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26266,6 +27497,10 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(TeaMod
             result['RiskLevel'] = self.risk_level
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -26286,6 +27521,11 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(TeaMod
             self.risk_level = m.get('RiskLevel')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -33096,6 +34336,47 @@ class UpdateAggregateCompliancePackRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class UpdateAggregateCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+        self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateAggregateCompliancePackRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -33148,6 +34429,7 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag: List[UpdateAggregateCompliancePackRequestTag] = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[UpdateAggregateCompliancePackRequestTagsScope] = None,
@@ -33196,6 +34478,10 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
+        self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -33212,6 +34498,10 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
                     k.validate()
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -33257,6 +34547,10 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -33303,6 +34597,11 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = UpdateAggregateCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -33402,6 +34701,7 @@ class UpdateAggregateCompliancePackShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag_shrink: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[UpdateAggregateCompliancePackShrinkRequestTagsScope] = None,
@@ -33450,6 +34750,10 @@ class UpdateAggregateCompliancePackShrinkRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
+        self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -33505,6 +34809,8 @@ class UpdateAggregateCompliancePackShrinkRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -33548,6 +34854,8 @@ class UpdateAggregateCompliancePackShrinkRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -33925,6 +35233,47 @@ class UpdateAggregateConfigRuleRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class UpdateAggregateConfigRuleRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the resource. You can specify up to 20 tag keys.
+        # 
+        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
+        self.key = key
+        # The tag values.
+        # 
+        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # Each key-value must be unique. You can specify at most 20 tag values in each call.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateAggregateConfigRuleRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -33984,6 +35333,7 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         resource_ids_scope: str = None,
         resource_types_scope: List[str] = None,
         risk_level: int = None,
+        tag: List[UpdateAggregateConfigRuleRequestTag] = None,
         tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
@@ -34078,6 +35428,10 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
+        self.tag = tag
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
@@ -34097,6 +35451,10 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
     def validate(self):
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -34154,6 +35512,10 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_logic_scope is not None:
             result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
@@ -34213,6 +35575,11 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             self.resource_types_scope = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = UpdateAggregateConfigRuleRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyLogicScope') is not None:
             self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
@@ -34321,6 +35688,7 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         resource_ids_scope: str = None,
         resource_types_scope_shrink: str = None,
         risk_level: int = None,
+        tag_shrink: str = None,
         tag_key_logic_scope: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
@@ -34415,6 +35783,10 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        # The tags of the resource.
+        # 
+        # You can add up to 20 tags to a resource.
+        self.tag_shrink = tag_shrink
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
         # *   AND
@@ -34491,6 +35863,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ResourceTypesScope'] = self.resource_types_scope_shrink
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_logic_scope is not None:
             result['TagKeyLogicScope'] = self.tag_key_logic_scope
         if self.tag_key_scope is not None:
@@ -34550,6 +35924,8 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             self.resource_types_scope_shrink = m.get('ResourceTypesScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyLogicScope') is not None:
             self.tag_key_logic_scope = m.get('TagKeyLogicScope')
         if m.get('TagKeyScope') is not None:
@@ -34860,6 +36236,39 @@ class UpdateAggregatorRequestAggregatorAccounts(TeaModel):
         return self
 
 
+class UpdateAggregatorRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateAggregatorRequest(TeaModel):
     def __init__(
         self,
@@ -34868,6 +36277,7 @@ class UpdateAggregatorRequest(TeaModel):
         aggregator_name: str = None,
         client_token: str = None,
         description: str = None,
+        tag: List[UpdateAggregatorRequestTag] = None,
     ):
         # The members in the account group.
         # 
@@ -34889,10 +36299,15 @@ class UpdateAggregatorRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        self.tag = tag
 
     def validate(self):
         if self.aggregator_accounts:
             for k in self.aggregator_accounts:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -34914,6 +36329,10 @@ class UpdateAggregatorRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -34931,6 +36350,11 @@ class UpdateAggregatorRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = UpdateAggregatorRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -34942,6 +36366,7 @@ class UpdateAggregatorShrinkRequest(TeaModel):
         aggregator_name: str = None,
         client_token: str = None,
         description: str = None,
+        tag_shrink: str = None,
     ):
         # The members in the account group.
         # 
@@ -34963,6 +36388,7 @@ class UpdateAggregatorShrinkRequest(TeaModel):
         # 
         # For more information about how to obtain the description of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.description = description
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -34983,6 +36409,8 @@ class UpdateAggregatorShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -34997,6 +36425,8 @@ class UpdateAggregatorShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -35229,6 +36659,39 @@ class UpdateCompliancePackRequestExcludeTagsScope(TeaModel):
         return self
 
 
+class UpdateCompliancePackRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateCompliancePackRequestTagsScope(TeaModel):
     def __init__(
         self,
@@ -35280,6 +36743,7 @@ class UpdateCompliancePackRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag: List[UpdateCompliancePackRequestTag] = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[UpdateCompliancePackRequestTagsScope] = None,
@@ -35322,6 +36786,7 @@ class UpdateCompliancePackRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        self.tag = tag
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -35338,6 +36803,10 @@ class UpdateCompliancePackRequest(TeaModel):
                     k.validate()
         if self.exclude_tags_scope:
             for k in self.exclude_tags_scope:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
         if self.tags_scope:
@@ -35381,6 +36850,10 @@ class UpdateCompliancePackRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -35425,6 +36898,11 @@ class UpdateCompliancePackRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = UpdateCompliancePackRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
@@ -35523,6 +37001,7 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
         resource_group_ids_scope: str = None,
         resource_ids_scope: str = None,
         risk_level: int = None,
+        tag_shrink: str = None,
         tag_key_scope: str = None,
         tag_value_scope: str = None,
         tags_scope: List[UpdateCompliancePackShrinkRequestTagsScope] = None,
@@ -35565,6 +37044,7 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
         # *   2: medium risk level
         # *   3: low risk level
         self.risk_level = risk_level
+        self.tag_shrink = tag_shrink
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
         # The tag value of the resource that you want to evaluate by using the compliance package.
@@ -35618,6 +37098,8 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
             result['ResourceIdsScope'] = self.resource_ids_scope
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.tag_key_scope is not None:
             result['TagKeyScope'] = self.tag_key_scope
         if self.tag_value_scope is not None:
@@ -35659,6 +37141,8 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
             self.resource_ids_scope = m.get('ResourceIdsScope')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TagKeyScope') is not None:
             self.tag_key_scope = m.get('TagKeyScope')
         if m.get('TagValueScope') is not None:
