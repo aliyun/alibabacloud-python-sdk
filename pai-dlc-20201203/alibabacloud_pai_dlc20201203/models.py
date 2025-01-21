@@ -2207,6 +2207,7 @@ class JobSettings(TeaModel):
         caller: str = None,
         disable_ecs_stock_check: bool = None,
         driver: str = None,
+        enable_cpuaffinity: bool = None,
         enable_error_monitoring_in_aimaster: bool = None,
         enable_oss_append: bool = None,
         enable_rdma: bool = None,
@@ -2225,6 +2226,7 @@ class JobSettings(TeaModel):
         self.caller = caller
         self.disable_ecs_stock_check = disable_ecs_stock_check
         self.driver = driver
+        self.enable_cpuaffinity = enable_cpuaffinity
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
         self.enable_oss_append = enable_oss_append
         self.enable_rdma = enable_rdma
@@ -2257,6 +2259,8 @@ class JobSettings(TeaModel):
             result['DisableEcsStockCheck'] = self.disable_ecs_stock_check
         if self.driver is not None:
             result['Driver'] = self.driver
+        if self.enable_cpuaffinity is not None:
+            result['EnableCPUAffinity'] = self.enable_cpuaffinity
         if self.enable_error_monitoring_in_aimaster is not None:
             result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
         if self.enable_oss_append is not None:
@@ -2295,6 +2299,8 @@ class JobSettings(TeaModel):
             self.disable_ecs_stock_check = m.get('DisableEcsStockCheck')
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
+        if m.get('EnableCPUAffinity') is not None:
+            self.enable_cpuaffinity = m.get('EnableCPUAffinity')
         if m.get('EnableErrorMonitoringInAIMaster') is not None:
             self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
         if m.get('EnableOssAppend') is not None:
@@ -6719,6 +6725,7 @@ class ListJobsRequest(TeaModel):
         oversold_info: str = None,
         page_number: int = None,
         page_size: int = None,
+        payment_type: str = None,
         pipeline_id: str = None,
         resource_id: str = None,
         resource_quota_name: str = None,
@@ -6743,6 +6750,7 @@ class ListJobsRequest(TeaModel):
         self.oversold_info = oversold_info
         self.page_number = page_number
         self.page_size = page_size
+        self.payment_type = payment_type
         self.pipeline_id = pipeline_id
         self.resource_id = resource_id
         self.resource_quota_name = resource_quota_name
@@ -6788,6 +6796,8 @@ class ListJobsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
         if self.resource_id is not None:
@@ -6838,6 +6848,8 @@ class ListJobsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
         if m.get('ResourceId') is not None:
@@ -6878,6 +6890,7 @@ class ListJobsShrinkRequest(TeaModel):
         oversold_info: str = None,
         page_number: int = None,
         page_size: int = None,
+        payment_type: str = None,
         pipeline_id: str = None,
         resource_id: str = None,
         resource_quota_name: str = None,
@@ -6902,6 +6915,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.oversold_info = oversold_info
         self.page_number = page_number
         self.page_size = page_size
+        self.payment_type = payment_type
         self.pipeline_id = pipeline_id
         self.resource_id = resource_id
         self.resource_quota_name = resource_quota_name
@@ -6947,6 +6961,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
         if self.resource_id is not None:
@@ -6997,6 +7013,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
         if m.get('ResourceId') is not None:

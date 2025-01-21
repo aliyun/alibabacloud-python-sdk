@@ -1,3 +1,7 @@
+2025-01-21 Version: 1.4.19
+- Update API ListJobs: add param PaymentType.
+
+
 2024-12-18 Version: 1.4.18
 - Update API CreateJob: update param body.
 - Update API GetJob: update response param.
