@@ -1,3 +1,6 @@
+2025-01-22 Version: 1.4.20
+- Generated python 2020-12-03 for pai-dlc.
+
 2025-01-21 Version: 1.4.19
 - Update API ListJobs: add param PaymentType.
 
