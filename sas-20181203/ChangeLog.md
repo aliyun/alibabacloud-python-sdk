@@ -1,3 +1,10 @@
+2025-01-22 Version: 4.0.6
+- Update API CreateOrUpdateAutoTagRule: update param Expression.
+- Update API CreateOrUpdateAutoTagRule: update param TagContext.
+- Update API DescribeGroupedVul: update response param.
+- Update API DescribeOnceTaskLeafRecordPage: update response param.
+
+
 2025-01-17 Version: 4.0.4
 - Update API AddCloudVendorAccountAK: add param VendorAuthAlias.
 - Update API AddCloudVendorAccountAK: update response param.
