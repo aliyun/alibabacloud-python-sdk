@@ -3814,6 +3814,8 @@ class ListOOSLogsResponse(TeaModel):
 class ListPublicParametersRequest(TeaModel):
     def __init__(
         self,
+        created_date_after: str = None,
+        created_date_before: str = None,
         max_results: int = None,
         name: str = None,
         next_token: str = None,
@@ -3824,6 +3826,8 @@ class ListPublicParametersRequest(TeaModel):
         sort_field: str = None,
         sort_order: str = None,
     ):
+        self.created_date_after = created_date_after
+        self.created_date_before = created_date_before
         self.max_results = max_results
         self.name = name
         self.next_token = next_token
@@ -3843,6 +3847,10 @@ class ListPublicParametersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.created_date_after is not None:
+            result['CreatedDateAfter'] = self.created_date_after
+        if self.created_date_before is not None:
+            result['CreatedDateBefore'] = self.created_date_before
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.name is not None:
@@ -3865,6 +3873,10 @@ class ListPublicParametersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreatedDateAfter') is not None:
+            self.created_date_after = m.get('CreatedDateAfter')
+        if m.get('CreatedDateBefore') is not None:
+            self.created_date_before = m.get('CreatedDateBefore')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('Name') is not None:
