@@ -1,3 +1,19 @@
+2025-01-23 Version: 4.0.0
+- Support API CreateScreenshot.
+- Update API CheckResourceStock: update param AcpSpecId.
+- Update API CreateAndroidInstanceGroup: update param PolicyGroupId.
+- Update API CreatePolicyGroup: update param NetRedirectPolicy.
+- Update API DescribeAndroidInstances: add param NodeId.
+- Update API DescribeAndroidInstances: add param NodeName.
+- Update API DescribeAndroidInstances: update response param.
+- Update API DescribeImageList: add param ImagePackageType.
+- Update API DescribeRegions: add param SaleMode.
+- Update API DescribeSpec: add param MatrixSpec.
+- Update API DescribeSpec: add param SaleMode.
+- Update API DescribeSpec: update response param.
+- Update API ListPolicyGroups: update response param.
+
+
 2025-01-07 Version: 3.2.2
 - Generated python 2023-09-30 for eds-aic.
 

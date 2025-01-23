@@ -947,7 +947,6 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         self.office_site_id = office_site_id
         self.period = period
         self.period_unit = period_unit
-        # This parameter is required.
         self.policy_group_id = policy_group_id
         self.v_switch_id = v_switch_id
 
@@ -1575,6 +1574,39 @@ class CreateKeyPairResponse(TeaModel):
         return self
 
 
+class CreatePolicyGroupRequestNetRedirectPolicyRules(TeaModel):
+    def __init__(
+        self,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
 class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
@@ -1585,6 +1617,7 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
         proxy_password: str = None,
         proxy_type: str = None,
         proxy_user_name: str = None,
+        rules: List[CreatePolicyGroupRequestNetRedirectPolicyRules] = None,
     ):
         self.custom_proxy = custom_proxy
         self.host_addr = host_addr
@@ -1593,9 +1626,13 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
         self.proxy_password = proxy_password
         self.proxy_type = proxy_type
         self.proxy_user_name = proxy_user_name
+        self.rules = rules
 
     def validate(self):
-        pass
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1617,6 +1654,10 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
             result['ProxyType'] = self.proxy_type
         if self.proxy_user_name is not None:
             result['ProxyUserName'] = self.proxy_user_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1635,6 +1676,11 @@ class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
             self.proxy_type = m.get('ProxyType')
         if m.get('ProxyUserName') is not None:
             self.proxy_user_name = m.get('ProxyUserName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = CreatePolicyGroupRequestNetRedirectPolicyRules()
+                self.rules.append(temp_model.from_map(k))
         return self
 
 
@@ -1860,6 +1906,161 @@ class CreatePolicyGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePolicyGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateScreenshotRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_id_list: List[str] = None,
+        oss_bucket_name: str = None,
+        skip_check_policy_config: str = None,
+    ):
+        # This parameter is required.
+        self.android_instance_id_list = android_instance_id_list
+        self.oss_bucket_name = oss_bucket_name
+        self.skip_check_policy_config = skip_check_policy_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_id_list is not None:
+            result['AndroidInstanceIdList'] = self.android_instance_id_list
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+        if self.skip_check_policy_config is not None:
+            result['SkipCheckPolicyConfig'] = self.skip_check_policy_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIdList') is not None:
+            self.android_instance_id_list = m.get('AndroidInstanceIdList')
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+        if m.get('SkipCheckPolicyConfig') is not None:
+            self.skip_check_policy_config = m.get('SkipCheckPolicyConfig')
+        return self
+
+
+class CreateScreenshotResponseBodyTasks(TeaModel):
+    def __init__(
+        self,
+        android_instance_id: str = None,
+        task_id: str = None,
+    ):
+        self.android_instance_id = android_instance_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_id is not None:
+            result['AndroidInstanceId'] = self.android_instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceId') is not None:
+            self.android_instance_id = m.get('AndroidInstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateScreenshotResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tasks: List[CreateScreenshotResponseBodyTasks] = None,
+    ):
+        self.request_id = request_id
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = CreateScreenshotResponseBodyTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class CreateScreenshotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateScreenshotResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateScreenshotResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2861,6 +3062,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
         key_pair_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        node_id: str = None,
+        node_name: str = None,
         sale_mode: str = None,
         status: str = None,
         tag: List[DescribeAndroidInstancesRequestTag] = None,
@@ -2875,6 +3078,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.key_pair_id = key_pair_id
         self.max_results = max_results
         self.next_token = next_token
+        self.node_id = node_id
+        self.node_name = node_name
         self.sale_mode = sale_mode
         self.status = status
         self.tag = tag
@@ -2911,6 +3116,10 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
         if self.status is not None:
@@ -2943,6 +3152,10 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
         if m.get('Status') is not None:
@@ -3052,6 +3265,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
+        session_status: str = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
     ):
         self.android_instance_group_id = android_instance_group_id
@@ -3082,6 +3296,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.rate = rate
         self.region_id = region_id
         self.rendering_type = rendering_type
+        self.session_status = session_status
         self.tags = tags
 
     def validate(self):
@@ -3158,6 +3373,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['RegionId'] = self.region_id
         if self.rendering_type is not None:
             result['RenderingType'] = self.rendering_type
+        if self.session_status is not None:
+            result['SessionStatus'] = self.session_status
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -3225,6 +3442,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RenderingType') is not None:
             self.rendering_type = m.get('RenderingType')
+        if m.get('SessionStatus') is not None:
+            self.session_status = m.get('SessionStatus')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -3934,6 +4153,7 @@ class DescribeImageListRequest(TeaModel):
         self,
         image_id: str = None,
         image_name: str = None,
+        image_package_type: str = None,
         image_type: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -3941,6 +4161,7 @@ class DescribeImageListRequest(TeaModel):
     ):
         self.image_id = image_id
         self.image_name = image_name
+        self.image_package_type = image_package_type
         # This parameter is required.
         self.image_type = image_type
         self.max_results = max_results
@@ -3960,6 +4181,8 @@ class DescribeImageListRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.image_name is not None:
             result['ImageName'] = self.image_name
+        if self.image_package_type is not None:
+            result['ImagePackageType'] = self.image_package_type
         if self.image_type is not None:
             result['ImageType'] = self.image_type
         if self.max_results is not None:
@@ -3976,6 +4199,8 @@ class DescribeImageListRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
+        if m.get('ImagePackageType') is not None:
+            self.image_package_type = m.get('ImagePackageType')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
         if m.get('MaxResults') is not None:
@@ -4556,8 +4781,10 @@ class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        sale_mode: str = None,
     ):
         self.accept_language = accept_language
+        self.sale_mode = sale_mode
 
     def validate(self):
         pass
@@ -4570,12 +4797,16 @@ class DescribeRegionsRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
         return self
 
 
@@ -4698,15 +4929,19 @@ class DescribeSpecRequest(TeaModel):
     def __init__(
         self,
         biz_region_id: str = None,
+        matrix_spec: str = None,
         max_results: int = None,
         next_token: str = None,
+        sale_mode: str = None,
         spec_ids: List[str] = None,
         spec_status: str = None,
         spec_type: str = None,
     ):
         self.biz_region_id = biz_region_id
+        self.matrix_spec = matrix_spec
         self.max_results = max_results
         self.next_token = next_token
+        self.sale_mode = sale_mode
         self.spec_ids = spec_ids
         self.spec_status = spec_status
         self.spec_type = spec_type
@@ -4722,10 +4957,14 @@ class DescribeSpecRequest(TeaModel):
         result = dict()
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+        if self.matrix_spec is not None:
+            result['MatrixSpec'] = self.matrix_spec
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
         if self.spec_ids is not None:
             result['SpecIds'] = self.spec_ids
         if self.spec_status is not None:
@@ -4738,10 +4977,14 @@ class DescribeSpecRequest(TeaModel):
         m = m or dict()
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+        if m.get('MatrixSpec') is not None:
+            self.matrix_spec = m.get('MatrixSpec')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
         if m.get('SpecIds') is not None:
             self.spec_ids = m.get('SpecIds')
         if m.get('SpecStatus') is not None:
@@ -4756,6 +4999,8 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
         self,
         core: int = None,
         memory: int = None,
+        phone_count: str = None,
+        resolution: str = None,
         spec_id: str = None,
         spec_status: str = None,
         spec_type: str = None,
@@ -4763,6 +5008,8 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
     ):
         self.core = core
         self.memory = memory
+        self.phone_count = phone_count
+        self.resolution = resolution
         self.spec_id = spec_id
         self.spec_status = spec_status
         self.spec_type = spec_type
@@ -4781,6 +5028,10 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
             result['Core'] = self.core
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.phone_count is not None:
+            result['PhoneCount'] = self.phone_count
+        if self.resolution is not None:
+            result['Resolution'] = self.resolution
         if self.spec_id is not None:
             result['SpecId'] = self.spec_id
         if self.spec_status is not None:
@@ -4797,6 +5048,10 @@ class DescribeSpecResponseBodySpecInfoModel(TeaModel):
             self.core = m.get('Core')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('PhoneCount') is not None:
+            self.phone_count = m.get('PhoneCount')
+        if m.get('Resolution') is not None:
+            self.resolution = m.get('Resolution')
         if m.get('SpecId') is not None:
             self.spec_id = m.get('SpecId')
         if m.get('SpecStatus') is not None:
@@ -6111,6 +6366,39 @@ class ListPolicyGroupsRequest(TeaModel):
         return self
 
 
+class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules(TeaModel):
+    def __init__(
+        self,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
 class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
     def __init__(
         self,
@@ -6121,6 +6409,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
         proxy_password: str = None,
         proxy_type: str = None,
         proxy_user_name: str = None,
+        rules: List[ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules] = None,
     ):
         self.custom_proxy = custom_proxy
         self.host_addr = host_addr
@@ -6129,9 +6418,13 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
         self.proxy_password = proxy_password
         self.proxy_type = proxy_type
         self.proxy_user_name = proxy_user_name
+        self.rules = rules
 
     def validate(self):
-        pass
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6153,6 +6446,10 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
             result['ProxyType'] = self.proxy_type
         if self.proxy_user_name is not None:
             result['ProxyUserName'] = self.proxy_user_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6171,6 +6468,11 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
             self.proxy_type = m.get('ProxyType')
         if m.get('ProxyUserName') is not None:
             self.proxy_user_name = m.get('ProxyUserName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules()
+                self.rules.append(temp_model.from_map(k))
         return self
 
 
@@ -6186,8 +6488,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         net_redirect_policy: ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
-        session_resolution_height: str = None,
-        session_resolution_width: str = None,
+        session_resolution_height: int = None,
+        session_resolution_width: int = None,
     ):
         self.camera_redirect = camera_redirect
         self.clipboard = clipboard
