@@ -1,3 +1,11 @@
+2025-01-23 Version: 2.5.1
+- Update API RunStyleWriting: add param processStage.
+- Update API RunStyleWriting: add param useSearch.
+- Update API RunStyleWriting: update param learningSamples.
+- Update API RunStyleWriting: update param referenceMaterials.
+- Update API RunStyleWriting: update param writingTheme.
+
+
 2025-01-17 Version: 2.5.0
 - Support API RunNetworkContentAudit.
 - Support API RunScriptChat.

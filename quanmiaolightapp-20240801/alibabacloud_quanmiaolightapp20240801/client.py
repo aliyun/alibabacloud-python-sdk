@@ -75,10 +75,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_broadcast_news_with_options_async(
         self,
@@ -114,10 +120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateBroadcastNewsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_broadcast_news(
         self,
@@ -195,10 +207,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_output_format_with_options_async(
         self,
@@ -246,10 +264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GenerateOutputFormatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_output_format(
         self,
@@ -308,10 +332,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_video_analysis_config_with_options_async(
         self,
@@ -340,10 +370,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_video_analysis_config(
         self,
@@ -405,10 +441,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_video_analysis_task_with_options_async(
         self,
@@ -444,10 +486,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.GetVideoAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_video_analysis_task(
         self,
@@ -521,10 +569,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_hot_topic_summaries_with_options_async(
         self,
@@ -568,10 +622,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_hot_topic_summaries(
         self,
@@ -669,10 +729,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_hot_topic_chat_with_options_async(
         self,
@@ -740,10 +806,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicChatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_hot_topic_chat(
         self,
@@ -819,10 +891,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_hot_topic_summary_with_options_async(
         self,
@@ -868,10 +946,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunHotTopicSummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_hot_topic_summary(
         self,
@@ -947,10 +1031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_marketing_information_extract_with_options_async(
         self,
@@ -996,10 +1086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationExtractResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_marketing_information_extract(
         self,
@@ -1077,10 +1173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_marketing_information_writing_with_options_async(
         self,
@@ -1128,10 +1230,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunMarketingInformationWritingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_marketing_information_writing(
         self,
@@ -1213,10 +1321,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_network_content_audit_with_options_async(
         self,
@@ -1268,10 +1382,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunNetworkContentAuditResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_network_content_audit(
         self,
@@ -1339,10 +1459,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_script_chat_with_options_async(
         self,
@@ -1380,10 +1506,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptChatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptChatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_script_chat(
         self,
@@ -1453,10 +1585,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_script_continue_with_options_async(
         self,
@@ -1496,10 +1634,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptContinueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_script_continue(
         self,
@@ -1577,10 +1721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_script_planning_with_options_async(
         self,
@@ -1628,10 +1778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptPlanningResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_script_planning(
         self,
@@ -1697,10 +1853,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_script_refine_with_options_async(
         self,
@@ -1736,10 +1898,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunScriptRefineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_script_refine(
         self,
@@ -1796,10 +1964,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.learning_samples_shrink):
             body['learningSamples'] = request.learning_samples_shrink
+        if not UtilClient.is_unset(request.process_stage):
+            body['processStage'] = request.process_stage
         if not UtilClient.is_unset(request.reference_materials_shrink):
             body['referenceMaterials'] = request.reference_materials_shrink
         if not UtilClient.is_unset(request.style_feature):
             body['styleFeature'] = request.style_feature
+        if not UtilClient.is_unset(request.use_search):
+            body['useSearch'] = request.use_search
         if not UtilClient.is_unset(request.writing_theme):
             body['writingTheme'] = request.writing_theme
         req = open_api_models.OpenApiRequest(
@@ -1817,10 +1989,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_style_writing_with_options_async(
         self,
@@ -1847,10 +2025,14 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.learning_samples_shrink):
             body['learningSamples'] = request.learning_samples_shrink
+        if not UtilClient.is_unset(request.process_stage):
+            body['processStage'] = request.process_stage
         if not UtilClient.is_unset(request.reference_materials_shrink):
             body['referenceMaterials'] = request.reference_materials_shrink
         if not UtilClient.is_unset(request.style_feature):
             body['styleFeature'] = request.style_feature
+        if not UtilClient.is_unset(request.use_search):
+            body['useSearch'] = request.use_search
         if not UtilClient.is_unset(request.writing_theme):
             body['writingTheme'] = request.writing_theme
         req = open_api_models.OpenApiRequest(
@@ -1868,10 +2050,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunStyleWritingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_style_writing(
         self,
@@ -1953,10 +2141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_tag_mining_analysis_with_options_async(
         self,
@@ -2008,10 +2202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunTagMiningAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_tag_mining_analysis(
         self,
@@ -2111,10 +2311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_video_analysis_with_options_async(
         self,
@@ -2184,10 +2390,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.RunVideoAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_video_analysis(
         self,
@@ -2283,10 +2495,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_video_analysis_task_with_options_async(
         self,
@@ -2352,10 +2570,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.SubmitVideoAnalysisTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_video_analysis_task(
         self,
@@ -2421,10 +2645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_video_analysis_config_with_options_async(
         self,
@@ -2460,10 +2690,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                quan_miao_light_app_20240801_models.UpdateVideoAnalysisConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_video_analysis_config(
         self,
