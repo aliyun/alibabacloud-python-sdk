@@ -1,3 +1,8 @@
+2025-01-23 Version: 6.2.3
+- Update API GetDISyncTask: update response param.
+- Update API ListCheckProcesses: add param MessageId.
+
+
 2025-01-13 Version: 6.2.2
 - Update API GetDISyncTask: update response param.
 
