@@ -38634,12 +38634,14 @@ class ListRoutesRequest(TeaModel):
         network_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         sort_by: str = None,
     ):
-        # This parameter is required.
         self.network_id = network_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
         self.sort_by = sort_by
 
     def validate(self):
@@ -38657,6 +38659,8 @@ class ListRoutesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         return result
@@ -38669,6 +38673,8 @@ class ListRoutesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         return self
