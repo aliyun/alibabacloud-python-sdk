@@ -3760,6 +3760,7 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
         self,
         duration: int = None,
         end_time: str = None,
+        evaluation_rating: str = None,
         evaluation_result: str = None,
         feedback: bool = None,
         request_id: str = None,
@@ -3770,6 +3771,7 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
     ):
         self.duration = duration
         self.end_time = end_time
+        self.evaluation_rating = evaluation_rating
         self.evaluation_result = evaluation_result
         self.feedback = feedback
         self.request_id = request_id
@@ -3791,6 +3793,8 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
             result['duration'] = self.duration
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.evaluation_rating is not None:
+            result['evaluationRating'] = self.evaluation_rating
         if self.evaluation_result is not None:
             result['evaluationResult'] = self.evaluation_result
         if self.feedback is not None:
@@ -3813,6 +3817,8 @@ class GetAICoachTaskSessionReportResponseBody(TeaModel):
             self.duration = m.get('duration')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('evaluationRating') is not None:
+            self.evaluation_rating = m.get('evaluationRating')
         if m.get('evaluationResult') is not None:
             self.evaluation_result = m.get('evaluationResult')
         if m.get('feedback') is not None:
@@ -4738,6 +4744,39 @@ class ListAICoachScriptPageResponseBodyListSampleDialogueList(TeaModel):
         return self
 
 
+class ListAICoachScriptPageResponseBodyListScoreConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        pass_score: int = None,
+    ):
+        self.enabled = enabled
+        self.pass_score = pass_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.pass_score is not None:
+            result['passScore'] = self.pass_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('passScore') is not None:
+            self.pass_score = m.get('passScore')
+        return self
+
+
 class ListAICoachScriptPageResponseBodyListWeights(TeaModel):
     def __init__(
         self,
@@ -4808,6 +4847,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         assessment_scope: str = None,
         complete_strategy: ListAICoachScriptPageResponseBodyListCompleteStrategy = None,
         cover_url: str = None,
+        dialogue_text_flag: bool = None,
         dialogue_tip_flag: bool = None,
         evaluate_report_flag: bool = None,
         expressiveness: Dict[str, str] = None,
@@ -4819,6 +4859,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         name: str = None,
         order_ack_flag: bool = None,
         sample_dialogue_list: List[ListAICoachScriptPageResponseBodyListSampleDialogueList] = None,
+        score_config: ListAICoachScriptPageResponseBodyListScoreConfig = None,
         script_record_id: str = None,
         sparring_tip_content: str = None,
         sparring_tip_title: str = None,
@@ -4831,6 +4872,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         self.assessment_scope = assessment_scope
         self.complete_strategy = complete_strategy
         self.cover_url = cover_url
+        self.dialogue_text_flag = dialogue_text_flag
         self.dialogue_tip_flag = dialogue_tip_flag
         self.evaluate_report_flag = evaluate_report_flag
         self.expressiveness = expressiveness
@@ -4842,6 +4884,7 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         self.name = name
         self.order_ack_flag = order_ack_flag
         self.sample_dialogue_list = sample_dialogue_list
+        self.score_config = score_config
         self.script_record_id = script_record_id
         self.sparring_tip_content = sparring_tip_content
         self.sparring_tip_title = sparring_tip_title
@@ -4857,6 +4900,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             for k in self.sample_dialogue_list:
                 if k:
                     k.validate()
+        if self.score_config:
+            self.score_config.validate()
         if self.weights:
             self.weights.validate()
 
@@ -4874,6 +4919,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             result['completeStrategy'] = self.complete_strategy.to_map()
         if self.cover_url is not None:
             result['coverUrl'] = self.cover_url
+        if self.dialogue_text_flag is not None:
+            result['dialogueTextFlag'] = self.dialogue_text_flag
         if self.dialogue_tip_flag is not None:
             result['dialogueTipFlag'] = self.dialogue_tip_flag
         if self.evaluate_report_flag is not None:
@@ -4898,6 +4945,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
         if self.sample_dialogue_list is not None:
             for k in self.sample_dialogue_list:
                 result['sampleDialogueList'].append(k.to_map() if k else None)
+        if self.score_config is not None:
+            result['scoreConfig'] = self.score_config.to_map()
         if self.script_record_id is not None:
             result['scriptRecordId'] = self.script_record_id
         if self.sparring_tip_content is not None:
@@ -4925,6 +4974,8 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             self.complete_strategy = temp_model.from_map(m['completeStrategy'])
         if m.get('coverUrl') is not None:
             self.cover_url = m.get('coverUrl')
+        if m.get('dialogueTextFlag') is not None:
+            self.dialogue_text_flag = m.get('dialogueTextFlag')
         if m.get('dialogueTipFlag') is not None:
             self.dialogue_tip_flag = m.get('dialogueTipFlag')
         if m.get('evaluateReportFlag') is not None:
@@ -4950,6 +5001,9 @@ class ListAICoachScriptPageResponseBodyList(TeaModel):
             for k in m.get('sampleDialogueList'):
                 temp_model = ListAICoachScriptPageResponseBodyListSampleDialogueList()
                 self.sample_dialogue_list.append(temp_model.from_map(k))
+        if m.get('scoreConfig') is not None:
+            temp_model = ListAICoachScriptPageResponseBodyListScoreConfig()
+            self.score_config = temp_model.from_map(m['scoreConfig'])
         if m.get('scriptRecordId') is not None:
             self.script_record_id = m.get('scriptRecordId')
         if m.get('sparringTipContent') is not None:

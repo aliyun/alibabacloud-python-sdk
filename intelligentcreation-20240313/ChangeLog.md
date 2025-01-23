@@ -1,3 +1,8 @@
+2025-01-23 Version: 2.10.1
+- Update API GetAICoachTaskSessionReport: update response param.
+- Update API ListAICoachScriptPage: update response param.
+
+
 2025-01-20 Version: 2.10.0
 - Support API BatchCreateAICoachTask.
 - Update API ListAICoachScriptPage: add param name.
