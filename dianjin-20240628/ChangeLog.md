@@ -1,3 +1,7 @@
+2025-01-23 Version: 1.10.1
+- Update API GetChatQuestionResp: update response param.
+
+
 2025-01-22 Version: 1.10.0
 - Support API RunAgent.
 

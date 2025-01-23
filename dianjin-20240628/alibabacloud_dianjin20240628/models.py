@@ -2952,6 +2952,7 @@ class GetChatQuestionRespResponseBodyDataQuestionList(TeaModel):
         self,
         content: str = None,
         gmt_create: str = None,
+        ori_content: str = None,
         reply: str = None,
         session_id: str = None,
         type: str = None,
@@ -2960,6 +2961,7 @@ class GetChatQuestionRespResponseBodyDataQuestionList(TeaModel):
     ):
         self.content = content
         self.gmt_create = gmt_create
+        self.ori_content = ori_content
         self.reply = reply
         self.session_id = session_id
         self.type = type
@@ -2979,6 +2981,8 @@ class GetChatQuestionRespResponseBodyDataQuestionList(TeaModel):
             result['content'] = self.content
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
+        if self.ori_content is not None:
+            result['oriContent'] = self.ori_content
         if self.reply is not None:
             result['reply'] = self.reply
         if self.session_id is not None:
@@ -2997,6 +3001,8 @@ class GetChatQuestionRespResponseBodyDataQuestionList(TeaModel):
             self.content = m.get('content')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
+        if m.get('oriContent') is not None:
+            self.ori_content = m.get('oriContent')
         if m.get('reply') is not None:
             self.reply = m.get('reply')
         if m.get('sessionId') is not None:
