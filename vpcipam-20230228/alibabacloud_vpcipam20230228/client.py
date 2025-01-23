@@ -77,10 +77,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_ipam_pool_cidr_with_options_async(
         self,
@@ -118,10 +124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.AddIpamPoolCidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_ipam_pool_cidr(
         self,
@@ -187,10 +199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_resource_group_with_options_async(
         self,
@@ -234,10 +252,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ChangeResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_resource_group(
         self,
@@ -313,10 +337,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipam_with_options_async(
         self,
@@ -370,10 +400,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipam(
         self,
@@ -441,6 +477,8 @@ class Client(OpenApiClient):
             query['PoolRegionId'] = request.pool_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -463,10 +501,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipam_pool_with_options_async(
         self,
@@ -508,6 +552,8 @@ class Client(OpenApiClient):
             query['PoolRegionId'] = request.pool_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -530,10 +576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipam_pool(
         self,
@@ -599,10 +651,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipam_pool_allocation_with_options_async(
         self,
@@ -646,10 +704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamPoolAllocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipam_pool_allocation(
         self,
@@ -703,6 +767,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -723,10 +789,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipam_scope_with_options_async(
         self,
@@ -758,6 +830,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -778,10 +852,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.CreateIpamScopeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.CreateIpamScopeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipam_scope(
         self,
@@ -847,10 +927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipam_with_options_async(
         self,
@@ -894,10 +980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipam(
         self,
@@ -963,10 +1055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipam_pool_with_options_async(
         self,
@@ -1010,10 +1108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipam_pool(
         self,
@@ -1071,10 +1175,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipam_pool_allocation_with_options_async(
         self,
@@ -1110,10 +1220,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolAllocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipam_pool_allocation(
         self,
@@ -1173,10 +1289,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipam_pool_cidr_with_options_async(
         self,
@@ -1214,10 +1336,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamPoolCidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipam_pool_cidr(
         self,
@@ -1283,10 +1411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipam_scope_with_options_async(
         self,
@@ -1330,10 +1464,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.DeleteIpamScopeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipam_scope(
         self,
@@ -1356,6 +1496,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ipam_scope_with_options_async(request, runtime)
+
+    def get_ipam_pool_allocation_with_options(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
+        """
+        @summary 查询指定IPAM地址池CIDR分配的信息
+        
+        @param request: GetIpamPoolAllocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpamPoolAllocationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpamPoolAllocation',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_ipam_pool_allocation_with_options_async(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
+        """
+        @summary 查询指定IPAM地址池CIDR分配的信息
+        
+        @param request: GetIpamPoolAllocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIpamPoolAllocationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIpamPoolAllocation',
+            version='2023-02-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetIpamPoolAllocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_ipam_pool_allocation(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
+        """
+        @summary 查询指定IPAM地址池CIDR分配的信息
+        
+        @param request: GetIpamPoolAllocationRequest
+        @return: GetIpamPoolAllocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ipam_pool_allocation_with_options(request, runtime)
+
+    async def get_ipam_pool_allocation_async(
+        self,
+        request: vpc_ipam_20230228_models.GetIpamPoolAllocationRequest,
+    ) -> vpc_ipam_20230228_models.GetIpamPoolAllocationResponse:
+        """
+        @summary 查询指定IPAM地址池CIDR分配的信息
+        
+        @param request: GetIpamPoolAllocationRequest
+        @return: GetIpamPoolAllocationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ipam_pool_allocation_with_options_async(request, runtime)
 
     def get_vpc_ipam_service_status_with_options(
         self,
@@ -1397,10 +1641,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_ipam_service_status_with_options_async(
         self,
@@ -1442,10 +1692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.GetVpcIpamServiceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_ipam_service_status(
         self,
@@ -1511,10 +1767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_discovered_resource_with_options_async(
         self,
@@ -1554,10 +1816,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamDiscoveredResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_discovered_resource(
         self,
@@ -1621,10 +1889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_pool_allocations_with_options_async(
         self,
@@ -1666,10 +1940,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolAllocationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_pool_allocations(
         self,
@@ -1729,10 +2009,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_pool_cidrs_with_options_async(
         self,
@@ -1770,10 +2056,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolCidrsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_pool_cidrs(
         self,
@@ -1853,10 +2145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_pools_with_options_async(
         self,
@@ -1914,10 +2212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamPoolsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamPoolsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_pools(
         self,
@@ -1985,10 +2289,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_resource_cidrs_with_options_async(
         self,
@@ -2034,10 +2344,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceCidrsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_resource_cidrs(
         self,
@@ -2113,10 +2429,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_resource_discoveries_with_options_async(
         self,
@@ -2170,10 +2492,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamResourceDiscoveriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_resource_discoveries(
         self,
@@ -2253,10 +2581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamScopesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamScopesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamScopesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipam_scopes_with_options_async(
         self,
@@ -2310,10 +2644,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamScopesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamScopesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamScopesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipam_scopes(
         self,
@@ -2387,10 +2727,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipams_with_options_async(
         self,
@@ -2442,10 +2788,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListIpamsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListIpamsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipams(
         self,
@@ -2521,10 +2873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2574,10 +2932,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -2645,10 +3009,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_vpc_ipam_service_with_options_async(
         self,
@@ -2690,10 +3060,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.OpenVpcIpamServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_vpc_ipam_service(
         self,
@@ -2765,10 +3141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -2814,10 +3196,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -2891,10 +3279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -2942,10 +3336,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -3025,10 +3425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipam_with_options_async(
         self,
@@ -3082,10 +3488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipam(
         self,
@@ -3169,10 +3581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipam_pool_with_options_async(
         self,
@@ -3230,10 +3648,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipam_pool(
         self,
@@ -3297,10 +3721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipam_pool_allocation_with_options_async(
         self,
@@ -3342,10 +3772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamPoolAllocationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipam_pool_allocation(
         self,
@@ -3419,10 +3855,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipam_scope_with_options_async(
         self,
@@ -3470,10 +3912,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_ipam_20230228_models.UpdateIpamScopeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipam_scope(
         self,

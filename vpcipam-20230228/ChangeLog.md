@@ -1,3 +1,26 @@
+2025-01-23 Version: 2.1.0
+- Support API GetIpamPoolAllocation.
+- Update API AddIpamPoolCidr: update param ClientToken.
+- Update API CreateIpam: update param ClientToken.
+- Update API CreateIpamPool: add param ResourceGroupId.
+- Update API CreateIpamPool: update param ClientToken.
+- Update API CreateIpamPoolAllocation: update param ClientToken.
+- Update API CreateIpamScope: add param ResourceGroupId.
+- Update API CreateIpamScope: update param ClientToken.
+- Update API DeleteIpam: update param ClientToken.
+- Update API DeleteIpamPool: update param ClientToken.
+- Update API DeleteIpamPoolAllocation: update param ClientToken.
+- Update API DeleteIpamPoolCidr: update param ClientToken.
+- Update API DeleteIpamScope: update param ClientToken.
+- Update API ListIpamPools: update response param.
+- Update API ListIpamResourceCidrs: update response param.
+- Update API ListIpamScopes: update response param.
+- Update API UpdateIpam: update param ClientToken.
+- Update API UpdateIpamPool: update param ClientToken.
+- Update API UpdateIpamPoolAllocation: update param ClientToken.
+- Update API UpdateIpamScope: update param ClientToken.
+
+
 2024-10-29 Version: 2.0.0
 - Support API ListIpamDiscoveredResource.
 - Support API ListIpamResourceDiscoveries.
