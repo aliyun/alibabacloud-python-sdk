@@ -4541,78 +4541,75 @@ class CreateRestoreJobRequest(TeaModel):
         udm_region_id: str = None,
         vault_id: str = None,
     ):
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the role created in the RAM of the original account for cross-account backup managed by the current account.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        # Cross-account backup type. Supported values:
+        # - SELF_ACCOUNT: Backup within the same account
+        # - CROSS_ACCOUNT: Cross-account backup
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The original account ID managed by the current account for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
-        # The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+        # The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
         self.exclude = exclude
-        # Details of restoration to local.
+        # Details of restoring to the local environment.
         self.failback_detail = failback_detail
-        # The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+        # The path to be restored. All documents under this path will be restored. Maximum length is 255 characters.
         self.include = include
-        # Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+        # Indicates whether it is called by the container service. Default is false.
         self.initiated_by_ack = initiated_by_ack
-        # Parameters for restoring a task
+        # Parameters for the restore job.
         self.options = options
-        # The details about the Tablestore instance.
+        # Details of the Table Store instance.
         self.ots_detail = ots_detail
-        # The type of the restore destination. Valid values:
-        # 
-        # *   **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
-        # *   **OSS**: restores data to Object Storage Service (OSS) buckets.
-        # *   **NAS**: restores data to Apsara File Storage NAS file systems.
-        # *   **OTS_TABLE**: restores data to Tablestore instances.
-        # *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+        # The type of the restore destination data source. Possible values:
+        #   - **ECS_FILE**: Restore to ECS file.
+        #   - **OSS**: Restore to Alibaba Cloud OSS.
+        #   - **NAS**: Restore to Alibaba Cloud NAS.
+        #   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+        #   - **UDM_ECS_ROLLBACK**: Restore to Alibaba Cloud ECS whole machine.
         # 
         # This parameter is required.
         self.restore_type = restore_type
-        # The hash value of the backup snapshot.
+        # The HASH value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
         # The ID of the backup snapshot.
         self.snapshot_id = snapshot_id
-        # The type of the data source. Valid values:
-        # 
-        # *   **ECS_FILE**: ECS files
-        # *   **OSS**: OSS buckets
-        # *   **NAS**: NAS file systems
-        # *   **OTS_TABLE**: Tablestore instances
-        # *   **UDM_ECS**: ECS instances
+        # The type of the data source. Possible values:
+        #   - **ECS_FILE**: Restore ECS file.
+        #   - **OSS**: Restore Alibaba Cloud OSS.
+        #   - **NAS**: Restore Alibaba Cloud NAS.
+        #   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+        #   - **UDM_ECS**: Restore to Alibaba Cloud ECS whole machine.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+        # Valid only when **RestoreType** is **OSS**. Indicates the name of the OSS bucket at the restore destination.
         self.target_bucket = target_bucket
-        # The details about the container to which you want to restore data.
+        # Details of the target container.
         self.target_container = target_container
-        # The ID of the container cluster to which you want to restore data.
+        # The ID of the target container cluster.
         self.target_container_cluster_id = target_container_cluster_id
-        # This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+        # Valid only when **RestoreType** is **NAS**. Indicates the creation time of the file system at the restore destination.
         self.target_create_time = target_create_time
-        # This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+        # Valid only when **RestoreType** is **NAS**. Indicates the ID of the file system at the restore destination.
         self.target_file_system_id = target_file_system_id
-        # This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+        # Valid only when **RestoreType** is **ECS_FILE**. Indicates the ECS instance ID at the restore destination.
         self.target_instance_id = target_instance_id
-        # The name of the Tablestore instance to which you want to restore data.
+        # The name of the target Table Store instance.
         self.target_instance_name = target_instance_name
-        # This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+        # Valid only when **RestoreType** is **ECS_FILE**. Indicates the file path at the restore destination.
         self.target_path = target_path
-        # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+        # Valid only when **RestoreType** is **OSS**. Indicates the object prefix at the restore destination.
         self.target_prefix = target_prefix
-        # The name of the table that stores the restored data.
+        # The name of the data table in the target Table Store.
         self.target_table_name = target_table_name
-        # The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+        # The time of the Table Store to be restored. UNIX timestamp, in seconds.
         self.target_time = target_time
-        # The details of ECS instance backup.
+        # Details of the whole machine backup.
         self.udm_detail = udm_detail
-        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+        # Valid only when **SourceType** is **UDM_ECS**. Indicates the target region for the restore.
         self.udm_region_id = udm_region_id
-        # The ID of the backup vault to which the backup snapshot belongs.
+        # The ID of the backup vault that the snapshot belongs to.
         self.vault_id = vault_id
 
     def validate(self):
@@ -4772,78 +4769,75 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         udm_region_id: str = None,
         vault_id: str = None,
     ):
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the role created in the RAM of the original account for cross-account backup managed by the current account.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        # Cross-account backup type. Supported values:
+        # - SELF_ACCOUNT: Backup within the same account
+        # - CROSS_ACCOUNT: Cross-account backup
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The original account ID managed by the current account for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
-        # The paths to the files that you do not want to restore. No files in the specified paths are restored. The value must be 1 to 255 characters in length.
+        # The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
         self.exclude = exclude
-        # Details of restoration to local.
+        # Details of restoring to the local environment.
         self.failback_detail_shrink = failback_detail_shrink
-        # The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
+        # The path to be restored. All documents under this path will be restored. Maximum length is 255 characters.
         self.include = include
-        # Specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+        # Indicates whether it is called by the container service. Default is false.
         self.initiated_by_ack = initiated_by_ack
-        # Parameters for restoring a task
+        # Parameters for the restore job.
         self.options = options
-        # The details about the Tablestore instance.
+        # Details of the Table Store instance.
         self.ots_detail_shrink = ots_detail_shrink
-        # The type of the restore destination. Valid values:
-        # 
-        # *   **ECS_FILE**: restores data to Elastic Compute Service (ECS) files.
-        # *   **OSS**: restores data to Object Storage Service (OSS) buckets.
-        # *   **NAS**: restores data to Apsara File Storage NAS file systems.
-        # *   **OTS_TABLE**: restores data to Tablestore instances.
-        # *   **UDM_ECS_ROLLBACK**: restores data to ECS instances.
+        # The type of the restore destination data source. Possible values:
+        #   - **ECS_FILE**: Restore to ECS file.
+        #   - **OSS**: Restore to Alibaba Cloud OSS.
+        #   - **NAS**: Restore to Alibaba Cloud NAS.
+        #   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+        #   - **UDM_ECS_ROLLBACK**: Restore to Alibaba Cloud ECS whole machine.
         # 
         # This parameter is required.
         self.restore_type = restore_type
-        # The hash value of the backup snapshot.
+        # The HASH value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
         # The ID of the backup snapshot.
         self.snapshot_id = snapshot_id
-        # The type of the data source. Valid values:
-        # 
-        # *   **ECS_FILE**: ECS files
-        # *   **OSS**: OSS buckets
-        # *   **NAS**: NAS file systems
-        # *   **OTS_TABLE**: Tablestore instances
-        # *   **UDM_ECS**: ECS instances
+        # The type of the data source. Possible values:
+        #   - **ECS_FILE**: Restore ECS file.
+        #   - **OSS**: Restore Alibaba Cloud OSS.
+        #   - **NAS**: Restore Alibaba Cloud NAS.
+        #   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+        #   - **UDM_ECS**: Restore to Alibaba Cloud ECS whole machine.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the name of the OSS bucket to which you want to restore data.
+        # Valid only when **RestoreType** is **OSS**. Indicates the name of the OSS bucket at the restore destination.
         self.target_bucket = target_bucket
-        # The details about the container to which you want to restore data.
+        # Details of the target container.
         self.target_container = target_container
-        # The ID of the container cluster to which you want to restore data.
+        # The ID of the target container cluster.
         self.target_container_cluster_id = target_container_cluster_id
-        # This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the time when the file system is created.
+        # Valid only when **RestoreType** is **NAS**. Indicates the creation time of the file system at the restore destination.
         self.target_create_time = target_create_time
-        # This parameter is required only if the **RestoreType** parameter is set to **NAS**. This parameter specifies the ID of the file system to which you want to restore data.
+        # Valid only when **RestoreType** is **NAS**. Indicates the ID of the file system at the restore destination.
         self.target_file_system_id = target_file_system_id
-        # This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance to which you want to restore data.
+        # Valid only when **RestoreType** is **ECS_FILE**. Indicates the ECS instance ID at the restore destination.
         self.target_instance_id = target_instance_id
-        # The name of the Tablestore instance to which you want to restore data.
+        # The name of the target Table Store instance.
         self.target_instance_name = target_instance_name
-        # This parameter is required only if the **RestoreType** parameter is set to **ECS_FILE**. This parameter specifies the destination file path.
+        # Valid only when **RestoreType** is **ECS_FILE**. Indicates the file path at the restore destination.
         self.target_path = target_path
-        # This parameter is required only if the **RestoreType** parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to restore.
+        # Valid only when **RestoreType** is **OSS**. Indicates the object prefix at the restore destination.
         self.target_prefix = target_prefix
-        # The name of the table that stores the restored data.
+        # The name of the data table in the target Table Store.
         self.target_table_name = target_table_name
-        # The time when data is restored to the Tablestore instance. The value must be a UNIX timestamp. Unit: seconds.
+        # The time of the Table Store to be restored. UNIX timestamp, in seconds.
         self.target_time = target_time
-        # The details of ECS instance backup.
+        # Details of the whole machine backup.
         self.udm_detail_shrink = udm_detail_shrink
-        # This parameter is required only if you set the **SourceType** parameter to **UDM_ECS**. This parameter specifies the region to which you want to restore data.
+        # Valid only when **SourceType** is **UDM_ECS**. Indicates the target region for the restore.
         self.udm_region_id = udm_region_id
-        # The ID of the backup vault to which the backup snapshot belongs.
+        # The ID of the backup vault that the snapshot belongs to.
         self.vault_id = vault_id
 
     def validate(self):
@@ -4979,18 +4973,17 @@ class CreateRestoreJobResponseBody(TeaModel):
         restore_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # Return code, 200 indicates success.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # Description of the return message, usually \\"successful\\" when successful, and corresponding error messages when there is an error.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The ID of the restore job.
+        # Restore job ID.
         self.restore_id = restore_id
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # Whether the request was successful.
+        #   - true: Success
+        #   - false: Failure
         self.success = success
 
     def validate(self):
@@ -5252,6 +5245,7 @@ class CreateVaultRequest(TeaModel):
         vault_region_id: str = None,
         vault_storage_class: str = None,
         vault_type: str = None,
+        worm_enabled: bool = None,
     ):
         # The description of the backup vault. The description must be 0 to 255 characters in length.
         self.description = description
@@ -5277,6 +5271,7 @@ class CreateVaultRequest(TeaModel):
         # *   **STANDARD**: standard backup vault
         # *   **OTS_BACKUP**: backup vault for Tablestore
         self.vault_type = vault_type
+        self.worm_enabled = worm_enabled
 
     def validate(self):
         pass
@@ -5301,6 +5296,8 @@ class CreateVaultRequest(TeaModel):
             result['VaultStorageClass'] = self.vault_storage_class
         if self.vault_type is not None:
             result['VaultType'] = self.vault_type
+        if self.worm_enabled is not None:
+            result['WormEnabled'] = self.worm_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -5319,6 +5316,8 @@ class CreateVaultRequest(TeaModel):
             self.vault_storage_class = m.get('VaultStorageClass')
         if m.get('VaultType') is not None:
             self.vault_type = m.get('VaultType')
+        if m.get('WormEnabled') is not None:
+            self.worm_enabled = m.get('WormEnabled')
         return self
 
 
@@ -8094,7 +8093,7 @@ class DescribeBackupJobs2RequestFilters(TeaModel):
         operator: str = None,
         values: List[str] = None,
     ):
-        # The key in the filter. Valid values:
+        # The keys in the filter. Valid values:
         # 
         # *   **RegionId**: the ID of a region
         # *   **PlanId**: the ID of a backup plan
@@ -8106,7 +8105,7 @@ class DescribeBackupJobs2RequestFilters(TeaModel):
         # *   **Status**: the status of a backup job
         # *   **CreatedTime**: the start time of a backup job
         # *   **CompleteTime**: the end time of a backup job
-        # *   **InstanceName**: the name of a Tablestore instance
+        # *   **instanceName**: the name of a Tablestore instance
         self.key = key
         # The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
         # 
@@ -8116,12 +8115,12 @@ class DescribeBackupJobs2RequestFilters(TeaModel):
         # *   **GREATER_THAN_OR_EQUAL**: greater than or equal to
         # *   **LESS_THAN**: less than
         # *   **LESS_THAN_OR_EQUAL**: less than or equal to
-        # *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+        # *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,maximum value]` format.
         # *   **IN**: specifies an array as a collection. The results must fall within the collection.
         # 
-        # > If you specify the **CompleteTime** parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+        # >  If you specify **CompleteTime** as a key to query backup jobs, you cannot use the IN operator to perform a match.
         self.operator = operator
-        # The variable values of the filter.
+        # The values that you want to match in the filter.
         self.values = values
 
     def validate(self):
@@ -8161,7 +8160,7 @@ class DescribeBackupJobs2Request(TeaModel):
         sort_direction: str = None,
         source_type: str = None,
     ):
-        # The keys in the filter.
+        # The keys that you want to match in the filter.
         self.filters = filters
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -8283,7 +8282,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail(TeaModel):
         self.disk_native_snapshot_id_list = disk_native_snapshot_id_list
         # Indicates whether remote replication is enabled.
         self.do_copy = do_copy
-        # ECS instance information, including ECS instance name, instance type, etc.
+        # The ecs instance infos.
         self.instance_infos = instance_infos
         # The ID of the backup snapshot.
         self.native_snapshot_id = native_snapshot_id
@@ -8378,7 +8377,7 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetail(TeaModel):
         self,
         table_names: DescribeBackupJobs2ResponseBodyBackupJobsBackupJobOtsDetailTableNames = None,
     ):
-        # The names of the tables in the Tablestore instance.
+        # The names of the destination tables in the Tablestore instance.
         self.table_names = table_names
 
     def validate(self):
@@ -8480,114 +8479,114 @@ class DescribeBackupJobs2ResponseBodyBackupJobsBackupJob(TeaModel):
         updated_time: int = None,
         vault_id: str = None,
     ):
-        # The actual amount of data that is backed up after the system removes duplicate files. Unit: bytes.
+        # The actual amount of data that is backed up after duplicates are removed. Unit: bytes.
         self.actual_bytes = actual_bytes
         # The number of files that are actually processed.
         self.actual_files = actual_files
-        # The actual number of objects that are backed up by the backup job. This parameter is returned only if the value of **SourceType** is **ECS_FILE**.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the actual number of objects that are backed up by the backup job.
         self.actual_items = actual_items
-        # The backup type. Only **COMPLETE** may be returned, which indicates full backup.
+        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
         self.backup_type = backup_type
-        # The name of the OSS bucket that is backed up. This parameter is returned only if the value of **SourceType** is **OSS**.
+        # This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the name of the OSS bucket that is backed up.
         self.bucket = bucket
         # The actual amount of data that is generated by incremental backups. Unit: bytes.
         self.bytes_done = bytes_done
         # The total amount of data that is backed up from the data source. Unit: bytes.
         self.bytes_total = bytes_total
-        # The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
+        # The data source details at the destination. Thisparameter is returned only for data synchronization.
         self.change_list_path = change_list_path
-        # The ID of the backup client. This parameter is returned only if the value of **SourceType** is **ECS_FILE**.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the ID of the backup client.
         self.client_id = client_id
-        # The time when the backup job was complete. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup job was completed. This value is a UNIX timestamp. Unit: seconds.
         self.complete_time = complete_time
-        # The time when the file system was created. This parameter is returned only if the value of **SourceType** is **NAS**. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The time when the backup job was created. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup job was created. This value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
-        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_role_name = cross_account_role_name
-        # The backup type. Valid values:
+        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
         # 
         # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
         # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id
-        # The data source details at the destination. This parameter is returned only for data synchronization.
+        # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail = dest_data_source_detail
-        # The data source ID at the destination. This parameter is returned only for data synchronization.
+        # Destination data source ID. (Required only for synchronization)
         self.dest_data_source_id = dest_data_source_id
-        # The data source type at the destination. This parameter is returned only for data synchronization.
+        # Destination data source type. (Required only for synchronization)
         self.dest_source_type = dest_source_type
-        # The details of the ECS instance backup job.
+        # The udm backup job detail.
         self.detail = detail
         # The error message that is returned for the backup job.
         self.error_message = error_message
-        # The paths to the files that are excluded from the backup job. This parameter is returned only if the value of **SourceType** is **ECS_FILE**. The value can be up to 255 characters in length.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
         self.exclude = exclude
-        # The ID of the NAS file system. This parameter is returned only if the value of **SourceType** is **NAS**.
+        # This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the NAS file system.
         self.file_system_id = file_system_id
         # The number of files that have been processed.
         self.files_done = files_done
         # The total number of files to be processed.
         self.files_total = files_total
-        # The identifier of the cluster that is backed up in the container backup job. This parameter is returned only if the value of SourceType is CONTAINER. If the cluster is a Container Service for Kubernetes (ACK) cluster, the value of this parameter is the ACK cluster ID.
+        # The identifier of the container cluster. For a Container Service for Kubernetes (ACK) cluster, specify the cluster ID.
         self.identifier = identifier
         # The paths to the files that are included in the backup job.
         self.include = include
-        # The ID of the ECS instance. This parameter is returned only if the value of **SourceType** is **NAS**.
+        # This parameter is returned only if the **SourceType** parameter is set to **NAS**. This parameter indicates the ID of the ECS instance.
         self.instance_id = instance_id
         # The name of the Tablestore instance.
         self.instance_name = instance_name
-        # The number of objects that are backed up. This parameter is returned only if the value of **SourceType** is **ECS_FILE**.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the number of objects that are backed up.
         self.items_done = items_done
-        # The total number of objects in the data source. This parameter is returned only if the value of **SourceType** is **ECS_FILE**.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the total number of objects in the data source.
         self.items_total = items_total
         # The ID of the backup job.
         self.job_id = job_id
         # The name of the backup job.
         self.job_name = job_name
-        # Indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path. This parameter is returned only if the value of **SourceType** is **ECS_FILE**.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates whether Windows VSS is used to define a backup path.
         # 
         # *   This parameter is available only for Windows ECS instances.
-        # *   A value of `["UseVSS":true]` indicates that the consistency between the source data and backup data is ensured while data changes occur in the source data.
-        # *   If VSS is used, multiple directories cannot be backed up at a time.
+        # *   If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
+        # *   If you use VSS, you cannot back up data from multiple directories.
         self.options = options
-        # The details of the Tablestore instance.
+        # The details about the Tablestore instance.
         self.ots_detail = ots_detail
-        # The source paths.
+        # The backup paths.
         self.paths = paths
         # The ID of the backup plan.
         self.plan_id = plan_id
-        # The prefix of objects that are backed up. This parameter is returned only if the value of **SourceType** is **OSS**.
+        # This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
         self.prefix = prefix
-        # The backup progress. Valid values: 0 to 10000. For example, a value of 10000 indicates that the progress is 100%.
+        # The backup progress. For example, 10000 indicates that the progress is 100%.
         self.progress = progress
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: ECS file.
-        # *   **OSS**: OSS bucket.
-        # *   **NAS**: NAS file system.
+        # *   **ECS_FILE**: ECS files
+        # *   **OSS**: OSS buckets
+        # *   **NAS**: NAS file systems
         self.source_type = source_type
         # The average speed at which data is backed up. Unit: KB/s.
         self.speed = speed
-        # The throttling rules. This parameter is returned only if the value of **SourceType** is **ECS_FILE**. Format: `{start}:{end}:{bandwidth}`. Multiple throttling rules are separated by vertical bars (`|`). The time ranges of the throttling rules cannot overlap.
+        # This parameter is returned only if the **SourceType** parameter is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}{end}{bandwidth}`. Multiple throttling rules are separated with vertical bars (`{start}|{end}|{bandwidth}`). A specified time range cannot overlap with another one.
         # 
-        # *   **start**: the start hour.
+        # *   **start**: the start hour
         # *   **end**: the end hour
         # *   **bandwidth**: the bandwidth. Unit: KB/s.
         self.speed_limit = speed_limit
-        # The time when the backup job started. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup job started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # The state of the backup job. Valid values:
+        # The status of the backup job. Valid values:
         # 
-        # *   **COMPLETE**\
-        # *   **PARTIAL_COMPLETE**\
-        # *   **FAILED**\
+        # *   **COMPLETE**: The backup job is completed.
+        # *   **PARTIAL_COMPLETE**: The backup job is partially completed.
+        # *   **FAILED**: The restore job has failed.
         self.status = status
-        # The name of the table in the Tablestore instance.
+        # The name of a destination table in the Tablestore instance.
         self.table_name = table_name
-        # The time when the backup job was last updated. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the backup job was updated. This value is a UNIX timestamp. Unit: seconds.
         self.updated_time = updated_time
         # The ID of the backup vault.
         self.vault_id = vault_id
@@ -8847,7 +8846,7 @@ class DescribeBackupJobs2ResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The backup jobs that meet the specified conditions.
+        # The returned backup jobs that meet the specified conditions.
         self.backup_jobs = backup_jobs
         # The HTTP status code. The status code 200 indicates that the call is successful.
         self.code = code
@@ -8855,11 +8854,11 @@ class DescribeBackupJobs2ResponseBody(TeaModel):
         self.message = message
         # The page number of the returned page. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the call is successful.
         # 
         # *   true: The call is successful.
         # *   false: The call fails.
@@ -24098,6 +24097,7 @@ class UpdateVaultRequest(TeaModel):
         resource_group_id: str = None,
         vault_id: str = None,
         vault_name: str = None,
+        worm_enabled: bool = None,
     ):
         # The description of the backup vault. The description must be 0 to 255 characters in length.
         self.description = description
@@ -24109,6 +24109,7 @@ class UpdateVaultRequest(TeaModel):
         self.vault_id = vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
+        self.worm_enabled = worm_enabled
 
     def validate(self):
         pass
@@ -24127,6 +24128,8 @@ class UpdateVaultRequest(TeaModel):
             result['VaultId'] = self.vault_id
         if self.vault_name is not None:
             result['VaultName'] = self.vault_name
+        if self.worm_enabled is not None:
+            result['WormEnabled'] = self.worm_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -24139,6 +24142,8 @@ class UpdateVaultRequest(TeaModel):
             self.vault_id = m.get('VaultId')
         if m.get('VaultName') is not None:
             self.vault_name = m.get('VaultName')
+        if m.get('WormEnabled') is not None:
+            self.worm_enabled = m.get('WormEnabled')
         return self
 
 

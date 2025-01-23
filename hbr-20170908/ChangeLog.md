@@ -1,3 +1,8 @@
+2025-01-23 Version: 2.1.1
+- Update API CreateVault: add param WormEnabled.
+- Update API UpdateVault: add param WormEnabled.
+
+
 2024-12-27 Version: 2.1.0
 - Support API DeleteAirEcsInstance.
 - Update API DeleteUdmDisk: update param DiskId.
