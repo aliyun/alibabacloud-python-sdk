@@ -2794,6 +2794,39 @@ class WorkspaceSpecs(TeaModel):
         return self
 
 
+class SubQuotaPreemptionConfig(TeaModel):
+    def __init__(
+        self,
+        preempted_priority_upper_bound: int = None,
+        preempted_products: List[str] = None,
+    ):
+        self.preempted_priority_upper_bound = preempted_priority_upper_bound
+        self.preempted_products = preempted_products
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.preempted_priority_upper_bound is not None:
+            result['PreemptedPriorityUpperBound'] = self.preempted_priority_upper_bound
+        if self.preempted_products is not None:
+            result['PreemptedProducts'] = self.preempted_products
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PreemptedPriorityUpperBound') is not None:
+            self.preempted_priority_upper_bound = m.get('PreemptedPriorityUpperBound')
+        if m.get('PreemptedProducts') is not None:
+            self.preempted_products = m.get('PreemptedProducts')
+        return self
+
+
 class UserVpc(TeaModel):
     def __init__(
         self,
@@ -2866,7 +2899,9 @@ class QuotaConfig(TeaModel):
         cluster_id: str = None,
         default_gpudriver: str = None,
         enable_preempt_subquota_workloads: bool = None,
+        enable_sub_quota_preemption: bool = None,
         resource_specs: List[WorkspaceSpecs] = None,
+        sub_quota_preemption_config: SubQuotaPreemptionConfig = None,
         support_gpudrivers: List[str] = None,
         support_rdma: bool = None,
         user_vpc: UserVpc = None,
@@ -2875,7 +2910,9 @@ class QuotaConfig(TeaModel):
         self.cluster_id = cluster_id
         self.default_gpudriver = default_gpudriver
         self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
+        self.enable_sub_quota_preemption = enable_sub_quota_preemption
         self.resource_specs = resource_specs
+        self.sub_quota_preemption_config = sub_quota_preemption_config
         self.support_gpudrivers = support_gpudrivers
         self.support_rdma = support_rdma
         self.user_vpc = user_vpc
@@ -2887,6 +2924,8 @@ class QuotaConfig(TeaModel):
             for k in self.resource_specs:
                 if k:
                     k.validate()
+        if self.sub_quota_preemption_config:
+            self.sub_quota_preemption_config.validate()
         if self.user_vpc:
             self.user_vpc.validate()
 
@@ -2904,10 +2943,14 @@ class QuotaConfig(TeaModel):
             result['DefaultGPUDriver'] = self.default_gpudriver
         if self.enable_preempt_subquota_workloads is not None:
             result['EnablePreemptSubquotaWorkloads'] = self.enable_preempt_subquota_workloads
+        if self.enable_sub_quota_preemption is not None:
+            result['EnableSubQuotaPreemption'] = self.enable_sub_quota_preemption
         result['ResourceSpecs'] = []
         if self.resource_specs is not None:
             for k in self.resource_specs:
                 result['ResourceSpecs'].append(k.to_map() if k else None)
+        if self.sub_quota_preemption_config is not None:
+            result['SubQuotaPreemptionConfig'] = self.sub_quota_preemption_config.to_map()
         if self.support_gpudrivers is not None:
             result['SupportGPUDrivers'] = self.support_gpudrivers
         if self.support_rdma is not None:
@@ -2927,11 +2970,16 @@ class QuotaConfig(TeaModel):
             self.default_gpudriver = m.get('DefaultGPUDriver')
         if m.get('EnablePreemptSubquotaWorkloads') is not None:
             self.enable_preempt_subquota_workloads = m.get('EnablePreemptSubquotaWorkloads')
+        if m.get('EnableSubQuotaPreemption') is not None:
+            self.enable_sub_quota_preemption = m.get('EnableSubQuotaPreemption')
         self.resource_specs = []
         if m.get('ResourceSpecs') is not None:
             for k in m.get('ResourceSpecs'):
                 temp_model = WorkspaceSpecs()
                 self.resource_specs.append(temp_model.from_map(k))
+        if m.get('SubQuotaPreemptionConfig') is not None:
+            temp_model = SubQuotaPreemptionConfig()
+            self.sub_quota_preemption_config = temp_model.from_map(m['SubQuotaPreemptionConfig'])
         if m.get('SupportGPUDrivers') is not None:
             self.support_gpudrivers = m.get('SupportGPUDrivers')
         if m.get('SupportRDMA') is not None:
@@ -4288,13 +4336,13 @@ class SchedulingRule(TeaModel):
 class Rules(TeaModel):
     def __init__(
         self,
-        scheduling_rule: SchedulingRule = None,
+        scheduling: SchedulingRule = None,
     ):
-        self.scheduling_rule = scheduling_rule
+        self.scheduling = scheduling
 
     def validate(self):
-        if self.scheduling_rule:
-            self.scheduling_rule.validate()
+        if self.scheduling:
+            self.scheduling.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4302,15 +4350,15 @@ class Rules(TeaModel):
             return _map
 
         result = dict()
-        if self.scheduling_rule is not None:
-            result['SchedulingRule'] = self.scheduling_rule.to_map()
+        if self.scheduling is not None:
+            result['Scheduling'] = self.scheduling.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SchedulingRule') is not None:
+        if m.get('Scheduling') is not None:
             temp_model = SchedulingRule()
-            self.scheduling_rule = temp_model.from_map(m['SchedulingRule'])
+            self.scheduling = temp_model.from_map(m['Scheduling'])
         return self
 
 
