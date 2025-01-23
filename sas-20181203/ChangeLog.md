@@ -1,3 +1,6 @@
+2025-01-23 Version: 4.0.7
+- Generated python 2018-12-03 for Sas.
+
 2025-01-22 Version: 4.0.6
 - Update API CreateOrUpdateAutoTagRule: update param Expression.
 - Update API CreateOrUpdateAutoTagRule: update param TagContext.
