@@ -1,3 +1,7 @@
+2025-01-24 Version: 1.2.0
+- Support API DescribeUserResources.
+
+
 2025-01-15 Version: 1.1.6
 - Update API DescribeSnapshots: update response param.
 - Update API ResetSnapshot: add param StopDesktop.
