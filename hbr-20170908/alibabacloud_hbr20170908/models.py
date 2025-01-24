@@ -1489,10 +1489,12 @@ class CreateBackupPlanRequest(TeaModel):
         backup_type: str = None,
         bucket: str = None,
         change_list_path: str = None,
+        cluster_id: str = None,
         create_time: int = None,
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        data_source_id: str = None,
         dest_data_source_detail: Dict[str, Any] = None,
         dest_data_source_id: str = None,
         dest_source_type: str = None,
@@ -1525,6 +1527,7 @@ class CreateBackupPlanRequest(TeaModel):
         self.bucket = bucket
         # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
+        self.cluster_id = cluster_id
         # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
         # The role name created in the RAM of the original account for cross-account backup.
@@ -1535,6 +1538,7 @@ class CreateBackupPlanRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        self.data_source_id = data_source_id
         # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail = dest_data_source_detail
         # Destination data source ID. (Required only for synchronization)
@@ -1632,6 +1636,8 @@ class CreateBackupPlanRequest(TeaModel):
             result['Bucket'] = self.bucket
         if self.change_list_path is not None:
             result['ChangeListPath'] = self.change_list_path
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_account_role_name is not None:
@@ -1640,6 +1646,8 @@ class CreateBackupPlanRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
         if self.dest_data_source_detail is not None:
             result['DestDataSourceDetail'] = self.dest_data_source_detail
         if self.dest_data_source_id is not None:
@@ -1698,6 +1706,8 @@ class CreateBackupPlanRequest(TeaModel):
             self.bucket = m.get('Bucket')
         if m.get('ChangeListPath') is not None:
             self.change_list_path = m.get('ChangeListPath')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CrossAccountRoleName') is not None:
@@ -1706,6 +1716,8 @@ class CreateBackupPlanRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
         if m.get('DestDataSourceDetail') is not None:
             self.dest_data_source_detail = m.get('DestDataSourceDetail')
         if m.get('DestDataSourceId') is not None:
@@ -1845,10 +1857,12 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         backup_type: str = None,
         bucket: str = None,
         change_list_path: str = None,
+        cluster_id: str = None,
         create_time: int = None,
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        data_source_id: str = None,
         dest_data_source_detail_shrink: str = None,
         dest_data_source_id: str = None,
         dest_source_type: str = None,
@@ -1881,6 +1895,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         self.bucket = bucket
         # Configuration for the incremental file synchronization list. (Required only for synchronization)
         self.change_list_path = change_list_path
+        self.cluster_id = cluster_id
         # This parameter is required when **SourceType** is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
         self.create_time = create_time
         # The role name created in the RAM of the original account for cross-account backup.
@@ -1891,6 +1906,7 @@ class CreateBackupPlanShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        self.data_source_id = data_source_id
         # Destination data source details. (Required only for synchronization)
         self.dest_data_source_detail_shrink = dest_data_source_detail_shrink
         # Destination data source ID. (Required only for synchronization)
@@ -1986,6 +2002,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             result['Bucket'] = self.bucket
         if self.change_list_path is not None:
             result['ChangeListPath'] = self.change_list_path
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.cross_account_role_name is not None:
@@ -1994,6 +2012,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
         if self.dest_data_source_detail_shrink is not None:
             result['DestDataSourceDetail'] = self.dest_data_source_detail_shrink
         if self.dest_data_source_id is not None:
@@ -2052,6 +2072,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             self.bucket = m.get('Bucket')
         if m.get('ChangeListPath') is not None:
             self.change_list_path = m.get('ChangeListPath')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CrossAccountRoleName') is not None:
@@ -2060,6 +2082,8 @@ class CreateBackupPlanShrinkRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
         if m.get('DestDataSourceDetail') is not None:
             self.dest_data_source_detail_shrink = m.get('DestDataSourceDetail')
         if m.get('DestDataSourceId') is not None:

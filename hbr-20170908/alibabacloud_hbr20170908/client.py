@@ -888,6 +888,8 @@ class Client(OpenApiClient):
             query['Bucket'] = request.bucket
         if not UtilClient.is_unset(request.change_list_path):
             query['ChangeListPath'] = request.change_list_path
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.create_time):
             query['CreateTime'] = request.create_time
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -925,6 +927,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vault_id):
             query['VaultId'] = request.vault_id
         body = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.exclude):
             body['Exclude'] = request.exclude
         if not UtilClient.is_unset(request.include):
@@ -1002,6 +1006,8 @@ class Client(OpenApiClient):
             query['Bucket'] = request.bucket
         if not UtilClient.is_unset(request.change_list_path):
             query['ChangeListPath'] = request.change_list_path
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.create_time):
             query['CreateTime'] = request.create_time
         if not UtilClient.is_unset(request.cross_account_role_name):
@@ -1039,6 +1045,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vault_id):
             query['VaultId'] = request.vault_id
         body = {}
+        if not UtilClient.is_unset(request.data_source_id):
+            body['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.exclude):
             body['Exclude'] = request.exclude
         if not UtilClient.is_unset(request.include):

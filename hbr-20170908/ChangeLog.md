@@ -1,3 +1,8 @@
+2025-01-24 Version: 2.1.2
+- Update API CreateBackupPlan: add param ClusterId.
+- Update API CreateBackupPlan: add param DataSourceId.
+
+
 2025-01-23 Version: 2.1.1
 - Update API CreateVault: add param WormEnabled.
 - Update API UpdateVault: add param WormEnabled.
