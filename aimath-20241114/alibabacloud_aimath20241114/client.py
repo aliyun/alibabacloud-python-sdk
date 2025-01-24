@@ -75,10 +75,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.ChatMessageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.ChatMessageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.ChatMessageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def chat_message_with_options_async(
         self,
@@ -114,10 +120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.ChatMessageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.ChatMessageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.ChatMessageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def chat_message(
         self,
@@ -185,10 +197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.CreateConversationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateConversationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateConversationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_conversation_with_options_async(
         self,
@@ -230,10 +248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.CreateConversationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateConversationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateConversationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_conversation(
         self,
@@ -295,10 +319,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.CreateRelatedConversationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateRelatedConversationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateRelatedConversationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_related_conversation_with_options_async(
         self,
@@ -334,10 +364,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.CreateRelatedConversationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateRelatedConversationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.CreateRelatedConversationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_related_conversation(
         self,
@@ -395,10 +431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GenAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GenAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GenAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def gen_analysis_with_options_async(
         self,
@@ -430,10 +472,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GenAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GenAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GenAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def gen_analysis(
         self,
@@ -491,10 +539,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GenStepResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GenStepResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GenStepResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def gen_step_with_options_async(
         self,
@@ -526,10 +580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GenStepResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GenStepResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GenStepResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def gen_step(
         self,
@@ -589,10 +649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GlobalConfirmResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GlobalConfirmResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GlobalConfirmResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def global_confirm_with_options_async(
         self,
@@ -626,10 +692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.GlobalConfirmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.GlobalConfirmResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.GlobalConfirmResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def global_confirm(
         self,
@@ -691,10 +763,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.UpdateAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_analysis_with_options_async(
         self,
@@ -730,10 +808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.UpdateAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_analysis(
         self,
@@ -795,10 +879,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.UpdateStepResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateStepResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateStepResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_step_with_options_async(
         self,
@@ -834,10 +924,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            aimath_20241114_models.UpdateStepResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateStepResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                aimath_20241114_models.UpdateStepResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_step(
         self,
