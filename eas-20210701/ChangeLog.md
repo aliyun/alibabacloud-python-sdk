@@ -1,3 +1,21 @@
+2025-02-05 Version: 6.5.0
+- Support API DeleteResourceInstanceLabel.
+- Support API UpdateResourceInstanceLabel.
+- Update API CreateResource: update param body.
+- Update API CreateResourceInstances: update param body.
+- Update API CreateVirtualResource: update param body.
+- Update API DescribeVirtualResource: update response param.
+- Update API ListResourceInstanceWorker: add param WorkerName.
+- Update API ListResourceInstances: add param Label.
+- Update API ListResourceInstances: update response param.
+- Update API ListResources: add param Order.
+- Update API ListResources: add param ResourceStatus.
+- Update API ListResources: add param Sort.
+- Update API ListVirtualResource: update response param.
+- Update API ReleaseService: update param body.
+- Update API UpdateVirtualResource: update param body.
+
+
 2025-01-13 Version: 6.4.1
 - Update API ReleaseService: update param body.
 

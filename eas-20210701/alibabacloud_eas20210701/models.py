@@ -454,6 +454,39 @@ class Resource(TeaModel):
         return self
 
 
+class ResourceInstanceLabels(TeaModel):
+    def __init__(
+        self,
+        label_key: str = None,
+        label_value: str = None,
+    ):
+        self.label_key = label_key
+        self.label_value = label_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_key is not None:
+            result['LabelKey'] = self.label_key
+        if self.label_value is not None:
+            result['LabelValue'] = self.label_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LabelKey') is not None:
+            self.label_key = m.get('LabelKey')
+        if m.get('LabelValue') is not None:
+            self.label_value = m.get('LabelValue')
+        return self
+
+
 class ResourceInstance(TeaModel):
     def __init__(
         self,
@@ -477,6 +510,7 @@ class ResourceInstance(TeaModel):
         instance_used_gpu: float = None,
         instance_used_gpu_memory: str = None,
         instance_used_memory: str = None,
+        labels: List[ResourceInstanceLabels] = None,
         region: str = None,
         resource_id: str = None,
         zone: str = None,
@@ -501,12 +535,16 @@ class ResourceInstance(TeaModel):
         self.instance_used_gpu = instance_used_gpu
         self.instance_used_gpu_memory = instance_used_gpu_memory
         self.instance_used_memory = instance_used_memory
+        self.labels = labels
         self.region = region
         self.resource_id = resource_id
         self.zone = zone
 
     def validate(self):
-        pass
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -554,6 +592,10 @@ class ResourceInstance(TeaModel):
             result['InstanceUsedGpuMemory'] = self.instance_used_gpu_memory
         if self.instance_used_memory is not None:
             result['InstanceUsedMemory'] = self.instance_used_memory
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.region is not None:
             result['Region'] = self.region
         if self.resource_id is not None:
@@ -604,6 +646,11 @@ class ResourceInstance(TeaModel):
             self.instance_used_gpu_memory = m.get('InstanceUsedGpuMemory')
         if m.get('InstanceUsedMemory') is not None:
             self.instance_used_memory = m.get('InstanceUsedMemory')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ResourceInstanceLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('ResourceId') is not None:
@@ -2643,6 +2690,7 @@ class CreateResourceRequest(TeaModel):
         charge_type: str = None,
         ecs_instance_count: int = None,
         ecs_instance_type: str = None,
+        labels: Dict[str, str] = None,
         resource_type: str = None,
         self_managed_resource_options: CreateResourceRequestSelfManagedResourceOptions = None,
         system_disk_size: int = None,
@@ -2668,6 +2716,7 @@ class CreateResourceRequest(TeaModel):
         # 
         # >  This parameter is required when the ResourceType parameter is set to Dedicated.
         self.ecs_instance_type = ecs_instance_type
+        self.labels = labels
         # The type of the resource group. Valid values:
         # 
         # *   Dedicated: the dedicated resource group.
@@ -2700,6 +2749,8 @@ class CreateResourceRequest(TeaModel):
             result['EcsInstanceCount'] = self.ecs_instance_count
         if self.ecs_instance_type is not None:
             result['EcsInstanceType'] = self.ecs_instance_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.self_managed_resource_options is not None:
@@ -2720,6 +2771,8 @@ class CreateResourceRequest(TeaModel):
             self.ecs_instance_count = m.get('EcsInstanceCount')
         if m.get('EcsInstanceType') is not None:
             self.ecs_instance_type = m.get('EcsInstanceType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('SelfManagedResourceOptions') is not None:
@@ -2843,6 +2896,7 @@ class CreateResourceInstancesRequest(TeaModel):
         charge_type: str = None,
         ecs_instance_count: int = None,
         ecs_instance_type: str = None,
+        labels: Dict[str, str] = None,
         system_disk_size: int = None,
         user_data: str = None,
         zone: str = None,
@@ -2867,6 +2921,7 @@ class CreateResourceInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecs_instance_type = ecs_instance_type
+        self.labels = labels
         # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
         # The user-defined information. This parameter is not in use.
@@ -2891,6 +2946,8 @@ class CreateResourceInstancesRequest(TeaModel):
             result['EcsInstanceCount'] = self.ecs_instance_count
         if self.ecs_instance_type is not None:
             result['EcsInstanceType'] = self.ecs_instance_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
         if self.user_data is not None:
@@ -2909,6 +2966,8 @@ class CreateResourceInstancesRequest(TeaModel):
             self.ecs_instance_count = m.get('EcsInstanceCount')
         if m.get('EcsInstanceType') is not None:
             self.ecs_instance_type = m.get('EcsInstanceType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
         if m.get('UserData') is not None:
@@ -4050,9 +4109,11 @@ class CreateVirtualResourceRequestResources(TeaModel):
 class CreateVirtualResourceRequest(TeaModel):
     def __init__(
         self,
+        disable_spot_protection_period: bool = None,
         resources: List[CreateVirtualResourceRequestResources] = None,
         virtual_resource_name: str = None,
     ):
+        self.disable_spot_protection_period = disable_spot_protection_period
         # The list of resources in the virtual resource group.
         self.resources = resources
         # The name of the virtual resource group. Default value: the ID of the virtual resource group.
@@ -4070,6 +4131,8 @@ class CreateVirtualResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_spot_protection_period is not None:
+            result['DisableSpotProtectionPeriod'] = self.disable_spot_protection_period
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
@@ -4080,6 +4143,8 @@ class CreateVirtualResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisableSpotProtectionPeriod') is not None:
+            self.disable_spot_protection_period = m.get('DisableSpotProtectionPeriod')
         self.resources = []
         if m.get('Resources') is not None:
             for k in m.get('Resources'):
@@ -4990,6 +5055,158 @@ class DeleteResourceDLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteResourceDLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteResourceInstanceLabelRequest(TeaModel):
+    def __init__(
+        self,
+        all_instances: bool = None,
+        instance_ids: List[str] = None,
+        keys: List[str] = None,
+    ):
+        self.all_instances = all_instances
+        self.instance_ids = instance_ids
+        self.keys = keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_instances is not None:
+            result['AllInstances'] = self.all_instances
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllInstances') is not None:
+            self.all_instances = m.get('AllInstances')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        return self
+
+
+class DeleteResourceInstanceLabelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        all_instances: bool = None,
+        instance_ids_shrink: str = None,
+        keys_shrink: str = None,
+    ):
+        self.all_instances = all_instances
+        self.instance_ids_shrink = instance_ids_shrink
+        self.keys_shrink = keys_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_instances is not None:
+            result['AllInstances'] = self.all_instances
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.keys_shrink is not None:
+            result['Keys'] = self.keys_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllInstances') is not None:
+            self.all_instances = m.get('AllInstances')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('Keys') is not None:
+            self.keys_shrink = m.get('Keys')
+        return self
+
+
+class DeleteResourceInstanceLabelResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteResourceInstanceLabelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteResourceInstanceLabelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteResourceInstanceLabelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8676,18 +8893,22 @@ class DescribeVirtualResourceResponseBody(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        disable_spot_protection_period: bool = None,
         request_id: str = None,
         resources: List[DescribeVirtualResourceResponseBodyResources] = None,
+        service_count: int = None,
         update_time: str = None,
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
         # The time when the virtual resource group was created.
         self.create_time = create_time
+        self.disable_spot_protection_period = disable_spot_protection_period
         # The ID of the request.
         self.request_id = request_id
         # The list of resources in the virtual resource group.
         self.resources = resources
+        self.service_count = service_count
         # The time when the virtual resource group was last updated.
         self.update_time = update_time
         # The ID of the virtual resource group.
@@ -8709,12 +8930,16 @@ class DescribeVirtualResourceResponseBody(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.disable_spot_protection_period is not None:
+            result['DisableSpotProtectionPeriod'] = self.disable_spot_protection_period
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        if self.service_count is not None:
+            result['ServiceCount'] = self.service_count
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         if self.virtual_resource_id is not None:
@@ -8727,6 +8952,8 @@ class DescribeVirtualResourceResponseBody(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DisableSpotProtectionPeriod') is not None:
+            self.disable_spot_protection_period = m.get('DisableSpotProtectionPeriod')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.resources = []
@@ -8734,6 +8961,8 @@ class DescribeVirtualResourceResponseBody(TeaModel):
             for k in m.get('Resources'):
                 temp_model = DescribeVirtualResourceResponseBodyResources()
                 self.resources.append(temp_model.from_map(k))
+        if m.get('ServiceCount') is not None:
+            self.service_count = m.get('ServiceCount')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         if m.get('VirtualResourceId') is not None:
@@ -10708,11 +10937,13 @@ class ListResourceInstanceWorkerRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        worker_name: str = None,
     ):
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.worker_name = worker_name
 
     def validate(self):
         pass
@@ -10727,6 +10958,8 @@ class ListResourceInstanceWorkerRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.worker_name is not None:
+            result['WorkerName'] = self.worker_name
         return result
 
     def from_map(self, m: dict = None):
@@ -10735,6 +10968,8 @@ class ListResourceInstanceWorkerRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('WorkerName') is not None:
+            self.worker_name = m.get('WorkerName')
         return self
 
 
@@ -10852,6 +11087,7 @@ class ListResourceInstancesRequest(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_status: str = None,
+        label: Dict[str, str] = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -10968,6 +11204,7 @@ class ListResourceInstancesRequest(TeaModel):
         # 
         #     <!-- -->
         self.instance_status = instance_status
+        self.label = label
         # The sorting order.
         # 
         # Valid values:
@@ -11076,6 +11313,8 @@ class ListResourceInstancesRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.label is not None:
+            result['Label'] = self.label
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -11100,6 +11339,282 @@ class ListResourceInstancesRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        return self
+
+
+class ListResourceInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        filter: str = None,
+        instance_ip: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_status: str = None,
+        label_shrink: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort: str = None,
+    ):
+        # The billing method of the instance. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
+        self.charge_type = charge_type
+        # The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
+        self.filter = filter
+        # The IP address of the instance.
+        self.instance_ip = instance_ip
+        # The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+        self.instance_id = instance_id
+        # The instance name.
+        self.instance_name = instance_name
+        # The instance state.
+        # 
+        # Valid values:
+        # 
+        # *   Ready-SchedulingDisabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is available but unschedulable
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Ready
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance
+        # 
+        #     <!-- -->
+        # 
+        #     is running
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   NotReady
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance is unready.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopped
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance has stopped.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   NotReady-SchedulingDisabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is unavailable and unschedulable
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Attaching
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance
+        # 
+        #     <!-- -->
+        # 
+        #     is starting
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance is being deleted.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateFailed: The instance failed to be created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.instance_status = instance_status
+        self.label_shrink = label_shrink
+        # The sorting order.
+        # 
+        # Valid values:
+        # 
+        # *   asc: The instances are sorted in ascending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   desc
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted in descending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 100.
+        self.page_size = page_size
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   CreateTime
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted based on the time when the instances were created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   MemoryUsed
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instances are sorted based on the memory usage of the instances
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   GpuUsed
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted based on the
+        # 
+        #     <!-- -->
+        # 
+        #     GPU usage of the instances.
+        # 
+        #     <!-- -->
+        # 
+        # *   ExpireTime: The instances are sorted based on the time when the instances expired.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CpuUsed
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instances are sorted based on the CPU utilization of the instances.
+        # 
+        #     <!-- -->
+        self.sort = sort
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.instance_ip is not None:
+            result['InstanceIP'] = self.instance_ip
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.label_shrink is not None:
+            result['Label'] = self.label_shrink
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('InstanceIP') is not None:
+            self.instance_ip = m.get('InstanceIP')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('Label') is not None:
+            self.label_shrink = m.get('Label')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -11359,12 +11874,16 @@ class ListResourceServicesResponse(TeaModel):
 class ListResourcesRequest(TeaModel):
     def __init__(
         self,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_id: str = None,
         resource_name: str = None,
+        resource_status: str = None,
         resource_type: str = None,
+        sort: str = None,
     ):
+        self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
@@ -11373,11 +11892,13 @@ class ListResourcesRequest(TeaModel):
         self.resource_id = resource_id
         # The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
         self.resource_name = resource_name
+        self.resource_status = resource_status
         # The type of the resource group. Valid values:
         # 
         # *   Dedicated: the dedicated resource group.
         # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
+        self.sort = sort
 
     def validate(self):
         pass
@@ -11388,6 +11909,8 @@ class ListResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -11396,12 +11919,18 @@ class ListResourcesRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.sort is not None:
+            result['Sort'] = self.sort
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -11410,8 +11939,12 @@ class ListResourcesRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         return self
 
 
@@ -13110,12 +13643,14 @@ class ListVirtualResourceResponseBodyVirtualResources(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        service_count: int = None,
         update_time: str = None,
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
         # The time when the virtual resource group was created.
         self.create_time = create_time
+        self.service_count = service_count
         # The time when the virtual resource group was last updated.
         self.update_time = update_time
         # The ID of the virtual resource group.
@@ -13134,6 +13669,8 @@ class ListVirtualResourceResponseBodyVirtualResources(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.service_count is not None:
+            result['ServiceCount'] = self.service_count
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         if self.virtual_resource_id is not None:
@@ -13146,6 +13683,8 @@ class ListVirtualResourceResponseBodyVirtualResources(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ServiceCount') is not None:
+            self.service_count = m.get('ServiceCount')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         if m.get('VirtualResourceId') is not None:
@@ -13347,7 +13886,7 @@ class ReleaseServiceRequest(TeaModel):
         # *   standalone: independent traffic.
         # *   grouping: grouped traffic.
         self.traffic_state = traffic_state
-        # The weight of the canary release. Valid values: 0 to 100.
+        # The weight of the service. Valid values: [-1, 1000].
         self.weight = weight
 
     def validate(self):
@@ -14736,6 +15275,159 @@ class UpdateResourceInstanceResponse(TeaModel):
         return self
 
 
+class UpdateResourceInstanceLabelRequest(TeaModel):
+    def __init__(
+        self,
+        all_instances: bool = None,
+        instance_ids: List[str] = None,
+        labels: Dict[str, str] = None,
+    ):
+        self.all_instances = all_instances
+        self.instance_ids = instance_ids
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_instances is not None:
+            result['AllInstances'] = self.all_instances
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllInstances') is not None:
+            self.all_instances = m.get('AllInstances')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
+class UpdateResourceInstanceLabelShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        all_instances: bool = None,
+        instance_ids_shrink: str = None,
+        labels: Dict[str, str] = None,
+    ):
+        self.all_instances = all_instances
+        self.instance_ids_shrink = instance_ids_shrink
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_instances is not None:
+            result['AllInstances'] = self.all_instances
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllInstances') is not None:
+            self.all_instances = m.get('AllInstances')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
+class UpdateResourceInstanceLabelResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateResourceInstanceLabelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceInstanceLabelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceInstanceLabelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
@@ -15966,9 +16658,11 @@ class UpdateVirtualResourceRequestResources(TeaModel):
 class UpdateVirtualResourceRequest(TeaModel):
     def __init__(
         self,
+        disable_spot_protection_period: bool = None,
         resources: List[UpdateVirtualResourceRequestResources] = None,
         virtual_resource_name: str = None,
     ):
+        self.disable_spot_protection_period = disable_spot_protection_period
         # The list of resources in the virtual resource group.
         # 
         # >  If you specify this parameter, previous data are overwritten.
@@ -15988,6 +16682,8 @@ class UpdateVirtualResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_spot_protection_period is not None:
+            result['DisableSpotProtectionPeriod'] = self.disable_spot_protection_period
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
@@ -15998,6 +16694,8 @@ class UpdateVirtualResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisableSpotProtectionPeriod') is not None:
+            self.disable_spot_protection_period = m.get('DisableSpotProtectionPeriod')
         self.resources = []
         if m.get('Resources') is not None:
             for k in m.get('Resources'):
