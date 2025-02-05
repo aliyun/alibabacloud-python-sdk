@@ -92,6 +92,86 @@ class CreateTaskRequestInput(TeaModel):
         return self
 
 
+class CreateTaskRequestParametersContentExtractionExtractionContents(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+    ):
+        self.content = content
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateTaskRequestParametersContentExtraction(TeaModel):
+    def __init__(
+        self,
+        extraction_contents: List[CreateTaskRequestParametersContentExtractionExtractionContents] = None,
+        scene_introduction: str = None,
+        speaker_map: Dict[str, Any] = None,
+    ):
+        self.extraction_contents = extraction_contents
+        self.scene_introduction = scene_introduction
+        self.speaker_map = speaker_map
+
+    def validate(self):
+        if self.extraction_contents:
+            for k in self.extraction_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExtractionContents'] = []
+        if self.extraction_contents is not None:
+            for k in self.extraction_contents:
+                result['ExtractionContents'].append(k.to_map() if k else None)
+        if self.scene_introduction is not None:
+            result['SceneIntroduction'] = self.scene_introduction
+        if self.speaker_map is not None:
+            result['SpeakerMap'] = self.speaker_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.extraction_contents = []
+        if m.get('ExtractionContents') is not None:
+            for k in m.get('ExtractionContents'):
+                temp_model = CreateTaskRequestParametersContentExtractionExtractionContents()
+                self.extraction_contents.append(temp_model.from_map(k))
+        if m.get('SceneIntroduction') is not None:
+            self.scene_introduction = m.get('SceneIntroduction')
+        if m.get('SpeakerMap') is not None:
+            self.speaker_map = m.get('SpeakerMap')
+        return self
+
+
 class CreateTaskRequestParametersCustomPromptContents(TeaModel):
     def __init__(
         self,
@@ -545,6 +625,8 @@ class CreateTaskRequestParameters(TeaModel):
     def __init__(
         self,
         auto_chapters_enabled: bool = None,
+        content_extraction: CreateTaskRequestParametersContentExtraction = None,
+        content_extraction_enabled: bool = None,
         custom_prompt: CreateTaskRequestParametersCustomPrompt = None,
         custom_prompt_enabled: bool = None,
         extra_params: CreateTaskRequestParametersExtraParams = None,
@@ -562,6 +644,8 @@ class CreateTaskRequestParameters(TeaModel):
         translation_enabled: bool = None,
     ):
         self.auto_chapters_enabled = auto_chapters_enabled
+        self.content_extraction = content_extraction
+        self.content_extraction_enabled = content_extraction_enabled
         self.custom_prompt = custom_prompt
         self.custom_prompt_enabled = custom_prompt_enabled
         self.extra_params = extra_params
@@ -579,6 +663,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.translation_enabled = translation_enabled
 
     def validate(self):
+        if self.content_extraction:
+            self.content_extraction.validate()
         if self.custom_prompt:
             self.custom_prompt.validate()
         if self.extra_params:
@@ -604,6 +690,10 @@ class CreateTaskRequestParameters(TeaModel):
         result = dict()
         if self.auto_chapters_enabled is not None:
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
+        if self.content_extraction is not None:
+            result['ContentExtraction'] = self.content_extraction.to_map()
+        if self.content_extraction_enabled is not None:
+            result['ContentExtractionEnabled'] = self.content_extraction_enabled
         if self.custom_prompt is not None:
             result['CustomPrompt'] = self.custom_prompt.to_map()
         if self.custom_prompt_enabled is not None:
@@ -640,6 +730,11 @@ class CreateTaskRequestParameters(TeaModel):
         m = m or dict()
         if m.get('AutoChaptersEnabled') is not None:
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
+        if m.get('ContentExtraction') is not None:
+            temp_model = CreateTaskRequestParametersContentExtraction()
+            self.content_extraction = temp_model.from_map(m['ContentExtraction'])
+        if m.get('ContentExtractionEnabled') is not None:
+            self.content_extraction_enabled = m.get('ContentExtractionEnabled')
         if m.get('CustomPrompt') is not None:
             temp_model = CreateTaskRequestParametersCustomPrompt()
             self.custom_prompt = temp_model.from_map(m['CustomPrompt'])
