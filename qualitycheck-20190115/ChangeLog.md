@@ -1,3 +1,12 @@
+2025-02-06 Version: 8.1.0
+- Support API ApplyWsToken.
+- Update API GetAsrVocab: update response param.
+- Update API GetCustomizationConfigList: update response param.
+- Update API ListAsrVocab: update response param.
+- Update API ListSchemeTaskConfig: update response param.
+- Update API SyncQualityCheck: update response param.
+
+
 2024-12-04 Version: 8.0.1
 - Update API GetResult: update response param.
 - Update API GetResultToReview: update response param.

@@ -2778,6 +2778,167 @@ class AddRuleV4Response(TeaModel):
         return self
 
 
+class ApplyWsTokenRequest(TeaModel):
+    def __init__(
+        self,
+        base_me_agent_id: int = None,
+        json_str: str = None,
+    ):
+        self.base_me_agent_id = base_me_agent_id
+        self.json_str = json_str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_me_agent_id is not None:
+            result['BaseMeAgentId'] = self.base_me_agent_id
+        if self.json_str is not None:
+            result['JsonStr'] = self.json_str
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseMeAgentId') is not None:
+            self.base_me_agent_id = m.get('BaseMeAgentId')
+        if m.get('JsonStr') is not None:
+            self.json_str = m.get('JsonStr')
+        return self
+
+
+class ApplyWsTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+        token: str = None,
+        ws_endpoint: str = None,
+    ):
+        self.session_id = session_id
+        self.token = token
+        self.ws_endpoint = ws_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.ws_endpoint is not None:
+            result['WsEndpoint'] = self.ws_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('WsEndpoint') is not None:
+            self.ws_endpoint = m.get('WsEndpoint')
+        return self
+
+
+class ApplyWsTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ApplyWsTokenResponseBodyData = None,
+        http_status_code: int = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ApplyWsTokenResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ApplyWsTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyWsTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyWsTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AssignReviewerRequest(TeaModel):
     def __init__(
         self,
@@ -6525,9 +6686,13 @@ class GetAsrVocabResponseBodyDataWords(TeaModel):
 class GetAsrVocabResponseBodyData(TeaModel):
     def __init__(
         self,
+        asr_version: int = None,
+        model_customization_id: str = None,
         name: str = None,
         words: GetAsrVocabResponseBodyDataWords = None,
     ):
+        self.asr_version = asr_version
+        self.model_customization_id = model_customization_id
         self.name = name
         self.words = words
 
@@ -6541,6 +6706,10 @@ class GetAsrVocabResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_version is not None:
+            result['AsrVersion'] = self.asr_version
+        if self.model_customization_id is not None:
+            result['ModelCustomizationId'] = self.model_customization_id
         if self.name is not None:
             result['Name'] = self.name
         if self.words is not None:
@@ -6549,6 +6718,10 @@ class GetAsrVocabResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrVersion') is not None:
+            self.asr_version = m.get('AsrVersion')
+        if m.get('ModelCustomizationId') is not None:
+            self.model_customization_id = m.get('ModelCustomizationId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Words') is not None:
@@ -6891,6 +7064,7 @@ class GetCustomizationConfigListRequest(TeaModel):
 class GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo(TeaModel):
     def __init__(
         self,
+        asr_version: int = None,
         create_time: str = None,
         mode_customization_id: str = None,
         model_id: int = None,
@@ -6898,6 +7072,7 @@ class GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo(TeaM
         model_status: int = None,
         task_type: int = None,
     ):
+        self.asr_version = asr_version
         self.create_time = create_time
         self.mode_customization_id = mode_customization_id
         self.model_id = model_id
@@ -6914,6 +7089,8 @@ class GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo(TeaM
             return _map
 
         result = dict()
+        if self.asr_version is not None:
+            result['AsrVersion'] = self.asr_version
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.mode_customization_id is not None:
@@ -6930,6 +7107,8 @@ class GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo(TeaM
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrVersion') is not None:
+            self.asr_version = m.get('AsrVersion')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('ModeCustomizationId') is not None:
@@ -16356,14 +16535,18 @@ class ListAsrVocabRequest(TeaModel):
 class ListAsrVocabResponseBodyDataAsrVocab(TeaModel):
     def __init__(
         self,
+        asr_version: int = None,
         create_time: str = None,
         id: str = None,
+        model_customization_id: str = None,
         name: str = None,
         update_time: str = None,
         vocabulary_id: str = None,
     ):
+        self.asr_version = asr_version
         self.create_time = create_time
         self.id = id
+        self.model_customization_id = model_customization_id
         self.name = name
         self.update_time = update_time
         self.vocabulary_id = vocabulary_id
@@ -16377,10 +16560,14 @@ class ListAsrVocabResponseBodyDataAsrVocab(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_version is not None:
+            result['AsrVersion'] = self.asr_version
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.id is not None:
             result['Id'] = self.id
+        if self.model_customization_id is not None:
+            result['ModelCustomizationId'] = self.model_customization_id
         if self.name is not None:
             result['Name'] = self.name
         if self.update_time is not None:
@@ -16391,10 +16578,14 @@ class ListAsrVocabResponseBodyDataAsrVocab(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrVersion') is not None:
+            self.asr_version = m.get('AsrVersion')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ModelCustomizationId') is not None:
+            self.model_customization_id = m.get('ModelCustomizationId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('UpdateTime') is not None:
@@ -18639,6 +18830,7 @@ class ListSchemeTaskConfigResponseBodyDataData(TeaModel):
     def __init__(
         self,
         asr_task_priority: int = None,
+        asr_version: int = None,
         assign_type: int = None,
         create_time: str = None,
         create_user: int = None,
@@ -18666,6 +18858,7 @@ class ListSchemeTaskConfigResponseBodyDataData(TeaModel):
         vocab_name: str = None,
     ):
         self.asr_task_priority = asr_task_priority
+        self.asr_version = asr_version
         self.assign_type = assign_type
         self.create_time = create_time
         self.create_user = create_user
@@ -18708,6 +18901,8 @@ class ListSchemeTaskConfigResponseBodyDataData(TeaModel):
         result = dict()
         if self.asr_task_priority is not None:
             result['AsrTaskPriority'] = self.asr_task_priority
+        if self.asr_version is not None:
+            result['AsrVersion'] = self.asr_version
         if self.assign_type is not None:
             result['AssignType'] = self.assign_type
         if self.create_time is not None:
@@ -18764,6 +18959,8 @@ class ListSchemeTaskConfigResponseBodyDataData(TeaModel):
         m = m or dict()
         if m.get('AsrTaskPriority') is not None:
             self.asr_task_priority = m.get('AsrTaskPriority')
+        if m.get('AsrVersion') is not None:
+            self.asr_version = m.get('AsrVersion')
         if m.get('AssignType') is not None:
             self.assign_type = m.get('AssignType')
         if m.get('CreateTime') is not None:
@@ -22926,15 +23123,80 @@ class SyncQualityCheckResponseBodyDataRulesHit(TeaModel):
         return self
 
 
+class SyncQualityCheckResponseBodyDataRulesRuleInfoBase(TeaModel):
+    def __init__(
+        self,
+        comments: str = None,
+        level: int = None,
+        rule_category_name: str = None,
+        score_num: int = None,
+        score_num_type: int = None,
+        score_type: int = None,
+        type: int = None,
+    ):
+        self.comments = comments
+        self.level = level
+        self.rule_category_name = rule_category_name
+        self.score_num = score_num
+        self.score_num_type = score_num_type
+        self.score_type = score_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.rule_category_name is not None:
+            result['RuleCategoryName'] = self.rule_category_name
+        if self.score_num is not None:
+            result['ScoreNum'] = self.score_num
+        if self.score_num_type is not None:
+            result['ScoreNumType'] = self.score_num_type
+        if self.score_type is not None:
+            result['ScoreType'] = self.score_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('RuleCategoryName') is not None:
+            self.rule_category_name = m.get('RuleCategoryName')
+        if m.get('ScoreNum') is not None:
+            self.score_num = m.get('ScoreNum')
+        if m.get('ScoreNumType') is not None:
+            self.score_num_type = m.get('ScoreNumType')
+        if m.get('ScoreType') is not None:
+            self.score_type = m.get('ScoreType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class SyncQualityCheckResponseBodyDataRules(TeaModel):
     def __init__(
         self,
         hit: List[SyncQualityCheckResponseBodyDataRulesHit] = None,
         rid: str = None,
+        rule_info_base: SyncQualityCheckResponseBodyDataRulesRuleInfoBase = None,
         rule_name: str = None,
     ):
         self.hit = hit
         self.rid = rid
+        self.rule_info_base = rule_info_base
         self.rule_name = rule_name
 
     def validate(self):
@@ -22942,6 +23204,8 @@ class SyncQualityCheckResponseBodyDataRules(TeaModel):
             for k in self.hit:
                 if k:
                     k.validate()
+        if self.rule_info_base:
+            self.rule_info_base.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22955,6 +23219,8 @@ class SyncQualityCheckResponseBodyDataRules(TeaModel):
                 result['Hit'].append(k.to_map() if k else None)
         if self.rid is not None:
             result['Rid'] = self.rid
+        if self.rule_info_base is not None:
+            result['RuleInfoBase'] = self.rule_info_base.to_map()
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         return result
@@ -22968,6 +23234,9 @@ class SyncQualityCheckResponseBodyDataRules(TeaModel):
                 self.hit.append(temp_model.from_map(k))
         if m.get('Rid') is not None:
             self.rid = m.get('Rid')
+        if m.get('RuleInfoBase') is not None:
+            temp_model = SyncQualityCheckResponseBodyDataRulesRuleInfoBase()
+            self.rule_info_base = temp_model.from_map(m['RuleInfoBase'])
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         return self
