@@ -539,6 +539,7 @@ class CreateDBInstanceRequest(TeaModel):
         self,
         client_token: str = None,
         dbinstance_description: str = None,
+        deploy_schema: str = None,
         engine: str = None,
         engine_version: str = None,
         multi_zone: List[CreateDBInstanceRequestMultiZone] = None,
@@ -551,6 +552,7 @@ class CreateDBInstanceRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dbinstance_description = dbinstance_description
+        self.deploy_schema = deploy_schema
         # The engine type.
         self.engine = engine
         self.engine_version = engine_version
@@ -580,6 +582,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.deploy_schema is not None:
+            result['DeploySchema'] = self.deploy_schema
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -608,6 +612,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DeploySchema') is not None:
+            self.deploy_schema = m.get('DeploySchema')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -637,6 +643,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self,
         client_token: str = None,
         dbinstance_description: str = None,
+        deploy_schema: str = None,
         engine: str = None,
         engine_version: str = None,
         multi_zone_shrink: str = None,
@@ -649,6 +656,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dbinstance_description = dbinstance_description
+        self.deploy_schema = deploy_schema
         # The engine type.
         self.engine = engine
         self.engine_version = engine_version
@@ -675,6 +683,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.deploy_schema is not None:
+            result['DeploySchema'] = self.deploy_schema
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -701,6 +711,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DeploySchema') is not None:
+            self.deploy_schema = m.get('DeploySchema')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -2250,6 +2262,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         data: DescribeDBInstanceAttributeResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result returned.
         self.data = data
         self.request_id = request_id
 
@@ -3222,15 +3235,29 @@ class DescribeProcessListRequest(TeaModel):
         query_order: int = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The query ID.
         self.initial_query_id = initial_query_id
+        # The user who executes the query statement.
         self.initial_user = initial_user
+        # The keyword of the query statement.
         self.keyword = keyword
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The execution duration of slow SQL queries. Minimum value: 1000. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
+        # Specifies the columns by which the query results are sorted in descending order.
+        # 
+        # *   0: The query results are sorted by the query_duration_ms column.
+        # *   1: The query results are sorted by the query_duration_ms and query_start_time columns.
+        # *   2: The query results are sorted by the query_duration_ms, query_start_time, and user columns.
         self.query_order = query_order
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3295,11 +3322,17 @@ class DescribeProcessListResponseBodyDataResultSet(TeaModel):
         query_duration_ms: int = None,
         query_start_time: str = None,
     ):
+        # The address to which the query statement is sent.
         self.initial_address = initial_address
+        # The query ID.
         self.initial_query_id = initial_query_id
+        # The user who executes the query statement.
         self.initial_user = initial_user
+        # The query statement that is running.
         self.query = query
+        # The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
+        # The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.query_start_time = query_start_time
 
     def validate(self):
@@ -3350,9 +3383,13 @@ class DescribeProcessListResponseBodyData(TeaModel):
         result_set: List[DescribeProcessListResponseBodyDataResultSet] = None,
         total_count: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The result sets.
         self.result_set = result_set
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3401,7 +3438,9 @@ class DescribeProcessListResponseBody(TeaModel):
         data: DescribeProcessListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3477,8 +3516,11 @@ class DescribeSecurityIPListRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3514,10 +3556,15 @@ class DescribeSecurityIPListResponseBodyDataGroupItems(TeaModel):
         security_iptype: str = None,
         whitelist_net_type: str = None,
     ):
+        # The name of the whitelist.
         self.group_name = group_name
+        # The tag of the whitelist.
         self.group_tag = group_tag
+        # The IP addresses and CIDR blocks in the whitelist.
         self.security_iplist = security_iplist
+        # The IP address type.
         self.security_iptype = security_iptype
+        # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type
 
     def validate(self):
@@ -3563,8 +3610,11 @@ class DescribeSecurityIPListResponseBodyData(TeaModel):
         dbinstance_name: str = None,
         group_items: List[DescribeSecurityIPListResponseBodyDataGroupItems] = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The details about the whitelists.
         self.group_items = group_items
 
     def validate(self):
@@ -3609,7 +3659,9 @@ class DescribeSecurityIPListResponseBody(TeaModel):
         data: DescribeSecurityIPListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3690,13 +3742,25 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
         self.end_time = end_time
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   30 (default)
+        # *   50
+        # *   100
         self.page_size = page_size
+        # The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
+        # The region ID.
         self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -3758,16 +3822,27 @@ class DescribeSlowLogRecordsResponseBodyDataResultSet(TeaModel):
         result_bytes: int = None,
         type: str = None,
     ):
+        # The address to which the query statement is sent.
         self.initial_address = initial_address
+        # The query ID.
         self.initial_query_id = initial_query_id
+        # The user who executes the query statement.
         self.initial_user = initial_user
+        # The peak memory usage for the query. Unit: bytes.
         self.memory_usage = memory_usage
+        # The query statement that is running.
         self.query = query
+        # The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
         self.query_duration_ms = query_duration_ms
+        # The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
         self.query_start_time = query_start_time
+        # The size of the data that is scanned. Unit: bytes.
         self.read_bytes = read_bytes
+        # The number of read rows.
         self.read_rows = read_rows
+        # The size of the result data. Unit: bytes.
         self.result_bytes = result_bytes
+        # The type of the slow query logs.
         self.type = type
 
     def validate(self):
@@ -3838,9 +3913,13 @@ class DescribeSlowLogRecordsResponseBodyData(TeaModel):
         result_set: List[DescribeSlowLogRecordsResponseBodyDataResultSet] = None,
         total_count: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The result sets.
         self.result_set = result_set
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3889,7 +3968,9 @@ class DescribeSlowLogRecordsResponseBody(TeaModel):
         data: DescribeSlowLogRecordsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5220,7 +5301,7 @@ class ModifyDBInstanceConnectionStringResponseBody(TeaModel):
         data: ModifyDBInstanceConnectionStringResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -5660,8 +5741,11 @@ class RestartDBInstanceRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5695,8 +5779,11 @@ class RestartDBInstanceResponseBodyData(TeaModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5733,7 +5820,9 @@ class RestartDBInstanceResponseBody(TeaModel):
         data: RestartDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5809,8 +5898,11 @@ class StartDBInstanceRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5844,8 +5936,11 @@ class StartDBInstanceResponseBodyData(TeaModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5882,7 +5977,9 @@ class StartDBInstanceResponseBody(TeaModel):
         data: StartDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5958,8 +6055,11 @@ class StopDBInstanceRequest(TeaModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5993,8 +6093,11 @@ class StopDBInstanceResponseBodyData(TeaModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The cluster name.
         self.dbinstance_name = dbinstance_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -6031,7 +6134,9 @@ class StopDBInstanceResponseBody(TeaModel):
         data: StopDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
