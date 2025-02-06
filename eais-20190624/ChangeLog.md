@@ -1,3 +1,6 @@
+2025-02-06 Version: 3.0.3
+- Generated python 2019-06-24 for eais.
+
 2025-01-15 Version: 3.0.2
 - Update API CreateEai: add param Tag.
 - Update API CreateEaiEci: add param Tag.
