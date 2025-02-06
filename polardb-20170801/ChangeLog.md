@@ -1,3 +1,8 @@
+2025-02-06 Version: 5.4.1
+- Update API DescribeActivationCodes: add param MacAddress.
+- Update API DescribeActivationCodes: add param SystemIdentifier.
+
+
 2025-01-20 Version: 5.4.0
 - Support API ModifyDBClusterStoragePerformance.
 - Update API DescribeDBClusterAttribute: update response param.

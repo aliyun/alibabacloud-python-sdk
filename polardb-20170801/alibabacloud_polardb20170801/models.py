@@ -2743,8 +2743,10 @@ class CreateDBClusterEndpointRequest(TeaModel):
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Whether the node has enabled the global consistency (high-performance mode) feature. The value range is as follows:
-        # - **ON**: Enabled - **OFF**: Disabled
+        # Specifies whether to enable the global consistency (high-performance mode) feature for the nodes. Valid values:
+        # 
+        # *   **ON**\
+        # *   **OFF**\
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -3420,11 +3422,17 @@ class CreateDBNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbnode = dbnode
-        # The type of the node. Valid values:
+        # The node type. Valid values:
         # 
         # *   RO
         # *   STANDBY
         # *   DLNode
+        # 
+        # Enumerated values:
+        # 
+        # *   DLNode: AI node
+        # *   STANDBY: standby node
+        # *   RO: read-only node
         self.dbnode_type = dbnode_type
         # The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
         # > - You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the details of cluster endpoints, including endpoint IDs.
@@ -5783,10 +5791,17 @@ class DeleteDBNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
-        # The type of the node. Valid values:
+        # The node type. Valid values:
         # 
         # *   RO
         # *   STANDBY
+        # *   DLNode
+        # 
+        # Enumerated values:
+        # 
+        # *   DLNode: AI node
+        # *   STANDBY: standby node
+        # *   RO: read-only node
         self.dbnode_type = dbnode_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7367,17 +7382,20 @@ class DescribeActivationCodesRequest(TeaModel):
     def __init__(
         self,
         aliyun_order_id: str = None,
+        mac_address: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        system_identifier: str = None,
     ):
         # The ID of the Alibaba Cloud order. The value can be the ID of a virtual order.
         # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id
+        self.mac_address = mac_address
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
@@ -7386,6 +7404,7 @@ class DescribeActivationCodesRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.system_identifier = system_identifier
 
     def validate(self):
         pass
@@ -7398,6 +7417,8 @@ class DescribeActivationCodesRequest(TeaModel):
         result = dict()
         if self.aliyun_order_id is not None:
             result['AliyunOrderId'] = self.aliyun_order_id
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -7410,12 +7431,16 @@ class DescribeActivationCodesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.system_identifier is not None:
+            result['SystemIdentifier'] = self.system_identifier
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AliyunOrderId') is not None:
             self.aliyun_order_id = m.get('AliyunOrderId')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -7428,6 +7453,8 @@ class DescribeActivationCodesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SystemIdentifier') is not None:
+            self.system_identifier = m.get('SystemIdentifier')
         return self
 
 
@@ -7646,7 +7673,13 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         self.dbtype = dbtype
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         # This parameter is required.
         self.region_id = region_id
@@ -15880,7 +15913,7 @@ class DescribeDBClustersWithBackupsRequest(TeaModel):
         self.owner_id = owner_id
         # The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -17851,13 +17884,16 @@ class DescribeDasConfigResponseBody(TeaModel):
         storage_auto_scale: str = None,
         storage_upper_bound: int = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the automatic storage expansion feature is enabled for the standard cluster.
-        self.storage_auto_scale = storage_auto_scale
-        # The maximum storage capacity of the standard cluster that is scaled up. Unit: GB.
+        # Specifies whether to enable automatic storage scaling for the Standard Edition cluster. Valid values:
         # 
-        # >  This parameter is returned when the StorageAutoScale parameter is set to Enable.
+        # *   Enable
+        # *   Disable
+        self.storage_auto_scale = storage_auto_scale
+        # The maximum storage capacity that is allowed for storage automatic scaling of the Standard Edition cluster. Unit: GB.
+        # 
+        # >  This parameter is valid only when the StorageAutoScale parameter is set to Enable.
         self.storage_upper_bound = storage_upper_bound
 
     def validate(self):
@@ -18940,7 +18976,17 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         serverless_type: str = None,
         storage_used: str = None,
     ):
-        # The edition of the cluster.
+        # The edition of the cluster. Valid values:
+        # 
+        # Normal: Cluster Edition Basic: Single Node Edition Archive: X-Engine Edition NormalMultimaster: Multi-master Cluster Edition SENormal: Standard Edition
+        # 
+        # > 
+        # 
+        # *   PolarDB for PostgreSQL clusters that run the PostgreSQL 11 database engine do not support Single Node Edition.
+        # 
+        # *   PolarDB for MySQL 8.0 and 5.7 clusters, and PolarDB for PostgreSQL clusters that run the PostgreSQL 14 database engine support Standard Edition.
+        # 
+        # *   PolarDB for MySQL 8.0 clusters support X-Engine Edition and Multi-master Cluster Edition.
         self.category = category
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
@@ -19285,9 +19331,9 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: 1. The value must be an integer that is greater than 0.
+        # The number of the page to return. Default value: 1. The value must be an integer that is greater than 0.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 30. Valid values:
+        # The number of entries per page. Default value: 30. Valid values:
         # 
         # *   30
         # *   50
@@ -20284,7 +20330,7 @@ class DescribeLicenseOrdersRequest(TeaModel):
         self.aliyun_order_id = aliyun_order_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The type of the package. Valid values:
+        # The plan type. Valid values:
         # 
         # *   single_node_subscribe: Single-node Edition (Subscription).
         # *   single_node_long_term: Single-node Edition (Long-term).
@@ -22090,9 +22136,9 @@ class DescribePendingMaintenanceActionRequest(TeaModel):
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+        # The number of the page to return. Specify the parameter to a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **30**, **50**, or **100**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
@@ -23513,16 +23559,17 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Page number, with a range greater than 0 and not exceeding the maximum value of Integer.
+        # The page number. The value must be an integer that is greater than 0.
         # 
-        # The default value is **1**.
+        # Default value: **1**.
         self.page_number = page_number
-        # Number of records per page, with the following options:
-        # * **30**\
-        # * **50**\
-        # * **100**\
+        # The number of entries per page. Valid values:
         # 
-        # The default value is **30**.
+        # *   **30**\
+        # *   **50**\
+        # *   **100**\
+        # 
+        # Default value: **30**.
         self.page_size = page_size
         # Region ID.
         # 
@@ -23883,7 +23930,7 @@ class DescribeSlowLogsRequest(TeaModel):
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
+        # The page number. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
@@ -24270,11 +24317,11 @@ class DescribeTasksRequest(TeaModel):
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. The value is an integer that is greater than 0.
+        # The page number. Pages start from page 1.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values: **30**, **50**, and **100**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
@@ -24817,9 +24864,9 @@ class DescribeVSwitchesRequest(TeaModel):
         self.owner_id = owner_id
         # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page. Maximum value: 50. Default value: 50.
+        # The number of entries to return on each page. Maximum value: 50. The default value is 50.
         self.page_size = page_size
-        # The ID of the region where the vSwitch belongs.
+        # The ID of the region where the vSwitch is deployed.
         self.region_id = region_id
         # The ID of the resource group to which the vSwitch belongs.
         self.resource_group_id = resource_group_id
@@ -24913,7 +24960,7 @@ class DescribeVSwitchesResponseBodyVSwitchs(TeaModel):
         self.available_ip_address_count = available_ip_address_count
         # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The descriptions of the vSwitch.
+        # The description of the vSwitch.
         self.description = description
         # Indicates whether the vSwitch is the default vSwitch. Valid values:
         # 
@@ -24997,7 +25044,7 @@ class DescribeVSwitchesResponseBody(TeaModel):
         self.request_id = request_id
         # The number of returned entries.
         self.total_count = total_count
-        # The details of the vSwitch.
+        # The vSwitches.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -28691,11 +28738,6 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         # 
         # *   **ON**\
         # *   **OFF**\
-        # 
-        # Valid values:
-        # 
-        # *   on
-        # *   off
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -29525,7 +29567,7 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
         # 
         # This parameter is required.
         self.zone_id = zone_id
-        # The type of the zone. Valid values:
+        # The zone type. Valid values:
         # 
         # *   **Primary**: primary zone
         # *   **Standby**: secondary zone
@@ -30249,6 +30291,12 @@ class ModifyDBClusterStoragePerformanceRequest(TeaModel):
         resource_owner_id: int = None,
         storage_type: str = None,
     ):
+        # Specifies whether to enable the I/O Burst feature for the ESSD AutoPL disk. Valid value:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
+        # >  This parameter is available only when the StorageType parameter is set to ESSDAUTOPL.
         self.bursting_enabled = bursting_enabled
         self.client_token = client_token
         # This parameter is required.

@@ -129,10 +129,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CancelActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_active_operation_tasks_with_options_async(
         self,
@@ -176,10 +182,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CancelActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_active_operation_tasks(
         self,
@@ -249,10 +261,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CancelScheduleTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelScheduleTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelScheduleTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_schedule_tasks_with_options_async(
         self,
@@ -296,10 +314,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CancelScheduleTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelScheduleTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CancelScheduleTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_schedule_tasks(
         self,
@@ -367,10 +391,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckAccountNameResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckAccountNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckAccountNameResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_account_name_with_options_async(
         self,
@@ -412,10 +442,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckAccountNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckAccountNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckAccountNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_account_name(
         self,
@@ -483,10 +519,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckDBNameResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckDBNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckDBNameResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_dbname_with_options_async(
         self,
@@ -528,10 +570,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckDBNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckDBNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckDBNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_dbname(
         self,
@@ -601,10 +649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckKMSAuthorizedResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckKMSAuthorizedResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckKMSAuthorizedResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_kmsauthorized_with_options_async(
         self,
@@ -648,10 +702,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckKMSAuthorizedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckKMSAuthorizedResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckKMSAuthorizedResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_kmsauthorized(
         self,
@@ -715,10 +775,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckServiceLinkedRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_service_linked_role_with_options_async(
         self,
@@ -756,10 +822,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CheckServiceLinkedRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CheckServiceLinkedRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_service_linked_role(
         self,
@@ -827,10 +899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CloseAITaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseAITaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseAITaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def close_aitask_with_options_async(
         self,
@@ -872,10 +950,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CloseAITaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseAITaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseAITaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def close_aitask(
         self,
@@ -947,10 +1031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CloseDBClusterMigrationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseDBClusterMigrationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseDBClusterMigrationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def close_dbcluster_migration_with_options_async(
         self,
@@ -996,10 +1086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CloseDBClusterMigrationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseDBClusterMigrationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CloseDBClusterMigrationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def close_dbcluster_migration(
         self,
@@ -1089,10 +1185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_account_with_options_async(
         self,
@@ -1148,10 +1250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_account(
         self,
@@ -1225,10 +1333,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateActivationCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateActivationCodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateActivationCodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_activation_code_with_options_async(
         self,
@@ -1276,10 +1390,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateActivationCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateActivationCodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateActivationCodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_activation_code(
         self,
@@ -1352,10 +1472,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateBackupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateBackupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateBackupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_backup_with_options_async(
         self,
@@ -1402,10 +1528,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateBackupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateBackupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateBackupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_backup(
         self,
@@ -1487,10 +1619,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateColdStorageInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateColdStorageInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateColdStorageInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_cold_storage_instance_with_options_async(
         self,
@@ -1536,10 +1674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateColdStorageInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateColdStorageInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateColdStorageInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_cold_storage_instance(
         self,
@@ -1711,10 +1855,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbcluster_with_options_async(
         self,
@@ -1860,10 +2010,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbcluster(
         self,
@@ -1949,10 +2105,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBClusterEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbcluster_endpoint_with_options_async(
         self,
@@ -2012,10 +2174,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBClusterEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBClusterEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbcluster_endpoint(
         self,
@@ -2095,10 +2263,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBEndpointAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBEndpointAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBEndpointAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbendpoint_address_with_options_async(
         self,
@@ -2152,10 +2326,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBEndpointAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBEndpointAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBEndpointAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbendpoint_address(
         self,
@@ -2254,10 +2434,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dblink_with_options_async(
         self,
@@ -2326,10 +2512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dblink(
         self,
@@ -2421,10 +2613,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbnodes_with_options_async(
         self,
@@ -2480,10 +2678,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDBNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDBNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbnodes(
         self,
@@ -2567,10 +2771,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDatabaseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDatabaseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDatabaseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_database_with_options_async(
         self,
@@ -2628,10 +2838,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDatabaseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDatabaseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateDatabaseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_database(
         self,
@@ -2715,10 +2931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_global_database_network_with_options_async(
         self,
@@ -2768,10 +2990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_global_database_network(
         self,
@@ -2849,10 +3077,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_global_security_ipgroup_with_options_async(
         self,
@@ -2900,10 +3134,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_global_security_ipgroup(
         self,
@@ -2969,10 +3209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_or_get_virtual_license_order_with_options_async(
         self,
@@ -3012,10 +3258,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateOrGetVirtualLicenseOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_or_get_virtual_license_order(
         self,
@@ -3096,10 +3348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_parameter_group_with_options_async(
         self,
@@ -3154,10 +3412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_parameter_group(
         self,
@@ -3227,10 +3491,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateServiceLinkedRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_linked_role_with_options_async(
         self,
@@ -3268,10 +3538,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateServiceLinkedRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateServiceLinkedRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service_linked_role(
         self,
@@ -3345,10 +3621,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateStoragePlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateStoragePlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateStoragePlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_storage_plan_with_options_async(
         self,
@@ -3396,10 +3678,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateStoragePlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateStoragePlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.CreateStoragePlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_storage_plan(
         self,
@@ -3469,10 +3757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_account_with_options_async(
         self,
@@ -3516,10 +3810,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_account(
         self,
@@ -3597,10 +3897,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteBackupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteBackupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteBackupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_backup_with_options_async(
         self,
@@ -3648,10 +3954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteBackupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteBackupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteBackupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_backup(
         self,
@@ -3731,10 +4043,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbcluster_with_options_async(
         self,
@@ -3776,10 +4094,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbcluster(
         self,
@@ -3847,10 +4171,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBClusterEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbcluster_endpoint_with_options_async(
         self,
@@ -3892,10 +4222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBClusterEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBClusterEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbcluster_endpoint(
         self,
@@ -3968,10 +4304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBEndpointAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBEndpointAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBEndpointAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbendpoint_address_with_options_async(
         self,
@@ -4018,10 +4360,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBEndpointAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBEndpointAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBEndpointAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbendpoint_address(
         self,
@@ -4095,10 +4443,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dblink_with_options_async(
         self,
@@ -4140,10 +4494,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dblink(
         self,
@@ -4215,10 +4575,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBNodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbnodes_with_options_async(
         self,
@@ -4264,10 +4630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDBNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDBNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbnodes(
         self,
@@ -4338,10 +4710,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDatabaseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDatabaseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDatabaseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_database_with_options_async(
         self,
@@ -4386,10 +4764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDatabaseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDatabaseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteDatabaseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_database(
         self,
@@ -4467,10 +4851,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_global_database_network_with_options_async(
         self,
@@ -4516,10 +4906,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_global_database_network(
         self,
@@ -4597,10 +4993,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_global_security_ipgroup_with_options_async(
         self,
@@ -4648,10 +5050,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_global_security_ipgroup(
         self,
@@ -4711,10 +5119,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteMaskingRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteMaskingRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteMaskingRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_masking_rules_with_options_async(
         self,
@@ -4748,10 +5162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteMaskingRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteMaskingRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteMaskingRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_masking_rules(
         self,
@@ -4824,10 +5244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_parameter_group_with_options_async(
         self,
@@ -4874,10 +5300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DeleteParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_parameter_group(
         self,
@@ -4939,10 +5371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAITaskStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAITaskStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAITaskStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_aitask_status_with_options_async(
         self,
@@ -4972,10 +5410,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAITaskStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAITaskStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAITaskStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_aitask_status(
         self,
@@ -5047,10 +5491,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_accounts_with_options_async(
         self,
@@ -5096,10 +5546,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_accounts(
         self,
@@ -5167,10 +5623,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_activation_code_details_with_options_async(
         self,
@@ -5212,10 +5674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodeDetailsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_activation_code_details(
         self,
@@ -5259,6 +5727,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aliyun_order_id):
             query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.mac_address):
+            query['MacAddress'] = request.mac_address
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5271,6 +5741,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_identifier):
+            query['SystemIdentifier'] = request.system_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5285,10 +5757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActivationCodesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_activation_codes_with_options_async(
         self,
@@ -5306,6 +5784,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aliyun_order_id):
             query['AliyunOrderId'] = request.aliyun_order_id
+        if not UtilClient.is_unset(request.mac_address):
+            query['MacAddress'] = request.mac_address
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -5318,6 +5798,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.system_identifier):
+            query['SystemIdentifier'] = request.system_identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5332,10 +5814,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActivationCodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActivationCodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_activation_codes(
         self,
@@ -5421,10 +5909,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_active_operation_tasks_with_options_async(
         self,
@@ -5484,10 +5978,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_active_operation_tasks(
         self,
@@ -5561,10 +6061,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_auto_renew_attribute_with_options_async(
         self,
@@ -5612,10 +6118,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_auto_renew_attribute(
         self,
@@ -5691,10 +6203,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_logs_with_options_async(
         self,
@@ -5744,10 +6262,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_logs(
         self,
@@ -5813,10 +6337,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_policy_with_options_async(
         self,
@@ -5856,10 +6386,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_policy(
         self,
@@ -5929,10 +6465,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_tasks_with_options_async(
         self,
@@ -5976,10 +6518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_tasks(
         self,
@@ -6061,10 +6609,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backups_with_options_async(
         self,
@@ -6120,10 +6674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backups(
         self,
@@ -6191,10 +6751,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeCharacterSetNameResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeCharacterSetNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeCharacterSetNameResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_character_set_name_with_options_async(
         self,
@@ -6236,10 +6802,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeCharacterSetNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeCharacterSetNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeCharacterSetNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_character_set_name(
         self,
@@ -6313,10 +6885,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeClassListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeClassListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeClassListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_class_list_with_options_async(
         self,
@@ -6364,10 +6942,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeClassListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeClassListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeClassListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_class_list(
         self,
@@ -6433,10 +7017,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_access_whitelist_with_options_async(
         self,
@@ -6476,10 +7066,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_access_whitelist(
         self,
@@ -6547,10 +7143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_attribute_with_options_async(
         self,
@@ -6592,10 +7194,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_attribute(
         self,
@@ -6661,10 +7269,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_audit_log_collector_with_options_async(
         self,
@@ -6704,10 +7318,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_audit_log_collector(
         self,
@@ -6783,10 +7403,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_available_resources_with_options_async(
         self,
@@ -6836,10 +7462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_available_resources(
         self,
@@ -6911,10 +7543,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_connectivity_with_options_async(
         self,
@@ -6960,10 +7598,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterConnectivityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_connectivity(
         self,
@@ -7033,10 +7677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_endpoints_with_options_async(
         self,
@@ -7080,10 +7730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_endpoints(
         self,
@@ -7151,10 +7807,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterMigrationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMigrationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMigrationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_migration_with_options_async(
         self,
@@ -7196,10 +7858,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterMigrationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMigrationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMigrationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_migration(
         self,
@@ -7269,10 +7937,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterMonitorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMonitorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMonitorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_monitor_with_options_async(
         self,
@@ -7312,10 +7986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterMonitorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMonitorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterMonitorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_monitor(
         self,
@@ -7383,10 +8063,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_parameters_with_options_async(
         self,
@@ -7428,10 +8114,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_parameters(
         self,
@@ -7512,10 +8204,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_performance_with_options_async(
         self,
@@ -7570,10 +8268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_performance(
         self,
@@ -7665,10 +8369,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_sslwith_options_async(
         self,
@@ -7708,10 +8418,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_ssl(
         self,
@@ -7777,10 +8493,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_serverless_conf_with_options_async(
         self,
@@ -7820,10 +8542,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_serverless_conf(
         self,
@@ -7889,10 +8617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterTDEResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterTDEResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterTDEResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_tdewith_options_async(
         self,
@@ -7932,10 +8666,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterTDEResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterTDEResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterTDEResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_tde(
         self,
@@ -8003,10 +8743,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_version_with_options_async(
         self,
@@ -8048,10 +8794,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClusterVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClusterVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_version(
         self,
@@ -8149,10 +8901,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbclusters_with_options_async(
         self,
@@ -8224,10 +8982,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbclusters(
         self,
@@ -8309,10 +9073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbclusters_with_backups_with_options_async(
         self,
@@ -8368,10 +9138,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbclusters_with_backups(
         self,
@@ -8437,10 +9213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBInitializeVariableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBInitializeVariableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBInitializeVariableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinitialize_variable_with_options_async(
         self,
@@ -8480,10 +9262,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBInitializeVariableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBInitializeVariableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBInitializeVariableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinitialize_variable(
         self,
@@ -8553,10 +9341,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBLinksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBLinksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBLinksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dblinks_with_options_async(
         self,
@@ -8600,10 +9394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBLinksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBLinksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBLinksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dblinks(
         self,
@@ -8690,10 +9490,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBNodePerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodePerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodePerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbnode_performance_with_options_async(
         self,
@@ -8750,10 +9556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBNodePerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodePerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodePerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbnode_performance(
         self,
@@ -8847,10 +9659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBNodesParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodesParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodesParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbnodes_parameters_with_options_async(
         self,
@@ -8892,10 +9710,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBNodesParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodesParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBNodesParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbnodes_parameters(
         self,
@@ -8969,10 +9793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbproxy_performance_with_options_async(
         self,
@@ -9020,10 +9850,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbproxy_performance(
         self,
@@ -9093,10 +9929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDasConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDasConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDasConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_das_config_with_options_async(
         self,
@@ -9136,10 +9978,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDasConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDasConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDasConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_das_config(
         self,
@@ -9211,10 +10059,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDatabasesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDatabasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDatabasesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_databases_with_options_async(
         self,
@@ -9260,10 +10114,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDatabasesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDatabasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDatabasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_databases(
         self,
@@ -9300,7 +10160,7 @@ class Client(OpenApiClient):
         @summary Queries the information about the backup sets in a released PolarDB cluster.
         
         @description Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
-        > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+        >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
         
         @param request: DescribeDetachedBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9348,10 +10208,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDetachedBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDetachedBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDetachedBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_detached_backups_with_options_async(
         self,
@@ -9362,7 +10228,7 @@ class Client(OpenApiClient):
         @summary Queries the information about the backup sets in a released PolarDB cluster.
         
         @description Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
-        > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+        >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
         
         @param request: DescribeDetachedBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9410,10 +10276,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDetachedBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDetachedBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeDetachedBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_detached_backups(
         self,
@@ -9423,7 +10295,7 @@ class Client(OpenApiClient):
         @summary Queries the information about the backup sets in a released PolarDB cluster.
         
         @description Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
-        > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+        >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
         
         @param request: DescribeDetachedBackupsRequest
         @return: DescribeDetachedBackupsResponse
@@ -9439,7 +10311,7 @@ class Client(OpenApiClient):
         @summary Queries the information about the backup sets in a released PolarDB cluster.
         
         @description Before you call this operation, make sure that the PolarDB cluster is in the *Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
-        > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+        >  You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
         
         @param request: DescribeDetachedBackupsRequest
         @return: DescribeDetachedBackupsResponse
@@ -9489,10 +10361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_database_network_with_options_async(
         self,
@@ -9536,10 +10414,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_database_network(
         self,
@@ -9619,10 +10503,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_database_networks_with_options_async(
         self,
@@ -9676,10 +10566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_database_networks(
         self,
@@ -9751,10 +10647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_security_ipgroup_with_options_async(
         self,
@@ -9800,10 +10702,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_security_ipgroup(
         self,
@@ -9875,10 +10783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_security_ipgroup_relation_with_options_async(
         self,
@@ -9924,10 +10838,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_security_ipgroup_relation(
         self,
@@ -9993,10 +10913,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_license_order_details_with_options_async(
         self,
@@ -10036,10 +10962,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrderDetailsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_license_order_details(
         self,
@@ -10115,10 +11047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLicenseOrdersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrdersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrdersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_license_orders_with_options_async(
         self,
@@ -10168,10 +11106,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLicenseOrdersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrdersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLicenseOrdersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_license_orders(
         self,
@@ -10237,10 +11181,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLogBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLogBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLogBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_log_backup_policy_with_options_async(
         self,
@@ -10280,10 +11230,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeLogBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLogBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeLogBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_log_backup_policy(
         self,
@@ -10343,10 +11299,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeMaskingRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMaskingRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMaskingRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_masking_rules_with_options_async(
         self,
@@ -10380,10 +11342,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeMaskingRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMaskingRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMaskingRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_masking_rules(
         self,
@@ -10463,10 +11431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeMetaListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMetaListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMetaListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_meta_list_with_options_async(
         self,
@@ -10520,10 +11494,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeMetaListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMetaListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeMetaListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_meta_list(
         self,
@@ -10596,10 +11576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_group_with_options_async(
         self,
@@ -10646,10 +11632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_group(
         self,
@@ -10730,10 +11722,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_groups_with_options_async(
         self,
@@ -10782,10 +11780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_groups(
         self,
@@ -10863,10 +11867,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterTemplatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterTemplatesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameter_templates_with_options_async(
         self,
@@ -10912,10 +11922,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeParameterTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterTemplatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeParameterTemplatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameter_templates(
         self,
@@ -10993,10 +12009,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_pending_maintenance_action_with_options_async(
         self,
@@ -11048,10 +12070,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_pending_maintenance_action(
         self,
@@ -11085,7 +12113,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         """
-        @summary Queries the numbers of pending events of different task types.
+        @summary Queries the numbers of scheduled events for different types of tasks.
         
         @param request: DescribePendingMaintenanceActionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11123,10 +12151,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_pending_maintenance_actions_with_options_async(
         self,
@@ -11134,7 +12168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         """
-        @summary Queries the numbers of pending events of different task types.
+        @summary Queries the numbers of scheduled events for different types of tasks.
         
         @param request: DescribePendingMaintenanceActionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11172,17 +12206,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_pending_maintenance_actions(
         self,
         request: polardb_20170801_models.DescribePendingMaintenanceActionsRequest,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         """
-        @summary Queries the numbers of pending events of different task types.
+        @summary Queries the numbers of scheduled events for different types of tasks.
         
         @param request: DescribePendingMaintenanceActionsRequest
         @return: DescribePendingMaintenanceActionsResponse
@@ -11195,7 +12235,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribePendingMaintenanceActionsRequest,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         """
-        @summary Queries the numbers of pending events of different task types.
+        @summary Queries the numbers of scheduled events for different types of tasks.
         
         @param request: DescribePendingMaintenanceActionsRequest
         @return: DescribePendingMaintenanceActionsResponse
@@ -11231,10 +12271,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_polar_sqlcollector_policy_with_options_async(
         self,
@@ -11264,10 +12310,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_polar_sqlcollector_policy(
         self,
@@ -11331,10 +12383,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -11372,10 +12430,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -11461,10 +12525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeScheduleTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeScheduleTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeScheduleTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_schedule_tasks_with_options_async(
         self,
@@ -11524,10 +12594,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeScheduleTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeScheduleTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeScheduleTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_schedule_tasks(
         self,
@@ -11612,10 +12688,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeSlowLogRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_slow_log_records_with_options_async(
         self,
@@ -11674,10 +12756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeSlowLogRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_slow_log_records(
         self,
@@ -11763,10 +12851,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeSlowLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_slow_logs_with_options_async(
         self,
@@ -11820,10 +12914,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeSlowLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeSlowLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_slow_logs(
         self,
@@ -11908,10 +13008,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tasks_with_options_async(
         self,
@@ -11966,10 +13072,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tasks(
         self,
@@ -12045,10 +13157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_user_encryption_key_list_with_options_async(
         self,
@@ -12092,10 +13210,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeUserEncryptionKeyListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_user_encryption_key_list(
         self,
@@ -12175,10 +13299,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeVSwitchesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeVSwitchesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeVSwitchesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vswitches_with_options_async(
         self,
@@ -12232,10 +13362,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeVSwitchesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeVSwitchesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DescribeVSwitchesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vswitches(
         self,
@@ -12301,10 +13437,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DisableDBClusterServerlessResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DisableDBClusterServerlessResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DisableDBClusterServerlessResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_dbcluster_serverless_with_options_async(
         self,
@@ -12344,10 +13486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.DisableDBClusterServerlessResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.DisableDBClusterServerlessResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.DisableDBClusterServerlessResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_dbcluster_serverless(
         self,
@@ -12425,10 +13573,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EnableDBClusterServerlessResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableDBClusterServerlessResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableDBClusterServerlessResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_dbcluster_serverless_with_options_async(
         self,
@@ -12480,10 +13634,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EnableDBClusterServerlessResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableDBClusterServerlessResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableDBClusterServerlessResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_dbcluster_serverless(
         self,
@@ -12553,10 +13713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EnableFirewallRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableFirewallRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableFirewallRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_firewall_rules_with_options_async(
         self,
@@ -12600,10 +13766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EnableFirewallRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableFirewallRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EnableFirewallRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_firewall_rules(
         self,
@@ -12687,10 +13859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EvaluateRegionResourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EvaluateRegionResourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EvaluateRegionResourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def evaluate_region_resource_with_options_async(
         self,
@@ -12748,10 +13926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.EvaluateRegionResourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.EvaluateRegionResourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.EvaluateRegionResourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def evaluate_region_resource(
         self,
@@ -12825,10 +14009,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.FailoverDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.FailoverDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.FailoverDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def failover_dbcluster_with_options_async(
         self,
@@ -12876,10 +14066,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.FailoverDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.FailoverDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.FailoverDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def failover_dbcluster(
         self,
@@ -12957,10 +14153,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.GrantAccountPrivilegeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.GrantAccountPrivilegeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.GrantAccountPrivilegeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_account_privilege_with_options_async(
         self,
@@ -13012,10 +14214,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.GrantAccountPrivilegeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.GrantAccountPrivilegeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.GrantAccountPrivilegeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_account_privilege(
         self,
@@ -13101,10 +14309,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -13152,10 +14366,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -13223,10 +14443,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ManuallyStartDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ManuallyStartDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ManuallyStartDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def manually_start_dbcluster_with_options_async(
         self,
@@ -13268,10 +14494,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ManuallyStartDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ManuallyStartDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ManuallyStartDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def manually_start_dbcluster(
         self,
@@ -13341,10 +14573,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAccountDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_description_with_options_async(
         self,
@@ -13388,10 +14626,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAccountDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_description(
         self,
@@ -13463,10 +14707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_password_with_options_async(
         self,
@@ -13512,10 +14762,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_password(
         self,
@@ -13589,10 +14845,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyActiveOperationTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_active_operation_tasks_with_options_async(
         self,
@@ -13640,10 +14902,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyActiveOperationTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyActiveOperationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_active_operation_tasks(
         self,
@@ -13719,10 +14987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_auto_renew_attribute_with_options_async(
         self,
@@ -13772,10 +15046,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_auto_renew_attribute(
         self,
@@ -13867,10 +15147,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_backup_policy_with_options_async(
         self,
@@ -13936,10 +15222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_backup_policy(
         self,
@@ -14031,10 +15323,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_with_options_async(
         self,
@@ -14096,10 +15394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster(
         self,
@@ -14177,10 +15481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_access_whitelist_with_options_async(
         self,
@@ -14232,10 +15542,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_access_whitelist(
         self,
@@ -14315,10 +15631,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_and_nodes_parameters_with_options_async(
         self,
@@ -14372,10 +15694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAndNodesParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_and_nodes_parameters(
         self,
@@ -14443,10 +15771,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_audit_log_collector_with_options_async(
         self,
@@ -14488,10 +15822,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_audit_log_collector(
         self,
@@ -14559,10 +15899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterDeletionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDeletionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDeletionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_deletion_with_options_async(
         self,
@@ -14604,10 +15950,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterDeletionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDeletionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDeletionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_deletion(
         self,
@@ -14675,10 +16027,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_description_with_options_async(
         self,
@@ -14720,10 +16078,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_description(
         self,
@@ -14807,10 +16171,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_endpoint_with_options_async(
         self,
@@ -14868,10 +16238,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_endpoint(
         self,
@@ -14941,10 +16317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_maintain_time_with_options_async(
         self,
@@ -14988,10 +16370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_maintain_time(
         self,
@@ -15075,10 +16463,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMigrationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMigrationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMigrationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_migration_with_options_async(
         self,
@@ -15132,10 +16526,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMigrationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMigrationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMigrationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_migration(
         self,
@@ -15223,10 +16623,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMonitorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMonitorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMonitorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_monitor_with_options_async(
         self,
@@ -15280,10 +16686,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterMonitorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMonitorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterMonitorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_monitor(
         self,
@@ -15387,10 +16799,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_parameters_with_options_async(
         self,
@@ -15444,10 +16862,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_parameters(
         self,
@@ -15537,10 +16961,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_primary_zone_with_options_async(
         self,
@@ -15596,10 +17026,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_primary_zone(
         self,
@@ -15669,10 +17105,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_resource_group_with_options_async(
         self,
@@ -15716,10 +17158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_resource_group(
         self,
@@ -15793,10 +17241,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_sslwith_options_async(
         self,
@@ -15844,10 +17298,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_ssl(
         self,
@@ -15945,10 +17405,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_serverless_conf_with_options_async(
         self,
@@ -16020,10 +17486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_serverless_conf(
         self,
@@ -16093,10 +17565,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_storage_performance_with_options_async(
         self,
@@ -16140,10 +17618,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStoragePerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_storage_performance(
         self,
@@ -16219,10 +17703,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_storage_space_with_options_async(
         self,
@@ -16272,10 +17762,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterStorageSpaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_storage_space(
         self,
@@ -16354,10 +17850,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterTDEResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterTDEResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterTDEResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_tdewith_options_async(
         self,
@@ -16410,10 +17912,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBClusterTDEResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterTDEResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBClusterTDEResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_tde(
         self,
@@ -16489,10 +17997,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbdescription_with_options_async(
         self,
@@ -16536,10 +18050,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbdescription(
         self,
@@ -16617,10 +18137,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBEndpointAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBEndpointAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBEndpointAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbendpoint_address_with_options_async(
         self,
@@ -16672,10 +18198,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBEndpointAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBEndpointAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBEndpointAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbendpoint_address(
         self,
@@ -16757,10 +18289,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodeClassResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeClassResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeClassResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbnode_class_with_options_async(
         self,
@@ -16816,10 +18354,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodeClassResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeClassResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeClassResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbnode_class(
         self,
@@ -16889,10 +18433,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbnode_hot_replica_mode_with_options_async(
         self,
@@ -16936,10 +18486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbnode_hot_replica_mode(
         self,
@@ -17019,10 +18575,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodesClassResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesClassResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesClassResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbnodes_class_with_options_async(
         self,
@@ -17076,10 +18638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodesClassResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesClassResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesClassResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbnodes_class(
         self,
@@ -17157,10 +18725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodesParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbnodes_parameters_with_options_async(
         self,
@@ -17212,10 +18786,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyDBNodesParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyDBNodesParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbnodes_parameters(
         self,
@@ -17289,10 +18869,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_database_network_with_options_async(
         self,
@@ -17340,10 +18926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_database_network(
         self,
@@ -17419,10 +19011,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_with_options_async(
         self,
@@ -17472,10 +19070,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup(
         self,
@@ -17549,10 +19153,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_name_with_options_async(
         self,
@@ -17600,10 +19210,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup_name(
         self,
@@ -17677,10 +19293,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_security_ipgroup_relation_with_options_async(
         self,
@@ -17728,10 +19350,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_security_ipgroup_relation(
         self,
@@ -17803,10 +19431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyLogBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyLogBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyLogBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_log_backup_policy_with_options_async(
         self,
@@ -17852,10 +19486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyLogBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyLogBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyLogBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_log_backup_policy(
         self,
@@ -17923,10 +19563,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyMaskingRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyMaskingRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyMaskingRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_masking_rules_with_options_async(
         self,
@@ -17968,10 +19614,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyMaskingRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyMaskingRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyMaskingRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_masking_rules(
         self,
@@ -18045,10 +19697,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_pending_maintenance_action_with_options_async(
         self,
@@ -18096,10 +19754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_pending_maintenance_action(
         self,
@@ -18175,10 +19839,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.OpenAITaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.OpenAITaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.OpenAITaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_aitask_with_options_async(
         self,
@@ -18228,10 +19898,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.OpenAITaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.OpenAITaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.OpenAITaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_aitask(
         self,
@@ -18297,10 +19973,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def refresh_dbcluster_storage_usage_with_options_async(
         self,
@@ -18340,10 +20022,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RefreshDBClusterStorageUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def refresh_dbcluster_storage_usage(
         self,
@@ -18415,10 +20103,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_dbcluster_from_gdnwith_options_async(
         self,
@@ -18464,10 +20158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_dbcluster_from_gdn(
         self,
@@ -18544,10 +20244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ResetAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_account_with_options_async(
         self,
@@ -18594,10 +20300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ResetAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_account(
         self,
@@ -18675,10 +20387,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_global_database_network_with_options_async(
         self,
@@ -18724,10 +20442,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.ResetGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_global_database_network(
         self,
@@ -18795,10 +20519,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestartDBLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_dblink_with_options_async(
         self,
@@ -18840,10 +20570,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestartDBLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_dblink(
         self,
@@ -18909,10 +20645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestartDBNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_dbnode_with_options_async(
         self,
@@ -18952,10 +20694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestartDBNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestartDBNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_dbnode(
         self,
@@ -19029,10 +20777,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestoreTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestoreTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestoreTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restore_table_with_options_async(
         self,
@@ -19080,10 +20834,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RestoreTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RestoreTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RestoreTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restore_table(
         self,
@@ -19153,10 +20913,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RevokeAccountPrivilegeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RevokeAccountPrivilegeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RevokeAccountPrivilegeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def revoke_account_privilege_with_options_async(
         self,
@@ -19200,10 +20966,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.RevokeAccountPrivilegeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.RevokeAccountPrivilegeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.RevokeAccountPrivilegeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def revoke_account_privilege(
         self,
@@ -19277,10 +21049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_over_global_database_network_with_options_async(
         self,
@@ -19328,10 +21106,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.SwitchOverGlobalDatabaseNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_over_global_database_network(
         self,
@@ -19399,10 +21183,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -19448,10 +21238,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -19527,10 +21323,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TempModifyDBNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TempModifyDBNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TempModifyDBNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def temp_modify_dbnode_with_options_async(
         self,
@@ -19580,10 +21382,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TempModifyDBNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TempModifyDBNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TempModifyDBNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def temp_modify_dbnode(
         self,
@@ -19666,10 +21474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TransformDBClusterPayTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def transform_dbcluster_pay_type_with_options_async(
         self,
@@ -19726,10 +21540,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.TransformDBClusterPayTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.TransformDBClusterPayTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def transform_dbcluster_pay_type(
         self,
@@ -19813,10 +21633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -19864,10 +21690,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -19952,10 +21784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.UpgradeDBClusterVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.UpgradeDBClusterVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.UpgradeDBClusterVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_dbcluster_version_with_options_async(
         self,
@@ -20014,10 +21852,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            polardb_20170801_models.UpgradeDBClusterVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                polardb_20170801_models.UpgradeDBClusterVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                polardb_20170801_models.UpgradeDBClusterVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_dbcluster_version(
         self,
