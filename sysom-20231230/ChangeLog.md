@@ -1,3 +1,44 @@
+2025-02-07 Version: 1.4.0
+- Support API GenerateCopilotStreamResponse.
+- Support API GetAIQueryResult.
+- Support API GetAgent.
+- Support API GetAgentTask.
+- Support API GetCopilotHistory.
+- Support API GetHostCount.
+- Support API GetHotSpotUniqList.
+- Support API GetHotspotAnalysis.
+- Support API GetHotspotCompare.
+- Support API GetHotspotInstanceList.
+- Support API GetHotspotPidList.
+- Support API GetHotspotTracking.
+- Support API GetInstantScore.
+- Support API GetListRecord.
+- Support API GetProblemPercentage.
+- Support API GetRangeScore.
+- Support API GetResources.
+- Support API InitialSysom.
+- Support API InstallAgent.
+- Support API InstallAgentForCluster.
+- Support API InvokeAnomalyDiagnosis.
+- Support API ListAbnormalyEvents.
+- Support API ListAgentInstallRecords.
+- Support API ListAgents.
+- Support API ListClusterAgentInstallRecords.
+- Support API ListClusters.
+- Support API ListDiagnosis.
+- Support API ListInstanceHealth.
+- Support API ListInstanceStatus.
+- Support API ListInstances.
+- Support API ListPodsOfInstance.
+- Support API ListRegions.
+- Support API StartAIAnalysis.
+- Support API UninstallAgent.
+- Support API UninstallAgentForCluster.
+- Support API UpdateEventsAttention.
+- Support API UpgradeAgent.
+- Support API UpgradeAgentForCluster.
+
+
 2024-12-26 Version: 1.3.0
 - Support API GetAIQueryResult.
 - Support API GetAgent.

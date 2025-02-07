@@ -78,10 +78,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.AuthDiagnosisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.AuthDiagnosisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.AuthDiagnosisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def auth_diagnosis_with_options_async(
         self,
@@ -120,10 +126,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.AuthDiagnosisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.AuthDiagnosisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.AuthDiagnosisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def auth_diagnosis(
         self,
@@ -186,10 +198,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotResponseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotResponseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotResponseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_copilot_response_with_options_async(
         self,
@@ -224,10 +242,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotResponseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotResponseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotResponseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_copilot_response(
         self,
@@ -256,6 +280,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.generate_copilot_response_with_options_async(request, headers, runtime)
+
+    def generate_copilot_stream_response_with_options(
+        self,
+        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
+        """
+        @summary 流式copilot服务接口
+        
+        @param request: GenerateCopilotStreamResponseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCopilotStreamResponseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateCopilotStreamResponse',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/copilot/generate_copilot_stream_response',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def generate_copilot_stream_response_with_options_async(
+        self,
+        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
+        """
+        @summary 流式copilot服务接口
+        
+        @param request: GenerateCopilotStreamResponseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateCopilotStreamResponseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateCopilotStreamResponse',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/copilot/generate_copilot_stream_response',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def generate_copilot_stream_response(
+        self,
+        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
+        """
+        @summary 流式copilot服务接口
+        
+        @param request: GenerateCopilotStreamResponseRequest
+        @return: GenerateCopilotStreamResponseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generate_copilot_stream_response_with_options(request, headers, runtime)
+
+    async def generate_copilot_stream_response_async(
+        self,
+        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
+        """
+        @summary 流式copilot服务接口
+        
+        @param request: GenerateCopilotStreamResponseRequest
+        @return: GenerateCopilotStreamResponseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generate_copilot_stream_response_with_options_async(request, headers, runtime)
 
     def get_aiquery_result_with_options(
         self,
@@ -290,10 +430,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAIQueryResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAIQueryResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAIQueryResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_aiquery_result_with_options_async(
         self,
@@ -328,10 +474,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAIQueryResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAIQueryResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAIQueryResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_aiquery_result(
         self,
@@ -406,10 +558,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAbnormalEventsCountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAbnormalEventsCountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAbnormalEventsCountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_abnormal_events_count_with_options_async(
         self,
@@ -456,10 +614,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAbnormalEventsCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAbnormalEventsCountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAbnormalEventsCountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_abnormal_events_count(
         self,
@@ -522,10 +686,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_agent_with_options_async(
         self,
@@ -560,10 +730,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_agent(
         self,
@@ -626,10 +802,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_agent_task_with_options_async(
         self,
@@ -664,10 +846,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetAgentTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_agent_task(
         self,
@@ -696,6 +884,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_agent_task_with_options_async(request, headers, runtime)
+
+    def get_copilot_history_with_options(
+        self,
+        request: sys_om20231230_models.GetCopilotHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
+        """
+        @summary 获取copilot历史聊天记录
+        
+        @param request: GetCopilotHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCopilotHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.count):
+            body['count'] = request.count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCopilotHistory',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/copilot/get_copilot_history',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetCopilotHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetCopilotHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_copilot_history_with_options_async(
+        self,
+        request: sys_om20231230_models.GetCopilotHistoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
+        """
+        @summary 获取copilot历史聊天记录
+        
+        @param request: GetCopilotHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCopilotHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.count):
+            body['count'] = request.count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCopilotHistory',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/copilot/get_copilot_history',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetCopilotHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetCopilotHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_copilot_history(
+        self,
+        request: sys_om20231230_models.GetCopilotHistoryRequest,
+    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
+        """
+        @summary 获取copilot历史聊天记录
+        
+        @param request: GetCopilotHistoryRequest
+        @return: GetCopilotHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_copilot_history_with_options(request, headers, runtime)
+
+    async def get_copilot_history_async(
+        self,
+        request: sys_om20231230_models.GetCopilotHistoryRequest,
+    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
+        """
+        @summary 获取copilot历史聊天记录
+        
+        @param request: GetCopilotHistoryRequest
+        @return: GetCopilotHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_copilot_history_with_options_async(request, headers, runtime)
 
     def get_diagnosis_result_with_options(
         self,
@@ -730,10 +1034,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetDiagnosisResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetDiagnosisResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetDiagnosisResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_diagnosis_result_with_options_async(
         self,
@@ -768,10 +1078,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetDiagnosisResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetDiagnosisResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetDiagnosisResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_diagnosis_result(
         self,
@@ -840,10 +1156,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHealthPercentageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHealthPercentageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHealthPercentageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_health_percentage_with_options_async(
         self,
@@ -884,10 +1206,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHealthPercentageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHealthPercentageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHealthPercentageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_health_percentage(
         self,
@@ -956,10 +1284,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHostCountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHostCountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHostCountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_host_count_with_options_async(
         self,
@@ -1000,10 +1334,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHostCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHostCountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHostCountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_host_count(
         self,
@@ -1032,6 +1372,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_host_count_with_options_async(request, headers, runtime)
+
+    def get_hot_spot_uniq_list_with_options(
+        self,
+        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
+        """
+        @summary 获取实例下的某个字段列表
+        
+        @param request: GetHotSpotUniqListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotSpotUniqListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_end):
+            body['beg_end'] = request.beg_end
+        if not UtilClient.is_unset(request.beg_start):
+            body['beg_start'] = request.beg_start
+        if not UtilClient.is_unset(request.instance):
+            body['instance'] = request.instance
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        if not UtilClient.is_unset(request.uniq):
+            body['uniq'] = request.uniq
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotSpotUniqList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/livetrace_proxy/hotspot_uniq_list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotSpotUniqListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotSpotUniqListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_hot_spot_uniq_list_with_options_async(
+        self,
+        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
+        """
+        @summary 获取实例下的某个字段列表
+        
+        @param request: GetHotSpotUniqListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotSpotUniqListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_end):
+            body['beg_end'] = request.beg_end
+        if not UtilClient.is_unset(request.beg_start):
+            body['beg_start'] = request.beg_start
+        if not UtilClient.is_unset(request.instance):
+            body['instance'] = request.instance
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        if not UtilClient.is_unset(request.uniq):
+            body['uniq'] = request.uniq
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotSpotUniqList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/livetrace_proxy/hotspot_uniq_list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotSpotUniqListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotSpotUniqListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_hot_spot_uniq_list(
+        self,
+        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
+        """
+        @summary 获取实例下的某个字段列表
+        
+        @param request: GetHotSpotUniqListRequest
+        @return: GetHotSpotUniqListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_hot_spot_uniq_list_with_options(request, headers, runtime)
+
+    async def get_hot_spot_uniq_list_async(
+        self,
+        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
+        """
+        @summary 获取实例下的某个字段列表
+        
+        @param request: GetHotSpotUniqListRequest
+        @return: GetHotSpotUniqListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_hot_spot_uniq_list_with_options_async(request, headers, runtime)
 
     def get_hotspot_analysis_with_options(
         self,
@@ -1076,10 +1552,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotspot_analysis_with_options_async(
         self,
@@ -1124,10 +1606,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotspot_analysis(
         self,
@@ -1156,6 +1644,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_hotspot_analysis_with_options_async(request, headers, runtime)
+
+    def get_hotspot_compare_with_options(
+        self,
+        request: sys_om20231230_models.GetHotspotCompareRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotspotCompareResponse:
+        """
+        @summary 热点对比
+        
+        @param request: GetHotspotCompareRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotspotCompareResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_1end):
+            body['beg1_end'] = request.beg_1end
+        if not UtilClient.is_unset(request.beg_1start):
+            body['beg1_start'] = request.beg_1start
+        if not UtilClient.is_unset(request.beg_2end):
+            body['beg2_end'] = request.beg_2end
+        if not UtilClient.is_unset(request.beg_2start):
+            body['beg2_start'] = request.beg_2start
+        if not UtilClient.is_unset(request.hot_type):
+            body['hot_type'] = request.hot_type
+        if not UtilClient.is_unset(request.instance_1):
+            body['instance1'] = request.instance_1
+        if not UtilClient.is_unset(request.instance_2):
+            body['instance2'] = request.instance_2
+        if not UtilClient.is_unset(request.pid_1):
+            body['pid1'] = request.pid_1
+        if not UtilClient.is_unset(request.pid_2):
+            body['pid2'] = request.pid_2
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotCompare',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotCompareResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotCompareResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_hotspot_compare_with_options_async(
+        self,
+        request: sys_om20231230_models.GetHotspotCompareRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotspotCompareResponse:
+        """
+        @summary 热点对比
+        
+        @param request: GetHotspotCompareRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotspotCompareResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_1end):
+            body['beg1_end'] = request.beg_1end
+        if not UtilClient.is_unset(request.beg_1start):
+            body['beg1_start'] = request.beg_1start
+        if not UtilClient.is_unset(request.beg_2end):
+            body['beg2_end'] = request.beg_2end
+        if not UtilClient.is_unset(request.beg_2start):
+            body['beg2_start'] = request.beg_2start
+        if not UtilClient.is_unset(request.hot_type):
+            body['hot_type'] = request.hot_type
+        if not UtilClient.is_unset(request.instance_1):
+            body['instance1'] = request.instance_1
+        if not UtilClient.is_unset(request.instance_2):
+            body['instance2'] = request.instance_2
+        if not UtilClient.is_unset(request.pid_1):
+            body['pid1'] = request.pid_1
+        if not UtilClient.is_unset(request.pid_2):
+            body['pid2'] = request.pid_2
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotCompare',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotCompareResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotCompareResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_hotspot_compare(
+        self,
+        request: sys_om20231230_models.GetHotspotCompareRequest,
+    ) -> sys_om20231230_models.GetHotspotCompareResponse:
+        """
+        @summary 热点对比
+        
+        @param request: GetHotspotCompareRequest
+        @return: GetHotspotCompareResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_hotspot_compare_with_options(request, headers, runtime)
+
+    async def get_hotspot_compare_async(
+        self,
+        request: sys_om20231230_models.GetHotspotCompareRequest,
+    ) -> sys_om20231230_models.GetHotspotCompareResponse:
+        """
+        @summary 热点对比
+        
+        @param request: GetHotspotCompareRequest
+        @return: GetHotspotCompareResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_hotspot_compare_with_options_async(request, headers, runtime)
 
     def get_hotspot_instance_list_with_options(
         self,
@@ -1194,10 +1834,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotInstanceListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotInstanceListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotInstanceListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotspot_instance_list_with_options_async(
         self,
@@ -1236,10 +1882,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotInstanceListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotInstanceListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotInstanceListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotspot_instance_list(
         self,
@@ -1308,10 +1960,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotPidListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotPidListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotPidListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_hotspot_pid_list_with_options_async(
         self,
@@ -1352,10 +2010,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotPidListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotPidListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotPidListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_hotspot_pid_list(
         self,
@@ -1384,6 +2048,262 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_hotspot_pid_list_with_options_async(request, headers, runtime)
+
+    def get_hotspot_tracking_with_options(
+        self,
+        request: sys_om20231230_models.GetHotspotTrackingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
+        """
+        @summary 发起热点追踪
+        
+        @param request: GetHotspotTrackingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotspotTrackingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_end):
+            body['beg_end'] = request.beg_end
+        if not UtilClient.is_unset(request.beg_start):
+            body['beg_start'] = request.beg_start
+        if not UtilClient.is_unset(request.hot_type):
+            body['hot_type'] = request.hot_type
+        if not UtilClient.is_unset(request.instance):
+            body['instance'] = request.instance
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotTracking',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotTrackingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotTrackingResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_hotspot_tracking_with_options_async(
+        self,
+        request: sys_om20231230_models.GetHotspotTrackingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
+        """
+        @summary 发起热点追踪
+        
+        @param request: GetHotspotTrackingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHotspotTrackingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.beg_end):
+            body['beg_end'] = request.beg_end
+        if not UtilClient.is_unset(request.beg_start):
+            body['beg_start'] = request.beg_start
+        if not UtilClient.is_unset(request.hot_type):
+            body['hot_type'] = request.hot_type
+        if not UtilClient.is_unset(request.instance):
+            body['instance'] = request.instance
+        if not UtilClient.is_unset(request.pid):
+            body['pid'] = request.pid
+        if not UtilClient.is_unset(request.table):
+            body['table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetHotspotTracking',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotTrackingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetHotspotTrackingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_hotspot_tracking(
+        self,
+        request: sys_om20231230_models.GetHotspotTrackingRequest,
+    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
+        """
+        @summary 发起热点追踪
+        
+        @param request: GetHotspotTrackingRequest
+        @return: GetHotspotTrackingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_hotspot_tracking_with_options(request, headers, runtime)
+
+    async def get_hotspot_tracking_async(
+        self,
+        request: sys_om20231230_models.GetHotspotTrackingRequest,
+    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
+        """
+        @summary 发起热点追踪
+        
+        @param request: GetHotspotTrackingRequest
+        @return: GetHotspotTrackingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_hotspot_tracking_with_options_async(request, headers, runtime)
+
+    def get_instant_score_with_options(
+        self,
+        request: sys_om20231230_models.GetInstantScoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetInstantScoreResponse:
+        """
+        @summary 获取实时集群/节点健康度分数
+        
+        @param request: GetInstantScoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstantScoreResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster):
+            query['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstantScore',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/cluster_health/instant/score',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetInstantScoreResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetInstantScoreResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_instant_score_with_options_async(
+        self,
+        request: sys_om20231230_models.GetInstantScoreRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetInstantScoreResponse:
+        """
+        @summary 获取实时集群/节点健康度分数
+        
+        @param request: GetInstantScoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstantScoreResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster):
+            query['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstantScore',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/cluster_health/instant/score',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetInstantScoreResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetInstantScoreResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_instant_score(
+        self,
+        request: sys_om20231230_models.GetInstantScoreRequest,
+    ) -> sys_om20231230_models.GetInstantScoreResponse:
+        """
+        @summary 获取实时集群/节点健康度分数
+        
+        @param request: GetInstantScoreRequest
+        @return: GetInstantScoreResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instant_score_with_options(request, headers, runtime)
+
+    async def get_instant_score_async(
+        self,
+        request: sys_om20231230_models.GetInstantScoreRequest,
+    ) -> sys_om20231230_models.GetInstantScoreResponse:
+        """
+        @summary 获取实时集群/节点健康度分数
+        
+        @param request: GetInstantScoreRequest
+        @return: GetInstantScoreResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instant_score_with_options_async(request, headers, runtime)
 
     def get_list_record_with_options(
         self,
@@ -1420,10 +2340,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetListRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetListRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetListRecordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_list_record_with_options_async(
         self,
@@ -1460,10 +2386,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetListRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetListRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetListRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_list_record(
         self,
@@ -1532,10 +2464,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetProblemPercentageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetProblemPercentageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetProblemPercentageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_problem_percentage_with_options_async(
         self,
@@ -1576,10 +2514,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetProblemPercentageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetProblemPercentageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetProblemPercentageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_problem_percentage(
         self,
@@ -1648,10 +2592,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetRangeScoreResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetRangeScoreResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetRangeScoreResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_range_score_with_options_async(
         self,
@@ -1692,10 +2642,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetRangeScoreResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetRangeScoreResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetRangeScoreResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_range_score(
         self,
@@ -1762,10 +2718,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resources_with_options_async(
         self,
@@ -1804,10 +2766,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resources(
         self,
@@ -1836,6 +2804,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resources_with_options_async(request, headers, runtime)
+
+    def initial_sysom_with_options(
+        self,
+        request: sys_om20231230_models.InitialSysomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.InitialSysomResponse:
+        """
+        @summary 初始化SysOM，确保角色存在
+        
+        @param request: InitialSysomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitialSysomResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_only):
+            body['check_only'] = request.check_only
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitialSysom',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/initial',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InitialSysomResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InitialSysomResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def initial_sysom_with_options_async(
+        self,
+        request: sys_om20231230_models.InitialSysomRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.InitialSysomResponse:
+        """
+        @summary 初始化SysOM，确保角色存在
+        
+        @param request: InitialSysomRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitialSysomResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_only):
+            body['check_only'] = request.check_only
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitialSysom',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/initial',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InitialSysomResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InitialSysomResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def initial_sysom(
+        self,
+        request: sys_om20231230_models.InitialSysomRequest,
+    ) -> sys_om20231230_models.InitialSysomResponse:
+        """
+        @summary 初始化SysOM，确保角色存在
+        
+        @param request: InitialSysomRequest
+        @return: InitialSysomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.initial_sysom_with_options(request, headers, runtime)
+
+    async def initial_sysom_async(
+        self,
+        request: sys_om20231230_models.InitialSysomRequest,
+    ) -> sys_om20231230_models.InitialSysomResponse:
+        """
+        @summary 初始化SysOM，确保角色存在
+        
+        @param request: InitialSysomRequest
+        @return: InitialSysomResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.initial_sysom_with_options_async(request, headers, runtime)
 
     def install_agent_with_options(
         self,
@@ -1876,10 +2960,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def install_agent_with_options_async(
         self,
@@ -1920,10 +3010,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def install_agent(
         self,
@@ -1952,6 +3048,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.install_agent_with_options_async(request, headers, runtime)
+
+    def install_agent_for_cluster_with_options(
+        self,
+        request: sys_om20231230_models.InstallAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
+        """
+        @summary 给集群安装组件
+        
+        @param request: InstallAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/install_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentForClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentForClusterResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def install_agent_for_cluster_with_options_async(
+        self,
+        request: sys_om20231230_models.InstallAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
+        """
+        @summary 给集群安装组件
+        
+        @param request: InstallAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/install_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentForClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InstallAgentForClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def install_agent_for_cluster(
+        self,
+        request: sys_om20231230_models.InstallAgentForClusterRequest,
+    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
+        """
+        @summary 给集群安装组件
+        
+        @param request: InstallAgentForClusterRequest
+        @return: InstallAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.install_agent_for_cluster_with_options(request, headers, runtime)
+
+    async def install_agent_for_cluster_async(
+        self,
+        request: sys_om20231230_models.InstallAgentForClusterRequest,
+    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
+        """
+        @summary 给集群安装组件
+        
+        @param request: InstallAgentForClusterRequest
+        @return: InstallAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.install_agent_for_cluster_with_options_async(request, headers, runtime)
 
     def invoke_anomaly_diagnosis_with_options(
         self,
@@ -1986,10 +3206,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def invoke_anomaly_diagnosis_with_options_async(
         self,
@@ -2024,10 +3250,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def invoke_anomaly_diagnosis(
         self,
@@ -2094,10 +3326,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeDiagnosisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeDiagnosisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeDiagnosisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def invoke_diagnosis_with_options_async(
         self,
@@ -2136,10 +3374,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeDiagnosisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeDiagnosisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.InvokeDiagnosisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def invoke_diagnosis(
         self,
@@ -2220,10 +3464,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAbnormalyEventsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAbnormalyEventsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAbnormalyEventsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_abnormaly_events_with_options_async(
         self,
@@ -2276,10 +3526,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAbnormalyEventsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAbnormalyEventsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAbnormalyEventsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_abnormaly_events(
         self,
@@ -2352,10 +3608,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentInstallRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentInstallRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentInstallRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_agent_install_records_with_options_async(
         self,
@@ -2400,10 +3662,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentInstallRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentInstallRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentInstallRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_agent_install_records(
         self,
@@ -2472,10 +3740,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_agents_with_options_async(
         self,
@@ -2516,10 +3790,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListAgentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_agents(
         self,
@@ -2548,6 +3828,410 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
+
+    def list_cluster_agent_install_records_with_options(
+        self,
+        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
+        """
+        @summary 获取集群组件安装记录
+        
+        @param request: ListClusterAgentInstallRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAgentInstallRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.plugin_version):
+            query['plugin_version'] = request.plugin_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterAgentInstallRecords',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/list_cluster_agent_install_list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_cluster_agent_install_records_with_options_async(
+        self,
+        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
+        """
+        @summary 获取集群组件安装记录
+        
+        @param request: ListClusterAgentInstallRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAgentInstallRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.plugin_version):
+            query['plugin_version'] = request.plugin_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterAgentInstallRecords',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/list_cluster_agent_install_list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_cluster_agent_install_records(
+        self,
+        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
+        """
+        @summary 获取集群组件安装记录
+        
+        @param request: ListClusterAgentInstallRecordsRequest
+        @return: ListClusterAgentInstallRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_cluster_agent_install_records_with_options(request, headers, runtime)
+
+    async def list_cluster_agent_install_records_async(
+        self,
+        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
+        """
+        @summary 获取集群组件安装记录
+        
+        @param request: ListClusterAgentInstallRecordsRequest
+        @return: ListClusterAgentInstallRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_cluster_agent_install_records_with_options_async(request, headers, runtime)
+
+    def list_clusters_with_options(
+        self,
+        request: sys_om20231230_models.ListClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListClustersResponse:
+        """
+        @summary 获取当前用户的所有集群
+        
+        @param request: ListClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_status):
+            query['cluster_status'] = request.cluster_status
+        if not UtilClient.is_unset(request.cluster_type):
+            query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/cluster/list_clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClustersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClustersResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_clusters_with_options_async(
+        self,
+        request: sys_om20231230_models.ListClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListClustersResponse:
+        """
+        @summary 获取当前用户的所有集群
+        
+        @param request: ListClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_status):
+            query['cluster_status'] = request.cluster_status
+        if not UtilClient.is_unset(request.cluster_type):
+            query['cluster_type'] = request.cluster_type
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/cluster/list_clusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClustersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListClustersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_clusters(
+        self,
+        request: sys_om20231230_models.ListClustersRequest,
+    ) -> sys_om20231230_models.ListClustersResponse:
+        """
+        @summary 获取当前用户的所有集群
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_clusters_with_options(request, headers, runtime)
+
+    async def list_clusters_async(
+        self,
+        request: sys_om20231230_models.ListClustersRequest,
+    ) -> sys_om20231230_models.ListClustersResponse:
+        """
+        @summary 获取当前用户的所有集群
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_clusters_with_options_async(request, headers, runtime)
+
+    def list_diagnosis_with_options(
+        self,
+        request: sys_om20231230_models.ListDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListDiagnosisResponse:
+        """
+        @summary 获取诊断历史记录列表
+        
+        @param request: ListDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnosis',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/diagnosis/list_diagnosis',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListDiagnosisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListDiagnosisResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_diagnosis_with_options_async(
+        self,
+        request: sys_om20231230_models.ListDiagnosisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListDiagnosisResponse:
+        """
+        @summary 获取诊断历史记录列表
+        
+        @param request: ListDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosisResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['params'] = request.params
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnosis',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/diagnosis/list_diagnosis',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListDiagnosisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListDiagnosisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_diagnosis(
+        self,
+        request: sys_om20231230_models.ListDiagnosisRequest,
+    ) -> sys_om20231230_models.ListDiagnosisResponse:
+        """
+        @summary 获取诊断历史记录列表
+        
+        @param request: ListDiagnosisRequest
+        @return: ListDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_diagnosis_with_options(request, headers, runtime)
+
+    async def list_diagnosis_async(
+        self,
+        request: sys_om20231230_models.ListDiagnosisRequest,
+    ) -> sys_om20231230_models.ListDiagnosisResponse:
+        """
+        @summary 获取诊断历史记录列表
+        
+        @param request: ListDiagnosisRequest
+        @return: ListDiagnosisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_diagnosis_with_options_async(request, headers, runtime)
 
     def list_instance_health_with_options(
         self,
@@ -2592,10 +4276,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceHealthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceHealthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceHealthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instance_health_with_options_async(
         self,
@@ -2640,10 +4330,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceHealthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceHealthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceHealthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instance_health(
         self,
@@ -2672,6 +4368,492 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_health_with_options_async(request, headers, runtime)
+
+    def list_instance_status_with_options(
+        self,
+        request: sys_om20231230_models.ListInstanceStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstanceStatusResponse:
+        """
+        @summary 获取实例状态
+        
+        @param request: ListInstanceStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceStatus',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_instance_status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_instance_status_with_options_async(
+        self,
+        request: sys_om20231230_models.ListInstanceStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstanceStatusResponse:
+        """
+        @summary 获取实例状态
+        
+        @param request: ListInstanceStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceStatus',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_instance_status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstanceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_instance_status(
+        self,
+        request: sys_om20231230_models.ListInstanceStatusRequest,
+    ) -> sys_om20231230_models.ListInstanceStatusResponse:
+        """
+        @summary 获取实例状态
+        
+        @param request: ListInstanceStatusRequest
+        @return: ListInstanceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_status_with_options(request, headers, runtime)
+
+    async def list_instance_status_async(
+        self,
+        request: sys_om20231230_models.ListInstanceStatusRequest,
+    ) -> sys_om20231230_models.ListInstanceStatusResponse:
+        """
+        @summary 获取实例状态
+        
+        @param request: ListInstanceStatusRequest
+        @return: ListInstanceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_status_with_options_async(request, headers, runtime)
+
+    def list_instances_with_options(
+        self,
+        request: sys_om20231230_models.ListInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesResponse:
+        """
+        @summary 获取实例列表
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_instances_with_options_async(
+        self,
+        request: sys_om20231230_models.ListInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesResponse:
+        """
+        @summary 获取实例列表
+        
+        @param request: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_instances(
+        self,
+        request: sys_om20231230_models.ListInstancesRequest,
+    ) -> sys_om20231230_models.ListInstancesResponse:
+        """
+        @summary 获取实例列表
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instances_with_options(request, headers, runtime)
+
+    async def list_instances_async(
+        self,
+        request: sys_om20231230_models.ListInstancesRequest,
+    ) -> sys_om20231230_models.ListInstancesResponse:
+        """
+        @summary 获取实例列表
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instances_with_options_async(request, headers, runtime)
+
+    def list_pods_of_instance_with_options(
+        self,
+        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
+        """
+        @summary 获取实例中的pod列表
+        
+        @param request: ListPodsOfInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPodsOfInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPodsOfInstance',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_pod_of_instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPodsOfInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPodsOfInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_pods_of_instance_with_options_async(
+        self,
+        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
+        """
+        @summary 获取实例中的pod列表
+        
+        @param request: ListPodsOfInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPodsOfInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance):
+            query['instance'] = request.instance
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPodsOfInstance',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_pod_of_instance',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPodsOfInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPodsOfInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_pods_of_instance(
+        self,
+        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
+        """
+        @summary 获取实例中的pod列表
+        
+        @param request: ListPodsOfInstanceRequest
+        @return: ListPodsOfInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pods_of_instance_with_options(request, headers, runtime)
+
+    async def list_pods_of_instance_async(
+        self,
+        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
+        """
+        @summary 获取实例中的pod列表
+        
+        @param request: ListPodsOfInstanceRequest
+        @return: ListPodsOfInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pods_of_instance_with_options_async(request, headers, runtime)
+
+    def list_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListRegionsResponse:
+        """
+        @summary 列出所有纳管了机器的区域
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListRegionsResponse:
+        """
+        @summary 列出所有纳管了机器的区域
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListRegions',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/list_regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_regions(self) -> sys_om20231230_models.ListRegionsResponse:
+        """
+        @summary 列出所有纳管了机器的区域
+        
+        @return: ListRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_regions_with_options(headers, runtime)
+
+    async def list_regions_async(self) -> sys_om20231230_models.ListRegionsResponse:
+        """
+        @summary 列出所有纳管了机器的区域
+        
+        @return: ListRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_regions_with_options_async(headers, runtime)
 
     def start_aianalysis_with_options(
         self,
@@ -2716,10 +4898,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIAnalysisResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.StartAIAnalysisResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.StartAIAnalysisResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_aianalysis_with_options_async(
         self,
@@ -2764,10 +4952,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIAnalysisResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.StartAIAnalysisResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.StartAIAnalysisResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_aianalysis(
         self,
@@ -2834,10 +5028,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def uninstall_agent_with_options_async(
         self,
@@ -2876,10 +5076,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def uninstall_agent(
         self,
@@ -2908,6 +5114,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.uninstall_agent_with_options_async(request, headers, runtime)
+
+    def uninstall_agent_for_cluster_with_options(
+        self,
+        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
+        """
+        @summary 给集群卸载组件
+        
+        @param request: UninstallAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UninstallAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/uninstall_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentForClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentForClusterResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def uninstall_agent_for_cluster_with_options_async(
+        self,
+        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
+        """
+        @summary 给集群卸载组件
+        
+        @param request: UninstallAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UninstallAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/uninstall_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentForClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UninstallAgentForClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def uninstall_agent_for_cluster(
+        self,
+        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
+        """
+        @summary 给集群卸载组件
+        
+        @param request: UninstallAgentForClusterRequest
+        @return: UninstallAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.uninstall_agent_for_cluster_with_options(request, headers, runtime)
+
+    async def uninstall_agent_for_cluster_async(
+        self,
+        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
+        """
+        @summary 给集群卸载组件
+        
+        @param request: UninstallAgentForClusterRequest
+        @return: UninstallAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.uninstall_agent_for_cluster_with_options_async(request, headers, runtime)
+
+    def update_events_attention_with_options(
+        self,
+        tmp_req: sys_om20231230_models.UpdateEventsAttentionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
+        """
+        @summary 异常项关注度更新
+        
+        @param tmp_req: UpdateEventsAttentionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEventsAttentionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.UpdateEventsAttentionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            query['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventsAttention',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateEventsAttentionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateEventsAttentionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_events_attention_with_options_async(
+        self,
+        tmp_req: sys_om20231230_models.UpdateEventsAttentionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
+        """
+        @summary 异常项关注度更新
+        
+        @param tmp_req: UpdateEventsAttentionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEventsAttentionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.UpdateEventsAttentionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            query['body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventsAttention',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateEventsAttentionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateEventsAttentionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_events_attention(
+        self,
+        request: sys_om20231230_models.UpdateEventsAttentionRequest,
+    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
+        """
+        @summary 异常项关注度更新
+        
+        @param request: UpdateEventsAttentionRequest
+        @return: UpdateEventsAttentionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_events_attention_with_options(request, headers, runtime)
+
+    async def update_events_attention_async(
+        self,
+        request: sys_om20231230_models.UpdateEventsAttentionRequest,
+    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
+        """
+        @summary 异常项关注度更新
+        
+        @param request: UpdateEventsAttentionRequest
+        @return: UpdateEventsAttentionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_events_attention_with_options_async(request, headers, runtime)
 
     def upgrade_agent_with_options(
         self,
@@ -2946,10 +5400,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_agent_with_options_async(
         self,
@@ -2988,10 +5448,16 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_agent(
         self,
@@ -3020,3 +5486,127 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.upgrade_agent_with_options_async(request, headers, runtime)
+
+    def upgrade_agent_for_cluster_with_options(
+        self,
+        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
+        """
+        @summary 给集群更新组件
+        
+        @param request: UpgradeAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/upgrade_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentForClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentForClusterResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def upgrade_agent_for_cluster_with_options_async(
+        self,
+        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
+        """
+        @summary 给集群更新组件
+        
+        @param request: UpgradeAgentForClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeAgentForClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_version):
+            body['agent_version'] = request.agent_version
+        if not UtilClient.is_unset(request.cluster_id):
+            body['cluster_id'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeAgentForCluster',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/upgrade_agent_by_cluster',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentForClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpgradeAgentForClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def upgrade_agent_for_cluster(
+        self,
+        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
+        """
+        @summary 给集群更新组件
+        
+        @param request: UpgradeAgentForClusterRequest
+        @return: UpgradeAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upgrade_agent_for_cluster_with_options(request, headers, runtime)
+
+    async def upgrade_agent_for_cluster_async(
+        self,
+        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
+        """
+        @summary 给集群更新组件
+        
+        @param request: UpgradeAgentForClusterRequest
+        @return: UpgradeAgentForClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upgrade_agent_for_cluster_with_options_async(request, headers, runtime)
