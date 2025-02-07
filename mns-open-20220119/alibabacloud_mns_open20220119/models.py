@@ -3189,7 +3189,9 @@ class ListTopicRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3228,6 +3230,7 @@ class ListTopicRequest(TeaModel):
         self.page_num = page_num
         # The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
         self.page_size = page_size
+        # The tags.
         self.tag = tag
         # The name of the topic.
         self.topic_name = topic_name

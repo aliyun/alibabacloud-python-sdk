@@ -1,3 +1,6 @@
+2025-02-07 Version: 1.1.2
+- Generated python 2022-01-19 for Mns-open.
+
 2025-01-16 Version: 1.1.1
 - Update API AuthorizeEndpointAcl: update param AclStrategy.
 - Update API AuthorizeEndpointAcl: update param CidrList.
