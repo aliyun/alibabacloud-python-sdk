@@ -1,3 +1,29 @@
+2025-02-07 Version: 2.12.0
+- Support API ActivateVersionManagement.
+- Support API CreateHttpsApplicationConfiguration.
+- Support API CreateLoadBalancer.
+- Support API DeactivateVersionManagement.
+- Support API DeleteHttpsApplicationConfiguration.
+- Support API DeleteLoadBalancer.
+- Support API GetCacheTag.
+- Support API GetCnameFlattening.
+- Support API GetDevelopmentMode.
+- Support API GetHttpsApplicationConfiguration.
+- Support API GetLoadBalancer.
+- Support API GetSeoBypass.
+- Support API GetSiteNameExclusive.
+- Support API ListHttpsApplicationConfigurations.
+- Support API ListLoadBalancerOriginStatus.
+- Support API ListLoadBalancers.
+- Support API UpdateCacheTag.
+- Support API UpdateCnameFlattening.
+- Support API UpdateDevelopmentMode.
+- Support API UpdateHttpsApplicationConfiguration.
+- Support API UpdateLoadBalancer.
+- Support API UpdateSeoBypass.
+- Support API UpdateSiteNameExclusive.
+
+
 2025-01-14 Version: 2.11.0
 - Support API CreateCacheRule.
 - Support API CreateCompressionRule.
