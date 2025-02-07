@@ -768,8 +768,10 @@ class BaiLianSseChatRequestParameters(TeaModel):
     def __init__(
         self,
         incremental_output: bool = None,
+        vendor_id: str = None,
     ):
         self.incremental_output = incremental_output
+        self.vendor_id = vendor_id
 
     def validate(self):
         pass
@@ -782,12 +784,16 @@ class BaiLianSseChatRequestParameters(TeaModel):
         result = dict()
         if self.incremental_output is not None:
             result['Incremental_output'] = self.incremental_output
+        if self.vendor_id is not None:
+            result['vendorId'] = self.vendor_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Incremental_output') is not None:
             self.incremental_output = m.get('Incremental_output')
+        if m.get('vendorId') is not None:
+            self.vendor_id = m.get('vendorId')
         return self
 
 
