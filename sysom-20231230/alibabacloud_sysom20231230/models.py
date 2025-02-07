@@ -6644,12 +6644,14 @@ class ListInstanceStatusResponse(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         current: int = None,
         instance: str = None,
         page_size: int = None,
         region: str = None,
         status: str = None,
     ):
+        self.cluster_id = cluster_id
         self.current = current
         self.instance = instance
         self.page_size = page_size
@@ -6665,6 +6667,8 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
         if self.current is not None:
             result['current'] = self.current
         if self.instance is not None:
@@ -6679,6 +6683,8 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
         if m.get('current') is not None:
             self.current = m.get('current')
         if m.get('instance') is not None:

@@ -4517,6 +4517,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.current):
             query['current'] = request.current
         if not UtilClient.is_unset(request.instance):
@@ -4569,6 +4571,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.current):
             query['current'] = request.current
         if not UtilClient.is_unset(request.instance):
