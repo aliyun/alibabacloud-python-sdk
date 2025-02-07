@@ -635,9 +635,9 @@ class CheckScaleOutBalancedRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The total number of returned pages.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30** (default)
         # *   **50**\
@@ -956,7 +956,7 @@ class CheckServiceLinkedRoleResponseBody(TeaModel):
         has_service_linked_role: bool = None,
         request_id: str = None,
     ):
-        # The role.
+        # Indicates whether a service-linked role is created for ApsaraDB for ClickHouse.
         self.has_service_linked_role = has_service_linked_role
         # The request ID.
         self.request_id = request_id
@@ -1394,7 +1394,7 @@ class CreateBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The retention period for the backup data. By default, the backup data is retained for seven days. Valid values: 7 to 730. Unit: day.
+        # The backup retention period. The default retention period is seven days. Valid values: 7 to 730. Unit: days.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
@@ -1599,23 +1599,21 @@ class CreateDBInstanceRequest(TeaModel):
         self.dbcluster_category = dbcluster_category
         # The specifications of the cluster.
         # 
-        # *   Valid values when the cluster is of Single-replica Edition: 
+        # *   Valid values for a Single-replica Edition cluster:
         # 
-        #     - **S4**: 4 CPU cores and 16 GB of memory 
-        #     - **S8**: 8 CPU cores and 32 GB of memory
-        #     -  **S16**: 16 CPU cores and 64 GB of memory
-        #     *   **S32**: 32 CPU cores and 128 GB of memory
-        #     *   **S64**: 64 CPU cores and 256 GB of memory
-        #     *   **S104**: 104 CPU cores and 384 GB of memory
+        #     *   **S8**: 8 cores and 32 GB of memory
+        #     *   **S16**: 16 cores and 64 GB of memory
+        #     *   **S32**: 32 cores and 128 GB of memory
+        #     *   **S64**: 64 cores and 256 GB of memory
+        #     *   **S104**: 104 cores and 384 GB of memory
         # 
-        # *   Valid values when the cluster is of Double-replica Edition: 
+        # *   Valid values for a Double-replica Edition cluster:
         # 
-        #     - **C4**: 4 CPU cores and 16 GB of memory 
-        #     - **C8**: 8 CPU cores and 32 GB of memory 
-        #     - **C16**: 16 CPU cores and 64 GB of memory 
-        #     - **C32**: 32 CPU cores and 128 GB of memory 
-        #     - **C64**: 64 CPU cores and 256 GB of memory 
-        #     - **C104**: 104 CPU cores and 384 GB of memory
+        #     *   **C8**: 8 cores and 32 GB of memory
+        #     *   **C16**: 16 cores and 64 GB of memory
+        #     *   **C32**: 32 cores and 128 GB of memory
+        #     *   **C64**: 64 cores and 256 GB of memory
+        #     *   **C104**: 104 cores and 384 GB of memory
         # 
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
@@ -1673,9 +1671,9 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter is required when PayType is set to Prepaid.
+        # The unit of the subscription duration for the cluster. Valid values:
         # 
-        # Valid values:
+        # >  This parameter is required only when PayType is set to Prepaid.
         # 
         # *   **Year**\
         # *   **Month**\
@@ -1692,12 +1690,12 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
         self.source_dbcluster_id = source_dbcluster_id
-        # The subscription duration of the subscription cluster. This parameter is required when PayType is set to Prepaid.
+        # The subscription duration of the subscription cluster.
         # 
-        # Valid values:
+        # >  This parameter is required only when PayType is set to Prepaid.
         # 
-        # *   If Period is set to Year, the value of UsedTime must be an integer that ranges from 1 to 3.
-        # *   If Period is set to Month, the value of UsedTime must be an integer that ranges from 1 to 9.
+        # *   Valid values when Period is set to Year: 1 to 3 (integer)
+        # *   Valid values when Period is set to Month: 1 to 9 (integer)
         self.used_time = used_time
         # The VPC ID.
         # 
@@ -1711,7 +1709,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # Secondary zone 2.
+        # The secondary zone 2 of the instance.
         self.zond_id_bak_2 = zond_id_bak_2
         # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent zone list.
         self.zone_id = zone_id
@@ -2499,7 +2497,7 @@ class CreateRDSToClickhouseDbResponseBody(TeaModel):
         request_id: str = None,
         status: int = None,
     ):
-        # If -1 is returned for the **Status** parameter, the cause of the creation failure is returned.
+        # If the value of the **Status** parameter is -1, the cause of the creation failure is returned.
         self.error_msg = error_msg
         # Duplicate tables in the synchronization task.
         self.repeated_dbs = repeated_dbs
@@ -3492,7 +3490,13 @@ class DescribeAccountsRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The number of pages to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4764,6 +4768,11 @@ class DescribeBackupsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8010,7 +8019,7 @@ class DescribeDBClustersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the clusters.
+        # The clusters.
         self.dbclusters = dbclusters
         # The total number of returned pages.
         self.page_number = page_number
@@ -8444,7 +8453,7 @@ class DescribeProcessListRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30** (default)
         # *   **50**\
@@ -9382,7 +9391,7 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The minimum query duration. The minimum value is **1000**, and the default value is **1000**. Unit: milliseconds. Queries that last longer than this duration are returned in response parameters.
+        # The minimum query duration. Minimum value: **1000**. Default value: **1000**. Unit: milliseconds. Queries that last longer than the specified duration are returned in response parameters.
         self.query_duration_ms = query_duration_ms
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
@@ -10497,15 +10506,23 @@ class DescribeTransferHistoryRequest(TeaModel):
 class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
     def __init__(
         self,
+        bytes_per_minute: int = None,
         disable_write_windows: str = None,
+        parts_per_minute: float = None,
         progress: str = None,
         source_control_version: str = None,
         source_dbcluster: str = None,
         status: str = None,
+        sub_job: str = None,
+        sub_job_status: str = None,
         target_control_version: str = None,
         target_dbcluster: str = None,
+        unsynced_bytes: int = None,
+        unsynced_parts: int = None,
     ):
+        self.bytes_per_minute = bytes_per_minute
         self.disable_write_windows = disable_write_windows
+        self.parts_per_minute = parts_per_minute
         # The progress of the data migration.
         self.progress = progress
         self.source_control_version = source_control_version
@@ -10516,9 +10533,13 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
         # *   **Finished**: The data migration task is complete.
         # *   **Processing**: The data migration task is in progress.
         self.status = status
+        self.sub_job = sub_job
+        self.sub_job_status = sub_job_status
         self.target_control_version = target_control_version
         # The ID of the destination cluster.
         self.target_dbcluster = target_dbcluster
+        self.unsynced_bytes = unsynced_bytes
+        self.unsynced_parts = unsynced_parts
 
     def validate(self):
         pass
@@ -10529,8 +10550,12 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.bytes_per_minute is not None:
+            result['BytesPerMinute'] = self.bytes_per_minute
         if self.disable_write_windows is not None:
             result['DisableWriteWindows'] = self.disable_write_windows
+        if self.parts_per_minute is not None:
+            result['PartsPerMinute'] = self.parts_per_minute
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.source_control_version is not None:
@@ -10539,16 +10564,28 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
             result['SourceDBCluster'] = self.source_dbcluster
         if self.status is not None:
             result['Status'] = self.status
+        if self.sub_job is not None:
+            result['SubJob'] = self.sub_job
+        if self.sub_job_status is not None:
+            result['SubJobStatus'] = self.sub_job_status
         if self.target_control_version is not None:
             result['TargetControlVersion'] = self.target_control_version
         if self.target_dbcluster is not None:
             result['TargetDBCluster'] = self.target_dbcluster
+        if self.unsynced_bytes is not None:
+            result['UnsyncedBytes'] = self.unsynced_bytes
+        if self.unsynced_parts is not None:
+            result['UnsyncedParts'] = self.unsynced_parts
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BytesPerMinute') is not None:
+            self.bytes_per_minute = m.get('BytesPerMinute')
         if m.get('DisableWriteWindows') is not None:
             self.disable_write_windows = m.get('DisableWriteWindows')
+        if m.get('PartsPerMinute') is not None:
+            self.parts_per_minute = m.get('PartsPerMinute')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('SourceControlVersion') is not None:
@@ -10557,10 +10594,18 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
             self.source_dbcluster = m.get('SourceDBCluster')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubJob') is not None:
+            self.sub_job = m.get('SubJob')
+        if m.get('SubJobStatus') is not None:
+            self.sub_job_status = m.get('SubJobStatus')
         if m.get('TargetControlVersion') is not None:
             self.target_control_version = m.get('TargetControlVersion')
         if m.get('TargetDBCluster') is not None:
             self.target_dbcluster = m.get('TargetDBCluster')
+        if m.get('UnsyncedBytes') is not None:
+            self.unsynced_bytes = m.get('UnsyncedBytes')
+        if m.get('UnsyncedParts') is not None:
+            self.unsynced_parts = m.get('UnsyncedParts')
         return self
 
 
@@ -13187,7 +13232,9 @@ class TransferVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         source_account: str = None,
+        source_cluster_name: str = None,
         source_password: str = None,
+        source_shards: str = None,
         target_account: str = None,
         target_db_cluster_id: str = None,
         target_password: str = None,
@@ -13217,10 +13264,12 @@ class TransferVersionRequest(TeaModel):
         # 
         # This parameter is required.
         self.source_account = source_account
+        self.source_cluster_name = source_cluster_name
         # The password that corresponds to the database account for logging on to the database in the source ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.source_password = source_password
+        self.source_shards = source_shards
         # The database account that is used to log on to the database in the destination ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
@@ -13263,8 +13312,12 @@ class TransferVersionRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.source_account is not None:
             result['SourceAccount'] = self.source_account
+        if self.source_cluster_name is not None:
+            result['SourceClusterName'] = self.source_cluster_name
         if self.source_password is not None:
             result['SourcePassword'] = self.source_password
+        if self.source_shards is not None:
+            result['SourceShards'] = self.source_shards
         if self.target_account is not None:
             result['TargetAccount'] = self.target_account
         if self.target_db_cluster_id is not None:
@@ -13295,8 +13348,12 @@ class TransferVersionRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SourceAccount') is not None:
             self.source_account = m.get('SourceAccount')
+        if m.get('SourceClusterName') is not None:
+            self.source_cluster_name = m.get('SourceClusterName')
         if m.get('SourcePassword') is not None:
             self.source_password = m.get('SourcePassword')
+        if m.get('SourceShards') is not None:
+            self.source_shards = m.get('SourceShards')
         if m.get('TargetAccount') is not None:
             self.target_account = m.get('TargetAccount')
         if m.get('TargetDbClusterId') is not None:
