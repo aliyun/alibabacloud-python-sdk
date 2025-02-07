@@ -5,7 +5,6 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_tea_util import models as util_models
@@ -22,9 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'wss'
-        gateway_client = GatewayClientClient()
-        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('wss', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -137,6 +133,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.package_ids):
@@ -147,6 +145,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -186,6 +186,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.package_ids):
@@ -196,6 +198,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -246,3 +250,119 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_package_deductions_with_options_async(request, runtime)
+
+    def modify_instance_properties_with_options(
+        self,
+        request: wss_20211221_models.ModifyInstancePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
+        """
+        @param request: ModifyInstancePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstancePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceProperties',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                wss_20211221_models.ModifyInstancePropertiesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                wss_20211221_models.ModifyInstancePropertiesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_instance_properties_with_options_async(
+        self,
+        request: wss_20211221_models.ModifyInstancePropertiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
+        """
+        @param request: ModifyInstancePropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstancePropertiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceProperties',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                wss_20211221_models.ModifyInstancePropertiesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                wss_20211221_models.ModifyInstancePropertiesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_instance_properties(
+        self,
+        request: wss_20211221_models.ModifyInstancePropertiesRequest,
+    ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
+        """
+        @param request: ModifyInstancePropertiesRequest
+        @return: ModifyInstancePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_properties_with_options(request, runtime)
+
+    async def modify_instance_properties_async(
+        self,
+        request: wss_20211221_models.ModifyInstancePropertiesRequest,
+    ) -> wss_20211221_models.ModifyInstancePropertiesResponse:
+        """
+        @param request: ModifyInstancePropertiesRequest
+        @return: ModifyInstancePropertiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_properties_with_options_async(request, runtime)

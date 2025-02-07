@@ -313,18 +313,22 @@ class DescribeDeliveryAddressResponse(TeaModel):
 class DescribePackageDeductionsRequest(TeaModel):
     def __init__(
         self,
+        end_time: int = None,
         instance_ids: List[str] = None,
         package_ids: List[str] = None,
         page_num: int = None,
         page_size: int = None,
         resource_type: str = None,
+        start_time: int = None,
     ):
+        self.end_time = end_time
         self.instance_ids = instance_ids
         self.package_ids = package_ids
         self.page_num = page_num
         self.page_size = page_size
         # This parameter is required.
         self.resource_type = resource_type
+        self.start_time = start_time
 
     def validate(self):
         pass
@@ -335,6 +339,8 @@ class DescribePackageDeductionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.package_ids is not None:
@@ -345,10 +351,14 @@ class DescribePackageDeductionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('PackageIds') is not None:
@@ -359,6 +369,8 @@ class DescribePackageDeductionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         return self
 
 
@@ -469,12 +481,16 @@ class DescribePackageDeductionsResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
+        total_used_core_time: float = None,
+        total_used_time: int = None,
     ):
         self.deductions = deductions
         self.page_num = page_num
         self.page_size = page_size
         self.request_id = request_id
         self.total_count = total_count
+        self.total_used_core_time = total_used_core_time
+        self.total_used_time = total_used_time
 
     def validate(self):
         if self.deductions:
@@ -500,6 +516,10 @@ class DescribePackageDeductionsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.total_used_core_time is not None:
+            result['TotalUsedCoreTime'] = self.total_used_core_time
+        if self.total_used_time is not None:
+            result['TotalUsedTime'] = self.total_used_time
         return result
 
     def from_map(self, m: dict = None):
@@ -517,6 +537,10 @@ class DescribePackageDeductionsResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('TotalUsedCoreTime') is not None:
+            self.total_used_core_time = m.get('TotalUsedCoreTime')
+        if m.get('TotalUsedTime') is not None:
+            self.total_used_time = m.get('TotalUsedTime')
         return self
 
 
@@ -557,6 +581,126 @@ class DescribePackageDeductionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribePackageDeductionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstancePropertiesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_ids: List[str] = None,
+        key: str = None,
+        resource_type: str = None,
+        value: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_ids = instance_ids
+        self.key = key
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyInstancePropertiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstancePropertiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstancePropertiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstancePropertiesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
