@@ -82,10 +82,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AddServersToServerGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AddServersToServerGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AddServersToServerGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_servers_to_server_group_with_options_async(
         self,
@@ -128,10 +134,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AddServersToServerGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AddServersToServerGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AddServersToServerGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_servers_to_server_group(
         self,
@@ -201,10 +213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_additional_certificates_with_listener_with_options_async(
         self,
@@ -248,10 +266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AssociateAdditionalCertificatesWithListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_additional_certificates_with_listener(
         self,
@@ -293,7 +317,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        @summary 绑定带宽包
+        @summary Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -325,10 +349,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_common_bandwidth_package_to_load_balancer_with_options_async(
         self,
@@ -336,7 +366,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        @summary 绑定带宽包
+        @summary Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -368,17 +398,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_common_bandwidth_package_to_load_balancer(
         self,
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        @summary 绑定带宽包
+        @summary Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @return: AttachCommonBandwidthPackageToLoadBalancerResponse
@@ -391,7 +427,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerRequest,
     ) -> nlb_20220430_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         """
-        @summary 绑定带宽包
+        @summary Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
         
         @param request: AttachCommonBandwidthPackageToLoadBalancerRequest
         @return: AttachCommonBandwidthPackageToLoadBalancerResponse
@@ -439,10 +475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_shift_load_balancer_zones_with_options_async(
         self,
@@ -484,10 +526,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CancelShiftLoadBalancerZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_shift_load_balancer_zones(
         self,
@@ -597,10 +645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_listener_with_options_async(
         self,
@@ -680,10 +734,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_listener(
         self,
@@ -777,10 +837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateLoadBalancerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateLoadBalancerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateLoadBalancerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_load_balancer_with_options_async(
         self,
@@ -848,10 +914,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateLoadBalancerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateLoadBalancerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateLoadBalancerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_load_balancer(
         self,
@@ -895,7 +967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
         """
-        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        @summary Creates a custom security policy for a TCP/SSL listener.
         
         @param request: CreateSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -933,10 +1005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateSecurityPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateSecurityPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateSecurityPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_security_policy_with_options_async(
         self,
@@ -944,7 +1022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
         """
-        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        @summary Creates a custom security policy for a TCP/SSL listener.
         
         @param request: CreateSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -982,17 +1060,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateSecurityPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateSecurityPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateSecurityPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_security_policy(
         self,
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
         """
-        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        @summary Creates a custom security policy for a TCP/SSL listener.
         
         @param request: CreateSecurityPolicyRequest
         @return: CreateSecurityPolicyResponse
@@ -1005,7 +1089,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.CreateSecurityPolicyRequest,
     ) -> nlb_20220430_models.CreateSecurityPolicyResponse:
         """
-        @summary Creates a custom security policy for a Network Load Balancer (NLB) instance.
+        @summary Creates a custom security policy for a TCP/SSL listener.
         
         @param request: CreateSecurityPolicyRequest
         @return: CreateSecurityPolicyResponse
@@ -1082,10 +1166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateServerGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateServerGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateServerGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_server_group_with_options_async(
         self,
@@ -1156,10 +1246,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.CreateServerGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateServerGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.CreateServerGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_server_group(
         self,
@@ -1205,7 +1301,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteListenerResponse:
         """
-        @summary 删除监听
+        @summary Deletes a Network Load Balancer (NLB) listener.
         
         @param request: DeleteListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1235,10 +1331,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_listener_with_options_async(
         self,
@@ -1246,7 +1348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteListenerResponse:
         """
-        @summary 删除监听
+        @summary Deletes a Network Load Balancer (NLB) listener.
         
         @param request: DeleteListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1276,17 +1378,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_listener(
         self,
         request: nlb_20220430_models.DeleteListenerRequest,
     ) -> nlb_20220430_models.DeleteListenerResponse:
         """
-        @summary 删除监听
+        @summary Deletes a Network Load Balancer (NLB) listener.
         
         @param request: DeleteListenerRequest
         @return: DeleteListenerResponse
@@ -1299,7 +1407,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteListenerRequest,
     ) -> nlb_20220430_models.DeleteListenerResponse:
         """
-        @summary 删除监听
+        @summary Deletes a Network Load Balancer (NLB) listener.
         
         @param request: DeleteListenerRequest
         @return: DeleteListenerResponse
@@ -1313,7 +1421,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
         """
-        @summary 删除负载均衡
+        @summary Deletes a Network Load Balancer (NLB) instance.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1343,10 +1451,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteLoadBalancerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteLoadBalancerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteLoadBalancerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_load_balancer_with_options_async(
         self,
@@ -1354,7 +1468,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
         """
-        @summary 删除负载均衡
+        @summary Deletes a Network Load Balancer (NLB) instance.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1384,17 +1498,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteLoadBalancerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteLoadBalancerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteLoadBalancerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_load_balancer(
         self,
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
         """
-        @summary 删除负载均衡
+        @summary Deletes a Network Load Balancer (NLB) instance.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -1407,7 +1527,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteLoadBalancerRequest,
     ) -> nlb_20220430_models.DeleteLoadBalancerResponse:
         """
-        @summary 删除负载均衡
+        @summary Deletes a Network Load Balancer (NLB) instance.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -1421,7 +1541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
         """
-        @summary 删除安全策略
+        @summary Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
         
         @param request: DeleteSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1451,10 +1571,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteSecurityPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteSecurityPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteSecurityPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_security_policy_with_options_async(
         self,
@@ -1462,7 +1588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
         """
-        @summary 删除安全策略
+        @summary Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
         
         @param request: DeleteSecurityPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1492,17 +1618,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteSecurityPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteSecurityPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteSecurityPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_security_policy(
         self,
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
         """
-        @summary 删除安全策略
+        @summary Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
         
         @param request: DeleteSecurityPolicyRequest
         @return: DeleteSecurityPolicyResponse
@@ -1515,7 +1647,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteSecurityPolicyRequest,
     ) -> nlb_20220430_models.DeleteSecurityPolicyResponse:
         """
-        @summary 删除安全策略
+        @summary Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
         
         @param request: DeleteSecurityPolicyRequest
         @return: DeleteSecurityPolicyResponse
@@ -1529,7 +1661,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        @summary DeleteServerGroup
+        @summary Deletes a Network Load Balancer (NLB) server group.
         
         @description You can delete server groups that are not associated with listeners.
         
@@ -1561,10 +1693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteServerGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteServerGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteServerGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_server_group_with_options_async(
         self,
@@ -1572,7 +1710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        @summary DeleteServerGroup
+        @summary Deletes a Network Load Balancer (NLB) server group.
         
         @description You can delete server groups that are not associated with listeners.
         
@@ -1604,17 +1742,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DeleteServerGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteServerGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DeleteServerGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_server_group(
         self,
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        @summary DeleteServerGroup
+        @summary Deletes a Network Load Balancer (NLB) server group.
         
         @description You can delete server groups that are not associated with listeners.
         
@@ -1629,7 +1773,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DeleteServerGroupRequest,
     ) -> nlb_20220430_models.DeleteServerGroupResponse:
         """
-        @summary DeleteServerGroup
+        @summary Deletes a Network Load Balancer (NLB) server group.
         
         @description You can delete server groups that are not associated with listeners.
         
@@ -1669,10 +1813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_hd_monitor_region_config_with_options_async(
         self,
@@ -1704,10 +1854,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeHdMonitorRegionConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_hd_monitor_region_config(
         self,
@@ -1771,10 +1927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -1812,10 +1974,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -1849,7 +2017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeZonesResponse:
         """
-        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        @summary Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1879,10 +2047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_zones_with_options_async(
         self,
@@ -1890,7 +2064,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DescribeZonesResponse:
         """
-        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        @summary Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
         
         @param request: DescribeZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1920,17 +2094,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DescribeZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DescribeZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_zones(
         self,
         request: nlb_20220430_models.DescribeZonesRequest,
     ) -> nlb_20220430_models.DescribeZonesResponse:
         """
-        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        @summary Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -1943,7 +2123,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DescribeZonesRequest,
     ) -> nlb_20220430_models.DescribeZonesResponse:
         """
-        @summary Queries zones in a region that supports Network Load Balancer (NLB).
+        @summary Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
         
         @param request: DescribeZonesRequest
         @return: DescribeZonesResponse
@@ -1957,7 +2137,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        @summary 解绑带宽包
+        @summary Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1989,10 +2169,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_common_bandwidth_package_from_load_balancer_with_options_async(
         self,
@@ -2000,7 +2186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        @summary 解绑带宽包
+        @summary Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2032,17 +2218,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_common_bandwidth_package_from_load_balancer(
         self,
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        @summary 解绑带宽包
+        @summary Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
@@ -2055,7 +2247,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerRequest,
     ) -> nlb_20220430_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         """
-        @summary 解绑带宽包
+        @summary Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
         
         @param request: DetachCommonBandwidthPackageFromLoadBalancerRequest
         @return: DetachCommonBandwidthPackageFromLoadBalancerResponse
@@ -2069,7 +2261,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        @summary Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2099,10 +2291,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_load_balancer_ipv_6internet_with_options_async(
         self,
@@ -2110,7 +2308,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        @summary Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2140,17 +2338,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_load_balancer_ipv_6internet(
         self,
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        @summary Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @return: DisableLoadBalancerIpv6InternetResponse
@@ -2163,7 +2367,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.DisableLoadBalancerIpv6InternetRequest,
     ) -> nlb_20220430_models.DisableLoadBalancerIpv6InternetResponse:
         """
-        @summary Changes the network type of an IPv6 Network Load Balancer (NLB) instance from Internet-facing to internal-facing.
+        @summary Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
         
         @param request: DisableLoadBalancerIpv6InternetRequest
         @return: DisableLoadBalancerIpv6InternetResponse
@@ -2213,10 +2417,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disassociate_additional_certificates_with_listener_with_options_async(
         self,
@@ -2260,10 +2470,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.DisassociateAdditionalCertificatesWithListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disassociate_additional_certificates_with_listener(
         self,
@@ -2335,10 +2551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_load_balancer_ipv_6internet_with_options_async(
         self,
@@ -2376,10 +2598,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.EnableLoadBalancerIpv6InternetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_load_balancer_ipv_6internet(
         self,
@@ -2413,7 +2641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetJobStatusResponse:
         """
-        @summary 获取工作流状态
+        @summary Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
         
         @param request: GetJobStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2439,10 +2667,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetJobStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetJobStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetJobStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_job_status_with_options_async(
         self,
@@ -2450,7 +2684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetJobStatusResponse:
         """
-        @summary 获取工作流状态
+        @summary Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
         
         @param request: GetJobStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2476,17 +2710,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetJobStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetJobStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetJobStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_job_status(
         self,
         request: nlb_20220430_models.GetJobStatusRequest,
     ) -> nlb_20220430_models.GetJobStatusResponse:
         """
-        @summary 获取工作流状态
+        @summary Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
         
         @param request: GetJobStatusRequest
         @return: GetJobStatusResponse
@@ -2499,7 +2739,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetJobStatusRequest,
     ) -> nlb_20220430_models.GetJobStatusResponse:
         """
-        @summary 获取工作流状态
+        @summary Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
         
         @param request: GetJobStatusRequest
         @return: GetJobStatusResponse
@@ -2543,10 +2783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetListenerAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_listener_attribute_with_options_async(
         self,
@@ -2584,10 +2830,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetListenerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_listener_attribute(
         self,
@@ -2621,7 +2873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
         """
-        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        @summary Queries the health check status of a Network Load Balancer (NLB) listener.
         
         @param request: GetListenerHealthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2631,10 +2883,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2651,10 +2899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetListenerHealthStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerHealthStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerHealthStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_listener_health_status_with_options_async(
         self,
@@ -2662,7 +2916,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
         """
-        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        @summary Queries the health check status of a Network Load Balancer (NLB) listener.
         
         @param request: GetListenerHealthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2672,10 +2926,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
-        if not UtilClient.is_unset(request.max_results):
-            query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
-            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2692,17 +2942,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetListenerHealthStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerHealthStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetListenerHealthStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_listener_health_status(
         self,
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
         """
-        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        @summary Queries the health check status of a Network Load Balancer (NLB) listener.
         
         @param request: GetListenerHealthStatusRequest
         @return: GetListenerHealthStatusResponse
@@ -2715,7 +2971,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.GetListenerHealthStatusRequest,
     ) -> nlb_20220430_models.GetListenerHealthStatusResponse:
         """
-        @summary Queries the health check status of a Network Load Balancer (NLB) instance.
+        @summary Queries the health check status of a Network Load Balancer (NLB) listener.
         
         @param request: GetListenerHealthStatusRequest
         @return: GetListenerHealthStatusResponse
@@ -2759,10 +3015,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetLoadBalancerAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetLoadBalancerAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetLoadBalancerAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_load_balancer_attribute_with_options_async(
         self,
@@ -2800,10 +3062,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.GetLoadBalancerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.GetLoadBalancerAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.GetLoadBalancerAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_load_balancer_attribute(
         self,
@@ -2837,7 +3105,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Queries the server certificate of a TCP/SSL listener.
         
         @param request: ListListenerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2847,6 +3115,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cert_type):
             body['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.certificate_ids):
+            body['CertificateIds'] = request.certificate_ids
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.max_results):
@@ -2869,10 +3139,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListListenerCertificatesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenerCertificatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenerCertificatesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_listener_certificates_with_options_async(
         self,
@@ -2880,7 +3156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Queries the server certificate of a TCP/SSL listener.
         
         @param request: ListListenerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2890,6 +3166,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cert_type):
             body['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.certificate_ids):
+            body['CertificateIds'] = request.certificate_ids
         if not UtilClient.is_unset(request.listener_id):
             body['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.max_results):
@@ -2912,17 +3190,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListListenerCertificatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenerCertificatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenerCertificatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_listener_certificates(
         self,
         request: nlb_20220430_models.ListListenerCertificatesRequest,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Queries the server certificate of a TCP/SSL listener.
         
         @param request: ListListenerCertificatesRequest
         @return: ListListenerCertificatesResponse
@@ -2935,7 +3219,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListListenerCertificatesRequest,
     ) -> nlb_20220430_models.ListListenerCertificatesResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Queries the server certificate of a TCP/SSL listener.
         
         @param request: ListListenerCertificatesRequest
         @return: ListListenerCertificatesResponse
@@ -2987,10 +3271,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListListenersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_listeners_with_options_async(
         self,
@@ -3036,10 +3326,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListListenersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListListenersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_listeners(
         self,
@@ -3073,7 +3369,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3127,10 +3423,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListLoadBalancersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListLoadBalancersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListLoadBalancersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_load_balancers_with_options_async(
         self,
@@ -3138,7 +3440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
         
         @param request: ListLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3192,17 +3494,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListLoadBalancersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListLoadBalancersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListLoadBalancersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_load_balancers(
         self,
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -3215,7 +3523,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListLoadBalancersRequest,
     ) -> nlb_20220430_models.ListLoadBalancersResponse:
         """
-        @summary Queries Network Load Balancer (NLB) instances in a region based on specified conditions.
+        @summary Queries the basic information about a Network Load Balancer (NLB) instance.
         
         @param request: ListLoadBalancersRequest
         @return: ListLoadBalancersResponse
@@ -3267,10 +3575,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListSecurityPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSecurityPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSecurityPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_security_policy_with_options_async(
         self,
@@ -3316,10 +3630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListSecurityPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSecurityPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSecurityPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_security_policy(
         self,
@@ -3353,7 +3673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
         """
-        @summary Queries the backend servers in a specified server group.
+        @summary Queries servers in a server group of a Network Load Balancer (NLB) instance.
         
         @param request: ListServerGroupServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3387,10 +3707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListServerGroupServersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupServersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupServersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_server_group_servers_with_options_async(
         self,
@@ -3398,7 +3724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
         """
-        @summary Queries the backend servers in a specified server group.
+        @summary Queries servers in a server group of a Network Load Balancer (NLB) instance.
         
         @param request: ListServerGroupServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3432,17 +3758,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListServerGroupServersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupServersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupServersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_server_group_servers(
         self,
         request: nlb_20220430_models.ListServerGroupServersRequest,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
         """
-        @summary Queries the backend servers in a specified server group.
+        @summary Queries servers in a server group of a Network Load Balancer (NLB) instance.
         
         @param request: ListServerGroupServersRequest
         @return: ListServerGroupServersResponse
@@ -3455,7 +3787,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.ListServerGroupServersRequest,
     ) -> nlb_20220430_models.ListServerGroupServersResponse:
         """
-        @summary Queries the backend servers in a specified server group.
+        @summary Queries servers in a server group of a Network Load Balancer (NLB) instance.
         
         @param request: ListServerGroupServersRequest
         @return: ListServerGroupServersResponse
@@ -3511,10 +3843,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListServerGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_server_groups_with_options_async(
         self,
@@ -3564,10 +3902,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListServerGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListServerGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_server_groups(
         self,
@@ -3625,10 +3969,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListSystemSecurityPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSystemSecurityPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSystemSecurityPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_system_security_policy_with_options_async(
         self,
@@ -3660,10 +4010,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListSystemSecurityPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSystemSecurityPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListSystemSecurityPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_system_security_policy(
         self,
@@ -3734,10 +4090,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -3782,10 +4144,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -3858,10 +4226,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def load_balancer_join_security_group_with_options_async(
         self,
@@ -3908,10 +4282,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def load_balancer_join_security_group(
         self,
@@ -3959,7 +4339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        @summary Disassociates a Network Load Balancer (NLB) instance from a security group.
         
         @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
         If the task is in the **Succeeded** state, the security group is disassociated.
@@ -3995,10 +4375,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def load_balancer_leave_security_group_with_options_async(
         self,
@@ -4006,7 +4392,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        @summary Disassociates a Network Load Balancer (NLB) instance from a security group.
         
         @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
         If the task is in the **Succeeded** state, the security group is disassociated.
@@ -4042,17 +4428,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def load_balancer_leave_security_group(
         self,
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        @summary Disassociates a Network Load Balancer (NLB) instance from a security group.
         
         @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
         If the task is in the **Succeeded** state, the security group is disassociated.
@@ -4069,7 +4461,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
     ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
         """
-        @summary Disassociates a security group from a Network Load Balancer (NLB) instance.
+        @summary Disassociates a Network Load Balancer (NLB) instance from a security group.
         
         @description LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
         If the task is in the **Succeeded** state, the security group is disassociated.
@@ -4117,10 +4509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.MoveResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.MoveResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def move_resource_group_with_options_async(
         self,
@@ -4158,10 +4556,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.MoveResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.MoveResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def move_resource_group(
         self,
@@ -4195,7 +4599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
         """
-        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        @summary Deletes server groups from a Network Load Balancer (NLB) instance.
         
         @param request: RemoveServersFromServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4227,10 +4631,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.RemoveServersFromServerGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.RemoveServersFromServerGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.RemoveServersFromServerGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_servers_from_server_group_with_options_async(
         self,
@@ -4238,7 +4648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
         """
-        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        @summary Deletes server groups from a Network Load Balancer (NLB) instance.
         
         @param request: RemoveServersFromServerGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4270,17 +4680,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.RemoveServersFromServerGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.RemoveServersFromServerGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.RemoveServersFromServerGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_servers_from_server_group(
         self,
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
         """
-        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        @summary Deletes server groups from a Network Load Balancer (NLB) instance.
         
         @param request: RemoveServersFromServerGroupRequest
         @return: RemoveServersFromServerGroupResponse
@@ -4293,7 +4709,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
     ) -> nlb_20220430_models.RemoveServersFromServerGroupResponse:
         """
-        @summary Removes backend servers from a server group of a Network Load Balancer (NLB) instance.
+        @summary Deletes server groups from a Network Load Balancer (NLB) instance.
         
         @param request: RemoveServersFromServerGroupRequest
         @return: RemoveServersFromServerGroupResponse
@@ -4335,10 +4751,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_hd_monitor_region_config_with_options_async(
         self,
@@ -4374,10 +4796,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.SetHdMonitorRegionConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_hd_monitor_region_config(
         self,
@@ -4411,7 +4839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartListenerResponse:
         """
-        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        @summary Enables a Network Load Balancer (NLB) listener.
         
         @param request: StartListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4441,10 +4869,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StartListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StartListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StartListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_listener_with_options_async(
         self,
@@ -4452,7 +4886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartListenerResponse:
         """
-        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        @summary Enables a Network Load Balancer (NLB) listener.
         
         @param request: StartListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4482,17 +4916,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StartListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StartListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StartListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_listener(
         self,
         request: nlb_20220430_models.StartListenerRequest,
     ) -> nlb_20220430_models.StartListenerResponse:
         """
-        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        @summary Enables a Network Load Balancer (NLB) listener.
         
         @param request: StartListenerRequest
         @return: StartListenerResponse
@@ -4505,7 +4945,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartListenerRequest,
     ) -> nlb_20220430_models.StartListenerResponse:
         """
-        @summary Enables a listener for a Network Load Balancer (NLB) instance.
+        @summary Enables a Network Load Balancer (NLB) listener.
         
         @param request: StartListenerRequest
         @return: StartListenerResponse
@@ -4519,7 +4959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
         
         @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
@@ -4553,10 +4993,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_shift_load_balancer_zones_with_options_async(
         self,
@@ -4564,7 +5010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
         
         @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
@@ -4598,17 +5044,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StartShiftLoadBalancerZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_shift_load_balancer_zones(
         self,
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
         
         @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
@@ -4623,7 +5075,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StartShiftLoadBalancerZonesRequest,
     ) -> nlb_20220430_models.StartShiftLoadBalancerZonesResponse:
         """
-        @summary Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+        @summary Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
         
         @description > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
         
@@ -4639,7 +5091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StopListenerResponse:
         """
-        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        @summary Stops a listener of a Network Load Balancer (NLB) instance.
         
         @param request: StopListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4669,10 +5121,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StopListenerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StopListenerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StopListenerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_listener_with_options_async(
         self,
@@ -4680,7 +5138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.StopListenerResponse:
         """
-        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        @summary Stops a listener of a Network Load Balancer (NLB) instance.
         
         @param request: StopListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4710,17 +5168,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.StopListenerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.StopListenerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.StopListenerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_listener(
         self,
         request: nlb_20220430_models.StopListenerRequest,
     ) -> nlb_20220430_models.StopListenerResponse:
         """
-        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        @summary Stops a listener of a Network Load Balancer (NLB) instance.
         
         @param request: StopListenerRequest
         @return: StopListenerResponse
@@ -4733,7 +5197,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.StopListenerRequest,
     ) -> nlb_20220430_models.StopListenerResponse:
         """
-        @summary Disables a listener for a Network Load Balancer (NLB) instance.
+        @summary Stops a listener of a Network Load Balancer (NLB) instance.
         
         @param request: StopListenerRequest
         @return: StopListenerResponse
@@ -4784,10 +5248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -4832,10 +5302,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -4908,10 +5384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -4958,10 +5440,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -5057,10 +5545,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateListenerAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateListenerAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateListenerAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_listener_attribute_with_options_async(
         self,
@@ -5130,10 +5624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateListenerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateListenerAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateListenerAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_listener_attribute(
         self,
@@ -5167,7 +5667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        @summary Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
         
         @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
         You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
@@ -5207,10 +5707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_load_balancer_address_type_config_with_options_async(
         self,
@@ -5218,7 +5724,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        @summary Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
         
         @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
         You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
@@ -5258,17 +5764,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_load_balancer_address_type_config(
         self,
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        @summary Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
         
         @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
         You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
@@ -5287,7 +5799,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerAddressTypeConfigResponse:
         """
-        @summary Changes the network type of the IPv4 address of a Network Load Balancer (NLB) instance.
+        @summary Changes the network type of the IPv4 address for a Network Load Balancer (NLB) instance.
         
         @description    Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
         You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType** value of an NLB instance after you change the network type.
@@ -5343,10 +5855,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_load_balancer_attribute_with_options_async(
         self,
@@ -5390,10 +5908,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_load_balancer_attribute(
         self,
@@ -5427,7 +5951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Enables or disables the deletion protection feature.
         
         @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
@@ -5467,10 +5991,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_load_balancer_protection_with_options_async(
         self,
@@ -5478,7 +6008,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Enables or disables the deletion protection feature.
         
         @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
@@ -5518,17 +6048,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_load_balancer_protection(
         self,
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Enables or disables the deletion protection feature.
         
         @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
@@ -5543,7 +6079,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
     ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
         """
-        @summary Enables or disables deletion protection and the configuration read-only mode for a Network Load Balancer (NLB) instance.
+        @summary Enables or disables the deletion protection feature.
         
         @description > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
         
@@ -5599,10 +6135,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_load_balancer_zones_with_options_async(
         self,
@@ -5650,10 +6192,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateLoadBalancerZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_load_balancer_zones(
         self,
@@ -5739,10 +6287,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_security_policy_attribute_with_options_async(
         self,
@@ -5786,10 +6340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateSecurityPolicyAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_security_policy_attribute(
         self,
@@ -5823,7 +6383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
         """
-        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        @summary Modifies the configurations of a Network Load Balancer (NLB) server group.
         
         @param request: UpdateServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5868,10 +6428,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateServerGroupAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_server_group_attribute_with_options_async(
         self,
@@ -5879,7 +6445,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
         """
-        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        @summary Modifies the configurations of a Network Load Balancer (NLB) server group.
         
         @param request: UpdateServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5924,17 +6490,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateServerGroupAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_server_group_attribute(
         self,
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
         """
-        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        @summary Modifies the configurations of a Network Load Balancer (NLB) server group.
         
         @param request: UpdateServerGroupAttributeRequest
         @return: UpdateServerGroupAttributeResponse
@@ -5947,7 +6519,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupAttributeResponse:
         """
-        @summary Modifies the configurations of a server group of Network Load Balancer (NLB).
+        @summary Modifies the configurations of a Network Load Balancer (NLB) server group.
         
         @param request: UpdateServerGroupAttributeRequest
         @return: UpdateServerGroupAttributeResponse
@@ -5961,7 +6533,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        @summary Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
         
         @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
         1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
@@ -6001,10 +6573,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_server_group_servers_attribute_with_options_async(
         self,
@@ -6012,7 +6590,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        @summary Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
         
         @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
         1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
@@ -6052,17 +6630,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                nlb_20220430_models.UpdateServerGroupServersAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_server_group_servers_attribute(
         self,
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        @summary Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
         
         @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
         1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
@@ -6083,7 +6667,7 @@ class Client(OpenApiClient):
         request: nlb_20220430_models.UpdateServerGroupServersAttributeRequest,
     ) -> nlb_20220430_models.UpdateServerGroupServersAttributeResponse:
         """
-        @summary Modifies the configurations of backend servers in a server group, such as the weight and description.
+        @summary Modifies the weights and descriptions of backend servers in a server group of a Network Load Balancer (NLB) instance.
         
         @description *UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
         1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.

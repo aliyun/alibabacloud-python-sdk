@@ -1,3 +1,14 @@
+2025-02-07 Version: 4.0.0
+- Update API CreateListener: update param IdleTimeout.
+- Update API GetListenerHealthStatus: delete param MaxResults.
+- Update API GetListenerHealthStatus: delete param NextToken.
+- Update API ListListenerCertificates: add param CertificateIds.
+- Update API StartListener: update param ListenerId.
+- Update API TagResources: update response param.
+- Update API UntagResources: update response param.
+- Update API UpdateListenerAttribute: update param IdleTimeout.
+
+
 2024-08-12 Version: 3.1.1
 - Update API ListListeners: add param SecSensorEnabled.
 

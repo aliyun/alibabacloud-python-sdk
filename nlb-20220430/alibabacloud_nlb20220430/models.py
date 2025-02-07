@@ -14,41 +14,33 @@ class AddServersToServerGroupRequestServers(TeaModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # The description of the servers.
+        # The description of the backend server.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        # 
-        # >  You can specify at most 40 servers in each call.
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at sings (@), underscores (_), and hyphens (-).
         self.description = description
-        # The port used by the backend server. Valid values: **1** to **65535**.
+        # The port that is used by the backend server. Valid values: **0 to 65535**. If you do not specify a port, the default value **0** is used.
         # 
-        # >  You can specify at most 40 servers in each call.
+        # If you enable all-port forwarding, you do not need to specify a port when you add a backend server. The default port is port 0. NLB forwards requests to the requested ports. To determine whether all-port forwarding is enabled, call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) API operation and check the value of the **AnyPortEnabled** parameter.
         self.port = port
-        # The ID of the server. You can specify at most 40 server IDs in each call.
+        # The ID of the server group.
         # 
-        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set the ServerId parameter to an IP address.
+        # *   If the server group is of the **Instance** type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
+        # *   If the server group is of the **Ip** type, set this parameter to IP addresses.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The IP address of the server. If the server group type is **Ip**, set the ServerId parameter to an IP address.
-        # 
-        # >  You can specify at most 40 server IP addresses in each call.
+        # The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
         self.server_ip = server_ip
         # The type of the backend server. Valid values:
         # 
-        # *   **Ecs**: an ECS instance
-        # *   **Eni**: an ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
-        # 
-        # >  You can specify at most 40 servers in each call.
+        # *   **Ecs**: ECS instance
+        # *   **Eni**: ENI
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
         # 
         # This parameter is required.
         self.server_type = server_type
-        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
-        # 
-        # >  You can specify at most 40 servers in each call.
+        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
         self.weight = weight
 
     def validate(self):
@@ -119,7 +111,9 @@ class AddServersToServerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
-        # A list of backend servers.
+        # The backend servers.
+        # 
+        # >  You can add at most 200 backend servers in each call.
         # 
         # This parameter is required.
         self.servers = servers
@@ -260,7 +254,7 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         listener_id: str = None,
         region_id: str = None,
     ):
-        # The additional certificates. You can associate up to 15 additional certificates with a listener in each request.
+        # The additional certificates. You can associate at most 15 additional certificates with a listener in each call.
         # 
         # This parameter is required.
         self.additional_certificate_ids = additional_certificate_ids
@@ -275,7 +269,7 @@ class AssociateAdditionalCertificatesWithListenerRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        # The listener ID. Only TCP/SSL listener IDs are supported.
         # 
         # This parameter is required.
         self.listener_id = listener_id
@@ -854,14 +848,15 @@ class CreateListenerRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.alpn_enabled = alpn_enabled
-        # The ALPN policy.
+        # The ALPN policy. Valid values:
         # 
-        # Valid values:
+        # *   HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   HTTP2Only: uses only HTTP 2.0.
+        # *   HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # Note
+        # *   HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
         # 
-        # *   HTTP1Only
-        # *   HTTP2Only
-        # *   HTTP2Preferred
-        # *   HTTP2Optional
+        # > This parameter is required if AlpnEnabled is set to true.
         self.alpn_policy = alpn_policy
         # The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
         # 
@@ -882,7 +877,7 @@ class CreateListenerRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # Specifies whether to perform only a dry run without performing the actual request. Valid values:
         # 
@@ -893,7 +888,10 @@ class CreateListenerRequest(TeaModel):
         # 
         # > This parameter is required when **ListenerPort** is set to **0**.
         self.end_port = end_port
-        # The timeout period of idle connections. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
+        # The timeout period of idle connections. Unit: seconds
+        # 
+        # *   If you set **ListenerProtocol** to **TCP** or **TCPSSL**, the timeout period of idle connections can be set to **10** to **900** seconds. Default value: **900**.
+        # *   If **ListenerProtocol** is set to **UDP**, the timeout period of idle connections can be set to **10** to **20** seconds. Default value: **20**.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
@@ -935,11 +933,20 @@ class CreateListenerRequest(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # - Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # 
+        # - Custom security policy: the ID of the custom security policy.
+        #     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+        # 
+        #     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
         # 
         # > This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The server group ID.
+        # 
+        # > - If you set **ListenerProtocol** to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+        # > - If you set **ListenerProtocol** to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+        # > - If you set **ListenerProtocol** to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation enabled** or server groups whose backend protocol is **UDP** or **TCP_UDP**.
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
@@ -1140,14 +1147,15 @@ class CreateListenerShrinkRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.alpn_enabled = alpn_enabled
-        # The ALPN policy.
+        # The ALPN policy. Valid values:
         # 
-        # Valid values:
+        # *   HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   HTTP2Only: uses only HTTP 2.0.
+        # *   HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # Note
+        # *   HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
         # 
-        # *   HTTP1Only
-        # *   HTTP2Only
-        # *   HTTP2Preferred
-        # *   HTTP2Optional
+        # > This parameter is required if AlpnEnabled is set to true.
         self.alpn_policy = alpn_policy
         # The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
         # 
@@ -1168,7 +1176,7 @@ class CreateListenerShrinkRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # Specifies whether to perform only a dry run without performing the actual request. Valid values:
         # 
@@ -1179,7 +1187,10 @@ class CreateListenerShrinkRequest(TeaModel):
         # 
         # > This parameter is required when **ListenerPort** is set to **0**.
         self.end_port = end_port
-        # The timeout period of idle connections. Unit: seconds. Valid values: **1** to **900**. Default value: **900**.
+        # The timeout period of idle connections. Unit: seconds
+        # 
+        # *   If you set **ListenerProtocol** to **TCP** or **TCPSSL**, the timeout period of idle connections can be set to **10** to **900** seconds. Default value: **900**.
+        # *   If **ListenerProtocol** is set to **UDP**, the timeout period of idle connections can be set to **10** to **20** seconds. Default value: **20**.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
@@ -1221,11 +1232,20 @@ class CreateListenerShrinkRequest(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The security policy ID. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # - Valid values: **tls_cipher_policy_1_0** (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # 
+        # - Custom security policy: the ID of the custom security policy.
+        #     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+        # 
+        #     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
         # 
         # > This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The server group ID.
+        # 
+        # > - If you set **ListenerProtocol** to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+        # > - If you set **ListenerProtocol** to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+        # > - If you set **ListenerProtocol** to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation enabled** or server groups whose backend protocol is **UDP** or **TCP_UDP**.
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
@@ -1597,8 +1617,11 @@ class CreateLoadBalancerRequestZoneMappings(TeaModel):
     ):
         # The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         self.allocation_id = allocation_id
+        # The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
         self.ipv_4local_addresses = ipv_4local_addresses
+        # The IPv6 address. The IPv6 address that the NLB instance uses to provide external services.
         self.ipv_6address = ipv_6address
+        # The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
         self.ipv_6local_addresses = ipv_6local_addresses
         # The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         self.private_ipv_4address = private_ipv_4address
@@ -1676,17 +1699,17 @@ class CreateLoadBalancerRequest(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
-        # The protocol version. Valid values:
+        # The version of the protocol. Valid values:
         # 
-        # *   **ipv4:** IPv4. This is the default value.
-        # *   **DualStack:** dual stack.
+        # *   **ipv4** (default)
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
-        # The type of IPv4 address used by the NLB instance. Valid values:
+        # The network type of the IPv4 address used by the NLB instance. Valid values:
         # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+        # *   **Internet**: The NLB instance is assigned a public IP address. The domain name is resolved to the public IP address. The NLB instance is accessible over the Internet.
+        # *   **Intranet**: The NLB instance is assigned only a private IP address. The domain name is resolved to the private IP address. The NLB instance is accessible only within the VPC of the NLB instance.
         # 
-        # >  To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
+        # >  To enable a public IPv6 address for a dual-stack NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
         # 
         # This parameter is required.
         self.address_type = address_type
@@ -1700,10 +1723,10 @@ class CreateLoadBalancerRequest(TeaModel):
         self.client_token = client_token
         # The configuration of the deletion protection feature.
         self.deletion_protection_config = deletion_protection_config
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. This is the default value. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The billing settings of the NLB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
@@ -1923,13 +1946,13 @@ class CreateSecurityPolicyRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # 一次调用最多支持添加20个标签。
+        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         self.key = key
-        # 标签值。最多支持128个字符，不能以`aliyun`或`acs:`开头，不能包含`http://`或`https://`。
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # 一次调用最多支持添加20个标签。
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2033,7 +2056,7 @@ class CreateSecurityPolicyRequest(TeaModel):
         # 
         # The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.security_policy_name = security_policy_name
-        # 标签列表。
+        # The tags.
         self.tag = tag
         # The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         # 
@@ -2200,41 +2223,47 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # Valid values: **0** to **65535**.
         # 
-        # Default value: **0**. If you set the value to 0, the port of the backend server is used for health checks.
+        # Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
         # The maximum timeout period of a health check. Unit: seconds. Valid values: **1** to **300**. Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that you want to use for health checks. Valid values:
+        # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$SERVER_IP**: the private IP address of a backend server.
-        # *   **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
+        # *   **$SERVER_IP**: the internal IP address of a backend server.
+        # *   **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_domain = health_check_domain
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
         self.health_check_exp = health_check_exp
         # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_code = health_check_http_code
         # The interval at which health checks are performed. Unit: seconds.
         # 
-        # Valid values: **5** to **50**.
+        # Valid values: **1** to **50**.
         # 
         # Default value: **10**.
         self.health_check_interval = health_check_interval
+        # The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
         self.health_check_req = health_check_req
-        # The protocol that you want to use for health checks. Valid values: **TCP** (default) and **HTTP**.
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP**\
+        # *   **HTTP**\
+        # *   **UDP**\
         self.health_check_type = health_check_type
-        # The path to which health check requests are sent.
+        # The URL that is used for health checks.
         # 
-        # The path must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # &`. It must start with a forward slash (/).
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `. The URL must start with a forward slash (/).
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_url = health_check_url
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
         # 
@@ -2244,7 +2273,7 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** (default) and **HEAD**.
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.http_check_method = http_check_method
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
         # 
@@ -2408,18 +2437,25 @@ class CreateServerGroupRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The configurations of the health check feature.
+        # The configuration of health checks.
         self.health_check_config = health_check_config
         # Specifies whether to enable client IP preservation. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # >  If you set the value to **true** and **Protocol** to **TCP**, the server group cannot be associated with **TCPSSL** listeners.
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # The protocol used to forward requests to the backend servers. Valid values:
+        # The protocol between the NLB instance and backend servers. Valid values:
         # 
         # *   **TCP** (default)
         # *   **UDP**\
-        # *   **TCPSSL**\
+        # *   **TCP_UDP**\
+        # 
+        # > *   If you set the value to **UDP**, you can associate the server group only with **UDP** listeners.
+        # > *   If you set the value to **TCP** and **PreserveClientIpEnabled** to **true**, you can associate the server group only with **TCP** listeners.
+        # > *   If you set the value to **TCP** and **PreserveClientIpEnabled** to **false**, you can associate the server group with **TCP/SSL** and **TCP** listeners.
+        # > *   If you set the value to **TCP_UDP**, you can associate the server group with **TCP** and **UDP** listeners.
         self.protocol = protocol
         # The region ID of the NLB instance.
         # 
@@ -2434,6 +2470,8 @@ class CreateServerGroupRequest(TeaModel):
         # *   **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
         # *   **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
         # *   **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        # 
+        # > QUIC ID hashing is supported only when the backend protocol is set to UDP.
         self.scheduler = scheduler
         # The name of the server group.
         # 
@@ -2443,8 +2481,8 @@ class CreateServerGroupRequest(TeaModel):
         self.server_group_name = server_group_name
         # The type of server group. Valid values:
         # 
-        # *   **Instance**: allows you to add servers of the **Ecs**, **Ens**, or **Eci** type. This is the default value.
-        # *   **Ip**: allows you to add servers by specifying IP addresses.
+        # *   **Instance** (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci** type.
+        # *   **Ip**: allows you to add servers of by specifying IP addresses.
         self.server_group_type = server_group_type
         # The tags.
         self.tag = tag
@@ -2648,7 +2686,7 @@ class DeleteListenerRequest(TeaModel):
         # *   **true**: prechecks the request but does not delete the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the listener.
+        # The listener ID.
         # 
         # This parameter is required.
         self.listener_id = listener_id
@@ -3518,9 +3556,9 @@ class DescribeZonesResponseBodyZones(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # The name of the zone.
+        # The zone name.
         self.local_name = local_name
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3555,7 +3593,7 @@ class DescribeZonesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The list of zones.
+        # A list of zones.
         self.zones = zones
 
     def validate(self):
@@ -3929,7 +3967,7 @@ class DisassociateAdditionalCertificatesWithListenerRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The listener ID. You must specify the ID of a listener that uses SSL over TCP.
+        # The listener ID. Only TCP/SSL listener IDs are supported.
         # 
         # This parameter is required.
         self.listener_id = listener_id
@@ -4498,7 +4536,7 @@ class GetListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.certificate_ids = certificate_ids
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # The last port in the listening port range. Valid values: **0** to **65535**. The number of the last port must be smaller than that of the first port.
         self.end_port = end_port
@@ -4549,7 +4587,13 @@ class GetListenerAttributeResponseBody(TeaModel):
         self.sec_sensor_enabled = sec_sensor_enabled
         # The ID of the security policy. System security policies and custom security policies are supported.
         # 
-        # Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # - Valid values: **tls_cipher_policy_1_0**, **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+        # 
+        # - Custom security policy: the ID of the custom security policy.
+        #     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+        # 
+        #     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
+        # 
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
@@ -4728,21 +4772,12 @@ class GetListenerHealthStatusRequest(TeaModel):
     def __init__(
         self,
         listener_id: str = None,
-        max_results: int = None,
-        next_token: str = None,
         region_id: str = None,
     ):
         # The ID of the listener of the NLB instance.
         # 
         # This parameter is required.
         self.listener_id = listener_id
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-        self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If this is your first query or no next query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
-        self.next_token = next_token
         # The ID of the region where the NLB instance is deployed.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
@@ -4759,10 +4794,6 @@ class GetListenerHealthStatusRequest(TeaModel):
         result = dict()
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -4771,10 +4802,6 @@ class GetListenerHealthStatusRequest(TeaModel):
         m = m or dict()
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -5370,9 +5397,11 @@ class GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses(TeaM
         self.allocation_id = allocation_id
         # The ID of the elastic network interface (ENI).
         self.eni_id = eni_id
+        # The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
         self.ipv_4local_addresses = ipv_4local_addresses
         # The IPv6 address of the NLB instance.
         self.ipv_6address = ipv_6address
+        # The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
         self.ipv_6local_addresses = ipv_6local_addresses
         # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
@@ -5548,7 +5577,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.address_type = address_type
         # The ID of the EIP bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The maximum number of connections per second that can be created on the NLB instance. Valid values: **0** to **1000000**.
+        # The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **0** to **1000000**.
         # 
         # **0** indicates that the number of connections is unlimited.
         self.cps = cps
@@ -5804,6 +5833,7 @@ class ListListenerCertificatesRequest(TeaModel):
     def __init__(
         self,
         cert_type: str = None,
+        certificate_ids: List[str] = None,
         listener_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -5811,9 +5841,13 @@ class ListListenerCertificatesRequest(TeaModel):
     ):
         # The type of the certificate. Valid values:
         # 
-        # *   **Server**: a server certificate.
-        # *   **Ca**: Certificate Authority Certificate
+        # *   **Ca**: CA certificate.
+        # *   **Server**: server certificate
         self.cert_type = cert_type
+        # The server certificates. Only one server certificate is supported.
+        # 
+        # > This parameter takes effect only for listeners that use SSL over TCP.
+        self.certificate_ids = certificate_ids
         # The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
         # 
         # This parameter is required.
@@ -5841,6 +5875,8 @@ class ListListenerCertificatesRequest(TeaModel):
         result = dict()
         if self.cert_type is not None:
             result['CertType'] = self.cert_type
+        if self.certificate_ids is not None:
+            result['CertificateIds'] = self.certificate_ids
         if self.listener_id is not None:
             result['ListenerId'] = self.listener_id
         if self.max_results is not None:
@@ -5855,6 +5891,8 @@ class ListListenerCertificatesRequest(TeaModel):
         m = m or dict()
         if m.get('CertType') is not None:
             self.cert_type = m.get('CertType')
+        if m.get('CertificateIds') is not None:
+            self.certificate_ids = m.get('CertificateIds')
         if m.get('ListenerId') is not None:
             self.listener_id = m.get('ListenerId')
         if m.get('MaxResults') is not None:
@@ -5874,12 +5912,9 @@ class ListListenerCertificatesResponseBodyCertificates(TeaModel):
         is_default: bool = None,
         status: str = None,
     ):
-        # The ID of the certificate.
+        # The ID of the certificate. Only one server certificate is supported.
         self.certificate_id = certificate_id
         # The type of the certificate.
-        # 
-        # -  Server
-        # - Ca
         self.certificate_type = certificate_type
         # Indicates whether the certificate is the default certificate of the listener. Valid values:
         # 
@@ -6108,6 +6143,10 @@ class ListListenersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
+        # Specifies whether to enable fine-grained monitoring. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.sec_sensor_enabled = sec_sensor_enabled
         # The tags.
         self.tag = tag
@@ -6306,7 +6345,7 @@ class ListListenersResponseBodyListeners(TeaModel):
         # 
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.certificate_ids = certificate_ids
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # The last port in the listener port range.
         self.end_port = end_port
@@ -6492,7 +6531,7 @@ class ListListenersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of listeners.
+        # The listeners.
         self.listeners = listeners
         # The number of entries returned per page.
         self.max_results = max_results
@@ -7011,9 +7050,19 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresse
         self.ipv_6address = ipv_6address
         # The private IPv4 address of the NLB instance.
         self.private_ipv_4address = private_ipv_4address
-        # The health check status of the private IPv4 address.
+        # The health status of the private IPv4 address of the NLB instance. Valid values:
+        # 
+        # - **Healthy**\
+        # - **Unhealthy**\
+        # 
+        # > This parameter is returned only when the Status of the zone is Active.
         self.private_ipv_4hc_status = private_ipv_4hc_status
-        # The health check status of the private IPv6 address.
+        # The health status of the IPv6 address of the NLB instance. Valid values:
+        # 
+        # - **Healthy**\
+        # - **Unhealthy**\
+        # 
+        # > This parameter is returned only when the Status of the zone is Active.
         self.private_ipv_6hc_status = private_ipv_6hc_status
         # The public IPv4 address of the NLB instance.
         self.public_ipv_4address = public_ipv_4address
@@ -7072,10 +7121,17 @@ class ListLoadBalancersResponseBodyLoadBalancersZoneMappings(TeaModel):
     ):
         # The IP addresses that are used by the NLB instance.
         self.load_balancer_addresses = load_balancer_addresses
-        # The state of the task. Valid values:
+        # The zone status. Valid values:
         # 
-        # *   **Succeeded**: The task is successful.
-        # *   **processing**: The ticket is being executed.
+        # - **Active**: The zone is available.
+        # 
+        # - **Stopped**: The zone is disabled. You can set the zone to this status only by using Cloud Architect Design Tools (CADT).
+        # 
+        # - **Shifted**: The DNS record is removed.
+        # 
+        # - **Starting**: The zone is being enabled. You can set the zone to this status only by using CADT.
+        # 
+        # - **Stopping** You can set the zone to this status only by using CADT.
         self.status = status
         # The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
@@ -7834,7 +7890,7 @@ class ListSecurityPolicyResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A list of TLS security policies.
+        # The TLS security policies.
         self.security_policies = security_policies
         # The total number of entries returned.
         self.total_count = total_count
@@ -7947,9 +8003,9 @@ class ListServerGroupServersRequest(TeaModel):
         self.region_id = region_id
         # The ID of the server group.
         self.server_group_id = server_group_id
-        # The IDs of the servers.
+        # The server IDs. You can specify at most 40 servers in each call.
         self.server_ids = server_ids
-        # The IP addresses of the servers.
+        # A list of server IP addresses. You can specify at most 40 servers in each call.
         self.server_ips = server_ips
 
     def validate(self):
@@ -8007,27 +8063,27 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
     ):
         # The description of the backend server.
         self.description = description
-        # The port used by the backend server. Valid values: **1** to **65535**.
+        # The port that is used by the backend server. Valid values: **1** to **65535**.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
-        # The ID of the server.
+        # The ID of the server group.
         self.server_id = server_id
         # The IP address of the backend server.
         self.server_ip = server_ip
-        # The type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Eni**: an elastic network interface (ENI)
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
+        # *   **Eni**: elastic network interface (ENI)
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
         self.server_type = server_type
-        # Indicates the status of the backend server. Valid values:
+        # The status of the backend server. Valid values:
         # 
-        # *   **Adding**: The backend server is being added.
-        # *   **Available**: The backend server is added.
-        # *   **Configuring**: The backend server is being configured.
-        # *   **Removing**: The backend server is being removed.
+        # *   **Adding**\
+        # *   **Available**\
+        # *   **Configuring**\
+        # *   **Removing**\
         self.status = status
         # The weight of the backend server.
         self.weight = weight
@@ -8104,7 +8160,7 @@ class ListServerGroupServersResponseBody(TeaModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # A list of backend servers.
+        # The backend servers.
         self.servers = servers
         # The number of entries returned.
         self.total_count = total_count
@@ -8370,6 +8426,7 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # *   **true**\
         # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The response string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
         self.health_check_exp = health_check_exp
         # The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
@@ -8379,8 +8436,13 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # 
         # Valid values: **5** to **50**.
         self.health_check_interval = health_check_interval
+        # The request string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
         self.health_check_req = health_check_req
-        # The protocol that is used for health checks. Valid values: **TCP** and **HTTP**.
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP**\
+        # *   **HTTP**\
+        # *   **UDP**\
         self.health_check_type = health_check_type
         # The path to which health check probes are sent.
         # 
@@ -8557,7 +8619,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         # 
         # > This parameter is set to **true** by default when **AddressIPVersion** is set to **ipv4**. This parameter is set to **false** when **AddressIPVersion** is set to **ipv6**. **true** will be supported by later versions.
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
-        # The protocol used to forward requests to the backend servers. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+        # The backend protocol. Valid values: **TCP** and **UDP**.
         self.protocol = protocol
         # The region ID of the NLB instance.
         self.region_id = region_id
@@ -8844,13 +8906,13 @@ class ListSystemSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         security_policy_name: str = None,
         tls_version: str = None,
     ):
-        # The cipher suites.
+        # The cipher suite.
         self.ciphers = ciphers
-        # The TLS policy ID.
+        # The ID of the TLS security policy.
         self.security_policy_id = security_policy_id
-        # The TLS policy name.
+        # The name of the TLS security policy.
         self.security_policy_name = security_policy_name
-        # The version of the TLS protocol.
+        # The TLS version.
         self.tls_version = tls_version
 
     def validate(self):
@@ -9578,19 +9640,13 @@ class MoveResourceGroupRequest(TeaModel):
     ):
         # The ID of the new resource group.
         # 
-        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
-        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the NLB instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the bastion host for which you want to change the resource group.
-        # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the resource group.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -9768,16 +9824,16 @@ class RemoveServersFromServerGroupRequestServers(TeaModel):
     ):
         # The port that is used by the backend server. Valid values: **1** to **65535**.
         self.port = port
-        # The backend server ID.
+        # The ID of the server group.
         # 
-        # *   If the server group type is **Instance**, set this parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. The backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set this parameter to an IP address.
+        # *   If the server group is of the **Instance** type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
+        # *   If the server group is of the **Ip** type, set this parameter to IP addresses.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
+        # The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
         self.server_ip = server_ip
-        # The type of the backend server. Valid values:
+        # The type of backend server. Valid values:
         # 
         # *   **Ecs**: ECS instance
         # *   **Eni**: ENI
@@ -9847,7 +9903,7 @@ class RemoveServersFromServerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
-        # The backend servers that you want to add to the server group. You can specify up to 40 servers in each call.
+        # The server groups. You can specify at most 200 server groups in each call.
         # 
         # This parameter is required.
         self.servers = servers
@@ -10116,9 +10172,9 @@ class StartListenerRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
@@ -10126,6 +10182,8 @@ class StartListenerRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The listener ID.
+        # 
+        # This parameter is required.
         self.listener_id = listener_id
         # The region ID of the NLB instance.
         # 
@@ -10699,11 +10757,8 @@ class TagResourcesRequest(TeaModel):
 class TagResourcesResponseBody(TeaModel):
     def __init__(
         self,
-        job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
-        self.job_id = job_id
         # The ID of the request.
         self.request_id = request_id
 
@@ -10716,16 +10771,12 @@ class TagResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -10865,11 +10916,8 @@ class UntagResourcesRequest(TeaModel):
 class UntagResourcesResponseBody(TeaModel):
     def __init__(
         self,
-        job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the asynchronous task.
-        self.job_id = job_id
         # The ID of the request.
         self.request_id = request_id
 
@@ -10882,16 +10930,12 @@ class UntagResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -11042,14 +11086,17 @@ class UpdateListenerAttributeRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # Specifies whether only to precheck the request. Valid values:
         # 
         # *   **true**: prechecks the request but does not update the configurations of the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **900**.
+        # The timeout period of idle connections. Unit: seconds
+        # 
+        # *   If the listener uses **TCP** or **TCPSSL**, you can set the timeout period of idle connections to **10** to **900** seconds. Default value: **900**.
+        # *   If the listener uses **UDP**, you can set the timeout period of idle connections to **10** to **20** seconds. Default value: **20**.
         self.idle_timeout = idle_timeout
         # Enter a name for the listener.
         # 
@@ -11082,6 +11129,9 @@ class UpdateListenerAttributeRequest(TeaModel):
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The ID of the server group.
+        # > - If you set **ListenerProtocol** to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+        # > - If you set **ListenerProtocol** to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+        # > - If you set **ListenerProtocol** to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation enabled** or server groups whose backend protocol is **UDP** or **TCP_UDP**.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -11227,14 +11277,17 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **0** to **1000000**. **0** specifies that the number of connections is unlimited.
+        # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
         # Specifies whether only to precheck the request. Valid values:
         # 
         # *   **true**: prechecks the request but does not update the configurations of the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The timeout period of an idle connection. Unit: seconds. Valid values: **1** to **900**.
+        # The timeout period of idle connections. Unit: seconds
+        # 
+        # *   If the listener uses **TCP** or **TCPSSL**, you can set the timeout period of idle connections to **10** to **900** seconds. Default value: **900**.
+        # *   If the listener uses **UDP**, you can set the timeout period of idle connections to **10** to **20** seconds. Default value: **20**.
         self.idle_timeout = idle_timeout
         # Enter a name for the listener.
         # 
@@ -11267,6 +11320,9 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         # >  This parameter takes effect only for listeners that use SSL over TCP.
         self.security_policy_id = security_policy_id
         # The ID of the server group.
+        # > - If you set **ListenerProtocol** to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+        # > - If you set **ListenerProtocol** to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP** or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+        # > - If you set **ListenerProtocol** to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP** and have **client IP preservation enabled** or server groups whose backend protocol is **UDP** or **TCP_UDP**.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -11669,7 +11725,7 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The maximum number of connections that can be created per second on the NLB instance. Valid values: **1** to **1000000**.
+        # The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **1** to **1000000**.
         self.cps = cps
         # Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
         # 
@@ -12424,45 +12480,52 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         http_check_method: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The port that you want to use for health checks on backend servers. Valid values: **0** to **65535**. If you set the value to **0**, the ports of backend servers are used for health checks.
+        # The backend port that is used for health checks. Valid values: **0** to **65535**. If you set the value to **0**, the port of a backend server is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The maximum timeout period of a health check. Unit: seconds. Valid values: **1** to **300**.
+        # The maximum timeout period of a health check. Unit: seconds Valid values: **1 to 300**. Default value: 5****\
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that you want to use for health checks. Valid values:
+        # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$SERVER_IP**: the private IP address of a backend server.
-        # *   **domain**: a specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
+        # *   **$SERVER_IP**: the internal IP address of a backend server.
+        # *   **domain**: the specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_domain = health_check_domain
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.health_check_enabled = health_check_enabled
+        # The response string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
         self.health_check_exp = health_check_exp
         # The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_code = health_check_http_code
-        # The interval at which health checks are performed. Unit: seconds.
+        # The interval at which health checks are performed. Unit: seconds. Default value: 5.****\
         # 
-        # Valid values: **5** to **50**.
+        # *   If you set **HealthCheckType** to **TCP** or **HTTP**, valid values are **1 to 50**.
+        # *   If you set **HealthCheckType** to **UDP**, valid values are **1 to 300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
         self.health_check_interval = health_check_interval
+        # The request string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
         self.health_check_req = health_check_req
-        # The protocol that you want to use for health checks. Valid values: **TCP** and **HTTP**.
+        # The protocol that is used for health checks. Valid values:
+        # 
+        # *   **TCP**\
+        # *   **HTTP**\
+        # *   **UDP**\
         self.health_check_type = health_check_type
-        # The path to which health check requests are sent.
+        # The URL that is used for health checks.
         # 
-        # The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \\" , +`. The path must start with a forward slash (/).
+        # The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_url = health_check_url
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**. Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** and **HEAD**.
         # 
-        # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
+        # > This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.http_check_method = http_check_method
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**. Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -12562,17 +12625,19 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         self.connection_drain_enabled = connection_drain_enabled
         # The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The configurations of the health check feature.
+        # The configuration of health checks.
         self.health_check_config = health_check_config
         # Specifies whether to enable client IP preservation. Valid values:
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # >  You cannot set this parameter to **true** if **PreserveClientIpEnabled** is set to **false** and the server group is associated with a **TCP/SSL** listener.
         self.preserve_client_ip_enabled = preserve_client_ip_enabled
         # The region ID of the NLB instance.
         # 
@@ -12585,6 +12650,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         # *   **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
         # *   **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
         # *   **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        # 
+        # > QUIC ID hashing is supported only when the backend protocol is set to UDP.
         self.scheduler = scheduler
         # The server group ID.
         # 
@@ -12748,39 +12815,33 @@ class UpdateServerGroupServersAttributeRequestServers(TeaModel):
     ):
         # The description of the backend server.
         # 
-        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        # The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at sings (@), underscores (_), and hyphens (-).
         self.description = description
-        # The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 backend servers in each call.
+        # The port that is used by the backend server. Valid values: **1** to **65535**.
         # 
-        # > This is parameter cannot be modified.
+        # >  This parameter cannot be modified.
         # 
         # This parameter is required.
         self.port = port
-        # The backend server ID. You can specify at most 40 backend servers in each call.
+        # The ID of the server group.
         # 
-        # *   If the server group type is **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-        # *   If the server group type is **Ip**, set this parameter to an IP address.
+        # *   If the server group is of the **Instance** type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
+        # *   If the server group is of the **Ip** type, set this parameter to IP addresses.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The IP address of the backend server. If the server group type is **Ip**, you must specify an IP address.
-        # 
-        # > You can specify at most 40 backend servers in each call.
+        # The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
         self.server_ip = server_ip
         # The type of the backend server. Valid values:
         # 
-        # *   **Ecs**: ECS instance
-        # *   **Eni**: ENI
-        # *   **Eci**: an elastic container instance
-        # *   **Ip**: an IP address
-        # 
-        # > You can specify at most 40 backend servers in each call.
+        # *   **Ecs**: Elastic Compute Service (ECS) instance
+        # *   **Eni**: elastic network interface (ENI)
+        # *   **Eci**: elastic container instance
+        # *   **Ip**: IP address
         # 
         # This parameter is required.
         self.server_type = server_type
-        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
-        # 
-        # > You can specify at most 40 backend servers in each call.
+        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
         self.weight = weight
 
     def validate(self):
@@ -12851,7 +12912,7 @@ class UpdateServerGroupServersAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
-        # The backend servers that you want to modify. You can specify up to 40 servers in each call.
+        # The backend servers. You can specify at most 200 backend servers in each call.
         # 
         # This parameter is required.
         self.servers = servers
