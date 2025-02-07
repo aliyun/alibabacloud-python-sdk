@@ -712,7 +712,7 @@ class ChangePasswordResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -814,9 +814,9 @@ class CreateAccessKeyResponseBodyAccessKey(TeaModel):
         create_date: str = None,
         status: str = None,
     ):
-        # The AccessKey ID provided to you by Alibaba Cloud.
+        # The AccessKey ID.
         self.access_key_id = access_key_id
-        # The AccessKey secret provided to you by Alibaba Cloud.
+        # The AccessKey secret.
         self.access_key_secret = access_key_secret
         # The time when the AccessKey pair was created.
         self.create_date = create_date
@@ -864,9 +864,9 @@ class CreateAccessKeyResponseBody(TeaModel):
         access_key: CreateAccessKeyResponseBodyAccessKey = None,
         request_id: str = None,
     ):
-        # The information of the AccessKey pair.
+        # The information about the AccessKey pair.
         self.access_key = access_key
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1138,7 +1138,7 @@ class CreateApplicationRequest(TeaModel):
         self.is_multi_tenant = is_multi_tenant
         # The scope of application permissions.
         # 
-        # For more information about the application permission scope, see [Open authorization scope](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to obtain the permission scopes supported by different types of applications.
+        # For more information about the application permission scope, see [Open authorization scope](https://help.aliyun.com/document_detail/93693.html). You can also call the [ListPredefinedScopes](https://help.aliyun.com/document_detail/187206.html) operation to query the permissions that are supported by different types of applications.
         # 
         # If you enter multiple permission scopes, separate them with semicolons (;).
         self.predefined_scopes = predefined_scopes
@@ -1159,9 +1159,9 @@ class CreateApplicationRequest(TeaModel):
         # 
         # You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
         # 
-        # If you enter multiple permissions, separate them with semicolons (;).
+        # If you enter multiple permission scopes, separate them with semicolons (;).
         # 
-        # >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
+        # >  If the permission that you specify for the `RequiredScopes` parameter is not included in the value of the `PredefinedScopes` parameter, the permission does not take effect.
         self.required_scopes = required_scopes
         # Indicates whether a secret is required. Valid values:
         # 
@@ -1571,7 +1571,7 @@ class CreateGroupRequest(TeaModel):
     ):
         # The description.
         # 
-        # The value can be up to 128 characters in length.
+        # The description can be up to 128 characters in length.
         self.comments = comments
         # The display name of the RAM user group.
         # 
@@ -1679,9 +1679,9 @@ class CreateGroupResponseBody(TeaModel):
         group: CreateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information of the RAM user group.
+        # The information about the RAM user group.
         self.group = group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1760,21 +1760,21 @@ class CreateLoginProfileRequest(TeaModel):
         status: str = None,
         user_principal_name: str = None,
     ):
-        # Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+        # Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
         # 
-        # *   true: MFA must be enabled. The RAM user must bind an MFA device at the next logon.
-        # *   false: MFA is not enabled. This is the default value.
+        # *   true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        # *   false (default): does not forcefully enable MFA for the RAM user.
         self.mfabind_required = mfabind_required
-        # The password that is used to log on to the console.
+        # The password that the RAM user uses to log on to the console.
         # 
         # The password must meet the complexity requirements.
         self.password = password
-        # Specifies whether the RAM user must reset the password at the next logon. Default value: false. Valid values:
+        # Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.password_reset_required = password_reset_required
-        # The status of password-based logon. Valid values:
+        # Specifies whether to enable password-based logons to the console. Valid values:
         # 
         # *   Active: Password-based logon is enabled. This is the default value.
         # *   Inactive: Password-based logon is disabled.
@@ -1829,11 +1829,11 @@ class CreateLoginProfileResponseBodyLoginProfile(TeaModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # Indicates whether MFA must be enabled.
+        # Indicates whether to forcefully enable MFA for the RAM user.
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must reset the password at the next logon.
+        # Indicates whether the RAM user is required to reset the password upon the next logon.
         self.password_reset_required = password_reset_required
-        # The status of password-based logon.
+        # Indicates whether to enable password-based logons to the console.
         self.status = status
         # The update time.
         self.update_date = update_date
@@ -1884,7 +1884,7 @@ class CreateLoginProfileResponseBody(TeaModel):
     ):
         # The logon information.
         self.login_profile = login_profile
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2220,13 +2220,13 @@ class CreateSAMLProviderRequest(TeaModel):
     ):
         # The description.
         self.description = description
-        # The metadata file, which is Base64 encoded.
+        # The metadata file which is Base64-encoded.
         # 
-        # The file is provided by an IdP that supports SAML 2.0.
+        # The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         self.encoded_samlmetadata_document = encoded_samlmetadata_document
         # The name of the IdP.
         # 
-        # The value can be up to 128 characters in length. The name can contain letters, digits,`  periods (.), hyphens (-), and underscores (_) `. The name cannot start or end with`  periods (.), hyphens (-), or underscores (_) `.
+        # The name can be up to 128 characters in length. The name can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
         # 
         # This parameter is required.
         self.samlprovider_name = samlprovider_name
@@ -2270,13 +2270,13 @@ class CreateSAMLProviderResponseBodySAMLProvider(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the IdP.
         self.arn = arn
-        # The creation time.
+        # The creation time. The time is displayed in UTC.
         self.create_date = create_date
         # The description.
         self.description = description
         # The name of the IdP.
         self.samlprovider_name = samlprovider_name
-        # The update time.
+        # The update time. The time is displayed in UTC.
         self.update_date = update_date
 
     def validate(self):
@@ -2321,9 +2321,9 @@ class CreateSAMLProviderResponseBody(TeaModel):
         request_id: str = None,
         samlprovider: CreateSAMLProviderResponseBodySAMLProvider = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the IdP.
+        # The information about the IdP.
         self.samlprovider = samlprovider
 
     def validate(self):
@@ -2399,13 +2399,13 @@ class CreateUserRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The key of the tag.
         # 
-        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N.
+        # The value of the tag.
         # 
-        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+        # The tag value can be an empty string. The tag value can be up to 128 characters in length. The tag value cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -2462,15 +2462,13 @@ class CreateUserRequest(TeaModel):
         # 
         # > This parameter is valid only on the China site (aliyun.com).
         self.mobile_phone = mobile_phone
-        # The tag value.
-        # 
-        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         # 
-        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
+        # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to query the default domain name, see [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html).
         # 
-        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
+        # The value of `UserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
         # 
         # This parameter is required.
         self.user_principal_name = user_principal_name
@@ -2859,9 +2857,9 @@ class CreateVirtualMFADeviceResponseBody(TeaModel):
         request_id: str = None,
         virtual_mfadevice: CreateVirtualMFADeviceResponseBodyVirtualMFADevice = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the MFA device.
+        # The information about the MFA device.
         self.virtual_mfadevice = virtual_mfadevice
 
     def validate(self):
@@ -2975,7 +2973,7 @@ class DeleteAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3083,7 +3081,7 @@ class DeleteAppSecretResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3182,7 +3180,7 @@ class DeleteApplicationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3279,7 +3277,7 @@ class DeleteGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3378,7 +3376,7 @@ class DeleteLoginProfileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3539,6 +3537,107 @@ class DeleteOIDCProviderResponse(TeaModel):
         return self
 
 
+class DeletePasskeyRequest(TeaModel):
+    def __init__(
+        self,
+        passkey_id: str = None,
+        user_principal_name: str = None,
+    ):
+        self.passkey_id = passkey_id
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.passkey_id is not None:
+            result['PasskeyId'] = self.passkey_id
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PasskeyId') is not None:
+            self.passkey_id = m.get('PasskeyId')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class DeletePasskeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePasskeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePasskeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePasskeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSAMLProviderRequest(TeaModel):
     def __init__(
         self,
@@ -3574,7 +3673,7 @@ class DeleteSAMLProviderResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3682,7 +3781,7 @@ class DeleteUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3781,7 +3880,7 @@ class DeleteVirtualMFADeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3880,7 +3979,7 @@ class DisableVirtualMFAResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3950,11 +4049,11 @@ class GenerateCredentialReportResponseBody(TeaModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The generation status of the user credential report. Valid values:
         # 
-        # *   STARTED: The user credential report starts to generate.
+        # *   STARTED: The system starts to generate the user credential report.
         # *   INPROGRESS: The user credential report is being generated.
         # *   COMPLETED: The user credential report is generated.
         self.state = state
@@ -4182,12 +4281,12 @@ class GetAccountMFAInfoResponseBody(TeaModel):
         is_mfaenable: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether MFA is enabled. Valid values:
+        # Indicates whether MFA devices are enabled. Valid values:
         # 
         # *   true
         # *   false
         self.is_mfaenable = is_mfaenable
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4268,7 +4367,7 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcc
         sub_user_with_unused_access_key: int = None,
         unused_ak_num: int = None,
     ):
-        # Indicates whether MFA is enabled. Valid values:
+        # Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
         # 
         # *   true
         # *   false
@@ -4289,7 +4388,7 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcc
         self.sub_user_pwd_level = sub_user_pwd_level
         # The number of RAM users that use the old AccessKey pairs.
         self.sub_user_with_old_access_key = sub_user_with_old_access_key
-        # The number of RAM users that have no AccessKey pairs.
+        # The number of Resource Access Management (RAM) users that have unused AccessKey pairs.
         self.sub_user_with_unused_access_key = sub_user_with_unused_access_key
         # The number of AccessKey pairs that are not used for the Alibaba Cloud account.
         self.unused_ak_num = unused_ak_num
@@ -4352,7 +4451,7 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo(Te
         account_security_practice_user_info: GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo = None,
         score: int = None,
     ):
-        # The information of the security report for the Alibaba Cloud account.
+        # The information about the security report for the Alibaba Cloud account.
         self.account_security_practice_user_info = account_security_practice_user_info
         # The security score of the Alibaba Cloud account.
         self.score = score
@@ -4389,9 +4488,9 @@ class GetAccountSecurityPracticeReportResponseBody(TeaModel):
         account_security_practice_info: GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo = None,
         request_id: str = None,
     ):
-        # The information of the security report for the Alibaba Cloud account.
+        # The information about the security report for the Alibaba Cloud account.
         self.account_security_practice_info = account_security_practice_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4488,7 +4587,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         versions_per_policy_quota: int = None,
         virtual_mfadevices_quota: int = None,
     ):
-        # The maximum number of AccessKey pairs that a RAM user can have.
+        # The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
         self.access_keys_per_user_quota = access_keys_per_user_quota
         # The maximum number of custom policies that can be added to a RAM user group.
         self.attached_policies_per_group_quota = attached_policies_per_group_quota
@@ -4647,7 +4746,7 @@ class GetAccountSummaryResponseBody(TeaModel):
         request_id: str = None,
         summary_map: GetAccountSummaryResponseBodySummaryMap = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The overview information of the Alibaba Cloud account.
         self.summary_map = summary_map
@@ -7246,6 +7345,12 @@ class GetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         self.metadata_document = metadata_document
         # Indicates whether user-based SSO is enabled.
         self.sso_enabled = sso_enabled
+        # Indicates whether the Security Assertion Markup Language (SAML) SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the identity provider (IdP) for SSO must have a domain name as the suffix.
+        # 
+        # *   If the value of the parameter is `true`, the `<saml:NameID>` element **must** be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+        # *   If the value of the parameter is `false`, the `<saml:NameID>` element **must** be in the `username` format and **cannot** contain the `domain` suffix.
+        # 
+        # The default value is `true`.
         self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
@@ -7286,7 +7391,7 @@ class GetUserSsoSettingsResponseBody(TeaModel):
         request_id: str = None,
         user_sso_settings: GetUserSsoSettingsResponseBodyUserSsoSettings = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The configurations of user-based SSO.
         self.user_sso_settings = user_sso_settings
@@ -7363,6 +7468,7 @@ class GetVerificationInfoRequest(TeaModel):
         self,
         user_principal_name: str = None,
     ):
+        # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
 
     def validate(self):
@@ -7391,7 +7497,12 @@ class GetVerificationInfoResponseBodySecurityEmailDevice(TeaModel):
         email: str = None,
         status: str = None,
     ):
+        # The email address.
         self.email = email
+        # The status of the email. Valid values:
+        # 
+        # *   active: The email is activated.
+        # *   pending: The email is pending for activation.
         self.status = status
 
     def validate(self):
@@ -7425,8 +7536,14 @@ class GetVerificationInfoResponseBodySecurityPhoneDevice(TeaModel):
         phone_number: str = None,
         status: str = None,
     ):
+        # The international dialing code.
         self.area_code = area_code
+        # The mobile phone number.
         self.phone_number = phone_number
+        # The status of the mobile phone. Valid values:
+        # 
+        # *   active: The mobile phone is activated.
+        # *   pending: The mobile phone is pending for activation.
         self.status = status
 
     def validate(self):
@@ -7464,8 +7581,11 @@ class GetVerificationInfoResponseBody(TeaModel):
         security_email_device: GetVerificationInfoResponseBodySecurityEmailDevice = None,
         security_phone_device: GetVerificationInfoResponseBodySecurityPhoneDevice = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the email.
         self.security_email_device = security_email_device
+        # The information about the mobile phone.
         self.security_phone_device = security_phone_device
 
     def validate(self):
@@ -7852,7 +7972,7 @@ class ListAppSecretIdsResponseBody(TeaModel):
     ):
         # The details of the application secret.
         self.app_secrets = app_secrets
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8438,16 +8558,16 @@ class ListGroupsResponseBody(TeaModel):
         marker: str = None,
         request_id: str = None,
     ):
-        # The information of the RAM user groups.
+        # The information about the RAM user groups.
         self.groups = groups
         # Indicates whether the response is truncated. Valid values:
         # 
-        # - true
-        # - false
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
         # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8989,6 +9109,160 @@ class ListOIDCProvidersResponse(TeaModel):
         return self
 
 
+class ListPasskeysRequest(TeaModel):
+    def __init__(
+        self,
+        user_principal_name: str = None,
+    ):
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class ListPasskeysResponseBodyPasskeys(TeaModel):
+    def __init__(
+        self,
+        create_date: str = None,
+        last_use_date: str = None,
+        passkey_id: str = None,
+        passkey_name: str = None,
+    ):
+        self.create_date = create_date
+        self.last_use_date = last_use_date
+        self.passkey_id = passkey_id
+        self.passkey_name = passkey_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.last_use_date is not None:
+            result['LastUseDate'] = self.last_use_date
+        if self.passkey_id is not None:
+            result['PasskeyId'] = self.passkey_id
+        if self.passkey_name is not None:
+            result['PasskeyName'] = self.passkey_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('LastUseDate') is not None:
+            self.last_use_date = m.get('LastUseDate')
+        if m.get('PasskeyId') is not None:
+            self.passkey_id = m.get('PasskeyId')
+        if m.get('PasskeyName') is not None:
+            self.passkey_name = m.get('PasskeyName')
+        return self
+
+
+class ListPasskeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        passkeys: List[ListPasskeysResponseBodyPasskeys] = None,
+        request_id: str = None,
+    ):
+        self.passkeys = passkeys
+        self.request_id = request_id
+
+    def validate(self):
+        if self.passkeys:
+            for k in self.passkeys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Passkeys'] = []
+        if self.passkeys is not None:
+            for k in self.passkeys:
+                result['Passkeys'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.passkeys = []
+        if m.get('Passkeys') is not None:
+            for k in m.get('Passkeys'):
+                temp_model = ListPasskeysResponseBodyPasskeys()
+                self.passkeys.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPasskeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPasskeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPasskeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPredefinedScopesRequest(TeaModel):
     def __init__(
         self,
@@ -9031,7 +9305,7 @@ class ListPredefinedScopesResponseBodyPredefinedScopesPredefinedScope(TeaModel):
     ):
         # The description of the permission scope.
         self.description = description
-        # The name of the scope.
+        # The name of the permission scope.
         self.name = name
 
     def validate(self):
@@ -9099,9 +9373,9 @@ class ListPredefinedScopesResponseBody(TeaModel):
         predefined_scopes: ListPredefinedScopesResponseBodyPredefinedScopes = None,
         request_id: str = None,
     ):
-        # The information of application permissions.
+        # The information about application permissions.
         self.predefined_scopes = predefined_scopes
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9312,11 +9586,11 @@ class ListSAMLProvidersResponseBody(TeaModel):
         # *   true
         # *   false
         self.is_truncated = is_truncated
-        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+        # The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the IdP.
+        # The information about IdPs.
         self.samlproviders = samlproviders
 
     def validate(self):
@@ -11339,7 +11613,7 @@ class RemoveUserFromGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11410,11 +11684,11 @@ class SetDefaultDomainRequest(TeaModel):
     ):
         # The default domain name.
         # 
-        # The name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
+        # The default domain name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
         # 
-        # The default domain name can contain up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The default domain name can contain up to 64 characters in length. The default domain name can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # >  The default domain name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-).
+        # >  The default domain name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-).
         # 
         # This parameter is required.
         self.default_domain_name = default_domain_name
@@ -11447,7 +11721,7 @@ class SetDefaultDomainResponseBody(TeaModel):
     ):
         # The default domain name.
         self.default_domain_name = default_domain_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12468,13 +12742,19 @@ class SetUserSsoSettingsRequest(TeaModel):
         self.auxiliary_domain = auxiliary_domain
         # The metadata file, which is Base64-encoded.
         # 
-        # The file is provided by an IdP that supports SAML 2.0.
+        # The file is provided by an identity provider (IdP) that supports Security Assertion Markup Language (SAML) 2.0.
         self.metadata_document = metadata_document
-        # Specifies whether to enable SSO for the RAM user. Default value: false. Valid values:
+        # Specifies whether to enable SSO for the RAM user. Valid values:
         # 
         # *   true
-        # *   false
+        # *   false (default)
         self.sso_enabled = sso_enabled
+        # Specifies whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
+        # 
+        # *   If the value of the parameter is `true`, the `<saml:NameID>` element **must** be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+        # *   If the value of the parameter is `false`, the `<saml:NameID>` element **must** be in the `username` format and **cannot** contain the `domain` suffix.
+        # 
+        # Set the value to the default `true`.
         self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
@@ -12523,6 +12803,12 @@ class SetUserSsoSettingsResponseBodyUserSsoSettings(TeaModel):
         self.metadata_document = metadata_document
         # Indicates whether user-based SSO is enabled.
         self.sso_enabled = sso_enabled
+        # Indicates whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
+        # 
+        # *   If the value of the parameter is `true`, the `<saml:NameID>` element **must** be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
+        # *   If the value of the parameter is `false`, the `<saml:NameID>` element **must** be in the `username` format and **cannot** contain the `domain` suffix.
+        # 
+        # The default value is `true`.
         self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):
@@ -12563,7 +12849,7 @@ class SetUserSsoSettingsResponseBody(TeaModel):
         request_id: str = None,
         user_sso_settings: SetUserSsoSettingsResponseBodyUserSsoSettings = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The configurations of user-based SSO.
         self.user_sso_settings = user_sso_settings
@@ -12643,11 +12929,11 @@ class TagResourcesRequestTag(TeaModel):
     ):
         # The key of tag N.
         # 
-        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N.
         # 
-        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be a up to128 characters in length and cannot contain `http://` or `https://`.
+        # Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -12684,21 +12970,23 @@ class TagResourcesRequest(TeaModel):
     ):
         # The ID of resource N.
         # 
-        # Valid values of N: 1 to 50. If ResourceType is set to user, the resource ID is the ID of the RAM user.
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
         # 
-        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
+        # >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
         self.resource_id = resource_id
         # The name of resource N.
         # 
-        # Valid values of N: 1 to 50. If ResourceType is set to user, the resource name is the name of the RAM user.
+        # Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
         # 
-        # > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
+        # >  You must specify only one of the following parameters: `ResourceId` and `ResourcePrincipalName`.
         self.resource_principal_name = resource_principal_name
         # The type of the resource. Valid value:
         # 
-        # *   user: a RAM user
+        # *   user: a Resource Access Management (RAM) user.
         self.resource_type = resource_type
-        # The tag value.
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length. The tag key cannot start with aliyun or acs: and cannot contain `http://` or `https://`.
         self.tag = tag
 
     def validate(self):
@@ -12746,7 +13034,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12874,9 +13162,9 @@ class UnbindMFADeviceResponseBody(TeaModel):
         mfadevice: UnbindMFADeviceResponseBodyMFADevice = None,
         request_id: str = None,
     ):
-        # The information of the MFA device.
+        # The information about the MFA device.
         self.mfadevice = mfadevice
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13144,7 +13432,7 @@ class UpdateAccessKeyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13673,7 +13961,7 @@ class UpdateGroupRequest(TeaModel):
         self.group_name = group_name
         # The new description.
         # 
-        # The value can be up to 128 characters in length.
+        # The description can be up to 128 characters in length.
         self.new_comments = new_comments
         # The new display name of the RAM user group.
         # 
@@ -13785,9 +14073,9 @@ class UpdateGroupResponseBody(TeaModel):
         group: UpdateGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information of the RAM user group.
+        # The information about the RAM user group.
         self.group = group
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13866,24 +14154,24 @@ class UpdateLoginProfileRequest(TeaModel):
         status: str = None,
         user_principal_name: str = None,
     ):
-        # Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+        # Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
         # 
-        # *   true. The value true indicates that the RAM user must bind an MFA device at the next logon.
-        # *   false.
+        # *   true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        # *   false: does not forcefully enable MFA for the RAM user.
         self.mfabind_required = mfabind_required
         # The new password that is used to log on to the console.
         # 
-        # The password must meet the complexity requirements.
+        # The new password must meet the complexity requirements.
         self.password = password
-        # Specifies whether the RAM user must reset the password at the next logon. Valid values:
+        # Specifies whether the RAM user is required to reset the password upon the next logon. Valid values:
         # 
         # *   true
         # *   false
         self.password_reset_required = password_reset_required
-        # The status of password-based logon. Valid values:
+        # Specifies whether to enable password-based logons to the console. Valid values:
         # 
-        # *   Active
-        # *   Inactive
+        # *   Active: enables password-based logons to the console.
+        # *   Inactive: disables password-based logons to the console.
         self.status = status
         # The logon name of the RAM user.
         # 
@@ -13939,11 +14227,11 @@ class UpdateLoginProfileResponseBodyLoginProfile(TeaModel):
         self.auto_disable_login_status = auto_disable_login_status
         # Indicates whether MFA must be enabled.
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must reset the password at the next logon.
+        # Indicates whether the RAM user is required to reset the password upon the next logon.
         self.password_reset_required = password_reset_required
-        # The status of password-based logon.
+        # Indicates whether to enable password-based logons to the console.
         self.status = status
-        # The update time.
+        # The modification time.
         self.update_date = update_date
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name
@@ -13994,9 +14282,9 @@ class UpdateLoginProfileResponseBody(TeaModel):
         login_profile: UpdateLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The logon information.
+        # The console logon configurations.
         self.login_profile = login_profile
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14299,6 +14587,113 @@ class UpdateOIDCProviderResponse(TeaModel):
         return self
 
 
+class UpdatePasskeyRequest(TeaModel):
+    def __init__(
+        self,
+        passkey_id: str = None,
+        passkey_name: str = None,
+        user_principal_name: str = None,
+    ):
+        self.passkey_id = passkey_id
+        self.passkey_name = passkey_name
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.passkey_id is not None:
+            result['PasskeyId'] = self.passkey_id
+        if self.passkey_name is not None:
+            result['PasskeyName'] = self.passkey_name
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PasskeyId') is not None:
+            self.passkey_id = m.get('PasskeyId')
+        if m.get('PasskeyName') is not None:
+            self.passkey_name = m.get('PasskeyName')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class UpdatePasskeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdatePasskeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePasskeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePasskeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateSAMLProviderRequest(TeaModel):
     def __init__(
         self,
@@ -14409,7 +14804,7 @@ class UpdateSAMLProviderResponseBody(TeaModel):
         request_id: str = None,
         samlprovider: UpdateSAMLProviderResponseBodySAMLProvider = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the IdP.
         self.samlprovider = samlprovider
@@ -14514,7 +14909,7 @@ class UpdateUserRequest(TeaModel):
         # 
         # The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
         # 
-        # The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be 1 to 64 characters in length.
+        # The value of `NewUserPrincipalName` must be `1 to 128` characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The value of `<username>` must be `1 to 64` characters in length.
         self.new_user_principal_name = new_user_principal_name
         # The ID of the RAM user.
         # 
@@ -14601,9 +14996,9 @@ class UpdateUserResponseBodyUser(TeaModel):
         self.mobile_phone = mobile_phone
         # The source of the RAM user. Valid values:
         # 
-        # - Manual: The RAM user is manually created in the RAM console.
-        # - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
-        # - CloudSSO: The RAM user is mapped from a CloudSSO user.
+        # *   Manual: The RAM user is manually created in the RAM console.
+        # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+        # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
         # The time when the information about the RAM user was updated.
         self.update_date = update_date

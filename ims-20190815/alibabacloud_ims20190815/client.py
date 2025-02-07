@@ -73,10 +73,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddClientIdToOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddClientIdToOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddClientIdToOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_client_id_to_oidcprovider_with_options_async(
         self,
@@ -110,10 +116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddClientIdToOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddClientIdToOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddClientIdToOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_client_id_to_oidcprovider(
         self,
@@ -176,10 +188,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_fingerprint_to_oidcprovider_with_options_async(
         self,
@@ -216,10 +234,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddFingerprintToOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_fingerprint_to_oidcprovider(
         self,
@@ -285,10 +309,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddUserToGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddUserToGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddUserToGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_user_to_group_with_options_async(
         self,
@@ -322,10 +352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.AddUserToGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.AddUserToGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.AddUserToGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_user_to_group(
         self,
@@ -389,10 +425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.BindMFADeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.BindMFADeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.BindMFADeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_mfadevice_with_options_async(
         self,
@@ -430,10 +472,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.BindMFADeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.BindMFADeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.BindMFADeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_mfadevice(
         self,
@@ -467,9 +515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        @summary 修改RAM用户的登录密码
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
         
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -495,10 +543,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ChangePasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ChangePasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ChangePasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_password_with_options_async(
         self,
@@ -506,9 +560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        @summary 修改RAM用户的登录密码
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
         
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -534,19 +588,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ChangePasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ChangePasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ChangePasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_password(
         self,
         request: ims_20190815_models.ChangePasswordRequest,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        @summary 修改RAM用户的登录密码
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
         
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -559,9 +619,9 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ChangePasswordRequest,
     ) -> ims_20190815_models.ChangePasswordResponse:
         """
-        @summary 修改RAM用户的登录密码
+        @summary Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
         
-        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+        @description >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
         
         @param request: ChangePasswordRequest
         @return: ChangePasswordResponse
@@ -575,7 +635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
         """
-        @summary 创建主账号或RAM用户访问密钥
+        @summary Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: CreateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -599,10 +659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateAccessKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAccessKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAccessKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_access_key_with_options_async(
         self,
@@ -610,7 +676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
         """
-        @summary 创建主账号或RAM用户访问密钥
+        @summary Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: CreateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -634,17 +700,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateAccessKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAccessKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAccessKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_access_key(
         self,
         request: ims_20190815_models.CreateAccessKeyRequest,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
         """
-        @summary 创建主账号或RAM用户访问密钥
+        @summary Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: CreateAccessKeyRequest
         @return: CreateAccessKeyResponse
@@ -657,7 +729,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateAccessKeyRequest,
     ) -> ims_20190815_models.CreateAccessKeyResponse:
         """
-        @summary 创建主账号或RAM用户访问密钥
+        @summary Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: CreateAccessKeyRequest
         @return: CreateAccessKeyResponse
@@ -695,10 +767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateAppSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAppSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAppSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_app_secret_with_options_async(
         self,
@@ -730,10 +808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateAppSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAppSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateAppSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_app_secret(
         self,
@@ -809,10 +893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_application_with_options_async(
         self,
@@ -862,10 +952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_application(
         self,
@@ -899,7 +995,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateGroupResponse:
         """
-        @summary Creates a RAM user group.
+        @summary Creates a Resource Access Management (RAM) user group.
         
         @param request: CreateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -927,10 +1023,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_group_with_options_async(
         self,
@@ -938,7 +1040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateGroupResponse:
         """
-        @summary Creates a RAM user group.
+        @summary Creates a Resource Access Management (RAM) user group.
         
         @param request: CreateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -966,17 +1068,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_group(
         self,
         request: ims_20190815_models.CreateGroupRequest,
     ) -> ims_20190815_models.CreateGroupResponse:
         """
-        @summary Creates a RAM user group.
+        @summary Creates a Resource Access Management (RAM) user group.
         
         @param request: CreateGroupRequest
         @return: CreateGroupResponse
@@ -989,7 +1097,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateGroupRequest,
     ) -> ims_20190815_models.CreateGroupResponse:
         """
-        @summary Creates a RAM user group.
+        @summary Creates a Resource Access Management (RAM) user group.
         
         @param request: CreateGroupRequest
         @return: CreateGroupResponse
@@ -1003,7 +1111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
         """
-        @summary 开启指定RAM用户的控制台登录
+        @summary Enables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1035,10 +1143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateLoginProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateLoginProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateLoginProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_login_profile_with_options_async(
         self,
@@ -1046,7 +1160,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
         """
-        @summary 开启指定RAM用户的控制台登录
+        @summary Enables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1078,17 +1192,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateLoginProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateLoginProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateLoginProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_login_profile(
         self,
         request: ims_20190815_models.CreateLoginProfileRequest,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
         """
-        @summary 开启指定RAM用户的控制台登录
+        @summary Enables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @return: CreateLoginProfileResponse
@@ -1101,7 +1221,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateLoginProfileRequest,
     ) -> ims_20190815_models.CreateLoginProfileResponse:
         """
-        @summary 开启指定RAM用户的控制台登录
+        @summary Enables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: CreateLoginProfileRequest
         @return: CreateLoginProfileResponse
@@ -1158,10 +1278,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_oidcprovider_with_options_async(
         self,
@@ -1212,10 +1338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_oidcprovider(
         self,
@@ -1267,7 +1399,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
         """
-        @summary 创建角色SSO身份提供商
+        @summary Creates an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: CreateSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1295,10 +1427,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateSAMLProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateSAMLProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateSAMLProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_samlprovider_with_options_async(
         self,
@@ -1306,7 +1444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
         """
-        @summary 创建角色SSO身份提供商
+        @summary Creates an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: CreateSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1334,17 +1472,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateSAMLProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateSAMLProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateSAMLProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_samlprovider(
         self,
         request: ims_20190815_models.CreateSAMLProviderRequest,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
         """
-        @summary 创建角色SSO身份提供商
+        @summary Creates an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: CreateSAMLProviderRequest
         @return: CreateSAMLProviderResponse
@@ -1357,7 +1501,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateSAMLProviderRequest,
     ) -> ims_20190815_models.CreateSAMLProviderResponse:
         """
-        @summary 创建角色SSO身份提供商
+        @summary Creates an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: CreateSAMLProviderRequest
         @return: CreateSAMLProviderResponse
@@ -1407,10 +1551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_user_with_options_async(
         self,
@@ -1454,10 +1604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_user(
         self,
@@ -1495,7 +1651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
         """
-        @summary 创建多因素认证设备
+        @summary Creates a virtual multi-factor authentication (MFA) device.
         
         @param request: CreateVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1519,10 +1675,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateVirtualMFADeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateVirtualMFADeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateVirtualMFADeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_virtual_mfadevice_with_options_async(
         self,
@@ -1530,7 +1692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
         """
-        @summary 创建多因素认证设备
+        @summary Creates a virtual multi-factor authentication (MFA) device.
         
         @param request: CreateVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1554,17 +1716,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.CreateVirtualMFADeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.CreateVirtualMFADeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.CreateVirtualMFADeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_virtual_mfadevice(
         self,
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
         """
-        @summary 创建多因素认证设备
+        @summary Creates a virtual multi-factor authentication (MFA) device.
         
         @param request: CreateVirtualMFADeviceRequest
         @return: CreateVirtualMFADeviceResponse
@@ -1577,7 +1745,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.CreateVirtualMFADeviceRequest,
     ) -> ims_20190815_models.CreateVirtualMFADeviceResponse:
         """
-        @summary 创建多因素认证设备
+        @summary Creates a virtual multi-factor authentication (MFA) device.
         
         @param request: CreateVirtualMFADeviceRequest
         @return: CreateVirtualMFADeviceResponse
@@ -1591,7 +1759,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
         """
-        @summary 删除用户的访问密钥
+        @summary Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: DeleteAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1617,10 +1785,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteAccessKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_access_key_with_options_async(
         self,
@@ -1628,7 +1802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
         """
-        @summary 删除用户的访问密钥
+        @summary Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: DeleteAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1654,17 +1828,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteAccessKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAccessKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_access_key(
         self,
         request: ims_20190815_models.DeleteAccessKeyRequest,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
         """
-        @summary 删除用户的访问密钥
+        @summary Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: DeleteAccessKeyRequest
         @return: DeleteAccessKeyResponse
@@ -1677,7 +1857,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAccessKeyRequest,
     ) -> ims_20190815_models.DeleteAccessKeyResponse:
         """
-        @summary 删除用户的访问密钥
+        @summary Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: DeleteAccessKeyRequest
         @return: DeleteAccessKeyResponse
@@ -1691,7 +1871,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
         """
-        @summary Delete the application secret for the specified application.
+        @summary Deletes the application secret of an application.
         
         @param request: DeleteAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1717,10 +1897,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteAppSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAppSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAppSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_app_secret_with_options_async(
         self,
@@ -1728,7 +1914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
         """
-        @summary Delete the application secret for the specified application.
+        @summary Deletes the application secret of an application.
         
         @param request: DeleteAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1754,17 +1940,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteAppSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAppSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteAppSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_app_secret(
         self,
         request: ims_20190815_models.DeleteAppSecretRequest,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
         """
-        @summary Delete the application secret for the specified application.
+        @summary Deletes the application secret of an application.
         
         @param request: DeleteAppSecretRequest
         @return: DeleteAppSecretResponse
@@ -1777,7 +1969,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteAppSecretRequest,
     ) -> ims_20190815_models.DeleteAppSecretResponse:
         """
-        @summary Delete the application secret for the specified application.
+        @summary Deletes the application secret of an application.
         
         @param request: DeleteAppSecretRequest
         @return: DeleteAppSecretResponse
@@ -1815,10 +2007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_application_with_options_async(
         self,
@@ -1850,10 +2048,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_application(
         self,
@@ -1887,7 +2091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        @summary 删除指定的用户组
+        @summary Deletes a Resource Access Management (RAM) user group.
         
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
@@ -1913,10 +2117,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_group_with_options_async(
         self,
@@ -1924,7 +2134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        @summary 删除指定的用户组
+        @summary Deletes a Resource Access Management (RAM) user group.
         
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
@@ -1950,17 +2160,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_group(
         self,
         request: ims_20190815_models.DeleteGroupRequest,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        @summary 删除指定的用户组
+        @summary Deletes a Resource Access Management (RAM) user group.
         
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
@@ -1975,7 +2191,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteGroupRequest,
     ) -> ims_20190815_models.DeleteGroupResponse:
         """
-        @summary 删除指定的用户组
+        @summary Deletes a Resource Access Management (RAM) user group.
         
         @description Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
         
@@ -1991,7 +2207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
         """
-        @summary 关闭指定RAM用户的控制台登录
+        @summary Disables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: DeleteLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2015,10 +2231,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteLoginProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteLoginProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteLoginProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_login_profile_with_options_async(
         self,
@@ -2026,7 +2248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
         """
-        @summary 关闭指定RAM用户的控制台登录
+        @summary Disables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: DeleteLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2050,17 +2272,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteLoginProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteLoginProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteLoginProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_login_profile(
         self,
         request: ims_20190815_models.DeleteLoginProfileRequest,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
         """
-        @summary 关闭指定RAM用户的控制台登录
+        @summary Disables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: DeleteLoginProfileRequest
         @return: DeleteLoginProfileResponse
@@ -2073,7 +2301,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteLoginProfileRequest,
     ) -> ims_20190815_models.DeleteLoginProfileResponse:
         """
-        @summary 关闭指定RAM用户的控制台登录
+        @summary Disables logon to the console for a Resource Access Management (RAM) user.
         
         @param request: DeleteLoginProfileRequest
         @return: DeleteLoginProfileResponse
@@ -2114,10 +2342,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_oidcprovider_with_options_async(
         self,
@@ -2152,10 +2386,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_oidcprovider(
         self,
@@ -2189,13 +2429,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_oidcprovider_with_options_async(request, runtime)
 
+    def delete_passkey_with_options(
+        self,
+        request: ims_20190815_models.DeletePasskeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeletePasskeyResponse:
+        """
+        @summary 删除Passkey
+        
+        @param request: DeletePasskeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePasskeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.passkey_id):
+            query['PasskeyId'] = request.passkey_id
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePasskey',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeletePasskeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeletePasskeyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_passkey_with_options_async(
+        self,
+        request: ims_20190815_models.DeletePasskeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.DeletePasskeyResponse:
+        """
+        @summary 删除Passkey
+        
+        @param request: DeletePasskeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePasskeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.passkey_id):
+            query['PasskeyId'] = request.passkey_id
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePasskey',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeletePasskeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeletePasskeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_passkey(
+        self,
+        request: ims_20190815_models.DeletePasskeyRequest,
+    ) -> ims_20190815_models.DeletePasskeyResponse:
+        """
+        @summary 删除Passkey
+        
+        @param request: DeletePasskeyRequest
+        @return: DeletePasskeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_passkey_with_options(request, runtime)
+
+    async def delete_passkey_async(
+        self,
+        request: ims_20190815_models.DeletePasskeyRequest,
+    ) -> ims_20190815_models.DeletePasskeyResponse:
+        """
+        @summary 删除Passkey
+        
+        @param request: DeletePasskeyRequest
+        @return: DeletePasskeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_passkey_with_options_async(request, runtime)
+
     def delete_samlprovider_with_options(
         self,
         request: ims_20190815_models.DeleteSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
         """
-        @summary 删除指定的角色SSO身份提供商
+        @summary Deletes an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: DeleteSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2219,10 +2571,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteSAMLProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteSAMLProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteSAMLProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_samlprovider_with_options_async(
         self,
@@ -2230,7 +2588,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
         """
-        @summary 删除指定的角色SSO身份提供商
+        @summary Deletes an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: DeleteSAMLProviderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2254,17 +2612,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteSAMLProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteSAMLProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteSAMLProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_samlprovider(
         self,
         request: ims_20190815_models.DeleteSAMLProviderRequest,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
         """
-        @summary 删除指定的角色SSO身份提供商
+        @summary Deletes an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: DeleteSAMLProviderRequest
         @return: DeleteSAMLProviderResponse
@@ -2277,7 +2641,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteSAMLProviderRequest,
     ) -> ims_20190815_models.DeleteSAMLProviderResponse:
         """
-        @summary 删除指定的角色SSO身份提供商
+        @summary Deletes an identity provider (IdP) for role-based single sign-on (SSO).
         
         @param request: DeleteSAMLProviderRequest
         @return: DeleteSAMLProviderResponse
@@ -2291,7 +2655,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteUserResponse:
         """
-        @summary 删除RAM用户
+        @summary Deletes a Resource Access Management (RAM) user.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2317,10 +2681,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_user_with_options_async(
         self,
@@ -2328,7 +2698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteUserResponse:
         """
-        @summary 删除RAM用户
+        @summary Deletes a Resource Access Management (RAM) user.
         
         @param request: DeleteUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2354,17 +2724,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_user(
         self,
         request: ims_20190815_models.DeleteUserRequest,
     ) -> ims_20190815_models.DeleteUserResponse:
         """
-        @summary 删除RAM用户
+        @summary Deletes a Resource Access Management (RAM) user.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
@@ -2377,7 +2753,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteUserRequest,
     ) -> ims_20190815_models.DeleteUserResponse:
         """
-        @summary 删除RAM用户
+        @summary Deletes a Resource Access Management (RAM) user.
         
         @param request: DeleteUserRequest
         @return: DeleteUserResponse
@@ -2391,7 +2767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
         """
-        @summary 删除多因素认证设备
+        @summary Deletes a multi-factor authentication (MFA) device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2415,10 +2791,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteVirtualMFADeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteVirtualMFADeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteVirtualMFADeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_virtual_mfadevice_with_options_async(
         self,
@@ -2426,7 +2808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
         """
-        @summary 删除多因素认证设备
+        @summary Deletes a multi-factor authentication (MFA) device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2450,17 +2832,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DeleteVirtualMFADeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteVirtualMFADeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DeleteVirtualMFADeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_virtual_mfadevice(
         self,
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
         """
-        @summary 删除多因素认证设备
+        @summary Deletes a multi-factor authentication (MFA) device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
@@ -2473,7 +2861,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DeleteVirtualMFADeviceRequest,
     ) -> ims_20190815_models.DeleteVirtualMFADeviceResponse:
         """
-        @summary 删除多因素认证设备
+        @summary Deletes a multi-factor authentication (MFA) device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
@@ -2487,7 +2875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
         """
-        @summary 解绑并删除多因素认证设备
+        @summary Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: DisableVirtualMFARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2511,10 +2899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DisableVirtualMFAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DisableVirtualMFAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DisableVirtualMFAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_virtual_mfawith_options_async(
         self,
@@ -2522,7 +2916,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
         """
-        @summary 解绑并删除多因素认证设备
+        @summary Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: DisableVirtualMFARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2546,17 +2940,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.DisableVirtualMFAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.DisableVirtualMFAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.DisableVirtualMFAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_virtual_mfa(
         self,
         request: ims_20190815_models.DisableVirtualMFARequest,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
         """
-        @summary 解绑并删除多因素认证设备
+        @summary Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: DisableVirtualMFARequest
         @return: DisableVirtualMFAResponse
@@ -2569,7 +2969,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.DisableVirtualMFARequest,
     ) -> ims_20190815_models.DisableVirtualMFAResponse:
         """
-        @summary 解绑并删除多因素认证设备
+        @summary Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: DisableVirtualMFARequest
         @return: DisableVirtualMFAResponse
@@ -2582,7 +2982,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GenerateCredentialReportResponse:
         """
-        @summary Generates a user credential report.
+        @summary Generates the user credential report of an Alibaba Cloud account.
         
         @param request: GenerateCredentialReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2600,17 +3000,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GenerateCredentialReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateCredentialReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateCredentialReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def generate_credential_report_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GenerateCredentialReportResponse:
         """
-        @summary Generates a user credential report.
+        @summary Generates the user credential report of an Alibaba Cloud account.
         
         @param request: GenerateCredentialReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2628,14 +3034,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GenerateCredentialReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateCredentialReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GenerateCredentialReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def generate_credential_report(self) -> ims_20190815_models.GenerateCredentialReportResponse:
         """
-        @summary Generates a user credential report.
+        @summary Generates the user credential report of an Alibaba Cloud account.
         
         @return: GenerateCredentialReportResponse
         """
@@ -2644,7 +3056,7 @@ class Client(OpenApiClient):
 
     async def generate_credential_report_async(self) -> ims_20190815_models.GenerateCredentialReportResponse:
         """
-        @summary Generates a user credential report.
+        @summary Generates the user credential report of an Alibaba Cloud account.
         
         @return: GenerateCredentialReportResponse
         """
@@ -2683,10 +3095,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccessKeyLastUsedResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyLastUsedResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyLastUsedResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_access_key_last_used_with_options_async(
         self,
@@ -2720,10 +3138,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccessKeyLastUsedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyLastUsedResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccessKeyLastUsedResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_access_key_last_used(
         self,
@@ -2756,7 +3180,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountMFAInfoResponse:
         """
-        @summary 查询主账号多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
         
         @param request: GetAccountMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2774,17 +3198,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountMFAInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountMFAInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountMFAInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_mfainfo_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountMFAInfoResponse:
         """
-        @summary 查询主账号多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
         
         @param request: GetAccountMFAInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2802,14 +3232,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountMFAInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountMFAInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountMFAInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_mfainfo(self) -> ims_20190815_models.GetAccountMFAInfoResponse:
         """
-        @summary 查询主账号多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
         
         @return: GetAccountMFAInfoResponse
         """
@@ -2818,7 +3254,7 @@ class Client(OpenApiClient):
 
     async def get_account_mfainfo_async(self) -> ims_20190815_models.GetAccountMFAInfoResponse:
         """
-        @summary 查询主账号多因素认证设备信息
+        @summary Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
         
         @return: GetAccountMFAInfoResponse
         """
@@ -2830,7 +3266,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
         """
-        @summary 查询阿里云账号的安全报告
+        @summary Queries the security report of an Alibaba Cloud account.
         
         @param request: GetAccountSecurityPracticeReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2848,17 +3284,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_security_practice_report_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
         """
-        @summary 查询阿里云账号的安全报告
+        @summary Queries the security report of an Alibaba Cloud account.
         
         @param request: GetAccountSecurityPracticeReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2876,14 +3318,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSecurityPracticeReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_security_practice_report(self) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
         """
-        @summary 查询阿里云账号的安全报告
+        @summary Queries the security report of an Alibaba Cloud account.
         
         @return: GetAccountSecurityPracticeReportResponse
         """
@@ -2892,7 +3340,7 @@ class Client(OpenApiClient):
 
     async def get_account_security_practice_report_async(self) -> ims_20190815_models.GetAccountSecurityPracticeReportResponse:
         """
-        @summary 查询阿里云账号的安全报告
+        @summary Queries the security report of an Alibaba Cloud account.
         
         @return: GetAccountSecurityPracticeReportResponse
         """
@@ -2904,7 +3352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSummaryResponse:
         """
-        @summary 查询主账号概览信息
+        @summary Queries the overview information about an Alibaba Cloud account.
         
         @param request: GetAccountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2922,17 +3370,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountSummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_summary_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetAccountSummaryResponse:
         """
-        @summary 查询主账号概览信息
+        @summary Queries the overview information about an Alibaba Cloud account.
         
         @param request: GetAccountSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2950,14 +3404,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAccountSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAccountSummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account_summary(self) -> ims_20190815_models.GetAccountSummaryResponse:
         """
-        @summary 查询主账号概览信息
+        @summary Queries the overview information about an Alibaba Cloud account.
         
         @return: GetAccountSummaryResponse
         """
@@ -2966,7 +3426,7 @@ class Client(OpenApiClient):
 
     async def get_account_summary_async(self) -> ims_20190815_models.GetAccountSummaryResponse:
         """
-        @summary 查询主账号概览信息
+        @summary Queries the overview information about an Alibaba Cloud account.
         
         @return: GetAccountSummaryResponse
         """
@@ -3005,10 +3465,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAppSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAppSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAppSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_app_secret_with_options_async(
         self,
@@ -3042,10 +3508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetAppSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetAppSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetAppSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_app_secret(
         self,
@@ -3105,10 +3577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_application_with_options_async(
         self,
@@ -3142,10 +3620,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_application(
         self,
@@ -3209,10 +3693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetCredentialReportResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetCredentialReportResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetCredentialReportResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_credential_report_with_options_async(
         self,
@@ -3246,10 +3736,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetCredentialReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetCredentialReportResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetCredentialReportResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_credential_report(
         self,
@@ -3300,10 +3796,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetDefaultDomainResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetDefaultDomainResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetDefaultDomainResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_default_domain_with_options_async(
         self,
@@ -3328,10 +3830,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetDefaultDomainResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetDefaultDomainResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetDefaultDomainResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_default_domain(self) -> ims_20190815_models.GetDefaultDomainResponse:
         """
@@ -3381,10 +3889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_group_with_options_async(
         self,
@@ -3416,10 +3930,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_group(
         self,
@@ -3477,10 +3997,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetLoginProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetLoginProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetLoginProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_login_profile_with_options_async(
         self,
@@ -3512,10 +4038,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetLoginProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetLoginProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetLoginProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_login_profile(
         self,
@@ -3576,10 +4108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_oidcprovider_with_options_async(
         self,
@@ -3614,10 +4152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_oidcprovider(
         self,
@@ -3674,10 +4218,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetPasswordPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetPasswordPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetPasswordPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_password_policy_with_options_async(
         self,
@@ -3702,10 +4252,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetPasswordPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetPasswordPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetPasswordPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_password_policy(self) -> ims_20190815_models.GetPasswordPolicyResponse:
         """
@@ -3755,10 +4311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetSAMLProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetSAMLProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetSAMLProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_samlprovider_with_options_async(
         self,
@@ -3790,10 +4352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetSAMLProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetSAMLProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetSAMLProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_samlprovider(
         self,
@@ -3844,10 +4412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetSecurityPreferenceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetSecurityPreferenceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetSecurityPreferenceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_security_preference_with_options_async(
         self,
@@ -3872,10 +4446,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetSecurityPreferenceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetSecurityPreferenceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetSecurityPreferenceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_security_preference(self) -> ims_20190815_models.GetSecurityPreferenceResponse:
         """
@@ -3931,10 +4511,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_user_with_options_async(
         self,
@@ -3972,10 +4558,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_user(
         self,
@@ -4037,10 +4629,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserMFAInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserMFAInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserMFAInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_user_mfainfo_with_options_async(
         self,
@@ -4072,10 +4670,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserMFAInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserMFAInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserMFAInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_user_mfainfo(
         self,
@@ -4108,7 +4712,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserSsoSettingsResponse:
         """
-        @summary 查询用户SSO身份提供商信息
+        @summary Queries the configurations of user-based single sign-on (SSO).
         
         @param request: GetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4126,17 +4730,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserSsoSettingsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserSsoSettingsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserSsoSettingsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_user_sso_settings_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetUserSsoSettingsResponse:
         """
-        @summary 查询用户SSO身份提供商信息
+        @summary Queries the configurations of user-based single sign-on (SSO).
         
         @param request: GetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4154,14 +4764,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetUserSsoSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserSsoSettingsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetUserSsoSettingsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_user_sso_settings(self) -> ims_20190815_models.GetUserSsoSettingsResponse:
         """
-        @summary 查询用户SSO身份提供商信息
+        @summary Queries the configurations of user-based single sign-on (SSO).
         
         @return: GetUserSsoSettingsResponse
         """
@@ -4170,7 +4786,7 @@ class Client(OpenApiClient):
 
     async def get_user_sso_settings_async(self) -> ims_20190815_models.GetUserSsoSettingsResponse:
         """
-        @summary 查询用户SSO身份提供商信息
+        @summary Queries the configurations of user-based single sign-on (SSO).
         
         @return: GetUserSsoSettingsResponse
         """
@@ -4183,7 +4799,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
         """
-        @summary 获取用户安全认证的信息
+        @summary Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetVerificationInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4207,10 +4823,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetVerificationInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetVerificationInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetVerificationInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_verification_info_with_options_async(
         self,
@@ -4218,7 +4840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
         """
-        @summary 获取用户安全认证的信息
+        @summary Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetVerificationInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4242,17 +4864,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.GetVerificationInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.GetVerificationInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.GetVerificationInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_verification_info(
         self,
         request: ims_20190815_models.GetVerificationInfoRequest,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
         """
-        @summary 获取用户安全认证的信息
+        @summary Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetVerificationInfoRequest
         @return: GetVerificationInfoResponse
@@ -4265,7 +4893,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.GetVerificationInfoRequest,
     ) -> ims_20190815_models.GetVerificationInfoResponse:
         """
-        @summary 获取用户安全认证的信息
+        @summary Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
         
         @param request: GetVerificationInfoRequest
         @return: GetVerificationInfoResponse
@@ -4303,10 +4931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListAccessKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_access_keys_with_options_async(
         self,
@@ -4338,10 +4972,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListAccessKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAccessKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_access_keys(
         self,
@@ -4399,10 +5039,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListAppSecretIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAppSecretIdsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAppSecretIdsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_app_secret_ids_with_options_async(
         self,
@@ -4434,10 +5080,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListAppSecretIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListAppSecretIdsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListAppSecretIdsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_app_secret_ids(
         self,
@@ -4490,10 +5142,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListApplicationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_applications_with_options_async(
         self,
@@ -4520,10 +5178,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListApplicationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListApplicationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_applications(self) -> ims_20190815_models.ListApplicationsResponse:
         """
@@ -4553,7 +5217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4579,10 +5243,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_groups_with_options_async(
         self,
@@ -4590,7 +5260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4616,17 +5286,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_groups(
         self,
         request: ims_20190815_models.ListGroupsRequest,
     ) -> ims_20190815_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @return: ListGroupsResponse
@@ -4639,7 +5315,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListGroupsRequest,
     ) -> ims_20190815_models.ListGroupsResponse:
         """
-        @summary Queries RAM user groups.
+        @summary Queries Resource Access Management (RAM) user groups.
         
         @param request: ListGroupsRequest
         @return: ListGroupsResponse
@@ -4677,10 +5353,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListGroupsForUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsForUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsForUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_groups_for_user_with_options_async(
         self,
@@ -4712,10 +5394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListGroupsForUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsForUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListGroupsForUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_groups_for_user(
         self,
@@ -4778,10 +5466,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListOIDCProvidersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListOIDCProvidersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListOIDCProvidersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_oidcproviders_with_options_async(
         self,
@@ -4818,10 +5512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListOIDCProvidersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListOIDCProvidersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListOIDCProvidersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_oidcproviders(
         self,
@@ -4855,6 +5555,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_oidcproviders_with_options_async(request, runtime)
 
+    def list_passkeys_with_options(
+        self,
+        request: ims_20190815_models.ListPasskeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListPasskeysResponse:
+        """
+        @summary 查询Passkey
+        
+        @param request: ListPasskeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPasskeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPasskeys',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListPasskeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListPasskeysResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_passkeys_with_options_async(
+        self,
+        request: ims_20190815_models.ListPasskeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.ListPasskeysResponse:
+        """
+        @summary 查询Passkey
+        
+        @param request: ListPasskeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPasskeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPasskeys',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListPasskeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListPasskeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_passkeys(
+        self,
+        request: ims_20190815_models.ListPasskeysRequest,
+    ) -> ims_20190815_models.ListPasskeysResponse:
+        """
+        @summary 查询Passkey
+        
+        @param request: ListPasskeysRequest
+        @return: ListPasskeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_passkeys_with_options(request, runtime)
+
+    async def list_passkeys_async(
+        self,
+        request: ims_20190815_models.ListPasskeysRequest,
+    ) -> ims_20190815_models.ListPasskeysResponse:
+        """
+        @summary 查询Passkey
+        
+        @param request: ListPasskeysRequest
+        @return: ListPasskeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_passkeys_with_options_async(request, runtime)
+
     def list_predefined_scopes_with_options(
         self,
         request: ims_20190815_models.ListPredefinedScopesRequest,
@@ -4885,10 +5693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListPredefinedScopesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListPredefinedScopesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListPredefinedScopesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_predefined_scopes_with_options_async(
         self,
@@ -4920,10 +5734,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListPredefinedScopesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListPredefinedScopesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListPredefinedScopesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_predefined_scopes(
         self,
@@ -4957,7 +5777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
         """
-        @summary 查询角色SSO身份提供商列表
+        @summary Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
         
         @param request: ListSAMLProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4983,10 +5803,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListSAMLProvidersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListSAMLProvidersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListSAMLProvidersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_samlproviders_with_options_async(
         self,
@@ -4994,7 +5820,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
         """
-        @summary 查询角色SSO身份提供商列表
+        @summary Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
         
         @param request: ListSAMLProvidersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5020,17 +5846,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListSAMLProvidersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListSAMLProvidersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListSAMLProvidersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_samlproviders(
         self,
         request: ims_20190815_models.ListSAMLProvidersRequest,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
         """
-        @summary 查询角色SSO身份提供商列表
+        @summary Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
         
         @param request: ListSAMLProvidersRequest
         @return: ListSAMLProvidersResponse
@@ -5043,7 +5875,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.ListSAMLProvidersRequest,
     ) -> ims_20190815_models.ListSAMLProvidersResponse:
         """
-        @summary 查询角色SSO身份提供商列表
+        @summary Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
         
         @param request: ListSAMLProvidersRequest
         @return: ListSAMLProvidersResponse
@@ -5097,10 +5929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -5148,10 +5986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -5231,10 +6075,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUserBasicInfosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUserBasicInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUserBasicInfosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_user_basic_infos_with_options_async(
         self,
@@ -5276,10 +6126,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUserBasicInfosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUserBasicInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUserBasicInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_user_basic_infos(
         self,
@@ -5356,10 +6212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_users_with_options_async(
         self,
@@ -5402,10 +6264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUsersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_users(
         self,
@@ -5477,10 +6345,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUsersForGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersForGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersForGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_users_for_group_with_options_async(
         self,
@@ -5516,10 +6390,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListUsersForGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersForGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListUsersForGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_users_for_group(
         self,
@@ -5579,10 +6459,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListVirtualMFADevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListVirtualMFADevicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListVirtualMFADevicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_virtual_mfadevices_with_options_async(
         self,
@@ -5616,10 +6502,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.ListVirtualMFADevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.ListVirtualMFADevicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.ListVirtualMFADevicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_virtual_mfadevices(
         self,
@@ -5682,10 +6574,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_client_id_from_oidcprovider_with_options_async(
         self,
@@ -5722,10 +6620,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveClientIdFromOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_client_id_from_oidcprovider(
         self,
@@ -5794,10 +6698,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_fingerprint_from_oidcprovider_with_options_async(
         self,
@@ -5834,10 +6744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveFingerprintFromOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_fingerprint_from_oidcprovider(
         self,
@@ -5877,7 +6793,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
         """
-        @summary 将RAM用户从用户组中移除
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
         
         @param request: RemoveUserFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5903,10 +6819,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveUserFromGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveUserFromGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveUserFromGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_user_from_group_with_options_async(
         self,
@@ -5914,7 +6836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
         """
-        @summary 将RAM用户从用户组中移除
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
         
         @param request: RemoveUserFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5940,17 +6862,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.RemoveUserFromGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveUserFromGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.RemoveUserFromGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_user_from_group(
         self,
         request: ims_20190815_models.RemoveUserFromGroupRequest,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
         """
-        @summary 将RAM用户从用户组中移除
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
         
         @param request: RemoveUserFromGroupRequest
         @return: RemoveUserFromGroupResponse
@@ -5963,7 +6891,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.RemoveUserFromGroupRequest,
     ) -> ims_20190815_models.RemoveUserFromGroupResponse:
         """
-        @summary 将RAM用户从用户组中移除
+        @summary Removes a Resource Access Management (RAM) user from a RAM user group.
         
         @param request: RemoveUserFromGroupRequest
         @return: RemoveUserFromGroupResponse
@@ -5977,7 +6905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
         """
-        @summary Configures the default domain name.
+        @summary Configures the default domain name for an Alibaba Cloud account.
         
         @param request: SetDefaultDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6001,10 +6929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetDefaultDomainResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetDefaultDomainResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetDefaultDomainResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_default_domain_with_options_async(
         self,
@@ -6012,7 +6946,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
         """
-        @summary Configures the default domain name.
+        @summary Configures the default domain name for an Alibaba Cloud account.
         
         @param request: SetDefaultDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6036,17 +6970,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetDefaultDomainResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetDefaultDomainResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetDefaultDomainResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_default_domain(
         self,
         request: ims_20190815_models.SetDefaultDomainRequest,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
         """
-        @summary Configures the default domain name.
+        @summary Configures the default domain name for an Alibaba Cloud account.
         
         @param request: SetDefaultDomainRequest
         @return: SetDefaultDomainResponse
@@ -6059,7 +6999,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetDefaultDomainRequest,
     ) -> ims_20190815_models.SetDefaultDomainResponse:
         """
-        @summary Configures the default domain name.
+        @summary Configures the default domain name for an Alibaba Cloud account.
         
         @param request: SetDefaultDomainRequest
         @return: SetDefaultDomainResponse
@@ -6117,10 +7057,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetPasswordPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetPasswordPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetPasswordPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_password_policy_with_options_async(
         self,
@@ -6172,10 +7118,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetPasswordPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetPasswordPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetPasswordPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_password_policy(
         self,
@@ -6260,10 +7212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetSecurityPreferenceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetSecurityPreferenceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetSecurityPreferenceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_security_preference_with_options_async(
         self,
@@ -6322,10 +7280,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetSecurityPreferenceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetSecurityPreferenceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetSecurityPreferenceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_security_preference(
         self,
@@ -6365,7 +7329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
+        @summary Configures information about user-based single sign-on (SSO).
         
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6395,10 +7359,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetUserSsoSettingsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetUserSsoSettingsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetUserSsoSettingsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_user_sso_settings_with_options_async(
         self,
@@ -6406,7 +7376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
+        @summary Configures information about user-based single sign-on (SSO).
         
         @param request: SetUserSsoSettingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6436,17 +7406,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.SetUserSsoSettingsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.SetUserSsoSettingsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.SetUserSsoSettingsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_user_sso_settings(
         self,
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
+        @summary Configures information about user-based single sign-on (SSO).
         
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
@@ -6459,7 +7435,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.SetUserSsoSettingsRequest,
     ) -> ims_20190815_models.SetUserSsoSettingsResponse:
         """
-        @summary 设置用户SSO身份提供商信息
+        @summary Configures information about user-based single sign-on (SSO).
         
         @param request: SetUserSsoSettingsRequest
         @return: SetUserSsoSettingsResponse
@@ -6503,10 +7479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -6544,10 +7526,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -6581,7 +7569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
         """
-        @summary 为RAM用户解绑多因素认证设备
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6605,10 +7593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UnbindMFADeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindMFADeviceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindMFADeviceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_mfadevice_with_options_async(
         self,
@@ -6616,7 +7610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
         """
-        @summary 为RAM用户解绑多因素认证设备
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6640,17 +7634,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UnbindMFADeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindMFADeviceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UnbindMFADeviceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind_mfadevice(
         self,
         request: ims_20190815_models.UnbindMFADeviceRequest,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
         """
-        @summary 为RAM用户解绑多因素认证设备
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
@@ -6663,7 +7663,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UnbindMFADeviceRequest,
     ) -> ims_20190815_models.UnbindMFADeviceResponse:
         """
-        @summary 为RAM用户解绑多因素认证设备
+        @summary Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
         
         @param request: UnbindMFADeviceRequest
         @return: UnbindMFADeviceResponse
@@ -6709,10 +7709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -6752,10 +7758,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -6789,7 +7801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
         """
-        @summary 修改访问密钥状态
+        @summary Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: UpdateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6817,10 +7829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateAccessKeyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateAccessKeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateAccessKeyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_access_key_with_options_async(
         self,
@@ -6828,7 +7846,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
         """
-        @summary 修改访问密钥状态
+        @summary Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: UpdateAccessKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6856,17 +7874,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateAccessKeyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateAccessKeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateAccessKeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_access_key(
         self,
         request: ims_20190815_models.UpdateAccessKeyRequest,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
         """
-        @summary 修改访问密钥状态
+        @summary Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: UpdateAccessKeyRequest
         @return: UpdateAccessKeyResponse
@@ -6879,7 +7903,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateAccessKeyRequest,
     ) -> ims_20190815_models.UpdateAccessKeyResponse:
         """
-        @summary 修改访问密钥状态
+        @summary Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
         
         @param request: UpdateAccessKeyRequest
         @return: UpdateAccessKeyResponse
@@ -6933,10 +7957,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateApplicationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateApplicationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateApplicationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_application_with_options_async(
         self,
@@ -6984,10 +8014,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateApplicationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateApplicationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateApplicationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_application(
         self,
@@ -7021,7 +8057,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateGroupResponse:
         """
-        @summary Modifies the information of a RAM user group.
+        @summary Modifies information about a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7051,10 +8087,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_group_with_options_async(
         self,
@@ -7062,7 +8104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateGroupResponse:
         """
-        @summary Modifies the information of a RAM user group.
+        @summary Modifies information about a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7092,17 +8134,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_group(
         self,
         request: ims_20190815_models.UpdateGroupRequest,
     ) -> ims_20190815_models.UpdateGroupResponse:
         """
-        @summary Modifies the information of a RAM user group.
+        @summary Modifies information about a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -7115,7 +8163,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateGroupRequest,
     ) -> ims_20190815_models.UpdateGroupResponse:
         """
-        @summary Modifies the information of a RAM user group.
+        @summary Modifies information about a Resource Access Management (RAM) user group.
         
         @param request: UpdateGroupRequest
         @return: UpdateGroupResponse
@@ -7129,7 +8177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
         """
-        @summary 修改RAM用户的控制台登录信息
+        @summary Modifies the console logon configurations of a Resource Access Management (RAM) user.
         
         @param request: UpdateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7161,10 +8209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateLoginProfileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateLoginProfileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateLoginProfileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_login_profile_with_options_async(
         self,
@@ -7172,7 +8226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
         """
-        @summary 修改RAM用户的控制台登录信息
+        @summary Modifies the console logon configurations of a Resource Access Management (RAM) user.
         
         @param request: UpdateLoginProfileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7204,17 +8258,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateLoginProfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateLoginProfileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateLoginProfileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_login_profile(
         self,
         request: ims_20190815_models.UpdateLoginProfileRequest,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
         """
-        @summary 修改RAM用户的控制台登录信息
+        @summary Modifies the console logon configurations of a Resource Access Management (RAM) user.
         
         @param request: UpdateLoginProfileRequest
         @return: UpdateLoginProfileResponse
@@ -7227,7 +8287,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateLoginProfileRequest,
     ) -> ims_20190815_models.UpdateLoginProfileResponse:
         """
-        @summary 修改RAM用户的控制台登录信息
+        @summary Modifies the console logon configurations of a Resource Access Management (RAM) user.
         
         @param request: UpdateLoginProfileRequest
         @return: UpdateLoginProfileResponse
@@ -7274,10 +8334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateOIDCProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateOIDCProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateOIDCProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_oidcprovider_with_options_async(
         self,
@@ -7318,10 +8384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateOIDCProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateOIDCProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateOIDCProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_oidcprovider(
         self,
@@ -7355,13 +8427,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_oidcprovider_with_options_async(request, runtime)
 
+    def update_passkey_with_options(
+        self,
+        request: ims_20190815_models.UpdatePasskeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.UpdatePasskeyResponse:
+        """
+        @summary 更新Passkey
+        
+        @param request: UpdatePasskeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePasskeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.passkey_id):
+            query['PasskeyId'] = request.passkey_id
+        if not UtilClient.is_unset(request.passkey_name):
+            query['PasskeyName'] = request.passkey_name
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePasskey',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdatePasskeyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdatePasskeyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_passkey_with_options_async(
+        self,
+        request: ims_20190815_models.UpdatePasskeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.UpdatePasskeyResponse:
+        """
+        @summary 更新Passkey
+        
+        @param request: UpdatePasskeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePasskeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.passkey_id):
+            query['PasskeyId'] = request.passkey_id
+        if not UtilClient.is_unset(request.passkey_name):
+            query['PasskeyName'] = request.passkey_name
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePasskey',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdatePasskeyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdatePasskeyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_passkey(
+        self,
+        request: ims_20190815_models.UpdatePasskeyRequest,
+    ) -> ims_20190815_models.UpdatePasskeyResponse:
+        """
+        @summary 更新Passkey
+        
+        @param request: UpdatePasskeyRequest
+        @return: UpdatePasskeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_passkey_with_options(request, runtime)
+
+    async def update_passkey_async(
+        self,
+        request: ims_20190815_models.UpdatePasskeyRequest,
+    ) -> ims_20190815_models.UpdatePasskeyResponse:
+        """
+        @summary 更新Passkey
+        
+        @param request: UpdatePasskeyRequest
+        @return: UpdatePasskeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_passkey_with_options_async(request, runtime)
+
     def update_samlprovider_with_options(
         self,
         request: ims_20190815_models.UpdateSAMLProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        @summary 修改角色SSO身份提供商信息
+        @summary Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
         
         @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
@@ -7391,10 +8579,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateSAMLProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateSAMLProviderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateSAMLProviderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_samlprovider_with_options_async(
         self,
@@ -7402,7 +8596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        @summary 修改角色SSO身份提供商信息
+        @summary Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
         
         @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
@@ -7432,17 +8626,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateSAMLProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateSAMLProviderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateSAMLProviderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_samlprovider(
         self,
         request: ims_20190815_models.UpdateSAMLProviderRequest,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        @summary 修改角色SSO身份提供商信息
+        @summary Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
         
         @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
@@ -7457,7 +8657,7 @@ class Client(OpenApiClient):
         request: ims_20190815_models.UpdateSAMLProviderRequest,
     ) -> ims_20190815_models.UpdateSAMLProviderResponse:
         """
-        @summary 修改角色SSO身份提供商信息
+        @summary Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
         
         @description This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
         
@@ -7511,10 +8711,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_user_with_options_async(
         self,
@@ -7560,10 +8766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            ims_20190815_models.UpdateUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ims_20190815_models.UpdateUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_user(
         self,

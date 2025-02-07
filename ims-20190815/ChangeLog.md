@@ -1,3 +1,9 @@
+2025-02-07 Version: 3.2.0
+- Support API DeletePasskey.
+- Support API ListPasskeys.
+- Support API UpdatePasskey.
+
+
 2025-01-17 Version: 3.1.6
 - Generated python 2019-08-15 for Ims.
 
