@@ -1,3 +1,7 @@
+2025-02-07 Version: 1.0.3
+- Update API GetOrderInfo: update response param.
+
+
 2024-05-20 Version: 1.0.2
 - Update API GetOrderInfo: add param ListReleased.
 

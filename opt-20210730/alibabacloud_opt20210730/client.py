@@ -62,10 +62,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOpenStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOpenStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOpenStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_open_status_with_options_async(
         self,
@@ -88,10 +94,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOpenStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOpenStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOpenStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_open_status(self) -> opt_20210730_models.GetOpenStatusResponse:
         """
@@ -113,6 +125,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         """
+        @summary 获取在线license列表
+        
         @param request: GetOrderInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOrderInfoResponse
@@ -139,10 +153,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOrderInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_order_info_with_options_async(
         self,
@@ -150,6 +170,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         """
+        @summary 获取在线license列表
+        
         @param request: GetOrderInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOrderInfoResponse
@@ -176,16 +198,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOrderInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_order_info(
         self,
         request: opt_20210730_models.GetOrderInfoRequest,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         """
+        @summary 获取在线license列表
+        
         @param request: GetOrderInfoRequest
         @return: GetOrderInfoResponse
         """
@@ -197,6 +227,8 @@ class Client(OpenApiClient):
         request: opt_20210730_models.GetOrderInfoRequest,
     ) -> opt_20210730_models.GetOrderInfoResponse:
         """
+        @summary 获取在线license列表
+        
         @param request: GetOrderInfoRequest
         @return: GetOrderInfoResponse
         """
@@ -237,10 +269,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOrderUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_order_usage_with_options_async(
         self,
@@ -276,10 +314,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            opt_20210730_models.GetOrderUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                opt_20210730_models.GetOrderUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_order_usage(
         self,

@@ -144,6 +144,7 @@ class GetOrderInfoResponseBodyData(TeaModel):
         current_concurrency: int = None,
         current_days: int = None,
         instance_id: str = None,
+        is_released: bool = None,
         license_key: str = None,
         remark: str = None,
         total_days: int = None,
@@ -152,6 +153,7 @@ class GetOrderInfoResponseBodyData(TeaModel):
         self.current_concurrency = current_concurrency
         self.current_days = current_days
         self.instance_id = instance_id
+        self.is_released = is_released
         self.license_key = license_key
         self.remark = remark
         self.total_days = total_days
@@ -173,6 +175,8 @@ class GetOrderInfoResponseBodyData(TeaModel):
             result['currentDays'] = self.current_days
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+        if self.is_released is not None:
+            result['isReleased'] = self.is_released
         if self.license_key is not None:
             result['licenseKey'] = self.license_key
         if self.remark is not None:
@@ -191,6 +195,8 @@ class GetOrderInfoResponseBodyData(TeaModel):
             self.current_days = m.get('currentDays')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+        if m.get('isReleased') is not None:
+            self.is_released = m.get('isReleased')
         if m.get('licenseKey') is not None:
             self.license_key = m.get('licenseKey')
         if m.get('remark') is not None:
