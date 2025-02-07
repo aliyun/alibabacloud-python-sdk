@@ -165,12 +165,17 @@ class InstancePatterns(TeaModel):
         excluded_instance_types: List[str] = None,
         instance_categories: List[str] = None,
         instance_family_level: str = None,
+        instance_type_families: List[str] = None,
         max_cpu_cores: int = None,
         max_memory_size: float = None,
         max_price: float = None,
+        maximum_gpu_amount: int = None,
         memory: float = None,
         min_cpu_cores: int = None,
         min_memory_size: float = None,
+        minimum_eni_ipv_6address_quantity: int = None,
+        minimum_eni_private_ip_address_quantity: int = None,
+        minimum_eni_quantity: int = None,
     ):
         self.architectures = architectures
         self.burst_performance_option = burst_performance_option
@@ -180,12 +185,17 @@ class InstancePatterns(TeaModel):
         self.excluded_instance_types = excluded_instance_types
         self.instance_categories = instance_categories
         self.instance_family_level = instance_family_level
+        self.instance_type_families = instance_type_families
         self.max_cpu_cores = max_cpu_cores
         self.max_memory_size = max_memory_size
         self.max_price = max_price
+        self.maximum_gpu_amount = maximum_gpu_amount
         self.memory = memory
         self.min_cpu_cores = min_cpu_cores
         self.min_memory_size = min_memory_size
+        self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        self.minimum_eni_quantity = minimum_eni_quantity
 
     def validate(self):
         pass
@@ -212,18 +222,28 @@ class InstancePatterns(TeaModel):
             result['instance_categories'] = self.instance_categories
         if self.instance_family_level is not None:
             result['instance_family_level'] = self.instance_family_level
+        if self.instance_type_families is not None:
+            result['instance_type_families'] = self.instance_type_families
         if self.max_cpu_cores is not None:
             result['max_cpu_cores'] = self.max_cpu_cores
         if self.max_memory_size is not None:
             result['max_memory_size'] = self.max_memory_size
         if self.max_price is not None:
             result['max_price'] = self.max_price
+        if self.maximum_gpu_amount is not None:
+            result['maximum_gpu_amount'] = self.maximum_gpu_amount
         if self.memory is not None:
             result['memory'] = self.memory
         if self.min_cpu_cores is not None:
             result['min_cpu_cores'] = self.min_cpu_cores
         if self.min_memory_size is not None:
             result['min_memory_size'] = self.min_memory_size
+        if self.minimum_eni_ipv_6address_quantity is not None:
+            result['minimum_eni_ipv6_address_quantity'] = self.minimum_eni_ipv_6address_quantity
+        if self.minimum_eni_private_ip_address_quantity is not None:
+            result['minimum_eni_private_ip_address_quantity'] = self.minimum_eni_private_ip_address_quantity
+        if self.minimum_eni_quantity is not None:
+            result['minimum_eni_quantity'] = self.minimum_eni_quantity
         return result
 
     def from_map(self, m: dict = None):
@@ -244,18 +264,28 @@ class InstancePatterns(TeaModel):
             self.instance_categories = m.get('instance_categories')
         if m.get('instance_family_level') is not None:
             self.instance_family_level = m.get('instance_family_level')
+        if m.get('instance_type_families') is not None:
+            self.instance_type_families = m.get('instance_type_families')
         if m.get('max_cpu_cores') is not None:
             self.max_cpu_cores = m.get('max_cpu_cores')
         if m.get('max_memory_size') is not None:
             self.max_memory_size = m.get('max_memory_size')
         if m.get('max_price') is not None:
             self.max_price = m.get('max_price')
+        if m.get('maximum_gpu_amount') is not None:
+            self.maximum_gpu_amount = m.get('maximum_gpu_amount')
         if m.get('memory') is not None:
             self.memory = m.get('memory')
         if m.get('min_cpu_cores') is not None:
             self.min_cpu_cores = m.get('min_cpu_cores')
         if m.get('min_memory_size') is not None:
             self.min_memory_size = m.get('min_memory_size')
+        if m.get('minimum_eni_ipv6_address_quantity') is not None:
+            self.minimum_eni_ipv_6address_quantity = m.get('minimum_eni_ipv6_address_quantity')
+        if m.get('minimum_eni_private_ip_address_quantity') is not None:
+            self.minimum_eni_private_ip_address_quantity = m.get('minimum_eni_private_ip_address_quantity')
+        if m.get('minimum_eni_quantity') is not None:
+            self.minimum_eni_quantity = m.get('minimum_eni_quantity')
         return self
 
 
@@ -2989,6 +3019,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         self.max_graceful_termination_sec = max_graceful_termination_sec
         # The minimum number of pods allowed in each ReplicaSet before a scale-in activity is performed.
         self.min_replica_count = min_replica_count
+        # Auto-scaling priority configuration. After creating a node pool with elasticity enabled, you can choose whether to configure a priority strategy and priority settings through [Enabling Node Auto-scaling](https://help.aliyun.com/document_detail/119099.html). This allows you to set priorities for the specified auto-scaling node pool scaling group. The priority value range is [1, 100] and must be a positive integer.
         self.priorities = priorities
         # Specifies whether to delete the corresponding Kubernetes node objects after nodes are removed in swift mode. For more information about the swift mode, see [Scaling mode](https://help.aliyun.com/document_detail/119099.html). Default value: false Valid values:
         # 
@@ -3005,6 +3036,10 @@ class CreateAutoscalingConfigRequest(TeaModel):
         # *   `true`: performs a scale-out activity.
         # *   `false`: does not perform a scale-out activity.
         self.scale_up_from_zero = scale_up_from_zero
+        # Elastic component type, default is goatscaler for cluster version 1.24 and above, and cluster-autoscaler below that. Values:
+        # 
+        # - `goatscaler`: Instant elasticity. 
+        # - `cluster-autoscaler`: Auto-scaling.
         self.scaler_type = scaler_type
         # The interval at which the system scans for events that trigger scaling activities. Unit: seconds. Default value: 60.
         self.scan_interval = scan_interval
@@ -3216,29 +3251,53 @@ class CreateClusterRequestControlPlaneConfig(TeaModel):
         system_disk_size: int = None,
         system_disk_snapshot_policy_id: str = None,
     ):
+        # Indicates whether auto-renewal is enabled for the control plane node.
         self.auto_renew = auto_renew
+        # The auto-renewal duration for the control plane node.
         self.auto_renew_period = auto_renew_period
+        # The billing method of the control plane node.
         self.charge_type = charge_type
+        # Indicates whether to install CloudMonitor for the node.
         self.cloud_monitor_flags = cloud_monitor_flags
+        # The CPU management policy of nodes in the node pool.
         self.cpu_policy = cpu_policy
+        # The ID of the deployment set.
         self.deploymentset_id = deploymentset_id
+        # The ID of the image.
         self.image_id = image_id
+        # The type of the OS image.
         self.image_type = image_type
+        # The instance type of the node.
         self.instance_types = instance_types
+        # The name of the key pair. You must set key_pair or login_password.
         self.key_pair = key_pair
+        # The SSH logon password. The password must be 8 to 30 characters in length and contain a minimum of three of the following character types: uppercase letters, lowercase letters, digits, and special characters. You must set login_password or key_pair.
         self.login_password = login_password
+        # The node port range.
         self.node_port_range = node_port_range
+        # The subscription duration of the control plane node.
         self.period = period
+        # The unit of the subscription duration of the control plane node.
         self.period_unit = period_unit
+        # The runtime.
         self.runtime = runtime
+        # Indicates whether to enable Alibaba Cloud Linux Security Hardening.
         self.security_hardening_os = security_hardening_os
+        # The number of control plane nodes.
         self.size = size
+        # Indicates whether to enable MLPS security hardening.
         self.soc_enabled = soc_enabled
+        # Indicates whether to enable the burst feature for the system disk.
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        # The category of the system disk for nodes.
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for ESSDs.
         self.system_disk_performance_level = system_disk_performance_level
+        # The preset read/write IOPS of the system disk.
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
+        # The system disk size of the node. The value must be at least 40 GB.
         self.system_disk_size = system_disk_size
+        # The automatic snapshot policy of the node.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
 
     def validate(self):
@@ -3615,6 +3674,8 @@ class CreateClusterRequest(TeaModel):
         # 
         # For more information about `ServiceAccount`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.api_audiences = api_audiences
+        # **This parameter is deprecated.**\
+        # 
         # Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
         # 
         # *   `true`: enables auto-renewal.
@@ -3624,25 +3685,26 @@ class CreateClusterRequest(TeaModel):
         # 
         # This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         self.auto_renew = auto_renew
+        # **This parameter is deprecated.**\
+        # 
         # The auto-renewal duration. This parameter takes effect only if charge_type is set to PrePaid and auto_renew is set to true. If you set `period_unit` to Month, the valid values of auto_renew_period are 1, 2, 3, 6, and 12.
         # 
-        # Default value: 1
+        # Default value: 1.
         # 
         # This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         self.auto_renew_period = auto_renew_period
-        # The billing method of the resource. The following resources are billed on a subscription basis:
+        # The billing method of the Classic Load Balancer (CLB) instance that is used by the API server. Default value: PostPaid. Valid values:
         # 
-        # The internal-facing SLB instance used by the API server.
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription. The newly created billing method for the CLB instance is not supported.
         # 
-        # Valid values:
+        # > 
         # 
-        # PrePaid: subscription
+        # *   This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         # 
-        # PostPaid: pay-as-you-go
+        # *   Starting from December 1, 2024, new CLB instances no longer support the subscription billing method and will be charged for the instances.
         # 
-        # Default value: PostPaid.
-        # 
-        # This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
+        # For more information, see [CLB billing adjustments](https://help.aliyun.com/document_detail/2839797.html).
         self.charge_type = charge_type
         # This parameter is deprecated. Use security_hardening_os instead.
         self.cis_enabled = cis_enabled
@@ -3674,6 +3736,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # >  This parameter is required if the cluster uses the Flannel plug-in.
         self.container_cidr = container_cidr
+        # The control plane configurations of an ACK dedicated cluster.
         self.control_plane_config = control_plane_config
         # The control plane component for which you want to enable log collection.
         # 
@@ -3805,7 +3868,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Valid values: 1, 2, 3, 6, and 12.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.master_auto_renew_period = master_auto_renew_period
         # The number of master nodes. Valid values: `3` and `5`.
         # 
@@ -3813,8 +3876,8 @@ class CreateClusterRequest(TeaModel):
         self.master_count = master_count
         # The billing method of master nodes. Valid values:
         # 
-        # *   `PrePaid`: subscription.
-        # *   `PostPaid`: the pay-as-you-go.
+        # *   `PrePaid`: subscription
+        # *   `PostPaid`: the pay-as-you-go
         # 
         # Default value: `PostPaid`
         self.master_instance_charge_type = master_instance_charge_type
@@ -3824,7 +3887,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.master_period = master_period
         # The billing cycle of the master nodes in the cluster. This parameter is required if master_instance_charge_type is set to `PrePaid`.
         # 
@@ -3833,8 +3896,8 @@ class CreateClusterRequest(TeaModel):
         # The system disk type of master nodes. Valid values:
         # 
         # *   `cloud_efficiency`: ultra disk
-        # *   `cloud_ssd`: standard SSD.
-        # *   `cloud_essd`: Enterprise SSD (ESSD).
+        # *   `cloud_ssd`: standard SSD
+        # *   `cloud_essd`: Enterprise SSD (ESSD)
         # 
         # Default value: `cloud_ssd`. The default value may vary in different zones.
         self.master_system_disk_category = master_system_disk_category
@@ -3888,14 +3951,18 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `Linux`.
         self.os_type = os_type
+        # **This parameter is deprecated.**\
+        # 
         # The subscription duration of the instance. This parameter takes effect and is required only when you set charge_type to PrePaid.
         # 
         # Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         # 
-        # Default value: 1
+        # Default value: 1.
         # 
         # This parameter was changed on October 15, 2024. For more information, see [Announcement on changes to the parameter behavior of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         self.period = period
+        # **This parameter is deprecated.**\
+        # 
         # The billing cycle. This parameter is required if charge_type is set to PrePaid.
         # 
         # Valid value: Month, which indicates that resources are billed only on a monthly basis.
@@ -3999,7 +4066,7 @@ class CreateClusterRequest(TeaModel):
         # *   A tag is a case-sensitive key-value pair. You can add up to 20 tags.
         # *   When you add a tag, you must specify a unique key but you can leave the value empty. A key cannot exceed 64 characters in length and a value cannot exceed 128 characters in length. Keys and values cannot start with aliyun, acs:, https://, or http://. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.tags = tags
-        # The taints that you want to add to nodes. Taints can be used together with tolerations to avoid scheduling pods to specified nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        # The taint. Taints can be used together with tolerations to avoid scheduling pods to specified nodes. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
         # Specifies the timeout period of cluster creation. Unit: minutes.
         # 
@@ -4030,8 +4097,8 @@ class CreateClusterRequest(TeaModel):
         self.worker_data_disks = worker_data_disks
         # The billing method of worker nodes. Valid values:
         # 
-        # *   `PrePaid`: subscription.
-        # *   `PostPaid`: the pay-as-you-go.
+        # *   `PrePaid`: subscription
+        # *   `PostPaid`: the pay-as-you-go
         # 
         # Default value: PostPaid.
         self.worker_instance_charge_type = worker_instance_charge_type
@@ -4041,7 +4108,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.worker_period = worker_period
         # The billing cycle of worker nodes. This parameter is required if worker_instance_charge_type is set to `PrePaid`.
         # 
@@ -4051,10 +4118,10 @@ class CreateClusterRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   `cloud_efficiency`: ultra disk.
-        # *   `cloud_ssd`: standard SSD.
+        # *   `cloud_efficiency`: ultra disk
+        # *   `cloud_ssd`: standard SSD
         # 
-        # Default value: `cloud_ssd`.
+        # Default value: `cloud_ssd`
         self.worker_system_disk_category = worker_system_disk_category
         # If the system disk is an ESSD, you can specify the PL of the ESSD. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
         # 
@@ -17523,7 +17590,7 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
         self.images = images
         # The metadata of the Kubernetes version.
         self.meta_data = meta_data
-        # Details of the supported container runtimes.
+        # The container runtime configurations.
         self.runtimes = runtimes
         # The Kubernetes version supported by ACK. For more information, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
@@ -21093,7 +21160,7 @@ class GetClusterCheckResponseBody(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # Id of the request
+        # The ID of the cluster check task.
         self.check_id = check_id
         # The list of check items.
         self.check_items = check_items
@@ -26841,7 +26908,9 @@ class RepairClusterNodePoolRequestOperations(TeaModel):
         args: List[str] = None,
         operation_id: str = None,
     ):
+        # List of repair operation parameters.
         self.args = args
+        # Repair operation ID.
         self.operation_id = operation_id
 
     def validate(self):
@@ -26879,6 +26948,7 @@ class RepairClusterNodePoolRequest(TeaModel):
         self.auto_restart = auto_restart
         # The list of nodes. If you do not specify nodes, all nodes in the node pool are selected.
         self.nodes = nodes
+        # The repair operation to be performed. If not specified, all repair operations will be executed by default. Generally, there is no need to specify this in most scenarios.
         self.operations = operations
 
     def validate(self):
@@ -27205,7 +27275,7 @@ class RunClusterCheckResponseBody(TeaModel):
     ):
         # The ID of the cluster check task.
         self.check_id = check_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -28623,9 +28693,12 @@ class UnInstallClusterAddonsRequestAddons(TeaModel):
         cleanup_cloud_resources: bool = None,
         name: str = None,
     ):
-        # Specifies whether to release cloud resources.
+        # Specifies whether to clear cloud resources.
+        # 
+        # *   true: clears the data and cloud resources.
+        # *   false: retains the data and cloud resources.
         self.cleanup_cloud_resources = cleanup_cloud_resources
-        # The component name.
+        # The name of the component.
         self.name = name
 
     def validate(self):
@@ -28657,7 +28730,7 @@ class UnInstallClusterAddonsRequest(TeaModel):
         self,
         addons: List[UnInstallClusterAddonsRequestAddons] = None,
     ):
-        # The components that you want to uninstall. The list is an array.
+        # The list of components that you want to uninstall. The list is an array.
         self.addons = addons
 
     def validate(self):
