@@ -1,3 +1,7 @@
+2025-02-08 Version: 1.1.2
+- Update API ListInstances: add param Tag.
+
+
 2025-01-16 Version: 1.1.1
 - Update API GetInstance: update response param.
 

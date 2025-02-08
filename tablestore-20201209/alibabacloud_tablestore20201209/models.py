@@ -289,9 +289,6 @@ class CreateInstanceRequest(TeaModel):
     ):
         # The type of the instance.
         # 
-        # *   SSD: high-performance instance
-        # *   HYBRID: capacity instance
-        # 
         # This parameter is required.
         self.cluster_type = cluster_type
         # (Deprecated) Specifies whether to enable disaster recovery for the instance.
@@ -960,6 +957,7 @@ class GetInstanceResponseBody(TeaModel):
         self.alias_name = alias_name
         # The time when the instance was created.
         self.create_time = create_time
+        # The upper limit for the VCUs of the instance.
         self.elastic_vcuupper_limit = elastic_vcuupper_limit
         # The description of the instance.
         self.instance_description = instance_description
@@ -1185,6 +1183,39 @@ class GetInstanceResponse(TeaModel):
         return self
 
 
+class ListInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -1194,6 +1225,7 @@ class ListInstancesRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tag: List[ListInstancesRequestTag] = None,
     ):
         # The name of the instance. Fuzzy search is supported.
         self.instance_name = instance_name
@@ -1206,14 +1238,14 @@ class ListInstancesRequest(TeaModel):
         # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
         # The instance status.
-        # 
-        # *   normal: The instance is running as expected.
-        # *   forbidden: The instance is disabled.
-        # *   Deleting: The instance is being deleted.
         self.status = status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1233,6 +1265,10 @@ class ListInstancesRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1249,6 +1285,11 @@ class ListInstancesRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1261,6 +1302,7 @@ class ListInstancesShrinkRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
         status: str = None,
+        tag_shrink: str = None,
     ):
         # The name of the instance. Fuzzy search is supported.
         self.instance_name = instance_name
@@ -1273,11 +1315,8 @@ class ListInstancesShrinkRequest(TeaModel):
         # The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
         # The instance status.
-        # 
-        # *   normal: The instance is running as expected.
-        # *   forbidden: The instance is disabled.
-        # *   Deleting: The instance is being deleted.
         self.status = status
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -1300,6 +1339,8 @@ class ListInstancesShrinkRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -1316,6 +1357,8 @@ class ListInstancesShrinkRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -1351,6 +1394,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # *   HYBRID: capacity instance
         self.instance_specification = instance_specification
         # The instance status.
+        # 
+        # *   normal: The instance works as expected.
+        # *   forbidden: The instance is disabled.
+        # *   deleting: The instance is being deleted.
         self.instance_status = instance_status
         # Indicates whether zone-redundant storage (ZRS) is enabled for the instance.
         # 
@@ -2028,10 +2075,7 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the resources. Default value: false. Valid values:
-        # 
-        # *   true: removes all tags from the resources.
-        # *   false: removes the tags that are specified by the TagKeys parameter from the resources.
+        # Specifies whether to remove all tags from the resources. Default value: false.
         self.all = all
         # The resource IDs, which are instance names.
         self.resource_ids = resource_ids
