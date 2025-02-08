@@ -3847,6 +3847,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_https_basic_configuration_with_options_async(request, runtime)
 
+    def create_image_transform_with_options(
+        self,
+        request: esa20240910_models.CreateImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateImageTransformResponse:
+        """
+        @summary 新增站点图片转换配置
+        
+        @param request: CreateImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateImageTransformResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateImageTransformResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_image_transform_with_options_async(
+        self,
+        request: esa20240910_models.CreateImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateImageTransformResponse:
+        """
+        @summary 新增站点图片转换配置
+        
+        @param request: CreateImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateImageTransformResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateImageTransformResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_image_transform(
+        self,
+        request: esa20240910_models.CreateImageTransformRequest,
+    ) -> esa20240910_models.CreateImageTransformResponse:
+        """
+        @summary 新增站点图片转换配置
+        
+        @param request: CreateImageTransformRequest
+        @return: CreateImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_image_transform_with_options(request, runtime)
+
+    async def create_image_transform_async(
+        self,
+        request: esa20240910_models.CreateImageTransformRequest,
+    ) -> esa20240910_models.CreateImageTransformResponse:
+        """
+        @summary 新增站点图片转换配置
+        
+        @param request: CreateImageTransformRequest
+        @return: CreateImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_image_transform_with_options_async(request, runtime)
+
     def create_kv_namespace_with_options(
         self,
         request: esa20240910_models.CreateKvNamespaceRequest,
@@ -4278,6 +4406,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_with_options_async(request, runtime)
+
+    def create_network_optimization_with_options(
+        self,
+        request: esa20240910_models.CreateNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateNetworkOptimizationResponse:
+        """
+        @summary 新增站点网络优化配置
+        
+        @param request: CreateNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.grpc):
+            query['Grpc'] = request.grpc
+        if not UtilClient.is_unset(request.http_2origin):
+            query['Http2Origin'] = request.http_2origin
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.smart_routing):
+            query['SmartRouting'] = request.smart_routing
+        if not UtilClient.is_unset(request.upload_max_filesize):
+            query['UploadMaxFilesize'] = request.upload_max_filesize
+        if not UtilClient.is_unset(request.websocket):
+            query['Websocket'] = request.websocket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateNetworkOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateNetworkOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_network_optimization_with_options_async(
+        self,
+        request: esa20240910_models.CreateNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateNetworkOptimizationResponse:
+        """
+        @summary 新增站点网络优化配置
+        
+        @param request: CreateNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.grpc):
+            query['Grpc'] = request.grpc
+        if not UtilClient.is_unset(request.http_2origin):
+            query['Http2Origin'] = request.http_2origin
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.site_version):
+            query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.smart_routing):
+            query['SmartRouting'] = request.smart_routing
+        if not UtilClient.is_unset(request.upload_max_filesize):
+            query['UploadMaxFilesize'] = request.upload_max_filesize
+        if not UtilClient.is_unset(request.websocket):
+            query['Websocket'] = request.websocket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateNetworkOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateNetworkOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_network_optimization(
+        self,
+        request: esa20240910_models.CreateNetworkOptimizationRequest,
+    ) -> esa20240910_models.CreateNetworkOptimizationResponse:
+        """
+        @summary 新增站点网络优化配置
+        
+        @param request: CreateNetworkOptimizationRequest
+        @return: CreateNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_optimization_with_options(request, runtime)
+
+    async def create_network_optimization_async(
+        self,
+        request: esa20240910_models.CreateNetworkOptimizationRequest,
+    ) -> esa20240910_models.CreateNetworkOptimizationResponse:
+        """
+        @summary 新增站点网络优化配置
+        
+        @param request: CreateNetworkOptimizationRequest
+        @return: CreateNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_optimization_with_options_async(request, runtime)
 
     def create_origin_pool_with_options(
         self,
@@ -8531,6 +8803,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_https_basic_configuration_with_options_async(request, runtime)
 
+    def delete_image_transform_with_options(
+        self,
+        request: esa20240910_models.DeleteImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteImageTransformResponse:
+        """
+        @summary Deletes the configuration of image transformations for a website.
+        
+        @param request: DeleteImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteImageTransformResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteImageTransformResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_image_transform_with_options_async(
+        self,
+        request: esa20240910_models.DeleteImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteImageTransformResponse:
+        """
+        @summary Deletes the configuration of image transformations for a website.
+        
+        @param request: DeleteImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteImageTransformResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteImageTransformResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_image_transform(
+        self,
+        request: esa20240910_models.DeleteImageTransformRequest,
+    ) -> esa20240910_models.DeleteImageTransformResponse:
+        """
+        @summary Deletes the configuration of image transformations for a website.
+        
+        @param request: DeleteImageTransformRequest
+        @return: DeleteImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_transform_with_options(request, runtime)
+
+    async def delete_image_transform_async(
+        self,
+        request: esa20240910_models.DeleteImageTransformRequest,
+    ) -> esa20240910_models.DeleteImageTransformResponse:
+        """
+        @summary Deletes the configuration of image transformations for a website.
+        
+        @param request: DeleteImageTransformRequest
+        @return: DeleteImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_transform_with_options_async(request, runtime)
+
     def delete_kv_with_options(
         self,
         request: esa20240910_models.DeleteKvRequest,
@@ -8962,6 +9346,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_load_balancer_with_options_async(request, runtime)
+
+    def delete_network_optimization_with_options(
+        self,
+        request: esa20240910_models.DeleteNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteNetworkOptimizationResponse:
+        """
+        @summary 删除网络优化配置
+        
+        @param request: DeleteNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteNetworkOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteNetworkOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_network_optimization_with_options_async(
+        self,
+        request: esa20240910_models.DeleteNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.DeleteNetworkOptimizationResponse:
+        """
+        @summary 删除网络优化配置
+        
+        @param request: DeleteNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.DeleteNetworkOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.DeleteNetworkOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_network_optimization(
+        self,
+        request: esa20240910_models.DeleteNetworkOptimizationRequest,
+    ) -> esa20240910_models.DeleteNetworkOptimizationResponse:
+        """
+        @summary 删除网络优化配置
+        
+        @param request: DeleteNetworkOptimizationRequest
+        @return: DeleteNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_optimization_with_options(request, runtime)
+
+    async def delete_network_optimization_async(
+        self,
+        request: esa20240910_models.DeleteNetworkOptimizationRequest,
+    ) -> esa20240910_models.DeleteNetworkOptimizationResponse:
+        """
+        @summary 删除网络优化配置
+        
+        @param request: DeleteNetworkOptimizationRequest
+        @return: DeleteNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_optimization_with_options_async(request, runtime)
 
     def delete_origin_pool_with_options(
         self,
@@ -14927,6 +15423,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ipv_6with_options_async(request, runtime)
 
+    def get_image_transform_with_options(
+        self,
+        request: esa20240910_models.GetImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetImageTransformResponse:
+        """
+        @summary Queries the configuration of image transformations for a website.
+        
+        @param request: GetImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetImageTransformResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetImageTransformResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_image_transform_with_options_async(
+        self,
+        request: esa20240910_models.GetImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetImageTransformResponse:
+        """
+        @summary Queries the configuration of image transformations for a website.
+        
+        @param request: GetImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetImageTransformResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetImageTransformResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_image_transform(
+        self,
+        request: esa20240910_models.GetImageTransformRequest,
+    ) -> esa20240910_models.GetImageTransformResponse:
+        """
+        @summary Queries the configuration of image transformations for a website.
+        
+        @param request: GetImageTransformRequest
+        @return: GetImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_transform_with_options(request, runtime)
+
+    async def get_image_transform_async(
+        self,
+        request: esa20240910_models.GetImageTransformRequest,
+    ) -> esa20240910_models.GetImageTransformResponse:
+        """
+        @summary Queries the configuration of image transformations for a website.
+        
+        @param request: GetImageTransformRequest
+        @return: GetImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_transform_with_options_async(request, runtime)
+
     def get_kv_with_options(
         self,
         request: esa20240910_models.GetKvRequest,
@@ -15536,6 +16136,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_managed_transform_with_options_async(request, runtime)
+
+    def get_network_optimization_with_options(
+        self,
+        request: esa20240910_models.GetNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetNetworkOptimizationResponse:
+        """
+        @summary 查询单条网络优化配置
+        
+        @param request: GetNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetNetworkOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetNetworkOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_network_optimization_with_options_async(
+        self,
+        request: esa20240910_models.GetNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetNetworkOptimizationResponse:
+        """
+        @summary 查询单条网络优化配置
+        
+        @param request: GetNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetNetworkOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetNetworkOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_network_optimization(
+        self,
+        request: esa20240910_models.GetNetworkOptimizationRequest,
+    ) -> esa20240910_models.GetNetworkOptimizationResponse:
+        """
+        @summary 查询单条网络优化配置
+        
+        @param request: GetNetworkOptimizationRequest
+        @return: GetNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_optimization_with_options(request, runtime)
+
+    async def get_network_optimization_async(
+        self,
+        request: esa20240910_models.GetNetworkOptimizationRequest,
+    ) -> esa20240910_models.GetNetworkOptimizationResponse:
+        """
+        @summary 查询单条网络优化配置
+        
+        @param request: GetNetworkOptimizationRequest
+        @return: GetNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_optimization_with_options_async(request, runtime)
 
     def get_origin_pool_with_options(
         self,
@@ -17760,6 +18464,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_site_name_exclusive_with_options_async(request, runtime)
+
+    def get_site_pause_with_options(
+        self,
+        request: esa20240910_models.GetSitePauseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetSitePauseResponse:
+        """
+        @summary 查询站点暂停配置
+        
+        @param request: GetSitePauseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSitePauseResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSitePause',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetSitePauseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetSitePauseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_site_pause_with_options_async(
+        self,
+        request: esa20240910_models.GetSitePauseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.GetSitePauseResponse:
+        """
+        @summary 查询站点暂停配置
+        
+        @param request: GetSitePauseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSitePauseResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSitePause',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.GetSitePauseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.GetSitePauseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_site_pause(
+        self,
+        request: esa20240910_models.GetSitePauseRequest,
+    ) -> esa20240910_models.GetSitePauseResponse:
+        """
+        @summary 查询站点暂停配置
+        
+        @param request: GetSitePauseRequest
+        @return: GetSitePauseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_site_pause_with_options(request, runtime)
+
+    async def get_site_pause_async(
+        self,
+        request: esa20240910_models.GetSitePauseRequest,
+    ) -> esa20240910_models.GetSitePauseResponse:
+        """
+        @summary 查询站点暂停配置
+        
+        @param request: GetSitePauseRequest
+        @return: GetSitePauseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_site_pause_with_options_async(request, runtime)
 
     def get_site_waf_settings_with_options(
         self,
@@ -20413,6 +21221,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_https_basic_configurations_with_options_async(request, runtime)
 
+    def list_image_transforms_with_options(
+        self,
+        request: esa20240910_models.ListImageTransformsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListImageTransformsResponse:
+        """
+        @summary 查询多条站点图片转换配置
+        
+        @param request: ListImageTransformsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImageTransformsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImageTransforms',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListImageTransformsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListImageTransformsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_image_transforms_with_options_async(
+        self,
+        request: esa20240910_models.ListImageTransformsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListImageTransformsResponse:
+        """
+        @summary 查询多条站点图片转换配置
+        
+        @param request: ListImageTransformsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImageTransformsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImageTransforms',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListImageTransformsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListImageTransformsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_image_transforms(
+        self,
+        request: esa20240910_models.ListImageTransformsRequest,
+    ) -> esa20240910_models.ListImageTransformsResponse:
+        """
+        @summary 查询多条站点图片转换配置
+        
+        @param request: ListImageTransformsRequest
+        @return: ListImageTransformsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_image_transforms_with_options(request, runtime)
+
+    async def list_image_transforms_async(
+        self,
+        request: esa20240910_models.ListImageTransformsRequest,
+    ) -> esa20240910_models.ListImageTransformsResponse:
+        """
+        @summary 查询多条站点图片转换配置
+        
+        @param request: ListImageTransformsRequest
+        @return: ListImageTransformsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_image_transforms_with_options_async(request, runtime)
+
     def list_instance_quotas_with_options(
         self,
         request: esa20240910_models.ListInstanceQuotasRequest,
@@ -21280,6 +22192,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_managed_rules_groups_with_options_async(request, runtime)
+
+    def list_network_optimizations_with_options(
+        self,
+        request: esa20240910_models.ListNetworkOptimizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListNetworkOptimizationsResponse:
+        """
+        @summary 查询多条网络优化配置
+        
+        @param request: ListNetworkOptimizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworkOptimizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkOptimizations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListNetworkOptimizationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListNetworkOptimizationsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_network_optimizations_with_options_async(
+        self,
+        request: esa20240910_models.ListNetworkOptimizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.ListNetworkOptimizationsResponse:
+        """
+        @summary 查询多条网络优化配置
+        
+        @param request: ListNetworkOptimizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNetworkOptimizationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNetworkOptimizations',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.ListNetworkOptimizationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.ListNetworkOptimizationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_network_optimizations(
+        self,
+        request: esa20240910_models.ListNetworkOptimizationsRequest,
+    ) -> esa20240910_models.ListNetworkOptimizationsResponse:
+        """
+        @summary 查询多条网络优化配置
+        
+        @param request: ListNetworkOptimizationsRequest
+        @return: ListNetworkOptimizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_network_optimizations_with_options(request, runtime)
+
+    async def list_network_optimizations_async(
+        self,
+        request: esa20240910_models.ListNetworkOptimizationsRequest,
+    ) -> esa20240910_models.ListNetworkOptimizationsResponse:
+        """
+        @summary 查询多条网络优化配置
+        
+        @param request: ListNetworkOptimizationsRequest
+        @return: ListNetworkOptimizationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_network_optimizations_with_options_async(request, runtime)
 
     def list_origin_pools_with_options(
         self,
@@ -27713,6 +28729,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_ipv_6with_options_async(request, runtime)
 
+    def update_image_transform_with_options(
+        self,
+        request: esa20240910_models.UpdateImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateImageTransformResponse:
+        """
+        @summary 修改站点图片转换配置
+        
+        @param request: UpdateImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateImageTransformResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateImageTransformResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_image_transform_with_options_async(
+        self,
+        request: esa20240910_models.UpdateImageTransformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateImageTransformResponse:
+        """
+        @summary 修改站点图片转换配置
+        
+        @param request: UpdateImageTransformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageTransformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageTransform',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateImageTransformResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateImageTransformResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_image_transform(
+        self,
+        request: esa20240910_models.UpdateImageTransformRequest,
+    ) -> esa20240910_models.UpdateImageTransformResponse:
+        """
+        @summary 修改站点图片转换配置
+        
+        @param request: UpdateImageTransformRequest
+        @return: UpdateImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_image_transform_with_options(request, runtime)
+
+    async def update_image_transform_async(
+        self,
+        request: esa20240910_models.UpdateImageTransformRequest,
+    ) -> esa20240910_models.UpdateImageTransformResponse:
+        """
+        @summary 修改站点图片转换配置
+        
+        @param request: UpdateImageTransformRequest
+        @return: UpdateImageTransformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_image_transform_with_options_async(request, runtime)
+
     def update_kv_namespace_with_options(
         self,
         request: esa20240910_models.UpdateKvNamespaceRequest,
@@ -28264,6 +29408,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_managed_transform_with_options_async(request, runtime)
+
+    def update_network_optimization_with_options(
+        self,
+        request: esa20240910_models.UpdateNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateNetworkOptimizationResponse:
+        """
+        @summary 修改网络优化配置
+        
+        @param request: UpdateNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.grpc):
+            query['Grpc'] = request.grpc
+        if not UtilClient.is_unset(request.http_2origin):
+            query['Http2Origin'] = request.http_2origin
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.smart_routing):
+            query['SmartRouting'] = request.smart_routing
+        if not UtilClient.is_unset(request.upload_max_filesize):
+            query['UploadMaxFilesize'] = request.upload_max_filesize
+        if not UtilClient.is_unset(request.websocket):
+            query['Websocket'] = request.websocket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateNetworkOptimizationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateNetworkOptimizationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_network_optimization_with_options_async(
+        self,
+        request: esa20240910_models.UpdateNetworkOptimizationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateNetworkOptimizationResponse:
+        """
+        @summary 修改网络优化配置
+        
+        @param request: UpdateNetworkOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNetworkOptimizationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.grpc):
+            query['Grpc'] = request.grpc
+        if not UtilClient.is_unset(request.http_2origin):
+            query['Http2Origin'] = request.http_2origin
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.smart_routing):
+            query['SmartRouting'] = request.smart_routing
+        if not UtilClient.is_unset(request.upload_max_filesize):
+            query['UploadMaxFilesize'] = request.upload_max_filesize
+        if not UtilClient.is_unset(request.websocket):
+            query['Websocket'] = request.websocket
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNetworkOptimization',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateNetworkOptimizationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateNetworkOptimizationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_network_optimization(
+        self,
+        request: esa20240910_models.UpdateNetworkOptimizationRequest,
+    ) -> esa20240910_models.UpdateNetworkOptimizationResponse:
+        """
+        @summary 修改网络优化配置
+        
+        @param request: UpdateNetworkOptimizationRequest
+        @return: UpdateNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_network_optimization_with_options(request, runtime)
+
+    async def update_network_optimization_async(
+        self,
+        request: esa20240910_models.UpdateNetworkOptimizationRequest,
+    ) -> esa20240910_models.UpdateNetworkOptimizationResponse:
+        """
+        @summary 修改网络优化配置
+        
+        @param request: UpdateNetworkOptimizationRequest
+        @return: UpdateNetworkOptimizationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_network_optimization_with_options_async(request, runtime)
 
     def update_origin_pool_with_options(
         self,
@@ -30308,6 +31596,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_site_name_exclusive_with_options_async(request, runtime)
+
+    def update_site_pause_with_options(
+        self,
+        request: esa20240910_models.UpdateSitePauseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateSitePauseResponse:
+        """
+        @summary 修改站点暂停配置
+        
+        @param request: UpdateSitePauseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSitePauseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.paused):
+            query['Paused'] = request.paused
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSitePause',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateSitePauseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateSitePauseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_site_pause_with_options_async(
+        self,
+        request: esa20240910_models.UpdateSitePauseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.UpdateSitePauseResponse:
+        """
+        @summary 修改站点暂停配置
+        
+        @param request: UpdateSitePauseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSitePauseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.paused):
+            query['Paused'] = request.paused
+        if not UtilClient.is_unset(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSitePause',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.UpdateSitePauseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.UpdateSitePauseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_site_pause(
+        self,
+        request: esa20240910_models.UpdateSitePauseRequest,
+    ) -> esa20240910_models.UpdateSitePauseResponse:
+        """
+        @summary 修改站点暂停配置
+        
+        @param request: UpdateSitePauseRequest
+        @return: UpdateSitePauseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_site_pause_with_options(request, runtime)
+
+    async def update_site_pause_async(
+        self,
+        request: esa20240910_models.UpdateSitePauseRequest,
+    ) -> esa20240910_models.UpdateSitePauseResponse:
+        """
+        @summary 修改站点暂停配置
+        
+        @param request: UpdateSitePauseRequest
+        @return: UpdateSitePauseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_site_pause_with_options_async(request, runtime)
 
     def update_site_vanity_nswith_options(
         self,
