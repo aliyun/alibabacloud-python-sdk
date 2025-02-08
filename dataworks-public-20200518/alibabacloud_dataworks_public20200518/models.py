@@ -2526,10 +2526,10 @@ class CreateBusinessRequest(TeaModel):
         self.project_id = project_id
         # The name of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace name. You must configure either this parameter or ProjectId parameter to determine the DataWorks workspace to which the operation is applied.
         self.project_identifier = project_identifier
-        # The module to which the business process belongs. Valid values:
+        # The module to which the workflow belongs. Valid values:
         # 
-        # - NORMAL: The business process is initiated automatically.
-        # - MANUAL_BIZ: The business process requires manual initiation.
+        # *   NORMAL: The workflow belongs to auto triggered workflows.
+        # *   MANUAL_BIZ: The workflow belongs to manually triggered workflows.
         self.use_type = use_type
 
     def validate(self):
@@ -2582,7 +2582,7 @@ class CreateBusinessResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the business process.
+        # The workflow ID.
         self.business_id = business_id
         # The error code.
         self.error_code = error_code
@@ -2590,9 +2590,9 @@ class CreateBusinessResponseBody(TeaModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the request ID to query logs and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3244,7 +3244,7 @@ class CreateDIAlarmRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.dijob_id = dijob_id
-        # The description of the alert rule.
+        # The description of the task.
         self.description = description
         # Specifies whether to enable the alert rule. By default, the alert rule is disabled.
         self.enabled = enabled
@@ -3330,7 +3330,7 @@ class CreateDIAlarmRuleShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dijob_id = dijob_id
-        # The description of the alert rule.
+        # The description of the task.
         self.description = description
         # Specifies whether to enable the alert rule. By default, the alert rule is disabled.
         self.enabled = enabled
@@ -6299,6 +6299,7 @@ class CreateFileRequest(TeaModel):
         file_name: str = None,
         file_type: int = None,
         ignore_parent_skip_running_property: bool = None,
+        image_id: str = None,
         input_list: str = None,
         input_parameters: str = None,
         output_parameters: str = None,
@@ -6344,10 +6345,10 @@ class CreateFileRequest(TeaModel):
         self.connection_name = connection_name
         # The code for the file. The code format varies based on the file type. To view the code format for a specific file type, go to Operation Center, right-click a node of the file type, and then select View Code.
         self.content = content
-        # If the directory specified in the parameter (FileFolderPath) does not exist in the system, whether the directory is automatically created. The values are as follows:
+        # Specifies whether to automatically create the directory that is specified by the FileFolderPath parameter if the directory does not exist. Valid values:
         # 
-        # - true: If the directory does not exist, the directory is automatically created.
-        # - false: If the directory does not exist, the call fails.
+        # *   true: The system automatically creates the directory if the directory does not exist.
+        # *   false: The system does not automatically create the directory if the directory does not exist. In this case, the call fails.
         self.create_folder_if_not_exists = create_folder_if_not_exists
         # The CRON expression that represents the periodic scheduling policy of the node. This parameter corresponds to the Cron Expression parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure the Scheduling Cycle and Scheduled time parameters in the DataWorks console, DataWorks generates the value of the Cron Expression parameter.
         # 
@@ -6403,6 +6404,7 @@ class CreateFileRequest(TeaModel):
         # - true: The empty run attribute of the previous cycle is used.
         # - false: The empty run attribute of the previous cycle is not used.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
         # The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
         # 
         # This parameter corresponds to the Output Name parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -6517,6 +6519,8 @@ class CreateFileRequest(TeaModel):
             result['FileType'] = self.file_type
         if self.ignore_parent_skip_running_property is not None:
             result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.input_list is not None:
             result['InputList'] = self.input_list
         if self.input_parameters is not None:
@@ -6587,6 +6591,8 @@ class CreateFileRequest(TeaModel):
             self.file_type = m.get('FileType')
         if m.get('IgnoreParentSkipRunningProperty') is not None:
             self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('InputList') is not None:
             self.input_list = m.get('InputList')
         if m.get('InputParameters') is not None:
@@ -6734,7 +6740,7 @@ class CreateFolderRequest(TeaModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The HTTP status code returned.
+        # The path of the folder.
         # 
         # This parameter is required.
         self.folder_path = folder_path
@@ -9055,7 +9061,7 @@ class CreateQualityRuleRequest(TeaModel):
         self.block_type = block_type
         # The checker ID.
         self.checker = checker
-        # The description of the monitoring rule.
+        # The description of the rule.
         self.comment = comment
         # The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
         self.critical_threshold = critical_threshold
@@ -10671,10 +10677,10 @@ class CreateUdfFileRequest(TeaModel):
         self.class_name = class_name
         # The syntax used for calling the function. This parameter corresponds to the Expression Syntax parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
         self.cmd_description = cmd_description
-        # If the directory specified in the parameter (FileFolderPath) does not exist in the system, whether the directory is automatically created. The values are as follows:
+        # Specifies whether to automatically create the directory that is specified by the FileFolderPath parameter if the directory does not exist. Valid values:
         # 
-        # - true: If the directory does not exist, the directory is automatically created.
-        # - false: If the directory does not exist, the call fails.
+        # *   true: The system automatically creates the directory if the directory does not exist.
+        # *   false: The system does not automatically create the directory if the directory does not exist. In this case, the call fails.
         self.create_folder_if_not_exists = create_folder_if_not_exists
         # The example for calling the function. This parameter corresponds to the Example parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
         self.example = example
@@ -10702,7 +10708,7 @@ class CreateUdfFileRequest(TeaModel):
         self.resources = resources
         # The description of the return value of the function. This parameter corresponds to the Return Value parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
         self.return_value = return_value
-        # The description of the function. This parameter corresponds to the Description parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
+        # The description of the function. This parameter corresponds to the Description parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
         self.udf_description = udf_description
 
     def validate(self):
@@ -17609,7 +17615,7 @@ class DsgSceneQuerySceneListByNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data entries returned.
+        # The returned data.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -21985,7 +21991,7 @@ class GetBaselineResponseBodyDataOverTimeSettings(TeaModel):
     ):
         # The period corresponding to the commitment time. The space-based line is 1, and the hourly baseline can be configured for up to 24 cycles.
         self.cycle = cycle
-        # 承诺时间，hh:mm格式，hh的取值范围为[0,47]，mm的取值范围为[0,59]。
+        # Commitment time, hh:mm format, hh value range is [0,47],mm value range is [0,59].
         self.time = time
 
     def validate(self):
@@ -25500,10 +25506,21 @@ class GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList(TeaModel):
         level: str = None,
         threshold: int = None,
     ):
+        # The calculation method of indicators,
+        # - avg interval average
+        # - max interval takes the maximum value
         self.aggregator = aggregator
+        # Comparison method of comparison symbols, indicators and alarm rules
+        # - \\"=\\"
+        # - \\"<\\"
+        # - \\">\\"
         self.comparator = comparator
+        # Duration: How long does this condition last before an alarm is triggered, in minutes.
         self.duration = duration
+        # - WARNING WARNING: alert
+        # - CRITICAL CRITICAL: alarm
         self.level = level
+        # Comparison threshold between metrics and alarm rules.
         self.threshold = threshold
 
     def validate(self):
@@ -25549,8 +25566,11 @@ class GetDISyncTaskResponseBodyDataAlarmListNotifyRule(TeaModel):
         interval: int = None,
         warning: List[str] = None,
     ):
+        # Critical-level alert notification list.
         self.critical = critical
+        # Alarm interval, in minutes.
         self.interval = interval
+        # Warning-level alert notification list.
         self.warning = warning
 
     def validate(self):
@@ -25592,12 +25612,26 @@ class GetDISyncTaskResponseBodyDataAlarmList(TeaModel):
         notify_rule: GetDISyncTaskResponseBodyDataAlarmListNotifyRule = None,
         rule_name: str = None,
     ):
+        # Alarm Notification configuration array.
         self.alarm_rule_list = alarm_rule_list
+        # Alarm rule description.
         self.description = description
+        # Whether alarm rules are enabled.
         self.enabled = enabled
+        # Alarm rule id.
         self.id = id
+        # Alarm Type:
+        # 
+        # - taskStatus: task status
+        # - bizDelay: business latency
+        # - taskFailoverCount: monitoring Failover
+        # - ddlUnsupport: DDL is not supported
+        # - ddlReport: DDL notifications
+        # - totalDirtyRecordWriteInLines: dirty data
         self.metric = metric
+        # Alert notification rule array.
         self.notify_rule = notify_rule
+        # Alarm rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -25773,6 +25807,7 @@ class GetDISyncTaskResponseBodyData(TeaModel):
         solution_detail: GetDISyncTaskResponseBodyDataSolutionDetail = None,
         status: str = None,
     ):
+        # Array of alarm rules associated with real-time tasks.
         self.alarm_list = alarm_list
         # *   If the TaskType parameter is set to DI_REALTIME, the details of the real-time synchronization task are returned.
         # *   If the TaskType parameter is set to DI_SOLUTION, the value null is returned.
@@ -29682,7 +29717,7 @@ class GetDeploymentResponseBodyDataDeployment(TeaModel):
         self.create_time = create_time
         # The ID of the Alibaba Cloud account used by the user who created the deployment task.
         self.creator_id = creator_id
-        # The error message that was returned when the deployment task failed. In this case, the value of the Status parameter is 2.
+        # The error message that was returned when the deployment package failed. In this case, the value of the Status parameter is 2.
         self.error_message = error_message
         # The time when the deployment task was run. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.execute_time = execute_time
@@ -29761,7 +29796,7 @@ class GetDeploymentResponseBodyData(TeaModel):
     ):
         # The deployed items.
         self.deployed_items = deployed_items
-        # The details of the deployment task.
+        # The details of the deployment package.
         self.deployment = deployment
 
     def validate(self):
@@ -30646,6 +30681,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         dependent_type: str = None,
         end_effect_date: int = None,
         ignore_parent_skip_running_property: str = None,
+        image_id: str = None,
         input_list: List[GetFileResponseBodyDataNodeConfigurationInputList] = None,
         input_parameters: List[GetFileResponseBodyDataNodeConfigurationInputParameters] = None,
         output_list: List[GetFileResponseBodyDataNodeConfigurationOutputList] = None,
@@ -30690,8 +30726,9 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         # 
         # This parameter corresponds to the Validity Period parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
-        # Scheduling configuration-> previous cycle-> whether to skip the upstream empty run attribute
+        # Indicates whether to skip the dry-run property of the ancestor nodes of the node that corresponds to the file. This parameter corresponds to the Skip the dry-run property of the ancestor node parameter that is displayed after you configure the Depend On parameter in the Dependencies section of the Properties tab in the DataWorks console.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
         # The output names of the parent files on which the current file depends.
         self.input_list = input_list
         # Input parameters of the node.
@@ -30742,7 +30779,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         # 
         # This parameter corresponds to the Recurrence parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop
-        # Scheduling configuration timeout definition
+        # The timeout period.
         self.timeout = timeout
 
     def validate(self):
@@ -30787,6 +30824,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             result['EndEffectDate'] = self.end_effect_date
         if self.ignore_parent_skip_running_property is not None:
             result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         result['InputList'] = []
         if self.input_list is not None:
             for k in self.input_list:
@@ -30841,6 +30880,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             self.end_effect_date = m.get('EndEffectDate')
         if m.get('IgnoreParentSkipRunningProperty') is not None:
             self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         self.input_list = []
         if m.get('InputList') is not None:
             for k in m.get('InputList'):
@@ -30885,7 +30926,7 @@ class GetFileResponseBodyDataResourceDownloadLink(TeaModel):
         self,
         download_link: str = None,
     ):
-        # Resource download address link
+        # The download URL of the resource.
         self.download_link = download_link
 
     def validate(self):
@@ -30919,7 +30960,7 @@ class GetFileResponseBodyData(TeaModel):
         self.file = file
         # The scheduling configurations of the file.
         self.node_configuration = node_configuration
-        # Resource download address
+        # The download URL of the resource.
         self.resource_download_link = resource_download_link
 
     def validate(self):
@@ -36737,19 +36778,25 @@ class GetMetaTableFullInfoRequest(TeaModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the EMR cluster. You can log in to the EMR management console to obtain the cluster ID.
+        # The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # 
+        # You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to query the ID.
         self.cluster_id = cluster_id
-        # Data type, currently only supports the value `emr`.
+        # The type of the data source. Set the value to emr.
         self.data_source_type = data_source_type
-        # The name of the EMR database. You can obtain the database name by calling the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) interface.
+        # The name of the database. This parameter is required only if you set the DataSourceType parameter to emr.
+        # 
+        # You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the database name.
         self.database_name = database_name
         # The page number requested for pagination.
         self.page_num = page_num
         # The number of items per page, with a default of 10 and a maximum of 100.
         self.page_size = page_size
-        # The unique identifier of the table. You can obtain the unique identifier by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
+        # The unique identifier of the table. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the unique identifier of the table.
         self.table_guid = table_guid
-        # The name of the EMR table. You can obtain the table name by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
+        # The name of the table in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # 
+        # You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the table name.
         self.table_name = table_name
 
     def validate(self):
@@ -36809,29 +36856,32 @@ class GetMetaTableFullInfoResponseBodyDataColumnList(TeaModel):
         is_primary_key: bool = None,
         position: int = None,
     ):
-        # The description of the column.
+        # The description of the field.
         self.caption = caption
-        # The unique identifier of the column.
+        # The unique identifier of the field.
         self.column_guid = column_guid
-        # The name of the column.
+        # The name of the field.
         self.column_name = column_name
-        # The type of the column.
+        # The data type of the field.
         self.column_type = column_type
-        # The comment for the column.
+        # The remarks of the field.
         self.comment = comment
-        # Whether the field is a foreign key, with values as follows: 
-        # - true, it is a foreign key. 
-        # - false, it is not a foreign key.
+        # Indicates whether the field is a foreign key. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_foreign_key = is_foreign_key
-        # Indicates whether the column is a partition column, with the following values:
-        # - true: It is a partition column.
-        # - false: It is not a partition column.
+        # Indicates whether the field is a partition field. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_partition_column = is_partition_column
-        # Indicates whether the column is a primary key, with the following values:
-        # - true: It is a primary key.
-        # - false: It is not a primary key.
+        # Indicates whether the field is a primary key. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_primary_key = is_primary_key
-        # The position of the column in the order.
+        # The sequence number of the field.
         self.position = position
 
     def validate(self):
@@ -36912,46 +36962,49 @@ class GetMetaTableFullInfoResponseBodyData(TeaModel):
         tenant_id: int = None,
         total_column_count: int = None,
     ):
-        # The ID of the EMR cluster.
+        # The EMR cluster ID.
         self.cluster_id = cluster_id
-        # A list of columns.
+        # The fields in the table.
         self.column_list = column_list
-        # The comment of the table.
+        # The comment on the table.
         self.comment = comment
-        # The time when the table was created. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
+        # The time when the table was created. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
         self.create_time = create_time
-        # The storage space occupied by the table, in bytes (B).
+        # The size of the storage space that is consumed by the table. Unit: bytes.
         self.data_size = data_size
         # The name of the database.
         self.database_name = database_name
-        # Environment type, with the following values:
-        # - 0 indicates a table in the development environment.
-        # - 1 indicates a table in the production environment.
+        # The type of the environment. Valid values:
+        # 
+        # *   0: indicates that the table resides in the development environment.
+        # *   1: indicates that the table resides in the production environment.
         self.env_type = env_type
-        # Indicates whether the table is visible, with the following values:
-        # - 0: The table is visible to workspace members.
-        # - 1: The table is visible within the tenant.
-        # - 2: The table is visible across tenants.
-        # - 3: The table is only visible to the responsible person.
+        # The scope in which the table is visible. Valid values:
+        # 
+        # *   0: indicates that the table is visible to workspace members.
+        # *   1: indicates that the table is visible to users within a tenant.
+        # *   2: indicates that the table is visible to all tenants.
+        # *   3: indicates that the table is visible only to the table owner.
         self.is_visible = is_visible
-        # The last time the table was accessed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
+        # The time when the table was last accessed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
         self.last_access_time = last_access_time
-        # The last time the table structure was changed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
+        # The time when the schema of the table was last changed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
         self.last_ddl_time = last_ddl_time
-        # The last time the table was updated. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
+        # The time when the table was last updated. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
         self.last_modify_time = last_modify_time
-        # The lifecycle of the table, in days.
+        # The lifecycle of the table. Unit: days.
         self.life_cycle = life_cycle
-        # The storage location of the Hive table.
+        # The storage path of the Hive table.
         self.location = location
         # The ID of the table owner.
         self.owner_id = owner_id
-        # Partition keys.
+        # The partition key column.
         self.partition_keys = partition_keys
-        # The ID of the workspace where the table is located.
+        # The ID of the workspace to which the table belongs.
         self.project_id = project_id
-        # The name of the workspace where the table is located.
+        # The name of the workspace to which the table belongs.
         self.project_name = project_name
+        # The schema information of the table.
         self.schema = schema
         # The unique identifier of the table.
         self.table_guid = table_guid
@@ -36959,7 +37012,7 @@ class GetMetaTableFullInfoResponseBodyData(TeaModel):
         self.table_name = table_name
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total number of columns.
+        # The total number of fields.
         self.total_column_count = total_column_count
 
     def validate(self):
@@ -37084,17 +37137,17 @@ class GetMetaTableFullInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Business data.
+        # The business data.
         self.data = data
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_message = error_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Request ID. Used for locating logs and troubleshooting issues.
+        # The request ID.
         self.request_id = request_id
-        # Whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -39573,7 +39626,7 @@ class GetNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The priority of the node. Valid values: 1, 3, 5, 7, and 8.
+        # The environment of the workspace. Valid values: PROD and DEV.
         # 
         # This parameter is required.
         self.project_env = project_env
@@ -39639,9 +39692,11 @@ class GetNodeResponseBodyData(TeaModel):
         self.business_id = business_id
         # The environment of the workspace. Valid values: PROD and DEV.
         self.connection = connection
+        # The creation time.
         self.create_time = create_time
         # The environment of the workspace. Valid values: PROD and DEV.
         self.cron_express = cron_express
+        # The deployment date.
         self.deploy_date = deploy_date
         # The name of the resource group.
         self.description = description
@@ -39649,9 +39704,13 @@ class GetNodeResponseBodyData(TeaModel):
         self.dqc_description = dqc_description
         # The error message returned.
         self.dqc_type = dqc_type
+        # The ID of the file.
         self.file_id = file_id
+        # The file type. Different file types have different codes. For more information, see [DataWorks node collection](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
+        # The version of the file.
         self.file_version = file_version
+        # The modification time.
         self.modify_time = modify_time
         # The HTTP status code returned.
         self.node_id = node_id
@@ -39676,9 +39735,11 @@ class GetNodeResponseBodyData(TeaModel):
         self.related_flow_id = related_flow_id
         # The ID of the workflow to which the node belongs.
         self.repeat_interval = repeat_interval
+        # Rerun mode. 0 indicates that you can rerun only if you fail, 1 indicates that you can rerun in all cases, and 2 indicates that you cannot rerun in all cases.
         self.repeat_mode = repeat_mode
         # The type of the node.
         self.repeatability = repeatability
+        # The unique identifier of the resource group.
         self.res_group_identifier = res_group_identifier
         # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.res_group_name = res_group_name
@@ -41099,7 +41160,7 @@ class GetOpRiskDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The method that you use to identify risks. Valid values:
+        # The method that you use to identify risks.
         # 
         # *   You can manually identify risks.
         # *   You can also use a sensitive data identification rule to identify risks. You can log on to the DataWorks console and go to the Risk Identification Rules page in Data Security Guard to obtain the name of the rule.
@@ -43098,9 +43159,14 @@ class GetQualityFollowerRequest(TeaModel):
         project_id: int = None,
         project_name: str = None,
     ):
+        # The ID of the partition filter expression.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
+        # The name of the engine or data source.
+        # 
         # This parameter is required.
         self.project_name = project_name
 
@@ -43145,14 +43211,28 @@ class GetQualityFollowerResponseBodyData(TeaModel):
         project_name: str = None,
         table_name: str = None,
     ):
+        # The alert mode. The value is as follows:
+        # 
+        # - 1 (Mail)
+        # - 2 (email and SMS)
+        # - 4 (DingTalk groups of robots or hook)
+        # - 5 (DingTalk groups of robots @ ALL)
         self.alarm_mode = alarm_mode
+        # The time when the data quality rule subscription configuration was created.
         self.create_time = create_time
+        # The ID of the partition expression.
         self.entity_id = entity_id
+        # The subscriber to receive alert information.
         self.follower = follower
+        # The Alibaba Cloud account name of the subscriber.
         self.follower_account_name = follower_account_name
+        # The ID of the subscription relationship.
         self.id = id
+        # The update time of the data quality rule subscription configuration.
         self.modify_time = modify_time
+        # The name of the engine or data source.
         self.project_name = project_name
+        # The name of the partitioned table.
         self.table_name = table_name
 
     def validate(self):
@@ -43217,11 +43297,17 @@ class GetQualityFollowerResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The information about the subscription relationship.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP return code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -43849,7 +43935,13 @@ class GetRemindResponseBodyDataReceivers(TeaModel):
         alert_targets: List[str] = None,
         alert_unit: str = None,
     ):
+        # The alert recipient.
         self.alert_targets = alert_targets
+        # The type of the alert recipient. For more information about alert recipients, see the Receivers parameter. Valid values:
+        # 
+        # *   OWNER: indicate the task owner.
+        # *   OTHER: indicates specified personnel.
+        # *   SHIFT_SCHEDULE: indicates personnel in a shift schedule.
         self.alert_unit = alert_unit
 
     def validate(self):
@@ -43939,12 +44031,17 @@ class GetRemindResponseBodyData(TeaModel):
     ):
         # The minimum interval at which alerts are reported. Unit: seconds.
         self.alert_interval = alert_interval
-        # The alert notification method.
+        # The notification method.
         self.alert_methods = alert_methods
-        # The description of the alert recipient.
+        # The description of the alert recipient. For more information about alert recipients, see the Receivers parameter.
         self.alert_targets = alert_targets
-        # The recipient of the alert. Valid values: OWNER and OTHER. The value OWNER indicates the node owner. The value OTHER indicates a specified user.
+        # The type of the alert recipient. For more information about alert recipient types, see the Receivers parameter. Valid values:
+        # 
+        # *   OWNER: the task owner
+        # *   OTHER: specified personnel
+        # *   SHIFT_SCHEDULE: personnel in a shift schedule
         self.alert_unit = alert_unit
+        # The IDs of the nodes that are added to a whitelist.
         self.allow_nodes = allow_nodes
         # The baselines to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is BASELINE.
         self.baselines = baselines
@@ -43968,6 +44065,7 @@ class GetRemindResponseBodyData(TeaModel):
         self.nodes = nodes
         # The workspaces to which the custom alert rule is applied. This parameter is returned if the value of the RemindUnit parameter is PROJECT.
         self.projects = projects
+        # The information about the alert recipients.
         self.receivers = receivers
         # The custom alert rule ID.
         self.remind_id = remind_id
@@ -43981,7 +44079,7 @@ class GetRemindResponseBodyData(TeaModel):
         self.robots = robots
         # Indicates whether the custom alert rule is enabled. Valid values: true and false.
         self.useflag = useflag
-        # The information about the webhook URL.
+        # WebHook URL
         self.webhooks = webhooks
 
     def validate(self):
@@ -44159,7 +44257,7 @@ class GetRemindResponseBody(TeaModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -44987,6 +45085,8 @@ class GetTopicInfluenceRequest(TeaModel):
         self,
         topic_id: int = None,
     ):
+        # The ID of the event.
+        # 
         # This parameter is required.
         self.topic_id = topic_id
 
@@ -45023,15 +45123,23 @@ class GetTopicInfluenceResponseBodyDataInfluences(TeaModel):
         project_id: int = None,
         status: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
+        # The name of the baseline.
         self.baseline_name = baseline_name
+        # The data timestamp of the baseline instance.
         self.bizdate = bizdate
+        # The margin of the baseline instance. Unit: seconds.
         self.buffer = buffer
+        # The ID of the cycle of the baseline instance. For a baseline instance that is scheduled by day, the field value is 1. For a baseline instance that is scheduled by hour, the field value ranges from 1 to 24.
         self.in_group_id = in_group_id
+        # The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
         self.owner = owner
+        # The priority of the baseline. Valid values: 1, 2, 5, 7, and 8.
         self.priority = priority
+        # The ID of the workspace to which the baseline belongs.
         self.project_id = project_id
+        # The status of the baseline. Valid values: ERROR, SAFE, DANGROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes are run before the alert duration begins. The value DANGROUS indicates that nodes are still running after the alert duration ends but the committed time does not arrive. The value OVER indicates that nodes are still running after the committed time.
         self.status = status
 
     def validate(self):
@@ -45092,8 +45200,9 @@ class GetTopicInfluenceResponseBodyData(TeaModel):
         influences: List[GetTopicInfluenceResponseBodyDataInfluences] = None,
         topic_id: int = None,
     ):
-        # The affected baseline instances.
+        # The list of affected baseline instances.
         self.influences = influences
+        # The ID of the event.
         self.topic_id = topic_id
 
     def validate(self):
@@ -45138,12 +45247,17 @@ class GetTopicInfluenceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The list of baseline instances affected by the event.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code returned.
         self.http_status_code = http_status_code
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -47922,14 +48036,25 @@ class ListCheckProcessesRequest(TeaModel):
         project_id: int = None,
         status: str = None,
     ):
+        # Extension point event encoding.
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # The message ID in DataWorks OpenEvent. You can obtain the ID from a received message when an extension point event is triggered.
         self.message_id = message_id
         # The operator ID.
         self.operator = operator
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the workspace.
         self.project_id = project_id
+        # The check status of the extension. Valid values:
+        # 
+        # *   CHECKING
+        # *   PASSED
+        # *   BLOCKED
         self.status = status
 
     def validate(self):
@@ -47989,14 +48114,26 @@ class ListCheckProcessesResponseBodyPagingInfoCheckProcesses(TeaModel):
         project_id: int = None,
         status: str = None,
     ):
+        # Extension point event encoding.
         self.event_code = event_code
+        # The name of the extension point event.
         self.event_name = event_name
+        # The English name of the event.
         self.event_name_en = event_name_en
+        # DataWorks the message ID of the open message. After an extended point event is triggered, you can obtain the message ID from the received event message.
         self.message_id = message_id
+        # The operator ID.
         self.operator = operator
+        # The ID of the process instance.
         self.process_id = process_id
+        # The name of the check object, such as the file name or node name.
         self.process_name = process_name
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
+        # The status of the extender check.
+        # - CHECKING CHECKING
+        # - PASSED the pass check
+        # - BLOCKED check failed
         self.status = status
 
     def validate(self):
@@ -48059,9 +48196,13 @@ class ListCheckProcessesResponseBodyPagingInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The check details of the extension.
         self.check_processes = check_processes
+        # The page number.
         self.page_number = page_number
+        # The number of entries displayed on each page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -48110,7 +48251,9 @@ class ListCheckProcessesResponseBody(TeaModel):
         paging_info: ListCheckProcessesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56927,9 +57070,11 @@ class ListFilesRequest(TeaModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
+        # The exact matching file name. The file name of the query result is exactly the same as this parameter.
         self.exact_file_name = exact_file_name
         # The path of the files.
         self.file_folder_path = file_folder_path
+        # The file ID list. The File ID set of the query result can only be a subset of the list. You can specify up to 50 fileids at a time.
         self.file_id_in = file_id_in
         # The types of the code in the files.
         # 
@@ -56937,7 +57082,9 @@ class ListFilesRequest(TeaModel):
         self.file_types = file_types
         # The keyword in the file names. The keyword is used to perform a fuzzy match. You can specify a keyword to query all files whose names contain the keyword.
         self.keyword = keyword
+        # Whether the query result contains the path of the folder where the file is located.
         self.need_absolute_folder_path = need_absolute_folder_path
+        # Whether the query results contain file content (for files with more content, there may be a long network transmission delay).
         self.need_content = need_content
         # The ID of the node that is scheduled. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the ID of the node.
         self.node_id = node_id
@@ -57063,6 +57210,7 @@ class ListFilesResponseBodyDataFiles(TeaModel):
         parent_id: int = None,
         use_type: str = None,
     ):
+        # The path of the folder where the file is located.
         self.absolute_folder_path = absolute_folder_path
         # Specifies whether the automatic parsing feature is enabled for the file. Valid values:
         # 
@@ -58516,6 +58664,10 @@ class ListInstancesRequest(TeaModel):
         self.node_id = node_id
         # Indicates whether the node can be rerun.
         self.node_name = node_name
+        # The sorting rule of the instances to be returned. Valid values:
+        # 
+        # *   CREATE_TIME_DESC: The instances are sorted in descending order of their creation time.
+        # *   INSTANCE_ID_DESC (default): The instances are sorted in descending order of their IDs.
         self.order_by = order_by
         # The connection string.
         self.owner = owner
@@ -58525,7 +58677,7 @@ class ListInstancesRequest(TeaModel):
         self.page_size = page_size
         # The error code returned.
         self.program_type = program_type
-        # The time when the node was last modified.
+        # The environment in which the node runs. Valid values: DEV and PROD.
         # 
         # This parameter is required.
         self.project_env = project_env
@@ -58533,7 +58685,16 @@ class ListInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The time when the instance started to wait to be scheduled.
+        # The status of the node. Valid values:
+        # 
+        # *   NOT_RUN: The node is not run.
+        # *   WAIT_TIME: The node is waiting for the scheduling time to arrive.
+        # *   WAIT_RESOURCE: The node is waiting for resources.
+        # *   RUNNING: The node is running.
+        # *   CHECKING: Data quality is being checked for the node.
+        # *   CHECKING_CONDITION: Branch conditions are being checked for the node.
+        # *   FAILURE: The node fails to run.
+        # *   SUCCESS: The node is successfully run.
         self.status = status
 
     def validate(self):
@@ -61366,13 +61527,13 @@ class ListNodesRequest(TeaModel):
         self.node_name = node_name
         # The description of the node.
         self.owner = owner
-        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
+        # The page number. Minimum value: 1. Maximum value: 100.
         self.page_number = page_number
-        # The ID of the workspace.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The operation that you want to perform. Set the value to **ListNodes**.
         self.program_type = program_type
-        # The number of entries returned per page. Default value: 10. Maximum value: 100.
+        # The environment in which the node runs. Valid values: DEV and PROD.
         # 
         # This parameter is required.
         self.project_env = project_env
@@ -61380,6 +61541,11 @@ class ListNodesRequest(TeaModel):
         # 
         # This parameter is required.
         self.project_id = project_id
+        # The scheduling type. Valid values:
+        # 
+        # *   NORMAL: Nodes are scheduled as expected.
+        # *   PAUSE: Nodes are paused.
+        # *   SKIP: Nodes are dry-run. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
         self.scheduler_type = scheduler_type
 
     def validate(self):
@@ -61471,9 +61637,11 @@ class ListNodesResponseBodyDataNodes(TeaModel):
         self.business_id = business_id
         # The name of the resource group.
         self.connection = connection
+        # The timestamp when the node was created. Unit: milliseconds.
         self.create_time = create_time
         # The name of the workflow.
         self.cron_express = cron_express
+        # The timestamp when the node was deployed. Unit: milliseconds.
         self.deploy_date = deploy_date
         # The priority for running the node. Valid values: 1, 3, 5, 7, and 8.
         self.description = description
@@ -61481,9 +61649,14 @@ class ListNodesResponseBodyDataNodes(TeaModel):
         self.dqc_description = dqc_description
         # The connection string.
         self.dqc_type = dqc_type
+        # The file ID. You can call the ListFiles operation to query the ID.
         self.file_id = file_id
+        # Different file types have different codes. For more information, see [DataWorks node collection](https://help.aliyun.com/document_detail/600169.html).
+        # You can also call the [ListFileType](https://help.aliyun.com/document_detail/212428.html) interface to query the code type of the file.
         self.file_type = file_type
+        # The latest version number of the file.
         self.file_version = file_version
+        # The timestamp when the node was modified. Unit: milliseconds.
         self.modify_time = modify_time
         # The types of the nodes. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the type of the node.
         self.node_id = node_id
@@ -61503,9 +61676,11 @@ class ListNodesResponseBodyDataNodes(TeaModel):
         self.related_flow_id = related_flow_id
         # The environment of the workspace. Valid values: PROD and DEV.
         self.repeat_interval = repeat_interval
+        # The rerun mode. The value 0 indicates that rerun can be performed only if a failure occurs. The value 1 indicates that rerun can be performed in all cases. The value 2 indicates that rerun cannot be performed in all cases.
         self.repeat_mode = repeat_mode
         # The name of the node.
         self.repeatability = repeatability
+        # The identifier of the resource group.
         self.res_group_identifier = res_group_identifier
         # The ID of the workflow.
         self.res_group_name = res_group_name
@@ -61644,12 +61819,7 @@ class ListNodesResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The scheduling type of the node. Valid values:
-        # 
-        # *   NORMAL: indicates that the node is a normal auto triggered node.
-        # *   MANUAL: indicates that the node is a manually triggered node.
-        # *   PAUSE: indicates that the node is a paused node.
-        # *   SKIP: indicates that the node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+        # The information about the nodes.
         self.nodes = nodes
         # The name of the node.
         self.page_number = page_number
@@ -61708,7 +61878,7 @@ class ListNodesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the associated workflow.
+        # The nodes.
         self.data = data
         # The HTTP status code returned.
         self.error_code = error_code
@@ -68216,9 +68386,13 @@ class ListTablesRequest(TeaModel):
         next_token: str = None,
         page_size: int = None,
     ):
+        # The type of the data source. Valid values: ODPS, emr, mysql, holo, analyticdb_for_mysql, oracle, postgresql, sqlserver, clickhouse, and starrocks.
+        # 
         # This parameter is required.
         self.data_source_type = data_source_type
+        # Pagination information, which specifies the starting point of this read.
         self.next_token = next_token
+        # The number of entries displayed on each page. The default value is 10 and the maximum value is 100.
         self.page_size = page_size
 
     def validate(self):
@@ -68259,11 +68433,17 @@ class ListTablesResponseBodyDataTableEntityListEntityContent(TeaModel):
         project_name: str = None,
         table_name: str = None,
     ):
+        # The unique identifier of the data source.
         self.data_source_qualified_name = data_source_qualified_name
+        # The unique ID of the data source identifier.
         self.data_source_unique_id = data_source_unique_id
+        # The name of the database.
         self.database_name = database_name
+        # The ID of the data source instance.
         self.instance_id = instance_id
+        # The name of the ODPS project.
         self.project_name = project_name
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -68312,7 +68492,9 @@ class ListTablesResponseBodyDataTableEntityList(TeaModel):
         entity_content: ListTablesResponseBodyDataTableEntityListEntityContent = None,
         entity_qualified_name: str = None,
     ):
+        # Table entity information.
         self.entity_content = entity_content
+        # The unique identifier of the table entity.
         self.entity_qualified_name = entity_qualified_name
 
     def validate(self):
@@ -68348,8 +68530,11 @@ class ListTablesResponseBodyData(TeaModel):
         table_entity_list: List[ListTablesResponseBodyDataTableEntityList] = None,
         total: int = None,
     ):
+        # Pagination information, which specifies the starting point of the next read.
         self.next_token = next_token
+        # Entity array.
         self.table_entity_list = table_entity_list
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -70707,7 +70892,7 @@ class RegisterLineageRelationResponseBody(TeaModel):
         self.http_status_code = http_status_code
         # The lineage.
         self.lineage_relation = lineage_relation
-        # The request ID.
+        # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -77174,8 +77359,12 @@ class UpdateClusterConfigsRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_type = config_type
+        # The configuration information of the cluster submodule.
+        # 
         # This parameter is required.
         self.config_values = config_values
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -77237,8 +77426,12 @@ class UpdateClusterConfigsShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_type = config_type
+        # The configuration information of the cluster submodule.
+        # 
         # This parameter is required.
         self.config_values_shrink = config_values_shrink
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -77289,9 +77482,13 @@ class UpdateClusterConfigsResponseBody(TeaModel):
         # *   true
         # *   false
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request. It is used to locate logs and troubleshoot problems.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -78165,6 +78362,7 @@ class UpdateDIJobRequestJobSettingsCycleScheduleSettings(TeaModel):
         self,
         schedule_parameters: str = None,
     ):
+        # The scheduling parameters.
         self.schedule_parameters = schedule_parameters
 
     def validate(self):
@@ -78242,14 +78440,14 @@ class UpdateDIJobRequestJobSettingsRuntimeSettings(TeaModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # *   runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
-        # *   runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
-        # *   dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
-        # *   runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
-        # *   dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
-        # *   runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
-        # *   src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
-        # *   runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+        # *   runtime.offline.speed.limit.mb: specifies the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
+        # *   runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
+        # *   dst.offline.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
+        # *   runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
+        # *   dst.realtime.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
+        # *   runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
+        # *   src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+        # *   runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -78287,9 +78485,11 @@ class UpdateDIJobRequestJobSettings(TeaModel):
         ddl_handling_settings: List[UpdateDIJobRequestJobSettingsDdlHandlingSettings] = None,
         runtime_settings: List[UpdateDIJobRequestJobSettingsRuntimeSettings] = None,
     ):
+        # The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
         self.channel_settings = channel_settings
         # The settings for data type mappings between source fields and destination fields. The value of this parameter must be an array.
         self.column_data_type_settings = column_data_type_settings
+        # The settings for periodic scheduling.
         self.cycle_schedule_settings = cycle_schedule_settings
         # The settings for processing DDL messages. The value of this parameter must be an array.
         self.ddl_handling_settings = ddl_handling_settings
@@ -78428,6 +78628,7 @@ class UpdateDIJobRequestResourceSettings(TeaModel):
         self.offline_resource_settings = offline_resource_settings
         # The resource used for real-time synchronization.
         self.realtime_resource_settings = realtime_resource_settings
+        # The number of compute units (CUs) in the resource group that are used for full and incremental synchronization.
         self.requested_cu = requested_cu
 
     def validate(self):
@@ -78514,6 +78715,10 @@ class UpdateDIJobRequestTableMappingsTransformationRules(TeaModel):
         # *   Rename
         # *   AddColumn
         # *   HandleDml
+        # *   DefineIncrementalCondition
+        # *   DefineCycleScheduleSettings
+        # *   DefineRuntimeSettings
+        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
         # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
@@ -78557,9 +78762,9 @@ class UpdateDIJobRequestTableMappings(TeaModel):
         source_object_selection_rules: List[UpdateDIJobRequestTableMappingsSourceObjectSelectionRules] = None,
         transformation_rules: List[UpdateDIJobRequestTableMappingsTransformationRules] = None,
     ):
-        # The rule used to select synchronization objects in the source. You can configure multiple rules.
+        # The list of rules that you want to use to select synchronization objects in the source.
         self.source_object_selection_rules = source_object_selection_rules
-        # The transformation rules that are applied to the selected synchronization objects.
+        # The list of transformation rules that you want to apply to the synchronization objects selected from the source.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -78617,18 +78822,22 @@ class UpdateDIJobRequestTransformationRules(TeaModel):
         # *   Rename
         # *   AddColumn
         # *   HandleDml
+        # *   DefineIncrementalCondition
+        # *   DefineCycleScheduleSettings
+        # *   DefineRuntimeSettings
+        # *   DefinePartitionKey
         self.rule_action_type = rule_action_type
-        # The expression of the rule. The expression is a JSON string.
+        # The expression of the rule. The expression must be a JSON string.
         # 
         # Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
         # 
-        # expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name is not enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence for string replacement. from indicates the original string. to indicates the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+        # expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. Do not enclose the variable name in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
         # 
-        # If no rule of this type is configured, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that is added. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field that is added. If the valueType parameter is set to Constant, the value of the columnValue parameter must be a constant of the STRING type. If the valueType parameter is set to Variable, the value of the columnValue parameter must be a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME indicates the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC indicates the name of the source. TABLE_NAME_SRC indicates the name of a source table. DB_NAME_DEST indicates the name of a destination database. DATASOURCE_NAME_DEST indicates the name of the destination. TABLE_NAME_DEST indicates the name of a destination table. DB_NAME_SRC_TRANSED indicates the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+        # If you do not configure such a rule, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that you want to add. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field that you want to add. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
         # 
-        # If no rule of this type is configured, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+        # If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
         # 
-        # If no rule of this type is configured, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+        # If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
         self.rule_expression = rule_expression
         # The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
         self.rule_name = rule_name
@@ -78690,7 +78899,7 @@ class UpdateDIJobRequest(TeaModel):
         self.resource_settings = resource_settings
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
         self.table_mappings = table_mappings
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
         self.transformation_rules = transformation_rules
 
     def validate(self):
@@ -78776,7 +78985,7 @@ class UpdateDIJobShrinkRequest(TeaModel):
         self.resource_settings_shrink = resource_settings_shrink
         # The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
+        # The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):
@@ -79834,6 +80043,7 @@ class UpdateFileRequest(TeaModel):
         file_id: int = None,
         file_name: str = None,
         ignore_parent_skip_running_property: bool = None,
+        image_id: str = None,
         input_list: str = None,
         input_parameters: str = None,
         output_list: str = None,
@@ -79856,6 +80066,7 @@ class UpdateFileRequest(TeaModel):
         # 
         # This parameter is configured in the JSON format.
         self.advanced_settings = advanced_settings
+        # Whether the scheduling configuration takes effect immediately after the release.
         self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether the automatic parsing feature is enabled for the file. Valid values:
         # 
@@ -79924,7 +80135,9 @@ class UpdateFileRequest(TeaModel):
         # 
         # You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the ID of the file whose name you want to change. Then, you can set the FileId parameter to the ID and set the FileName parameter to a new value when you call the [UpdateFile](https://help.aliyun.com/document_detail/173951.html) operation.
         self.file_name = file_name
+        # Scheduling configuration-> previous cycle-> whether to skip the upstream empty run attribute.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
+        self.image_id = image_id
         # The output name of the parent file on which the current file depends. If you specify multiple output names, separate them with commas (,).
         # 
         # This parameter corresponds to the Parent Nodes parameter that is displayed after you select Same Cycle in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -80043,6 +80256,8 @@ class UpdateFileRequest(TeaModel):
             result['FileName'] = self.file_name
         if self.ignore_parent_skip_running_property is not None:
             result['IgnoreParentSkipRunningProperty'] = self.ignore_parent_skip_running_property
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.input_list is not None:
             result['InputList'] = self.input_list
         if self.input_parameters is not None:
@@ -80111,6 +80326,8 @@ class UpdateFileRequest(TeaModel):
             self.file_name = m.get('FileName')
         if m.get('IgnoreParentSkipRunningProperty') is not None:
             self.ignore_parent_skip_running_property = m.get('IgnoreParentSkipRunningProperty')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('InputList') is not None:
             self.input_list = m.get('InputList')
         if m.get('InputParameters') is not None:
@@ -83307,7 +83524,7 @@ class UpdateUdfFileRequest(TeaModel):
         self.resources = resources
         # The description of the return value of the function. This parameter corresponds to the Return Value parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
         self.return_value = return_value
-        # The description of the function. This parameter corresponds to the Description parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
+        # The description of the function. This parameter corresponds to the Description parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
         self.udf_description = udf_description
 
     def validate(self):

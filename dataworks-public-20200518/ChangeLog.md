@@ -1,3 +1,9 @@
+2025-02-08 Version: 6.2.4
+- Update API CreateFile: add param ImageId.
+- Update API GetFile: update response param.
+- Update API UpdateFile: add param ImageId.
+
+
 2025-01-23 Version: 6.2.3
 - Update API GetDISyncTask: update response param.
 - Update API ListCheckProcesses: add param MessageId.

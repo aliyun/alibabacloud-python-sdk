@@ -3463,6 +3463,8 @@ class Client(OpenApiClient):
             body['FileType'] = request.file_type
         if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
             body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.input_list):
             body['InputList'] = request.input_list
         if not UtilClient.is_unset(request.input_parameters):
@@ -3568,6 +3570,8 @@ class Client(OpenApiClient):
             body['FileType'] = request.file_type
         if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
             body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.input_list):
             body['InputList'] = request.input_list
         if not UtilClient.is_unset(request.input_parameters):
@@ -17769,7 +17773,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
+        @summary Queries the complete information about a table, including information about fields in the table.
+        
+        @description You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
         
         @param request: GetMetaTableFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17808,7 +17814,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
+        @summary Queries the complete information about a table, including information about fields in the table.
+        
+        @description You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
         
         @param request: GetMetaTableFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17846,7 +17854,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
+        @summary Queries the complete information about a table, including information about fields in the table.
+        
+        @description You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
         
         @param request: GetMetaTableFullInfoRequest
         @return: GetMetaTableFullInfoResponse
@@ -17859,7 +17869,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
         """
-        @summary Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
+        @summary Queries the complete information about a table, including information about fields in the table.
+        
+        @description You can call this operation to query only the information about a table of the E-MapReduce (EMR) compute engine type.
         
         @param request: GetMetaTableFullInfoRequest
         @return: GetMetaTableFullInfoResponse
@@ -20445,6 +20457,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
         """
+        @summary Queries the subscribers of a partition filter expression.
+        
         @param request: GetQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetQualityFollowerResponse
@@ -20488,6 +20502,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
         """
+        @summary Queries the subscribers of a partition filter expression.
+        
         @param request: GetQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetQualityFollowerResponse
@@ -20530,6 +20546,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
         """
+        @summary Queries the subscribers of a partition filter expression.
+        
         @param request: GetQualityFollowerRequest
         @return: GetQualityFollowerResponse
         """
@@ -20541,6 +20559,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
         """
+        @summary Queries the subscribers of a partition filter expression.
+        
         @param request: GetQualityFollowerRequest
         @return: GetQualityFollowerResponse
         """
@@ -21129,6 +21149,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
         """
+        @summary Queries baseline instances affected by an event.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
+        
         @param request: GetTopicInfluenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTopicInfluenceResponse
@@ -21168,6 +21193,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
         """
+        @summary Queries baseline instances affected by an event.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
+        
         @param request: GetTopicInfluenceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTopicInfluenceResponse
@@ -21206,6 +21236,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
         """
+        @summary Queries baseline instances affected by an event.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
+        
         @param request: GetTopicInfluenceRequest
         @return: GetTopicInfluenceResponse
         """
@@ -21217,6 +21252,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
         """
+        @summary Queries baseline instances affected by an event.
+        
+        @description ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=GetTopicInfluence\\&type=RPC\\&version=2020-05-18)
+        
         @param request: GetTopicInfluenceRequest
         @return: GetTopicInfluenceResponse
         """
@@ -22165,7 +22205,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
         """
-        @summary 查询扩展事件的检查列表
+        @summary Queries the check results of extension point events.
         
         @param request: ListCheckProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22218,7 +22258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
         """
-        @summary 查询扩展事件的检查列表
+        @summary Queries the check results of extension point events.
         
         @param request: ListCheckProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22270,7 +22310,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCheckProcessesRequest,
     ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
         """
-        @summary 查询扩展事件的检查列表
+        @summary Queries the check results of extension point events.
         
         @param request: ListCheckProcessesRequest
         @return: ListCheckProcessesResponse
@@ -22283,7 +22323,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCheckProcessesRequest,
     ) -> dataworks_public_20200518_models.ListCheckProcessesResponse:
         """
-        @summary 查询扩展事件的检查列表
+        @summary Queries the check results of extension point events.
         
         @param request: ListCheckProcessesRequest
         @return: ListCheckProcessesResponse
@@ -24985,6 +25025,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
         """
+        @summary Queries a list of file versions.
+        
         @param request: ListFileVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFileVersionsResponse
@@ -25032,6 +25074,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
         """
+        @summary Queries a list of file versions.
+        
         @param request: ListFileVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFileVersionsResponse
@@ -25078,6 +25122,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
         """
+        @summary Queries a list of file versions.
+        
         @param request: ListFileVersionsRequest
         @return: ListFileVersionsResponse
         """
@@ -25089,6 +25135,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
         """
+        @summary Queries a list of file versions.
+        
         @param request: ListFileVersionsRequest
         @return: ListFileVersionsResponse
         """
@@ -25101,6 +25149,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         """
+        @summary Queries a list of files.
+        
         @param request: ListFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFilesResponse
@@ -25166,6 +25216,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         """
+        @summary Queries a list of files.
+        
         @param request: ListFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFilesResponse
@@ -25230,6 +25282,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFilesRequest,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         """
+        @summary Queries a list of files.
+        
         @param request: ListFilesRequest
         @return: ListFilesResponse
         """
@@ -25241,6 +25295,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFilesRequest,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
         """
+        @summary Queries a list of files.
+        
         @param request: ListFilesRequest
         @return: ListFilesResponse
         """
@@ -25737,7 +25793,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
         """
-        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        @summary Queries a list of instances.
         
         @param request: ListInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25806,7 +25862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
         """
-        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        @summary Queries a list of instances.
         
         @param request: ListInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25874,7 +25930,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstancesRequest,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
         """
-        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        @summary Queries a list of instances.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -25887,7 +25943,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstancesRequest,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
         """
-        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        @summary Queries a list of instances.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -35407,7 +35463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
         """
-        @summary 更新集群的配置信息
+        @summary Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
         
         @param tmp_req: UpdateClusterConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35460,7 +35516,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
         """
-        @summary 更新集群的配置信息
+        @summary Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
         
         @param tmp_req: UpdateClusterConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35512,7 +35568,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
     ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
         """
-        @summary 更新集群的配置信息
+        @summary Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
         
         @param request: UpdateClusterConfigsRequest
         @return: UpdateClusterConfigsResponse
@@ -35525,7 +35581,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
     ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
         """
-        @summary 更新集群的配置信息
+        @summary Updates the configurations of submodules in a workspace. You can configure SPARK parameters.
         
         @param request: UpdateClusterConfigsRequest
         @return: UpdateClusterConfigsResponse
@@ -36551,6 +36607,8 @@ class Client(OpenApiClient):
             body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
             body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.input_list):
             body['InputList'] = request.input_list
         if not UtilClient.is_unset(request.input_parameters):
@@ -36656,6 +36714,8 @@ class Client(OpenApiClient):
             body['FileName'] = request.file_name
         if not UtilClient.is_unset(request.ignore_parent_skip_running_property):
             body['IgnoreParentSkipRunningProperty'] = request.ignore_parent_skip_running_property
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.input_list):
             body['InputList'] = request.input_list
         if not UtilClient.is_unset(request.input_parameters):
