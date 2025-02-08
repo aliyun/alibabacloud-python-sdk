@@ -250,6 +250,45 @@ class AuthorizeEndpointAclResponse(TeaModel):
         return self
 
 
+class CreateQueueRequestDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+        max_receive_count: int = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+        self.max_receive_count = max_receive_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receive_count is not None:
+            result['MaxReceiveCount'] = self.max_receive_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceiveCount') is not None:
+            self.max_receive_count = m.get('MaxReceiveCount')
+        return self
+
+
 class CreateQueueRequestTag(TeaModel):
     def __init__(
         self,
@@ -287,6 +326,7 @@ class CreateQueueRequest(TeaModel):
     def __init__(
         self,
         delay_seconds: int = None,
+        dlq_policy: CreateQueueRequestDlqPolicy = None,
         enable_logging: bool = None,
         maximum_message_size: int = None,
         message_retention_period: int = None,
@@ -297,6 +337,140 @@ class CreateQueueRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        self.dlq_policy = dlq_policy
+        # Specifies whether to enable the log management feature. Valid values:
+        # 
+        # *   true: enabled.
+        # *   false: disabled.
+        # 
+        # Default value: false.
+        self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+        self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+        self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+        self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
+        # 
+        # This parameter is required.
+        self.queue_name = queue_name
+        self.tag = tag
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+        self.visibility_timeout = visibility_timeout
+
+    def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
+        if self.enable_logging is not None:
+            result['EnableLogging'] = self.enable_logging
+        if self.maximum_message_size is not None:
+            result['MaximumMessageSize'] = self.maximum_message_size
+        if self.message_retention_period is not None:
+            result['MessageRetentionPeriod'] = self.message_retention_period
+        if self.polling_wait_seconds is not None:
+            result['PollingWaitSeconds'] = self.polling_wait_seconds
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.visibility_timeout is not None:
+            result['VisibilityTimeout'] = self.visibility_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            temp_model = CreateQueueRequestDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
+        if m.get('EnableLogging') is not None:
+            self.enable_logging = m.get('EnableLogging')
+        if m.get('MaximumMessageSize') is not None:
+            self.maximum_message_size = m.get('MaximumMessageSize')
+        if m.get('MessageRetentionPeriod') is not None:
+            self.message_retention_period = m.get('MessageRetentionPeriod')
+        if m.get('PollingWaitSeconds') is not None:
+            self.polling_wait_seconds = m.get('PollingWaitSeconds')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateQueueRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VisibilityTimeout') is not None:
+            self.visibility_timeout = m.get('VisibilityTimeout')
+        return self
+
+
+class CreateQueueShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateQueueShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        delay_seconds: int = None,
+        dlq_policy_shrink: str = None,
+        enable_logging: bool = None,
+        maximum_message_size: int = None,
+        message_retention_period: int = None,
+        polling_wait_seconds: int = None,
+        queue_name: str = None,
+        tag: List[CreateQueueShrinkRequestTag] = None,
+        visibility_timeout: int = None,
+    ):
+        # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+        self.delay_seconds = delay_seconds
+        self.dlq_policy_shrink = dlq_policy_shrink
         # Specifies whether to enable the log management feature. Valid values:
         # 
         # *   true: enabled.
@@ -332,6 +506,8 @@ class CreateQueueRequest(TeaModel):
         result = dict()
         if self.delay_seconds is not None:
             result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy_shrink is not None:
+            result['DlqPolicy'] = self.dlq_policy_shrink
         if self.enable_logging is not None:
             result['EnableLogging'] = self.enable_logging
         if self.maximum_message_size is not None:
@@ -354,6 +530,8 @@ class CreateQueueRequest(TeaModel):
         m = m or dict()
         if m.get('DelaySeconds') is not None:
             self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            self.dlq_policy_shrink = m.get('DlqPolicy')
         if m.get('EnableLogging') is not None:
             self.enable_logging = m.get('EnableLogging')
         if m.get('MaximumMessageSize') is not None:
@@ -367,7 +545,7 @@ class CreateQueueRequest(TeaModel):
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
-                temp_model = CreateQueueRequestTag()
+                temp_model = CreateQueueShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
@@ -1639,6 +1817,45 @@ class GetQueueAttributesRequest(TeaModel):
         return self
 
 
+class GetQueueAttributesResponseBodyDataDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+        max_receive_count: str = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+        self.max_receive_count = max_receive_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receive_count is not None:
+            result['MaxReceiveCount'] = self.max_receive_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceiveCount') is not None:
+            self.max_receive_count = m.get('MaxReceiveCount')
+        return self
+
+
 class GetQueueAttributesResponseBodyDataTags(TeaModel):
     def __init__(
         self,
@@ -1679,6 +1896,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         create_time: int = None,
         delay_messages: int = None,
         delay_seconds: int = None,
+        dlq_policy: GetQueueAttributesResponseBodyDataDlqPolicy = None,
         inactive_messages: int = None,
         last_modify_time: int = None,
         logging_enabled: bool = None,
@@ -1697,6 +1915,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        self.dlq_policy = dlq_policy
         # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
         # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -1719,6 +1938,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -1738,6 +1959,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             result['DelayMessages'] = self.delay_messages
         if self.delay_seconds is not None:
             result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
         if self.inactive_messages is not None:
             result['InactiveMessages'] = self.inactive_messages
         if self.last_modify_time is not None:
@@ -1770,6 +1993,9 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             self.delay_messages = m.get('DelayMessages')
         if m.get('DelaySeconds') is not None:
             self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            temp_model = GetQueueAttributesResponseBodyDataDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
         if m.get('InactiveMessages') is not None:
             self.inactive_messages = m.get('InactiveMessages')
         if m.get('LastModifyTime') is not None:
@@ -1939,10 +2165,44 @@ class GetSubscriptionAttributesRequest(TeaModel):
         return self
 
 
+class GetSubscriptionAttributesResponseBodyDataDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class GetSubscriptionAttributesResponseBodyData(TeaModel):
     def __init__(
         self,
         create_time: int = None,
+        dlq_policy: GetSubscriptionAttributesResponseBodyDataDlqPolicy = None,
         endpoint: str = None,
         filter_tag: str = None,
         last_modify_time: int = None,
@@ -1954,6 +2214,7 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
     ):
         # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        self.dlq_policy = dlq_policy
         # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
         # The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
@@ -1979,7 +2240,8 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         self.topic_owner = topic_owner
 
     def validate(self):
-        pass
+        if self.dlq_policy:
+            self.dlq_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1989,6 +2251,8 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
         if self.filter_tag is not None:
@@ -2011,6 +2275,9 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DlqPolicy') is not None:
+            temp_model = GetSubscriptionAttributesResponseBodyDataDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
         if m.get('FilterTag') is not None:
@@ -2531,6 +2798,45 @@ class ListQueueRequest(TeaModel):
         return self
 
 
+class ListQueueResponseBodyDataPageDataDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+        max_receive_count: str = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+        self.max_receive_count = max_receive_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receive_count is not None:
+            result['MaxReceiveCount'] = self.max_receive_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceiveCount') is not None:
+            self.max_receive_count = m.get('MaxReceiveCount')
+        return self
+
+
 class ListQueueResponseBodyDataPageDataTags(TeaModel):
     def __init__(
         self,
@@ -2573,6 +2879,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         create_time: int = None,
         delay_messages: int = None,
         delay_seconds: int = None,
+        dlq_policy: ListQueueResponseBodyDataPageDataDlqPolicy = None,
         inactive_messages: int = None,
         last_modify_time: int = None,
         logging_enabled: bool = None,
@@ -2591,6 +2898,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         self.delay_messages = delay_messages
         # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        self.dlq_policy = dlq_policy
         # The total number of messages that are in the Inactive state in the queue. The value is an approximate value. Default value: 0. We recommend that you do not use the return value and that you call CloudMonitor API operations to query the metric value.
         self.inactive_messages = inactive_messages
         # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -2614,6 +2922,8 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -2633,6 +2943,8 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             result['DelayMessages'] = self.delay_messages
         if self.delay_seconds is not None:
             result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
         if self.inactive_messages is not None:
             result['InactiveMessages'] = self.inactive_messages
         if self.last_modify_time is not None:
@@ -2665,6 +2977,9 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             self.delay_messages = m.get('DelayMessages')
         if m.get('DelaySeconds') is not None:
             self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            temp_model = ListQueueResponseBodyDataPageDataDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
         if m.get('InactiveMessages') is not None:
             self.inactive_messages = m.get('InactiveMessages')
         if m.get('LastModifyTime') is not None:
@@ -2915,10 +3230,44 @@ class ListSubscriptionByTopicRequest(TeaModel):
         return self
 
 
+class ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
     def __init__(
         self,
         create_time: int = None,
+        dlq_policy: ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy = None,
         endpoint: str = None,
         filter_tag: str = None,
         last_modify_time: int = None,
@@ -2930,6 +3279,7 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
     ):
         # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        self.dlq_policy = dlq_policy
         # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
         # The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
@@ -2955,7 +3305,8 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
         self.topic_owner = topic_owner
 
     def validate(self):
-        pass
+        if self.dlq_policy:
+            self.dlq_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2965,6 +3316,8 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
         if self.filter_tag is not None:
@@ -2987,6 +3340,9 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DlqPolicy') is not None:
+            temp_model = ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
         if m.get('FilterTag') is not None:
@@ -3776,10 +4132,50 @@ class RevokeEndpointAclResponse(TeaModel):
         return self
 
 
+class SetQueueAttributesRequestDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+        max_receive_count: int = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+        self.max_receive_count = max_receive_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.max_receive_count is not None:
+            result['MaxReceiveCount'] = self.max_receive_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaxReceiveCount') is not None:
+            self.max_receive_count = m.get('MaxReceiveCount')
+        return self
+
+
 class SetQueueAttributesRequest(TeaModel):
     def __init__(
         self,
         delay_seconds: int = None,
+        dlq_policy: SetQueueAttributesRequestDlqPolicy = None,
         enable_logging: bool = None,
         maximum_message_size: int = None,
         message_retention_period: int = None,
@@ -3789,6 +4185,90 @@ class SetQueueAttributesRequest(TeaModel):
     ):
         # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        self.dlq_policy = dlq_policy
+        # Specifies whether to enable the log management feature. Valid values:
+        # 
+        # *   true: enabled.
+        # *   false: disabled. Default value: false.
+        self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+        self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+        self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+        self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
+        # 
+        # This parameter is required.
+        self.queue_name = queue_name
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+        self.visibility_timeout = visibility_timeout
+
+    def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
+        if self.enable_logging is not None:
+            result['EnableLogging'] = self.enable_logging
+        if self.maximum_message_size is not None:
+            result['MaximumMessageSize'] = self.maximum_message_size
+        if self.message_retention_period is not None:
+            result['MessageRetentionPeriod'] = self.message_retention_period
+        if self.polling_wait_seconds is not None:
+            result['PollingWaitSeconds'] = self.polling_wait_seconds
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+        if self.visibility_timeout is not None:
+            result['VisibilityTimeout'] = self.visibility_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            temp_model = SetQueueAttributesRequestDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
+        if m.get('EnableLogging') is not None:
+            self.enable_logging = m.get('EnableLogging')
+        if m.get('MaximumMessageSize') is not None:
+            self.maximum_message_size = m.get('MaximumMessageSize')
+        if m.get('MessageRetentionPeriod') is not None:
+            self.message_retention_period = m.get('MessageRetentionPeriod')
+        if m.get('PollingWaitSeconds') is not None:
+            self.polling_wait_seconds = m.get('PollingWaitSeconds')
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+        if m.get('VisibilityTimeout') is not None:
+            self.visibility_timeout = m.get('VisibilityTimeout')
+        return self
+
+
+class SetQueueAttributesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        delay_seconds: int = None,
+        dlq_policy_shrink: str = None,
+        enable_logging: bool = None,
+        maximum_message_size: int = None,
+        message_retention_period: int = None,
+        polling_wait_seconds: int = None,
+        queue_name: str = None,
+        visibility_timeout: int = None,
+    ):
+        # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+        self.delay_seconds = delay_seconds
+        self.dlq_policy_shrink = dlq_policy_shrink
         # Specifies whether to enable the log management feature. Valid values:
         # 
         # *   true: enabled.
@@ -3818,6 +4298,8 @@ class SetQueueAttributesRequest(TeaModel):
         result = dict()
         if self.delay_seconds is not None:
             result['DelaySeconds'] = self.delay_seconds
+        if self.dlq_policy_shrink is not None:
+            result['DlqPolicy'] = self.dlq_policy_shrink
         if self.enable_logging is not None:
             result['EnableLogging'] = self.enable_logging
         if self.maximum_message_size is not None:
@@ -3836,6 +4318,8 @@ class SetQueueAttributesRequest(TeaModel):
         m = m or dict()
         if m.get('DelaySeconds') is not None:
             self.delay_seconds = m.get('DelaySeconds')
+        if m.get('DlqPolicy') is not None:
+            self.dlq_policy_shrink = m.get('DlqPolicy')
         if m.get('EnableLogging') is not None:
             self.enable_logging = m.get('EnableLogging')
         if m.get('MaximumMessageSize') is not None:
@@ -3999,13 +4483,105 @@ class SetQueueAttributesResponse(TeaModel):
         return self
 
 
+class SetSubscriptionAttributesRequestDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class SetSubscriptionAttributesRequest(TeaModel):
     def __init__(
         self,
+        dlq_policy: SetSubscriptionAttributesRequestDlqPolicy = None,
         notify_strategy: str = None,
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        self.dlq_policy = dlq_policy
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
+        self.notify_strategy = notify_strategy
+        # The name of the subscription.
+        # 
+        # This parameter is required.
+        self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
+        # This parameter is required.
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
+        if self.notify_strategy is not None:
+            result['NotifyStrategy'] = self.notify_strategy
+        if self.subscription_name is not None:
+            result['SubscriptionName'] = self.subscription_name
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DlqPolicy') is not None:
+            temp_model = SetSubscriptionAttributesRequestDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
+        if m.get('NotifyStrategy') is not None:
+            self.notify_strategy = m.get('NotifyStrategy')
+        if m.get('SubscriptionName') is not None:
+            self.subscription_name = m.get('SubscriptionName')
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class SetSubscriptionAttributesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dlq_policy_shrink: str = None,
+        notify_strategy: str = None,
+        subscription_name: str = None,
+        topic_name: str = None,
+    ):
+        self.dlq_policy_shrink = dlq_policy_shrink
         # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
         # 
         # *   BACKOFF_RETRY
@@ -4029,6 +4605,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dlq_policy_shrink is not None:
+            result['DlqPolicy'] = self.dlq_policy_shrink
         if self.notify_strategy is not None:
             result['NotifyStrategy'] = self.notify_strategy
         if self.subscription_name is not None:
@@ -4039,6 +4617,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DlqPolicy') is not None:
+            self.dlq_policy_shrink = m.get('DlqPolicy')
         if m.get('NotifyStrategy') is not None:
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('SubscriptionName') is not None:
@@ -4391,9 +4971,43 @@ class SetTopicAttributesResponse(TeaModel):
         return self
 
 
+class SubscribeRequestDlqPolicy(TeaModel):
+    def __init__(
+        self,
+        dead_letter_target_queue: str = None,
+        enabled: bool = None,
+    ):
+        self.dead_letter_target_queue = dead_letter_target_queue
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dead_letter_target_queue is not None:
+            result['DeadLetterTargetQueue'] = self.dead_letter_target_queue
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeadLetterTargetQueue') is not None:
+            self.dead_letter_target_queue = m.get('DeadLetterTargetQueue')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class SubscribeRequest(TeaModel):
     def __init__(
         self,
+        dlq_policy: SubscribeRequestDlqPolicy = None,
         endpoint: str = None,
         message_tag: str = None,
         notify_content_format: str = None,
@@ -4402,6 +5016,114 @@ class SubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        self.dlq_policy = dlq_policy
+        # The receiver endpoint. The format of the endpoint varies based on the terminal type.
+        # 
+        # *   If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
+        # *   If you set PushType to queue, set Endpoint to a `queue name`.
+        # *   If you set PushType to mpush, set Endpoint to an `AppKey`.
+        # *   If you set PushType to alisms, set Endpoint to a `mobile number`.
+        # *   If you set PushType to email, set Endpoint to an `email address`.
+        # 
+        # This parameter is required.
+        self.endpoint = endpoint
+        # The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
+        # 
+        # By default, no tag is specified to filter messages.
+        self.message_tag = message_tag
+        # The content format of the messages that are pushed to the endpoint. Valid values:
+        # 
+        # *   XML
+        # *   JSON
+        # *   SIMPLIFIED
+        self.notify_content_format = notify_content_format
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
+        self.notify_strategy = notify_strategy
+        # The terminal type. Valid values:
+        # 
+        # *   http: HTTP services
+        # *   queue: queues
+        # *   mpush: mobile devices
+        # *   alisms: Alibaba Cloud Short Message Service (SMS)
+        # *   email: emails
+        # 
+        # This parameter is required.
+        self.push_type = push_type
+        # The name of the subscription.
+        # 
+        # This parameter is required.
+        self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
+        # This parameter is required.
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.dlq_policy:
+            self.dlq_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dlq_policy is not None:
+            result['DlqPolicy'] = self.dlq_policy.to_map()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.message_tag is not None:
+            result['MessageTag'] = self.message_tag
+        if self.notify_content_format is not None:
+            result['NotifyContentFormat'] = self.notify_content_format
+        if self.notify_strategy is not None:
+            result['NotifyStrategy'] = self.notify_strategy
+        if self.push_type is not None:
+            result['PushType'] = self.push_type
+        if self.subscription_name is not None:
+            result['SubscriptionName'] = self.subscription_name
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DlqPolicy') is not None:
+            temp_model = SubscribeRequestDlqPolicy()
+            self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('MessageTag') is not None:
+            self.message_tag = m.get('MessageTag')
+        if m.get('NotifyContentFormat') is not None:
+            self.notify_content_format = m.get('NotifyContentFormat')
+        if m.get('NotifyStrategy') is not None:
+            self.notify_strategy = m.get('NotifyStrategy')
+        if m.get('PushType') is not None:
+            self.push_type = m.get('PushType')
+        if m.get('SubscriptionName') is not None:
+            self.subscription_name = m.get('SubscriptionName')
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class SubscribeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dlq_policy_shrink: str = None,
+        endpoint: str = None,
+        message_tag: str = None,
+        notify_content_format: str = None,
+        notify_strategy: str = None,
+        push_type: str = None,
+        subscription_name: str = None,
+        topic_name: str = None,
+    ):
+        self.dlq_policy_shrink = dlq_policy_shrink
         # The receiver endpoint. The format of the endpoint varies based on the terminal type.
         # 
         # *   If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
@@ -4455,6 +5177,8 @@ class SubscribeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dlq_policy_shrink is not None:
+            result['DlqPolicy'] = self.dlq_policy_shrink
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
         if self.message_tag is not None:
@@ -4473,6 +5197,8 @@ class SubscribeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DlqPolicy') is not None:
+            self.dlq_policy_shrink = m.get('DlqPolicy')
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
         if m.get('MessageTag') is not None:

@@ -167,20 +167,26 @@ class Client(OpenApiClient):
 
     def create_queue_with_options(
         self,
-        request: mns_open_20220119_models.CreateQueueRequest,
+        tmp_req: mns_open_20220119_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
         @summary Creates a queue.
         
-        @param request: CreateQueueRequest
+        @param tmp_req: CreateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQueueResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.CreateQueueShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.enable_logging):
             query['EnableLogging'] = request.enable_logging
         if not UtilClient.is_unset(request.maximum_message_size):
@@ -222,20 +228,26 @@ class Client(OpenApiClient):
 
     async def create_queue_with_options_async(
         self,
-        request: mns_open_20220119_models.CreateQueueRequest,
+        tmp_req: mns_open_20220119_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
         @summary Creates a queue.
         
-        @param request: CreateQueueRequest
+        @param tmp_req: CreateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQueueResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.CreateQueueShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.enable_logging):
             query['EnableLogging'] = request.enable_logging
         if not UtilClient.is_unset(request.maximum_message_size):
@@ -1787,20 +1799,26 @@ class Client(OpenApiClient):
 
     def set_queue_attributes_with_options(
         self,
-        request: mns_open_20220119_models.SetQueueAttributesRequest,
+        tmp_req: mns_open_20220119_models.SetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
         @summary Modifies a queue.
         
-        @param request: SetQueueAttributesRequest
+        @param tmp_req: SetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetQueueAttributesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SetQueueAttributesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.enable_logging):
             query['EnableLogging'] = request.enable_logging
         if not UtilClient.is_unset(request.maximum_message_size):
@@ -1840,20 +1858,26 @@ class Client(OpenApiClient):
 
     async def set_queue_attributes_with_options_async(
         self,
-        request: mns_open_20220119_models.SetQueueAttributesRequest,
+        tmp_req: mns_open_20220119_models.SetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
         @summary Modifies a queue.
         
-        @param request: SetQueueAttributesRequest
+        @param tmp_req: SetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetQueueAttributesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SetQueueAttributesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
             query['DelaySeconds'] = request.delay_seconds
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.enable_logging):
             query['EnableLogging'] = request.enable_logging
         if not UtilClient.is_unset(request.maximum_message_size):
@@ -1919,18 +1943,24 @@ class Client(OpenApiClient):
 
     def set_subscription_attributes_with_options(
         self,
-        request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
+        tmp_req: mns_open_20220119_models.SetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
         @summary Modifies the attributes of a subscription.
         
-        @param request: SetSubscriptionAttributesRequest
+        @param tmp_req: SetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSubscriptionAttributesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SetSubscriptionAttributesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.notify_strategy):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.subscription_name):
@@ -1964,18 +1994,24 @@ class Client(OpenApiClient):
 
     async def set_subscription_attributes_with_options_async(
         self,
-        request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
+        tmp_req: mns_open_20220119_models.SetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
         @summary Modifies the attributes of a subscription.
         
-        @param request: SetSubscriptionAttributesRequest
+        @param tmp_req: SetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetSubscriptionAttributesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SetSubscriptionAttributesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.notify_strategy):
             query['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.subscription_name):
@@ -2151,18 +2187,24 @@ class Client(OpenApiClient):
 
     def subscribe_with_options(
         self,
-        request: mns_open_20220119_models.SubscribeRequest,
+        tmp_req: mns_open_20220119_models.SubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
         @summary Creates a subscription to a topic.
         
-        @param request: SubscribeRequest
+        @param tmp_req: SubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubscribeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SubscribeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
         if not UtilClient.is_unset(request.message_tag):
@@ -2204,18 +2246,24 @@ class Client(OpenApiClient):
 
     async def subscribe_with_options_async(
         self,
-        request: mns_open_20220119_models.SubscribeRequest,
+        tmp_req: mns_open_20220119_models.SubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
         @summary Creates a subscription to a topic.
         
-        @param request: SubscribeRequest
+        @param tmp_req: SubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SubscribeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.SubscribeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dlq_policy):
+            request.dlq_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dlq_policy, 'DlqPolicy', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dlq_policy_shrink):
+            query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
         if not UtilClient.is_unset(request.message_tag):

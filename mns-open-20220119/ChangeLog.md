@@ -1,3 +1,14 @@
+2025-02-08 Version: 1.1.3
+- Update API CreateQueue: add param DlqPolicy.
+- Update API GetQueueAttributes: update response param.
+- Update API GetSubscriptionAttributes: update response param.
+- Update API ListQueue: update response param.
+- Update API ListSubscriptionByTopic: update response param.
+- Update API SetQueueAttributes: add param DlqPolicy.
+- Update API SetSubscriptionAttributes: add param DlqPolicy.
+- Update API Subscribe: add param DlqPolicy.
+
+
 2025-02-07 Version: 1.1.2
 - Generated python 2022-01-19 for Mns-open.
 
