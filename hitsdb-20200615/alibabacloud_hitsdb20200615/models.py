@@ -6444,6 +6444,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         enable_compute: bool = None,
         enable_lts: bool = None,
         enable_message: bool = None,
+        enable_row: bool = None,
         enable_stream: bool = None,
         enable_vector: bool = None,
         engine_type: str = None,
@@ -6482,6 +6483,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         # Indicates whether the message engine is enabled, returning:
         # - **true**: Enabled. - **false**: Not enabled.
         self.enable_message = enable_message
+        self.enable_row = enable_row
         # Indicates whether the Lindorm streaming engine is activated for the instance. Valid values:
         # 
         # *   **true**: The Lindorm streaming engine is activated for the instance.
@@ -6586,6 +6588,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['EnableLts'] = self.enable_lts
         if self.enable_message is not None:
             result['EnableMessage'] = self.enable_message
+        if self.enable_row is not None:
+            result['EnableRow'] = self.enable_row
         if self.enable_stream is not None:
             result['EnableStream'] = self.enable_stream
         if self.enable_vector is not None:
@@ -6640,6 +6644,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.enable_lts = m.get('EnableLts')
         if m.get('EnableMessage') is not None:
             self.enable_message = m.get('EnableMessage')
+        if m.get('EnableRow') is not None:
+            self.enable_row = m.get('EnableRow')
         if m.get('EnableStream') is not None:
             self.enable_stream = m.get('EnableStream')
         if m.get('EnableVector') is not None:

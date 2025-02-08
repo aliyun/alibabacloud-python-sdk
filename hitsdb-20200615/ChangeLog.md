@@ -1,3 +1,7 @@
+2025-02-08 Version: 4.8.1
+- Update API GetLindormInstanceList: update response param.
+
+
 2025-01-07 Version: 4.8.0
 - Support API CheckLdpsColumnarIndexStatus.
 - Support API CreateAutoScalingConfig.
