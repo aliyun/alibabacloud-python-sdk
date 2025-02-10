@@ -1,3 +1,16 @@
+2025-02-10 Version: 6.10.3
+- Update API AssociateVpcCidrBlock: update response param.
+- Update API CreateRouteEntries: update param RouteEntries.
+- Update API DeleteRouteEntries: update param RouteEntries.
+- Update API DeleteVSwitch: update response param.
+- Update API DeletionProtection: update response param.
+- Update API DescribeEipAddresses: update response param.
+- Update API DescribeIpv6Gateways: update response param.
+- Update API DescribeRouteEntryList: update param DestCidrBlockList.
+- Update API GetIpv4GatewayAttribute: update response param.
+- Update API ListDhcpOptionsSets: update response param.
+
+
 2024-12-30 Version: 6.10.1
 - Update API DescribeNatGatewayAssociateNetworkInterfaces: update response param.
 

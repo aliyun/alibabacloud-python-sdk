@@ -120,10 +120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ActivateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ActivateRouterInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ActivateRouterInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def activate_router_interface_with_options_async(
         self,
@@ -166,10 +172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ActivateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ActivateRouterInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ActivateRouterInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def activate_router_interface(
         self,
@@ -248,10 +260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ActiveFlowLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ActiveFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ActiveFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def active_flow_log_with_options_async(
         self,
@@ -298,10 +316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ActiveFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ActiveFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ActiveFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def active_flow_log(
         self,
@@ -385,10 +409,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddBgpNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddBgpNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddBgpNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_bgp_network_with_options_async(
         self,
@@ -436,10 +466,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddBgpNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddBgpNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddBgpNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_bgp_network(
         self,
@@ -522,10 +558,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_common_bandwidth_package_ip_with_options_async(
         self,
@@ -582,10 +624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_common_bandwidth_package_ip(
         self,
@@ -685,10 +733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_common_bandwidth_package_ips_with_options_async(
         self,
@@ -744,10 +798,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddCommonBandwidthPackageIpsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_common_bandwidth_package_ips(
         self,
@@ -833,10 +893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_global_acceleration_instance_ip_with_options_async(
         self,
@@ -880,10 +946,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddGlobalAccelerationInstanceIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_global_acceleration_instance_ip(
         self,
@@ -958,10 +1030,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_ipv_6translator_acl_list_entry_with_options_async(
         self,
@@ -1010,10 +1088,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddIPv6TranslatorAclListEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_ipv_6translator_acl_list_entry(
         self,
@@ -1103,10 +1187,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_public_ip_address_pool_cidr_block_with_options_async(
         self,
@@ -1164,10 +1254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddPublicIpAddressPoolCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_public_ip_address_pool_cidr_block(
         self,
@@ -1262,10 +1358,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_sources_to_traffic_mirror_session_with_options_async(
         self,
@@ -1318,10 +1420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_sources_to_traffic_mirror_session(
         self,
@@ -1436,10 +1544,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_eip_address_with_options_async(
         self,
@@ -1518,10 +1632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_eip_address(
         self,
@@ -1621,10 +1741,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipAddressProResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressProResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressProResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_eip_address_pro_with_options_async(
         self,
@@ -1692,10 +1818,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipAddressProResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressProResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipAddressProResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_eip_address_pro(
         self,
@@ -1781,10 +1913,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipSegmentAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipSegmentAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipSegmentAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_eip_segment_address_with_options_async(
         self,
@@ -1844,10 +1982,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateEipSegmentAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipSegmentAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateEipSegmentAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_eip_segment_address(
         self,
@@ -1941,10 +2085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateIpv6AddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6AddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6AddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_ipv_6address_with_options_async(
         self,
@@ -2004,10 +2154,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateIpv6AddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6AddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6AddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_ipv_6address(
         self,
@@ -2043,7 +2199,8 @@ class Client(OpenApiClient):
         """
         @summary Default IPv6 gateways support only private communication. You can call the AllocateIpv6InternetBandwidth operation to purchase Internet bandwidth resources for an IPv6 address. This way, ECS instances in a VPC can access the Internet through the IPv6 address. IPv6 clients can also access the ECS instances over the Internet.
         
-        @description You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
+        @description    Before you call this operation, make sure that an ECS instance that supports IPv6 is created in a VPC that has an IPv6 CIDR block. For more information, see [Create a VPC with an IPv6 CIDR block](https://help.aliyun.com/document_detail/100540.html).
+        You cannot repeatedly call **AllocateIpv6InternetBandwidth** within the specified period of time.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2091,10 +2248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_ipv_6internet_bandwidth_with_options_async(
         self,
@@ -2104,7 +2267,8 @@ class Client(OpenApiClient):
         """
         @summary Default IPv6 gateways support only private communication. You can call the AllocateIpv6InternetBandwidth operation to purchase Internet bandwidth resources for an IPv6 address. This way, ECS instances in a VPC can access the Internet through the IPv6 address. IPv6 clients can also access the ECS instances over the Internet.
         
-        @description You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
+        @description    Before you call this operation, make sure that an ECS instance that supports IPv6 is created in a VPC that has an IPv6 CIDR block. For more information, see [Create a VPC with an IPv6 CIDR block](https://help.aliyun.com/document_detail/100540.html).
+        You cannot repeatedly call **AllocateIpv6InternetBandwidth** within the specified period of time.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2152,10 +2316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateIpv6InternetBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_ipv_6internet_bandwidth(
         self,
@@ -2164,7 +2334,8 @@ class Client(OpenApiClient):
         """
         @summary Default IPv6 gateways support only private communication. You can call the AllocateIpv6InternetBandwidth operation to purchase Internet bandwidth resources for an IPv6 address. This way, ECS instances in a VPC can access the Internet through the IPv6 address. IPv6 clients can also access the ECS instances over the Internet.
         
-        @description You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
+        @description    Before you call this operation, make sure that an ECS instance that supports IPv6 is created in a VPC that has an IPv6 CIDR block. For more information, see [Create a VPC with an IPv6 CIDR block](https://help.aliyun.com/document_detail/100540.html).
+        You cannot repeatedly call **AllocateIpv6InternetBandwidth** within the specified period of time.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @return: AllocateIpv6InternetBandwidthResponse
@@ -2179,7 +2350,8 @@ class Client(OpenApiClient):
         """
         @summary Default IPv6 gateways support only private communication. You can call the AllocateIpv6InternetBandwidth operation to purchase Internet bandwidth resources for an IPv6 address. This way, ECS instances in a VPC can access the Internet through the IPv6 address. IPv6 clients can also access the ECS instances over the Internet.
         
-        @description You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
+        @description    Before you call this operation, make sure that an ECS instance that supports IPv6 is created in a VPC that has an IPv6 CIDR block. For more information, see [Create a VPC with an IPv6 CIDR block](https://help.aliyun.com/document_detail/100540.html).
+        You cannot repeatedly call **AllocateIpv6InternetBandwidth** within the specified period of time.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @return: AllocateIpv6InternetBandwidthResponse
@@ -2240,10 +2412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_vpc_ipv_6cidr_with_options_async(
         self,
@@ -2298,10 +2476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AllocateVpcIpv6CidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_vpc_ipv_6cidr(
         self,
@@ -2397,10 +2581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def apply_physical_connection_loawith_options_async(
         self,
@@ -2460,10 +2650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ApplyPhysicalConnectionLOAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def apply_physical_connection_loa(
         self,
@@ -2551,10 +2747,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_eip_address_with_options_async(
         self,
@@ -2616,10 +2818,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_eip_address(
         self,
@@ -2713,10 +2921,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateEipAddressBatchResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressBatchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressBatchResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_eip_address_batch_with_options_async(
         self,
@@ -2772,10 +2986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateEipAddressBatchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressBatchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateEipAddressBatchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_eip_address_batch(
         self,
@@ -2872,10 +3092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateHaVipResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateHaVipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateHaVipResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_ha_vip_with_options_async(
         self,
@@ -2934,10 +3160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateHaVipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateHaVipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_ha_vip(
         self,
@@ -3041,10 +3273,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateNetworkAclResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateNetworkAclResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_network_acl_with_options_async(
         self,
@@ -3100,10 +3338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateNetworkAclResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateNetworkAclResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_network_acl(
         self,
@@ -3205,10 +3449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_physical_connection_to_virtual_border_router_with_options_async(
         self,
@@ -3272,10 +3522,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociatePhysicalConnectionToVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_physical_connection_to_virtual_border_router(
         self,
@@ -3353,10 +3609,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_route_table_with_options_async(
         self,
@@ -3408,10 +3670,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_route_table(
         self,
@@ -3497,10 +3765,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_route_table_with_gateway_with_options_async(
         self,
@@ -3552,10 +3826,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTableWithGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_route_table_with_gateway(
         self,
@@ -3641,10 +3921,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_route_tables_with_vpc_gateway_endpoint_with_options_async(
         self,
@@ -3704,10 +3990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateRouteTablesWithVpcGatewayEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_route_tables_with_vpc_gateway_endpoint(
         self,
@@ -3819,10 +4111,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateVpcCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpcCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpcCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_vpc_cidr_block_with_options_async(
         self,
@@ -3884,10 +4182,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateVpcCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpcCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpcCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_vpc_cidr_block(
         self,
@@ -3978,10 +4282,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def associate_vpn_gateway_with_certificate_with_options_async(
         self,
@@ -4034,10 +4344,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AssociateVpnGatewayWithCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def associate_vpn_gateway_with_certificate(
         self,
@@ -4136,10 +4452,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_dhcp_options_set_to_vpc_with_options_async(
         self,
@@ -4190,10 +4512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachDhcpOptionsSetToVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_dhcp_options_set_to_vpc(
         self,
@@ -4265,10 +4593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AttachVbrToVpconnResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachVbrToVpconnResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachVbrToVpconnResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_vbr_to_vpconn_with_options_async(
         self,
@@ -4308,10 +4642,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.AttachVbrToVpconnResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachVbrToVpconnResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.AttachVbrToVpconnResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_vbr_to_vpconn(
         self,
@@ -4385,10 +4725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_common_bandwidth_package_ip_bandwidth_with_options_async(
         self,
@@ -4436,10 +4782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelCommonBandwidthPackageIpBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_common_bandwidth_package_ip_bandwidth(
         self,
@@ -4519,10 +4871,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CancelPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_physical_connection_with_options_async(
         self,
@@ -4568,10 +4926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CancelPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CancelPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_physical_connection(
         self,
@@ -4642,10 +5006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ChangeResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ChangeResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ChangeResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def change_resource_group_with_options_async(
         self,
@@ -4686,10 +5056,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ChangeResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ChangeResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ChangeResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def change_resource_group(
         self,
@@ -4767,10 +5143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_can_allocate_vpc_private_ip_address_with_options_async(
         self,
@@ -4816,10 +5198,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_can_allocate_vpc_private_ip_address(
         self,
@@ -4885,10 +5273,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CheckVpnBgpEnabledResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckVpnBgpEnabledResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckVpnBgpEnabledResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_vpn_bgp_enabled_with_options_async(
         self,
@@ -4928,10 +5322,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CheckVpnBgpEnabledResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckVpnBgpEnabledResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CheckVpnBgpEnabledResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_vpn_bgp_enabled(
         self,
@@ -5013,10 +5413,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def complete_physical_connection_loawith_options_async(
         self,
@@ -5072,10 +5478,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CompletePhysicalConnectionLOAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def complete_physical_connection_loa(
         self,
@@ -5145,10 +5557,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def confirm_physical_connection_with_options_async(
         self,
@@ -5192,10 +5610,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConfirmPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def confirm_physical_connection(
         self,
@@ -5267,10 +5691,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConnectRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConnectRouterInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConnectRouterInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def connect_router_interface_with_options_async(
         self,
@@ -5316,10 +5746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConnectRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConnectRouterInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConnectRouterInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def connect_router_interface(
         self,
@@ -5406,10 +5842,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConvertBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConvertBandwidthPackageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConvertBandwidthPackageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def convert_bandwidth_package_with_options_async(
         self,
@@ -5458,10 +5900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ConvertBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ConvertBandwidthPackageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ConvertBandwidthPackageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def convert_bandwidth_package(
         self,
@@ -5553,10 +6001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CopyNetworkAclEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CopyNetworkAclEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CopyNetworkAclEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def copy_network_acl_entries_with_options_async(
         self,
@@ -5612,10 +6066,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CopyNetworkAclEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CopyNetworkAclEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CopyNetworkAclEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def copy_network_acl_entries(
         self,
@@ -5722,10 +6182,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateBgpGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_bgp_group_with_options_async(
         self,
@@ -5794,10 +6260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateBgpGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_bgp_group(
         self,
@@ -5893,10 +6365,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateBgpPeerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpPeerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpPeerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_bgp_peer_with_options_async(
         self,
@@ -5948,10 +6426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateBgpPeerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpPeerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateBgpPeerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_bgp_peer(
         self,
@@ -6037,10 +6521,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_common_bandwidth_package_with_options_async(
         self,
@@ -6100,10 +6590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCommonBandwidthPackageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_common_bandwidth_package(
         self,
@@ -6185,10 +6681,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCustomerGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCustomerGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_customer_gateway_with_options_async(
         self,
@@ -6244,10 +6746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCustomerGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateCustomerGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_customer_gateway(
         self,
@@ -6330,10 +6838,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDefaultVSwitchResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVSwitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVSwitchResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_default_vswitch_with_options_async(
         self,
@@ -6390,10 +6904,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDefaultVSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVSwitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVSwitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_default_vswitch(
         self,
@@ -6501,10 +7021,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDefaultVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_default_vpc_with_options_async(
         self,
@@ -6564,10 +7090,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDefaultVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDefaultVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_default_vpc(
         self,
@@ -6681,10 +7213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDhcpOptionsSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDhcpOptionsSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dhcp_options_set_with_options_async(
         self,
@@ -6748,10 +7286,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDhcpOptionsSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateDhcpOptionsSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dhcp_options_set(
         self,
@@ -6847,10 +7391,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressCloudConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressCloudConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressCloudConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_cloud_connection_with_options_async(
         self,
@@ -6912,10 +7462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressCloudConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressCloudConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressCloudConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_cloud_connection(
         self,
@@ -6991,10 +7547,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_connect_traffic_qos_with_options_async(
         self,
@@ -7044,10 +7606,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_connect_traffic_qos(
         self,
@@ -7125,10 +7693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_connect_traffic_qos_queue_with_options_async(
         self,
@@ -7180,10 +7754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosQueueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_connect_traffic_qos_queue(
         self,
@@ -7279,10 +7859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_connect_traffic_qos_rule_with_options_async(
         self,
@@ -7352,10 +7938,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateExpressConnectTrafficQosRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_connect_traffic_qos_rule(
         self,
@@ -7446,10 +8038,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_failover_test_job_with_options_async(
         self,
@@ -7514,10 +8112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_failover_test_job(
         self,
@@ -7629,10 +8233,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFlowLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_flow_log_with_options_async(
         self,
@@ -7700,10 +8310,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_flow_log(
         self,
@@ -7810,10 +8426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateForwardEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateForwardEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateForwardEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_forward_entry_with_options_async(
         self,
@@ -7886,10 +8508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateForwardEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateForwardEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_forward_entry(
         self,
@@ -8008,10 +8636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFullNatEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFullNatEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFullNatEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_full_nat_entry_with_options_async(
         self,
@@ -8078,10 +8712,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateFullNatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFullNatEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateFullNatEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_full_nat_entry(
         self,
@@ -8175,10 +8815,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_global_acceleration_instance_with_options_async(
         self,
@@ -8236,10 +8882,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateGlobalAccelerationInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_global_acceleration_instance(
         self,
@@ -8335,10 +8987,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateHaVipResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHaVipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHaVipResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ha_vip_with_options_async(
         self,
@@ -8396,10 +9054,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHaVipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHaVipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ha_vip(
         self,
@@ -8493,10 +9157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_high_reliable_physical_connection_with_options_async(
         self,
@@ -8556,10 +9226,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_high_reliable_physical_connection(
         self,
@@ -8644,10 +9320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_6translator_with_options_async(
         self,
@@ -8706,10 +9388,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_6translator(
         self,
@@ -8788,10 +9476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_6translator_acl_list_with_options_async(
         self,
@@ -8838,10 +9532,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorAclListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_6translator_acl_list(
         self,
@@ -8938,10 +9638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_6translator_entry_with_options_async(
         self,
@@ -9006,10 +9712,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIPv6TranslatorEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_6translator_entry(
         self,
@@ -9102,10 +9814,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpsecServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpsecServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpsecServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipsec_server_with_options_async(
         self,
@@ -9166,10 +9884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpsecServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpsecServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipsec_server(
         self,
@@ -9270,10 +9994,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv4GatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv4GatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_4gateway_with_options_async(
         self,
@@ -9334,10 +10064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv4GatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv4GatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_4gateway(
         self,
@@ -9432,10 +10168,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_6egress_only_rule_with_options_async(
         self,
@@ -9494,10 +10236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_6egress_only_rule(
         self,
@@ -9592,10 +10340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv6GatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6GatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6GatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ipv_6gateway_with_options_async(
         self,
@@ -9654,10 +10408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateIpv6GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6GatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateIpv6GatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ipv_6gateway(
         self,
@@ -9784,10 +10544,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_nat_gateway_with_options_async(
         self,
@@ -9878,10 +10644,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_nat_gateway(
         self,
@@ -9987,10 +10759,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_nat_ip_with_options_async(
         self,
@@ -10052,10 +10830,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_nat_ip(
         self,
@@ -10150,10 +10934,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatIpCidrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpCidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpCidrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_nat_ip_cidr_with_options_async(
         self,
@@ -10210,10 +11000,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNatIpCidrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpCidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNatIpCidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_nat_ip_cidr(
         self,
@@ -10297,10 +11093,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNetworkAclResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNetworkAclResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_network_acl_with_options_async(
         self,
@@ -10352,10 +11154,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNetworkAclResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateNetworkAclResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_network_acl(
         self,
@@ -10456,10 +11264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_physical_connection_with_options_async(
         self,
@@ -10534,10 +11348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_physical_connection(
         self,
@@ -10627,10 +11447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_physical_connection_occupancy_order_with_options_async(
         self,
@@ -10684,10 +11510,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_physical_connection_occupancy_order(
         self,
@@ -10771,10 +11603,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_physical_connection_setup_order_with_options_async(
         self,
@@ -10828,10 +11666,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePhysicalConnectionSetupOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_physical_connection_setup_order(
         self,
@@ -10919,10 +11763,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_public_ip_address_pool_with_options_async(
         self,
@@ -10984,10 +11834,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreatePublicIpAddressPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_public_ip_address_pool(
         self,
@@ -11075,10 +11931,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_route_entries_with_options_async(
         self,
@@ -11136,10 +11998,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_route_entries(
         self,
@@ -11276,10 +12144,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_route_entry_with_options_async(
         self,
@@ -11362,10 +12236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_route_entry(
         self,
@@ -11504,10 +12384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_route_table_with_options_async(
         self,
@@ -11566,10 +12452,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouteTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_route_table(
         self,
@@ -11703,10 +12595,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouterInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouterInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_router_interface_with_options_async(
         self,
@@ -11804,10 +12702,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouterInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateRouterInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_router_interface(
         self,
@@ -11917,10 +12821,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSnatEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSnatEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSnatEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_snat_entry_with_options_async(
         self,
@@ -11988,10 +12898,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSnatEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSnatEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_snat_entry(
         self,
@@ -12083,10 +12999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnClientCertResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnClientCertResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ssl_vpn_client_cert_with_options_async(
         self,
@@ -12132,10 +13054,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnClientCertResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnClientCertResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ssl_vpn_client_cert(
         self,
@@ -12235,10 +13163,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSslVpnServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_ssl_vpn_server_with_options_async(
         self,
@@ -12312,10 +13246,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateSslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateSslVpnServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_ssl_vpn_server(
         self,
@@ -12417,10 +13357,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_traffic_mirror_filter_with_options_async(
         self,
@@ -12480,10 +13426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_traffic_mirror_filter(
         self,
@@ -12572,10 +13524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_traffic_mirror_filter_rules_with_options_async(
         self,
@@ -12630,10 +13588,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorFilterRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_traffic_mirror_filter_rules(
         self,
@@ -12741,10 +13705,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_traffic_mirror_session_with_options_async(
         self,
@@ -12816,10 +13786,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateTrafficMirrorSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_traffic_mirror_session(
         self,
@@ -12923,10 +13899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVSwitchResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vswitch_with_options_async(
         self,
@@ -12996,10 +13978,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vswitch(
         self,
@@ -13119,10 +14107,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vswitch_cidr_reservation_with_options_async(
         self,
@@ -13192,10 +14186,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVSwitchCidrReservationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vswitch_cidr_reservation(
         self,
@@ -13293,10 +14293,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVbrHaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVbrHaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVbrHaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vbr_ha_with_options_async(
         self,
@@ -13348,10 +14354,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVbrHaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVbrHaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vbr_ha(
         self,
@@ -13437,10 +14449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVcoRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVcoRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVcoRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vco_route_entry_with_options_async(
         self,
@@ -13500,10 +14518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVcoRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVcoRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVcoRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vco_route_entry(
         self,
@@ -13621,10 +14645,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_virtual_border_router_with_options_async(
         self,
@@ -13700,10 +14730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_virtual_border_router(
         self,
@@ -13790,10 +14826,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_virtual_physical_connection_with_options_async(
         self,
@@ -13850,10 +14892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVirtualPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_virtual_physical_connection(
         self,
@@ -13964,10 +15012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpc_with_options_async(
         self,
@@ -14046,10 +15100,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpc(
         self,
@@ -14160,10 +15220,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpc_gateway_endpoint_with_options_async(
         self,
@@ -14226,10 +15292,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcGatewayEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpc_gateway_endpoint(
         self,
@@ -14325,10 +15397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcPrefixListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcPrefixListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcPrefixListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpc_prefix_list_with_options_async(
         self,
@@ -14388,10 +15466,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpcPrefixListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcPrefixListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpcPrefixListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpc_prefix_list(
         self,
@@ -14468,10 +15552,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpconnFromVbrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpconnFromVbrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpconnFromVbrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpconn_from_vbr_with_options_async(
         self,
@@ -14518,10 +15608,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpconnFromVbrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpconnFromVbrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpconnFromVbrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpconn_from_vbr(
         self,
@@ -14571,9 +15667,12 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec-VPN connection. After you create the IPsec-VPN connection, you can associate the IPsec-VPN connection with a transit router.
         
-        @description By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation.
+        @description    By default, the IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resources. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router.
+        If you want to associate an IPsec-VPN connection with a transit router, you can create a dual-tunnel connection in some regions. For more information, see [Dual-tunnel IPsec-VPN connections](https://help.aliyun.com/document_detail/2853535.html).
+        When you create a IPsec-VPN connection in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **AutoConfigRoute**, **Tags** array, **ResourceGroupId**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you create a IPsec-VPN connection in single tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **CustomerGatewayId**, **NetworkType**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **Tags** array, and **ResourceGroupId**.
         ### [](#)Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
+        Before you create an IPsec-VPN connection, you must create a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -14647,10 +15746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpn_attachment_with_options_async(
         self,
@@ -14660,9 +15765,12 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec-VPN connection. After you create the IPsec-VPN connection, you can associate the IPsec-VPN connection with a transit router.
         
-        @description By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation.
+        @description    By default, the IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resources. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router.
+        If you want to associate an IPsec-VPN connection with a transit router, you can create a dual-tunnel connection in some regions. For more information, see [Dual-tunnel IPsec-VPN connections](https://help.aliyun.com/document_detail/2853535.html).
+        When you create a IPsec-VPN connection in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **AutoConfigRoute**, **Tags** array, **ResourceGroupId**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you create a IPsec-VPN connection in single tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **CustomerGatewayId**, **NetworkType**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **Tags** array, and **ResourceGroupId**.
         ### [](#)Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
+        Before you create an IPsec-VPN connection, you must create a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -14736,10 +15844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpn_attachment(
         self,
@@ -14748,9 +15862,12 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec-VPN connection. After you create the IPsec-VPN connection, you can associate the IPsec-VPN connection with a transit router.
         
-        @description By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation.
+        @description    By default, the IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resources. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router.
+        If you want to associate an IPsec-VPN connection with a transit router, you can create a dual-tunnel connection in some regions. For more information, see [Dual-tunnel IPsec-VPN connections](https://help.aliyun.com/document_detail/2853535.html).
+        When you create a IPsec-VPN connection in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **AutoConfigRoute**, **Tags** array, **ResourceGroupId**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you create a IPsec-VPN connection in single tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **CustomerGatewayId**, **NetworkType**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **Tags** array, and **ResourceGroupId**.
         ### [](#)Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
+        Before you create an IPsec-VPN connection, you must create a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -14766,9 +15883,12 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec-VPN connection. After you create the IPsec-VPN connection, you can associate the IPsec-VPN connection with a transit router.
         
-        @description By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation.
+        @description    By default, the IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resources. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router.
+        If you want to associate an IPsec-VPN connection with a transit router, you can create a dual-tunnel connection in some regions. For more information, see [Dual-tunnel IPsec-VPN connections](https://help.aliyun.com/document_detail/2853535.html).
+        When you create a IPsec-VPN connection in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **AutoConfigRoute**, **Tags** array, **ResourceGroupId**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you create a IPsec-VPN connection in single tunnel mode, you can configure the following request parameters in addition to the required parameters: **ClientToken**, **CustomerGatewayId**, **NetworkType**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **Tags** array, and **ResourceGroupId**.
         ### [](#)Prerequisites
-        Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
+        Before you create an IPsec-VPN connection, you must create a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
         @param request: CreateVpnAttachmentRequest
@@ -14866,10 +15986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpn_connection_with_options_async(
         self,
@@ -14960,10 +16086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpn_connection(
         self,
@@ -15085,10 +16217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpn_gateway_with_options_async(
         self,
@@ -15164,10 +16302,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpn_gateway(
         self,
@@ -15272,10 +16416,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpn_pbr_route_entry_with_options_async(
         self,
@@ -15342,10 +16492,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnPbrRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpn_pbr_route_entry(
         self,
@@ -15446,10 +16602,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpn_route_entry_with_options_async(
         self,
@@ -15510,10 +16672,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.CreateVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.CreateVpnRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpn_route_entry(
         self,
@@ -15589,10 +16757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeactivateRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactivateRouterInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactivateRouterInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deactivate_router_interface_with_options_async(
         self,
@@ -15632,10 +16806,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeactivateRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactivateRouterInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactivateRouterInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deactivate_router_interface(
         self,
@@ -15708,10 +16888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeactiveFlowLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactiveFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactiveFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deactive_flow_log_with_options_async(
         self,
@@ -15758,10 +16944,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeactiveFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactiveFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeactiveFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deactive_flow_log(
         self,
@@ -15841,10 +17033,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_bgp_group_with_options_async(
         self,
@@ -15888,10 +17086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_bgp_group(
         self,
@@ -15963,10 +17167,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpNetworkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpNetworkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_bgp_network_with_options_async(
         self,
@@ -16012,10 +17222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpNetworkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpNetworkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_bgp_network(
         self,
@@ -16085,10 +17301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpPeerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpPeerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpPeerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_bgp_peer_with_options_async(
         self,
@@ -16132,10 +17354,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteBgpPeerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpPeerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteBgpPeerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_bgp_peer(
         self,
@@ -16207,10 +17435,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_common_bandwidth_package_with_options_async(
         self,
@@ -16256,10 +17490,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCommonBandwidthPackageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_common_bandwidth_package(
         self,
@@ -16335,10 +17575,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCustomerGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCustomerGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_customer_gateway_with_options_async(
         self,
@@ -16384,10 +17630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCustomerGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteCustomerGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_customer_gateway(
         self,
@@ -16469,10 +17721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dhcp_options_set_with_options_async(
         self,
@@ -16524,10 +17782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteDhcpOptionsSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dhcp_options_set(
         self,
@@ -16609,10 +17873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_express_connect_traffic_qos_with_options_async(
         self,
@@ -16656,10 +17926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_express_connect_traffic_qos(
         self,
@@ -16731,10 +18007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_express_connect_traffic_qos_queue_with_options_async(
         self,
@@ -16780,10 +18062,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosQueueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_express_connect_traffic_qos_queue(
         self,
@@ -16857,10 +18145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_express_connect_traffic_qos_rule_with_options_async(
         self,
@@ -16908,10 +18202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteExpressConnectTrafficQosRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_express_connect_traffic_qos_rule(
         self,
@@ -16983,10 +18283,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_failover_test_job_with_options_async(
         self,
@@ -17032,10 +18338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_failover_test_job(
         self,
@@ -17112,10 +18424,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFlowLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_flow_log_with_options_async(
         self,
@@ -17162,10 +18480,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFlowLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_flow_log(
         self,
@@ -17254,10 +18578,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteForwardEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteForwardEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteForwardEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_forward_entry_with_options_async(
         self,
@@ -17310,10 +18640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteForwardEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteForwardEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_forward_entry(
         self,
@@ -17407,10 +18743,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFullNatEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFullNatEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFullNatEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_full_nat_entry_with_options_async(
         self,
@@ -17464,10 +18806,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteFullNatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFullNatEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteFullNatEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_full_nat_entry(
         self,
@@ -17552,10 +18900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_global_acceleration_instance_with_options_async(
         self,
@@ -17602,10 +18956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteGlobalAccelerationInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_global_acceleration_instance(
         self,
@@ -17694,10 +19054,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteHaVipResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteHaVipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteHaVipResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ha_vip_with_options_async(
         self,
@@ -17750,10 +19116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteHaVipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteHaVipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ha_vip(
         self,
@@ -17841,10 +19213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6translator_with_options_async(
         self,
@@ -17888,10 +19266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6translator(
         self,
@@ -17964,10 +19348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6translator_acl_list_with_options_async(
         self,
@@ -18014,10 +19404,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorAclListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6translator_acl_list(
         self,
@@ -18098,10 +19494,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6translator_entry_with_options_async(
         self,
@@ -18150,10 +19552,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIPv6TranslatorEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6translator_entry(
         self,
@@ -18196,9 +19604,9 @@ class Client(OpenApiClient):
         @summary Deletes an IPsec server.
         
         @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        If a VPN gateway is in the **active** state, the IPsec server is deleted.
-        You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
+        If the VPN gateway is in the **updating** state, the IPsec server is being deleted.
+        If the VPN gateway is in the **active** state, the IPsec server is deleted.
+        You cannot call **DeleteIpsecServer** within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18228,10 +19636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpsecServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpsecServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpsecServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipsec_server_with_options_async(
         self,
@@ -18242,9 +19656,9 @@ class Client(OpenApiClient):
         @summary Deletes an IPsec server.
         
         @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        If a VPN gateway is in the **active** state, the IPsec server is deleted.
-        You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
+        If the VPN gateway is in the **updating** state, the IPsec server is being deleted.
+        If the VPN gateway is in the **active** state, the IPsec server is deleted.
+        You cannot call **DeleteIpsecServer** within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18274,10 +19688,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpsecServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpsecServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipsec_server(
         self,
@@ -18287,9 +19707,9 @@ class Client(OpenApiClient):
         @summary Deletes an IPsec server.
         
         @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        If a VPN gateway is in the **active** state, the IPsec server is deleted.
-        You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
+        If the VPN gateway is in the **updating** state, the IPsec server is being deleted.
+        If the VPN gateway is in the **active** state, the IPsec server is deleted.
+        You cannot call **DeleteIpsecServer** within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
         @return: DeleteIpsecServerResponse
@@ -18305,9 +19725,9 @@ class Client(OpenApiClient):
         @summary Deletes an IPsec server.
         
         @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        If a VPN gateway is in the **active** state, the IPsec server is deleted.
-        You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
+        If the VPN gateway is in the **updating** state, the IPsec server is being deleted.
+        If the VPN gateway is in the **active** state, the IPsec server is deleted.
+        You cannot call **DeleteIpsecServer** within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
         @return: DeleteIpsecServerResponse
@@ -18370,10 +19790,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv4GatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv4GatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_4gateway_with_options_async(
         self,
@@ -18430,10 +19856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv4GatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv4GatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_4gateway(
         self,
@@ -18524,10 +19956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6egress_only_rule_with_options_async(
         self,
@@ -18578,10 +20016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6egress_only_rule(
         self,
@@ -18671,10 +20115,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6GatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6GatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6GatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6gateway_with_options_async(
         self,
@@ -18728,10 +20178,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6GatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6GatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6gateway(
         self,
@@ -18821,10 +20277,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ipv_6internet_bandwidth_with_options_async(
         self,
@@ -18876,10 +20338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteIpv6InternetBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ipv_6internet_bandwidth(
         self,
@@ -18960,10 +20428,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_nat_gateway_with_options_async(
         self,
@@ -19014,10 +20488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_nat_gateway(
         self,
@@ -19111,10 +20591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_nat_ip_with_options_async(
         self,
@@ -19168,10 +20654,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_nat_ip(
         self,
@@ -19262,10 +20754,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatIpCidrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpCidrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpCidrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_nat_ip_cidr_with_options_async(
         self,
@@ -19318,10 +20816,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNatIpCidrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpCidrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNatIpCidrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_nat_ip_cidr(
         self,
@@ -19404,10 +20908,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNetworkAclResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNetworkAclResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNetworkAclResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_network_acl_with_options_async(
         self,
@@ -19458,10 +20968,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNetworkAclResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteNetworkAclResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_network_acl(
         self,
@@ -19539,10 +21055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_physical_connection_with_options_async(
         self,
@@ -19588,10 +21110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_physical_connection(
         self,
@@ -19674,10 +21202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_public_ip_address_pool_with_options_async(
         self,
@@ -19730,10 +21264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_public_ip_address_pool(
         self,
@@ -19828,10 +21368,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_public_ip_address_pool_cidr_block_with_options_async(
         self,
@@ -19886,10 +21432,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletePublicIpAddressPoolCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_public_ip_address_pool_cidr_block(
         self,
@@ -19981,10 +21533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_route_entries_with_options_async(
         self,
@@ -20036,10 +21594,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_route_entries(
         self,
@@ -20140,10 +21704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_route_entry_with_options_async(
         self,
@@ -20202,10 +21772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_route_entry(
         self,
@@ -20299,10 +21875,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_route_table_with_options_async(
         self,
@@ -20352,10 +21934,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouteTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_route_table(
         self,
@@ -20441,10 +22029,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouterInterfaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouterInterfaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouterInterfaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_router_interface_with_options_async(
         self,
@@ -20492,10 +22086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteRouterInterfaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouterInterfaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteRouterInterfaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_router_interface(
         self,
@@ -20580,10 +22180,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSnatEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSnatEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSnatEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_snat_entry_with_options_async(
         self,
@@ -20634,10 +22240,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSnatEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSnatEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_snat_entry(
         self,
@@ -20722,10 +22334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnClientCertResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnClientCertResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ssl_vpn_client_cert_with_options_async(
         self,
@@ -20774,10 +22392,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnClientCertResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnClientCertResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ssl_vpn_client_cert(
         self,
@@ -20862,10 +22486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSslVpnServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_ssl_vpn_server_with_options_async(
         self,
@@ -20914,10 +22544,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteSslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteSslVpnServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_ssl_vpn_server(
         self,
@@ -21004,10 +22640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_traffic_mirror_filter_with_options_async(
         self,
@@ -21058,10 +22700,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_traffic_mirror_filter(
         self,
@@ -21150,10 +22798,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_traffic_mirror_filter_rules_with_options_async(
         self,
@@ -21206,10 +22860,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorFilterRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_traffic_mirror_filter_rules(
         self,
@@ -21296,10 +22956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_traffic_mirror_session_with_options_async(
         self,
@@ -21350,10 +23016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteTrafficMirrorSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_traffic_mirror_session(
         self,
@@ -21440,10 +23112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVSwitchResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vswitch_with_options_async(
         self,
@@ -21494,10 +23172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVSwitchResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vswitch(
         self,
@@ -21593,10 +23277,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vswitch_cidr_reservation_with_options_async(
         self,
@@ -21648,10 +23338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVSwitchCidrReservationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vswitch_cidr_reservation(
         self,
@@ -21733,10 +23429,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVbrHaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVbrHaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVbrHaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vbr_ha_with_options_async(
         self,
@@ -21780,10 +23482,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVbrHaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVbrHaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vbr_ha(
         self,
@@ -21864,10 +23572,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVcoRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVcoRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVcoRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vco_route_entry_with_options_async(
         self,
@@ -21922,10 +23636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVcoRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVcoRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVcoRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vco_route_entry(
         self,
@@ -22010,10 +23730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_virtual_border_router_with_options_async(
         self,
@@ -22062,10 +23788,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_virtual_border_router(
         self,
@@ -22157,10 +23889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpc_with_options_async(
         self,
@@ -22216,10 +23954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpc(
         self,
@@ -22307,10 +24051,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpc_gateway_endpoint_with_options_async(
         self,
@@ -22356,10 +24106,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcGatewayEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpc_gateway_endpoint(
         self,
@@ -22433,10 +24189,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcPrefixListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcPrefixListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcPrefixListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpc_prefix_list_with_options_async(
         self,
@@ -22484,10 +24246,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpcPrefixListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcPrefixListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpcPrefixListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpc_prefix_list(
         self,
@@ -22562,10 +24330,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnAttachmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnAttachmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnAttachmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpn_attachment_with_options_async(
         self,
@@ -22610,10 +24384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnAttachmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnAttachmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnAttachmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpn_attachment(
         self,
@@ -22695,10 +24475,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpn_connection_with_options_async(
         self,
@@ -22748,10 +24534,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpn_connection(
         self,
@@ -22835,10 +24627,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpn_gateway_with_options_async(
         self,
@@ -22884,10 +24682,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpn_gateway(
         self,
@@ -22978,10 +24782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpn_pbr_route_entry_with_options_async(
         self,
@@ -23042,10 +24852,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnPbrRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpn_pbr_route_entry(
         self,
@@ -23138,10 +24954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpn_route_entry_with_options_async(
         self,
@@ -23198,10 +25020,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeleteVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeleteVpnRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpn_route_entry(
         self,
@@ -23287,10 +25115,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletionProtectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletionProtectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletionProtectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def deletion_protection_with_options_async(
         self,
@@ -23340,10 +25174,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DeletionProtectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletionProtectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DeletionProtectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def deletion_protection(
         self,
@@ -23419,10 +25259,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.Describe95TrafficResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.Describe95TrafficResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.Describe95TrafficResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_95traffic_with_options_async(
         self,
@@ -23468,10 +25314,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.Describe95TrafficResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.Describe95TrafficResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.Describe95TrafficResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_95traffic(
         self,
@@ -23541,10 +25393,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeAccessPointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeAccessPointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeAccessPointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_access_points_with_options_async(
         self,
@@ -23588,10 +25446,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeAccessPointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeAccessPointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeAccessPointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_access_points(
         self,
@@ -23667,10 +25531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_bgp_groups_with_options_async(
         self,
@@ -23720,10 +25590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_bgp_groups(
         self,
@@ -23795,10 +25671,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpNetworksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpNetworksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpNetworksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_bgp_networks_with_options_async(
         self,
@@ -23844,10 +25726,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpNetworksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpNetworksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpNetworksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_bgp_networks(
         self,
@@ -23925,10 +25813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpPeersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpPeersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpPeersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_bgp_peers_with_options_async(
         self,
@@ -23980,10 +25874,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeBgpPeersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpPeersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeBgpPeersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_bgp_peers(
         self,
@@ -24067,10 +25967,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_common_bandwidth_packages_with_options_async(
         self,
@@ -24128,10 +26034,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCommonBandwidthPackagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_common_bandwidth_packages(
         self,
@@ -24199,10 +26111,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCustomerGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_customer_gateway_with_options_async(
         self,
@@ -24244,10 +26162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCustomerGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_customer_gateway(
         self,
@@ -24323,10 +26247,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCustomerGatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewaysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewaysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_customer_gateways_with_options_async(
         self,
@@ -24376,10 +26306,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeCustomerGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewaysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeCustomerGatewaysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_customer_gateways(
         self,
@@ -24445,10 +26381,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEcGrantRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEcGrantRelationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEcGrantRelationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ec_grant_relation_with_options_async(
         self,
@@ -24488,10 +26430,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEcGrantRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEcGrantRelationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEcGrantRelationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ec_grant_relation(
         self,
@@ -24599,10 +26547,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipAddressesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipAddressesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipAddressesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_eip_addresses_with_options_async(
         self,
@@ -24684,10 +26638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipAddressesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipAddressesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipAddressesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_eip_addresses(
         self,
@@ -24763,10 +26723,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipGatewayInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipGatewayInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipGatewayInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_eip_gateway_info_with_options_async(
         self,
@@ -24812,10 +26778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipGatewayInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipGatewayInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipGatewayInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_eip_gateway_info(
         self,
@@ -24895,10 +26867,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipMonitorDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipMonitorDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipMonitorDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_eip_monitor_data_with_options_async(
         self,
@@ -24948,10 +26926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipMonitorDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipMonitorDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_eip_monitor_data(
         self,
@@ -25029,10 +27013,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipSegmentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipSegmentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipSegmentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_eip_segment_with_options_async(
         self,
@@ -25080,10 +27070,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeEipSegmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipSegmentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeEipSegmentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_eip_segment(
         self,
@@ -25163,10 +27159,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_traffic_qos_with_options_async(
         self,
@@ -25220,10 +27222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_traffic_qos(
         self,
@@ -25297,10 +27305,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_traffic_qos_queue_with_options_async(
         self,
@@ -25348,10 +27362,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosQueueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_traffic_qos_queue(
         self,
@@ -25427,10 +27447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_traffic_qos_rule_with_options_async(
         self,
@@ -25480,10 +27506,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeExpressConnectTrafficQosRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_traffic_qos_rule(
         self,
@@ -25553,10 +27585,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_failover_test_job_with_options_async(
         self,
@@ -25600,10 +27638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_failover_test_job(
         self,
@@ -25677,10 +27721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFailoverTestJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_failover_test_jobs_with_options_async(
         self,
@@ -25728,10 +27778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFailoverTestJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFailoverTestJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_failover_test_jobs(
         self,
@@ -25825,10 +27881,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFlowLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFlowLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFlowLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_flow_logs_with_options_async(
         self,
@@ -25896,10 +27958,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeFlowLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFlowLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeFlowLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_flow_logs(
         self,
@@ -25987,10 +28055,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeForwardTableEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeForwardTableEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeForwardTableEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_forward_table_entries_with_options_async(
         self,
@@ -26052,10 +28126,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeForwardTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeForwardTableEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeForwardTableEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_forward_table_entries(
         self,
@@ -26141,10 +28221,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_global_acceleration_instances_with_options_async(
         self,
@@ -26204,10 +28290,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGlobalAccelerationInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_global_acceleration_instances(
         self,
@@ -26285,10 +28377,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeGrantRulesToCenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGrantRulesToCenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGrantRulesToCenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_grant_rules_to_cen_with_options_async(
         self,
@@ -26340,10 +28438,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeGrantRulesToCenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGrantRulesToCenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeGrantRulesToCenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_grant_rules_to_cen(
         self,
@@ -26419,10 +28523,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeHaVipsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHaVipsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHaVipsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ha_vips_with_options_async(
         self,
@@ -26472,10 +28582,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeHaVipsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHaVipsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHaVipsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ha_vips(
         self,
@@ -26545,10 +28661,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_high_definition_monitor_log_attribute_with_options_async(
         self,
@@ -26592,10 +28714,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeHighDefinitionMonitorLogAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_high_definition_monitor_log_attribute(
         self,
@@ -26667,10 +28795,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6translator_acl_list_attributes_with_options_async(
         self,
@@ -26716,10 +28850,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6translator_acl_list_attributes(
         self,
@@ -26796,10 +28936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6translator_acl_lists_with_options_async(
         self,
@@ -26850,10 +28996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorAclListsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6translator_acl_lists(
         self,
@@ -26956,10 +29108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6translator_entries_with_options_async(
         self,
@@ -27030,10 +29188,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6translator_entries(
         self,
@@ -27128,10 +29292,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6translators_with_options_async(
         self,
@@ -27194,10 +29364,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIPv6TranslatorsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6translators(
         self,
@@ -27303,10 +29479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6AddressesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6AddressesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6AddressesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6addresses_with_options_async(
         self,
@@ -27380,10 +29562,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6AddressesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6AddressesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6AddressesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6addresses(
         self,
@@ -27417,7 +29605,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
-        @summary 查询创建的仅主动出规则。
+        @summary Queries egress-only rules.
         
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27465,10 +29653,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6egress_only_rules_with_options_async(
         self,
@@ -27476,7 +29670,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
-        @summary 查询创建的仅主动出规则。
+        @summary Queries egress-only rules.
         
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27524,17 +29718,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6egress_only_rules(
         self,
         request: vpc_20160428_models.DescribeIpv6EgressOnlyRulesRequest,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
-        @summary 查询创建的仅主动出规则。
+        @summary Queries egress-only rules.
         
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @return: DescribeIpv6EgressOnlyRulesResponse
@@ -27547,7 +29747,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeIpv6EgressOnlyRulesRequest,
     ) -> vpc_20160428_models.DescribeIpv6EgressOnlyRulesResponse:
         """
-        @summary 查询创建的仅主动出规则。
+        @summary Queries egress-only rules.
         
         @param request: DescribeIpv6EgressOnlyRulesRequest
         @return: DescribeIpv6EgressOnlyRulesResponse
@@ -27597,10 +29797,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6gateway_attribute_with_options_async(
         self,
@@ -27644,10 +29850,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6gateway_attribute(
         self,
@@ -27729,10 +29941,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6GatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewaysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewaysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ipv_6gateways_with_options_async(
         self,
@@ -27788,10 +30006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeIpv6GatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewaysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeIpv6GatewaysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ipv_6gateways(
         self,
@@ -27873,10 +30097,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_nat_gateway_associate_network_interfaces_with_options_async(
         self,
@@ -27932,10 +30162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_nat_gateway_associate_network_interfaces(
         self,
@@ -28031,10 +30267,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNatGatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewaysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewaysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_nat_gateways_with_options_async(
         self,
@@ -28104,10 +30346,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNatGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewaysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNatGatewaysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_nat_gateways(
         self,
@@ -28183,10 +30431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_network_acl_attributes_with_options_async(
         self,
@@ -28232,10 +30486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_network_acl_attributes(
         self,
@@ -28321,10 +30581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNetworkAclsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_network_acls_with_options_async(
         self,
@@ -28384,10 +30650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeNetworkAclsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeNetworkAclsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_network_acls(
         self,
@@ -28457,10 +30729,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_physical_connection_loawith_options_async(
         self,
@@ -28504,10 +30782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionLOAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_physical_connection_loa(
         self,
@@ -28589,10 +30873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePhysicalConnectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_physical_connections_with_options_async(
         self,
@@ -28648,10 +30938,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePhysicalConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePhysicalConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_physical_connections(
         self,
@@ -28731,10 +31027,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePublicIpAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePublicIpAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePublicIpAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_public_ip_address_with_options_async(
         self,
@@ -28784,10 +31086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribePublicIpAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePublicIpAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribePublicIpAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_public_ip_address(
         self,
@@ -28859,10 +31167,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -28904,10 +31218,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -29001,10 +31321,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteEntryListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteEntryListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteEntryListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_route_entry_list_with_options_async(
         self,
@@ -29072,10 +31398,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteEntryListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteEntryListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteEntryListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_route_entry_list(
         self,
@@ -29165,10 +31497,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteTableListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTableListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTableListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_route_table_list_with_options_async(
         self,
@@ -29228,10 +31566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteTableListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTableListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTableListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_route_table_list(
         self,
@@ -29318,10 +31662,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteTablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_route_tables_with_options_async(
         self,
@@ -29382,10 +31732,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouteTablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouteTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_route_tables(
         self,
@@ -29457,10 +31813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_router_interface_attribute_with_options_async(
         self,
@@ -29500,10 +31862,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfaceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_router_interface_attribute(
         self,
@@ -29579,10 +31947,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouterInterfacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_router_interfaces_with_options_async(
         self,
@@ -29632,10 +32006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeRouterInterfacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeRouterInterfacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_router_interfaces(
         self,
@@ -29707,10 +32087,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_server_related_global_acceleration_instances_with_options_async(
         self,
@@ -29756,10 +32142,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeServerRelatedGlobalAccelerationInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_server_related_global_acceleration_instances(
         self,
@@ -29849,10 +32241,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSnatTableEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSnatTableEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSnatTableEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_snat_table_entries_with_options_async(
         self,
@@ -29912,10 +32310,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSnatTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSnatTableEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSnatTableEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_snat_table_entries(
         self,
@@ -29983,10 +32387,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ssl_vpn_client_cert_with_options_async(
         self,
@@ -30028,10 +32438,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ssl_vpn_client_cert(
         self,
@@ -30109,10 +32525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ssl_vpn_client_certs_with_options_async(
         self,
@@ -30164,10 +32586,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientCertsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ssl_vpn_client_certs(
         self,
@@ -30203,8 +32631,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
-        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        @description If your VPN gateway was created before December 10, 2022, you need to upgrade the VPN gateway to the latest version to view the connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
+        If your VPN gateway was created after December 10, 2022, you can view the connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30242,10 +32670,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ssl_vpn_clients_with_options_async(
         self,
@@ -30255,8 +32689,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
-        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        @description If your VPN gateway was created before December 10, 2022, you need to upgrade the VPN gateway to the latest version to view the connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
+        If your VPN gateway was created after December 10, 2022, you can view the connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30294,10 +32728,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnClientsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnClientsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ssl_vpn_clients(
         self,
@@ -30306,8 +32746,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
-        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        @description If your VPN gateway was created before December 10, 2022, you need to upgrade the VPN gateway to the latest version to view the connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
+        If your VPN gateway was created after December 10, 2022, you can view the connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @return: DescribeSslVpnClientsResponse
@@ -30322,8 +32762,8 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
-        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        @description If your VPN gateway was created before December 10, 2022, you need to upgrade the VPN gateway to the latest version to view the connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
+        If your VPN gateway was created after December 10, 2022, you can view the connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @return: DescribeSslVpnClientsResponse
@@ -30381,10 +32821,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnServersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnServersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnServersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_ssl_vpn_servers_with_options_async(
         self,
@@ -30436,10 +32882,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeSslVpnServersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnServersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeSslVpnServersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_ssl_vpn_servers(
         self,
@@ -30515,10 +32967,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tag_keys_with_options_async(
         self,
@@ -30568,10 +33026,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tag_keys(
         self,
@@ -30647,10 +33111,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tag_keys_for_express_connect_with_options_async(
         self,
@@ -30700,10 +33170,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tag_keys_for_express_connect(
         self,
@@ -30784,10 +33260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tags_with_options_async(
         self,
@@ -30842,10 +33324,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeTagsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeTagsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tags(
         self,
@@ -30927,10 +33415,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVRoutersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVRoutersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVRoutersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vrouters_with_options_async(
         self,
@@ -30976,10 +33470,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVRoutersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVRoutersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVRoutersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vrouters(
         self,
@@ -31049,10 +33549,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVSwitchAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vswitch_attributes_with_options_async(
         self,
@@ -31096,10 +33602,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVSwitchAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vswitch_attributes(
         self,
@@ -31191,10 +33703,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVSwitchesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vswitches_with_options_async(
         self,
@@ -31260,10 +33778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVSwitchesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVSwitchesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vswitches(
         self,
@@ -31337,10 +33861,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVbrHaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVbrHaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVbrHaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vbr_ha_with_options_async(
         self,
@@ -31388,10 +33918,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVbrHaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVbrHaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVbrHaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vbr_ha(
         self,
@@ -31465,10 +34001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vco_route_entries_with_options_async(
         self,
@@ -31516,10 +34058,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVcoRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vco_route_entries(
         self,
@@ -31595,10 +34143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_virtual_border_routers_with_options_async(
         self,
@@ -31648,10 +34202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_virtual_border_routers(
         self,
@@ -31723,10 +34283,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_virtual_border_routers_for_physical_connection_with_options_async(
         self,
@@ -31772,10 +34338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_virtual_border_routers_for_physical_connection(
         self,
@@ -31847,10 +34419,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpcAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpc_attribute_with_options_async(
         self,
@@ -31896,10 +34474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpcAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpc_attribute(
         self,
@@ -31987,10 +34571,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpcsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpcs_with_options_async(
         self,
@@ -32052,10 +34642,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpcsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpcsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpcs(
         self,
@@ -32129,10 +34725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnAttachmentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnAttachmentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnAttachmentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_attachments_with_options_async(
         self,
@@ -32180,10 +34782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnAttachmentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnAttachmentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnAttachmentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_attachments(
         self,
@@ -32251,10 +34859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_connection_with_options_async(
         self,
@@ -32296,10 +34910,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_connection(
         self,
@@ -32379,10 +34999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_connection_logs_with_options_async(
         self,
@@ -32436,10 +35062,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_connection_logs(
         self,
@@ -32519,10 +35151,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_connections_with_options_async(
         self,
@@ -32576,10 +35214,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_connections(
         self,
@@ -32651,10 +35295,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_cross_account_authorizations_with_options_async(
         self,
@@ -32700,10 +35350,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnCrossAccountAuthorizationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_cross_account_authorizations(
         self,
@@ -32773,10 +35429,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_gateway_with_options_async(
         self,
@@ -32820,10 +35482,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_gateway(
         self,
@@ -32879,10 +35547,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_gateway_available_zones_with_options_async(
         self,
@@ -32912,10 +35586,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewayAvailableZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_gateway_available_zones(
         self,
@@ -32999,10 +35679,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewaysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewaysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_gateways_with_options_async(
         self,
@@ -33060,10 +35746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnGatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewaysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnGatewaysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_gateways(
         self,
@@ -33135,10 +35827,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_pbr_route_entries_with_options_async(
         self,
@@ -33184,10 +35882,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnPbrRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_pbr_route_entries(
         self,
@@ -33261,10 +35965,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_route_entries_with_options_async(
         self,
@@ -33312,10 +36022,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_route_entries(
         self,
@@ -33349,6 +36065,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         """
+        @summary Queries the log entries of an SSL server.
+        
         @param request: DescribeVpnSslServerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVpnSslServerLogsResponse
@@ -33393,10 +36111,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_vpn_ssl_server_logs_with_options_async(
         self,
@@ -33404,6 +36128,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         """
+        @summary Queries the log entries of an SSL server.
+        
         @param request: DescribeVpnSslServerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeVpnSslServerLogsResponse
@@ -33448,16 +36174,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeVpnSslServerLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_vpn_ssl_server_logs(
         self,
         request: vpc_20160428_models.DescribeVpnSslServerLogsRequest,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         """
+        @summary Queries the log entries of an SSL server.
+        
         @param request: DescribeVpnSslServerLogsRequest
         @return: DescribeVpnSslServerLogsResponse
         """
@@ -33469,6 +36203,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVpnSslServerLogsRequest,
     ) -> vpc_20160428_models.DescribeVpnSslServerLogsResponse:
         """
+        @summary Queries the log entries of an SSL server.
+        
         @param request: DescribeVpnSslServerLogsRequest
         @return: DescribeVpnSslServerLogsResponse
         """
@@ -33517,10 +36253,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_zones_with_options_async(
         self,
@@ -33564,10 +36306,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DescribeZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DescribeZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_zones(
         self,
@@ -33647,10 +36395,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_dhcp_options_set_from_vpc_with_options_async(
         self,
@@ -33704,10 +36458,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DetachDhcpOptionsSetFromVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_dhcp_options_set_from_vpc(
         self,
@@ -33793,10 +36553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def diagnose_vpn_connections_with_options_async(
         self,
@@ -33844,10 +36610,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def diagnose_vpn_connections(
         self,
@@ -33891,7 +36663,7 @@ class Client(OpenApiClient):
         """
         @summary Diagnoses a VPN gateway.
         
-        @description Only VPN gateways in specific regions support the quick diagnostics feature. For more information about the supported regions, see [Supported regions](https://help.aliyun.com/document_detail/430697.html).
+        @description VPN网关发起诊断
         
         @param request: DiagnoseVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33925,10 +36697,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DiagnoseVpnGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def diagnose_vpn_gateway_with_options_async(
         self,
@@ -33938,7 +36716,7 @@ class Client(OpenApiClient):
         """
         @summary Diagnoses a VPN gateway.
         
-        @description Only VPN gateways in specific regions support the quick diagnostics feature. For more information about the supported regions, see [Supported regions](https://help.aliyun.com/document_detail/430697.html).
+        @description VPN网关发起诊断
         
         @param request: DiagnoseVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33972,10 +36750,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DiagnoseVpnGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DiagnoseVpnGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def diagnose_vpn_gateway(
         self,
@@ -33984,7 +36768,7 @@ class Client(OpenApiClient):
         """
         @summary Diagnoses a VPN gateway.
         
-        @description Only VPN gateways in specific regions support the quick diagnostics feature. For more information about the supported regions, see [Supported regions](https://help.aliyun.com/document_detail/430697.html).
+        @description VPN网关发起诊断
         
         @param request: DiagnoseVpnGatewayRequest
         @return: DiagnoseVpnGatewayResponse
@@ -33999,7 +36783,7 @@ class Client(OpenApiClient):
         """
         @summary Diagnoses a VPN gateway.
         
-        @description Only VPN gateways in specific regions support the quick diagnostics feature. For more information about the supported regions, see [Supported regions](https://help.aliyun.com/document_detail/430697.html).
+        @description VPN网关发起诊断
         
         @param request: DiagnoseVpnGatewayRequest
         @return: DiagnoseVpnGatewayResponse
@@ -34046,10 +36830,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_nat_gateway_ecs_metric_with_options_async(
         self,
@@ -34090,10 +36880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableNatGatewayEcsMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_nat_gateway_ecs_metric(
         self,
@@ -34169,10 +36965,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DisableVpcClassicLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableVpcClassicLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableVpcClassicLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_vpc_classic_link_with_options_async(
         self,
@@ -34216,10 +37018,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DisableVpcClassicLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableVpcClassicLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DisableVpcClassicLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_vpc_classic_link(
         self,
@@ -34297,10 +37105,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def dissociate_route_table_from_gateway_with_options_async(
         self,
@@ -34352,10 +37166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTableFromGatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def dissociate_route_table_from_gateway(
         self,
@@ -34429,10 +37249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def dissociate_route_tables_from_vpc_gateway_endpoint_with_options_async(
         self,
@@ -34480,10 +37306,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateRouteTablesFromVpcGatewayEndpointResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def dissociate_route_tables_from_vpc_gateway_endpoint(
         self,
@@ -34556,10 +37388,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def dissociate_vpn_gateway_with_certificate_with_options_async(
         self,
@@ -34606,10 +37444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DissociateVpnGatewayWithCertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def dissociate_vpn_gateway_with_certificate(
         self,
@@ -34687,10 +37531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def download_vpn_connection_config_with_options_async(
         self,
@@ -34732,10 +37582,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.DownloadVpnConnectionConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def download_vpn_connection_config(
         self,
@@ -34802,10 +37658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_nat_gateway_ecs_metric_with_options_async(
         self,
@@ -34846,10 +37708,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableNatGatewayEcsMetricResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_nat_gateway_ecs_metric(
         self,
@@ -34933,10 +37801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnablePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnablePhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnablePhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_physical_connection_with_options_async(
         self,
@@ -34988,10 +37862,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnablePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnablePhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnablePhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_physical_connection(
         self,
@@ -35073,10 +37953,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableVpcClassicLinkResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcClassicLinkResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcClassicLinkResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_vpc_classic_link_with_options_async(
         self,
@@ -35120,10 +38006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableVpcClassicLinkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcClassicLinkResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcClassicLinkResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_vpc_classic_link(
         self,
@@ -35205,10 +38097,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_vpc_ipv_4gateway_with_options_async(
         self,
@@ -35264,10 +38162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.EnableVpcIpv4GatewayResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_vpc_ipv_4gateway(
         self,
@@ -35347,10 +38251,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetDhcpOptionsSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetDhcpOptionsSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_dhcp_options_set_with_options_async(
         self,
@@ -35392,10 +38302,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetDhcpOptionsSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetDhcpOptionsSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_dhcp_options_set(
         self,
@@ -35465,10 +38381,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetFlowLogServiceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_flow_log_service_status_with_options_async(
         self,
@@ -35512,10 +38434,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetFlowLogServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetFlowLogServiceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_flow_log_service_status(
         self,
@@ -35585,10 +38513,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_ipv_4gateway_attribute_with_options_async(
         self,
@@ -35632,10 +38566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetIpv4GatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_ipv_4gateway_attribute(
         self,
@@ -35707,10 +38647,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetNatGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetNatGatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetNatGatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_nat_gateway_attribute_with_options_async(
         self,
@@ -35756,10 +38702,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetNatGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetNatGatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetNatGatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_nat_gateway_attribute(
         self,
@@ -35831,10 +38783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_physical_connection_service_status_with_options_async(
         self,
@@ -35876,10 +38834,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPhysicalConnectionServiceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_physical_connection_service_status(
         self,
@@ -35953,10 +38917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_public_ip_address_pool_service_status_with_options_async(
         self,
@@ -36000,10 +38970,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_public_ip_address_pool_service_status(
         self,
@@ -36073,10 +39049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_traffic_mirror_service_status_with_options_async(
         self,
@@ -36120,10 +39102,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetTrafficMirrorServiceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_traffic_mirror_service_status(
         self,
@@ -36195,10 +39183,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vswitch_cidr_reservation_usage_with_options_async(
         self,
@@ -36244,10 +39238,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVSwitchCidrReservationUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vswitch_cidr_reservation_usage(
         self,
@@ -36315,10 +39315,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_gateway_endpoint_attribute_with_options_async(
         self,
@@ -36360,10 +39366,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcGatewayEndpointAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_gateway_endpoint_attribute(
         self,
@@ -36435,10 +39447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_prefix_list_associations_with_options_async(
         self,
@@ -36484,10 +39502,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListAssociationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_prefix_list_associations(
         self,
@@ -36559,10 +39583,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_prefix_list_entries_with_options_async(
         self,
@@ -36608,10 +39638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcPrefixListEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_prefix_list_entries(
         self,
@@ -36683,10 +39719,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_route_entry_summary_with_options_async(
         self,
@@ -36732,10 +39774,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_route_entry_summary(
         self,
@@ -36801,10 +39849,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpn_gateway_diagnose_result_with_options_async(
         self,
@@ -36844,10 +39898,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpn_gateway_diagnose_result(
         self,
@@ -36931,10 +39991,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GrantInstanceToCenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToCenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToCenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_instance_to_cen_with_options_async(
         self,
@@ -36988,10 +40054,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GrantInstanceToCenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToCenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToCenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_instance_to_cen(
         self,
@@ -37074,10 +40146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GrantInstanceToVbrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToVbrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToVbrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_instance_to_vbr_with_options_async(
         self,
@@ -37126,10 +40204,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.GrantInstanceToVbrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToVbrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.GrantInstanceToVbrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_instance_to_vbr(
         self,
@@ -37195,10 +40279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListBusinessAccessPointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListBusinessAccessPointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListBusinessAccessPointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_business_access_points_with_options_async(
         self,
@@ -37232,10 +40322,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListBusinessAccessPointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListBusinessAccessPointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListBusinessAccessPointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_business_access_points(
         self,
@@ -37315,10 +40411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListDhcpOptionsSetsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListDhcpOptionsSetsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListDhcpOptionsSetsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_dhcp_options_sets_with_options_async(
         self,
@@ -37372,10 +40474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListDhcpOptionsSetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListDhcpOptionsSetsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListDhcpOptionsSetsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_dhcp_options_sets(
         self,
@@ -37449,10 +40557,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_enhanhced_nat_gateway_available_zones_with_options_async(
         self,
@@ -37500,10 +40614,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListEnhanhcedNatGatewayAvailableZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_enhanhced_nat_gateway_available_zones(
         self,
@@ -37595,10 +40715,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListFullNatEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListFullNatEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListFullNatEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_full_nat_entries_with_options_async(
         self,
@@ -37660,10 +40786,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListFullNatEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListFullNatEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListFullNatEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_full_nat_entries(
         self,
@@ -37739,10 +40871,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_gateway_route_table_entries_with_options_async(
         self,
@@ -37792,10 +40930,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGatewayRouteTableEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_gateway_route_table_entries(
         self,
@@ -37846,10 +40990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListGeographicSubRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGeographicSubRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGeographicSubRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_geographic_sub_regions_with_options_async(
         self,
@@ -37874,10 +41024,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListGeographicSubRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGeographicSubRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListGeographicSubRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_geographic_sub_regions(self) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
         """
@@ -37903,6 +41059,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
         """
+        @summary Queries the logs of an IPsec server.
+        
         @param request: ListIpsecServerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpsecServerLogsResponse
@@ -37937,10 +41095,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpsecServerLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServerLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServerLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipsec_server_logs_with_options_async(
         self,
@@ -37948,6 +41112,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
         """
+        @summary Queries the logs of an IPsec server.
+        
         @param request: ListIpsecServerLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListIpsecServerLogsResponse
@@ -37982,16 +41148,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpsecServerLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServerLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServerLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipsec_server_logs(
         self,
         request: vpc_20160428_models.ListIpsecServerLogsRequest,
     ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
         """
+        @summary Queries the logs of an IPsec server.
+        
         @param request: ListIpsecServerLogsRequest
         @return: ListIpsecServerLogsResponse
         """
@@ -38003,6 +41177,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListIpsecServerLogsRequest,
     ) -> vpc_20160428_models.ListIpsecServerLogsResponse:
         """
+        @summary Queries the logs of an IPsec server.
+        
         @param request: ListIpsecServerLogsRequest
         @return: ListIpsecServerLogsResponse
         """
@@ -38051,10 +41227,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpsecServersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipsec_servers_with_options_async(
         self,
@@ -38098,10 +41280,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpsecServersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpsecServersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipsec_servers(
         self,
@@ -38183,10 +41371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpv4GatewaysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpv4GatewaysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpv4GatewaysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ipv_4gateways_with_options_async(
         self,
@@ -38242,10 +41436,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListIpv4GatewaysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpv4GatewaysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListIpv4GatewaysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ipv_4gateways(
         self,
@@ -38331,10 +41531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListNatIpCidrsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpCidrsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpCidrsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_nat_ip_cidrs_with_options_async(
         self,
@@ -38394,10 +41600,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListNatIpCidrsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpCidrsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpCidrsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_nat_ip_cidrs(
         self,
@@ -38483,10 +41695,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListNatIpsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_nat_ips_with_options_async(
         self,
@@ -38546,10 +41764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListNatIpsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListNatIpsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_nat_ips(
         self,
@@ -38627,10 +41851,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPrefixListsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPrefixListsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPrefixListsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_prefix_lists_with_options_async(
         self,
@@ -38682,10 +41912,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPrefixListsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPrefixListsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPrefixListsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_prefix_lists(
         self,
@@ -38759,10 +41995,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_public_ip_address_pool_cidr_blocks_with_options_async(
         self,
@@ -38810,10 +42052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolCidrBlocksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_public_ip_address_pool_cidr_blocks(
         self,
@@ -38895,10 +42143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_public_ip_address_pools_with_options_async(
         self,
@@ -38958,10 +42212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListPublicIpAddressPoolsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_public_ip_address_pools(
         self,
@@ -39043,10 +42303,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -39102,10 +42368,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -39199,10 +42471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_for_express_connect_with_options_async(
         self,
@@ -39258,10 +42536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources_for_express_connect(
         self,
@@ -39351,10 +42635,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_traffic_mirror_filters_with_options_async(
         self,
@@ -39406,10 +42696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorFiltersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_traffic_mirror_filters(
         self,
@@ -39499,10 +42795,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_traffic_mirror_sessions_with_options_async(
         self,
@@ -39566,10 +42868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListTrafficMirrorSessionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_traffic_mirror_sessions(
         self,
@@ -39649,10 +42957,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vswitch_cidr_reservations_with_options_async(
         self,
@@ -39706,10 +43020,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVSwitchCidrReservationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vswitch_cidr_reservations(
         self,
@@ -39789,10 +43109,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_virtual_physical_connections_with_options_async(
         self,
@@ -39846,10 +43172,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVirtualPhysicalConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_virtual_physical_connections(
         self,
@@ -39921,10 +43253,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpc_endpoint_services_by_end_user_with_options_async(
         self,
@@ -39970,10 +43308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcEndpointServicesByEndUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpc_endpoint_services_by_end_user(
         self,
@@ -40053,10 +43397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpc_gateway_endpoints_with_options_async(
         self,
@@ -40110,10 +43460,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcGatewayEndpointsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpc_gateway_endpoints(
         self,
@@ -40193,10 +43549,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpc_published_route_entries_with_options_async(
         self,
@@ -40250,10 +43612,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpc_published_route_entries(
         self,
@@ -40327,10 +43695,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpn_certificate_associations_with_options_async(
         self,
@@ -40378,10 +43752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ListVpnCertificateAssociationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpn_certificate_associations(
         self,
@@ -40479,10 +43859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_bgp_group_attribute_with_options_async(
         self,
@@ -40542,10 +43928,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpGroupAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_bgp_group_attribute(
         self,
@@ -40623,10 +44015,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_bgp_peer_attribute_with_options_async(
         self,
@@ -40678,10 +44076,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyBgpPeerAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_bgp_peer_attribute(
         self,
@@ -40753,10 +44157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_common_bandwidth_package_attribute_with_options_async(
         self,
@@ -40802,10 +44212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_common_bandwidth_package_attribute(
         self,
@@ -40884,10 +44300,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_common_bandwidth_package_ip_bandwidth_with_options_async(
         self,
@@ -40940,10 +44362,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_common_bandwidth_package_ip_bandwidth(
         self,
@@ -41033,10 +44461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_common_bandwidth_package_spec_with_options_async(
         self,
@@ -41086,10 +44520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_common_bandwidth_package_spec(
         self,
@@ -41183,10 +44623,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_customer_gateway_attribute_with_options_async(
         self,
@@ -41242,10 +44688,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyCustomerGatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_customer_gateway_attribute(
         self,
@@ -41331,10 +44783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyEipAddressAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipAddressAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipAddressAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_eip_address_attribute_with_options_async(
         self,
@@ -41382,10 +44840,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyEipAddressAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipAddressAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyEipAddressAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_eip_address_attribute(
         self,
@@ -41463,10 +44927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_cloud_connection_attribute_with_options_async(
         self,
@@ -41518,10 +44988,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_cloud_connection_attribute(
         self,
@@ -41591,10 +45067,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_cloud_connection_bandwidth_with_options_async(
         self,
@@ -41638,10 +45120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressCloudConnectionBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_cloud_connection_bandwidth(
         self,
@@ -41719,10 +45207,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_traffic_qos_with_options_async(
         self,
@@ -41774,10 +45268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_traffic_qos(
         self,
@@ -41855,10 +45355,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_traffic_qos_queue_with_options_async(
         self,
@@ -41910,10 +45416,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosQueueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_traffic_qos_queue(
         self,
@@ -42011,10 +45523,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_traffic_qos_rule_with_options_async(
         self,
@@ -42086,10 +45604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyExpressConnectTrafficQosRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_traffic_qos_rule(
         self,
@@ -42170,10 +45694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyFlowLogAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFlowLogAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFlowLogAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_flow_log_attribute_with_options_async(
         self,
@@ -42228,10 +45758,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyFlowLogAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFlowLogAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFlowLogAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_flow_log_attribute(
         self,
@@ -42334,10 +45870,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyForwardEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyForwardEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyForwardEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_forward_entry_with_options_async(
         self,
@@ -42404,10 +45946,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyForwardEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyForwardEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyForwardEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_forward_entry(
         self,
@@ -42513,10 +46061,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_full_nat_entry_attribute_with_options_async(
         self,
@@ -42586,10 +46140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyFullNatEntryAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_full_nat_entry_attribute(
         self,
@@ -42673,10 +46233,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_acceleration_instance_attributes_with_options_async(
         self,
@@ -42722,10 +46288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_acceleration_instance_attributes(
         self,
@@ -42798,10 +46370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_global_acceleration_instance_spec_with_options_async(
         self,
@@ -42848,10 +46426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyGlobalAccelerationInstanceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_global_acceleration_instance_spec(
         self,
@@ -42891,7 +46475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified period of time.
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42931,10 +46515,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyHaVipAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyHaVipAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyHaVipAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ha_vip_attribute_with_options_async(
         self,
@@ -42942,7 +46532,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified period of time.
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42982,17 +46572,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyHaVipAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyHaVipAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyHaVipAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ha_vip_attribute(
         self,
         request: vpc_20160428_models.ModifyHaVipAttributeRequest,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified period of time.
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -43005,7 +46601,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyHaVipAttributeRequest,
     ) -> vpc_20160428_models.ModifyHaVipAttributeResponse:
         """
-        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified period of time.
+        @description You cannot repeatedly call the *ModifyHaVipAttribute** operation to modify the name and description of an HAVIP within the specified periods of time.
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -43060,10 +46656,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6translator_acl_attribute_with_options_async(
         self,
@@ -43112,10 +46714,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6translator_acl_attribute(
         self,
@@ -43193,10 +46801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6translator_acl_list_entry_with_options_async(
         self,
@@ -43242,10 +46856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAclListEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6translator_acl_list_entry(
         self,
@@ -43319,10 +46939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6translator_attribute_with_options_async(
         self,
@@ -43370,10 +46996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6translator_attribute(
         self,
@@ -43447,10 +47079,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6translator_bandwidth_with_options_async(
         self,
@@ -43498,10 +47136,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6translator_bandwidth(
         self,
@@ -43592,10 +47236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6translator_entry_with_options_async(
         self,
@@ -43660,10 +47310,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIPv6TranslatorEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6translator_entry(
         self,
@@ -43747,10 +47403,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6address_attribute_with_options_async(
         self,
@@ -43802,10 +47464,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6AddressAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6address_attribute(
         self,
@@ -43883,10 +47551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6gateway_attribute_with_options_async(
         self,
@@ -43938,10 +47612,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6GatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6gateway_attribute(
         self,
@@ -44023,10 +47703,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ipv_6internet_bandwidth_with_options_async(
         self,
@@ -44082,10 +47768,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyIpv6InternetBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ipv_6internet_bandwidth(
         self,
@@ -44176,10 +47868,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_nat_gateway_attribute_with_options_async(
         self,
@@ -44240,10 +47938,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_nat_gateway_attribute(
         self,
@@ -44335,10 +48039,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatGatewaySpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewaySpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewaySpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_nat_gateway_spec_with_options_async(
         self,
@@ -44398,10 +48108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatGatewaySpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewaySpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatGatewaySpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_nat_gateway_spec(
         self,
@@ -44506,10 +48222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatIpAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_nat_ip_attribute_with_options_async(
         self,
@@ -44564,10 +48286,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatIpAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_nat_ip_attribute(
         self,
@@ -44653,10 +48381,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_nat_ip_cidr_attribute_with_options_async(
         self,
@@ -44710,10 +48444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNatIpCidrAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_nat_ip_cidr_attribute(
         self,
@@ -44791,10 +48531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_network_acl_attributes_with_options_async(
         self,
@@ -44846,10 +48592,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyNetworkAclAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_network_acl_attributes(
         self,
@@ -44942,10 +48694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_physical_connection_attribute_with_options_async(
         self,
@@ -45012,10 +48770,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyPhysicalConnectionAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_physical_connection_attribute(
         self,
@@ -45107,10 +48871,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_route_entry_with_options_async(
         self,
@@ -45166,10 +48936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_route_entry(
         self,
@@ -45249,10 +49025,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouteTableAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteTableAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteTableAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_route_table_attributes_with_options_async(
         self,
@@ -45302,10 +49084,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouteTableAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteTableAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouteTableAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_route_table_attributes(
         self,
@@ -45397,10 +49185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_router_interface_attribute_with_options_async(
         self,
@@ -45462,10 +49256,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_router_interface_attribute(
         self,
@@ -45540,10 +49340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_router_interface_spec_with_options_async(
         self,
@@ -45592,10 +49398,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyRouterInterfaceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_router_interface_spec(
         self,
@@ -45690,10 +49502,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySnatEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySnatEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySnatEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_snat_entry_with_options_async(
         self,
@@ -45756,10 +49574,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySnatEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySnatEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySnatEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_snat_entry(
         self,
@@ -45845,10 +49669,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySslVpnClientCertResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnClientCertResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnClientCertResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ssl_vpn_client_cert_with_options_async(
         self,
@@ -45894,10 +49724,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySslVpnClientCertResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnClientCertResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnClientCertResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ssl_vpn_client_cert(
         self,
@@ -45933,11 +49769,12 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of an SSL server.
         
-        @description    If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations besides the **name**, the operation is asynchronous.
-        When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
-        You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
+        @description    To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+        If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
+        **ModifySslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the SSL server is being modified.
+        If the VPN gateway is in the **active** state, the SSL server is modified.
+        You cannot repeatedly call **ModifySslVpnServer** within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45995,10 +49832,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySslVpnServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_ssl_vpn_server_with_options_async(
         self,
@@ -46008,11 +49851,12 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of an SSL server.
         
-        @description    If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations besides the **name**, the operation is asynchronous.
-        When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
-        You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
+        @description    To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+        If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
+        **ModifySslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the SSL server is being modified.
+        If the VPN gateway is in the **active** state, the SSL server is modified.
+        You cannot repeatedly call **ModifySslVpnServer** within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46070,10 +49914,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifySslVpnServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifySslVpnServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_ssl_vpn_server(
         self,
@@ -46082,11 +49932,12 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of an SSL server.
         
-        @description    If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations besides the **name**, the operation is asynchronous.
-        When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
-        You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
+        @description    To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+        If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
+        **ModifySslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the SSL server is being modified.
+        If the VPN gateway is in the **active** state, the SSL server is modified.
+        You cannot repeatedly call **ModifySslVpnServer** within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
         @return: ModifySslVpnServerResponse
@@ -46101,11 +49952,12 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configurations of an SSL server.
         
-        @description    If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations besides the **name**, the operation is asynchronous.
-        When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
-        If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
-        You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
+        @description    To enable two-factor authentication for an SSL server, make sure that the VPN gateway supports two-factor authentication. You may need to upgrade the VPN gateway. For more information, see [Two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+        If you modify only **Name**, this operation is synchronous. If you modify other parameters besides **Name**, this operation is asynchronous.
+        **ModifySslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the SSL server is being modified.
+        If the VPN gateway is in the **active** state, the SSL server is modified.
+        You cannot repeatedly call **ModifySslVpnServer** within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
         @return: ModifySslVpnServerResponse
@@ -46159,10 +50011,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyTunnelAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyTunnelAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyTunnelAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_tunnel_attribute_with_options_async(
         self,
@@ -46210,10 +50068,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyTunnelAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyTunnelAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyTunnelAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_tunnel_attribute(
         self,
@@ -46287,10 +50151,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVRouterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVRouterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVRouterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vrouter_attribute_with_options_async(
         self,
@@ -46338,10 +50208,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVRouterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVRouterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVRouterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vrouter_attribute(
         self,
@@ -46428,10 +50304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVSwitchAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vswitch_attribute_with_options_async(
         self,
@@ -46488,10 +50370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVSwitchAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vswitch_attribute(
         self,
@@ -46580,10 +50468,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vswitch_cidr_reservation_attribute_with_options_async(
         self,
@@ -46636,10 +50530,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVSwitchCidrReservationAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vswitch_cidr_reservation_attribute(
         self,
@@ -46728,10 +50628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vco_route_entry_weight_with_options_async(
         self,
@@ -46788,10 +50694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVcoRouteEntryWeightResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vco_route_entry_weight(
         self,
@@ -46913,10 +50825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_virtual_border_router_attribute_with_options_async(
         self,
@@ -47002,10 +50920,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVirtualBorderRouterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_virtual_border_router_attribute(
         self,
@@ -47106,10 +51030,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpcAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpc_attribute_with_options_async(
         self,
@@ -47168,10 +51098,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpcAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpc_attribute(
         self,
@@ -47265,10 +51201,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpcPrefixListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcPrefixListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcPrefixListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpc_prefix_list_with_options_async(
         self,
@@ -47330,10 +51272,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpcPrefixListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcPrefixListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpcPrefixListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpc_prefix_list(
         self,
@@ -47381,13 +51329,13 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec-VPN connection.
         
-        @description    **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task.
-        If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
-        If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
-        You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
-        When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
-        If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
-        If the IPsec-VPN connection is not associated with a resource, you cannot change the type of the gateway connected to the IPsec-VPN connection or the customer gateway connected to the IPsec-VPN connection.
+        @description    When you modify a IPsec-VPN connection in dual-tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you modify a IPsec-VPN connection in single tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task:
+        If the IPsec-VPN connection is in the **updating** state, the IPsec-VPN connection is being modified.
+        If the IPsec-VPN connection is in the **attached** state, the IPsec-VPN connection is modified.
+        You cannot concurrently call **ModifyVpnAttachmentAttribute** within the specified period of time.
+        You cannot call **ModifyVpnAttachmentAttribute** to modify the gateway type of an IPsec-VPN connection.
         
         @param request: ModifyVpnAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47458,10 +51406,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_attachment_attribute_with_options_async(
         self,
@@ -47471,13 +51425,13 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec-VPN connection.
         
-        @description    **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task.
-        If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
-        If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
-        You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
-        When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
-        If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
-        If the IPsec-VPN connection is not associated with a resource, you cannot change the type of the gateway connected to the IPsec-VPN connection or the customer gateway connected to the IPsec-VPN connection.
+        @description    When you modify a IPsec-VPN connection in dual-tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you modify a IPsec-VPN connection in single tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task:
+        If the IPsec-VPN connection is in the **updating** state, the IPsec-VPN connection is being modified.
+        If the IPsec-VPN connection is in the **attached** state, the IPsec-VPN connection is modified.
+        You cannot concurrently call **ModifyVpnAttachmentAttribute** within the specified period of time.
+        You cannot call **ModifyVpnAttachmentAttribute** to modify the gateway type of an IPsec-VPN connection.
         
         @param request: ModifyVpnAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47548,10 +51502,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnAttachmentAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_attachment_attribute(
         self,
@@ -47560,13 +51520,13 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec-VPN connection.
         
-        @description    **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task.
-        If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
-        If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
-        You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
-        When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
-        If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
-        If the IPsec-VPN connection is not associated with a resource, you cannot change the type of the gateway connected to the IPsec-VPN connection or the customer gateway connected to the IPsec-VPN connection.
+        @description    When you modify a IPsec-VPN connection in dual-tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you modify a IPsec-VPN connection in single tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task:
+        If the IPsec-VPN connection is in the **updating** state, the IPsec-VPN connection is being modified.
+        If the IPsec-VPN connection is in the **attached** state, the IPsec-VPN connection is modified.
+        You cannot concurrently call **ModifyVpnAttachmentAttribute** within the specified period of time.
+        You cannot call **ModifyVpnAttachmentAttribute** to modify the gateway type of an IPsec-VPN connection.
         
         @param request: ModifyVpnAttachmentAttributeRequest
         @return: ModifyVpnAttachmentAttributeResponse
@@ -47581,13 +51541,13 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec-VPN connection.
         
-        @description    **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task.
-        If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
-        If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
-        You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
-        When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
-        If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
-        If the IPsec-VPN connection is not associated with a resource, you cannot change the type of the gateway connected to the IPsec-VPN connection or the customer gateway connected to the IPsec-VPN connection.
+        @description    When you modify a IPsec-VPN connection in dual-tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification** array, and **EnableTunnelsBgp**.
+        When you modify a IPsec-VPN connection in single tunnel mode, you can configure the following parameters in addition to the required request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) operation to query the status of the task:
+        If the IPsec-VPN connection is in the **updating** state, the IPsec-VPN connection is being modified.
+        If the IPsec-VPN connection is in the **attached** state, the IPsec-VPN connection is modified.
+        You cannot concurrently call **ModifyVpnAttachmentAttribute** within the specified period of time.
+        You cannot call **ModifyVpnAttachmentAttribute** to modify the gateway type of an IPsec-VPN connection.
         
         @param request: ModifyVpnAttachmentAttributeRequest
         @return: ModifyVpnAttachmentAttributeResponse
@@ -47679,10 +51639,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_connection_attribute_with_options_async(
         self,
@@ -47768,10 +51734,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnConnectionAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_connection_attribute(
         self,
@@ -47870,10 +51842,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_gateway_attribute_with_options_async(
         self,
@@ -47928,10 +51906,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnGatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_gateway_attribute(
         self,
@@ -48034,10 +52018,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_pbr_route_entry_attribute_with_options_async(
         self,
@@ -48104,10 +52094,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_pbr_route_entry_attribute(
         self,
@@ -48212,10 +52208,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_pbr_route_entry_priority_with_options_async(
         self,
@@ -48276,10 +52278,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_pbr_route_entry_priority(
         self,
@@ -48378,10 +52386,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_pbr_route_entry_weight_with_options_async(
         self,
@@ -48444,10 +52458,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_pbr_route_entry_weight(
         self,
@@ -48543,10 +52563,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpn_route_entry_weight_with_options_async(
         self,
@@ -48606,10 +52632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ModifyVpnRouteEntryWeightResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpn_route_entry_weight(
         self,
@@ -48693,10 +52725,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def move_resource_group_with_options_async(
         self,
@@ -48742,10 +52780,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def move_resource_group(
         self,
@@ -48817,10 +52861,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.MoveVpnResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveVpnResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveVpnResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def move_vpn_resource_group_with_options_async(
         self,
@@ -48866,10 +52916,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.MoveVpnResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveVpnResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.MoveVpnResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def move_vpn_resource_group(
         self,
@@ -48942,10 +52998,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenFlowLogServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenFlowLogServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenFlowLogServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_flow_log_service_with_options_async(
         self,
@@ -48992,10 +53054,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenFlowLogServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenFlowLogServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenFlowLogServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_flow_log_service(
         self,
@@ -49067,10 +53135,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_physical_connection_service_with_options_async(
         self,
@@ -49110,10 +53184,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPhysicalConnectionServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_physical_connection_service(
         self,
@@ -49183,10 +53263,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_public_ip_address_pool_service_with_options_async(
         self,
@@ -49230,10 +53316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenPublicIpAddressPoolServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_public_ip_address_pool_service(
         self,
@@ -49306,10 +53398,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def open_traffic_mirror_service_with_options_async(
         self,
@@ -49356,10 +53454,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.OpenTrafficMirrorServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def open_traffic_mirror_service(
         self,
@@ -49441,10 +53545,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.PublishVpcRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_vpc_route_entries_with_options_async(
         self,
@@ -49494,10 +53604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.PublishVpcRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_vpc_route_entries(
         self,
@@ -49575,10 +53691,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.PublishVpnRouteEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpnRouteEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpnRouteEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def publish_vpn_route_entry_with_options_async(
         self,
@@ -49630,10 +53752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.PublishVpnRouteEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpnRouteEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.PublishVpnRouteEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def publish_vpn_route_entry(
         self,
@@ -49700,10 +53828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RecoverPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def recover_physical_connection_with_options_async(
         self,
@@ -49744,10 +53878,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RecoverPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def recover_physical_connection(
         self,
@@ -49828,10 +53968,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def recover_virtual_border_router_with_options_async(
         self,
@@ -49880,10 +54026,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RecoverVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def recover_virtual_border_router(
         self,
@@ -49970,10 +54122,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_eip_address_with_options_async(
         self,
@@ -50024,10 +54182,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_eip_address(
         self,
@@ -50121,10 +54285,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_eip_segment_address_with_options_async(
         self,
@@ -50174,10 +54344,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseEipSegmentAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_eip_segment_address(
         self,
@@ -50263,10 +54439,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseIpv6AddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseIpv6AddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseIpv6AddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_ipv_6address_with_options_async(
         self,
@@ -50314,10 +54496,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReleaseIpv6AddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseIpv6AddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReleaseIpv6AddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_ipv_6address(
         self,
@@ -50389,10 +54577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_common_bandwidth_package_ip_with_options_async(
         self,
@@ -50438,10 +54632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveCommonBandwidthPackageIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_common_bandwidth_package_ip(
         self,
@@ -50509,10 +54709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_global_acceleration_instance_ip_with_options_async(
         self,
@@ -50554,10 +54760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveGlobalAccelerationInstanceIpResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_global_acceleration_instance_ip(
         self,
@@ -50625,10 +54837,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_ipv_6translator_acl_list_entry_with_options_async(
         self,
@@ -50674,10 +54892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveIPv6TranslatorAclListEntryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_ipv_6translator_acl_list_entry(
         self,
@@ -50756,10 +54980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_sources_from_traffic_mirror_session_with_options_async(
         self,
@@ -50812,10 +55042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RemoveSourcesFromTrafficMirrorSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_sources_from_traffic_mirror_session(
         self,
@@ -50904,10 +55140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def replace_vpc_dhcp_options_set_with_options_async(
         self,
@@ -50960,10 +55202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.ReplaceVpcDhcpOptionsSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def replace_vpc_dhcp_options_set(
         self,
@@ -51056,10 +55304,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def retry_vpc_prefix_list_association_with_options_async(
         self,
@@ -51116,10 +55370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RetryVpcPrefixListAssociationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def retry_vpc_prefix_list_association(
         self,
@@ -51213,10 +55473,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RevokeInstanceFromCenResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromCenResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromCenResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def revoke_instance_from_cen_with_options_async(
         self,
@@ -51270,10 +55536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RevokeInstanceFromCenResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromCenResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromCenResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def revoke_instance_from_cen(
         self,
@@ -51353,10 +55625,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RevokeInstanceFromVbrResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def revoke_instance_from_vbr_with_options_async(
         self,
@@ -51402,10 +55680,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.RevokeInstanceFromVbrResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def revoke_instance_from_vbr(
         self,
@@ -51489,10 +55773,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def second_apply_physical_connection_loawith_options_async(
         self,
@@ -51550,10 +55840,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.SecondApplyPhysicalConnectionLOAResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def second_apply_physical_connection_loa(
         self,
@@ -51631,10 +55927,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_high_definition_monitor_log_status_with_options_async(
         self,
@@ -51686,10 +55988,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.SetHighDefinitionMonitorLogStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_high_definition_monitor_log_status(
         self,
@@ -51765,10 +56073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.StartFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.StartFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.StartFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_failover_test_job_with_options_async(
         self,
@@ -51814,10 +56128,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.StartFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.StartFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.StartFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_failover_test_job(
         self,
@@ -51891,10 +56211,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.StopFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.StopFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.StopFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_failover_test_job_with_options_async(
         self,
@@ -51938,10 +56264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.StopFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.StopFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.StopFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_failover_test_job(
         self,
@@ -52022,10 +56354,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -52080,10 +56418,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -52181,10 +56525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TagResourcesForExpressConnectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_for_express_connect_with_options_async(
         self,
@@ -52238,10 +56588,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TagResourcesForExpressConnectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources_for_express_connect(
         self,
@@ -52331,10 +56687,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TerminatePhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminatePhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminatePhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def terminate_physical_connection_with_options_async(
         self,
@@ -52382,10 +56744,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TerminatePhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminatePhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminatePhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def terminate_physical_connection(
         self,
@@ -52466,10 +56834,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def terminate_virtual_border_router_with_options_async(
         self,
@@ -52516,10 +56890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TerminateVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def terminate_virtual_border_router(
         self,
@@ -52593,10 +56973,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def transform_eip_segment_to_public_ip_address_pool_with_options_async(
         self,
@@ -52638,10 +57024,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.TransformEipSegmentToPublicIpAddressPoolResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def transform_eip_segment_to_public_ip_address_pool(
         self,
@@ -52715,10 +57107,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_tag_resources_with_options_async(
         self,
@@ -52766,10 +57164,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_tag_resources(
         self,
@@ -52852,10 +57256,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateEipAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateEipAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_eip_address_with_options_async(
         self,
@@ -52912,10 +57322,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateEipAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateEipAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_eip_address(
         self,
@@ -52995,10 +57411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_global_acceleration_instance_with_options_async(
         self,
@@ -53042,10 +57464,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateGlobalAccelerationInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_global_acceleration_instance(
         self,
@@ -53130,10 +57558,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateHaVipResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateHaVipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateHaVipResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_ha_vip_with_options_async(
         self,
@@ -53192,10 +57626,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateHaVipResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateHaVipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateHaVipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_ha_vip(
         self,
@@ -53295,10 +57735,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateNetworkAclResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateNetworkAclResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateNetworkAclResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_network_acl_with_options_async(
         self,
@@ -53354,10 +57800,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateNetworkAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateNetworkAclResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateNetworkAclResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_network_acl(
         self,
@@ -53441,10 +57893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_physical_connection_from_virtual_border_router_with_options_async(
         self,
@@ -53490,10 +57948,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociatePhysicalConnectionFromVirtualBorderRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_physical_connection_from_virtual_border_router(
         self,
@@ -53573,10 +58037,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateRouteTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateRouteTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateRouteTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_route_table_with_options_async(
         self,
@@ -53630,10 +58100,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateRouteTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateRouteTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateRouteTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_route_table(
         self,
@@ -53722,10 +58198,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unassociate_vpc_cidr_block_with_options_async(
         self,
@@ -53776,10 +58258,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UnassociateVpcCidrBlockResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unassociate_vpc_cidr_block(
         self,
@@ -53859,10 +58347,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_for_express_connect_with_options_async(
         self,
@@ -53910,10 +58404,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources_for_express_connect(
         self,
@@ -53997,10 +58497,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_dhcp_options_set_attribute_with_options_async(
         self,
@@ -54058,10 +58564,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_dhcp_options_set_attribute(
         self,
@@ -54141,10 +58653,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateFailoverTestJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateFailoverTestJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateFailoverTestJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_failover_test_job_with_options_async(
         self,
@@ -54198,10 +58716,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateFailoverTestJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateFailoverTestJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateFailoverTestJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_failover_test_job(
         self,
@@ -54287,10 +58811,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_gateway_route_table_entry_attribute_with_options_async(
         self,
@@ -54350,10 +58880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateGatewayRouteTableEntryAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_gateway_route_table_entry_attribute(
         self,
@@ -54389,11 +58925,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec server.
         
-        @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
-        If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
-        If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        @description    If you modify only **IpsecServerName** of the IPsec server, this operation is synchronous. If you modify other parameters besides **IpsecServerName**, this operation is asynchronous.
+        If **UpdateIpsecServer** is an asynchronous operation, after a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the IPsec server is being modified.
+        If the VPN gateway is in the **active** state, the IPsec server is modified.
+        You cannot repeatedly call **UpdateIpsecServer** within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54439,10 +58975,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateIpsecServerResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpsecServerResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpsecServerResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipsec_server_with_options_async(
         self,
@@ -54452,11 +58994,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec server.
         
-        @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
-        If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
-        If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        @description    If you modify only **IpsecServerName** of the IPsec server, this operation is synchronous. If you modify other parameters besides **IpsecServerName**, this operation is asynchronous.
+        If **UpdateIpsecServer** is an asynchronous operation, after a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the IPsec server is being modified.
+        If the VPN gateway is in the **active** state, the IPsec server is modified.
+        You cannot repeatedly call **UpdateIpsecServer** within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -54502,10 +59044,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateIpsecServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpsecServerResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpsecServerResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipsec_server(
         self,
@@ -54514,11 +59062,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec server.
         
-        @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
-        If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
-        If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        @description    If you modify only **IpsecServerName** of the IPsec server, this operation is synchronous. If you modify other parameters besides **IpsecServerName**, this operation is asynchronous.
+        If **UpdateIpsecServer** is an asynchronous operation, after a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the IPsec server is being modified.
+        If the VPN gateway is in the **active** state, the IPsec server is modified.
+        You cannot repeatedly call **UpdateIpsecServer** within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @return: UpdateIpsecServerResponse
@@ -54533,11 +59081,11 @@ class Client(OpenApiClient):
         """
         @summary Modifies the configuration of an IPsec server.
         
-        @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
-        If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
-        If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
+        @description    If you modify only **IpsecServerName** of the IPsec server, this operation is synchronous. If you modify other parameters besides **IpsecServerName**, this operation is asynchronous.
+        If **UpdateIpsecServer** is an asynchronous operation, after a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
+        If the VPN gateway is in the **updating** state, the IPsec server is being modified.
+        If the VPN gateway is in the **active** state, the IPsec server is modified.
+        You cannot repeatedly call **UpdateIpsecServer** within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @return: UpdateIpsecServerResponse
@@ -54597,10 +59145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_ipv_4gateway_attribute_with_options_async(
         self,
@@ -54654,10 +59208,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateIpv4GatewayAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_ipv_4gateway_attribute(
         self,
@@ -54752,10 +59312,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_nat_gateway_nat_type_with_options_async(
         self,
@@ -54820,10 +59386,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNatGatewayNatTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_nat_gateway_nat_type(
         self,
@@ -54936,10 +59508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_network_acl_entries_with_options_async(
         self,
@@ -55000,10 +59578,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateNetworkAclEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_network_acl_entries(
         self,
@@ -55091,10 +59675,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_public_ip_address_pool_attribute_with_options_async(
         self,
@@ -55146,10 +59736,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdatePublicIpAddressPoolAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_public_ip_address_pool_attribute(
         self,
@@ -55231,10 +59827,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_traffic_mirror_filter_attribute_with_options_async(
         self,
@@ -55286,10 +59888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_traffic_mirror_filter_attribute(
         self,
@@ -55384,10 +59992,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_traffic_mirror_filter_rule_attribute_with_options_async(
         self,
@@ -55452,10 +60066,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorFilterRuleAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_traffic_mirror_filter_rule_attribute(
         self,
@@ -55561,10 +60181,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_traffic_mirror_session_attribute_with_options_async(
         self,
@@ -55634,10 +60260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_traffic_mirror_session_attribute(
         self,
@@ -55721,10 +60353,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_virtual_border_bandwidth_with_options_async(
         self,
@@ -55770,10 +60408,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualBorderBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_virtual_border_bandwidth(
         self,
@@ -55841,10 +60485,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_virtual_physical_connection_with_options_async(
         self,
@@ -55886,10 +60536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVirtualPhysicalConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_virtual_physical_connection(
         self,
@@ -55972,10 +60628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_vpc_gateway_endpoint_attribute_with_options_async(
         self,
@@ -56032,10 +60694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_vpc_gateway_endpoint_attribute(
         self,
@@ -56119,10 +60787,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def vpc_describe_vpc_nat_gateway_network_interface_quota_with_options_async(
         self,
@@ -56170,10 +60844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def vpc_describe_vpc_nat_gateway_network_interface_quota(
         self,
@@ -56253,10 +60933,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def withdraw_vpc_published_route_entries_with_options_async(
         self,
@@ -56306,10 +60992,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def withdraw_vpc_published_route_entries(
         self,
