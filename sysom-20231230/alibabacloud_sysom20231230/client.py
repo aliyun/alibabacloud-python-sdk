@@ -3071,6 +3071,8 @@ class Client(OpenApiClient):
             body['agent_version'] = request.agent_version
         if not UtilClient.is_unset(request.cluster_id):
             body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.grayscale_config):
+            body['grayscale_config'] = request.grayscale_config
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3119,6 +3121,8 @@ class Client(OpenApiClient):
             body['agent_version'] = request.agent_version
         if not UtilClient.is_unset(request.cluster_id):
             body['cluster_id'] = request.cluster_id
+        if not UtilClient.is_unset(request.grayscale_config):
+            body['grayscale_config'] = request.grayscale_config
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

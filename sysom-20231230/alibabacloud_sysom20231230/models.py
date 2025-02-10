@@ -4377,10 +4377,12 @@ class InstallAgentForClusterRequest(TeaModel):
         agent_id: str = None,
         agent_version: str = None,
         cluster_id: str = None,
+        grayscale_config: str = None,
     ):
         self.agent_id = agent_id
         self.agent_version = agent_version
         self.cluster_id = cluster_id
+        self.grayscale_config = grayscale_config
 
     def validate(self):
         pass
@@ -4397,6 +4399,8 @@ class InstallAgentForClusterRequest(TeaModel):
             result['agent_version'] = self.agent_version
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
+        if self.grayscale_config is not None:
+            result['grayscale_config'] = self.grayscale_config
         return result
 
     def from_map(self, m: dict = None):
@@ -4407,6 +4411,8 @@ class InstallAgentForClusterRequest(TeaModel):
             self.agent_version = m.get('agent_version')
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
+        if m.get('grayscale_config') is not None:
+            self.grayscale_config = m.get('grayscale_config')
         return self
 
 
