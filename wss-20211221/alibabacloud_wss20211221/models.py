@@ -4,6 +4,408 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class CreateMultiOrderRequestOrderItemsComponents(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateMultiOrderRequestOrderItems(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        components: List[CreateMultiOrderRequestOrderItemsComponents] = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        resource_ids: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.amount = amount
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.components = components
+        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        result['Components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['Components'].append(k.to_map() if k else None)
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        self.components = []
+        if m.get('Components') is not None:
+            for k in m.get('Components'):
+                temp_model = CreateMultiOrderRequestOrderItemsComponents()
+                self.components.append(temp_model.from_map(k))
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class CreateMultiOrderRequest(TeaModel):
+    def __init__(
+        self,
+        order_items: List[CreateMultiOrderRequestOrderItems] = None,
+        order_type: str = None,
+        properties: Dict[str, str] = None,
+    ):
+        self.order_items = order_items
+        self.order_type = order_type
+        self.properties = properties
+
+    def validate(self):
+        if self.order_items:
+            for k in self.order_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderItems'] = []
+        if self.order_items is not None:
+            for k in self.order_items:
+                result['OrderItems'].append(k.to_map() if k else None)
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.properties is not None:
+            result['Properties'] = self.properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_items = []
+        if m.get('OrderItems') is not None:
+            for k in m.get('OrderItems'):
+                temp_model = CreateMultiOrderRequestOrderItems()
+                self.order_items.append(temp_model.from_map(k))
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+        return self
+
+
+class CreateMultiOrderShrinkRequestOrderItemsComponents(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateMultiOrderShrinkRequestOrderItems(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        components: List[CreateMultiOrderShrinkRequestOrderItemsComponents] = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        resource_ids: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.amount = amount
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.components = components
+        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
+        self.resource_ids = resource_ids
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        result['Components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['Components'].append(k.to_map() if k else None)
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        self.components = []
+        if m.get('Components') is not None:
+            for k in m.get('Components'):
+                temp_model = CreateMultiOrderShrinkRequestOrderItemsComponents()
+                self.components.append(temp_model.from_map(k))
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class CreateMultiOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        order_items: List[CreateMultiOrderShrinkRequestOrderItems] = None,
+        order_type: str = None,
+        properties_shrink: str = None,
+    ):
+        self.order_items = order_items
+        self.order_type = order_type
+        self.properties_shrink = properties_shrink
+
+    def validate(self):
+        if self.order_items:
+            for k in self.order_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderItems'] = []
+        if self.order_items is not None:
+            for k in self.order_items:
+                result['OrderItems'].append(k.to_map() if k else None)
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.properties_shrink is not None:
+            result['Properties'] = self.properties_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_items = []
+        if m.get('OrderItems') is not None:
+            for k in m.get('OrderItems'):
+                temp_model = CreateMultiOrderShrinkRequestOrderItems()
+                self.order_items.append(temp_model.from_map(k))
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Properties') is not None:
+            self.properties_shrink = m.get('Properties')
+        return self
+
+
+class CreateMultiOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_ids: List[int] = None,
+        request_id: str = None,
+    ):
+        self.order_ids = order_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_ids is not None:
+            result['OrderIds'] = self.order_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderIds') is not None:
+            self.order_ids = m.get('OrderIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateMultiOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMultiOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMultiOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDeliveryAddressResponseBodyAddressesArea(TeaModel):
     def __init__(
         self,

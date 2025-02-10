@@ -7,8 +7,8 @@ from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
 from alibabacloud_wss20211221 import models as wss_20211221_models
+from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
@@ -40,6 +40,122 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def create_multi_order_with_options(
+        self,
+        tmp_req: wss_20211221_models.CreateMultiOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.CreateMultiOrderResponse:
+        """
+        @param tmp_req: CreateMultiOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = wss_20211221_models.CreateMultiOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.order_items):
+            query['OrderItems'] = request.order_items
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.properties_shrink):
+            query['Properties'] = request.properties_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMultiOrder',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                wss_20211221_models.CreateMultiOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                wss_20211221_models.CreateMultiOrderResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_multi_order_with_options_async(
+        self,
+        tmp_req: wss_20211221_models.CreateMultiOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wss_20211221_models.CreateMultiOrderResponse:
+        """
+        @param tmp_req: CreateMultiOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiOrderResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = wss_20211221_models.CreateMultiOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.order_items):
+            query['OrderItems'] = request.order_items
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.properties_shrink):
+            query['Properties'] = request.properties_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMultiOrder',
+            version='2021-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                wss_20211221_models.CreateMultiOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                wss_20211221_models.CreateMultiOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_multi_order(
+        self,
+        request: wss_20211221_models.CreateMultiOrderRequest,
+    ) -> wss_20211221_models.CreateMultiOrderResponse:
+        """
+        @param request: CreateMultiOrderRequest
+        @return: CreateMultiOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_multi_order_with_options(request, runtime)
+
+    async def create_multi_order_async(
+        self,
+        request: wss_20211221_models.CreateMultiOrderRequest,
+    ) -> wss_20211221_models.CreateMultiOrderResponse:
+        """
+        @param request: CreateMultiOrderRequest
+        @return: CreateMultiOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_multi_order_with_options_async(request, runtime)
 
     def describe_delivery_address_with_options(
         self,
