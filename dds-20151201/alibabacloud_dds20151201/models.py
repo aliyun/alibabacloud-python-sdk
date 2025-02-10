@@ -490,6 +490,14 @@ class CheckRecoveryConditionRequest(TeaModel):
         # 
         # >  This parameter is required when you set the RestoreType parameter to 3.
         self.dest_region = dest_region
+        # The database engine version of the instance.
+        # 
+        # *   **6.0**\
+        # *   **5.0**\
+        # *   **4.4**\
+        # *   **4.2**\
+        # *   **4.0**\
+        # *   **3.4**\
         self.engine_version = engine_version
         # The instance architecture. Valid values:
         # 
@@ -683,11 +691,127 @@ class CheckRecoveryConditionResponse(TeaModel):
         return self
 
 
+class CheckServiceLinkedRoleRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class CheckServiceLinkedRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_linked_role_exists: bool = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether an SLR is created.
+        self.service_linked_role_exists = service_linked_role_exists
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.service_linked_role_exists is not None:
+            result['ServiceLinkedRoleExists'] = self.service_linked_role_exists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ServiceLinkedRoleExists') is not None:
+            self.service_linked_role_exists = m.get('ServiceLinkedRoleExists')
+        return self
+
+
+class CheckServiceLinkedRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckServiceLinkedRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckServiceLinkedRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAccountRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
         account_password: str = None,
+        character_type: str = None,
         dbinstance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -702,6 +826,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_password = account_password
+        self.character_type = character_type
         # The cluster ID.
         # 
         # This parameter is required.
@@ -724,6 +849,8 @@ class CreateAccountRequest(TeaModel):
             result['AccountName'] = self.account_name
         if self.account_password is not None:
             result['AccountPassword'] = self.account_password
+        if self.character_type is not None:
+            result['CharacterType'] = self.character_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.owner_account is not None:
@@ -742,6 +869,8 @@ class CreateAccountRequest(TeaModel):
             self.account_name = m.get('AccountName')
         if m.get('AccountPassword') is not None:
             self.account_password = m.get('AccountPassword')
+        if m.get('CharacterType') is not None:
+            self.character_type = m.get('CharacterType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('OwnerAccount') is not None:
@@ -3592,6 +3721,547 @@ class DescribeAccountsResponse(TeaModel):
         return self
 
 
+class DescribeActiveOperationMaintenanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeActiveOperationMaintenanceConfigResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        cycle_time: str = None,
+        cycle_type: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
+        modified_time: str = None,
+        status: int = None,
+    ):
+        # The time when the O\\&M task was created. The timefollows the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+        self.created_time = created_time
+        # The start time of the O\\&M period. The time follows the *hh:mm* z format. The time is displayed in UTC.
+        self.cycle_time = cycle_time
+        # The cyclical type of the O\\&M task.
+        self.cycle_type = cycle_type
+        # The end time of the maintenance window. The time follows the *hh:mm*z format. The time is displayed in UTC.
+        self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window. The time follows the *hh:mm*z format.
+        self.maintain_start_time = maintain_start_time
+        # The time when the O\\&M task was modified. The time follows the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in Coordinated Universal Time (UTC).
+        self.modified_time = modified_time
+        # The state of the O\\&M task. Valid values: **0**: The O\\&M task is in the starting state. **1**: The O\\&M task is in the running state. **2**: The O\\&M task is in the stopped state.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.cycle_time is not None:
+            result['CycleTime'] = self.cycle_time
+        if self.cycle_type is not None:
+            result['CycleType'] = self.cycle_type
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CycleTime') is not None:
+            self.cycle_time = m.get('CycleTime')
+        if m.get('CycleType') is not None:
+            self.cycle_type = m.get('CycleType')
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeActiveOperationMaintenanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: DescribeActiveOperationMaintenanceConfigResponseBodyConfig = None,
+        has_config: int = None,
+        request_id: str = None,
+    ):
+        # The description of the configuration.
+        self.config = config
+        # Indicates whether the O\\&M task is configured. Valid values:
+        # 
+        # *   1: The O\\&M task is configured.
+        # *   0: The O\\&M task is not configured.
+        self.has_config = has_config
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.has_config is not None:
+            result['HasConfig'] = self.has_config
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = DescribeActiveOperationMaintenanceConfigResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('HasConfig') is not None:
+            self.has_config = m.get('HasConfig')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeActiveOperationMaintenanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationMaintenanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationMaintenanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActiveOperationTaskRequest(TeaModel):
+    def __init__(
+        self,
+        is_history: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_id: str = None,
+        region: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_type: str = None,
+    ):
+        # Specifies whether to return the historical tasks. 
+        # 
+        # Default value: 0. Valid values:
+        # 
+        # - 0: returns the current task.
+        # - 1: returns the historical tasks.
+        self.is_history = is_history
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page. Specify a value greater than 10. Default value: 30.
+        self.page_size = page_size
+        # The ID of the product.
+        self.product_id = product_id
+        # The region ID of the instance.
+        # 
+        # >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType** parameter to **all**.
+        # 
+        # This parameter is required.
+        self.region = region
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The type of the task. Valid values:
+        # 
+        # - rds_apsaradb_ha: master-replica switchover
+        # - rds_apsaradb_transfer: instance migration
+        # - rds_apsaradb_upgrade: minor version update
+        # 
+        # This parameter is required.
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_history is not None:
+            result['IsHistory'] = self.is_history
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsHistory') is not None:
+            self.is_history = m.get('IsHistory')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTaskResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        db_type: str = None,
+        deadline: str = None,
+        id: int = None,
+        ins_name: str = None,
+        modified_time: str = None,
+        prepare_interval: str = None,
+        region: str = None,
+        result_info: str = None,
+        start_time: str = None,
+        status: int = None,
+        switch_time: str = None,
+        task_params: str = None,
+        task_type: str = None,
+    ):
+        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        self.created_time = created_time
+        # The database type of the instance.
+        self.db_type = db_type
+        # The deadline before which the time to preform the task can be modified. The time in UTC is displayed in the yyyy-MM-ddTHH:mm:ssZ format.
+        self.deadline = deadline
+        # The task ID.
+        self.id = id
+        # The instance ID.
+        self.ins_name = ins_name
+        # The time when the task was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        self.modified_time = modified_time
+        # The required preparation period between the task start time and the switchover time. The time is displayed in the HH:mm:ss format.
+        self.prepare_interval = prepare_interval
+        # The region of the instance.
+        self.region = region
+        # The result information.
+        self.result_info = result_info
+        # The time when the task was preformed. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        self.start_time = start_time
+        # The state of the task. Valid values:
+        # 
+        # - 2: The task is waiting for users to specify a switchover time.
+        # - 3: The task is waiting to be performed.
+        # - 4: The task is being performed. If the task is in this state, the ModifyActiveOperationTask operation cannot be called to modify the scheduled switchover time.
+        # - 5: The task is performed.
+        # - 6: The task fails.
+        # - 7: The task is canceled.
+        self.status = status
+        # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        self.switch_time = switch_time
+        # The task parameters.
+        self.task_params = task_params
+        # The type of the task. Valid values:
+        # 
+        # - rds_apsaradb_ha: master-replica switchover
+        # - rds_apsaradb_transfer: instance migration
+        # - rds_apsaradb_upgrade: minor version update
+        # - all: all types
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.deadline is not None:
+            result['Deadline'] = self.deadline
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.prepare_interval is not None:
+            result['PrepareInterval'] = self.prepare_interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_params is not None:
+            result['TaskParams'] = self.task_params
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('Deadline') is not None:
+            self.deadline = m.get('Deadline')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PrepareInterval') is not None:
+            self.prepare_interval = m.get('PrepareInterval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskParams') is not None:
+            self.task_params = m.get('TaskParams')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActiveOperationTaskResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        # The list of tasks.
+        self.items = items
+        # The page number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of returned entries.
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActiveOperationTaskResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActiveOperationTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeActiveOperationTaskCountRequest(TeaModel):
     def __init__(
         self,
@@ -3726,6 +4396,194 @@ class DescribeActiveOperationTaskCountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeActiveOperationTaskCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActiveOperationTaskRegionRequest(TeaModel):
+    def __init__(
+        self,
+        is_history: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_type: str = None,
+    ):
+        # Specifies whether to return the historical tasks. Default value: 0. Valid values:
+        # 
+        # - 0: returns the current task.
+        # - 1: returns the historical tasks.
+        self.is_history = is_history
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The type of the task. Valid values:
+        # 
+        # - rds_apsaradb_ha: master-replica switchover
+        # - rds_apsaradb_transfer: instance migration
+        # - rds_apsaradb_upgrade: minor version update
+        # - all: all types
+        # 
+        # This parameter is required.
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_history is not None:
+            result['IsHistory'] = self.is_history
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsHistory') is not None:
+            self.is_history = m.get('IsHistory')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTaskRegionResponseBodyRegionList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        region: str = None,
+    ):
+        # The total number of tasks.
+        self.count = count
+        # The region ID of the instance.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class DescribeActiveOperationTaskRegionResponseBody(TeaModel):
+    def __init__(
+        self,
+        region_list: List[DescribeActiveOperationTaskRegionResponseBodyRegionList] = None,
+        request_id: str = None,
+    ):
+        # The region ID.
+        self.region_list = region_list
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.region_list:
+            for k in self.region_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionList'] = []
+        if self.region_list is not None:
+            for k in self.region_list:
+                result['RegionList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region_list = []
+        if m.get('RegionList') is not None:
+            for k in m.get('RegionList'):
+                temp_model = DescribeActiveOperationTaskRegionResponseBodyRegionList()
+                self.region_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeActiveOperationTaskRegionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationTaskRegionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTaskRegionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7324,9 +8182,9 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         # *   **Automated**\
         # *   **Manual**\
         self.backup_mode = backup_mode
-        # The name of the backup set (invalid now).
+        # The name of the backup set. The parameter is invalid.
         self.backup_name = backup_name
-        # The scale of the backup set (invalid now).
+        # The backup granularity. The parameter is invalid.
         self.backup_scale = backup_scale
         # The size of the backup set. Unit: bytes.
         self.backup_size = backup_size
@@ -7342,6 +8200,14 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
+        # Version of the backuped instance.
+        # 
+        # *   **6.0**\
+        # *   **5.0**\
+        # *   **4.4**\
+        # *   **4.2**\
+        # *   **4.0**\
+        # *   **3.4**\
         self.engine_version = engine_version
         # Availability of the backup set.
         # - 0: unavailable
@@ -7914,6 +8780,14 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         self.cluster_backup_start_time = cluster_backup_start_time
         # The status of the cluster backup set.
         self.cluster_backup_status = cluster_backup_status
+        # Version of the backuped instance.
+        # 
+        # *   **6.0**\
+        # *   **5.0**\
+        # *   **4.4**\
+        # *   **4.2**\
+        # *   **4.0**\
+        # *   **3.4**\
         self.engine_version = engine_version
         # The additional information in the JSON format.
         self.extra_info = extra_info
@@ -8516,6 +9390,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     def __init__(
         self,
         connect_sting: str = None,
+        connect_string: str = None,
         current_kernel_version: str = None,
         lock_mode: str = None,
         max_connections: int = None,
@@ -8531,6 +9406,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     ):
         # The endpoint of the mongos node.
         self.connect_sting = connect_sting
+        self.connect_string = connect_string
         # The minor version of the current MongoDB kernel.
         self.current_kernel_version = current_kernel_version
         # The lock status of the instance. Valid values:
@@ -8577,6 +9453,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         result = dict()
         if self.connect_sting is not None:
             result['ConnectSting'] = self.connect_sting
+        if self.connect_string is not None:
+            result['ConnectString'] = self.connect_string
         if self.current_kernel_version is not None:
             result['CurrentKernelVersion'] = self.current_kernel_version
         if self.lock_mode is not None:
@@ -8607,6 +9485,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         m = m or dict()
         if m.get('ConnectSting') is not None:
             self.connect_sting = m.get('ConnectSting')
+        if m.get('ConnectString') is not None:
+            self.connect_string = m.get('ConnectString')
         if m.get('CurrentKernelVersion') is not None:
             self.current_kernel_version = m.get('CurrentKernelVersion')
         if m.get('LockMode') is not None:
@@ -11888,6 +12768,7 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        show_tags: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -11941,6 +12822,7 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.show_tags = show_tags
         # The ID of the vSwitch to which the instance is connected.
         self.v_switch_id = v_switch_id
         # The ID of the VPC in which the instance is deployed.
@@ -11983,6 +12865,8 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.show_tags is not None:
+            result['ShowTags'] = self.show_tags
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -12019,6 +12903,8 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ShowTags') is not None:
+            self.show_tags = m.get('ShowTags')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -17247,6 +18133,8 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         stand_discount_price: float = None,
         stand_price: float = None,
         total_product_fee: float = None,
+        price_type: str = None,
+        price_unit: str = None,
     ):
         # Indicates whether the contract promotion is hit.
         self.contract_activity = contract_activity
@@ -17278,6 +18166,8 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         self.stand_price = stand_price
         # The original price of the product.
         self.total_product_fee = total_product_fee
+        self.price_type = price_type
+        self.price_unit = price_unit
 
     def validate(self):
         if self.depreciate_info:
@@ -17323,6 +18213,10 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
             result['StandPrice'] = self.stand_price
         if self.total_product_fee is not None:
             result['TotalProductFee'] = self.total_product_fee
+        if self.price_type is not None:
+            result['priceType'] = self.price_type
+        if self.price_unit is not None:
+            result['priceUnit'] = self.price_unit
         return result
 
     def from_map(self, m: dict = None):
@@ -17360,6 +18254,10 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
             self.stand_price = m.get('StandPrice')
         if m.get('TotalProductFee') is not None:
             self.total_product_fee = m.get('TotalProductFee')
+        if m.get('priceType') is not None:
+            self.price_type = m.get('priceType')
+        if m.get('priceUnit') is not None:
+            self.price_unit = m.get('priceUnit')
         return self
 
 
@@ -22687,6 +23585,7 @@ class ModifyAccountDescriptionRequest(TeaModel):
         self,
         account_description: str = None,
         account_name: str = None,
+        character_type: str = None,
         dbinstance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -22704,6 +23603,7 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
+        self.character_type = character_type
         # The instance ID.
         # 
         # This parameter is required.
@@ -22726,6 +23626,8 @@ class ModifyAccountDescriptionRequest(TeaModel):
             result['AccountDescription'] = self.account_description
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.character_type is not None:
+            result['CharacterType'] = self.character_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.owner_account is not None:
@@ -22744,6 +23646,8 @@ class ModifyAccountDescriptionRequest(TeaModel):
             self.account_description = m.get('AccountDescription')
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('CharacterType') is not None:
+            self.character_type = m.get('CharacterType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('OwnerAccount') is not None:
@@ -23349,78 +24253,94 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.backup_retention_period = backup_retention_period
         # The backup retention policy configured for the instance. Valid values:
         # 
-        # 1.  0: All backup sets are immediately deleted when the instance is released.
-        # 2.  1: Automatic backup is performed and the backup set is retained for a long period of time when the instance is released.
-        # 3.  2: Automatic backup is performed and all backup sets are retained for a long period of time when the instance is released.
+        # *   0: All backup sets are immediately deleted when the instance is released.
+        # *   1: Automatic backup is performed when the instance is released and the backup set is retained for a long period of time.
+        # *   2: Automatic backup is performed when the instance is released and all backup sets are retained for a long period of time.
         # 
-        # For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/4920562.html).
+        # For more information, see [Retain the backup files of an ApsaraDB for MongoDB instance for a long period of time](https://help.aliyun.com/document_detail/2779111.html).
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
-        # The retention period of Cross-regional backup.
-        # Valid values:
+        # The day of the week on which the cross-region backup files are retained. Valid values:
         # 
-        # *   **Monday**\
-        # *   **Tuesday**\
-        # *   **Wednesday**\
-        # *   **Thursday**\
-        # *   **Friday**\
-        # *   **Saturday**\
-        # *   **Sunday**\
+        # 1.  Monday
+        # 2.  Tuesday
+        # 3.  Wednesday
+        # 4.  Thursday
+        # 5.  Friday
+        # 6.  Saturday
+        # 7.  Sunday
         # 
-        # **\
+        # >  This parameter is required for a cross-region backup operation.
         # 
+        # *   Separate multiple values with commas (,).
         # 
-        # 
-        # 
-        # 
-        # >- Separate multiple values with commas (,).
-        # >- When SnapshotBackupType  is set to standard, this value needs to be a subset of the PreferredBackupPeriod.
+        # *   If you set the SnapshotBackupType parameter to Standard, the parameter value must fall within the value of the PreferredBackupPeriod parameter that specifies the standard backup period.
         self.cross_backup_period = cross_backup_period
-        # The operation strategy of Cross-regional backup.
-        # - update
-        # - delete
+        # The action performed for the cross-region backup policy. Valid values:
+        # 
+        # *   update: modifies the cross-region backup policy.
+        # *   delete: deletes the cross-region backup policy.
+        # 
+        # >  This parameter is required for a cross-region backup operation.
         self.cross_backup_type = cross_backup_type
-        # The retention type of Cross-regional  log backup.
+        # The retention type of the cross-region log backup files. Valid values:
         # 
-        # - delay : retain the backup for a period of time.
-        # - never : retain the backup permanently.
+        # *   delay: retains the cross-region backup files for a period of time.
+        # *   never: permanently retains the cross-region backup files.
+        # 
+        # >  This parameter is required for a cross-region backup operation.
         self.cross_log_retention_type = cross_log_retention_type
-        # The retention time of Cross-regional log backup, 3 - 1825 days.
-        self.cross_log_retention_value = cross_log_retention_value
-        # The retention type of Cross-regional backup.
+        # The retention period of the cross-region log backup files. Valid values: 3 to 1825. Unit: day. The parameter value must be less than or equal to the value of the CrossRetentionValue parameter.
         # 
-        # - delay : retain the backup for a period of time.
-        # - never : retain the backup permanently.
+        # >  This parameter is required for a cross-region backup operation.
+        self.cross_log_retention_value = cross_log_retention_value
+        # The retention type of the cross-region backup files. Valid values:
+        # 
+        # *   delay: retains the cross-region backup files for a period of time.
+        # *   never: permanently retains the cross-region backup files.
+        # 
+        # >  This parameter is required for a cross-region backup operation.
         self.cross_retention_type = cross_retention_type
-        # The retention time of Cross-regional backup, 3 - 1825 days.
+        # The retention period of the cross-region backup files. Valid values: 3 to 1825. Unit: day.
+        # 
         # > 
-        # > - Used and must be used when CrossRetentionType is delay.
+        # 
+        # *   This parameter is required for a cross-region backup operation.
+        # 
+        # *   This parameter is required when you set the CrossRetentionType parameter to delay.
         self.cross_retention_value = cross_retention_value
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region id of Cross-regional backup.
-        # > 
-        # > - Required for Cross-regional backup.
+        # The region in which the backup files are retained.
+        # 
+        # >  This parameter is required for a cross-region backup operation.
         self.dest_region = dest_region
         # Specifies whether to enable the log backup feature. Valid values:
         # 
         # *   **0** (default): The log backup feature is disabled.
         # *   **1**: The log backup feature is enabled.
         self.enable_backup_log = enable_backup_log
-        # Whether to turn on cross-regional log backup.
-        # - 1：turn on . Used for sharded cluster.
-        # - 0: turn off. Used for replicate set.
+        # Specifies whether to enable the cross-region log backup feature.
+        # 
+        # >  This parameter is required for a cross-region backup operation.
+        # 
+        # *   Valid values:1: enables the feature. The parameter value must be 1 for sharded cluster instances.
+        # 
+        # *   0: disables the feature. The parameter value must be 0 for replica set instances.
         self.enable_cross_log_backup = enable_cross_log_backup
-        # The number of days for which high-frequency backups are retained. Before you use this parameter, make sure that you specify the BackupInterval parameter. By default, high-frequency backups are retained for one day.
+        # The number of days for which high-frequency backup files are retained. Before you use this parameter, make sure that you specify the BackupInterval parameter. By default, high-frequency backup files are retained for one day.
         self.high_frequency_backup_retention = high_frequency_backup_retention
         # The instance architecture. Valid values:
         # 
         # *   replicate
         # *   sharding
         # 
-        # > * This parameter is required  for Cross-regional backup.
-        # > * This parameter is required for backup recovery of deleted instances.
+        # > 
+        # 
+        # *   This parameter is required when you set the RestoreType parameter to 2.
+        # 
+        # *   This parameter is required when you set the RestoreType parameter to 3.
         self.instance_type = instance_type
         # The number of days for which log backups are retained. Default value: 7.
         # 
@@ -23458,8 +24378,10 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The region ID of the instance.
         # 
         # > 
-        # > - Required for Cross-regional backup.
-        # > - Required for backup recovery of deleted instances.
+        # 
+        # *   This parameter is required for the data restoration of a deleted instance.
+        # 
+        # *   This parameter is required for a cross-region backup operation.
         self.src_region = src_region
 
     def validate(self):
@@ -23639,6 +24561,140 @@ class ModifyBackupPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_name: str = None,
+        config_value: str = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_name = config_name
+        # This parameter is required.
+        self.config_value = config_value
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_name is not None:
+            result['ConfigName'] = self.config_name
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigName') is not None:
+            self.config_name = m.get('ConfigName')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBInstanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBInstanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29294,6 +30350,10 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The time when to perform the upgrade. Valid values:
+        # 
+        # *   **0**: immediately performs the upgrade.
+        # *   **1**: performs the upgrade during the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):
@@ -29427,6 +30487,10 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The time when to perform the upgrade. Valid values:
+        # 
+        # *   **0**: immediately performs the upgrade.
+        # *   **1**: performs the upgrade during the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):

@@ -1,3 +1,20 @@
+2025-02-10 Version: 8.2.0
+- Support API CheckServiceLinkedRole.
+- Support API DescribeActiveOperationMaintenanceConfig.
+- Support API DescribeActiveOperationTask.
+- Support API DescribeActiveOperationTaskRegion.
+- Support API ModifyDBInstanceConfig.
+- Update API CreateAccount: add param CharacterType.
+- Update API CreateDBInstance: update param EngineVersion.
+- Update API CreateShardingDBInstance: update param RestoreType.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstancesOverview: add param ShowTags.
+- Update API DescribePrice: update response param.
+- Update API ModifyAccountDescription: add param CharacterType.
+- Update API ModifySecurityIps: update param ModifyMode.
+- Update API ModifySecurityIps: update response param.
+
+
 2024-11-05 Version: 8.1.1
 - Generated python 2015-12-01 for Dds.
 
