@@ -1,3 +1,12 @@
+2025-02-10 Version: 2.0.4
+- Update API CreateVpcPeerConnection: add param LinkType.
+- Update API GetVpcPeerConnectionAttribute: update response param.
+- Update API ListTagResources: update response param.
+- Update API ListVpcPeerConnections: update response param.
+- Update API ModifyVpcPeerConnection: add param LinkType.
+- Update API TagResources: update response param.
+
+
 2024-11-12 Version: 2.0.3
 - Generated python 2022-01-01 for VpcPeer.
 

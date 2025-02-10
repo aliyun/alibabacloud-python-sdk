@@ -85,10 +85,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def accept_vpc_peer_connection_with_options_async(
         self,
@@ -134,10 +140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.AcceptVpcPeerConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def accept_vpc_peer_connection(
         self,
@@ -198,6 +210,9 @@ class Client(OpenApiClient):
         @return: CreateVpcPeerConnectionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.link_type):
+            query['LinkType'] = request.link_type
         body = {}
         if not UtilClient.is_unset(request.accepting_ali_uid):
             body['AcceptingAliUid'] = request.accepting_ali_uid
@@ -222,6 +237,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -235,10 +251,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vpc_peer_connection_with_options_async(
         self,
@@ -261,6 +283,9 @@ class Client(OpenApiClient):
         @return: CreateVpcPeerConnectionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.link_type):
+            query['LinkType'] = request.link_type
         body = {}
         if not UtilClient.is_unset(request.accepting_ali_uid):
             body['AcceptingAliUid'] = request.accepting_ali_uid
@@ -285,6 +310,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -298,10 +324,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.CreateVpcPeerConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vpc_peer_connection(
         self,
@@ -389,10 +421,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vpc_peer_connection_with_options_async(
         self,
@@ -438,10 +476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.DeleteVpcPeerConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vpc_peer_connection(
         self,
@@ -517,10 +561,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_vpc_peer_connection_attribute_with_options_async(
         self,
@@ -554,10 +604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.GetVpcPeerConnectionAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_vpc_peer_connection_attribute(
         self,
@@ -630,10 +686,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -680,10 +742,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -727,7 +795,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
         """
-        @summary 查询VPC对等连接列表
+        @summary Queries virtual private cloud (VPC) peering connections.
         
         @param tmp_req: ListVpcPeerConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -771,10 +839,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_vpc_peer_connections_with_options_async(
         self,
@@ -782,7 +856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
         """
-        @summary 查询VPC对等连接列表
+        @summary Queries virtual private cloud (VPC) peering connections.
         
         @param tmp_req: ListVpcPeerConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -826,17 +900,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ListVpcPeerConnectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_vpc_peer_connections(
         self,
         request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
         """
-        @summary 查询VPC对等连接列表
+        @summary Queries virtual private cloud (VPC) peering connections.
         
         @param request: ListVpcPeerConnectionsRequest
         @return: ListVpcPeerConnectionsResponse
@@ -849,7 +929,7 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ListVpcPeerConnectionsRequest,
     ) -> vpc_peer_20220101_models.ListVpcPeerConnectionsResponse:
         """
-        @summary 查询VPC对等连接列表
+        @summary Queries virtual private cloud (VPC) peering connections.
         
         @param request: ListVpcPeerConnectionsRequest
         @return: ListVpcPeerConnectionsResponse
@@ -863,7 +943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        @summary 修改VPC对等连接
+        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
         
         @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
         If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
@@ -875,6 +955,9 @@ class Client(OpenApiClient):
         @return: ModifyVpcPeerConnectionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.link_type):
+            query['LinkType'] = request.link_type
         body = {}
         if not UtilClient.is_unset(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
@@ -889,6 +972,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -902,10 +986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vpc_peer_connection_with_options_async(
         self,
@@ -913,7 +1003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        @summary 修改VPC对等连接
+        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
         
         @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
         If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
@@ -925,6 +1015,9 @@ class Client(OpenApiClient):
         @return: ModifyVpcPeerConnectionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.link_type):
+            query['LinkType'] = request.link_type
         body = {}
         if not UtilClient.is_unset(request.bandwidth):
             body['Bandwidth'] = request.bandwidth
@@ -939,6 +1032,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -952,17 +1046,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vpc_peer_connection(
         self,
         request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        @summary 修改VPC对等连接
+        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
         
         @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
         If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
@@ -980,7 +1080,7 @@ class Client(OpenApiClient):
         request: vpc_peer_20220101_models.ModifyVpcPeerConnectionRequest,
     ) -> vpc_peer_20220101_models.ModifyVpcPeerConnectionResponse:
         """
-        @summary 修改VPC对等连接
+        @summary Modifies the description or name of a virtual private cloud (VPC) peering connection.
         
         @description    The **ModifyVpcPeerConnection** operation is asynchronous. After you send a request, the system returns **RequestId**, but the operation is still being performed in the background. You can call the [GetVpcPeerConnectionAttribute](https://help.aliyun.com/document_detail/426100.html) operation to query the status of a VPC peering connection.
         If a VPC peering connection is in the **Updating** state, the VPC peering connection is being modified.
@@ -1029,10 +1129,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.MoveResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.MoveResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def move_resource_group_with_options_async(
         self,
@@ -1070,10 +1176,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.MoveResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.MoveResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def move_resource_group(
         self,
@@ -1140,10 +1252,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reject_vpc_peer_connection_with_options_async(
         self,
@@ -1184,10 +1302,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.RejectVpcPeerConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reject_vpc_peer_connection(
         self,
@@ -1268,10 +1392,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -1320,10 +1450,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -1409,10 +1545,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.UnTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.UnTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.UnTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_tag_resources_with_options_async(
         self,
@@ -1454,10 +1596,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            vpc_peer_20220101_models.UnTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.UnTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                vpc_peer_20220101_models.UnTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_tag_resources(
         self,

@@ -149,6 +149,7 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
+        link_type: str = None,
         name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -191,6 +192,15 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The link type of the VPC peering connection that you want to create. Valid values:
+        # 
+        # - Platinum.
+        # 
+        # - Gold: default value.
+        # 
+        # > 
+        # > - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        self.link_type = link_type
         # The name of the VPC peering connection.
         # 
         # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -233,6 +243,8 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             result['Description'] = self.description
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.link_type is not None:
+            result['LinkType'] = self.link_type
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -259,6 +271,8 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('LinkType') is not None:
+            self.link_type = m.get('LinkType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -644,6 +658,7 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         gmt_expired: str = None,
         gmt_modified: str = None,
         instance_id: str = None,
+        link_type: str = None,
         name: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -685,6 +700,8 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         self.gmt_modified = gmt_modified
         # The ID of the VPC peering connection.
         self.instance_id = instance_id
+        # The link type of the VPC peering connection.
+        self.link_type = link_type
         # The name of the VPC peering connection.
         self.name = name
         # The ID of the Alibaba Cloud account to which the requester VPC belongs.
@@ -749,6 +766,8 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.link_type is not None:
+            result['LinkType'] = self.link_type
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_id is not None:
@@ -792,6 +811,8 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LinkType') is not None:
+            self.link_type = m.get('LinkType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerId') is not None:
@@ -1530,6 +1551,7 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         gmt_expired: str = None,
         gmt_modified: str = None,
         instance_id: str = None,
+        link_type: str = None,
         name: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -1570,6 +1592,8 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         self.gmt_modified = gmt_modified
         # The ID of the VPC peering connection.
         self.instance_id = instance_id
+        # The link type of the VPC peering connection.
+        self.link_type = link_type
         # The name of the VPC peering connection.
         self.name = name
         # The ID of the Alibaba Cloud account to which the requester VPC belongs.
@@ -1632,6 +1656,8 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.link_type is not None:
+            result['LinkType'] = self.link_type
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_id is not None:
@@ -1673,6 +1699,8 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LinkType') is not None:
+            self.link_type = m.get('LinkType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerId') is not None:
@@ -1810,6 +1838,7 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
         description: str = None,
         dry_run: bool = None,
         instance_id: str = None,
+        link_type: str = None,
         name: str = None,
     ):
         # The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
@@ -1833,6 +1862,15 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Type of connection. Valid values:
+        # 
+        # - Platinum.
+        # 
+        # - Gold: default value.
+        # 
+        # > 
+        # > - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        self.link_type = link_type
         # The new name of the VPC peering connection.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
@@ -1857,6 +1895,8 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.link_type is not None:
+            result['LinkType'] = self.link_type
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -1873,6 +1913,8 @@ class ModifyVpcPeerConnectionRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LinkType') is not None:
+            self.link_type = m.get('LinkType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
