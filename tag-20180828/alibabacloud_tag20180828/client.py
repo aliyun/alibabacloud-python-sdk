@@ -5,7 +5,6 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_tag20180828 import models as tag_20180828_models
@@ -22,50 +21,39 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'Tag'
-        gateway_client = GatewayClientClient()
-        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-qingdao': 'tag.aliyuncs.com',
-            'cn-beijing': 'tag.aliyuncs.com',
-            'cn-hangzhou': 'tag.aliyuncs.com',
-            'cn-shanghai': 'tag.aliyuncs.com',
-            'cn-shenzhen': 'tag.aliyuncs.com',
-            'cn-hongkong': 'tag.aliyuncs.com',
-            'ap-southeast-1': 'tag.aliyuncs.com',
-            'us-west-1': 'tag.aliyuncs.com',
-            'us-east-1': 'tag.aliyuncs.com',
-            'cn-hangzhou-finance': 'tag.aliyuncs.com',
+            'us-west-1': 'tag.us-east-1.aliyuncs.com',
+            'cn-hangzhou-finance': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-shanghai-finance-1': 'tag.aliyuncs.com',
             'ap-northeast-2-pop': 'tag.aliyuncs.com',
             'cn-beijing-finance-pop': 'tag.aliyuncs.com',
             'cn-beijing-gov-1': 'tag.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'tag.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-edge-1': 'tag.aliyuncs.com',
-            'cn-fujian': 'tag.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'tag.aliyuncs.com',
+            'cn-fujian': 'tag.cn-hangzhou.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'tag.cn-north-2-gov-1.aliyuncs.com',
             'cn-hangzhou-bj-b01': 'tag.aliyuncs.com',
             'cn-hangzhou-internal-prod-1': 'tag.aliyuncs.com',
             'cn-hangzhou-internal-test-1': 'tag.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'tag.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'tag.aliyuncs.com',
-            'cn-hangzhou-test-306': 'tag.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'tag.cn-hangzhou.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'tag.cn-hangzhou.aliyuncs.com',
+            'cn-hangzhou-test-306': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-hongkong-finance-pop': 'tag.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'tag.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'tag.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'tag.cn-qingdao-nebula.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-shanghai-et2-b01': 'tag.aliyuncs.com',
             'cn-shanghai-inner': 'tag.aliyuncs.com',
             'cn-shanghai-internal-test-1': 'tag.aliyuncs.com',
             'cn-shenzhen-inner': 'tag.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'tag.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'tag.aliyuncs.com',
             'cn-wuhan': 'tag.aliyuncs.com',
             'cn-yushanfang': 'tag.aliyuncs.com',
             'cn-zhangbei': 'tag.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'tag.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'tag.cn-hangzhou.aliyuncs.com',
             'cn-zhangjiakou-na62-a01': 'tag.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'tag.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'tag.cn-qingdao-nebula.aliyuncs.com',
             'eu-west-1-oxs': 'tag.cn-shenzhen-cloudstone.aliyuncs.com',
             'rus-west-1-pop': 'tag.aliyuncs.com'
         }
@@ -638,7 +626,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        @summary Creates preset tags.
+        @summary Creates predefined tags.
         
         @description ###
         A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
@@ -691,7 +679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        @summary Creates preset tags.
+        @summary Creates predefined tags.
         
         @description ###
         A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
@@ -743,7 +731,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        @summary Creates preset tags.
+        @summary Creates predefined tags.
         
         @description ###
         A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
@@ -760,7 +748,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        @summary Creates preset tags.
+        @summary Creates predefined tags.
         
         @description ###
         A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
@@ -1894,6 +1882,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
         if not UtilClient.is_unset(request.target_id):
             query['TargetId'] = request.target_id
         if not UtilClient.is_unset(request.target_type):
@@ -1949,6 +1939,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
         if not UtilClient.is_unset(request.target_id):
             query['TargetId'] = request.target_id
         if not UtilClient.is_unset(request.target_type):
@@ -2908,7 +2900,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the resource types supported by tags and tag-related capability items.
         
-        @description ### [](#)Call examples
+        @description ### [](#)Call example
         Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
         Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
         Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
@@ -2972,7 +2964,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the resource types supported by tags and tag-related capability items.
         
-        @description ### [](#)Call examples
+        @description ### [](#)Call example
         Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
         Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
         Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
@@ -3035,7 +3027,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the resource types supported by tags and tag-related capability items.
         
-        @description ### [](#)Call examples
+        @description ### [](#)Call example
         Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
         Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
         Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).
@@ -3053,7 +3045,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the resource types supported by tags and tag-related capability items.
         
-        @description ### [](#)Call examples
+        @description ### [](#)Call example
         Query a list of resource types supported by TagResources or UntagResources. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22TAG_CONSOLE_SUPPORT%22%7D).
         Query a list of resource types supported by ListTagResources or ListResourcesByTag. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22%7D).
         Query a list of resource types that support createdby tags. For more information, see [Example](https://api.alibabacloud.com/api/Tag/2018-08-28/ListSupportResourceTypes?tab=DEBUG\\&params=%7B%22RegionId%22:%22cn-hangzhou%22,%22SupportCode%22:%22CREATED_BY_TAG_CONSOLE_SUPPORT%22%7D).

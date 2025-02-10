@@ -1,3 +1,8 @@
+2025-02-10 Version: 1.0.9
+- Update API GetEffectivePolicy: add param TagKeys.
+- Update API GetEffectivePolicy: update response param.
+
+
 2024-09-30 Version: 1.0.8
 - Update API ListSupportResourceTypes: update response param.
 
