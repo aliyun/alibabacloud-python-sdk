@@ -151,6 +151,7 @@ class AddZoneToVpcEndpointRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         endpoint_id: str = None,
+        ipv_6address: str = None,
         region_id: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
@@ -169,6 +170,7 @@ class AddZoneToVpcEndpointRequest(TeaModel):
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
+        self.ipv_6address = ipv_6address
         # The region ID of the endpoint.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
@@ -201,6 +203,8 @@ class AddZoneToVpcEndpointRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.endpoint_id is not None:
             result['EndpointId'] = self.endpoint_id
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.v_switch_id is not None:
@@ -219,6 +223,8 @@ class AddZoneToVpcEndpointRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EndpointId') is not None:
             self.endpoint_id = m.get('EndpointId')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('VSwitchId') is not None:
@@ -331,9 +337,11 @@ class AttachResourceToVpcEndpointServiceRequest(TeaModel):
         self.resource_id = resource_id
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: a Classic Load Balancer (CLB) instance
-        # *   **alb**: an Application Load Balancer (ALB) instance
-        # *   **nlb**: a Network Load Balancer (NLB) instance
+        # *   **slb**: Classic Load Balancer (CLB) instance
+        # *   **alb**: Application Load Balancer (ALB) instance
+        # *   **nlb**: Network Load Balancer (NLB) instance
+        # 
+        # >  You cannot access TCP/SSL listeners configured for NLB instances.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -827,10 +835,12 @@ class CreateVpcEndpointRequestTag(TeaModel):
 class CreateVpcEndpointRequestZone(TeaModel):
     def __init__(
         self,
+        ipv_6address: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
         ip: str = None,
     ):
+        self.ipv_6address = ipv_6address
         # The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
         self.v_switch_id = v_switch_id
         # The ID of the zone in which the endpoint is deployed.
@@ -851,6 +861,8 @@ class CreateVpcEndpointRequestZone(TeaModel):
             return _map
 
         result = dict()
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -861,6 +873,8 @@ class CreateVpcEndpointRequestZone(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
@@ -873,6 +887,7 @@ class CreateVpcEndpointRequestZone(TeaModel):
 class CreateVpcEndpointRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         client_token: str = None,
         dry_run: bool = None,
         endpoint_description: str = None,
@@ -890,6 +905,7 @@ class CreateVpcEndpointRequest(TeaModel):
         zone: List[CreateVpcEndpointRequestZone] = None,
         zone_private_ip_address_count: int = None,
     ):
+        self.address_ip_version = address_ip_version
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
@@ -907,9 +923,12 @@ class CreateVpcEndpointRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.endpoint_name = endpoint_name
-        # The type of the endpoint.
+        # The endpoint type. Valid values:
         # 
-        # Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+        # *   **Interface** You can specify an Application Load Balancer (ALB) instance, a Classic Load Balancer (CLB) instance, or a Network Load Balancer (NLB) instance.
+        # *   **Reverse** You can specify a Virtual Private Cloud (VPC) NAT gateway.
+        # 
+        # >  Services that support reverse endpoints are provided by Alibaba Cloud or Alibaba Cloud partners. To create such a service on your own, contact your account manager.
         self.endpoint_type = endpoint_type
         self.policy_document = policy_document
         # Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -958,6 +977,8 @@ class CreateVpcEndpointRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -998,6 +1019,8 @@ class CreateVpcEndpointRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -1042,6 +1065,7 @@ class CreateVpcEndpointRequest(TeaModel):
 class CreateVpcEndpointResponseBody(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         bandwidth: int = None,
         connection_status: str = None,
         create_time: str = None,
@@ -1056,6 +1080,7 @@ class CreateVpcEndpointResponseBody(TeaModel):
         service_name: str = None,
         vpc_id: str = None,
     ):
+        self.address_ip_version = address_ip_version
         # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The state of the endpoint connection. Valid values:
@@ -1107,6 +1132,8 @@ class CreateVpcEndpointResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.connection_status is not None:
@@ -1137,6 +1164,8 @@ class CreateVpcEndpointResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('ConnectionStatus') is not None:
@@ -1218,13 +1247,13 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
         self.resource_id = resource_id
         # The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
         # 
-        # *   **slb**: Classic Load Balancer (CLB) instance
-        # *   **alb**: Application Load Balancer (ALB) instance
-        # *   **nlb**: Network Load Balancer (NLB) instance
+        # *   **slb**: CLB instance
+        # *   **alb**: ALB instance
+        # *   **nlb**: NLB instance
         # 
-        # >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service.
+        # >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service. You cannot access TCP/SSL listeners configured for NLB instances.
         self.resource_type = resource_type
-        # The zone ID.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1297,6 +1326,7 @@ class CreateVpcEndpointServiceRequestTag(TeaModel):
 class CreateVpcEndpointServiceRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         client_token: str = None,
         dry_run: bool = None,
@@ -1310,6 +1340,7 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         tag: List[CreateVpcEndpointServiceRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
         # *   **true**\
@@ -1324,12 +1355,10 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The payer of the endpoint service. Valid values:
+        # The payer. Valid values:
         # 
-        # *   **Endpoint**: the service consumer
-        # *   **EndpointService**: the service provider
-        # 
-        # > By default, the feature of allowing the service provider to pay is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas) and click Privileges in the left-side navigation pane. On the **Privileges** page, enter the quota ID `privatelink_whitelist/epsvc_payer_mode`, and click Apply in the Actions column.
+        # *   **Endpoint**: service consumer
+        # *   **EndpointService**: service provider
         self.payer = payer
         # The region ID of the endpoint service.
         # 
@@ -1345,9 +1374,11 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         self.service_description = service_description
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: a Classic Load Balancer (CLB) instance
-        # *   **alb**: an Application Load Balancer (ALB) instance
-        # *   **nlb**: a Network Load Balancer (NLB) instance
+        # *   **slb**: Classic Load Balancer (CLB) instance
+        # *   **alb**: Application Load Balancer (ALB) instance
+        # *   **nlb**: Network Load Balancer (NLB) instance
+        # 
+        # >  You cannot access TCP/SSL listeners configured for NLB instances.
         self.service_resource_type = service_resource_type
         # Specifies whether to enable IPv6 for the endpoint service. Valid values:
         # 
@@ -1378,6 +1409,8 @@ class CreateVpcEndpointServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.client_token is not None:
@@ -1410,6 +1443,8 @@ class CreateVpcEndpointServiceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('ClientToken') is not None:
@@ -1446,6 +1481,7 @@ class CreateVpcEndpointServiceRequest(TeaModel):
 class CreateVpcEndpointServiceResponseBody(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         create_time: str = None,
         request_id: str = None,
@@ -1459,6 +1495,7 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
         service_support_ipv_6: bool = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         # 
         # *   **true**\
@@ -1510,6 +1547,8 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.create_time is not None:
@@ -1538,6 +1577,8 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('CreateTime') is not None:
@@ -1864,9 +1905,11 @@ class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        service_resource_type: str = None,
     ):
         # The region ID.
         self.region_id = region_id
+        self.service_resource_type = service_resource_type
 
     def validate(self):
         pass
@@ -1879,12 +1922,43 @@ class DescribeRegionsRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_resource_type is not None:
+            result['ServiceResourceType'] = self.service_resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceResourceType') is not None:
+            self.service_resource_type = m.get('ServiceResourceType')
+        return self
+
+
+class DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes(TeaModel):
+    def __init__(
+        self,
+        service_resource_type: List[str] = None,
+    ):
+        self.service_resource_type = service_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_resource_type is not None:
+            result['ServiceResourceType'] = self.service_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceResourceType') is not None:
+            self.service_resource_type = m.get('ServiceResourceType')
         return self
 
 
@@ -1894,6 +1968,7 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         local_name: str = None,
         region_endpoint: str = None,
         region_id: str = None,
+        service_resource_types: DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes = None,
     ):
         # The name of the region.
         self.local_name = local_name
@@ -1901,9 +1976,11 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         self.region_endpoint = region_endpoint
         # The region ID.
         self.region_id = region_id
+        self.service_resource_types = service_resource_types
 
     def validate(self):
-        pass
+        if self.service_resource_types:
+            self.service_resource_types.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1917,6 +1994,8 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
             result['RegionEndpoint'] = self.region_endpoint
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_resource_types is not None:
+            result['ServiceResourceTypes'] = self.service_resource_types.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1927,6 +2006,9 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
             self.region_endpoint = m.get('RegionEndpoint')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceResourceTypes') is not None:
+            temp_model = DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes()
+            self.service_resource_types = temp_model.from_map(m['ServiceResourceTypes'])
         return self
 
 
@@ -2047,11 +2129,13 @@ class DescribeZonesRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        service_resource_type: str = None,
     ):
         # The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.service_resource_type = service_resource_type
 
     def validate(self):
         pass
@@ -2064,12 +2148,16 @@ class DescribeZonesRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_resource_type is not None:
+            result['ServiceResourceType'] = self.service_resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceResourceType') is not None:
+            self.service_resource_type = m.get('ServiceResourceType')
         return self
 
 
@@ -2678,12 +2766,12 @@ class DisableVpcEndpointZoneConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to disconnect the endpoint from the previous connection after the service resource is smoothly migrated. Valid values:
+        # Specifies whether to close connections in the endpoint zone after migration. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**: yes
+        # *   **false** (default): no
         # 
-        # > Set the value to true if you want to disconnect the endpoint from the previous connection in the zone after the service resource is smoothly migrated.
+        # >  Set the value to true if you want to close connections in the endpoint zone after migration.
         self.replaced_resource = replaced_resource
         # The endpoint service ID.
         # 
@@ -3143,6 +3231,7 @@ class GetVpcEndpointAttributeRequest(TeaModel):
 class GetVpcEndpointAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         bandwidth: int = None,
         connection_status: str = None,
         create_time: str = None,
@@ -3165,6 +3254,11 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         zone_affinity_enabled: bool = None,
         zone_private_ip_address_count: int = None,
     ):
+        # The protocol. Valid values:
+        # 
+        # *   **IPv4**\
+        # *   **DualStack**\
+        self.address_ip_version = address_ip_version
         # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The state of the endpoint connection. Valid values:
@@ -3242,6 +3336,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.connection_status is not None:
@@ -3288,6 +3384,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('ConnectionStatus') is not None:
@@ -3418,6 +3516,7 @@ class GetVpcEndpointServiceAttributeRequest(TeaModel):
 class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         connect_bandwidth: int = None,
         create_time: str = None,
@@ -3439,6 +3538,7 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
+        self.address_ip_version = address_ip_version
         # Indicates whether endpoint connection requests are automatically accepted. Valid values:
         # 
         # *   **true**\
@@ -3463,10 +3563,10 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The service state of the endpoint service. Valid values:
+        # The service status of the endpoint service. Valid values:
         # 
         # *   **Normal**: The endpoint service runs as expected.
-        # *   **FinacialLocked**: The endpoint service is locked due to overdue payments.
+        # *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
         self.service_business_status = service_business_status
         # The description of the endpoint service.
         self.service_description = service_description
@@ -3489,7 +3589,7 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         # *   **Deleting**: The endpoint service is being deleted.
         # *   **Inactive**: The endpoint service is unavailable.
         self.service_status = service_status
-        # Indicates whether IPv6 is enabled for the endpoint service. Valid values:
+        # Specifies whether the endpoint service supports IPv6. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -3515,6 +3615,8 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.connect_bandwidth is not None:
@@ -3559,6 +3661,8 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('ConnectBandwidth') is not None:
@@ -5092,6 +5196,7 @@ class ListVpcEndpointServicesRequestTag(TeaModel):
 class ListVpcEndpointServicesRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -5106,6 +5211,7 @@ class ListVpcEndpointServicesRequest(TeaModel):
         tag: List[ListVpcEndpointServicesRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
         # *   **true**\
@@ -5169,6 +5275,8 @@ class ListVpcEndpointServicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.max_results is not None:
@@ -5201,6 +5309,8 @@ class ListVpcEndpointServicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('MaxResults') is not None:
@@ -5271,6 +5381,7 @@ class ListVpcEndpointServicesResponseBodyServicesTags(TeaModel):
 class ListVpcEndpointServicesResponseBodyServices(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         connect_bandwidth: int = None,
         create_time: str = None,
@@ -5291,6 +5402,7 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         tags: List[ListVpcEndpointServicesResponseBodyServicesTags] = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # Indicates whether endpoint connection requests are automatically accepted. Valid values:
         # 
         # *   **true**: Endpoint connection requests are automatically accepted.
@@ -5368,6 +5480,8 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.connect_bandwidth is not None:
@@ -5412,6 +5526,8 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('ConnectBandwidth') is not None:
@@ -5615,7 +5731,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         service_type: str = None,
         tag: List[ListVpcEndpointServicesByEndUserRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -5735,6 +5851,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServicesTags(TeaModel):
 class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         payer: str = None,
         resource_group_id: str = None,
         service_domain: str = None,
@@ -5746,6 +5863,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         tags: List[ListVpcEndpointServicesByEndUserResponseBodyServicesTags] = None,
         zones: List[str] = None,
     ):
+        self.address_ip_version = address_ip_version
         # The payer. Valid values:
         # 
         # *   **Endpoint**: the service consumer
@@ -5791,6 +5909,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.payer is not None:
             result['Payer'] = self.payer
         if self.resource_group_id is not None:
@@ -5817,6 +5937,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('Payer') is not None:
             self.payer = m.get('Payer')
         if m.get('ResourceGroupId') is not None:
@@ -5861,7 +5983,7 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The endpoint services.
+        # The information about endpoint services.
         self.services = services
         # The total number of entries returned.
         self.total_count = total_count
@@ -6251,6 +6373,7 @@ class ListVpcEndpointsRequestTag(TeaModel):
 class ListVpcEndpointsRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         connection_status: str = None,
         endpoint_id: str = None,
         endpoint_name: str = None,
@@ -6264,6 +6387,7 @@ class ListVpcEndpointsRequest(TeaModel):
         tag: List[ListVpcEndpointsRequestTag] = None,
         vpc_id: str = None,
     ):
+        self.address_ip_version = address_ip_version
         # The state of the endpoint connection. Valid values:
         # 
         # *   **Pending**: The endpoint connection is being modified.
@@ -6285,9 +6409,10 @@ class ListVpcEndpointsRequest(TeaModel):
         # *   **Pending**: The endpoint is being modified.
         # *   **Deleting**: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
-        # The type of the endpoint.
+        # The type of the endpoint. Valid values:
         # 
-        # Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+        # *   **Interface**: interface endpoint
+        # *   **Reverse**: reverse endpoint
         self.endpoint_type = endpoint_type
         # The number of entries returned on each page.
         self.max_results = max_results
@@ -6323,6 +6448,8 @@ class ListVpcEndpointsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.connection_status is not None:
             result['ConnectionStatus'] = self.connection_status
         if self.endpoint_id is not None:
@@ -6353,6 +6480,8 @@ class ListVpcEndpointsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('ConnectionStatus') is not None:
             self.connection_status = m.get('ConnectionStatus')
         if m.get('EndpointId') is not None:
@@ -6421,6 +6550,7 @@ class ListVpcEndpointsResponseBodyEndpointsTags(TeaModel):
 class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         bandwidth: int = None,
         connection_status: str = None,
         create_time: str = None,
@@ -6441,6 +6571,7 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         vpc_id: str = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The state of the endpoint connection. Valid values:
@@ -6475,10 +6606,12 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         # *   **Pending**: The endpoint is being modified.
         # *   **Deleting**: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
-        # The type of the endpoint.
+        # The type of the endpoint. Valid values:
         # 
-        # Only **Interface** may be returned, which indicates an interface endpoint. You can specify Application Load Balancer (ALB) instances, Classic Load Balancer (CLB) instances, and Network Load Balancer (NLB) instances as service resources.
+        # *   **Interface**: interface endpoint
+        # *   **Reverse**: reverse endpoint
         self.endpoint_type = endpoint_type
+        # The Resource Access Management (RAM) policy. For more information about policy definitions, see [Policy elements](https://help.aliyun.com/document_detail/93738.html).
         self.policy_document = policy_document
         # The region ID of the endpoint.
         self.region_id = region_id
@@ -6515,6 +6648,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.connection_status is not None:
@@ -6559,6 +6694,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('ConnectionStatus') is not None:
@@ -7305,10 +7442,10 @@ class UntagResourcesRequest(TeaModel):
     ):
         # Specifies whether to remove all tags from the resource. Valid values:
         # 
-        # *   **true**: removes all tags from the resource.
-        # *   **false**: does not remove all tags from the resource.
+        # *   **true**\
+        # *   **false**\
         # 
-        # >  If you specify both this parameter and **TagKey**, this parameter is invalid.
+        # >  If you specify both the All and TagKey.N parameters, the All parameter does not take effect.
         self.all = all
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7338,7 +7475,7 @@ class UntagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The keys of the tags that you want to remove from the resource. You can specify up to 20 tag keys.
+        # The keys of the tags that you want to remove from the resources. You can specify up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -7457,6 +7594,7 @@ class UntagResourcesResponse(TeaModel):
 class UpdateVpcEndpointAttributeRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         client_token: str = None,
         dry_run: bool = None,
         endpoint_description: str = None,
@@ -7465,6 +7603,7 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
         policy_document: str = None,
         region_id: str = None,
     ):
+        self.address_ip_version = address_ip_version
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
@@ -7501,6 +7640,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -7519,6 +7660,8 @@ class UpdateVpcEndpointAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -7753,6 +7896,7 @@ class UpdateVpcEndpointConnectionAttributeResponse(TeaModel):
 class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
     def __init__(
         self,
+        address_ip_version: str = None,
         auto_accept_enabled: bool = None,
         client_token: str = None,
         connect_bandwidth: int = None,
@@ -7763,6 +7907,7 @@ class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
         service_support_ipv_6: bool = None,
         zone_affinity_enabled: bool = None,
     ):
+        self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
         # *   **true**\
@@ -7815,6 +7960,8 @@ class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_ip_version is not None:
+            result['AddressIpVersion'] = self.address_ip_version
         if self.auto_accept_enabled is not None:
             result['AutoAcceptEnabled'] = self.auto_accept_enabled
         if self.client_token is not None:
@@ -7837,6 +7984,8 @@ class UpdateVpcEndpointServiceAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressIpVersion') is not None:
+            self.address_ip_version = m.get('AddressIpVersion')
         if m.get('AutoAcceptEnabled') is not None:
             self.auto_accept_enabled = m.get('AutoAcceptEnabled')
         if m.get('ClientToken') is not None:
