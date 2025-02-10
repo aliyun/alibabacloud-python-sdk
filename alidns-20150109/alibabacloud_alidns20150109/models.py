@@ -1885,7 +1885,7 @@ class AddDomainRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.rr = rr
-        # The time to live (TTL) period of the Domain Name System (DNS) record. Default value: 600. Unit: seconds. For more information, see
+        # The time to live (TTL) period of the Alibaba Cloud DNS (DNS) record. Default value: 600. Unit: seconds. For more information, see
         # 
         # [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
         self.ttl = ttl
@@ -19887,7 +19887,7 @@ class DescribeDomainInfoRequest(TeaModel):
         self.domain_name = domain_name
         # The language type.
         self.lang = lang
-        # Specifies whether detailed attributes are required. The default value is **false**, which indicates that detailed attributes are not required.
+        # Specifies whether detailed attributes are required. Default value: **false**, which indicates that detailed attributes are not returned.
         # 
         # If you set this parameter to **true**, the values of the following parameters are returned: LineType, MinTtl, RecordLineTreeJson, RecordLines, LineCode, LineDisplayName, LineName, RegionLines, and SlaveDns.
         self.need_detail_attributes = need_detail_attributes
@@ -29239,11 +29239,28 @@ class DescribePdnsRequestStatisticRequest(TeaModel):
         sub_domain: str = None,
         type: str = None,
     ):
+        # The primary domain name whose statistics you want to query.
         self.domain_name = domain_name
+        # The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+        # 
+        # The default value is the day when you query the data.
         self.end_date = end_date
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+        # 
+        # You can query only records of the last 90 days.
         self.start_date = start_date
+        # The subdomain name whose statistics you want to query.
         self.sub_domain = sub_domain
+        # The type of the request statistics that you want to query. Valid values:
+        # 
+        # *   **ACCOUNT**: queries the request statistics by account.
+        # *   **DOMAIN**: queries the request statistics by domain name.
+        # *   **SUB_DOMAIN**: queries the request statistics by subdomain name.
         self.type = type
 
     def validate(self):
@@ -29303,18 +29320,31 @@ class DescribePdnsRequestStatisticResponseBodyData(TeaModel):
         v_6http_count: int = None,
         v_6https_count: int = None,
     ):
+        # The total number of DoH requests, including HTTP and HTTPS requests.
         self.doh_total_count = doh_total_count
+        # The number of HTTP requests.
         self.http_count = http_count
+        # The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
         self.https_count = https_count
+        # The number of source IP addresses.
         self.ip_count = ip_count
+        # The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
+        # The total number of requests.
         self.total_count = total_count
+        # The total number of UDP requests.
         self.udp_total_count = udp_total_count
+        # The number of IPv4-based requests.
         self.v_4count = v_4count
+        # The number of IPv4-based HTTP requests.
         self.v_4http_count = v_4http_count
+        # The number of IPv4-based HTTPS requests.
         self.v_4https_count = v_4https_count
+        # The number of IPv6-based requests.
         self.v_6count = v_6count
+        # The number of IPv6-based HTTP requests.
         self.v_6http_count = v_6http_count
+        # The number of IPv6-based HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):
@@ -29391,7 +29421,9 @@ class DescribePdnsRequestStatisticResponseBody(TeaModel):
         data: List[DescribePdnsRequestStatisticResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The statistics on the DNS requests.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29479,13 +29511,31 @@ class DescribePdnsRequestStatisticsRequest(TeaModel):
         sub_domain: str = None,
         type: str = None,
     ):
+        # The primary domain name whose statistics you want to query.
         self.domain_name = domain_name
+        # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # 
+        # The default value is the day when you query the data.
         self.end_date = end_date
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # 
+        # You can query only records of the last 90 days.
         self.start_date = start_date
+        # The subdomain name whose statistics you want to query.
         self.sub_domain = sub_domain
+        # The type of the request statistics that you want to query. Valid values:
+        # 
+        # *   DOMAIN: queries the request statistics by domain name.
+        # *   SUB_DOMAIN: queries the request statistics by subdomain name.
         self.type = type
 
     def validate(self):
@@ -29542,7 +29592,9 @@ class DescribePdnsRequestStatisticsResponseBodyDataThreatInfo(TeaModel):
         threat_level: str = None,
         threat_type: str = None,
     ):
+        # The current version does not support this parameter.
         self.threat_level = threat_level
+        # The current version does not support this parameter.
         self.threat_type = threat_type
 
     def validate(self):
@@ -29590,22 +29642,39 @@ class DescribePdnsRequestStatisticsResponseBodyData(TeaModel):
         v_6http_count: int = None,
         v_6https_count: int = None,
     ):
+        # The total number of DoH requests, including the HTTP and HTTPS requests.
         self.doh_total_count = doh_total_count
+        # The domain name.
         self.domain_name = domain_name
+        # The number of HTTP requests.
         self.http_count = http_count
+        # The number of HTTPS requests. On the Traffic Analysis tab of the public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
         self.https_count = https_count
+        # The number of source IP addresses.
         self.ip_count = ip_count
+        # The current version does not support this parameter.
         self.max_threat_level = max_threat_level
+        # The subdomain name.
         self.sub_domain = sub_domain
+        # The current version does not support this parameter.
         self.threat_count = threat_count
+        # The current version does not support this parameter.
         self.threat_info = threat_info
+        # The total number of requests.
         self.total_count = total_count
+        # The total number of UDP requests.
         self.udp_total_count = udp_total_count
+        # The number of IPv4-based requests.
         self.v_4count = v_4count
+        # The number of IPv4-based HTTP requests.
         self.v_4http_count = v_4http_count
+        # The number of IPv4-based HTTPS requests.
         self.v_4https_count = v_4https_count
+        # The number of IPv6-based requests.
         self.v_6count = v_6count
+        # The number of IPv6-based HTTP requests.
         self.v_6http_count = v_6http_count
+        # The number of IPv6-based HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):
@@ -29709,10 +29778,15 @@ class DescribePdnsRequestStatisticsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The statistics on the DNS requests.
         self.data = data
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Default value: **20**. Valid values: **1 to 100**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -30746,6 +30820,7 @@ class DescribePdnsUserInfoRequest(TeaModel):
 class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
     def __init__(
         self,
+        available_access_security_type: str = None,
         available_service: str = None,
         pdns_id: int = None,
         secret_key: str = None,
@@ -30754,6 +30829,7 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
         statistic_switch_status: str = None,
         stopped_service: str = None,
     ):
+        self.available_access_security_type = available_access_security_type
         self.available_service = available_service
         self.pdns_id = pdns_id
         self.secret_key = secret_key
@@ -30771,6 +30847,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.available_access_security_type is not None:
+            result['AvailableAccessSecurityType'] = self.available_access_security_type
         if self.available_service is not None:
             result['AvailableService'] = self.available_service
         if self.pdns_id is not None:
@@ -30789,6 +30867,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableAccessSecurityType') is not None:
+            self.available_access_security_type = m.get('AvailableAccessSecurityType')
         if m.get('AvailableService') is not None:
             self.available_service = m.get('AvailableService')
         if m.get('PdnsId') is not None:
@@ -32312,13 +32392,13 @@ class DescribeSupportLinesResponseBodyRecordLinesRecordLine(TeaModel):
         line_display_name: str = None,
         line_name: str = None,
     ):
-        # The code of the parent line. This parameter is not returned if the line has no parent line.
+        # The code of the parent line. Currently, no data is returned.
         self.father_code = father_code
-        # The code of the line.
+        # The code of the child line.
         self.line_code = line_code
-        # The display name of the parent line.
-        self.line_display_name = line_display_name
         # The display name of the line.
+        self.line_display_name = line_display_name
+        # The name of the child line.
         self.line_name = line_name
 
     def validate(self):
@@ -33173,14 +33253,17 @@ class GetTxtRecordForVerifyRequest(TeaModel):
         lang: str = None,
         type: str = None,
     ):
-        # The domain name.
+        # The ID of the Domain Name System (DNS) record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         self.domain_name = domain_name
-        # The language.
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: Chinese
+        # *   **en**: English
         self.lang = lang
         # The feature verified by using the TXT record. Valid values:
         # 
-        # *   ADD_SUB_DOMAIN
-        # *   RETRIEVAL
+        # *   ADD_SUB_DOMAIN: add a subdomain for verification.
+        # *   RETRIEVAL: add other subdomains for verification
         # 
         # This parameter is required.
         self.type = type
@@ -33226,6 +33309,7 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
         # 
         # >  If you do not specify this parameter, it is not returned.
         self.domain_name = domain_name
+        # The top-level domain name.
         self.parent_domain_name = parent_domain_name
         # The hostname.
         self.rr = rr
@@ -43823,13 +43907,15 @@ class UpdateCloudGtmAddressRequestHealthTasks(TeaModel):
         port: int = None,
         template_id: str = None,
     ):
-        # The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
-        # - If the input parameter is empty: Delete the currently configured port number;
-        # - If the input parameter is not empty: Update the port number based on the input parameter;
+        # The service port of the address on which health check tasks are performed. If the ping protocol is used for health checks, the configuration of the service port is not supported.
+        # 
+        # *   If you leave this parameter empty, the existing service port is deleted.
+        # *   If you specify this parameter, the existing service port is updated based on the value of this parameter.
         self.port = port
-        # ID of the health check template associated with the address. This parameter is required if a health check port is configured.
-        # - If the input parameter is empty: Delete the currently configured detection template;
-        # - If the input parameter is not empty: Update the detection template based on the input parameter;
+        # The ID of the health check template that is associated with the address. This parameter is required if you specify a service port of the address for health check tasks.
+        # 
+        # *   If you leave this parameter empty, the associated health check template is disassociated from the address.
+        # *   If you specify this parameter, the associated health check template is updated based on the value of this parameter.
         self.template_id = template_id
 
     def validate(self):
@@ -43873,7 +43959,7 @@ class UpdateCloudGtmAddressRequest(TeaModel):
         # *   zh-CN: Chinese
         # *   en-US (default): English
         self.accept_language = accept_language
-        # Modified IP address or domain name.
+        # The IP address or domain name.
         self.address = address
         # The ID of the address. This ID uniquely identifies the address.
         # 
@@ -43883,7 +43969,7 @@ class UpdateCloudGtmAddressRequest(TeaModel):
         self.attribute_info = attribute_info
         # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # The new condition for determining the health state of the address. Valid values:
         # 
         # *   any_ok: The health check results of at least one health check template are normal.
         # *   p30_ok: The health check results of at least 30% of health check templates are normal.
@@ -43893,7 +43979,7 @@ class UpdateCloudGtmAddressRequest(TeaModel):
         self.health_judgement = health_judgement
         # The health check tasks.
         self.health_tasks = health_tasks
-        # Modified address name.
+        # The name of the address.
         self.name = name
 
     def validate(self):
@@ -43969,7 +44055,7 @@ class UpdateCloudGtmAddressShrinkRequest(TeaModel):
         # *   zh-CN: Chinese
         # *   en-US (default): English
         self.accept_language = accept_language
-        # Modified IP address or domain name.
+        # The IP address or domain name.
         self.address = address
         # The ID of the address. This ID uniquely identifies the address.
         # 
@@ -43979,7 +44065,7 @@ class UpdateCloudGtmAddressShrinkRequest(TeaModel):
         self.attribute_info = attribute_info
         # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # The new condition for determining the health state of the address. Valid values:
         # 
         # *   any_ok: The health check results of at least one health check template are normal.
         # *   p30_ok: The health check results of at least 30% of health check templates are normal.
@@ -43989,7 +44075,7 @@ class UpdateCloudGtmAddressShrinkRequest(TeaModel):
         self.health_judgement = health_judgement
         # The health check tasks.
         self.health_tasks_shrink = health_tasks_shrink
-        # Modified address name.
+        # The name of the address.
         self.name = name
 
     def validate(self):
@@ -48715,7 +48801,7 @@ class UpdateDomainRecordRequest(TeaModel):
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The time to live (TTL) value of the Domain Name System (DNS) record. Default value: 600. Unit: seconds.
+        # The time to live (TTL) period of the Alibaba Cloud DNS (DNS) record. Default value: 600. Unit: seconds.
         # 
         # For more information, see
         # 

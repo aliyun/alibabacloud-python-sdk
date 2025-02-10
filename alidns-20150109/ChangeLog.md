@@ -1,3 +1,8 @@
+2025-02-10 Version: 3.5.7
+- Update API DescribeIspFlushCacheTask: update param TaskId.
+- Update API DescribePdnsUserInfo: update response param.
+
+
 2024-10-18 Version: 3.5.6
 - Update API AddDomainRecord: update param Priority.
 - Update API CreatePdnsAppKey: add param Remark.
