@@ -8255,9 +8255,12 @@ class CreateLoadBalancerRequest(TeaModel):
         ttl: int = None,
     ):
         self.adaptive_routing = adaptive_routing
+        # This parameter is required.
         self.default_pools = default_pools
         self.description = description
+        # This parameter is required.
         self.fallback_pool = fallback_pool
+        # This parameter is required.
         self.monitor = monitor
         # This parameter is required.
         self.name = name
@@ -8268,6 +8271,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.session_affinity_attributes = session_affinity_attributes
         # This parameter is required.
         self.site_id = site_id
+        # This parameter is required.
         self.steering_policy = steering_policy
         self.sub_region_pools = sub_region_pools
         self.ttl = ttl
@@ -8388,9 +8392,12 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         ttl: int = None,
     ):
         self.adaptive_routing_shrink = adaptive_routing_shrink
+        # This parameter is required.
         self.default_pools_shrink = default_pools_shrink
         self.description = description
+        # This parameter is required.
         self.fallback_pool = fallback_pool
+        # This parameter is required.
         self.monitor_shrink = monitor_shrink
         # This parameter is required.
         self.name = name
@@ -8401,6 +8408,7 @@ class CreateLoadBalancerShrinkRequest(TeaModel):
         self.session_affinity_attributes_shrink = session_affinity_attributes_shrink
         # This parameter is required.
         self.site_id = site_id
+        # This parameter is required.
         self.steering_policy = steering_policy
         self.sub_region_pools = sub_region_pools
         self.ttl = ttl
@@ -47851,9 +47859,43 @@ class PublishRoutineCodeVersionResponse(TeaModel):
         return self
 
 
+class PurgeCachesRequestContentCacheKeys(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        url: str = None,
+    ):
+        self.headers = headers
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['Headers'] = self.headers
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
 class PurgeCachesRequestContent(TeaModel):
     def __init__(
         self,
+        cache_keys: List[PurgeCachesRequestContentCacheKeys] = None,
         cache_tags: List[str] = None,
         directories: List[str] = None,
         files: List[Any] = None,
@@ -47861,6 +47903,7 @@ class PurgeCachesRequestContent(TeaModel):
         ignore_params: List[str] = None,
         purge_all: bool = None,
     ):
+        self.cache_keys = cache_keys
         # The cache tags that are used to purge the cache. This parameter is required if Type is set to cachetag.
         self.cache_tags = cache_tags
         # The directories that are used to purge the cache. This parameter is required if Type is set to directory.
@@ -47875,7 +47918,10 @@ class PurgeCachesRequestContent(TeaModel):
         self.purge_all = purge_all
 
     def validate(self):
-        pass
+        if self.cache_keys:
+            for k in self.cache_keys:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -47883,6 +47929,10 @@ class PurgeCachesRequestContent(TeaModel):
             return _map
 
         result = dict()
+        result['CacheKeys'] = []
+        if self.cache_keys is not None:
+            for k in self.cache_keys:
+                result['CacheKeys'].append(k.to_map() if k else None)
         if self.cache_tags is not None:
             result['CacheTags'] = self.cache_tags
         if self.directories is not None:
@@ -47899,6 +47949,11 @@ class PurgeCachesRequestContent(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.cache_keys = []
+        if m.get('CacheKeys') is not None:
+            for k in m.get('CacheKeys'):
+                temp_model = PurgeCachesRequestContentCacheKeys()
+                self.cache_keys.append(temp_model.from_map(k))
         if m.get('CacheTags') is not None:
             self.cache_tags = m.get('CacheTags')
         if m.get('Directories') is not None:

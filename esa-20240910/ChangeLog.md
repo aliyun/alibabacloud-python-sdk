@@ -1,3 +1,44 @@
+2025-02-10 Version: 2.14.0
+- Support API ActivateVersionManagement.
+- Support API CreateHttpsApplicationConfiguration.
+- Support API CreateImageTransform.
+- Support API CreateLoadBalancer.
+- Support API CreateNetworkOptimization.
+- Support API DeactivateVersionManagement.
+- Support API DeleteHttpsApplicationConfiguration.
+- Support API DeleteImageTransform.
+- Support API DeleteLoadBalancer.
+- Support API DeleteNetworkOptimization.
+- Support API GetCacheTag.
+- Support API GetCnameFlattening.
+- Support API GetDevelopmentMode.
+- Support API GetHttpsApplicationConfiguration.
+- Support API GetImageTransform.
+- Support API GetLoadBalancer.
+- Support API GetNetworkOptimization.
+- Support API GetSeoBypass.
+- Support API GetSiteNameExclusive.
+- Support API GetSitePause.
+- Support API ListHttpsApplicationConfigurations.
+- Support API ListImageTransforms.
+- Support API ListLoadBalancerOriginStatus.
+- Support API ListLoadBalancers.
+- Support API ListNetworkOptimizations.
+- Support API UpdateCacheTag.
+- Support API UpdateCnameFlattening.
+- Support API UpdateDevelopmentMode.
+- Support API UpdateHttpsApplicationConfiguration.
+- Support API UpdateImageTransform.
+- Support API UpdateLoadBalancer.
+- Support API UpdateNetworkOptimization.
+- Support API UpdateSeoBypass.
+- Support API UpdateSiteNameExclusive.
+- Support API UpdateSitePause.
+- Update API DescribePurgeTasks: update param Type.
+- Update API GetPurgeQuota: update param Type.
+- Update API PurgeCaches: update param Content.
+
+
 2025-02-08 Version: 2.13.0
 - Support API ActivateVersionManagement.
 - Support API CreateHttpsApplicationConfiguration.
