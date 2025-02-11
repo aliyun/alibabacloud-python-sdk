@@ -1,3 +1,7 @@
+2025-02-11 Version: 2.1.0
+- Support API HangupOperate.
+
+
 2024-12-20 Version: 2.0.0
 - Support API LlmSmartCall.
 - Delete API ListOuterOrderedNumbers.
