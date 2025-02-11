@@ -1,3 +1,10 @@
+2025-02-11 Version: 1.2.7
+- Update API CreateServerGroup: add param Ipv6Enabled.
+- Update API ListListeners: update param ListenerIds.
+- Update API LoadBalancerJoinSecurityGroup: update param SecurityGroupIds.
+- Update API LoadBalancerLeaveSecurityGroup: update param SecurityGroupIds.
+
+
 2024-12-23 Version: 1.2.6
 - Generated python 2020-06-16 for Alb.
 

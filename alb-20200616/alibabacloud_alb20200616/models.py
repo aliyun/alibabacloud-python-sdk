@@ -6712,6 +6712,7 @@ class CreateServerGroupRequest(TeaModel):
         cross_zone_enabled: bool = None,
         dry_run: bool = None,
         health_check_config: CreateServerGroupRequestHealthCheckConfig = None,
+        ipv_6enabled: bool = None,
         protocol: str = None,
         resource_group_id: str = None,
         scheduler: str = None,
@@ -6761,6 +6762,7 @@ class CreateServerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.health_check_config = health_check_config
+        self.ipv_6enabled = ipv_6enabled
         # The backend protocol. Valid values:
         # 
         # *   **HTTP**: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -6845,6 +6847,8 @@ class CreateServerGroupRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
+        if self.ipv_6enabled is not None:
+            result['Ipv6Enabled'] = self.ipv_6enabled
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.resource_group_id is not None:
@@ -6887,6 +6891,8 @@ class CreateServerGroupRequest(TeaModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = CreateServerGroupRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m['HealthCheckConfig'])
+        if m.get('Ipv6Enabled') is not None:
+            self.ipv_6enabled = m.get('Ipv6Enabled')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('ResourceGroupId') is not None:
