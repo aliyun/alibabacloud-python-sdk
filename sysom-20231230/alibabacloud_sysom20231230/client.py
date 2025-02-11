@@ -2805,6 +2805,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resources_with_options_async(request, headers, runtime)
 
+    def get_service_func_status_with_options(
+        self,
+        tmp_req: sys_om20231230_models.GetServiceFuncStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param tmp_req: GetServiceFuncStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceFuncStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.GetServiceFuncStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.params):
+            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel):
+            query['channel'] = request.channel
+        if not UtilClient.is_unset(request.params_shrink):
+            query['params'] = request.params_shrink
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceFuncStatus',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/func-switch/get-service-func-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetServiceFuncStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetServiceFuncStatusResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_service_func_status_with_options_async(
+        self,
+        tmp_req: sys_om20231230_models.GetServiceFuncStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param tmp_req: GetServiceFuncStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceFuncStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.GetServiceFuncStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.params):
+            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel):
+            query['channel'] = request.channel
+        if not UtilClient.is_unset(request.params_shrink):
+            query['params'] = request.params_shrink
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceFuncStatus',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/func-switch/get-service-func-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.GetServiceFuncStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.GetServiceFuncStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_service_func_status(
+        self,
+        request: sys_om20231230_models.GetServiceFuncStatusRequest,
+    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param request: GetServiceFuncStatusRequest
+        @return: GetServiceFuncStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_func_status_with_options(request, headers, runtime)
+
+    async def get_service_func_status_async(
+        self,
+        request: sys_om20231230_models.GetServiceFuncStatusRequest,
+    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param request: GetServiceFuncStatusRequest
+        @return: GetServiceFuncStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_func_status_with_options_async(request, headers, runtime)
+
     def initial_sysom_with_options(
         self,
         request: sys_om20231230_models.InitialSysomRequest,
@@ -5370,6 +5502,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_events_attention_with_options_async(request, headers, runtime)
+
+    def update_func_switch_record_with_options(
+        self,
+        tmp_req: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param tmp_req: UpdateFuncSwitchRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFuncSwitchRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.UpdateFuncSwitchRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.params):
+            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel):
+            query['channel'] = request.channel
+        if not UtilClient.is_unset(request.params_shrink):
+            query['params'] = request.params_shrink
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFuncSwitchRecord',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/func-switch/update-service-func-switch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_func_switch_record_with_options_async(
+        self,
+        tmp_req: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param tmp_req: UpdateFuncSwitchRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFuncSwitchRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.UpdateFuncSwitchRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.params):
+            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.channel):
+            query['channel'] = request.channel
+        if not UtilClient.is_unset(request.params_shrink):
+            query['params'] = request.params_shrink
+        if not UtilClient.is_unset(request.service_name):
+            query['service_name'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateFuncSwitchRecord',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/func-switch/update-service-func-switch',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_func_switch_record(
+        self,
+        request: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param request: UpdateFuncSwitchRecordRequest
+        @return: UpdateFuncSwitchRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_func_switch_record_with_options(request, headers, runtime)
+
+    async def update_func_switch_record_async(
+        self,
+        request: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
+        """
+        @summary 获取功能模块配置
+        
+        @param request: UpdateFuncSwitchRecordRequest
+        @return: UpdateFuncSwitchRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_func_switch_record_with_options_async(request, headers, runtime)
 
     def upgrade_agent_with_options(
         self,

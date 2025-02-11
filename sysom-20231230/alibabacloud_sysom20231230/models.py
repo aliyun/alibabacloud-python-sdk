@@ -4022,6 +4022,313 @@ class GetResourcesResponse(TeaModel):
         return self
 
 
+class GetServiceFuncStatusRequestParams(TeaModel):
+    def __init__(
+        self,
+        function_name: str = None,
+        instance: str = None,
+        uid: str = None,
+    ):
+        # This parameter is required.
+        self.function_name = function_name
+        self.instance = instance
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_name is not None:
+            result['function_name'] = self.function_name
+        if self.instance is not None:
+            result['instance'] = self.instance
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('function_name') is not None:
+            self.function_name = m.get('function_name')
+        if m.get('instance') is not None:
+            self.instance = m.get('instance')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class GetServiceFuncStatusRequest(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        params: GetServiceFuncStatusRequestParams = None,
+        service_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel = channel
+        # This parameter is required.
+        self.params = params
+        # This parameter is required.
+        self.service_name = service_name
+
+    def validate(self):
+        if self.params:
+            self.params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.params is not None:
+            result['params'] = self.params.to_map()
+        if self.service_name is not None:
+            result['service_name'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('params') is not None:
+            temp_model = GetServiceFuncStatusRequestParams()
+            self.params = temp_model.from_map(m['params'])
+        if m.get('service_name') is not None:
+            self.service_name = m.get('service_name')
+        return self
+
+
+class GetServiceFuncStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        params_shrink: str = None,
+        service_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel = channel
+        # This parameter is required.
+        self.params_shrink = params_shrink
+        # This parameter is required.
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.params_shrink is not None:
+            result['params'] = self.params_shrink
+        if self.service_name is not None:
+            result['service_name'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('params') is not None:
+            self.params_shrink = m.get('params')
+        if m.get('service_name') is not None:
+            self.service_name = m.get('service_name')
+        return self
+
+
+class GetServiceFuncStatusResponseBodyDataArgs(TeaModel):
+    def __init__(
+        self,
+        add_cmd: str = None,
+        cpu: str = None,
+        java_store_path: str = None,
+        locks: str = None,
+        loop: int = None,
+        mem: str = None,
+        system_profiling: str = None,
+    ):
+        self.add_cmd = add_cmd
+        self.cpu = cpu
+        self.java_store_path = java_store_path
+        self.locks = locks
+        self.loop = loop
+        self.mem = mem
+        self.system_profiling = system_profiling
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_cmd is not None:
+            result['add_cmd'] = self.add_cmd
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.java_store_path is not None:
+            result['java_store_path'] = self.java_store_path
+        if self.locks is not None:
+            result['locks'] = self.locks
+        if self.loop is not None:
+            result['loop'] = self.loop
+        if self.mem is not None:
+            result['mem'] = self.mem
+        if self.system_profiling is not None:
+            result['system_profiling'] = self.system_profiling
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('add_cmd') is not None:
+            self.add_cmd = m.get('add_cmd')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('java_store_path') is not None:
+            self.java_store_path = m.get('java_store_path')
+        if m.get('locks') is not None:
+            self.locks = m.get('locks')
+        if m.get('loop') is not None:
+            self.loop = m.get('loop')
+        if m.get('mem') is not None:
+            self.mem = m.get('mem')
+        if m.get('system_profiling') is not None:
+            self.system_profiling = m.get('system_profiling')
+        return self
+
+
+class GetServiceFuncStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        args: GetServiceFuncStatusResponseBodyDataArgs = None,
+    ):
+        self.args = args
+
+    def validate(self):
+        if self.args:
+            self.args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            temp_model = GetServiceFuncStatusResponseBodyDataArgs()
+            self.args = temp_model.from_map(m['args'])
+        return self
+
+
+class GetServiceFuncStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetServiceFuncStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetServiceFuncStatusResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetServiceFuncStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceFuncStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceFuncStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InitialSysomRequest(TeaModel):
     def __init__(
         self,
@@ -5624,12 +5931,14 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
         self,
         cluster_id: str = None,
         created_at: str = None,
+        grayscale_config: str = None,
         plugin_id: str = None,
         plugin_version: str = None,
         updated_at: str = None,
     ):
         self.cluster_id = cluster_id
         self.created_at = created_at
+        self.grayscale_config = grayscale_config
         self.plugin_id = plugin_id
         self.plugin_version = plugin_version
         self.updated_at = updated_at
@@ -5647,6 +5956,8 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
             result['cluster_id'] = self.cluster_id
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.grayscale_config is not None:
+            result['grayscale_config'] = self.grayscale_config
         if self.plugin_id is not None:
             result['plugin_id'] = self.plugin_id
         if self.plugin_version is not None:
@@ -5661,6 +5972,8 @@ class ListClusterAgentInstallRecordsResponseBodyData(TeaModel):
             self.cluster_id = m.get('cluster_id')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('grayscale_config') is not None:
+            self.grayscale_config = m.get('grayscale_config')
         if m.get('plugin_id') is not None:
             self.plugin_id = m.get('plugin_id')
         if m.get('plugin_version') is not None:
@@ -7897,6 +8210,325 @@ class UpdateEventsAttentionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEventsAttentionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateFuncSwitchRecordRequestParamsArgs(TeaModel):
+    def __init__(
+        self,
+        add_cmd: str = None,
+        cpu: str = None,
+        java_store_path: str = None,
+        locks: str = None,
+        loop: int = None,
+        mem: str = None,
+        system_profiling: str = None,
+    ):
+        self.add_cmd = add_cmd
+        self.cpu = cpu
+        self.java_store_path = java_store_path
+        self.locks = locks
+        self.loop = loop
+        self.mem = mem
+        self.system_profiling = system_profiling
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_cmd is not None:
+            result['add_cmd'] = self.add_cmd
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.java_store_path is not None:
+            result['java_store_path'] = self.java_store_path
+        if self.locks is not None:
+            result['locks'] = self.locks
+        if self.loop is not None:
+            result['loop'] = self.loop
+        if self.mem is not None:
+            result['mem'] = self.mem
+        if self.system_profiling is not None:
+            result['system_profiling'] = self.system_profiling
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('add_cmd') is not None:
+            self.add_cmd = m.get('add_cmd')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('java_store_path') is not None:
+            self.java_store_path = m.get('java_store_path')
+        if m.get('locks') is not None:
+            self.locks = m.get('locks')
+        if m.get('loop') is not None:
+            self.loop = m.get('loop')
+        if m.get('mem') is not None:
+            self.mem = m.get('mem')
+        if m.get('system_profiling') is not None:
+            self.system_profiling = m.get('system_profiling')
+        return self
+
+
+class UpdateFuncSwitchRecordRequestParams(TeaModel):
+    def __init__(
+        self,
+        args: UpdateFuncSwitchRecordRequestParamsArgs = None,
+        function_name: str = None,
+        instance: str = None,
+        op: str = None,
+        uid: str = None,
+    ):
+        self.args = args
+        # This parameter is required.
+        self.function_name = function_name
+        self.instance = instance
+        self.op = op
+        self.uid = uid
+
+    def validate(self):
+        if self.args:
+            self.args.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args.to_map()
+        if self.function_name is not None:
+            result['function_name'] = self.function_name
+        if self.instance is not None:
+            result['instance'] = self.instance
+        if self.op is not None:
+            result['op'] = self.op
+        if self.uid is not None:
+            result['uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            temp_model = UpdateFuncSwitchRecordRequestParamsArgs()
+            self.args = temp_model.from_map(m['args'])
+        if m.get('function_name') is not None:
+            self.function_name = m.get('function_name')
+        if m.get('instance') is not None:
+            self.instance = m.get('instance')
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        return self
+
+
+class UpdateFuncSwitchRecordRequest(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        params: UpdateFuncSwitchRecordRequestParams = None,
+        service_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel = channel
+        # This parameter is required.
+        self.params = params
+        # This parameter is required.
+        self.service_name = service_name
+
+    def validate(self):
+        if self.params:
+            self.params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.params is not None:
+            result['params'] = self.params.to_map()
+        if self.service_name is not None:
+            result['service_name'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('params') is not None:
+            temp_model = UpdateFuncSwitchRecordRequestParams()
+            self.params = temp_model.from_map(m['params'])
+        if m.get('service_name') is not None:
+            self.service_name = m.get('service_name')
+        return self
+
+
+class UpdateFuncSwitchRecordShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        params_shrink: str = None,
+        service_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel = channel
+        # This parameter is required.
+        self.params_shrink = params_shrink
+        # This parameter is required.
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['channel'] = self.channel
+        if self.params_shrink is not None:
+            result['params'] = self.params_shrink
+        if self.service_name is not None:
+            result['service_name'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+        if m.get('params') is not None:
+            self.params_shrink = m.get('params')
+        if m.get('service_name') is not None:
+            self.service_name = m.get('service_name')
+        return self
+
+
+class UpdateFuncSwitchRecordResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class UpdateFuncSwitchRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateFuncSwitchRecordResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = UpdateFuncSwitchRecordResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateFuncSwitchRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateFuncSwitchRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateFuncSwitchRecordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
