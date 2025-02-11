@@ -5,7 +5,6 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_market20151101 import models as market_20151101_models
@@ -22,9 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'Market'
-        gateway_client = GatewayClientClient()
-        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'market.aliyuncs.com',
@@ -941,6 +937,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_distribution_products_link_with_options_async(request, runtime)
+
+    def describe_image_instance_for_isv_with_options(
+        self,
+        request: market_20151101_models.DescribeImageInstanceForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeImageInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询镜像实例信息
+        
+        @param request: DescribeImageInstanceForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageInstanceForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_pk):
+            query['CustomerPk'] = request.customer_pk
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageInstanceForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeImageInstanceForIsvResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeImageInstanceForIsvResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_image_instance_for_isv_with_options_async(
+        self,
+        request: market_20151101_models.DescribeImageInstanceForIsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> market_20151101_models.DescribeImageInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询镜像实例信息
+        
+        @param request: DescribeImageInstanceForIsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageInstanceForIsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_pk):
+            query['CustomerPk'] = request.customer_pk
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageInstanceForIsv',
+            version='2015-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                market_20151101_models.DescribeImageInstanceForIsvResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                market_20151101_models.DescribeImageInstanceForIsvResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_image_instance_for_isv(
+        self,
+        request: market_20151101_models.DescribeImageInstanceForIsvRequest,
+    ) -> market_20151101_models.DescribeImageInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询镜像实例信息
+        
+        @param request: DescribeImageInstanceForIsvRequest
+        @return: DescribeImageInstanceForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_instance_for_isv_with_options(request, runtime)
+
+    async def describe_image_instance_for_isv_async(
+        self,
+        request: market_20151101_models.DescribeImageInstanceForIsvRequest,
+    ) -> market_20151101_models.DescribeImageInstanceForIsvResponse:
+        """
+        @summary 服务商侧查询镜像实例信息
+        
+        @param request: DescribeImageInstanceForIsvRequest
+        @return: DescribeImageInstanceForIsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_instance_for_isv_with_options_async(request, runtime)
 
     def describe_instance_with_options(
         self,
