@@ -5138,6 +5138,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.saving_plan_id):
+            query['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
@@ -5253,6 +5255,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.saving_plan_id):
+            query['SavingPlanId'] = request.saving_plan_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):

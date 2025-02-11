@@ -7931,6 +7931,7 @@ class CreateDesktopsRequest(TeaModel):
         promotion_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        saving_plan_id: str = None,
         snapshot_policy_id: str = None,
         tag: List[CreateDesktopsRequestTag] = None,
         timer_group_id: str = None,
@@ -8055,6 +8056,7 @@ class CreateDesktopsRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.saving_plan_id = saving_plan_id
         self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
@@ -8172,6 +8174,8 @@ class CreateDesktopsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.saving_plan_id is not None:
+            result['SavingPlanId'] = self.saving_plan_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
         result['Tag'] = []
@@ -8252,6 +8256,8 @@ class CreateDesktopsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SavingPlanId') is not None:
+            self.saving_plan_id = m.get('SavingPlanId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
         self.tag = []
@@ -8679,6 +8685,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         promotion_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        saving_plan_id: str = None,
         snapshot_policy_id: str = None,
         tag: List[CreateDesktopsShrinkRequestTag] = None,
         timer_group_id: str = None,
@@ -8803,6 +8810,7 @@ class CreateDesktopsShrinkRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.saving_plan_id = saving_plan_id
         self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
@@ -8918,6 +8926,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.saving_plan_id is not None:
+            result['SavingPlanId'] = self.saving_plan_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
         result['Tag'] = []
@@ -8997,6 +9007,8 @@ class CreateDesktopsShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SavingPlanId') is not None:
+            self.saving_plan_id = m.get('SavingPlanId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
         self.tag = []

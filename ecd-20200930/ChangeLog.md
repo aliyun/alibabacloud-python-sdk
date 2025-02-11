@@ -1,3 +1,45 @@
+2025-02-11 Version: 4.4.0
+- Support API BindConfigGroup.
+- Support API CreateConfigGroup.
+- Support API DeleteConfigGroup.
+- Support API DescribeConfigGroup.
+- Support API DescribeTimerGroup.
+- Support API ModifyConfigGroup.
+- Support API ModifyTimerGroup.
+- Support API UnbindConfigGroup.
+- Update API CreateDesktopGroup: add param DataDiskCategory.
+- Update API CreateDesktopGroup: add param DataDiskPerLevel.
+- Update API CreateDesktopGroup: add param DataDiskSize.
+- Update API CreateDesktopGroup: add param DefaultLanguage.
+- Update API CreateDesktopGroup: add param DesktopType.
+- Update API CreateDesktopGroup: add param ExclusiveType.
+- Update API CreateDesktopGroup: add param GroupAmount.
+- Update API CreateDesktopGroup: add param Hostname.
+- Update API CreateDesktopGroup: add param ImageId.
+- Update API CreateDesktopGroup: add param MultiResource.
+- Update API CreateDesktopGroup: add param SessionType.
+- Update API CreateDesktopGroup: add param SnapshotPolicyId.
+- Update API CreateDesktopGroup: add param SystemDiskCategory.
+- Update API CreateDesktopGroup: add param SystemDiskPerLevel.
+- Update API CreateDesktopGroup: add param SystemDiskSize.
+- Update API CreateDesktopGroup: add param TimerGroupId.
+- Update API CreateDesktopGroup: update param BundleId.
+- Update API CreateDesktopGroup: update response param.
+- Update API CreateDesktops: add param SavingPlanId.
+- Update API DescribeAclEntries: add param OfficeSiteId.
+- Update API DescribeDesktopGroups: add param DesktopGroupIds.
+- Update API DescribeDesktopGroups: add param MultiResource.
+- Update API DescribeDesktopTypes: add param SupportMinSessionCount.
+- Update API DescribeDesktopTypes: add param ZoneId.
+- Update API DescribeDesktopTypes: update response param.
+- Update API DescribeDesktops: add param MultiResource.
+- Update API DescribeOfficeSites: update response param.
+- Update API DescribePolicyGroups: add param ExternalPolicyGroupIds.
+- Update API DescribePolicyGroups: update response param.
+- Update API DescribeRecordings: add param StandardEndTime.
+- Update API DescribeRecordings: add param StandardStartTime.
+
+
 2025-01-24 Version: 4.3.0
 - Support API BindConfigGroup.
 - Support API CreateConfigGroup.
