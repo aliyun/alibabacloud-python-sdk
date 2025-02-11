@@ -7666,6 +7666,7 @@ class CreateDataImportOrderRequestParam(TeaModel):
         classify: str = None,
         csv_first_row_is_column_def: bool = None,
         db_item_list: List[CreateDataImportOrderRequestParamDbItemList] = None,
+        exec_mode: str = None,
         file_encoding: str = None,
         file_type: str = None,
         ignore_error: bool = None,
@@ -7693,6 +7694,7 @@ class CreateDataImportOrderRequestParam(TeaModel):
         # 
         # This parameter is required.
         self.db_item_list = db_item_list
+        self.exec_mode = exec_mode
         # The encoding algorithm to be used by the destination database. Valid values:
         # 
         # *   **AUTO**: automatic identification
@@ -7765,6 +7767,8 @@ class CreateDataImportOrderRequestParam(TeaModel):
         if self.db_item_list is not None:
             for k in self.db_item_list:
                 result['DbItemList'].append(k.to_map() if k else None)
+        if self.exec_mode is not None:
+            result['ExecMode'] = self.exec_mode
         if self.file_encoding is not None:
             result['FileEncoding'] = self.file_encoding
         if self.file_type is not None:
@@ -7798,6 +7802,8 @@ class CreateDataImportOrderRequestParam(TeaModel):
             for k in m.get('DbItemList'):
                 temp_model = CreateDataImportOrderRequestParamDbItemList()
                 self.db_item_list.append(temp_model.from_map(k))
+        if m.get('ExecMode') is not None:
+            self.exec_mode = m.get('ExecMode')
         if m.get('FileEncoding') is not None:
             self.file_encoding = m.get('FileEncoding')
         if m.get('FileType') is not None:
@@ -9418,6 +9424,514 @@ class CreateDatabaseExportOrderResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDatabaseExportOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDifyInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        adbpg_instance_mode: str = None,
+        client_token: str = None,
+        data_region: str = None,
+        database_option: str = None,
+        db_engine_type: str = None,
+        db_engine_version: str = None,
+        db_instance_account: str = None,
+        db_instance_category: str = None,
+        db_instance_class: str = None,
+        db_instance_password: str = None,
+        db_resource_id: int = None,
+        db_storage_size: str = None,
+        db_storage_type: str = None,
+        dry_run: bool = None,
+        kv_store_account: str = None,
+        kv_store_engine_version: str = None,
+        kv_store_instance_class: str = None,
+        kv_store_node_type: str = None,
+        kv_store_option: str = None,
+        kv_store_password: str = None,
+        kv_store_resource_id: int = None,
+        kv_store_type: str = None,
+        oss_path: str = None,
+        oss_resource_id: int = None,
+        pay_period: int = None,
+        pay_period_type: str = None,
+        pay_type: str = None,
+        replicas: int = None,
+        resource_quota: str = None,
+        security_group_id: str = None,
+        seg_disk_performance_level: str = None,
+        seg_node_num: int = None,
+        storage_type: str = None,
+        v_switch_id: str = None,
+        vectordb_account: str = None,
+        vectordb_category: str = None,
+        vectordb_engine_version: str = None,
+        vectordb_instance_spec: str = None,
+        vectordb_option: str = None,
+        vectordb_password: str = None,
+        vectordb_resource_id: int = None,
+        vectordb_storage_size: str = None,
+        vectordb_storage_type: str = None,
+        vectordb_type: str = None,
+        vpc_id: str = None,
+        workspace_description: str = None,
+        workspace_id: str = None,
+        workspace_name: str = None,
+        workspace_option: str = None,
+        zone_id: str = None,
+    ):
+        self.adbpg_instance_mode = adbpg_instance_mode
+        self.client_token = client_token
+        # This parameter is required.
+        self.data_region = data_region
+        self.database_option = database_option
+        self.db_engine_type = db_engine_type
+        self.db_engine_version = db_engine_version
+        self.db_instance_account = db_instance_account
+        self.db_instance_category = db_instance_category
+        self.db_instance_class = db_instance_class
+        self.db_instance_password = db_instance_password
+        self.db_resource_id = db_resource_id
+        self.db_storage_size = db_storage_size
+        self.db_storage_type = db_storage_type
+        self.dry_run = dry_run
+        self.kv_store_account = kv_store_account
+        self.kv_store_engine_version = kv_store_engine_version
+        self.kv_store_instance_class = kv_store_instance_class
+        self.kv_store_node_type = kv_store_node_type
+        self.kv_store_option = kv_store_option
+        self.kv_store_password = kv_store_password
+        self.kv_store_resource_id = kv_store_resource_id
+        self.kv_store_type = kv_store_type
+        self.oss_path = oss_path
+        self.oss_resource_id = oss_resource_id
+        self.pay_period = pay_period
+        self.pay_period_type = pay_period_type
+        self.pay_type = pay_type
+        self.replicas = replicas
+        # This parameter is required.
+        self.resource_quota = resource_quota
+        # This parameter is required.
+        self.security_group_id = security_group_id
+        self.seg_disk_performance_level = seg_disk_performance_level
+        self.seg_node_num = seg_node_num
+        self.storage_type = storage_type
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        self.vectordb_account = vectordb_account
+        self.vectordb_category = vectordb_category
+        self.vectordb_engine_version = vectordb_engine_version
+        self.vectordb_instance_spec = vectordb_instance_spec
+        self.vectordb_option = vectordb_option
+        self.vectordb_password = vectordb_password
+        self.vectordb_resource_id = vectordb_resource_id
+        self.vectordb_storage_size = vectordb_storage_size
+        self.vectordb_storage_type = vectordb_storage_type
+        self.vectordb_type = vectordb_type
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        self.workspace_description = workspace_description
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+        self.workspace_option = workspace_option
+        # This parameter is required.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adbpg_instance_mode is not None:
+            result['AdbpgInstanceMode'] = self.adbpg_instance_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.database_option is not None:
+            result['DatabaseOption'] = self.database_option
+        if self.db_engine_type is not None:
+            result['DbEngineType'] = self.db_engine_type
+        if self.db_engine_version is not None:
+            result['DbEngineVersion'] = self.db_engine_version
+        if self.db_instance_account is not None:
+            result['DbInstanceAccount'] = self.db_instance_account
+        if self.db_instance_category is not None:
+            result['DbInstanceCategory'] = self.db_instance_category
+        if self.db_instance_class is not None:
+            result['DbInstanceClass'] = self.db_instance_class
+        if self.db_instance_password is not None:
+            result['DbInstancePassword'] = self.db_instance_password
+        if self.db_resource_id is not None:
+            result['DbResourceId'] = self.db_resource_id
+        if self.db_storage_size is not None:
+            result['DbStorageSize'] = self.db_storage_size
+        if self.db_storage_type is not None:
+            result['DbStorageType'] = self.db_storage_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.kv_store_account is not None:
+            result['KvStoreAccount'] = self.kv_store_account
+        if self.kv_store_engine_version is not None:
+            result['KvStoreEngineVersion'] = self.kv_store_engine_version
+        if self.kv_store_instance_class is not None:
+            result['KvStoreInstanceClass'] = self.kv_store_instance_class
+        if self.kv_store_node_type is not None:
+            result['KvStoreNodeType'] = self.kv_store_node_type
+        if self.kv_store_option is not None:
+            result['KvStoreOption'] = self.kv_store_option
+        if self.kv_store_password is not None:
+            result['KvStorePassword'] = self.kv_store_password
+        if self.kv_store_resource_id is not None:
+            result['KvStoreResourceId'] = self.kv_store_resource_id
+        if self.kv_store_type is not None:
+            result['KvStoreType'] = self.kv_store_type
+        if self.oss_path is not None:
+            result['OssPath'] = self.oss_path
+        if self.oss_resource_id is not None:
+            result['OssResourceId'] = self.oss_resource_id
+        if self.pay_period is not None:
+            result['PayPeriod'] = self.pay_period
+        if self.pay_period_type is not None:
+            result['PayPeriodType'] = self.pay_period_type
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.resource_quota is not None:
+            result['ResourceQuota'] = self.resource_quota
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.seg_disk_performance_level is not None:
+            result['SegDiskPerformanceLevel'] = self.seg_disk_performance_level
+        if self.seg_node_num is not None:
+            result['SegNodeNum'] = self.seg_node_num
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vectordb_account is not None:
+            result['VectordbAccount'] = self.vectordb_account
+        if self.vectordb_category is not None:
+            result['VectordbCategory'] = self.vectordb_category
+        if self.vectordb_engine_version is not None:
+            result['VectordbEngineVersion'] = self.vectordb_engine_version
+        if self.vectordb_instance_spec is not None:
+            result['VectordbInstanceSpec'] = self.vectordb_instance_spec
+        if self.vectordb_option is not None:
+            result['VectordbOption'] = self.vectordb_option
+        if self.vectordb_password is not None:
+            result['VectordbPassword'] = self.vectordb_password
+        if self.vectordb_resource_id is not None:
+            result['VectordbResourceId'] = self.vectordb_resource_id
+        if self.vectordb_storage_size is not None:
+            result['VectordbStorageSize'] = self.vectordb_storage_size
+        if self.vectordb_storage_type is not None:
+            result['VectordbStorageType'] = self.vectordb_storage_type
+        if self.vectordb_type is not None:
+            result['VectordbType'] = self.vectordb_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_description is not None:
+            result['WorkspaceDescription'] = self.workspace_description
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        if self.workspace_option is not None:
+            result['WorkspaceOption'] = self.workspace_option
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbpgInstanceMode') is not None:
+            self.adbpg_instance_mode = m.get('AdbpgInstanceMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DatabaseOption') is not None:
+            self.database_option = m.get('DatabaseOption')
+        if m.get('DbEngineType') is not None:
+            self.db_engine_type = m.get('DbEngineType')
+        if m.get('DbEngineVersion') is not None:
+            self.db_engine_version = m.get('DbEngineVersion')
+        if m.get('DbInstanceAccount') is not None:
+            self.db_instance_account = m.get('DbInstanceAccount')
+        if m.get('DbInstanceCategory') is not None:
+            self.db_instance_category = m.get('DbInstanceCategory')
+        if m.get('DbInstanceClass') is not None:
+            self.db_instance_class = m.get('DbInstanceClass')
+        if m.get('DbInstancePassword') is not None:
+            self.db_instance_password = m.get('DbInstancePassword')
+        if m.get('DbResourceId') is not None:
+            self.db_resource_id = m.get('DbResourceId')
+        if m.get('DbStorageSize') is not None:
+            self.db_storage_size = m.get('DbStorageSize')
+        if m.get('DbStorageType') is not None:
+            self.db_storage_type = m.get('DbStorageType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('KvStoreAccount') is not None:
+            self.kv_store_account = m.get('KvStoreAccount')
+        if m.get('KvStoreEngineVersion') is not None:
+            self.kv_store_engine_version = m.get('KvStoreEngineVersion')
+        if m.get('KvStoreInstanceClass') is not None:
+            self.kv_store_instance_class = m.get('KvStoreInstanceClass')
+        if m.get('KvStoreNodeType') is not None:
+            self.kv_store_node_type = m.get('KvStoreNodeType')
+        if m.get('KvStoreOption') is not None:
+            self.kv_store_option = m.get('KvStoreOption')
+        if m.get('KvStorePassword') is not None:
+            self.kv_store_password = m.get('KvStorePassword')
+        if m.get('KvStoreResourceId') is not None:
+            self.kv_store_resource_id = m.get('KvStoreResourceId')
+        if m.get('KvStoreType') is not None:
+            self.kv_store_type = m.get('KvStoreType')
+        if m.get('OssPath') is not None:
+            self.oss_path = m.get('OssPath')
+        if m.get('OssResourceId') is not None:
+            self.oss_resource_id = m.get('OssResourceId')
+        if m.get('PayPeriod') is not None:
+            self.pay_period = m.get('PayPeriod')
+        if m.get('PayPeriodType') is not None:
+            self.pay_period_type = m.get('PayPeriodType')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('ResourceQuota') is not None:
+            self.resource_quota = m.get('ResourceQuota')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SegDiskPerformanceLevel') is not None:
+            self.seg_disk_performance_level = m.get('SegDiskPerformanceLevel')
+        if m.get('SegNodeNum') is not None:
+            self.seg_node_num = m.get('SegNodeNum')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VectordbAccount') is not None:
+            self.vectordb_account = m.get('VectordbAccount')
+        if m.get('VectordbCategory') is not None:
+            self.vectordb_category = m.get('VectordbCategory')
+        if m.get('VectordbEngineVersion') is not None:
+            self.vectordb_engine_version = m.get('VectordbEngineVersion')
+        if m.get('VectordbInstanceSpec') is not None:
+            self.vectordb_instance_spec = m.get('VectordbInstanceSpec')
+        if m.get('VectordbOption') is not None:
+            self.vectordb_option = m.get('VectordbOption')
+        if m.get('VectordbPassword') is not None:
+            self.vectordb_password = m.get('VectordbPassword')
+        if m.get('VectordbResourceId') is not None:
+            self.vectordb_resource_id = m.get('VectordbResourceId')
+        if m.get('VectordbStorageSize') is not None:
+            self.vectordb_storage_size = m.get('VectordbStorageSize')
+        if m.get('VectordbStorageType') is not None:
+            self.vectordb_storage_type = m.get('VectordbStorageType')
+        if m.get('VectordbType') is not None:
+            self.vectordb_type = m.get('VectordbType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceDescription') is not None:
+            self.workspace_description = m.get('WorkspaceDescription')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        if m.get('WorkspaceOption') is not None:
+            self.workspace_option = m.get('WorkspaceOption')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateDifyInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        replicas: int = None,
+        resource_quota: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        workspace_id: str = None,
+        zone_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.replicas = replicas
+        self.resource_quota = resource_quota
+        self.security_group_id = security_group_id
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.resource_quota is not None:
+            result['ResourceQuota'] = self.resource_quota
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('ResourceQuota') is not None:
+            self.resource_quota = m.get('ResourceQuota')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateDifyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateDifyInstanceResponseBodyData = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateDifyInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDifyInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDifyInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDifyInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15802,6 +16316,184 @@ class DeleteUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDifyDefaultVpcRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        data_region: str = None,
+        workspace_id: str = None,
+    ):
+        self.client_token = client_token
+        self.data_region = data_region
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeDifyDefaultVpcResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        default_vpc_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.default_vpc_id = default_vpc_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_vpc_id is not None:
+            result['DefaultVpcId'] = self.default_vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultVpcId') is not None:
+            self.default_vpc_id = m.get('DefaultVpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeDifyDefaultVpcResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeDifyDefaultVpcResponseBodyData = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeDifyDefaultVpcResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeDifyDefaultVpcResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDifyDefaultVpcResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDifyDefaultVpcResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

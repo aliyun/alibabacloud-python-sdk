@@ -4235,6 +4235,346 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_database_export_order_with_options_async(request, runtime)
 
+    def create_dify_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateDifyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDifyInstanceResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: CreateDifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDifyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.adbpg_instance_mode):
+            query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.database_option):
+            query['DatabaseOption'] = request.database_option
+        if not UtilClient.is_unset(request.db_engine_type):
+            query['DbEngineType'] = request.db_engine_type
+        if not UtilClient.is_unset(request.db_engine_version):
+            query['DbEngineVersion'] = request.db_engine_version
+        if not UtilClient.is_unset(request.db_instance_account):
+            query['DbInstanceAccount'] = request.db_instance_account
+        if not UtilClient.is_unset(request.db_instance_category):
+            query['DbInstanceCategory'] = request.db_instance_category
+        if not UtilClient.is_unset(request.db_instance_class):
+            query['DbInstanceClass'] = request.db_instance_class
+        if not UtilClient.is_unset(request.db_instance_password):
+            query['DbInstancePassword'] = request.db_instance_password
+        if not UtilClient.is_unset(request.db_resource_id):
+            query['DbResourceId'] = request.db_resource_id
+        if not UtilClient.is_unset(request.db_storage_size):
+            query['DbStorageSize'] = request.db_storage_size
+        if not UtilClient.is_unset(request.db_storage_type):
+            query['DbStorageType'] = request.db_storage_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.kv_store_account):
+            query['KvStoreAccount'] = request.kv_store_account
+        if not UtilClient.is_unset(request.kv_store_engine_version):
+            query['KvStoreEngineVersion'] = request.kv_store_engine_version
+        if not UtilClient.is_unset(request.kv_store_instance_class):
+            query['KvStoreInstanceClass'] = request.kv_store_instance_class
+        if not UtilClient.is_unset(request.kv_store_node_type):
+            query['KvStoreNodeType'] = request.kv_store_node_type
+        if not UtilClient.is_unset(request.kv_store_option):
+            query['KvStoreOption'] = request.kv_store_option
+        if not UtilClient.is_unset(request.kv_store_password):
+            query['KvStorePassword'] = request.kv_store_password
+        if not UtilClient.is_unset(request.kv_store_resource_id):
+            query['KvStoreResourceId'] = request.kv_store_resource_id
+        if not UtilClient.is_unset(request.kv_store_type):
+            query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.oss_path):
+            query['OssPath'] = request.oss_path
+        if not UtilClient.is_unset(request.oss_resource_id):
+            query['OssResourceId'] = request.oss_resource_id
+        if not UtilClient.is_unset(request.pay_period):
+            query['PayPeriod'] = request.pay_period
+        if not UtilClient.is_unset(request.pay_period_type):
+            query['PayPeriodType'] = request.pay_period_type
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.resource_quota):
+            query['ResourceQuota'] = request.resource_quota
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.seg_disk_performance_level):
+            query['SegDiskPerformanceLevel'] = request.seg_disk_performance_level
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vectordb_account):
+            query['VectordbAccount'] = request.vectordb_account
+        if not UtilClient.is_unset(request.vectordb_category):
+            query['VectordbCategory'] = request.vectordb_category
+        if not UtilClient.is_unset(request.vectordb_engine_version):
+            query['VectordbEngineVersion'] = request.vectordb_engine_version
+        if not UtilClient.is_unset(request.vectordb_instance_spec):
+            query['VectordbInstanceSpec'] = request.vectordb_instance_spec
+        if not UtilClient.is_unset(request.vectordb_option):
+            query['VectordbOption'] = request.vectordb_option
+        if not UtilClient.is_unset(request.vectordb_password):
+            query['VectordbPassword'] = request.vectordb_password
+        if not UtilClient.is_unset(request.vectordb_resource_id):
+            query['VectordbResourceId'] = request.vectordb_resource_id
+        if not UtilClient.is_unset(request.vectordb_storage_size):
+            query['VectordbStorageSize'] = request.vectordb_storage_size
+        if not UtilClient.is_unset(request.vectordb_storage_type):
+            query['VectordbStorageType'] = request.vectordb_storage_type
+        if not UtilClient.is_unset(request.vectordb_type):
+            query['VectordbType'] = request.vectordb_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_description):
+            query['WorkspaceDescription'] = request.workspace_description
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        if not UtilClient.is_unset(request.workspace_option):
+            query['WorkspaceOption'] = request.workspace_option
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDifyInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDifyInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDifyInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_dify_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDifyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDifyInstanceResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: CreateDifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDifyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.adbpg_instance_mode):
+            query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.database_option):
+            query['DatabaseOption'] = request.database_option
+        if not UtilClient.is_unset(request.db_engine_type):
+            query['DbEngineType'] = request.db_engine_type
+        if not UtilClient.is_unset(request.db_engine_version):
+            query['DbEngineVersion'] = request.db_engine_version
+        if not UtilClient.is_unset(request.db_instance_account):
+            query['DbInstanceAccount'] = request.db_instance_account
+        if not UtilClient.is_unset(request.db_instance_category):
+            query['DbInstanceCategory'] = request.db_instance_category
+        if not UtilClient.is_unset(request.db_instance_class):
+            query['DbInstanceClass'] = request.db_instance_class
+        if not UtilClient.is_unset(request.db_instance_password):
+            query['DbInstancePassword'] = request.db_instance_password
+        if not UtilClient.is_unset(request.db_resource_id):
+            query['DbResourceId'] = request.db_resource_id
+        if not UtilClient.is_unset(request.db_storage_size):
+            query['DbStorageSize'] = request.db_storage_size
+        if not UtilClient.is_unset(request.db_storage_type):
+            query['DbStorageType'] = request.db_storage_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.kv_store_account):
+            query['KvStoreAccount'] = request.kv_store_account
+        if not UtilClient.is_unset(request.kv_store_engine_version):
+            query['KvStoreEngineVersion'] = request.kv_store_engine_version
+        if not UtilClient.is_unset(request.kv_store_instance_class):
+            query['KvStoreInstanceClass'] = request.kv_store_instance_class
+        if not UtilClient.is_unset(request.kv_store_node_type):
+            query['KvStoreNodeType'] = request.kv_store_node_type
+        if not UtilClient.is_unset(request.kv_store_option):
+            query['KvStoreOption'] = request.kv_store_option
+        if not UtilClient.is_unset(request.kv_store_password):
+            query['KvStorePassword'] = request.kv_store_password
+        if not UtilClient.is_unset(request.kv_store_resource_id):
+            query['KvStoreResourceId'] = request.kv_store_resource_id
+        if not UtilClient.is_unset(request.kv_store_type):
+            query['KvStoreType'] = request.kv_store_type
+        if not UtilClient.is_unset(request.oss_path):
+            query['OssPath'] = request.oss_path
+        if not UtilClient.is_unset(request.oss_resource_id):
+            query['OssResourceId'] = request.oss_resource_id
+        if not UtilClient.is_unset(request.pay_period):
+            query['PayPeriod'] = request.pay_period
+        if not UtilClient.is_unset(request.pay_period_type):
+            query['PayPeriodType'] = request.pay_period_type
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.resource_quota):
+            query['ResourceQuota'] = request.resource_quota
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.seg_disk_performance_level):
+            query['SegDiskPerformanceLevel'] = request.seg_disk_performance_level
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vectordb_account):
+            query['VectordbAccount'] = request.vectordb_account
+        if not UtilClient.is_unset(request.vectordb_category):
+            query['VectordbCategory'] = request.vectordb_category
+        if not UtilClient.is_unset(request.vectordb_engine_version):
+            query['VectordbEngineVersion'] = request.vectordb_engine_version
+        if not UtilClient.is_unset(request.vectordb_instance_spec):
+            query['VectordbInstanceSpec'] = request.vectordb_instance_spec
+        if not UtilClient.is_unset(request.vectordb_option):
+            query['VectordbOption'] = request.vectordb_option
+        if not UtilClient.is_unset(request.vectordb_password):
+            query['VectordbPassword'] = request.vectordb_password
+        if not UtilClient.is_unset(request.vectordb_resource_id):
+            query['VectordbResourceId'] = request.vectordb_resource_id
+        if not UtilClient.is_unset(request.vectordb_storage_size):
+            query['VectordbStorageSize'] = request.vectordb_storage_size
+        if not UtilClient.is_unset(request.vectordb_storage_type):
+            query['VectordbStorageType'] = request.vectordb_storage_type
+        if not UtilClient.is_unset(request.vectordb_type):
+            query['VectordbType'] = request.vectordb_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_description):
+            query['WorkspaceDescription'] = request.workspace_description
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        if not UtilClient.is_unset(request.workspace_option):
+            query['WorkspaceOption'] = request.workspace_option
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDifyInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDifyInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDifyInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_dify_instance(
+        self,
+        request: dms_enterprise_20181101_models.CreateDifyInstanceRequest,
+    ) -> dms_enterprise_20181101_models.CreateDifyInstanceResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: CreateDifyInstanceRequest
+        @return: CreateDifyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dify_instance_with_options(request, runtime)
+
+    async def create_dify_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDifyInstanceRequest,
+    ) -> dms_enterprise_20181101_models.CreateDifyInstanceResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: CreateDifyInstanceRequest
+        @return: CreateDifyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dify_instance_with_options_async(request, runtime)
+
     def create_free_lock_correct_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
@@ -8654,6 +8994,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
+
+    def describe_dify_default_vpc_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyDefaultVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyDefaultVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDifyDefaultVpcResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDifyDefaultVpc',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_dify_default_vpc_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyDefaultVpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyDefaultVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDifyDefaultVpcResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDifyDefaultVpc',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_dify_default_vpc(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyDefaultVpcRequest,
+    ) -> dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyDefaultVpcRequest
+        @return: DescribeDifyDefaultVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dify_default_vpc_with_options(request, runtime)
+
+    async def describe_dify_default_vpc_async(
+        self,
+        request: dms_enterprise_20181101_models.DescribeDifyDefaultVpcRequest,
+    ) -> dms_enterprise_20181101_models.DescribeDifyDefaultVpcResponse:
+        """
+        @summary 用于创建DIFY实例及相关资源，支持自定义配置。
+        
+        @description ## 请求说明
+        - `workspaceOption` 参数指示是否新建工作空间，默认使用已有工作空间。
+        - 如果选择新建工作空间 (`CreateNewInstance`)，则必须提供 `workspaceName` 和 `workspaceDescription`。
+        - `vpcId`, `VSwitchID`, `zoneId`, `regionCode`, `ResourceQuota`, `Replicas`, `storageType`, `dbInstanceClass`, `dbEngineVersion`, `kvstoreEngineVersion` 是必填项。
+        - 当 `storageType` 为 `oss` 时，需要指定 `ossBucketResourceId` 和 `ossPath`。
+        - 如果需要新建数据库实例，则必须提供 `instanceAccount` 和 `instancePassword`。
+        - 预付费模式下，`PayPeriodType` 和 `PayPeriod` 必须填写。
+        - 可以通过设置 `dryRun` 为 `true` 来执行预检查而不实际创建实例。
+        
+        @param request: DescribeDifyDefaultVpcRequest
+        @return: DescribeDifyDefaultVpcResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dify_default_vpc_with_options_async(request, runtime)
 
     def disable_user_with_options(
         self,

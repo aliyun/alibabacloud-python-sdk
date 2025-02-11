@@ -1,3 +1,9 @@
+2025-02-11 Version: 1.66.0
+- Support API CreateDifyInstance.
+- Support API DescribeDifyDefaultVpc.
+- Update API CreateDataImportOrder: update param Param.
+
+
 2025-01-20 Version: 1.65.2
 - Update API CreateDataCorrectOrder: update param Param.
 - Update API CreateFreeLockCorrectOrder: add param RealLoginUserUid.
