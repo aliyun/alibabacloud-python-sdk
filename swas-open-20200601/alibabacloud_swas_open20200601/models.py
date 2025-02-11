@@ -500,7 +500,7 @@ class AttachKeyPairResponseBody(TeaModel):
         self.fail_count = fail_count
         # The request ID.
         self.request_id = request_id
-        # The results.
+        # The request results.
         self.results = results
         # The total number of simple application servers to which the key pair is bound.
         self.total_count = total_count
@@ -2187,7 +2187,7 @@ class CreateInstancesRequest(TeaModel):
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: months. Valid values: 1, 3, 6, 12, 24, and 36.
+        # The auto-renewal period. This parameter is required only when you set `AutoRenew` to true. Unit: month. Valid values: 1, 3, 6, 12, 24, and 36.
         self.auto_renew_period = auto_renew_period
         # The billing method of the simple application servers. Set the value to PrePaid, which indicates the subscription billing method.
         # 
@@ -6818,6 +6818,8 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 30 to 100.
         # 
+        # Maximum value: 100.
+        # 
         # Default value: 30.
         self.page_size = page_size
         # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
@@ -8100,7 +8102,7 @@ class DescribeInstancePasswordsSettingResponseBody(TeaModel):
         self.instance_password_setting = instance_password_setting
         # The request ID.
         self.request_id = request_id
-        # Indicates whether a VNC connection password is set.
+        # Indicates whether a VNC connection password is set for the simple application server.
         self.vnc_password_setting = vnc_password_setting
 
     def validate(self):
@@ -8896,13 +8898,7 @@ class DescribeMonitorDataRequest(TeaModel):
         self.next_token = next_token
         # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
         # 
-        # > 
-        # 
-        # If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
-        # 
-        # **\
-        # 
-        # ****\
+        # > If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
         # 
         # This parameter is required.
         self.period = period
@@ -8914,14 +8910,9 @@ class DescribeMonitorDataRequest(TeaModel):
         # 
         # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 January 1, 1970.
         # *   Time format: YYYY-MM-DDThh:mm:ssZ.
-        # 
-        # > The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.
-        # 
-        # The interval between the start time and the end time is less than or equal to 31 days.
-        # 
-        # **\
-        # 
-        # ****\
+        # > 
+        # > - The specified time range includes the end time and excludes the start time. The start time must be earlier than the end time.
+        # > - The interval between the start time and the end time is less than or equal to 31 days.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -8992,13 +8983,7 @@ class DescribeMonitorDataResponseBody(TeaModel):
         self.next_token = next_token
         # The interval at which the monitoring data is queried. Valid values: 60, 300, and 900. Unit: seconds.
         # 
-        # > 
-        # 
-        # If MetricName is set to FLOW_USED, the value of Period is 3600 (one hour).
-        # 
-        # **\
-        # 
-        # ****\
+        # > If MetricName is set to FLOW_USED, Period is set to 3600 (one hour). In other cases, set Period based on your business requirements.
         self.period = period
         # The request ID.
         self.request_id = request_id
@@ -10749,11 +10734,15 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
         self.os_type = os_type
         # The region ID.
         self.region_id = region_id
+        # The size of the image data disk. Unit: GiB.
         self.required_data_disk_size = required_data_disk_size
+        # The size of the image system disk. Unit: GiB.
         self.required_system_disk_size = required_system_disk_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the source image that is used to create the simple application server.
         self.source_image_name = source_image_name
+        # The version of the source image that is used to create the simple application server.
         self.source_image_version = source_image_version
         # The status of the custom image. Valid values:
         # 
@@ -11874,10 +11863,7 @@ class ListImagesResponseBody(TeaModel):
         images: List[ListImagesResponseBodyImages] = None,
         request_id: str = None,
     ):
-        # The OS type of the image. Valid values:
-        # 
-        # *   Linux
-        # *   Windows
+        # The information of the image.
         self.images = images
         # The request ID.
         self.request_id = request_id
@@ -12611,7 +12597,7 @@ class ListInstancesResponseBodyInstancesDisks(TeaModel):
         self.remark = remark
         # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
-        # The disk size. Unit: GB.
+        # The disk size. Unit: GiB.
         self.size = size
         # The status of the disk. Valid values:
         # 
@@ -12776,7 +12762,7 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         flow: float = None,
         memory: float = None,
     ):
-        # The bandwidth of the server.
+        # The bandwidth of the server. Unit: Mbps.
         self.bandwidth = bandwidth
         # The number of vCPUs of the simple application server.
         self.cpu = cpu
@@ -12786,14 +12772,14 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         # *   SSD: standard SSD
         # *   CLOUD_EFFICIENCY: ultra disk
         self.disk_category = disk_category
-        # The disk size.
+        # The disk size. Unit: GiB.
         self.disk_size = disk_size
         # The amount of the traffic.
         # 
         # *   A value of 0 indicates the traffic amount of a bandwidth-based simple application server.
         # *   A non-zero value indicates the traffic amount of a data transfer plan-based simple application server.
         self.flow = flow
-        # The memory size of the server.
+        # The memory size of the server. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -13729,7 +13715,7 @@ class ListPlansResponseBody(TeaModel):
         plans: List[ListPlansResponseBodyPlans] = None,
         request_id: str = None,
     ):
-        # The operating system types supported by the plan.
+        # Details about the plans.
         self.plans = plans
         # The request ID.
         self.request_id = request_id
@@ -14496,7 +14482,14 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource. Valid values:
+        # 
+        # *   instance
+        # *   snapshot
+        # *   customimage
+        # *   command
+        # *   firewallrule
+        # *   disk
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key
@@ -14581,7 +14574,7 @@ class ListTagResourcesResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A collection of resource IDs and tags. The information includes the resource IDs, resource types, and key-value pairs.
+        # A collection of resources and the tags of the resources. The information includes the resource IDs, resource types, and key-value pairs of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -14673,12 +14666,12 @@ class LoginInstanceRequest(TeaModel):
         # *   For a Linux server, you do not need to enter a password.
         # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](https://help.aliyun.com/document_detail/60055.html).
         self.password = password
-        # Remote login instance port number:
+        # The port number that is used to log on to the simple application server by using Workbench.
         # 
-        # - Linux Server: Default is 22.
-        # - Windows Server: Default is 3389.
+        # *   Linux servers: The default value is 22.
+        # *   Windows servers: The default value is 3389.
         # 
-        # > If you need to connect to the server using a custom port, you must first modify the server\\"s default remote port. For more information, see [Set a custom port to connect to a simple application server](https://help.aliyun.com/document_detail/2807402.html).
+        # >  If you want to connect to a server by using a custom port, you must modify the default remote connection port. For more information, see [Configure a custom remote connection port](https://help.aliyun.com/document_detail/2807402.html).
         self.port = port
         # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
         # 
@@ -15576,7 +15569,7 @@ class ModifyInstanceVncPasswordRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The existing VNC password.
+        # The VNC connection password.
         self.vnc_password = vnc_password
 
     def validate(self):
@@ -16293,7 +16286,7 @@ class ResetDatabaseAccountPasswordRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The password of the database administrator account.
+        # The password of the administrator account of the Simple Database Service instance.
         # 
         # This parameter is required.
         self.account_password = account_password
@@ -16533,12 +16526,46 @@ class ResetDiskResponse(TeaModel):
         return self
 
 
+class ResetSystemRequestLoginCredentials(TeaModel):
+    def __init__(
+        self,
+        key_pair_name: str = None,
+        password: str = None,
+    ):
+        self.key_pair_name = key_pair_name
+        self.password = password
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.password is not None:
+            result['Password'] = self.password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        return self
+
+
 class ResetSystemRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         image_id: str = None,
         instance_id: str = None,
+        login_credentials: ResetSystemRequestLoginCredentials = None,
         region_id: str = None,
     ):
         # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html)
@@ -16549,13 +16576,15 @@ class ResetSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.login_credentials = login_credentials
         # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
-        pass
+        if self.login_credentials:
+            self.login_credentials.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16569,6 +16598,8 @@ class ResetSystemRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.login_credentials is not None:
+            result['LoginCredentials'] = self.login_credentials.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -16581,6 +16612,9 @@ class ResetSystemRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LoginCredentials') is not None:
+            temp_model = ResetSystemRequestLoginCredentials()
+            self.login_credentials = temp_model.from_map(m['LoginCredentials'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -16836,9 +16870,9 @@ class RunCommandRequest(TeaModel):
         # 
         # This parameter is required.
         self.type = type
-        # The name of the password to be used to run the command on a Windows server.
+        # The name of the password used to run the command on a Windows simple application server.
         # 
-        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of CloudOps Orchestration Service (OOS) to mitigate the risk of password leaks. Only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
         # The execution path of the command. Custom paths are supported. Default execution paths vary based on the operating systems of the servers.
         # 
@@ -16977,9 +17011,9 @@ class RunCommandShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.type = type
-        # The name of the password to be used to run the command on a Windows server.
+        # The name of the password used to run the command on a Windows simple application server.
         # 
-        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
+        # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. The password is hosted in plaintext in the parameter repository of CloudOps Orchestration Service (OOS) to mitigate the risk of password leaks. Only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
         # The execution path of the command. Custom paths are supported. Default execution paths vary based on the operating systems of the servers.
         # 
@@ -18569,9 +18603,9 @@ class UpdateInstanceAttributeRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the simple application server. The name must be 2 to 50 characters in length. It can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter or digit. Domain names are supported.
         self.instance_name = instance_name
-        # The new password of the simple application server. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters:
+        # The new password of the simple application server. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         #     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/\
         # 

@@ -80,10 +80,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AddCustomImageShareAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AddCustomImageShareAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AddCustomImageShareAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_custom_image_share_account_with_options_async(
         self,
@@ -124,10 +130,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AddCustomImageShareAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AddCustomImageShareAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AddCustomImageShareAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_custom_image_share_account(
         self,
@@ -197,10 +209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AllocatePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AllocatePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AllocatePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_public_connection_with_options_async(
         self,
@@ -238,10 +256,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AllocatePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AllocatePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AllocatePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_public_connection(
         self,
@@ -311,10 +335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ApplyFirewallTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ApplyFirewallTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ApplyFirewallTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def apply_firewall_template_with_options_async(
         self,
@@ -354,10 +384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ApplyFirewallTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ApplyFirewallTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ApplyFirewallTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def apply_firewall_template(
         self,
@@ -427,10 +463,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AttachKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AttachKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AttachKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_key_pair_with_options_async(
         self,
@@ -470,10 +512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.AttachKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.AttachKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.AttachKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_key_pair(
         self,
@@ -553,10 +601,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateCommandResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCommandResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCommandResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_command_with_options_async(
         self,
@@ -606,10 +660,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateCommandResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCommandResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCommandResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_command(
         self,
@@ -645,17 +705,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image based on a snapshot of a simple application server.
         
-        @description A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+        @description A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
         You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
-        > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+        >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
         Before you create a custom image, take note of the following items:
         The custom image and the corresponding simple application server must reside in the same region.
-        The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
-        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
-        If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
-        If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+        If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
         
         @param request: CreateCustomImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -695,10 +753,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateCustomImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCustomImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCustomImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_custom_image_with_options_async(
         self,
@@ -708,17 +772,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image based on a snapshot of a simple application server.
         
-        @description A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+        @description A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
         You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
-        > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+        >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
         Before you create a custom image, take note of the following items:
         The custom image and the corresponding simple application server must reside in the same region.
-        The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
-        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
-        If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
-        If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+        If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
         
         @param request: CreateCustomImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -758,10 +820,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateCustomImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCustomImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateCustomImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_custom_image(
         self,
@@ -770,17 +838,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image based on a snapshot of a simple application server.
         
-        @description A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+        @description A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
         You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
-        > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+        >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
         Before you create a custom image, take note of the following items:
         The custom image and the corresponding simple application server must reside in the same region.
-        The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
-        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
-        If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
-        If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+        If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
         
         @param request: CreateCustomImageRequest
         @return: CreateCustomImageResponse
@@ -795,17 +861,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a custom image based on a snapshot of a simple application server.
         
-        @description A custom image is created based on a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
+        @description A custom image is created from a snapshot of a simple application server. You can use a custom image to create multiple simple application servers that have the same configurations. You can also share custom images to ECS and use the shared images to create ECS instances or replace the OSs of existing ECS instances. For more information about custom images, see [Overview of custom images](https://help.aliyun.com/document_detail/199375.html).
         You must create a system disk snapshot of a simple application server before you create a custom image based on the snapshot. For more information, see [CreateSnapshot](https://help.aliyun.com/document_detail/190452.html).
-        > If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
+        >  If you need the data on the data disk of a simple application server when you create a custom image, create a snapshot for the data disk first.
         Before you create a custom image, take note of the following items:
         The custom image and the corresponding simple application server must reside in the same region.
-        The maximum number of custom images that can be maintained in an Alibaba Cloud account is triple the number of simple application servers in the account. The value cannot be greater than 15.
-        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot when you create the custom image.
-        If a simple application server is released due to expiration or refunds, the custom images that are created based on a snapshot of the server are also released.
-        If you reset a simple application server by changing the application system or OS of the server or replacing the image of the server, the disk data on the server is cleared. Back up the disk data as needed.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        The maximum number of custom images that you can create is 3 times the number of simple application servers that you have, but cannot exceed 15.
+        You can directly create a custom image only based on the system disk snapshot of a simple application server. If you want a custom image to contain the data on the data disk of the simple application server, you must select a data disk snapshot in addition to a system disk snapshot when you create the custom image.
+        If a simple application server is released due to expiration or refunds, the custom images that are created based on the server are also released.
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
         
         @param request: CreateCustomImageRequest
         @return: CreateCustomImageResponse
@@ -855,10 +919,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_firewall_rule_with_options_async(
         self,
@@ -902,10 +972,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_firewall_rule(
         self,
@@ -981,10 +1057,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_firewall_rules_with_options_async(
         self,
@@ -1030,10 +1112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_firewall_rules(
         self,
@@ -1103,10 +1191,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_firewall_template_with_options_async(
         self,
@@ -1146,10 +1240,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_firewall_template(
         self,
@@ -1217,10 +1317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_firewall_template_rules_with_options_async(
         self,
@@ -1258,10 +1364,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateFirewallTemplateRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_firewall_template_rules(
         self,
@@ -1329,10 +1441,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateInstanceKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstanceKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstanceKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_instance_key_pair_with_options_async(
         self,
@@ -1370,10 +1488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateInstanceKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstanceKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstanceKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_instance_key_pair(
         self,
@@ -1409,8 +1533,9 @@ class Client(OpenApiClient):
         """
         @summary Creates subscription simple application servers.
         
-        @description    Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
-        A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+        @description    Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+        >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+        You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
         When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
         
         @param request: CreateInstancesRequest
@@ -1453,10 +1578,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_instances_with_options_async(
         self,
@@ -1466,8 +1597,9 @@ class Client(OpenApiClient):
         """
         @summary Creates subscription simple application servers.
         
-        @description    Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
-        A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+        @description    Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+        >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+        You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
         When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
         
         @param request: CreateInstancesRequest
@@ -1510,10 +1642,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_instances(
         self,
@@ -1522,8 +1660,9 @@ class Client(OpenApiClient):
         """
         @summary Creates subscription simple application servers.
         
-        @description    Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
-        A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+        @description    Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+        >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+        You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
         When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
         
         @param request: CreateInstancesRequest
@@ -1539,8 +1678,9 @@ class Client(OpenApiClient):
         """
         @summary Creates subscription simple application servers.
         
-        @description    Before you call this operation, we recommend that you understand the billing of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
-        A maximum of 20 simple application servers can be created within an Alibaba Cloud account.
+        @description    Before you call this operation, we recommend that you understand the billing rules of Simple Application Server. For more information, see [Billable items](https://help.aliyun.com/document_detail/58623.html).
+        >  If you have coupons in your Alibaba Cloud account, the coupons are preferentially used to pay for the simple application servers.
+        You can create a maximum of 50 simple application servers in a region for an Alibaba Cloud account.
         When you call this operation to create simple application servers, make sure that the balance in your account is sufficient to pay for the servers. If the balance in your account is insufficient, the servers cannot be created.
         
         @param request: CreateInstancesRequest
@@ -1588,10 +1728,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_key_pair_with_options_async(
         self,
@@ -1632,10 +1778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_key_pair(
         self,
@@ -1681,15 +1833,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a snapshot for a disk.
         
-        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
-        > You are not charged for creating snapshots for disks of simple application servers.
-        ### Precautions
-        You can create up to three snapshots for disks of each simple application server.
-        The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
+        >  You are not charged for creating snapshots in Simple Application Server.
+        ### [](#)Precautions
+        You can create up to three snapshots for each simple application server.
+        The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
         If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
-        If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1723,10 +1873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateSnapshotResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateSnapshotResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateSnapshotResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_snapshot_with_options_async(
         self,
@@ -1736,15 +1892,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a snapshot for a disk.
         
-        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
-        > You are not charged for creating snapshots for disks of simple application servers.
-        ### Precautions
-        You can create up to three snapshots for disks of each simple application server.
-        The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
+        >  You are not charged for creating snapshots in Simple Application Server.
+        ### [](#)Precautions
+        You can create up to three snapshots for each simple application server.
+        The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
         If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
-        If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1778,10 +1932,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.CreateSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateSnapshotResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.CreateSnapshotResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_snapshot(
         self,
@@ -1790,15 +1950,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a snapshot for a disk.
         
-        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
-        > You are not charged for creating snapshots for disks of simple application servers.
-        ### Precautions
-        You can create up to three snapshots for disks of each simple application server.
-        The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
+        >  You are not charged for creating snapshots in Simple Application Server.
+        ### [](#)Precautions
+        You can create up to three snapshots for each simple application server.
+        The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
         If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
-        If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -1813,15 +1971,13 @@ class Client(OpenApiClient):
         """
         @summary Creates a snapshot for a disk.
         
-        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after accidental operations on instances, recover data after network attacks, and create custom images.
-        > You are not charged for creating snapshots for disks of simple application servers.
-        ### Precautions
-        You can create up to three snapshots for disks of each simple application server.
-        The maximum number of snapshots that can be retained in an Alibaba Cloud account is triple the number of simple application servers that you maintain. The value cannot be greater than 15.
+        @description A snapshot is a point-in-time backup of a disk. Snapshots can be used to back up data, recover data after misoperations on servers, recover data after network attacks, and create custom images.
+        >  You are not charged for creating snapshots in Simple Application Server.
+        ### [](#)Precautions
+        You can create up to three snapshots for each simple application server.
+        The maximum number of snapshots that you create per Alibaba Cloud account is triple of the number of simple application servers that are created. The value cannot be greater than 15.
         If a simple application server is automatically released due to expiration, the snapshots created for the server are deleted.
-        If you reset the simple application server after you create a snapshot for a server, the snapshot is retained but cannot be used to roll back the disks of the server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
+        If you reset a simple application server after you create a snapshot for the server, the snapshot is retained but cannot be used to restore the disks of the server.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -1863,10 +2019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCommandResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCommandResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCommandResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_command_with_options_async(
         self,
@@ -1902,10 +2064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCommandResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCommandResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCommandResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_command(
         self,
@@ -1974,10 +2142,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCustomImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_image_with_options_async(
         self,
@@ -2016,10 +2190,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCustomImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_image(
         self,
@@ -2061,7 +2241,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes custom images. If you no longer require a custom image, you can call this operation to delete the custom image. You can also call this operation to delete multiple custom images at the same time. After a custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
         
-        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
         
         @param request: DeleteCustomImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2089,10 +2269,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCustomImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_custom_images_with_options_async(
         self,
@@ -2102,7 +2288,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes custom images. If you no longer require a custom image, you can call this operation to delete the custom image. You can also call this operation to delete multiple custom images at the same time. After a custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
         
-        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
         
         @param request: DeleteCustomImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2130,10 +2316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteCustomImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteCustomImagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_custom_images(
         self,
@@ -2142,7 +2334,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes custom images. If you no longer require a custom image, you can call this operation to delete the custom image. You can also call this operation to delete multiple custom images at the same time. After a custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
         
-        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
         
         @param request: DeleteCustomImagesRequest
         @return: DeleteCustomImagesResponse
@@ -2157,7 +2349,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes custom images. If you no longer require a custom image, you can call this operation to delete the custom image. You can also call this operation to delete multiple custom images at the same time. After a custom image is deleted, you cannot use the custom image to reset the simple application servers that were created based on the custom image.
         
-        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see the "Copy custom images" topic.
+        @description If a custom image is shared, you must unshare the image before you can delete it. After a custom image is unshared, you cannot query the custom image by using the Elastic Compute Service (ECS) console or by calling an ECS API operation. If you want to use a custom image to create ECS instances, we recommend that you copy the custom image before you delete it. For more information, see [Copy a custom image](https://help.aliyun.com/document_detail/199378.html).
         
         @param request: DeleteCustomImagesRequest
         @return: DeleteCustomImagesResponse
@@ -2203,10 +2395,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_firewall_rule_with_options_async(
         self,
@@ -2246,10 +2444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_firewall_rule(
         self,
@@ -2323,10 +2527,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_firewall_rules_with_options_async(
         self,
@@ -2370,10 +2580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_firewall_rules(
         self,
@@ -2443,10 +2659,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_firewall_template_rules_with_options_async(
         self,
@@ -2486,10 +2708,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplateRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_firewall_template_rules(
         self,
@@ -2557,10 +2785,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplatesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_firewall_templates_with_options_async(
         self,
@@ -2598,10 +2832,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteFirewallTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteFirewallTemplatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_firewall_templates(
         self,
@@ -2667,10 +2907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteInstanceKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteInstanceKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteInstanceKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_instance_key_pair_with_options_async(
         self,
@@ -2706,10 +2952,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteInstanceKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteInstanceKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteInstanceKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_instance_key_pair(
         self,
@@ -2773,10 +3025,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteKeyPairsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteKeyPairsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteKeyPairsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_key_pairs_with_options_async(
         self,
@@ -2814,10 +3072,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteKeyPairsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteKeyPairsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteKeyPairsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_key_pairs(
         self,
@@ -2886,10 +3150,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteSnapshotResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_snapshot_with_options_async(
         self,
@@ -2928,10 +3198,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_snapshot(
         self,
@@ -2999,10 +3275,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteSnapshotsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_snapshots_with_options_async(
         self,
@@ -3038,10 +3320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DeleteSnapshotsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DeleteSnapshotsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_snapshots(
         self,
@@ -3109,10 +3397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cloud_assistant_attributes_with_options_async(
         self,
@@ -3154,10 +3448,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantAttributesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cloud_assistant_attributes(
         self,
@@ -3227,10 +3527,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cloud_assistant_status_with_options_async(
         self,
@@ -3274,10 +3580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudAssistantStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cloud_assistant_status(
         self,
@@ -3343,10 +3655,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cloud_monitor_agent_statuses_with_options_async(
         self,
@@ -3382,10 +3700,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCloudMonitorAgentStatusesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cloud_monitor_agent_statuses(
         self,
@@ -3459,10 +3783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCommandInvocationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandInvocationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandInvocationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_command_invocations_with_options_async(
         self,
@@ -3510,10 +3840,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCommandInvocationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandInvocationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandInvocationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_command_invocations(
         self,
@@ -3587,10 +3923,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCommandsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_commands_with_options_async(
         self,
@@ -3638,10 +3980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeCommandsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeCommandsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_commands(
         self,
@@ -3711,10 +4059,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_database_error_logs_with_options_async(
         self,
@@ -3758,10 +4112,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseErrorLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_database_error_logs(
         self,
@@ -3833,10 +4193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_database_instance_metric_data_with_options_async(
         self,
@@ -3878,10 +4244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceMetricDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_database_instance_metric_data(
         self,
@@ -3947,10 +4319,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_database_instance_parameters_with_options_async(
         self,
@@ -3986,10 +4364,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstanceParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_database_instance_parameters(
         self,
@@ -4059,10 +4443,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_database_instances_with_options_async(
         self,
@@ -4102,10 +4492,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_database_instances(
         self,
@@ -4180,10 +4576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_database_slow_log_records_with_options_async(
         self,
@@ -4228,10 +4630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeDatabaseSlowLogRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_database_slow_log_records(
         self,
@@ -4305,10 +4713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_firewall_template_apply_results_with_options_async(
         self,
@@ -4350,10 +4764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateApplyResultsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_firewall_template_apply_results(
         self,
@@ -4419,10 +4839,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_firewall_template_rules_apply_result_with_options_async(
         self,
@@ -4462,10 +4888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplateRulesApplyResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_firewall_template_rules_apply_result(
         self,
@@ -4531,10 +4963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplatesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplatesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplatesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_firewall_templates_with_options_async(
         self,
@@ -4574,10 +5012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeFirewallTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplatesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeFirewallTemplatesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_firewall_templates(
         self,
@@ -4639,10 +5083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstanceKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_key_pair_with_options_async(
         self,
@@ -4678,10 +5128,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstanceKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_key_pair(
         self,
@@ -4743,10 +5199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_passwords_setting_with_options_async(
         self,
@@ -4782,10 +5244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstancePasswordsSettingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_passwords_setting(
         self,
@@ -4847,10 +5315,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstanceVncUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceVncUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceVncUrlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_vnc_url_with_options_async(
         self,
@@ -4886,10 +5360,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInstanceVncUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceVncUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInstanceVncUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_vnc_url(
         self,
@@ -4954,10 +5434,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInvocationResultResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationResultResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_invocation_result_with_options_async(
         self,
@@ -4996,10 +5482,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInvocationResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_invocation_result(
         self,
@@ -5074,10 +5566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInvocationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_invocations_with_options_async(
         self,
@@ -5120,10 +5618,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeInvocationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeInvocationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_invocations(
         self,
@@ -5203,10 +5707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeMonitorDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeMonitorDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeMonitorDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_monitor_data_with_options_async(
         self,
@@ -5254,10 +5764,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeMonitorDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeMonitorDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_monitor_data(
         self,
@@ -5319,10 +5835,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_security_agent_status_with_options_async(
         self,
@@ -5358,10 +5880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DescribeSecurityAgentStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_security_agent_status(
         self,
@@ -5427,10 +5955,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DetachKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DetachKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DetachKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_key_pair_with_options_async(
         self,
@@ -5470,10 +6004,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DetachKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DetachKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DetachKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_key_pair(
         self,
@@ -5543,10 +6083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DisableFirewallRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DisableFirewallRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DisableFirewallRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_firewall_rule_with_options_async(
         self,
@@ -5586,10 +6132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.DisableFirewallRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.DisableFirewallRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.DisableFirewallRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_firewall_rule(
         self,
@@ -5657,10 +6209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.EnableFirewallRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.EnableFirewallRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.EnableFirewallRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_firewall_rule_with_options_async(
         self,
@@ -5702,10 +6260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.EnableFirewallRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.EnableFirewallRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.EnableFirewallRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_firewall_rule(
         self,
@@ -5771,10 +6335,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ImportKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ImportKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ImportKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def import_key_pair_with_options_async(
         self,
@@ -5814,10 +6384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ImportKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ImportKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ImportKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def import_key_pair(
         self,
@@ -5887,10 +6463,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InstallCloudAssistantResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudAssistantResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudAssistantResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def install_cloud_assistant_with_options_async(
         self,
@@ -5930,10 +6512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InstallCloudAssistantResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudAssistantResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudAssistantResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def install_cloud_assistant(
         self,
@@ -6001,10 +6589,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InstallCloudMonitorAgentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudMonitorAgentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudMonitorAgentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def install_cloud_monitor_agent_with_options_async(
         self,
@@ -6042,10 +6636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InstallCloudMonitorAgentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudMonitorAgentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InstallCloudMonitorAgentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def install_cloud_monitor_agent(
         self,
@@ -6123,10 +6723,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InvokeCommandResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InvokeCommandResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InvokeCommandResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def invoke_command_with_options_async(
         self,
@@ -6178,10 +6784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.InvokeCommandResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.InvokeCommandResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.InvokeCommandResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def invoke_command(
         self,
@@ -6263,10 +6875,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListCustomImageShareAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImageShareAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImageShareAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_custom_image_share_accounts_with_options_async(
         self,
@@ -6306,10 +6924,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListCustomImageShareAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImageShareAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImageShareAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_custom_image_share_accounts(
         self,
@@ -6389,10 +7013,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListCustomImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_custom_images_with_options_async(
         self,
@@ -6446,10 +7076,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListCustomImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListCustomImagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_custom_images(
         self,
@@ -6523,10 +7159,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListDisksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListDisksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListDisksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_disks_with_options_async(
         self,
@@ -6574,10 +7216,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListDisksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListDisksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListDisksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_disks(
         self,
@@ -6651,10 +7299,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListFirewallRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListFirewallRulesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListFirewallRulesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_firewall_rules_with_options_async(
         self,
@@ -6698,10 +7352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListFirewallRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListFirewallRulesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListFirewallRulesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_firewall_rules(
         self,
@@ -6769,10 +7429,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListImagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListImagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListImagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_images_with_options_async(
         self,
@@ -6810,10 +7476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListImagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListImagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListImagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_images(
         self,
@@ -6881,10 +7553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancePlansModificationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancePlansModificationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancePlansModificationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instance_plans_modification_with_options_async(
         self,
@@ -6922,10 +7600,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancePlansModificationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancePlansModificationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancePlansModificationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instance_plans_modification(
         self,
@@ -6997,10 +7681,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstanceStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstanceStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstanceStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instance_status_with_options_async(
         self,
@@ -7038,10 +7728,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstanceStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstanceStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstanceStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instance_status(
         self,
@@ -7119,10 +7815,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instances_with_options_async(
         self,
@@ -7174,10 +7876,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instances(
         self,
@@ -7248,10 +7956,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instances_traffic_packages_with_options_async(
         self,
@@ -7292,10 +8006,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListInstancesTrafficPackagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instances_traffic_packages(
         self,
@@ -7365,10 +8085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListKeyPairsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListKeyPairsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListKeyPairsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_key_pairs_with_options_async(
         self,
@@ -7398,10 +8124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListKeyPairsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListKeyPairsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListKeyPairsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_key_pairs(
         self,
@@ -7461,10 +8193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListPlansResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListPlansResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListPlansResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_plans_with_options_async(
         self,
@@ -7498,10 +8236,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListPlansResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListPlansResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListPlansResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_plans(
         self,
@@ -7565,10 +8309,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_regions_with_options_async(
         self,
@@ -7602,10 +8352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_regions(
         self,
@@ -7685,10 +8441,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListSnapshotsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListSnapshotsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListSnapshotsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_snapshots_with_options_async(
         self,
@@ -7738,10 +8500,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListSnapshotsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListSnapshotsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListSnapshotsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_snapshots(
         self,
@@ -7813,10 +8581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -7858,10 +8632,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -7929,10 +8709,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.LoginInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.LoginInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.LoginInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def login_instance_with_options_async(
         self,
@@ -7974,10 +8760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.LoginInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.LoginInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.LoginInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def login_instance(
         self,
@@ -8049,10 +8841,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_database_instance_description_with_options_async(
         self,
@@ -8094,10 +8892,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_database_instance_description(
         self,
@@ -8175,10 +8979,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_database_instance_parameter_with_options_async(
         self,
@@ -8222,10 +9032,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyDatabaseInstanceParameterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_database_instance_parameter(
         self,
@@ -8305,10 +9121,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyFirewallRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallRuleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallRuleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_firewall_rule_with_options_async(
         self,
@@ -8354,10 +9176,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyFirewallRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallRuleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallRuleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_firewall_rule(
         self,
@@ -8427,10 +9255,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyFirewallTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_firewall_template_with_options_async(
         self,
@@ -8474,10 +9308,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyFirewallTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyFirewallTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_firewall_template(
         self,
@@ -8551,10 +9391,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyImageShareStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyImageShareStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyImageShareStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_image_share_status_with_options_async(
         self,
@@ -8598,10 +9444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyImageShareStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyImageShareStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyImageShareStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_image_share_status(
         self,
@@ -8677,10 +9529,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_instance_vnc_password_with_options_async(
         self,
@@ -8718,10 +9576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ModifyInstanceVncPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_instance_vnc_password(
         self,
@@ -8786,10 +9650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RebootInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reboot_instance_with_options_async(
         self,
@@ -8828,10 +9698,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RebootInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reboot_instance(
         self,
@@ -8901,10 +9777,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RebootInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reboot_instances_with_options_async(
         self,
@@ -8942,10 +9824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RebootInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RebootInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reboot_instances(
         self,
@@ -9011,10 +9899,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ReleasePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ReleasePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ReleasePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_public_connection_with_options_async(
         self,
@@ -9054,10 +9948,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ReleasePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ReleasePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ReleasePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_public_connection(
         self,
@@ -9129,10 +10029,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def remove_custom_image_share_account_with_options_async(
         self,
@@ -9170,10 +10076,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RemoveCustomImageShareAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def remove_custom_image_share_account(
         self,
@@ -9240,10 +10152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RenewInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RenewInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def renew_instance_with_options_async(
         self,
@@ -9284,10 +10202,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RenewInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RenewInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def renew_instance(
         self,
@@ -9361,10 +10285,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_database_account_password_with_options_async(
         self,
@@ -9406,10 +10336,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDatabaseAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_database_account_password(
         self,
@@ -9486,10 +10422,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetDiskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDiskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDiskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_disk_with_options_async(
         self,
@@ -9532,10 +10474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetDiskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDiskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetDiskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_disk(
         self,
@@ -9581,29 +10529,26 @@ class Client(OpenApiClient):
         """
         @summary Resets a simple application server.
         
-        @description You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
-        You can use one of the following methods to reset a simple application server:
-        Reset the current system. You can re-install the operating system without replacing the image.
-        Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
-        ### Precautions
-        After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-        After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+        @description You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
+        Reset the current system: You can re-install the operating system without changing the image.
+        Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+        ### [](#)Precautions
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+        After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
         Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
         Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
-        ### Limits
-        Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
-        You cannot reset simple application servers that were created based on custom images that contain data of data disks.
-        Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+        ### [](#)Limits
+        Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+        You cannot reset simple application servers that were created from custom images that contain data of data disks.
+        If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
         The custom image must reside in the same region as the current server.
-        The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
-        If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+        The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+        If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
         The following limits apply to the disks attached to the simple application server:
-        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
         If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
-        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
         If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
         
         @param request: ResetSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9617,6 +10562,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.login_credentials):
+            query['LoginCredentials'] = request.login_credentials
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -9633,10 +10580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetSystemResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetSystemResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetSystemResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_system_with_options_async(
         self,
@@ -9646,29 +10599,26 @@ class Client(OpenApiClient):
         """
         @summary Resets a simple application server.
         
-        @description You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
-        You can use one of the following methods to reset a simple application server:
-        Reset the current system. You can re-install the operating system without replacing the image.
-        Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
-        ### Precautions
-        After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-        After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+        @description You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
+        Reset the current system: You can re-install the operating system without changing the image.
+        Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+        ### [](#)Precautions
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+        After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
         Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
         Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
-        ### Limits
-        Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
-        You cannot reset simple application servers that were created based on custom images that contain data of data disks.
-        Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+        ### [](#)Limits
+        Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+        You cannot reset simple application servers that were created from custom images that contain data of data disks.
+        If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
         The custom image must reside in the same region as the current server.
-        The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
-        If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+        The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+        If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
         The following limits apply to the disks attached to the simple application server:
-        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
         If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
-        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
         If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
         
         @param request: ResetSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9682,6 +10632,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.login_credentials):
+            query['LoginCredentials'] = request.login_credentials
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -9698,10 +10650,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.ResetSystemResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetSystemResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.ResetSystemResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_system(
         self,
@@ -9710,29 +10668,26 @@ class Client(OpenApiClient):
         """
         @summary Resets a simple application server.
         
-        @description You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
-        You can use one of the following methods to reset a simple application server:
-        Reset the current system. You can re-install the operating system without replacing the image.
-        Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
-        ### Precautions
-        After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-        After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+        @description You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
+        Reset the current system: You can re-install the operating system without changing the image.
+        Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+        ### [](#)Precautions
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+        After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
         Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
         Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
-        ### Limits
-        Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
-        You cannot reset simple application servers that were created based on custom images that contain data of data disks.
-        Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+        ### [](#)Limits
+        Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+        You cannot reset simple application servers that were created from custom images that contain data of data disks.
+        If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
         The custom image must reside in the same region as the current server.
-        The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
-        If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+        The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+        If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
         The following limits apply to the disks attached to the simple application server:
-        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
         If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
-        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
         If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
         
         @param request: ResetSystemRequest
         @return: ResetSystemResponse
@@ -9747,29 +10702,26 @@ class Client(OpenApiClient):
         """
         @summary Resets a simple application server.
         
-        @description You can reset a simple application server to re-install its application system or OS and re-initialize the server. You can reset a simple application server by resetting the current system or replacing the image.
-        You can use one of the following methods to reset a simple application server:
-        Reset the current system. You can re-install the operating system without replacing the image.
-        Replace the image. You can select an Alibaba Cloud image or a custom image that is different from the existing image of the server to reinstall the OS of the server.
-        ### Precautions
-        After you reset a simple application server, the disk data on the server is cleared. Back up the data as needed.
-        After you reset a simple application server, the monitoring operations that are performed on the server may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
+        @description You can reset a simple application server to re-install its applications or operating system and re-initialize the server. You can reset a simple application server by resetting the current system or changing the image.
+        Reset the current system: You can re-install the operating system without changing the image.
+        Change the image: You can select another Alibaba Cloud image or a custom image to re-install the operating system.
+        ### [](#)Precautions
+        Resetting the system or changing the image of a simple application server clears the disk data on the server. Back up the data as needed.
+        After you reset a simple application server, monitoring may fail. In this case, you can use one of the following methods to install the CloudMonitor agent on the server:
         Connect to the server: For more information, see [Manually install the CloudMonitor agent for C++ on an ECS instance](https://help.aliyun.com/document_detail/183482.html).
         Use Command Assistant: For more information, see [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html). You can obtain the command that can be used to install CloudMonitor from the "Common commands" section of the [Use Command Assistant](https://help.aliyun.com/document_detail/438681.html) topic.
-        ### Limits
-        Snapshots that are created before a server is reset are retained, but the snapshots cannot be used to roll back the disks of the server.
-        You cannot reset simple application servers that were created based on custom images that contain data of data disks.
-        Before you reset a simple application server by replacing the existing image with a custom image, take note of the following items:
+        ### [](#)Limits
+        Snapshots that are created before the reset are retained, but the snapshots cannot be used to restore the disks of the server.
+        You cannot reset simple application servers that were created from custom images that contain data of data disks.
+        If you reset a simple application server by replacing the existing image with a custom image, the following limits apply:
         The custom image must reside in the same region as the current server.
-        The custom image cannot be created based on the current server. If you want to recover the data on the server, you can use a snapshot of the server to roll back the disks of the server.
-        If your simple application server resides outside the Chinese mainland, you cannot switch the OS of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. You also cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the OSs of simple application servers only between Windows Server OSs or between Linux distributions.
+        The custom image cannot be created based on the current server. If you want to restore the data on the server, you can use a snapshot of the server to restore disk data.
+        If your simple application server resides in a region outside the Chinese mainland, you cannot switch the operating system of the server between Windows Server and Linux. You cannot use a Windows Server custom image to reset a Linux simple application server. Similarly, you cannot use a Linux custom image to reset a Windows Server simple application server. You can switch the operating systems of simple application servers only between Windows Server versions or between Linux distributions.
         The following limits apply to the disks attached to the simple application server:
-        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server and no data disk is attached, you cannot use the custom image to reset the simple application server.
+        If the custom image contains a system disk and a data disk but only a system disk is attached to the simple application server, you cannot use the custom image to reset the simple application server.
         If the system disk size of the custom image is greater than the system disk size of the simple application server, you cannot directly use the custom image to reset the simple application server.
-        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your simple application server, you can upgrade the server. For more information, see Upgrade a simple application server.
+        Only if the system disk size of the simple application server is greater than or equal to the system disk size of the custom image, you can use the custom image to reset the simple application server. To increase the system disk size of your server, you can upgrade the server configuration. For more information, see Upgrade a simple application server.
         If the data disk size of the custom image is greater than the data disk size of the simple application server, you cannot use the custom image to reset the simple application server.
-        ### QPS limit
-        You can call this API operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/347607.html).
         
         @param request: ResetSystemRequest
         @return: ResetSystemResponse
@@ -9815,10 +10767,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RestartDatabaseInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RestartDatabaseInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RestartDatabaseInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_database_instance_with_options_async(
         self,
@@ -9858,10 +10816,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RestartDatabaseInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RestartDatabaseInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RestartDatabaseInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_database_instance(
         self,
@@ -9956,10 +10920,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RunCommandResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RunCommandResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RunCommandResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def run_command_with_options_async(
         self,
@@ -10020,10 +10990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.RunCommandResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.RunCommandResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.RunCommandResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def run_command(
         self,
@@ -10097,10 +11073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartDatabaseInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartDatabaseInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartDatabaseInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_database_instance_with_options_async(
         self,
@@ -10138,10 +11120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartDatabaseInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartDatabaseInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartDatabaseInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_database_instance(
         self,
@@ -10209,10 +11197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_instance_with_options_async(
         self,
@@ -10250,10 +11244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_instance(
         self,
@@ -10319,10 +11319,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_instances_with_options_async(
         self,
@@ -10358,10 +11364,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_instances(
         self,
@@ -10421,10 +11433,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartTerminalSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartTerminalSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartTerminalSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_terminal_session_with_options_async(
         self,
@@ -10458,10 +11476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StartTerminalSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StartTerminalSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StartTerminalSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_terminal_session(
         self,
@@ -10525,10 +11549,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopDatabaseInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopDatabaseInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopDatabaseInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_database_instance_with_options_async(
         self,
@@ -10566,10 +11596,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopDatabaseInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopDatabaseInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopDatabaseInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_database_instance(
         self,
@@ -10638,10 +11674,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_instance_with_options_async(
         self,
@@ -10680,10 +11722,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_instance(
         self,
@@ -10753,10 +11801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def stop_instances_with_options_async(
         self,
@@ -10794,10 +11848,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.StopInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.StopInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def stop_instances(
         self,
@@ -10863,10 +11923,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -10906,10 +11972,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -10977,10 +12049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -11022,10 +12100,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -11093,10 +12177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateCommandAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateCommandAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateCommandAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_command_attribute_with_options_async(
         self,
@@ -11138,10 +12228,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateCommandAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateCommandAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateCommandAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_command_attribute(
         self,
@@ -11205,10 +12301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateDiskAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateDiskAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateDiskAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_disk_attribute_with_options_async(
         self,
@@ -11246,10 +12348,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateDiskAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateDiskAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateDiskAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_disk_attribute(
         self,
@@ -11318,10 +12426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_instance_attribute_with_options_async(
         self,
@@ -11364,10 +12478,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_instance_attribute(
         self,
@@ -11437,10 +12557,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateSnapshotAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateSnapshotAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateSnapshotAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_snapshot_attribute_with_options_async(
         self,
@@ -11478,10 +12604,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpdateSnapshotAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateSnapshotAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpdateSnapshotAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_snapshot_attribute(
         self,
@@ -11548,10 +12680,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpgradeInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpgradeInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpgradeInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_instance_with_options_async(
         self,
@@ -11592,10 +12730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UpgradeInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UpgradeInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UpgradeInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_instance(
         self,
@@ -11667,10 +12811,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UploadInstanceKeyPairResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UploadInstanceKeyPairResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UploadInstanceKeyPairResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upload_instance_key_pair_with_options_async(
         self,
@@ -11710,10 +12860,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            swas__open20200601_models.UploadInstanceKeyPairResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                swas__open20200601_models.UploadInstanceKeyPairResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                swas__open20200601_models.UploadInstanceKeyPairResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upload_instance_key_pair(
         self,

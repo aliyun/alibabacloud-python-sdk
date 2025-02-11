@@ -1,3 +1,14 @@
+2025-02-11 Version: 3.0.3
+- Update API DescribeInstancePasswordsSetting: update response param.
+- Update API LoginInstance: update param Password.
+- Update API ModifyInstanceVncPassword: update param VncPassword.
+- Update API ResetDatabaseAccountPassword: update param AccountPassword.
+- Update API ResetSystem: add param LoginCredentials.
+- Update API RunCommand: update param WindowsPasswordName.
+- Update API StartTerminalSession: update response param.
+- Update API UpdateInstanceAttribute: update param Password.
+
+
 2024-12-09 Version: 3.0.2
 - Update API ListPlans: update response param.
 
