@@ -41575,6 +41575,7 @@ class ModifyApiGroupRequest(TeaModel):
         group_name: str = None,
         passthrough_headers: str = None,
         rpc_pattern: str = None,
+        rps_limit_for_serverless: str = None,
         security_token: str = None,
         support_sse: str = None,
         tag: List[ModifyApiGroupRequestTag] = None,
@@ -41606,6 +41607,7 @@ class ModifyApiGroupRequest(TeaModel):
         self.passthrough_headers = passthrough_headers
         # The RPC mode.
         self.rpc_pattern = rpc_pattern
+        self.rps_limit_for_serverless = rps_limit_for_serverless
         self.security_token = security_token
         # If support SSE.
         self.support_sse = support_sse
@@ -41650,6 +41652,8 @@ class ModifyApiGroupRequest(TeaModel):
             result['PassthroughHeaders'] = self.passthrough_headers
         if self.rpc_pattern is not None:
             result['RpcPattern'] = self.rpc_pattern
+        if self.rps_limit_for_serverless is not None:
+            result['RpsLimitForServerless'] = self.rps_limit_for_serverless
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.support_sse is not None:
@@ -41688,6 +41692,8 @@ class ModifyApiGroupRequest(TeaModel):
             self.passthrough_headers = m.get('PassthroughHeaders')
         if m.get('RpcPattern') is not None:
             self.rpc_pattern = m.get('RpcPattern')
+        if m.get('RpsLimitForServerless') is not None:
+            self.rps_limit_for_serverless = m.get('RpsLimitForServerless')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('SupportSSE') is not None:

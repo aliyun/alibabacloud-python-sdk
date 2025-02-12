@@ -1,3 +1,7 @@
+2025-02-12 Version: 4.7.2
+- Update API ModifyApiGroup: add param RpsLimitForServerless.
+
+
 2025-01-09 Version: 4.7.1
 - Generated python 2016-07-14 for CloudAPI.
 
