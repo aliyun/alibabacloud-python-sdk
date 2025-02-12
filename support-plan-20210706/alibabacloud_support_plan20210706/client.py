@@ -41,29 +41,29 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def close_task_order_with_options(
+    def add_enterprise_group_member_to_task_group_with_options(
         self,
-        request: support_plan_20210706_models.CloseTaskOrderRequest,
+        request: support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.CloseTaskOrderResponse:
+    ) -> support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse:
         """
-        @summary 关闭任务单
+        @summary 添加客户服务主群人员进子群
         
-        @param request: CloseTaskOrderRequest
+        @param request: AddEnterpriseGroupMemberToTaskGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseTaskOrderResponse
+        @return: AddEnterpriseGroupMemberToTaskGroupResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.task_order_id):
+            query['TaskOrderId'] = request.task_order_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CloseTaskOrder',
+            action='AddEnterpriseGroupMemberToTaskGroup',
             version='2021-07-06',
             protocol='HTTPS',
             pathname='/',
@@ -73,34 +73,40 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CloseTaskOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
-    async def close_task_order_with_options_async(
+    async def add_enterprise_group_member_to_task_group_with_options_async(
         self,
-        request: support_plan_20210706_models.CloseTaskOrderRequest,
+        request: support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.CloseTaskOrderResponse:
+    ) -> support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse:
         """
-        @summary 关闭任务单
+        @summary 添加客户服务主群人员进子群
         
-        @param request: CloseTaskOrderRequest
+        @param request: AddEnterpriseGroupMemberToTaskGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseTaskOrderResponse
+        @return: AddEnterpriseGroupMemberToTaskGroupResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.task_order_id):
+            query['TaskOrderId'] = request.task_order_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CloseTaskOrder',
+            action='AddEnterpriseGroupMemberToTaskGroup',
             version='2021-07-06',
             protocol='HTTPS',
             pathname='/',
@@ -110,36 +116,42 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CloseTaskOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
-    def close_task_order(
+    def add_enterprise_group_member_to_task_group(
         self,
-        request: support_plan_20210706_models.CloseTaskOrderRequest,
-    ) -> support_plan_20210706_models.CloseTaskOrderResponse:
+        request: support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupRequest,
+    ) -> support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse:
         """
-        @summary 关闭任务单
+        @summary 添加客户服务主群人员进子群
         
-        @param request: CloseTaskOrderRequest
-        @return: CloseTaskOrderResponse
+        @param request: AddEnterpriseGroupMemberToTaskGroupRequest
+        @return: AddEnterpriseGroupMemberToTaskGroupResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.close_task_order_with_options(request, runtime)
+        return self.add_enterprise_group_member_to_task_group_with_options(request, runtime)
 
-    async def close_task_order_async(
+    async def add_enterprise_group_member_to_task_group_async(
         self,
-        request: support_plan_20210706_models.CloseTaskOrderRequest,
-    ) -> support_plan_20210706_models.CloseTaskOrderResponse:
+        request: support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupRequest,
+    ) -> support_plan_20210706_models.AddEnterpriseGroupMemberToTaskGroupResponse:
         """
-        @summary 关闭任务单
+        @summary 添加客户服务主群人员进子群
         
-        @param request: CloseTaskOrderRequest
-        @return: CloseTaskOrderResponse
+        @param request: AddEnterpriseGroupMemberToTaskGroupRequest
+        @return: AddEnterpriseGroupMemberToTaskGroupResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.close_task_order_with_options_async(request, runtime)
+        return await self.add_enterprise_group_member_to_task_group_with_options_async(request, runtime)
 
     def create_task_order_with_options(
         self,
@@ -181,10 +193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CreateTaskOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.CreateTaskOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.CreateTaskOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_task_order_with_options_async(
         self,
@@ -226,10 +244,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CreateTaskOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.CreateTaskOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.CreateTaskOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_task_order(
         self,
@@ -256,454 +280,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_task_order_with_options_async(request, runtime)
-
-    def create_task_order_by_event_report_with_options(
-        self,
-        tmp_req: support_plan_20210706_models.CreateTaskOrderByEventReportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.CreateTaskOrderByEventReportResponse:
-        """
-        @summary 告警建单
-        
-        @param tmp_req: CreateTaskOrderByEventReportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTaskOrderByEventReportResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = support_plan_20210706_models.CreateTaskOrderByEventReportShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.event_body):
-            request.event_body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_body, 'EventBody', 'json')
-        if not UtilClient.is_unset(tmp_req.extinfo):
-            request.extinfo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extinfo, 'Extinfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.business):
-            query['Business'] = request.business
-        if not UtilClient.is_unset(request.create_real_name):
-            query['CreateRealName'] = request.create_real_name
-        if not UtilClient.is_unset(request.create_user_id):
-            query['CreateUserId'] = request.create_user_id
-        if not UtilClient.is_unset(request.event_body_shrink):
-            query['EventBody'] = request.event_body_shrink
-        if not UtilClient.is_unset(request.extinfo_shrink):
-            query['Extinfo'] = request.extinfo_shrink
-        if not UtilClient.is_unset(request.important_desc):
-            query['ImportantDesc'] = request.important_desc
-        if not UtilClient.is_unset(request.join_child_group_user_ids):
-            query['JoinChildGroupUserIds'] = request.join_child_group_user_ids
-        if not UtilClient.is_unset(request.monitor_congregation):
-            query['MonitorCongregation'] = request.monitor_congregation
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.product_type):
-            query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTaskOrderByEventReport',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CreateTaskOrderByEventReportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_task_order_by_event_report_with_options_async(
-        self,
-        tmp_req: support_plan_20210706_models.CreateTaskOrderByEventReportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.CreateTaskOrderByEventReportResponse:
-        """
-        @summary 告警建单
-        
-        @param tmp_req: CreateTaskOrderByEventReportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTaskOrderByEventReportResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = support_plan_20210706_models.CreateTaskOrderByEventReportShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.event_body):
-            request.event_body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_body, 'EventBody', 'json')
-        if not UtilClient.is_unset(tmp_req.extinfo):
-            request.extinfo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.extinfo, 'Extinfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.business):
-            query['Business'] = request.business
-        if not UtilClient.is_unset(request.create_real_name):
-            query['CreateRealName'] = request.create_real_name
-        if not UtilClient.is_unset(request.create_user_id):
-            query['CreateUserId'] = request.create_user_id
-        if not UtilClient.is_unset(request.event_body_shrink):
-            query['EventBody'] = request.event_body_shrink
-        if not UtilClient.is_unset(request.extinfo_shrink):
-            query['Extinfo'] = request.extinfo_shrink
-        if not UtilClient.is_unset(request.important_desc):
-            query['ImportantDesc'] = request.important_desc
-        if not UtilClient.is_unset(request.join_child_group_user_ids):
-            query['JoinChildGroupUserIds'] = request.join_child_group_user_ids
-        if not UtilClient.is_unset(request.monitor_congregation):
-            query['MonitorCongregation'] = request.monitor_congregation
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.product_type):
-            query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTaskOrderByEventReport',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.CreateTaskOrderByEventReportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_task_order_by_event_report(
-        self,
-        request: support_plan_20210706_models.CreateTaskOrderByEventReportRequest,
-    ) -> support_plan_20210706_models.CreateTaskOrderByEventReportResponse:
-        """
-        @summary 告警建单
-        
-        @param request: CreateTaskOrderByEventReportRequest
-        @return: CreateTaskOrderByEventReportResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_task_order_by_event_report_with_options(request, runtime)
-
-    async def create_task_order_by_event_report_async(
-        self,
-        request: support_plan_20210706_models.CreateTaskOrderByEventReportRequest,
-    ) -> support_plan_20210706_models.CreateTaskOrderByEventReportResponse:
-        """
-        @summary 告警建单
-        
-        @param request: CreateTaskOrderByEventReportRequest
-        @return: CreateTaskOrderByEventReportResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_task_order_by_event_report_with_options_async(request, runtime)
-
-    def delete_enterprise_dingtalk_group_customer_member_with_options(
-        self,
-        tmp_req: support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 删除企业钉群客户侧成员
-        
-        @param tmp_req: DeleteEnterpriseDingtalkGroupCustomerMemberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.mobiles):
-            request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.mobiles_shrink):
-            body['Mobiles'] = request.mobiles_shrink
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteEnterpriseDingtalkGroupCustomerMember',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_enterprise_dingtalk_group_customer_member_with_options_async(
-        self,
-        tmp_req: support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 删除企业钉群客户侧成员
-        
-        @param tmp_req: DeleteEnterpriseDingtalkGroupCustomerMemberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.mobiles):
-            request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.mobiles_shrink):
-            body['Mobiles'] = request.mobiles_shrink
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteEnterpriseDingtalkGroupCustomerMember',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_enterprise_dingtalk_group_customer_member(
-        self,
-        request: support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberRequest,
-    ) -> support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 删除企业钉群客户侧成员
-        
-        @param request: DeleteEnterpriseDingtalkGroupCustomerMemberRequest
-        @return: DeleteEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_enterprise_dingtalk_group_customer_member_with_options(request, runtime)
-
-    async def delete_enterprise_dingtalk_group_customer_member_async(
-        self,
-        request: support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberRequest,
-    ) -> support_plan_20210706_models.DeleteEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 删除企业钉群客户侧成员
-        
-        @param request: DeleteEnterpriseDingtalkGroupCustomerMemberRequest
-        @return: DeleteEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_enterprise_dingtalk_group_customer_member_with_options_async(request, runtime)
-
-    def get_enterprise_dingtalk_group_with_options(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse:
-        """
-        @summary 查询企业钉群
-        
-        @param request: GetEnterpriseDingtalkGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEnterpriseDingtalkGroupResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetEnterpriseDingtalkGroup',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_enterprise_dingtalk_group_with_options_async(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse:
-        """
-        @summary 查询企业钉群
-        
-        @param request: GetEnterpriseDingtalkGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEnterpriseDingtalkGroupResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetEnterpriseDingtalkGroup',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_enterprise_dingtalk_group(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupRequest,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse:
-        """
-        @summary 查询企业钉群
-        
-        @param request: GetEnterpriseDingtalkGroupRequest
-        @return: GetEnterpriseDingtalkGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_enterprise_dingtalk_group_with_options(request, runtime)
-
-    async def get_enterprise_dingtalk_group_async(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupRequest,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupResponse:
-        """
-        @summary 查询企业钉群
-        
-        @param request: GetEnterpriseDingtalkGroupRequest
-        @return: GetEnterpriseDingtalkGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_enterprise_dingtalk_group_with_options_async(request, runtime)
-
-    def get_enterprise_dingtalk_group_customer_member_with_options(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 获取企业钉群客户侧成员
-        
-        @param request: GetEnterpriseDingtalkGroupCustomerMemberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.mobile):
-            body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetEnterpriseDingtalkGroupCustomerMember',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_enterprise_dingtalk_group_customer_member_with_options_async(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 获取企业钉群客户侧成员
-        
-        @param request: GetEnterpriseDingtalkGroupCustomerMemberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.mobile):
-            body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetEnterpriseDingtalkGroupCustomerMember',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_enterprise_dingtalk_group_customer_member(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberRequest,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 获取企业钉群客户侧成员
-        
-        @param request: GetEnterpriseDingtalkGroupCustomerMemberRequest
-        @return: GetEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_enterprise_dingtalk_group_customer_member_with_options(request, runtime)
-
-    async def get_enterprise_dingtalk_group_customer_member_async(
-        self,
-        request: support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberRequest,
-    ) -> support_plan_20210706_models.GetEnterpriseDingtalkGroupCustomerMemberResponse:
-        """
-        @summary 获取企业钉群客户侧成员
-        
-        @param request: GetEnterpriseDingtalkGroupCustomerMemberRequest
-        @return: GetEnterpriseDingtalkGroupCustomerMemberResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_enterprise_dingtalk_group_customer_member_with_options_async(request, runtime)
 
     def list_dd_task_order_with_options(
         self,
@@ -749,10 +325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListDdTaskOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListDdTaskOrderResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListDdTaskOrderResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_dd_task_order_with_options_async(
         self,
@@ -798,10 +380,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListDdTaskOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListDdTaskOrderResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListDdTaskOrderResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_dd_task_order(
         self,
@@ -859,10 +447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_enterprise_dingtalk_group_customer_members_with_options_async(
         self,
@@ -894,10 +488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupCustomerMembersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_enterprise_dingtalk_group_customer_members(
         self,
@@ -948,10 +548,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_enterprise_dingtalk_groups_with_options_async(
         self,
@@ -976,10 +582,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_enterprise_dingtalk_groups(self) -> support_plan_20210706_models.ListEnterpriseDingtalkGroupsResponse:
         """
@@ -1029,10 +641,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListProductByGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListProductByGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListProductByGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_product_by_group_with_options_async(
         self,
@@ -1064,10 +682,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ListProductByGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListProductByGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                support_plan_20210706_models.ListProductByGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_product_by_group(
         self,
@@ -1094,327 +718,3 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_by_group_with_options_async(request, runtime)
-
-    def query_task_info_with_options(
-        self,
-        request: support_plan_20210706_models.QueryTaskInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.QueryTaskInfoResponse:
-        """
-        @summary 获取工单状态
-        
-        @param request: QueryTaskInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryTaskInfoResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryTaskInfo',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.QueryTaskInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_task_info_with_options_async(
-        self,
-        request: support_plan_20210706_models.QueryTaskInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.QueryTaskInfoResponse:
-        """
-        @summary 获取工单状态
-        
-        @param request: QueryTaskInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryTaskInfoResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryTaskInfo',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.QueryTaskInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_task_info(
-        self,
-        request: support_plan_20210706_models.QueryTaskInfoRequest,
-    ) -> support_plan_20210706_models.QueryTaskInfoResponse:
-        """
-        @summary 获取工单状态
-        
-        @param request: QueryTaskInfoRequest
-        @return: QueryTaskInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.query_task_info_with_options(request, runtime)
-
-    async def query_task_info_async(
-        self,
-        request: support_plan_20210706_models.QueryTaskInfoRequest,
-    ) -> support_plan_20210706_models.QueryTaskInfoResponse:
-        """
-        @summary 获取工单状态
-        
-        @param request: QueryTaskInfoRequest
-        @return: QueryTaskInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.query_task_info_with_options_async(request, runtime)
-
-    def reply_message_api_with_options(
-        self,
-        request: support_plan_20210706_models.ReplyMessageApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.ReplyMessageApiResponse:
-        """
-        @summary 客户回复消息
-        
-        @param request: ReplyMessageApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReplyMessageApiResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.msg_content):
-            query['MsgContent'] = request.msg_content
-        if not UtilClient.is_unset(request.msg_type):
-            query['MsgType'] = request.msg_type
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ReplyMessageApi',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ReplyMessageApiResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def reply_message_api_with_options_async(
-        self,
-        request: support_plan_20210706_models.ReplyMessageApiRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.ReplyMessageApiResponse:
-        """
-        @summary 客户回复消息
-        
-        @param request: ReplyMessageApiRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReplyMessageApiResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.msg_content):
-            query['MsgContent'] = request.msg_content
-        if not UtilClient.is_unset(request.msg_type):
-            query['MsgType'] = request.msg_type
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ReplyMessageApi',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.ReplyMessageApiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def reply_message_api(
-        self,
-        request: support_plan_20210706_models.ReplyMessageApiRequest,
-    ) -> support_plan_20210706_models.ReplyMessageApiResponse:
-        """
-        @summary 客户回复消息
-        
-        @param request: ReplyMessageApiRequest
-        @return: ReplyMessageApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.reply_message_api_with_options(request, runtime)
-
-    async def reply_message_api_async(
-        self,
-        request: support_plan_20210706_models.ReplyMessageApiRequest,
-    ) -> support_plan_20210706_models.ReplyMessageApiResponse:
-        """
-        @summary 客户回复消息
-        
-        @param request: ReplyMessageApiRequest
-        @return: ReplyMessageApiResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.reply_message_api_with_options_async(request, runtime)
-
-    def rest_open_task_order_with_options(
-        self,
-        request: support_plan_20210706_models.RestOpenTaskOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.RestOpenTaskOrderResponse:
-        """
-        @summary 重开任务单(待客户确认状态)
-        
-        @param request: RestOpenTaskOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestOpenTaskOrderResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.reset_content):
-            query['ResetContent'] = request.reset_content
-        if not UtilClient.is_unset(request.reset_type):
-            query['ResetType'] = request.reset_type
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestOpenTaskOrder',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.RestOpenTaskOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def rest_open_task_order_with_options_async(
-        self,
-        request: support_plan_20210706_models.RestOpenTaskOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> support_plan_20210706_models.RestOpenTaskOrderResponse:
-        """
-        @summary 重开任务单(待客户确认状态)
-        
-        @param request: RestOpenTaskOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RestOpenTaskOrderResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.open_group_id):
-            query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.reset_content):
-            query['ResetContent'] = request.reset_content
-        if not UtilClient.is_unset(request.reset_type):
-            query['ResetType'] = request.reset_type
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestOpenTaskOrder',
-            version='2021-07-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            support_plan_20210706_models.RestOpenTaskOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def rest_open_task_order(
-        self,
-        request: support_plan_20210706_models.RestOpenTaskOrderRequest,
-    ) -> support_plan_20210706_models.RestOpenTaskOrderResponse:
-        """
-        @summary 重开任务单(待客户确认状态)
-        
-        @param request: RestOpenTaskOrderRequest
-        @return: RestOpenTaskOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.rest_open_task_order_with_options(request, runtime)
-
-    async def rest_open_task_order_async(
-        self,
-        request: support_plan_20210706_models.RestOpenTaskOrderRequest,
-    ) -> support_plan_20210706_models.RestOpenTaskOrderResponse:
-        """
-        @summary 重开任务单(待客户确认状态)
-        
-        @param request: RestOpenTaskOrderRequest
-        @return: RestOpenTaskOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.rest_open_task_order_with_options_async(request, runtime)

@@ -1,3 +1,15 @@
+2025-02-12 Version: 3.0.0
+- Support API AddEnterpriseGroupMemberToTaskGroup.
+- Delete API CloseTaskOrder.
+- Delete API CreateTaskOrderByEventReport.
+- Delete API DeleteEnterpriseDingtalkGroupCustomerMember.
+- Delete API GetEnterpriseDingtalkGroup.
+- Delete API GetEnterpriseDingtalkGroupCustomerMember.
+- Delete API QueryTaskInfo.
+- Delete API ReplyMessageApi.
+- Delete API RestOpenTaskOrder.
+
+
 2024-09-13 Version: 2.0.0
 - Update API CreateTaskOrder: add param CreateUserId.
 - Update API CreateTaskOrder: add param IsUrgent.
