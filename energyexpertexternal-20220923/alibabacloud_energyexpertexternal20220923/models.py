@@ -791,6 +791,7 @@ class BatchSaveInstructionStatusRequest(TeaModel):
         p_key: str = None,
         status_list: str = None,
     ):
+        # This parameter is required.
         self.factory_id = factory_id
         self.p_key = p_key
         self.status_list = status_list
@@ -920,14 +921,18 @@ class BatchUpdateSystemRunningPlanRequest(TeaModel):
         self.control_type = control_type
         self.date_type = date_type
         self.earliest_startup_time = earliest_startup_time
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.factory_id = factory_id
         self.latest_shutdown_time = latest_shutdown_time
         self.max_carbon_dioxide = max_carbon_dioxide
         self.max_tem = max_tem
         self.min_tem = min_tem
         self.season_mode = season_mode
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.system_id = system_id
         self.working_end_time = working_end_time
         self.working_start_time = working_start_time
@@ -1094,9 +1099,11 @@ class EditProhibitedDevicesRequestHvacDeviceConfigVOList(TeaModel):
         self.building_id = building_id
         self.device_id = device_id
         self.device_name = device_name
+        # This parameter is required.
         self.device_type = device_type
         self.fence_id = fence_id
         self.floor_id = floor_id
+        # This parameter is required.
         self.is_forbidden = is_forbidden
         self.is_unfavorable_area = is_unfavorable_area
 
@@ -1155,8 +1162,11 @@ class EditProhibitedDevicesRequest(TeaModel):
         hvac_device_config_volist: List[EditProhibitedDevicesRequestHvacDeviceConfigVOList] = None,
         system_id: str = None,
     ):
+        # This parameter is required.
         self.factory_id = factory_id
+        # This parameter is required.
         self.hvac_device_config_volist = hvac_device_config_volist
+        # This parameter is required.
         self.system_id = system_id
 
     def validate(self):
@@ -1285,10 +1295,12 @@ class EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList(TeaModel):
         self.building_id = building_id
         self.device_id = device_id
         self.device_name = device_name
+        # This parameter is required.
         self.device_type = device_type
         self.fence_id = fence_id
         self.floor_id = floor_id
         self.is_forbidden = is_forbidden
+        # This parameter is required.
         self.is_unfavorable_area = is_unfavorable_area
 
     def validate(self):
@@ -1346,8 +1358,11 @@ class EditUnfavorableAreaDevicesRequest(TeaModel):
         hvac_device_config_volist: List[EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList] = None,
         system_id: str = None,
     ):
+        # This parameter is required.
         self.factory_id = factory_id
+        # This parameter is required.
         self.hvac_device_config_volist = hvac_device_config_volist
+        # This parameter is required.
         self.system_id = system_id
 
     def validate(self):
@@ -8949,6 +8964,7 @@ class SetRunningPlanRequest(TeaModel):
         self.date_type = date_type
         self.earliest_startup_time = earliest_startup_time
         self.end_time = end_time
+        # This parameter is required.
         self.factory_id = factory_id
         self.latest_shutdown_time = latest_shutdown_time
         self.max_carbon_dioxide = max_carbon_dioxide
@@ -8958,6 +8974,7 @@ class SetRunningPlanRequest(TeaModel):
         self.season_mode = season_mode
         self.start_time = start_time
         self.statistics_time = statistics_time
+        # This parameter is required.
         self.system_id = system_id
         self.working_end_time = working_end_time
         self.working_start_time = working_start_time

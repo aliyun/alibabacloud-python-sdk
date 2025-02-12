@@ -1,3 +1,11 @@
+2025-02-12 Version: 3.0.1
+- Update API BatchSaveInstructionStatus: update param body.
+- Update API BatchUpdateSystemRunningPlan: update param body.
+- Update API EditProhibitedDevices: update param body.
+- Update API EditUnfavorableAreaDevices: update param body.
+- Update API SetRunningPlan: update param body.
+
+
 2024-11-22 Version: 3.0.0
 - Update API SubmitDocumentAnalyzeJob: add param analysisType.
 - Update API SubmitDocumentAnalyzeJob: delete param dataType.
