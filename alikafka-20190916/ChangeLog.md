@@ -1,3 +1,7 @@
+2025-02-12 Version: 2.10.0
+- Support API DescribeAclResourceName.
+
+
 2025-01-06 Version: 2.9.0
 - Support API CreatePostPayInstance.
 - Support API CreatePrePayInstance.
