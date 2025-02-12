@@ -19570,6 +19570,33 @@ class StartCloudRecordRequestPanesTexts(TeaModel):
         return self
 
 
+class StartCloudRecordRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class StartCloudRecordRequestPanes(TeaModel):
     def __init__(
         self,
@@ -19579,6 +19606,7 @@ class StartCloudRecordRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[StartCloudRecordRequestPanesTexts] = None,
+        whiteboard: StartCloudRecordRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -19591,6 +19619,7 @@ class StartCloudRecordRequestPanes(TeaModel):
         # sourceType
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -19601,6 +19630,8 @@ class StartCloudRecordRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19624,6 +19655,8 @@ class StartCloudRecordRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -19646,6 +19679,9 @@ class StartCloudRecordRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartCloudRecordRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = StartCloudRecordRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -20678,6 +20714,33 @@ class StartCloudRecordShrinkRequestPanesTexts(TeaModel):
         return self
 
 
+class StartCloudRecordShrinkRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class StartCloudRecordShrinkRequestPanes(TeaModel):
     def __init__(
         self,
@@ -20687,6 +20750,7 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[StartCloudRecordShrinkRequestPanesTexts] = None,
+        whiteboard: StartCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -20699,6 +20763,7 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         # sourceType
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -20709,6 +20774,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20732,6 +20799,8 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -20754,6 +20823,9 @@ class StartCloudRecordShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartCloudRecordShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = StartCloudRecordShrinkRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -23107,6 +23179,33 @@ class StartStreamingOutRequestPanesTexts(TeaModel):
         return self
 
 
+class StartStreamingOutRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class StartStreamingOutRequestPanes(TeaModel):
     def __init__(
         self,
@@ -23116,6 +23215,7 @@ class StartStreamingOutRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[StartStreamingOutRequestPanesTexts] = None,
+        whiteboard: StartStreamingOutRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -23124,6 +23224,7 @@ class StartStreamingOutRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -23134,6 +23235,8 @@ class StartStreamingOutRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23157,6 +23260,8 @@ class StartStreamingOutRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -23179,6 +23284,9 @@ class StartStreamingOutRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartStreamingOutRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = StartStreamingOutRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -24132,6 +24240,33 @@ class StartStreamingOutShrinkRequestPanesTexts(TeaModel):
         return self
 
 
+class StartStreamingOutShrinkRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class StartStreamingOutShrinkRequestPanes(TeaModel):
     def __init__(
         self,
@@ -24141,6 +24276,7 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[StartStreamingOutShrinkRequestPanesTexts] = None,
+        whiteboard: StartStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -24149,6 +24285,7 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -24159,6 +24296,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24182,6 +24321,8 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -24204,6 +24345,9 @@ class StartStreamingOutShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = StartStreamingOutShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = StartStreamingOutShrinkRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -26253,6 +26397,33 @@ class UpdateCloudRecordRequestPanesTexts(TeaModel):
         return self
 
 
+class UpdateCloudRecordRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class UpdateCloudRecordRequestPanes(TeaModel):
     def __init__(
         self,
@@ -26262,6 +26433,7 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[UpdateCloudRecordRequestPanesTexts] = None,
+        whiteboard: UpdateCloudRecordRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -26270,6 +26442,7 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -26280,6 +26453,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26303,6 +26478,8 @@ class UpdateCloudRecordRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -26325,6 +26502,9 @@ class UpdateCloudRecordRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateCloudRecordRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = UpdateCloudRecordRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -27218,6 +27398,33 @@ class UpdateCloudRecordShrinkRequestPanesTexts(TeaModel):
         return self
 
 
+class UpdateCloudRecordShrinkRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class UpdateCloudRecordShrinkRequestPanes(TeaModel):
     def __init__(
         self,
@@ -27227,6 +27434,7 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[UpdateCloudRecordShrinkRequestPanesTexts] = None,
+        whiteboard: UpdateCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -27235,6 +27443,7 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -27245,6 +27454,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27268,6 +27479,8 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -27290,6 +27503,9 @@ class UpdateCloudRecordShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateCloudRecordShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = UpdateCloudRecordShrinkRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -29839,6 +30055,33 @@ class UpdateStreamingOutRequestPanesTexts(TeaModel):
         return self
 
 
+class UpdateStreamingOutRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class UpdateStreamingOutRequestPanes(TeaModel):
     def __init__(
         self,
@@ -29848,6 +30091,7 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[UpdateStreamingOutRequestPanesTexts] = None,
+        whiteboard: UpdateStreamingOutRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -29855,6 +30099,7 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -29865,6 +30110,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -29888,6 +30135,8 @@ class UpdateStreamingOutRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -29910,6 +30159,9 @@ class UpdateStreamingOutRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateStreamingOutRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = UpdateStreamingOutRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 
@@ -30803,6 +31055,33 @@ class UpdateStreamingOutShrinkRequestPanesTexts(TeaModel):
         return self
 
 
+class UpdateStreamingOutShrinkRequestPanesWhiteboard(TeaModel):
+    def __init__(
+        self,
+        whiteboard_id: str = None,
+    ):
+        self.whiteboard_id = whiteboard_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.whiteboard_id is not None:
+            result['WhiteboardId'] = self.whiteboard_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteboardId') is not None:
+            self.whiteboard_id = m.get('WhiteboardId')
+        return self
+
+
 class UpdateStreamingOutShrinkRequestPanes(TeaModel):
     def __init__(
         self,
@@ -30812,6 +31091,7 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         source: str = None,
         source_type: str = None,
         texts: List[UpdateStreamingOutShrinkRequestPanesTexts] = None,
+        whiteboard: UpdateStreamingOutShrinkRequestPanesWhiteboard = None,
     ):
         self.images = images
         self.pane_crop_mode = pane_crop_mode
@@ -30819,6 +31099,7 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         self.source = source
         self.source_type = source_type
         self.texts = texts
+        self.whiteboard = whiteboard
 
     def validate(self):
         if self.images:
@@ -30829,6 +31110,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             for k in self.texts:
                 if k:
                     k.validate()
+        if self.whiteboard:
+            self.whiteboard.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -30852,6 +31135,8 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
         if self.texts is not None:
             for k in self.texts:
                 result['Texts'].append(k.to_map() if k else None)
+        if self.whiteboard is not None:
+            result['Whiteboard'] = self.whiteboard.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -30874,6 +31159,9 @@ class UpdateStreamingOutShrinkRequestPanes(TeaModel):
             for k in m.get('Texts'):
                 temp_model = UpdateStreamingOutShrinkRequestPanesTexts()
                 self.texts.append(temp_model.from_map(k))
+        if m.get('Whiteboard') is not None:
+            temp_model = UpdateStreamingOutShrinkRequestPanesWhiteboard()
+            self.whiteboard = temp_model.from_map(m['Whiteboard'])
         return self
 
 

@@ -1,3 +1,10 @@
+2025-02-12 Version: 5.0.1
+- Update API StartCloudRecord: update param Panes.
+- Update API StartStreamingOut: update param Panes.
+- Update API UpdateCloudRecord: update param Panes.
+- Update API UpdateStreamingOut: update param Panes.
+
+
 2025-01-07 Version: 5.0.0
 - Update API DescribeAppRecordTemplates: update response param.
 
