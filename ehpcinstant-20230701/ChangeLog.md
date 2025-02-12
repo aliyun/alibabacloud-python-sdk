@@ -1,3 +1,16 @@
+2025-02-12 Version: 2.0.0
+- Update API CreateJob: add param SecurityPolicy.
+- Update API ListExecutors: update param PageNumber.
+- Update API ListExecutors: update param PageSize.
+- Update API ListExecutors: update response param.
+- Update API ListJobExecutors: update param PageNumber.
+- Update API ListJobExecutors: update param PageSize.
+- Update API ListJobExecutors: update response param.
+- Update API ListJobs: update param PageNumber.
+- Update API ListJobs: update param PageSize.
+- Update API ListJobs: update response param.
+
+
 2024-12-20 Version: 1.2.0
 - Support API CreatePool.
 - Support API DeletePool.

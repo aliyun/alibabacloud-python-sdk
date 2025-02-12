@@ -441,6 +441,62 @@ class CreateJobRequestDeploymentPolicy(TeaModel):
         return self
 
 
+class CreateJobRequestSecurityPolicySecurityGroup(TeaModel):
+    def __init__(
+        self,
+        security_group_ids: List[str] = None,
+    ):
+        self.security_group_ids = security_group_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        return self
+
+
+class CreateJobRequestSecurityPolicy(TeaModel):
+    def __init__(
+        self,
+        security_group: CreateJobRequestSecurityPolicySecurityGroup = None,
+    ):
+        self.security_group = security_group
+
+    def validate(self):
+        if self.security_group:
+            self.security_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroup') is not None:
+            temp_model = CreateJobRequestSecurityPolicySecurityGroup()
+            self.security_group = temp_model.from_map(m['SecurityGroup'])
+        return self
+
+
 class CreateJobRequestTasksExecutorPolicyArraySpec(TeaModel):
     def __init__(
         self,
@@ -928,6 +984,7 @@ class CreateJobRequest(TeaModel):
         job_description: str = None,
         job_name: str = None,
         job_scheduler: str = None,
+        security_policy: CreateJobRequestSecurityPolicy = None,
         tasks: List[CreateJobRequestTasks] = None,
     ):
         self.deployment_policy = deployment_policy
@@ -935,12 +992,15 @@ class CreateJobRequest(TeaModel):
         # This parameter is required.
         self.job_name = job_name
         self.job_scheduler = job_scheduler
+        self.security_policy = security_policy
         # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
         if self.deployment_policy:
             self.deployment_policy.validate()
+        if self.security_policy:
+            self.security_policy.validate()
         if self.tasks:
             for k in self.tasks:
                 if k:
@@ -960,6 +1020,8 @@ class CreateJobRequest(TeaModel):
             result['JobName'] = self.job_name
         if self.job_scheduler is not None:
             result['JobScheduler'] = self.job_scheduler
+        if self.security_policy is not None:
+            result['SecurityPolicy'] = self.security_policy.to_map()
         result['Tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
@@ -977,6 +1039,9 @@ class CreateJobRequest(TeaModel):
             self.job_name = m.get('JobName')
         if m.get('JobScheduler') is not None:
             self.job_scheduler = m.get('JobScheduler')
+        if m.get('SecurityPolicy') is not None:
+            temp_model = CreateJobRequestSecurityPolicy()
+            self.security_policy = temp_model.from_map(m['SecurityPolicy'])
         self.tasks = []
         if m.get('Tasks') is not None:
             for k in m.get('Tasks'):
@@ -992,6 +1057,7 @@ class CreateJobShrinkRequest(TeaModel):
         job_description: str = None,
         job_name: str = None,
         job_scheduler: str = None,
+        security_policy_shrink: str = None,
         tasks_shrink: str = None,
     ):
         self.deployment_policy_shrink = deployment_policy_shrink
@@ -999,6 +1065,7 @@ class CreateJobShrinkRequest(TeaModel):
         # This parameter is required.
         self.job_name = job_name
         self.job_scheduler = job_scheduler
+        self.security_policy_shrink = security_policy_shrink
         # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
@@ -1019,6 +1086,8 @@ class CreateJobShrinkRequest(TeaModel):
             result['JobName'] = self.job_name
         if self.job_scheduler is not None:
             result['JobScheduler'] = self.job_scheduler
+        if self.security_policy_shrink is not None:
+            result['SecurityPolicy'] = self.security_policy_shrink
         if self.tasks_shrink is not None:
             result['Tasks'] = self.tasks_shrink
         return result
@@ -1033,6 +1102,8 @@ class CreateJobShrinkRequest(TeaModel):
             self.job_name = m.get('JobName')
         if m.get('JobScheduler') is not None:
             self.job_scheduler = m.get('JobScheduler')
+        if m.get('SecurityPolicy') is not None:
+            self.security_policy_shrink = m.get('SecurityPolicy')
         if m.get('Tasks') is not None:
             self.tasks_shrink = m.get('Tasks')
         return self
@@ -3569,8 +3640,8 @@ class ListExecutorsRequest(TeaModel):
     def __init__(
         self,
         filter: ListExecutorsRequestFilter = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         self.filter = filter
         self.page_number = page_number
@@ -3610,8 +3681,8 @@ class ListExecutorsShrinkRequest(TeaModel):
     def __init__(
         self,
         filter_shrink: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         self.filter_shrink = filter_shrink
         self.page_number = page_number
@@ -3761,10 +3832,12 @@ class ListExecutorsResponseBodyExecutorsTags(TeaModel):
 class ListExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         array_index: int = None,
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
+        expiration_time: str = None,
         external_ip_address: List[str] = None,
         host_name: List[str] = None,
         image: str = None,
@@ -3781,10 +3854,12 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         task_sustainable: bool = None,
         vswitch_id: str = None,
     ):
+        self.app_name = app_name
         self.array_index = array_index
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
+        self.expiration_time = expiration_time
         self.external_ip_address = external_ip_address
         self.host_name = host_name
         self.image = image
@@ -3815,6 +3890,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.array_index is not None:
             result['ArrayIndex'] = self.array_index
         if self.create_time is not None:
@@ -3823,6 +3900,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['EndTime'] = self.end_time
         if self.executor_id is not None:
             result['ExecutorId'] = self.executor_id
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
         if self.external_ip_address is not None:
             result['ExternalIpAddress'] = self.external_ip_address
         if self.host_name is not None:
@@ -3859,6 +3938,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('ArrayIndex') is not None:
             self.array_index = m.get('ArrayIndex')
         if m.get('CreateTime') is not None:
@@ -3867,6 +3948,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutorId') is not None:
             self.executor_id = m.get('ExecutorId')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
         if m.get('ExternalIpAddress') is not None:
             self.external_ip_address = m.get('ExternalIpAddress')
         if m.get('HostName') is not None:
@@ -3908,8 +3991,8 @@ class ListExecutorsResponseBody(TeaModel):
     def __init__(
         self,
         executors: List[ListExecutorsResponseBodyExecutors] = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
         total_count: str = None,
     ):
@@ -4330,8 +4413,8 @@ class ListJobExecutorsRequest(TeaModel):
     def __init__(
         self,
         job_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         task_name: str = None,
     ):
         self.job_id = job_id
@@ -4474,6 +4557,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         create_time: str = None,
         end_time: str = None,
         executor_id: str = None,
+        expiration_time: str = None,
         external_ip_address: List[str] = None,
         host_name: List[str] = None,
         ip_address: List[str] = None,
@@ -4486,6 +4570,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         self.create_time = create_time
         self.end_time = end_time
         self.executor_id = executor_id
+        self.expiration_time = expiration_time
         self.external_ip_address = external_ip_address
         self.host_name = host_name
         self.ip_address = ip_address
@@ -4514,6 +4599,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             result['EndTime'] = self.end_time
         if self.executor_id is not None:
             result['ExecutorId'] = self.executor_id
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
         if self.external_ip_address is not None:
             result['ExternalIpAddress'] = self.external_ip_address
         if self.host_name is not None:
@@ -4542,6 +4629,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExecutorId') is not None:
             self.executor_id = m.get('ExecutorId')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
         if m.get('ExternalIpAddress') is not None:
             self.external_ip_address = m.get('ExternalIpAddress')
         if m.get('HostName') is not None:
@@ -4568,8 +4657,8 @@ class ListJobExecutorsResponseBody(TeaModel):
         executor_status: ListJobExecutorsResponseBodyExecutorStatus = None,
         executors: List[ListJobExecutorsResponseBodyExecutors] = None,
         job_id: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
         task_name: str = None,
         total_count: str = None,
@@ -4771,8 +4860,8 @@ class ListJobsRequest(TeaModel):
     def __init__(
         self,
         filter: ListJobsRequestFilter = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         sort_by: ListJobsRequestSortBy = None,
     ):
         self.filter = filter
@@ -4821,8 +4910,8 @@ class ListJobsShrinkRequest(TeaModel):
     def __init__(
         self,
         filter_shrink: str = None,
-        page_number: str = None,
-        page_size: str = None,
+        page_number: int = None,
+        page_size: int = None,
         sort_by_shrink: str = None,
     ):
         self.filter_shrink = filter_shrink
@@ -4898,6 +4987,7 @@ class ListJobsResponseBodyJobListTags(TeaModel):
 class ListJobsResponseBodyJobList(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         create_time: str = None,
         end_time: str = None,
         executor_count: int = None,
@@ -4911,6 +5001,7 @@ class ListJobsResponseBodyJobList(TeaModel):
         task_count: int = None,
         task_sustainable: bool = None,
     ):
+        self.app_name = app_name
         self.create_time = create_time
         self.end_time = end_time
         self.executor_count = executor_count
@@ -4936,6 +5027,8 @@ class ListJobsResponseBodyJobList(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.end_time is not None:
@@ -4966,6 +5059,8 @@ class ListJobsResponseBodyJobList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('EndTime') is not None:
