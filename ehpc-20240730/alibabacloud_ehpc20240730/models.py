@@ -455,6 +455,7 @@ class QueueTemplate(TeaModel):
         min_count: int = None,
         queue_name: str = None,
         ram_role: str = None,
+        reserved_node_pool_id: str = None,
         v_switch_ids: List[str] = None,
     ):
         self.allocation_strategy = allocation_strategy
@@ -472,6 +473,7 @@ class QueueTemplate(TeaModel):
         # This parameter is required.
         self.queue_name = queue_name
         self.ram_role = ram_role
+        self.reserved_node_pool_id = reserved_node_pool_id
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -516,6 +518,8 @@ class QueueTemplate(TeaModel):
             result['QueueName'] = self.queue_name
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
+        if self.reserved_node_pool_id is not None:
+            result['ReservedNodePoolId'] = self.reserved_node_pool_id
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         return result
@@ -553,6 +557,8 @@ class QueueTemplate(TeaModel):
             self.queue_name = m.get('QueueName')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+        if m.get('ReservedNodePoolId') is not None:
+            self.reserved_node_pool_id = m.get('ReservedNodePoolId')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         return self
@@ -2154,6 +2160,7 @@ class CreateNodesRequest(TeaModel):
         keep_alive: str = None,
         queue_name: str = None,
         ram_role: str = None,
+        reserved_node_pool_id: str = None,
         v_switch_id: str = None,
     ):
         # The cluster ID.
@@ -2184,6 +2191,7 @@ class CreateNodesRequest(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role to be assumed by the added nodes.
         self.ram_role = ram_role
+        self.reserved_node_pool_id = reserved_node_pool_id
         # The ID of the vSwitch to be used by the added nodes.
         self.v_switch_id = v_switch_id
 
@@ -2217,6 +2225,8 @@ class CreateNodesRequest(TeaModel):
             result['QueueName'] = self.queue_name
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
+        if self.reserved_node_pool_id is not None:
+            result['ReservedNodePoolId'] = self.reserved_node_pool_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2244,6 +2254,8 @@ class CreateNodesRequest(TeaModel):
             self.queue_name = m.get('QueueName')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+        if m.get('ReservedNodePoolId') is not None:
+            self.reserved_node_pool_id = m.get('ReservedNodePoolId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -2262,6 +2274,7 @@ class CreateNodesShrinkRequest(TeaModel):
         keep_alive: str = None,
         queue_name: str = None,
         ram_role: str = None,
+        reserved_node_pool_id: str = None,
         v_switch_id: str = None,
     ):
         # The cluster ID.
@@ -2292,6 +2305,7 @@ class CreateNodesShrinkRequest(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role to be assumed by the added nodes.
         self.ram_role = ram_role
+        self.reserved_node_pool_id = reserved_node_pool_id
         # The ID of the vSwitch to be used by the added nodes.
         self.v_switch_id = v_switch_id
 
@@ -2324,6 +2338,8 @@ class CreateNodesShrinkRequest(TeaModel):
             result['QueueName'] = self.queue_name
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
+        if self.reserved_node_pool_id is not None:
+            result['ReservedNodePoolId'] = self.reserved_node_pool_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -2350,6 +2366,8 @@ class CreateNodesShrinkRequest(TeaModel):
             self.queue_name = m.get('QueueName')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+        if m.get('ReservedNodePoolId') is not None:
+            self.reserved_node_pool_id = m.get('ReservedNodePoolId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -6345,6 +6363,7 @@ class GetQueueResponseBodyQueue(TeaModel):
         min_count: int = None,
         queue_name: str = None,
         ram_role: str = None,
+        reserved_node_pool_id: str = None,
         v_switch_ids: List[str] = None,
     ):
         # The auto scale-out policy of the queue.
@@ -6386,6 +6405,7 @@ class GetQueueResponseBodyQueue(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
         self.ram_role = ram_role
+        self.reserved_node_pool_id = reserved_node_pool_id
         # The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
         self.v_switch_ids = v_switch_ids
 
@@ -6431,6 +6451,8 @@ class GetQueueResponseBodyQueue(TeaModel):
             result['QueueName'] = self.queue_name
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
+        if self.reserved_node_pool_id is not None:
+            result['ReservedNodePoolId'] = self.reserved_node_pool_id
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         return result
@@ -6468,6 +6490,8 @@ class GetQueueResponseBodyQueue(TeaModel):
             self.queue_name = m.get('QueueName')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+        if m.get('ReservedNodePoolId') is not None:
+            self.reserved_node_pool_id = m.get('ReservedNodePoolId')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         return self
@@ -9910,7 +9934,7 @@ class ListJobsRequestJobFilter(TeaModel):
         self.diagnosis = diagnosis
         # The job name. Fuzzy match is supported.
         self.job_name = job_name
-        # The job state. Valid values:
+        # The job status. Valid values:
         # 
         # *   all: returns all jobs.
         # *   finished: returns completed jobs.
@@ -10769,6 +10793,7 @@ class ListNodesResponseBodyNodes(TeaModel):
     ):
         # The time when the node was created.
         self.add_time = add_time
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
         # The time when the node expires.
         self.expired_time = expired_time
@@ -13432,6 +13457,7 @@ class UpdateQueueRequestQueue(TeaModel):
         min_count: int = None,
         queue_name: str = None,
         ram_role: str = None,
+        reserved_node_pool_id: str = None,
         v_switch_ids: List[str] = None,
     ):
         # The policy based on which instance types are selected for compute nodes during auto scale-outs. Valid values:
@@ -13472,6 +13498,7 @@ class UpdateQueueRequestQueue(TeaModel):
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
         self.ram_role = ram_role
+        self.reserved_node_pool_id = reserved_node_pool_id
         # The vSwitches available for use by compute nodes in the queue.
         self.v_switch_ids = v_switch_ids
 
@@ -13517,6 +13544,8 @@ class UpdateQueueRequestQueue(TeaModel):
             result['QueueName'] = self.queue_name
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
+        if self.reserved_node_pool_id is not None:
+            result['ReservedNodePoolId'] = self.reserved_node_pool_id
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
         return result
@@ -13554,6 +13583,8 @@ class UpdateQueueRequestQueue(TeaModel):
             self.queue_name = m.get('QueueName')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
+        if m.get('ReservedNodePoolId') is not None:
+            self.reserved_node_pool_id = m.get('ReservedNodePoolId')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
         return self
