@@ -4533,6 +4533,87 @@ class BlockObjectResponse(TeaModel):
         return self
 
 
+class CheckAssumeSlrRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        is_exist: str = None,
+        request_id: str = None,
+    ):
+        self.error_msg = error_msg
+        self.is_exist = is_exist
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.is_exist is not None:
+            result['IsExist'] = self.is_exist
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('IsExist') is not None:
+            self.is_exist = m.get('IsExist')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckAssumeSlrRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckAssumeSlrRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckAssumeSlrRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckSiteNameRequest(TeaModel):
     def __init__(
         self,
@@ -5487,6 +5568,7 @@ class CreateCompressionRuleRequest(TeaModel):
         rule_name: str = None,
         site_id: int = None,
         site_version: int = None,
+        zstd: str = None,
     ):
         self.brotli = brotli
         self.gzip = gzip
@@ -5496,6 +5578,7 @@ class CreateCompressionRuleRequest(TeaModel):
         # This parameter is required.
         self.site_id = site_id
         self.site_version = site_version
+        self.zstd = zstd
 
     def validate(self):
         pass
@@ -5520,6 +5603,8 @@ class CreateCompressionRuleRequest(TeaModel):
             result['SiteId'] = self.site_id
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
+        if self.zstd is not None:
+            result['Zstd'] = self.zstd
         return result
 
     def from_map(self, m: dict = None):
@@ -5538,6 +5623,8 @@ class CreateCompressionRuleRequest(TeaModel):
             self.site_id = m.get('SiteId')
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')
+        if m.get('Zstd') is not None:
+            self.zstd = m.get('Zstd')
         return self
 
 
@@ -12398,6 +12485,75 @@ class CreateSiteDeliveryTaskResponse(TeaModel):
         return self
 
 
+class CreateSlrRoleForRealtimeLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSlrRoleForRealtimeLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSlrRoleForRealtimeLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSlrRoleForRealtimeLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam(TeaModel):
     def __init__(
         self,
@@ -13669,9 +13825,11 @@ class CreateWaitingRoomResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        waiting_room_id: str = None,
     ):
         # The request ID.
         self.request_id = request_id
+        self.waiting_room_id = waiting_room_id
 
     def validate(self):
         pass
@@ -13684,12 +13842,16 @@ class CreateWaitingRoomResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.waiting_room_id is not None:
+            result['WaitingRoomId'] = self.waiting_room_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('WaitingRoomId') is not None:
+            self.waiting_room_id = m.get('WaitingRoomId')
         return self
 
 
@@ -13952,9 +14114,11 @@ class CreateWaitingRoomEventResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        waiting_room_event_id: int = None,
     ):
         # The request ID.
         self.request_id = request_id
+        self.waiting_room_event_id = waiting_room_event_id
 
     def validate(self):
         pass
@@ -13967,12 +14131,16 @@ class CreateWaitingRoomEventResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.waiting_room_event_id is not None:
+            result['WaitingRoomEventId'] = self.waiting_room_event_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('WaitingRoomEventId') is not None:
+            self.waiting_room_event_id = m.get('WaitingRoomEventId')
         return self
 
 
@@ -14090,9 +14258,11 @@ class CreateWaitingRoomRuleResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        waiting_room_rule_id: int = None,
     ):
         # The request ID.
         self.request_id = request_id
+        self.waiting_room_rule_id = waiting_room_rule_id
 
     def validate(self):
         pass
@@ -14105,12 +14275,16 @@ class CreateWaitingRoomRuleResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.waiting_room_rule_id is not None:
+            result['WaitingRoomRuleId'] = self.waiting_room_rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('WaitingRoomRuleId') is not None:
+            self.waiting_room_rule_id = m.get('WaitingRoomRuleId')
         return self
 
 
@@ -22475,6 +22649,7 @@ class GetCompressionRuleResponseBody(TeaModel):
         rule_name: str = None,
         sequence: int = None,
         site_version: int = None,
+        zstd: str = None,
     ):
         self.brotli = brotli
         self.config_id = config_id
@@ -22486,6 +22661,7 @@ class GetCompressionRuleResponseBody(TeaModel):
         self.rule_name = rule_name
         self.sequence = sequence
         self.site_version = site_version
+        self.zstd = zstd
 
     def validate(self):
         pass
@@ -22516,6 +22692,8 @@ class GetCompressionRuleResponseBody(TeaModel):
             result['Sequence'] = self.sequence
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
+        if self.zstd is not None:
+            result['Zstd'] = self.zstd
         return result
 
     def from_map(self, m: dict = None):
@@ -22540,6 +22718,8 @@ class GetCompressionRuleResponseBody(TeaModel):
             self.sequence = m.get('Sequence')
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')
+        if m.get('Zstd') is not None:
+            self.zstd = m.get('Zstd')
         return self
 
 
@@ -34655,6 +34835,7 @@ class ListCompressionRulesResponseBodyConfigs(TeaModel):
         rule_name: str = None,
         sequence: int = None,
         site_version: int = None,
+        zstd: str = None,
     ):
         # Indicates whether Brotli compression is enabled. Valid values:
         # 
@@ -34686,6 +34867,7 @@ class ListCompressionRulesResponseBodyConfigs(TeaModel):
         self.sequence = sequence
         # The version of the website configurations.
         self.site_version = site_version
+        self.zstd = zstd
 
     def validate(self):
         pass
@@ -34714,6 +34896,8 @@ class ListCompressionRulesResponseBodyConfigs(TeaModel):
             result['Sequence'] = self.sequence
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
+        if self.zstd is not None:
+            result['Zstd'] = self.zstd
         return result
 
     def from_map(self, m: dict = None):
@@ -34736,6 +34920,8 @@ class ListCompressionRulesResponseBodyConfigs(TeaModel):
             self.sequence = m.get('Sequence')
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')
+        if m.get('Zstd') is not None:
+            self.zstd = m.get('Zstd')
         return self
 
 
@@ -44903,6 +45089,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         sort_by: str = None,
         sort_order: str = None,
         status: str = None,
+        subscribe_type: str = None,
     ):
         # Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
         # 
@@ -44933,6 +45120,7 @@ class ListUserRatePlanInstancesRequest(TeaModel):
         # *   disable: The plan is released.
         # *   overdue: The plan is stopped due to overdue payments.
         self.status = status
+        self.subscribe_type = subscribe_type
 
     def validate(self):
         pass
@@ -44959,6 +45147,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             result['SortOrder'] = self.sort_order
         if self.status is not None:
             result['Status'] = self.status
+        if self.subscribe_type is not None:
+            result['SubscribeType'] = self.subscribe_type
         return result
 
     def from_map(self, m: dict = None):
@@ -44979,6 +45169,8 @@ class ListUserRatePlanInstancesRequest(TeaModel):
             self.sort_order = m.get('SortOrder')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubscribeType') is not None:
+            self.subscribe_type = m.get('SubscribeType')
         return self
 
 
@@ -45056,6 +45248,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         smart_routing_request: str = None,
         static_request: str = None,
         status: str = None,
+        subscribe_type: str = None,
     ):
         # The billing method. Valid values:
         # 
@@ -45106,6 +45299,7 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
         # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
         # *   disable: The plan is released.
         self.status = status
+        self.subscribe_type = subscribe_type
 
     def validate(self):
         if self.sites:
@@ -45169,6 +45363,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
             result['StaticRequest'] = self.static_request
         if self.status is not None:
             result['Status'] = self.status
+        if self.subscribe_type is not None:
+            result['SubscribeType'] = self.subscribe_type
         return result
 
     def from_map(self, m: dict = None):
@@ -45224,6 +45420,8 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(TeaModel):
             self.static_request = m.get('StaticRequest')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubscribeType') is not None:
+            self.subscribe_type = m.get('SubscribeType')
         return self
 
 
@@ -50637,6 +50835,7 @@ class UpdateCompressionRuleRequest(TeaModel):
         rule_enable: str = None,
         rule_name: str = None,
         site_id: int = None,
+        zstd: str = None,
     ):
         self.brotli = brotli
         # This parameter is required.
@@ -50647,6 +50846,7 @@ class UpdateCompressionRuleRequest(TeaModel):
         self.rule_name = rule_name
         # This parameter is required.
         self.site_id = site_id
+        self.zstd = zstd
 
     def validate(self):
         pass
@@ -50671,6 +50871,8 @@ class UpdateCompressionRuleRequest(TeaModel):
             result['RuleName'] = self.rule_name
         if self.site_id is not None:
             result['SiteId'] = self.site_id
+        if self.zstd is not None:
+            result['Zstd'] = self.zstd
         return result
 
     def from_map(self, m: dict = None):
@@ -50689,6 +50891,8 @@ class UpdateCompressionRuleRequest(TeaModel):
             self.rule_name = m.get('RuleName')
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
+        if m.get('Zstd') is not None:
+            self.zstd = m.get('Zstd')
         return self
 
 

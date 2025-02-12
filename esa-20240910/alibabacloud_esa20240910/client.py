@@ -1835,6 +1835,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.block_object_with_options_async(request, runtime)
 
+    def check_assume_slr_role_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CheckAssumeSlrRoleResponse:
+        """
+        @summary 检查实时日志slr角色是否已创建
+        
+        @param request: CheckAssumeSlrRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAssumeSlrRoleResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckAssumeSlrRole',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CheckAssumeSlrRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CheckAssumeSlrRoleResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def check_assume_slr_role_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CheckAssumeSlrRoleResponse:
+        """
+        @summary 检查实时日志slr角色是否已创建
+        
+        @param request: CheckAssumeSlrRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAssumeSlrRoleResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckAssumeSlrRole',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CheckAssumeSlrRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CheckAssumeSlrRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def check_assume_slr_role(self) -> esa20240910_models.CheckAssumeSlrRoleResponse:
+        """
+        @summary 检查实时日志slr角色是否已创建
+        
+        @return: CheckAssumeSlrRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_assume_slr_role_with_options(runtime)
+
+    async def check_assume_slr_role_async(self) -> esa20240910_models.CheckAssumeSlrRoleResponse:
+        """
+        @summary 检查实时日志slr角色是否已创建
+        
+        @return: CheckAssumeSlrRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_assume_slr_role_with_options_async(runtime)
+
     def check_site_name_with_options(
         self,
         request: esa20240910_models.CheckSiteNameRequest,
@@ -2619,6 +2705,8 @@ class Client(OpenApiClient):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
             query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.zstd):
+            query['Zstd'] = request.zstd
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2672,6 +2760,8 @@ class Client(OpenApiClient):
             query['SiteId'] = request.site_id
         if not UtilClient.is_unset(request.site_version):
             query['SiteVersion'] = request.site_version
+        if not UtilClient.is_unset(request.zstd):
+            query['Zstd'] = request.zstd
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6562,6 +6652,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_site_delivery_task_with_options_async(request, runtime)
+
+    def create_slr_role_for_realtime_log_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateSlrRoleForRealtimeLogResponse:
+        """
+        @summary 创建一个实时日志slr角色
+        
+        @param request: CreateSlrRoleForRealtimeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSlrRoleForRealtimeLogResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CreateSlrRoleForRealtimeLog',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateSlrRoleForRealtimeLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateSlrRoleForRealtimeLogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_slr_role_for_realtime_log_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> esa20240910_models.CreateSlrRoleForRealtimeLogResponse:
+        """
+        @summary 创建一个实时日志slr角色
+        
+        @param request: CreateSlrRoleForRealtimeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSlrRoleForRealtimeLogResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CreateSlrRoleForRealtimeLog',
+            version='2024-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                esa20240910_models.CreateSlrRoleForRealtimeLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                esa20240910_models.CreateSlrRoleForRealtimeLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_slr_role_for_realtime_log(self) -> esa20240910_models.CreateSlrRoleForRealtimeLogResponse:
+        """
+        @summary 创建一个实时日志slr角色
+        
+        @return: CreateSlrRoleForRealtimeLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_slr_role_for_realtime_log_with_options(runtime)
+
+    async def create_slr_role_for_realtime_log_async(self) -> esa20240910_models.CreateSlrRoleForRealtimeLogResponse:
+        """
+        @summary 创建一个实时日志slr角色
+        
+        @return: CreateSlrRoleForRealtimeLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_slr_role_for_realtime_log_with_options_async(runtime)
 
     def create_user_delivery_task_with_options(
         self,
@@ -27673,6 +27849,8 @@ class Client(OpenApiClient):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.zstd):
+            query['Zstd'] = request.zstd
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -27726,6 +27904,8 @@ class Client(OpenApiClient):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.site_id):
             query['SiteId'] = request.site_id
+        if not UtilClient.is_unset(request.zstd):
+            query['Zstd'] = request.zstd
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

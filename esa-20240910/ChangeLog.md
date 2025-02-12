@@ -1,3 +1,55 @@
+2025-02-12 Version: 2.15.0
+- Support API ActivateVersionManagement.
+- Support API CheckAssumeSlrRole.
+- Support API CreateHttpsApplicationConfiguration.
+- Support API CreateImageTransform.
+- Support API CreateLoadBalancer.
+- Support API CreateNetworkOptimization.
+- Support API CreateSlrRoleForRealtimeLog.
+- Support API DeactivateVersionManagement.
+- Support API DeleteHttpsApplicationConfiguration.
+- Support API DeleteImageTransform.
+- Support API DeleteLoadBalancer.
+- Support API DeleteNetworkOptimization.
+- Support API GetCacheTag.
+- Support API GetCnameFlattening.
+- Support API GetDevelopmentMode.
+- Support API GetHttpsApplicationConfiguration.
+- Support API GetImageTransform.
+- Support API GetLoadBalancer.
+- Support API GetNetworkOptimization.
+- Support API GetSeoBypass.
+- Support API GetSiteNameExclusive.
+- Support API GetSitePause.
+- Support API ListHttpsApplicationConfigurations.
+- Support API ListImageTransforms.
+- Support API ListLoadBalancerOriginStatus.
+- Support API ListLoadBalancers.
+- Support API ListNetworkOptimizations.
+- Support API UpdateCacheTag.
+- Support API UpdateCnameFlattening.
+- Support API UpdateDevelopmentMode.
+- Support API UpdateHttpsApplicationConfiguration.
+- Support API UpdateImageTransform.
+- Support API UpdateLoadBalancer.
+- Support API UpdateNetworkOptimization.
+- Support API UpdateSeoBypass.
+- Support API UpdateSiteNameExclusive.
+- Support API UpdateSitePause.
+- Update API CreateCompressionRule: add param Zstd.
+- Update API CreateWaitingRoom: update response param.
+- Update API CreateWaitingRoomEvent: update response param.
+- Update API CreateWaitingRoomRule: update response param.
+- Update API DescribePurgeTasks: update param Type.
+- Update API GetCompressionRule: update response param.
+- Update API GetPurgeQuota: update param Type.
+- Update API ListCompressionRules: update response param.
+- Update API ListUserRatePlanInstances: add param SubscribeType.
+- Update API ListUserRatePlanInstances: update response param.
+- Update API PurgeCaches: update param Content.
+- Update API UpdateCompressionRule: add param Zstd.
+
+
 2025-02-10 Version: 2.14.0
 - Support API ActivateVersionManagement.
 - Support API CreateHttpsApplicationConfiguration.
