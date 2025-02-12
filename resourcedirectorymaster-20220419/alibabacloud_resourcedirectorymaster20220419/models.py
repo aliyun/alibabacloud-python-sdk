@@ -5826,6 +5826,7 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
         identity_information: str = None,
         master_account_id: str = None,
         master_account_name: str = None,
+        member_account_display_name_sync_status: str = None,
         member_deletion_status: str = None,
         resource_directory_id: str = None,
         root_folder_id: str = None,
@@ -5835,6 +5836,7 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
         self.identity_information = identity_information
         self.master_account_id = master_account_id
         self.master_account_name = master_account_name
+        self.member_account_display_name_sync_status = member_account_display_name_sync_status
         self.member_deletion_status = member_deletion_status
         self.resource_directory_id = resource_directory_id
         self.root_folder_id = root_folder_id
@@ -5858,6 +5860,8 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
             result['MasterAccountId'] = self.master_account_id
         if self.master_account_name is not None:
             result['MasterAccountName'] = self.master_account_name
+        if self.member_account_display_name_sync_status is not None:
+            result['MemberAccountDisplayNameSyncStatus'] = self.member_account_display_name_sync_status
         if self.member_deletion_status is not None:
             result['MemberDeletionStatus'] = self.member_deletion_status
         if self.resource_directory_id is not None:
@@ -5878,6 +5882,8 @@ class GetResourceDirectoryResponseBodyResourceDirectory(TeaModel):
             self.master_account_id = m.get('MasterAccountId')
         if m.get('MasterAccountName') is not None:
             self.master_account_name = m.get('MasterAccountName')
+        if m.get('MemberAccountDisplayNameSyncStatus') is not None:
+            self.member_account_display_name_sync_status = m.get('MemberAccountDisplayNameSyncStatus')
         if m.get('MemberDeletionStatus') is not None:
             self.member_deletion_status = m.get('MemberDeletionStatus')
         if m.get('ResourceDirectoryId') is not None:
@@ -7353,6 +7359,39 @@ class ListAncestorsResponse(TeaModel):
         return self
 
 
+class ListControlPoliciesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListControlPoliciesRequest(TeaModel):
     def __init__(
         self,
@@ -7360,6 +7399,7 @@ class ListControlPoliciesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         policy_type: str = None,
+        tag: List[ListControlPoliciesRequestTag] = None,
     ):
         # The language in which you want to return the descriptions of the access control policies. Valid values:
         # 
@@ -7382,9 +7422,13 @@ class ListControlPoliciesRequest(TeaModel):
         # *   System: system access control policy
         # *   Custom: custom access control policy
         self.policy_type = policy_type
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7400,6 +7444,10 @@ class ListControlPoliciesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7412,6 +7460,79 @@ class ListControlPoliciesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PolicyType') is not None:
             self.policy_type = m.get('PolicyType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListControlPoliciesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -7425,6 +7546,7 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicy(TeaModel):
         policy_id: str = None,
         policy_name: str = None,
         policy_type: str = None,
+        tags: ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags = None,
         update_date: str = None,
     ):
         # The number of times that the access control policy is referenced.
@@ -7447,11 +7569,13 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicy(TeaModel):
         # *   System: system access control policy
         # *   Custom: custom access control policy
         self.policy_type = policy_type
+        self.tags = tags
         # The time when the access control policy was updated.
         self.update_date = update_date
 
     def validate(self):
-        pass
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7473,6 +7597,8 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicy(TeaModel):
             result['PolicyName'] = self.policy_name
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
         return result
@@ -7493,6 +7619,9 @@ class ListControlPoliciesResponseBodyControlPoliciesControlPolicy(TeaModel):
             self.policy_name = m.get('PolicyName')
         if m.get('PolicyType') is not None:
             self.policy_type = m.get('PolicyType')
+        if m.get('Tags') is not None:
+            temp_model = ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')
         return self

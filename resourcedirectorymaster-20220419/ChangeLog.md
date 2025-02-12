@@ -1,3 +1,9 @@
+2025-02-12 Version: 2.1.1
+- Update API GetResourceDirectory: update response param.
+- Update API ListControlPolicies: add param Tag.
+- Update API ListControlPolicies: update response param.
+
+
 2025-01-16 Version: 2.1.0
 - Support API UpdatePayerForAccount.
 - Update API ListAccounts: add param MaxResults.
