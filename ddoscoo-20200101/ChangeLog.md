@@ -1,3 +1,11 @@
+2025-02-12 Version: 2.6.0
+- Support API ModifyInstance.
+- Update API DeleteAutoCcBlacklist: add param QueryType.
+- Update API DescribeAutoCcBlacklist: add param QueryType.
+- Update API DescribeDomainStatusCodeCount: update response param.
+- Update API DescribeDomainStatusCodeList: update response param.
+
+
 2024-10-24 Version: 2.5.1
 - Generated python 2020-01-01 for ddoscoo.
 

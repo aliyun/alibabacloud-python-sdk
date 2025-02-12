@@ -3101,7 +3101,7 @@ class CreateTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[CreateTagResourcesRequestTags] = None,
     ):
-        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
+        # The region ID of the Anti-DDoS Proxy instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -3109,7 +3109,7 @@ class CreateTagResourcesRequest(TeaModel):
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The IDs of the Anti-DDoS Proxy (Chinese Mainland) instances to which you want to add the tag.
+        # The IDs of the Anti-DDoS Proxy instances to which you want to add tags.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
@@ -3700,6 +3700,7 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
         self,
         blacklist: str = None,
         instance_id: str = None,
+        query_type: str = None,
     ):
         # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following fields:
         # 
@@ -3713,6 +3714,7 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.query_type = query_type
 
     def validate(self):
         pass
@@ -3727,6 +3729,8 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
             result['Blacklist'] = self.blacklist
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3735,6 +3739,8 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
             self.blacklist = m.get('Blacklist')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
         return self
 
 
@@ -5559,6 +5565,7 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
         key_word: str = None,
         page_number: int = None,
         page_size: int = None,
+        query_type: str = None,
     ):
         # The ID of the instance.
         # 
@@ -5578,6 +5585,7 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
         # 
         # This parameter is required.
         self.page_size = page_size
+        self.query_type = query_type
 
     def validate(self):
         pass
@@ -5596,6 +5604,8 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
         return result
 
     def from_map(self, m: dict = None):
@@ -5608,6 +5618,8 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
         return self
 
 
@@ -9203,13 +9215,31 @@ class DescribeDomainBpsRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The interval for returning data. Unit: seconds. Valid values are 300, 3600, and 86400. If the time span between StartTime and EndTime is less than 3 days, valid values are 300, 3600, and 86400. If the time span between StartTime and EndTime is from 3 to 30 days, valid values are 3600 and 86400. If the time span between StartTime and EndTime is 31 days or longer, the valid value is 86400. If you leave this parameter empty or specify an invalid value, the default value is used.
+        # 
         # This parameter is required.
         self.interval = interval
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -9256,8 +9286,11 @@ class DescribeDomainBpsResponseBodyDomainBps(TeaModel):
         index: int = None,
         out_bps: int = None,
     ):
+        # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
+        # The index number of the returned data.
         self.index = index
+        # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
 
     def validate(self):
@@ -9294,7 +9327,9 @@ class DescribeDomainBpsResponseBody(TeaModel):
         domain_bps: List[DescribeDomainBpsResponseBodyDomainBps] = None,
         request_id: str = None,
     ):
+        # The bandwidths.
         self.domain_bps = domain_bps
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9378,10 +9413,22 @@ class DescribeDomainH2FingerprintRequest(TeaModel):
         limit: int = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names of all websites that are protected by Anti-DDoS Proxy.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
+        # The maximum number of entries to return.
+        # 
         # This parameter is required.
         self.limit = limit
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -9424,8 +9471,11 @@ class DescribeDomainH2FingerprintResponseBodyDomainH2Fp(TeaModel):
         h_2fingerprint: str = None,
         pv: int = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The HTTP/2 fingerprint.
         self.h_2fingerprint = h_2fingerprint
+        # The page views.
         self.pv = pv
 
     def validate(self):
@@ -9462,7 +9512,9 @@ class DescribeDomainH2FingerprintResponseBody(TeaModel):
         domain_h2fp: List[DescribeDomainH2FingerprintResponseBodyDomainH2Fp] = None,
         request_id: str = None,
     ):
+        # The information about top N HTTP/2 fingerprints.
         self.domain_h2fp = domain_h2fp
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10593,6 +10645,8 @@ class DescribeDomainStatusCodeCountResponseBody(TeaModel):
         status_403: int = None,
         status_404: int = None,
         status_405: int = None,
+        status_410: int = None,
+        status_499: int = None,
         status_4xx: int = None,
         status_501: int = None,
         status_502: int = None,
@@ -10614,6 +10668,8 @@ class DescribeDomainStatusCodeCountResponseBody(TeaModel):
         self.status_404 = status_404
         # The number of 405 status codes within the specified period of time.
         self.status_405 = status_405
+        self.status_410 = status_410
+        self.status_499 = status_499
         # The number of 4xx status codes within the specified period of time.
         self.status_4xx = status_4xx
         # The number of 501 status codes within the specified period of time.
@@ -10650,6 +10706,10 @@ class DescribeDomainStatusCodeCountResponseBody(TeaModel):
             result['Status404'] = self.status_404
         if self.status_405 is not None:
             result['Status405'] = self.status_405
+        if self.status_410 is not None:
+            result['Status410'] = self.status_410
+        if self.status_499 is not None:
+            result['Status499'] = self.status_499
         if self.status_4xx is not None:
             result['Status4XX'] = self.status_4xx
         if self.status_501 is not None:
@@ -10680,6 +10740,10 @@ class DescribeDomainStatusCodeCountResponseBody(TeaModel):
             self.status_404 = m.get('Status404')
         if m.get('Status405') is not None:
             self.status_405 = m.get('Status405')
+        if m.get('Status410') is not None:
+            self.status_410 = m.get('Status410')
+        if m.get('Status499') is not None:
+            self.status_499 = m.get('Status499')
         if m.get('Status4XX') is not None:
             self.status_4xx = m.get('Status4XX')
         if m.get('Status501') is not None:
@@ -10824,6 +10888,8 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(TeaModel):
         status_403: int = None,
         status_404: int = None,
         status_405: int = None,
+        status_410: int = None,
+        status_499: int = None,
         status_4xx: int = None,
         status_501: int = None,
         status_502: int = None,
@@ -10846,6 +10912,8 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(TeaModel):
         self.status_404 = status_404
         # The number of 405 status codes.
         self.status_405 = status_405
+        self.status_410 = status_410
+        self.status_499 = status_499
         # The number of 4xx status codes.
         self.status_4xx = status_4xx
         # The number of 501 status codes.
@@ -10884,6 +10952,10 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(TeaModel):
             result['Status404'] = self.status_404
         if self.status_405 is not None:
             result['Status405'] = self.status_405
+        if self.status_410 is not None:
+            result['Status410'] = self.status_410
+        if self.status_499 is not None:
+            result['Status499'] = self.status_499
         if self.status_4xx is not None:
             result['Status4XX'] = self.status_4xx
         if self.status_501 is not None:
@@ -10916,6 +10988,10 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(TeaModel):
             self.status_404 = m.get('Status404')
         if m.get('Status405') is not None:
             self.status_405 = m.get('Status405')
+        if m.get('Status410') is not None:
+            self.status_410 = m.get('Status410')
+        if m.get('Status499') is not None:
+            self.status_499 = m.get('Status499')
         if m.get('Status4XX') is not None:
             self.status_4xx = m.get('Status4XX')
         if m.get('Status501') is not None:
@@ -11203,15 +11279,35 @@ class DescribeDomainTopFingerprintRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The interval for returning data. Unit: seconds.
+        # 
         # This parameter is required.
         self.interval = interval
+        # The maximum number of entries to return.
+        # 
         # This parameter is required.
         self.limit = limit
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -11262,8 +11358,11 @@ class DescribeDomainTopFingerprintResponseBodyDomainTopFp(TeaModel):
         fingerprinting: str = None,
         pv: int = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The fingerprint of the client.
         self.fingerprinting = fingerprinting
+        # The page views.
         self.pv = pv
 
     def validate(self):
@@ -11300,7 +11399,9 @@ class DescribeDomainTopFingerprintResponseBody(TeaModel):
         domain_top_fp: List[DescribeDomainTopFingerprintResponseBodyDomainTopFp] = None,
         request_id: str = None,
     ):
+        # The information about the fingerprints of the clients.
         self.domain_top_fp = domain_top_fp
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11385,13 +11486,31 @@ class DescribeDomainTopHttpMethodRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The maximum number of entries to return.
+        # 
         # This parameter is required.
         self.limit = limit
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -11438,8 +11557,11 @@ class DescribeDomainTopHttpMethodResponseBodyDomainTopMethod(TeaModel):
         http_method: str = None,
         pv: int = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The HTTP method.
         self.http_method = http_method
+        # The page views.
         self.pv = pv
 
     def validate(self):
@@ -11476,7 +11598,9 @@ class DescribeDomainTopHttpMethodResponseBody(TeaModel):
         domain_top_method: List[DescribeDomainTopHttpMethodResponseBodyDomainTopMethod] = None,
         request_id: str = None,
     ):
+        # The information about top HTTP methods.
         self.domain_top_method = domain_top_method
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11561,13 +11685,31 @@ class DescribeDomainTopRefererRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The maximum number of entries to return.
+        # 
         # This parameter is required.
         self.limit = limit
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -11614,8 +11756,11 @@ class DescribeDomainTopRefererResponseBodyDomainTopReferer(TeaModel):
         pv: int = None,
         referer: str = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The page views.
         self.pv = pv
+        # The Base64-encoded referer.
         self.referer = referer
 
     def validate(self):
@@ -11652,7 +11797,9 @@ class DescribeDomainTopRefererResponseBody(TeaModel):
         domain_top_referer: List[DescribeDomainTopRefererResponseBodyDomainTopReferer] = None,
         request_id: str = None,
     ):
+        # The information about top referers.
         self.domain_top_referer = domain_top_referer
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11737,13 +11884,31 @@ class DescribeDomainTopUserAgentRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The maximum number of entries to return.
+        # 
         # This parameter is required.
         self.limit = limit
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -11790,8 +11955,11 @@ class DescribeDomainTopUserAgentResponseBodyDomainTopUa(TeaModel):
         pv: int = None,
         user_agent: str = None,
     ):
+        # The domain name of the website.
         self.domain = domain
+        # The page views.
         self.pv = pv
+        # The Base64-encoded user agent.
         self.user_agent = user_agent
 
     def validate(self):
@@ -11828,7 +11996,9 @@ class DescribeDomainTopUserAgentResponseBody(TeaModel):
         domain_top_ua: List[DescribeDomainTopUserAgentResponseBodyDomainTopUa] = None,
         request_id: str = None,
     ):
+        # The information about the user agents.
         self.domain_top_ua = domain_top_ua
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15659,7 +15829,7 @@ class DescribeL7RsPolicyResponseBodyAttributesAttribute(TeaModel):
         self.read_timeout = read_timeout
         # The timeout period for a write connection. Valid values: **10** to **300**. Unit: seconds. Default value: **120**.
         self.send_timeout = send_timeout
-        # The weight of the origin server. This parameter takes effect only when **ProxyMode** is set to **rr**.
+        # The weight of the origin server. This parameter takes effect only if the value of **ProxyMode** is **rr** or **ip_hash**.****\
         # 
         # Valid values: **1** to **100**. Default value: **100**. A server with a higher weight receives more requests.
         self.weight = weight
@@ -15715,7 +15885,7 @@ class DescribeL7RsPolicyResponseBodyAttributes(TeaModel):
         real_server: str = None,
         rs_type: int = None,
     ):
-        # The parameter for back-to-origin processing.
+        # The parameters for back-to-origin settings.
         self.attribute = attribute
         # The address of the origin server.
         self.real_server = real_server
@@ -15764,7 +15934,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         rs_attr_rw_timeout_max: int = None,
         upstream_retry: int = None,
     ):
-        # The details about the parameters for back-to-origin processing.
+        # The details about the parameters for back-to-origin settings.
         self.attributes = attributes
         # The scheduling algorithm for back-to-origin traffic. Valid values:
         # 
@@ -15774,6 +15944,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         self.proxy_mode = proxy_mode
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The timeout period for a read or write connection.
         self.rs_attr_rw_timeout_max = rs_attr_rw_timeout_max
         # The back-to-origin retry switch. Valid values:
         # 
@@ -17472,82 +17643,82 @@ class DescribeOpEntitiesResponseBodyOpEntities(TeaModel):
         self.entity_object = entity_object
         # The type of the operation object. Valid values:
         # 
-        # *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-        # *   **2**: Anti-DDoS plans
-        # *   **3**: ECS instances
-        # *   **4**: all logs
+        # *   **1**: the IP address of the Anti-DDoS Proxy instance.
+        # *   **2**: Anti-DDoS plans.
+        # *   **3**: ECS instances.
+        # *   **4**: all logs.
         self.entity_type = entity_type
-        # The time when the operation was performed. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the operation was performed. The value is a UNIX timestamp. Units: milliseconds.
         self.gmt_create = gmt_create
-        # The ID of the Alibaba Cloud account that is used to call the API operation.
+        # The ID of the Alibaba Cloud account that is used to perform the operation.
         self.op_account = op_account
         # The type of the operation. Valid values:
         # 
         # *   **1**: configuring burstable protection bandwidth.
         # *   **5**: using Anti-DDoS plans.
-        # *   **8**: changing IP addresses of ECS instances.
+        # *   **8**: changing the IP addresses of ECS instances.
         # *   **9**: deactivating blackhole filtering.
-        # *   **10**: configuring the Diversion from Origin Server policy.
+        # *   **10**: configuring the near-origin traffic diversion feature.
         # *   **11**: clearing all logs.
-        # *   **12**: downgrading the specifications of instances. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
-        # *   **13**: restoring the specifications of instances. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
+        # *   **12**: downgrading the specifications of the Anti-DDoS Proxy instance. If the instance expires or the account has overdue payments, this operation is performed to downgrade the burstable protection bandwidth.
+        # *   **13**: restoring the specifications of the Anti-DDoS Proxy instance. If the instance is renewed or you have paid the overdue payments within your account, this operation is performed to restore the burstable protection bandwidth.
         self.op_action = op_action
         # The details of the operation. This parameter is a JSON string. The string contains the following fields:
         # 
-        # *   **newEntity**: the values of the parameters after the operation. This field must be of the STRING type.
-        # *   **oldEntity**: the values of the parameters before the operation. This field must be of the STRING type.
+        # *   **newEntity**: the values of the parameters after the operation. This field is of the string type.
+        # *   **oldEntity**: the values of the parameters before the operation. This field is of the string type.
         # 
-        # Both **newEntity** and **oldEntity** are JSON strings. The returned parameters vary with **OpAtion**.
+        # Both **newEntity** and **oldEntity** are JSON strings. The returned parameters vary based on **OpAction**.
         # 
-        # If **OpAction** is **1**, **12**, or **13**, the following parameter is returned:
+        # If the value of **OpAction** is **1**, **12**, or **13**, the following parameter is returned:
         # 
-        # *   **elasticBandwidth**: the burstable protection bandwidth. The value is of the INTEGER type.
+        # *   **elasticBandwidth**: the burstable protection bandwidth. This parameter is of the integer type. Unit: Gbit/s.
         # 
-        #     For example: `{"newEntity":{"elasticBandwidth":300},"oldEntity":{"elasticBandwidth":300}}`
+        #     Example: `{"newEntity":{"elasticBandwidth":300},"oldEntity":{"elasticBandwidth":300}}`
         # 
-        # If **OpAction** is **5**, the following parameters are returned:
+        # If the value of **OpAction** is **5**, the following parameters are returned:
         # 
-        # *   **bandwidth**: the burstable protection bandwidth. The value is of the INTEGER type. Unit: Gbit/s.
+        # *   **bandwidth**: the burstable protection bandwidth. The parameter is of the integer type. Unit: Gbit/s.
         # 
-        # *   **count**: the number of Anti-DDoS plans. The value is of the INTEGER type.
+        # *   **count**: the number of Anti-DDoS plans. This parameter is of the integer type.
         # 
-        # *   **deductCount**: the number of used Anti-DDoS plans. The value is of the INTEGER type.
+        # *   **deductCount**: the number of used Anti-DDoS plans. This parameter is of the integer type.
         # 
-        # *   **expireTime**: the expiration time of the Anti-DDoS plans. The value is of the LONG type. The value is a UNIX timestamp. Unit: milliseconds.
+        # *   **expireTime**: the expiration time of the Anti-DDoS plans. This parameter is of the long type. The value is a UNIX timestamp. Units: milliseconds.
         # 
-        # *   **instanceId**: the ID of the instance. The value is of the STRING type.
+        # *   **instanceId**: the ID of the Anti-DDoS Proxy instance. This parameter is of the string type.
         # 
-        # *   **peakFlow**: the peak throughput on the instance. The value is of the INTEGER type. Unit: bit/s.
+        # *   **peakFlow**: the peak throughput on the Anti-DDoS Proxy instance. This parameter is of the integer type. Unit: bit/s.
         # 
-        #     For example: `{"newEntity":{"bandwidth":100,"count":4,"deductCount":1,"expireTime":1616299196000,"instanceId":"ddoscoo-cn-v641kpmq****","peakFlow":751427000}}`
+        #     Example: `{"newEntity":{"bandwidth":100,"count":4,"deductCount":1,"expireTime":1616299196000,"instanceId":"ddoscoo-cn-v641kpmq****","peakFlow":751427000}}`
         # 
-        # If **OpAction** is **8**, the following parameter is returned:
+        # If the value of **OpAction** is **8**, the following parameter is returned:
         # 
-        # *   **instanceId**: the ID of the ECS instance whose IP address is changed. The value is of the STRING type.
+        # *   **instanceId**: the IDs of the ECS instances whose IP addresses are changed. This parameter is of the string type.
         # 
-        #     For example: `{"newEntity":{"instanceId":"i-wz9h6nc313zptbqn****"}}`
+        #     Example: `{"newEntity":{"instanceId":"i-wz9h6nc313zptbqn****"}}`
         # 
-        # If **OpAction** is **9**, the following parameter is returned:
+        # If the value of **OpAction** is **9**, the following parameter is returned:
         # 
-        # *   **actionMethod**: the operation method. The value is of the STRING type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
+        # *   **actionMethod**: the operation method. This parameter is of the string type. Valid value: **undo**, which indicates that you deactivated blackhole filtering.
         # 
-        #     For example: `{"newEntity":{"actionMethod":"undo"}}`
+        #     Example: `{"newEntity":{"actionMethod":"undo"}}`
         # 
-        # If **OpAction** is **10**, the following parameters are returned:
+        # If the value of **OpAction** is **10**, the following parameters are returned:
         # 
-        # *   **actionMethod**: the operation method. The value is of the STRING type. Valid values:
+        # *   **actionMethod**: the operation method. This parameter is of the string type. Valid values:
         # 
-        #     *   **do**: The Diversion from Origin Server policy is enabled.
-        #     *   **undo**: The Diversion from Origin Server policy is disabled.
+        #     *   **do**: The near-origin traffic diversion feature is enabled.
+        #     *   **undo**: The near-origin traffic diversion feature is disabled.
         # 
-        # *   **lines**: The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
+        # *   **lines**: the Internet service provider (ISP) line from which the traffic is blocked. This parameter is of the array type. Valid values:
         # 
-        #     *   **ct**: China Telecom (International)
-        #     *   **cut**: China Unicom (International)
+        #     *   **ct**: China Telecom (International).
+        #     *   **cut**: China Unicom (International).
         # 
-        #     For example: `{"newEntity":{"actionMethod":"undo","lines":["ct"]}}`
+        #     Example: `{"newEntity":{"actionMethod":"undo","lines":["ct"]}}`
         # 
-        # If **OpAction** is **11**, no parameter is returned, and the description is empty.
+        # If the value of **OpAction** is **11**, no parameter is returned, and the description is empty.
         self.op_desc = op_desc
 
     def validate(self):
@@ -17597,9 +17768,9 @@ class DescribeOpEntitiesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the details of the operation log.
+        # The operation records.
         self.op_entities = op_entities
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of returned operation records.
         self.total_count = total_count
@@ -28435,7 +28606,7 @@ class ModifyFullLogTtlRequest(TeaModel):
     ):
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The log storage duration of a website. Valid values: **30** to **180**. Unit: days.
+        # The log storage duration of a website. Valid values: **7** to **180**. Unit: days.
         # 
         # This parameter is required.
         self.ttl = ttl
@@ -28469,7 +28640,7 @@ class ModifyFullLogTtlResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28544,10 +28715,15 @@ class ModifyHeadersRequest(TeaModel):
         # 
         # Take note of the following items:
         # 
-        # *   Do not use X-Forwarded-ClientSrcPort as a custom header.
-        # *   Do not use a standard HTTP header such as User-Agent. Otherwise, the original header may be overwritten.
+        # *   Do not use the following default HTTP headers:
         # 
-        # >  If you specify a key of X-Forwarded-ClientSrcPort, the system obtains the originating port of the client that accesses Anti-DDoS Proxy (a Layer 7 proxy). In this case, the value is an empty string.
+        #     *   X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        #     *   X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+        #     *   X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        # 
+        # *   Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
+        # 
+        # >  If you specify a key of X-Forwarded-ClientSrcPort, the system obtains the originating ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy). In this case, the value is an empty string.
         # 
         # This parameter is required.
         self.custom_headers = custom_headers
@@ -28934,6 +29110,194 @@ class ModifyHttp2EnableResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyHttp2EnableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        bandwidth: str = None,
+        base_bandwidth: str = None,
+        domain_count: str = None,
+        edition_sale: str = None,
+        function_version: str = None,
+        instance_id: str = None,
+        modify_type: str = None,
+        normal_bandwidth: str = None,
+        normal_qps: str = None,
+        port_count: str = None,
+        product_plan: str = None,
+        product_type: str = None,
+        service_bandwidth: str = None,
+        service_partner: str = None,
+    ):
+        self.address_type = address_type
+        self.bandwidth = bandwidth
+        self.base_bandwidth = base_bandwidth
+        self.domain_count = domain_count
+        self.edition_sale = edition_sale
+        self.function_version = function_version
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.modify_type = modify_type
+        self.normal_bandwidth = normal_bandwidth
+        self.normal_qps = normal_qps
+        self.port_count = port_count
+        self.product_plan = product_plan
+        # This parameter is required.
+        self.product_type = product_type
+        self.service_bandwidth = service_bandwidth
+        self.service_partner = service_partner
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.base_bandwidth is not None:
+            result['BaseBandwidth'] = self.base_bandwidth
+        if self.domain_count is not None:
+            result['DomainCount'] = self.domain_count
+        if self.edition_sale is not None:
+            result['EditionSale'] = self.edition_sale
+        if self.function_version is not None:
+            result['FunctionVersion'] = self.function_version
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
+        if self.normal_bandwidth is not None:
+            result['NormalBandwidth'] = self.normal_bandwidth
+        if self.normal_qps is not None:
+            result['NormalQps'] = self.normal_qps
+        if self.port_count is not None:
+            result['PortCount'] = self.port_count
+        if self.product_plan is not None:
+            result['ProductPlan'] = self.product_plan
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.service_bandwidth is not None:
+            result['ServiceBandwidth'] = self.service_bandwidth
+        if self.service_partner is not None:
+            result['ServicePartner'] = self.service_partner
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('BaseBandwidth') is not None:
+            self.base_bandwidth = m.get('BaseBandwidth')
+        if m.get('DomainCount') is not None:
+            self.domain_count = m.get('DomainCount')
+        if m.get('EditionSale') is not None:
+            self.edition_sale = m.get('EditionSale')
+        if m.get('FunctionVersion') is not None:
+            self.function_version = m.get('FunctionVersion')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
+        if m.get('NormalBandwidth') is not None:
+            self.normal_bandwidth = m.get('NormalBandwidth')
+        if m.get('NormalQps') is not None:
+            self.normal_qps = m.get('NormalQps')
+        if m.get('PortCount') is not None:
+            self.port_count = m.get('PortCount')
+        if m.get('ProductPlan') is not None:
+            self.product_plan = m.get('ProductPlan')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('ServiceBandwidth') is not None:
+            self.service_bandwidth = m.get('ServiceBandwidth')
+        if m.get('ServicePartner') is not None:
+            self.service_partner = m.get('ServicePartner')
+        return self
+
+
+class ModifyInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
