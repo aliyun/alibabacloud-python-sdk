@@ -279,6 +279,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.common_query_by_scene_with_options_async(request, headers, runtime)
 
+    def driving_direction_with_options(
+        self,
+        request: iqs20240712_models.DrivingDirectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.DrivingDirectionResponse:
+        """
+        @summary 根据起终点坐标检索符合条件的驾车路线规划方案
+        
+        @param request: DrivingDirectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DrivingDirectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_latitude):
+            query['destinationLatitude'] = request.destination_latitude
+        if not UtilClient.is_unset(request.destination_longitude):
+            query['destinationLongitude'] = request.destination_longitude
+        if not UtilClient.is_unset(request.origin_latitude):
+            query['originLatitude'] = request.origin_latitude
+        if not UtilClient.is_unset(request.origin_longitude):
+            query['originLongitude'] = request.origin_longitude
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DrivingDirection',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/ipaas/v1/direction/driving',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def driving_direction_with_options_async(
+        self,
+        request: iqs20240712_models.DrivingDirectionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> iqs20240712_models.DrivingDirectionResponse:
+        """
+        @summary 根据起终点坐标检索符合条件的驾车路线规划方案
+        
+        @param request: DrivingDirectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DrivingDirectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_latitude):
+            query['destinationLatitude'] = request.destination_latitude
+        if not UtilClient.is_unset(request.destination_longitude):
+            query['destinationLongitude'] = request.destination_longitude
+        if not UtilClient.is_unset(request.origin_latitude):
+            query['originLatitude'] = request.origin_latitude
+        if not UtilClient.is_unset(request.origin_longitude):
+            query['originLongitude'] = request.origin_longitude
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DrivingDirection',
+            version='2024-07-12',
+            protocol='HTTPS',
+            pathname=f'/ipaas/v1/direction/driving',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                iqs20240712_models.DrivingDirectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def driving_direction(
+        self,
+        request: iqs20240712_models.DrivingDirectionRequest,
+    ) -> iqs20240712_models.DrivingDirectionResponse:
+        """
+        @summary 根据起终点坐标检索符合条件的驾车路线规划方案
+        
+        @param request: DrivingDirectionRequest
+        @return: DrivingDirectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.driving_direction_with_options(request, headers, runtime)
+
+    async def driving_direction_async(
+        self,
+        request: iqs20240712_models.DrivingDirectionRequest,
+    ) -> iqs20240712_models.DrivingDirectionResponse:
+        """
+        @summary 根据起终点坐标检索符合条件的驾车路线规划方案
+        
+        @param request: DrivingDirectionRequest
+        @return: DrivingDirectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.driving_direction_with_options_async(request, headers, runtime)
+
     def driving_direction_nova_with_options(
         self,
         request: iqs20240712_models.DrivingDirectionNovaRequest,

@@ -1,3 +1,7 @@
+2025-02-12 Version: 3.2.0
+- Support API DrivingDirection.
+
+
 2025-01-20 Version: 3.1.0
 - Support API QueryAttractions.
 - Support API QueryAttractionsNl.
