@@ -1,3 +1,22 @@
+2025-02-13 Version: 4.1.0
+- Support API CompareSimilarByImage.
+- Update API AddImage: add param IntAttr3.
+- Update API AddImage: add param IntAttr4.
+- Update API AddImage: add param StrAttr3.
+- Update API AddImage: add param StrAttr4.
+- Update API DeleteImage: add param Filter.
+- Update API DeleteImage: add param IsDeleteByFilter.
+- Update API DeleteImage: update param ProductId.
+- Update API SearchImageByName: add param DistinctProductId.
+- Update API SearchImageByName: update response param.
+- Update API SearchImageByPic: add param DistinctProductId.
+- Update API SearchImageByPic: update response param.
+- Update API UpdateImage: add param IntAttr3.
+- Update API UpdateImage: add param IntAttr4.
+- Update API UpdateImage: add param StrAttr3.
+- Update API UpdateImage: add param StrAttr4.
+
+
 2022-12-16 Version: 4.0.2
 - Support multi region.
 - Add Score parameter.
