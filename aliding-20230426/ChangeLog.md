@@ -1,3 +1,8 @@
+2025-02-13 Version: 2.30.0
+- Support API InvokeAssistant.
+- Support API InvokeSkill.
+
+
 2025-01-07 Version: 2.29.1
 - Update API GetOrgOrWebOpenDocContentTaskId: add param ScopeType.
 
