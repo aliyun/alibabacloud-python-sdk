@@ -85,10 +85,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ConvertInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def convert_instance_with_options_async(
         self,
@@ -134,10 +140,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ConvertInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ConvertInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def convert_instance(
         self,
@@ -209,8 +221,6 @@ class Client(OpenApiClient):
             body['HaResourceSpec'] = request.ha_resource_spec_shrink
         if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
             body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
-        if not UtilClient.is_unset(request.ha_zone_id):
-            body['HaZoneId'] = request.ha_zone_id
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.monitor_type):
@@ -235,8 +245,6 @@ class Client(OpenApiClient):
             body['VSwitchIds'] = request.v_switch_ids_shrink
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -251,10 +259,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.CreateInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_instance_with_options_async(
         self,
@@ -300,8 +314,6 @@ class Client(OpenApiClient):
             body['HaResourceSpec'] = request.ha_resource_spec_shrink
         if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
             body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
-        if not UtilClient.is_unset(request.ha_zone_id):
-            body['HaZoneId'] = request.ha_zone_id
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.monitor_type):
@@ -326,8 +338,6 @@ class Client(OpenApiClient):
             body['VSwitchIds'] = request.v_switch_ids_shrink
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -342,10 +352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.CreateInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_instance(
         self,
@@ -415,10 +431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.CreateNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_namespace_with_options_async(
         self,
@@ -462,10 +484,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.CreateNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.CreateNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_namespace(
         self,
@@ -525,10 +553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DeleteInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_instance_with_options_async(
         self,
@@ -562,10 +596,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DeleteInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_instance(
         self,
@@ -627,10 +667,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DeleteNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_namespace_with_options_async(
         self,
@@ -666,10 +712,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DeleteNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DeleteNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_namespace(
         self,
@@ -729,10 +781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instances_with_options_async(
         self,
@@ -766,10 +824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instances(
         self,
@@ -829,10 +893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeNamespacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeNamespacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeNamespacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_namespaces_with_options_async(
         self,
@@ -866,10 +936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeNamespacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeNamespacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeNamespacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_namespaces(
         self,
@@ -920,10 +996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_supported_regions_with_options_async(
         self,
@@ -948,10 +1030,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_supported_regions(self) -> foasconsole_20211028_models.DescribeSupportedRegionsResponse:
         """
@@ -999,10 +1087,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeSupportedZonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedZonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedZonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_supported_zones_with_options_async(
         self,
@@ -1032,10 +1126,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.DescribeSupportedZonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedZonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.DescribeSupportedZonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_supported_zones(
         self,
@@ -1101,10 +1201,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -1144,10 +1250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -1228,10 +1340,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_prepay_instance_spec_with_options_async(
         self,
@@ -1286,10 +1404,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_prepay_instance_spec(
         self,
@@ -1366,10 +1490,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_prepay_namespace_spec_with_options_async(
         self,
@@ -1414,10 +1544,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_prepay_namespace_spec(
         self,
@@ -1495,10 +1631,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_convert_instance_price_with_options_async(
         self,
@@ -1544,10 +1686,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryConvertInstancePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_convert_instance_price(
         self,
@@ -1631,8 +1779,6 @@ class Client(OpenApiClient):
             body['VSwitchIds'] = request.v_switch_ids_shrink
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1647,10 +1793,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_create_instance_price_with_options_async(
         self,
@@ -1708,8 +1860,6 @@ class Client(OpenApiClient):
             body['VSwitchIds'] = request.v_switch_ids_shrink
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1724,10 +1874,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryCreateInstancePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_create_instance_price(
         self,
@@ -1783,14 +1939,16 @@ class Client(OpenApiClient):
             body['HaResourceSpec'] = request.ha_resource_spec_shrink
         if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
             body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
-        if not UtilClient.is_unset(request.ha_zone_id):
-            body['HaZoneId'] = request.ha_zone_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
         if not UtilClient.is_unset(request.resource_spec_shrink):
             body['ResourceSpec'] = request.resource_spec_shrink
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1805,10 +1963,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_modify_instance_price_with_options_async(
         self,
@@ -1838,14 +2002,16 @@ class Client(OpenApiClient):
             body['HaResourceSpec'] = request.ha_resource_spec_shrink
         if not UtilClient.is_unset(request.ha_vswitch_ids_shrink):
             body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
-        if not UtilClient.is_unset(request.ha_zone_id):
-            body['HaZoneId'] = request.ha_zone_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
         if not UtilClient.is_unset(request.resource_spec_shrink):
             body['ResourceSpec'] = request.resource_spec_shrink
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1860,10 +2026,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryModifyInstancePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_modify_instance_price(
         self,
@@ -1927,10 +2099,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_renew_instance_price_with_options_async(
         self,
@@ -1968,10 +2146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.QueryRenewInstancePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_renew_instance_price(
         self,
@@ -2035,10 +2219,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.RenewInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.RenewInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.RenewInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def renew_instance_with_options_async(
         self,
@@ -2076,10 +2266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.RenewInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.RenewInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.RenewInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def renew_instance(
         self,
@@ -2143,10 +2339,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -2184,10 +2386,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -2253,10 +2461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -2296,10 +2510,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            foasconsole_20211028_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                foasconsole_20211028_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                foasconsole_20211028_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,

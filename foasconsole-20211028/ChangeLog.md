@@ -1,3 +1,14 @@
+2025-02-13 Version: 2.0.0
+- Update API CreateInstance: delete param HaZoneId.
+- Update API CreateInstance: delete param ZoneId.
+- Update API DescribeInstances: update response param.
+- Update API DescribeNamespaces: update response param.
+- Update API QueryCreateInstancePrice: delete param ZoneId.
+- Update API QueryModifyInstancePrice: add param PromotionCode.
+- Update API QueryModifyInstancePrice: add param UsePromotionCode.
+- Update API QueryModifyInstancePrice: delete param HaZoneId.
+
+
 2024-08-05 Version: 1.0.4
 - Update API DescribeInstances: update response param.
 - Update API DescribeSupportedRegions: update response param.
