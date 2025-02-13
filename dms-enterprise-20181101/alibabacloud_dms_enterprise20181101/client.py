@@ -31507,6 +31507,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         body = {}
@@ -31562,6 +31564,8 @@ class Client(OpenApiClient):
             query['DataRegion'] = request.data_region
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         body = {}
@@ -34001,6 +34005,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.uid_string):
+            query['UidString'] = request.uid_string
         if not UtilClient.is_unset(request.user_nick):
             query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
@@ -34054,6 +34060,8 @@ class Client(OpenApiClient):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.uid_string):
+            query['UidString'] = request.uid_string
         if not UtilClient.is_unset(request.user_nick):
             query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(

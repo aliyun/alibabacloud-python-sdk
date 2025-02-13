@@ -1,3 +1,11 @@
+2025-02-13 Version: 1.67.0
+- Support API CreateDifyInstance.
+- Support API DescribeDifyDefaultVpc.
+- Update API CreateDataImportOrder: update param Param.
+- Update API UpdateDataLakeTable: add param TableName.
+- Update API UpdateUser: add param UidString.
+
+
 2025-02-11 Version: 1.66.0
 - Support API CreateDifyInstance.
 - Support API DescribeDifyDefaultVpc.

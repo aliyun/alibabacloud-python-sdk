@@ -202,6 +202,217 @@ class DLDatabase(TeaModel):
         return self
 
 
+class DLResourceUri(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        uri: str = None,
+    ):
+        self.resource_type = resource_type
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DLFunction(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        class_name: str = None,
+        create_time: int = None,
+        creator_id: int = None,
+        db_name: str = None,
+        function_name: str = None,
+        function_type: str = None,
+        modifier_id: int = None,
+        owner_name: str = None,
+        owner_type: str = None,
+        resource_uris: List[DLResourceUri] = None,
+    ):
+        self.catalog_name = catalog_name
+        self.class_name = class_name
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.db_name = db_name
+        self.function_name = function_name
+        self.function_type = function_type
+        self.modifier_id = modifier_id
+        self.owner_name = owner_name
+        self.owner_type = owner_type
+        self.resource_uris = resource_uris
+
+    def validate(self):
+        if self.resource_uris:
+            for k in self.resource_uris:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.class_name is not None:
+            result['ClassName'] = self.class_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.modifier_id is not None:
+            result['ModifierId'] = self.modifier_id
+        if self.owner_name is not None:
+            result['OwnerName'] = self.owner_name
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
+        result['ResourceUris'] = []
+        if self.resource_uris is not None:
+            for k in self.resource_uris:
+                result['ResourceUris'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('ClassName') is not None:
+            self.class_name = m.get('ClassName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('FunctionType') is not None:
+            self.function_type = m.get('FunctionType')
+        if m.get('ModifierId') is not None:
+            self.modifier_id = m.get('ModifierId')
+        if m.get('OwnerName') is not None:
+            self.owner_name = m.get('OwnerName')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
+        self.resource_uris = []
+        if m.get('ResourceUris') is not None:
+            for k in m.get('ResourceUris'):
+                temp_model = DLResourceUri()
+                self.resource_uris.append(temp_model.from_map(k))
+        return self
+
+
+class DLFunctionInput(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        create_time: int = None,
+        creator_id: int = None,
+        function_name: str = None,
+        function_type: str = None,
+        modifier_id: int = None,
+        owner_name: str = None,
+        owner_type: str = None,
+        resource_uris: List[DLResourceUri] = None,
+    ):
+        self.class_name = class_name
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.function_name = function_name
+        self.function_type = function_type
+        self.modifier_id = modifier_id
+        self.owner_name = owner_name
+        self.owner_type = owner_type
+        self.resource_uris = resource_uris
+
+    def validate(self):
+        if self.resource_uris:
+            for k in self.resource_uris:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['ClassName'] = self.class_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.function_type is not None:
+            result['FunctionType'] = self.function_type
+        if self.modifier_id is not None:
+            result['ModifierId'] = self.modifier_id
+        if self.owner_name is not None:
+            result['OwnerName'] = self.owner_name
+        if self.owner_type is not None:
+            result['OwnerType'] = self.owner_type
+        result['ResourceUris'] = []
+        if self.resource_uris is not None:
+            for k in self.resource_uris:
+                result['ResourceUris'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClassName') is not None:
+            self.class_name = m.get('ClassName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('FunctionType') is not None:
+            self.function_type = m.get('FunctionType')
+        if m.get('ModifierId') is not None:
+            self.modifier_id = m.get('ModifierId')
+        if m.get('OwnerName') is not None:
+            self.owner_name = m.get('OwnerName')
+        if m.get('OwnerType') is not None:
+            self.owner_type = m.get('OwnerType')
+        self.resource_uris = []
+        if m.get('ResourceUris') is not None:
+            for k in m.get('ResourceUris'):
+                temp_model = DLResourceUri()
+                self.resource_uris.append(temp_model.from_map(k))
+        return self
+
+
 class DLOrder(TeaModel):
     def __init__(
         self,
@@ -64012,6 +64223,7 @@ class UpdateDataLakeTableRequest(TeaModel):
         data_region: str = None,
         db_name: str = None,
         table_input: OpenStructDLTableInput = None,
+        table_name: str = None,
         tid: int = None,
     ):
         # This parameter is required.
@@ -64022,6 +64234,7 @@ class UpdateDataLakeTableRequest(TeaModel):
         self.db_name = db_name
         # This parameter is required.
         self.table_input = table_input
+        self.table_name = table_name
         self.tid = tid
 
     def validate(self):
@@ -64042,6 +64255,8 @@ class UpdateDataLakeTableRequest(TeaModel):
             result['DbName'] = self.db_name
         if self.table_input is not None:
             result['TableInput'] = self.table_input.to_map()
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -64057,6 +64272,8 @@ class UpdateDataLakeTableRequest(TeaModel):
         if m.get('TableInput') is not None:
             temp_model = OpenStructDLTableInput()
             self.table_input = temp_model.from_map(m['TableInput'])
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -64069,6 +64286,7 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
         data_region: str = None,
         db_name: str = None,
         table_input_shrink: str = None,
+        table_name: str = None,
         tid: int = None,
     ):
         # This parameter is required.
@@ -64079,6 +64297,7 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
         self.db_name = db_name
         # This parameter is required.
         self.table_input_shrink = table_input_shrink
+        self.table_name = table_name
         self.tid = tid
 
     def validate(self):
@@ -64098,6 +64317,8 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
             result['DbName'] = self.db_name
         if self.table_input_shrink is not None:
             result['TableInput'] = self.table_input_shrink
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -64112,6 +64333,8 @@ class UpdateDataLakeTableShrinkRequest(TeaModel):
             self.db_name = m.get('DbName')
         if m.get('TableInput') is not None:
             self.table_input_shrink = m.get('TableInput')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -67587,6 +67810,7 @@ class UpdateUserRequest(TeaModel):
         role_names: str = None,
         tid: int = None,
         uid: int = None,
+        uid_string: str = None,
         user_nick: str = None,
     ):
         # The maximum number of queries that can be performed each day.
@@ -67605,6 +67829,7 @@ class UpdateUserRequest(TeaModel):
         # 
         # This parameter is required.
         self.uid = uid
+        self.uid_string = uid_string
         # The nickname of the user.
         self.user_nick = user_nick
 
@@ -67629,6 +67854,8 @@ class UpdateUserRequest(TeaModel):
             result['Tid'] = self.tid
         if self.uid is not None:
             result['Uid'] = self.uid
+        if self.uid_string is not None:
+            result['UidString'] = self.uid_string
         if self.user_nick is not None:
             result['UserNick'] = self.user_nick
         return result
@@ -67647,6 +67874,8 @@ class UpdateUserRequest(TeaModel):
             self.tid = m.get('Tid')
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
+        if m.get('UidString') is not None:
+            self.uid_string = m.get('UidString')
         if m.get('UserNick') is not None:
             self.user_nick = m.get('UserNick')
         return self
