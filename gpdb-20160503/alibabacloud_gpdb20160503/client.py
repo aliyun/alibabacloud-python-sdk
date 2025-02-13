@@ -108,10 +108,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_instance_public_connection_with_options_async(
         self,
@@ -159,10 +165,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_instance_public_connection(
         self,
@@ -238,10 +250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_dbresource_group_with_role_with_options_async(
         self,
@@ -283,10 +301,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_dbresource_group_with_role(
         self,
@@ -313,6 +337,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_dbresource_group_with_role_with_options_async(request, runtime)
+
+    def cancel_create_index_job_with_options(
+        self,
+        request: gpdb_20160503_models.CancelCreateIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CancelCreateIndexJobResponse:
+        """
+        @summary 取消创建索引任务
+        
+        @param request: CancelCreateIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCreateIndexJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCreateIndexJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelCreateIndexJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelCreateIndexJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def cancel_create_index_job_with_options_async(
+        self,
+        request: gpdb_20160503_models.CancelCreateIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CancelCreateIndexJobResponse:
+        """
+        @summary 取消创建索引任务
+        
+        @param request: CancelCreateIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCreateIndexJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelCreateIndexJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelCreateIndexJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelCreateIndexJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def cancel_create_index_job(
+        self,
+        request: gpdb_20160503_models.CancelCreateIndexJobRequest,
+    ) -> gpdb_20160503_models.CancelCreateIndexJobResponse:
+        """
+        @summary 取消创建索引任务
+        
+        @param request: CancelCreateIndexJobRequest
+        @return: CancelCreateIndexJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_create_index_job_with_options(request, runtime)
+
+    async def cancel_create_index_job_async(
+        self,
+        request: gpdb_20160503_models.CancelCreateIndexJobRequest,
+    ) -> gpdb_20160503_models.CancelCreateIndexJobResponse:
+        """
+        @summary 取消创建索引任务
+        
+        @param request: CancelCreateIndexJobRequest
+        @return: CancelCreateIndexJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_create_index_job_with_options_async(request, runtime)
 
     def cancel_upload_document_job_with_options(
         self,
@@ -361,10 +521,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CancelUploadDocumentJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUploadDocumentJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUploadDocumentJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_upload_document_job_with_options_async(
         self,
@@ -413,10 +579,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CancelUploadDocumentJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUploadDocumentJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUploadDocumentJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_upload_document_job(
         self,
@@ -499,10 +671,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_upsert_collection_data_job_with_options_async(
         self,
@@ -553,10 +731,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CancelUpsertCollectionDataJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_upsert_collection_data_job(
         self,
@@ -626,10 +810,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckHadoopDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_hadoop_data_source_with_options_async(
         self,
@@ -667,10 +857,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckHadoopDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_hadoop_data_source(
         self,
@@ -734,10 +930,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_hadoop_net_connection_with_options_async(
         self,
@@ -775,10 +977,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_hadoop_net_connection(
         self,
@@ -842,10 +1050,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_jdbcsource_net_connection_with_options_async(
         self,
@@ -883,10 +1097,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_jdbcsource_net_connection(
         self,
@@ -944,10 +1164,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_service_linked_role_with_options_async(
         self,
@@ -979,10 +1205,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_service_linked_role(
         self,
@@ -1009,6 +1241,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_service_linked_role_with_options_async(request, runtime)
+
+    def clone_dbinstance_with_options(
+        self,
+        request: gpdb_20160503_models.CloneDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CloneDBInstanceResponse:
+        """
+        @summary 恢复数据至指定实例
+        
+        @param request: CloneDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneDBInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CloneDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CloneDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def clone_dbinstance_with_options_async(
+        self,
+        request: gpdb_20160503_models.CloneDBInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CloneDBInstanceResponse:
+        """
+        @summary 恢复数据至指定实例
+        
+        @param request: CloneDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneDBInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloneDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CloneDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CloneDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def clone_dbinstance(
+        self,
+        request: gpdb_20160503_models.CloneDBInstanceRequest,
+    ) -> gpdb_20160503_models.CloneDBInstanceResponse:
+        """
+        @summary 恢复数据至指定实例
+        
+        @param request: CloneDBInstanceRequest
+        @return: CloneDBInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.clone_dbinstance_with_options(request, runtime)
+
+    async def clone_dbinstance_async(
+        self,
+        request: gpdb_20160503_models.CloneDBInstanceRequest,
+    ) -> gpdb_20160503_models.CloneDBInstanceResponse:
+        """
+        @summary 恢复数据至指定实例
+        
+        @param request: CloneDBInstanceRequest
+        @return: CloneDBInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.clone_dbinstance_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
@@ -1057,10 +1405,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_account_with_options_async(
         self,
@@ -1109,10 +1463,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_account(
         self,
@@ -1180,10 +1540,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateBackupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateBackupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateBackupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_backup_with_options_async(
         self,
@@ -1215,10 +1581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateBackupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateBackupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateBackupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_backup(
         self,
@@ -1270,6 +1642,8 @@ class Client(OpenApiClient):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
             query['FullTextRetrievalFields'] = request.full_text_retrieval_fields
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -1308,10 +1682,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_collection_with_options_async(
         self,
@@ -1337,6 +1717,8 @@ class Client(OpenApiClient):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
             query['FullTextRetrievalFields'] = request.full_text_retrieval_fields
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -1375,10 +1757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_collection(
         self,
@@ -1456,6 +1844,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_aispec):
+            query['MasterAISpec'] = request.master_aispec
         if not UtilClient.is_unset(request.master_cu):
             query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.master_node_num):
@@ -1522,10 +1912,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbinstance_with_options_async(
         self,
@@ -1577,6 +1973,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_aispec):
+            query['MasterAISpec'] = request.master_aispec
         if not UtilClient.is_unset(request.master_cu):
             query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.master_node_num):
@@ -1643,10 +2041,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbinstance(
         self,
@@ -1728,10 +2132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBInstancePlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstancePlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstancePlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbinstance_plan_with_options_async(
         self,
@@ -1783,10 +2193,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBInstancePlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstancePlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBInstancePlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbinstance_plan(
         self,
@@ -1858,10 +2274,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbresource_group_with_options_async(
         self,
@@ -1899,10 +2321,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbresource_group(
         self,
@@ -1954,6 +2382,8 @@ class Client(OpenApiClient):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
             query['FullTextRetrievalFields'] = request.full_text_retrieval_fields
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -1990,10 +2420,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDocumentCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDocumentCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDocumentCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_document_collection_with_options_async(
         self,
@@ -2019,6 +2455,8 @@ class Client(OpenApiClient):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
             query['FullTextRetrievalFields'] = request.full_text_retrieval_fields
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -2055,10 +2493,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateDocumentCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDocumentCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateDocumentCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_document_collection(
         self,
@@ -2122,10 +2566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateExtensionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExtensionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExtensionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_extensions_with_options_async(
         self,
@@ -2163,10 +2613,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateExtensionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExtensionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExtensionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_extensions(
         self,
@@ -2232,10 +2688,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateExternalDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExternalDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExternalDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_external_data_service_with_options_async(
         self,
@@ -2275,10 +2737,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateExternalDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExternalDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateExternalDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_external_data_service(
         self,
@@ -2360,10 +2828,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateHadoopDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_hadoop_data_source_with_options_async(
         self,
@@ -2419,10 +2893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateHadoopDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_hadoop_data_source(
         self,
@@ -2449,6 +2929,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_hadoop_data_source_with_options_async(request, runtime)
+
+    def create_index_with_options(
+        self,
+        request: gpdb_20160503_models.CreateIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateIndexResponse:
+        """
+        @summary 创建索引
+        
+        @param request: CreateIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_config):
+            query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_field):
+            query['IndexField'] = request.index_field
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateIndexResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateIndexResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_index_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateIndexResponse:
+        """
+        @summary 创建索引
+        
+        @param request: CreateIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_config):
+            query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_field):
+            query['IndexField'] = request.index_field
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateIndexResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateIndexResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_index(
+        self,
+        request: gpdb_20160503_models.CreateIndexRequest,
+    ) -> gpdb_20160503_models.CreateIndexResponse:
+        """
+        @summary 创建索引
+        
+        @param request: CreateIndexRequest
+        @return: CreateIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_index_with_options(request, runtime)
+
+    async def create_index_async(
+        self,
+        request: gpdb_20160503_models.CreateIndexRequest,
+    ) -> gpdb_20160503_models.CreateIndexResponse:
+        """
+        @summary 创建索引
+        
+        @param request: CreateIndexRequest
+        @return: CreateIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_index_with_options_async(request, runtime)
 
     def create_jdbcdata_source_with_options(
         self,
@@ -2494,10 +3118,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateJDBCDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_jdbcdata_source_with_options_async(
         self,
@@ -2543,10 +3173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateJDBCDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_jdbcdata_source(
         self,
@@ -2618,10 +3254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_namespace_with_options_async(
         self,
@@ -2667,10 +3309,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_namespace(
         self,
@@ -2746,10 +3394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_remote_adbdata_source_with_options_async(
         self,
@@ -2799,10 +3453,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateRemoteADBDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_remote_adbdata_source(
         self,
@@ -2865,10 +3525,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateSampleDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSampleDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSampleDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_sample_data_with_options_async(
         self,
@@ -2905,10 +3571,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateSampleDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSampleDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSampleDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_sample_data(
         self,
@@ -2986,10 +3658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_secret_with_options_async(
         self,
@@ -3035,10 +3713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_secret(
         self,
@@ -3098,10 +3782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_service_linked_role_with_options_async(
         self,
@@ -3135,10 +3825,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_service_linked_role(
         self,
@@ -3204,10 +3900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_streaming_data_service_with_options_async(
         self,
@@ -3247,10 +3949,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_streaming_data_service(
         self,
@@ -3320,10 +4028,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_streaming_data_source_with_options_async(
         self,
@@ -3367,10 +4081,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_streaming_data_source(
         self,
@@ -3480,10 +4200,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_streaming_job_with_options_async(
         self,
@@ -3567,10 +4293,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateStreamingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateStreamingJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_streaming_job(
         self,
@@ -3620,6 +4352,8 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.external_storage):
             query['ExternalStorage'] = request.external_storage
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -3650,10 +4384,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateVectorIndexResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateVectorIndexResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateVectorIndexResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_vector_index_with_options_async(
         self,
@@ -3677,6 +4417,8 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.external_storage):
             query['ExternalStorage'] = request.external_storage
+        if not UtilClient.is_unset(request.hnsw_ef_construction):
+            query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
         if not UtilClient.is_unset(request.manager_account):
@@ -3707,10 +4449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.CreateVectorIndexResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateVectorIndexResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.CreateVectorIndexResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_vector_index(
         self,
@@ -3770,10 +4518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_account_with_options_async(
         self,
@@ -3807,10 +4561,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_account(
         self,
@@ -3870,10 +4630,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteBackupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteBackupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteBackupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_backup_with_options_async(
         self,
@@ -3907,10 +4673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteBackupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteBackupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteBackupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_backup(
         self,
@@ -3980,10 +4752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_collection_with_options_async(
         self,
@@ -4027,10 +4805,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_collection(
         self,
@@ -4104,10 +4888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteCollectionDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_collection_data_with_options_async(
         self,
@@ -4155,10 +4945,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteCollectionDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteCollectionDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_collection_data(
         self,
@@ -4227,10 +5023,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbinstance_with_options_async(
         self,
@@ -4273,10 +5075,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbinstance(
         self,
@@ -4352,10 +5160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBInstancePlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstancePlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstancePlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbinstance_plan_with_options_async(
         self,
@@ -4395,10 +5209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBInstancePlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstancePlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBInstancePlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbinstance_plan(
         self,
@@ -4468,10 +5288,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbresource_group_with_options_async(
         self,
@@ -4507,10 +5333,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbresource_group(
         self,
@@ -4580,10 +5412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDocumentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_document_with_options_async(
         self,
@@ -4627,10 +5465,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDocumentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_document(
         self,
@@ -4698,10 +5542,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDocumentCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_document_collection_with_options_async(
         self,
@@ -4743,10 +5593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDocumentCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteDocumentCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_document_collection(
         self,
@@ -4810,10 +5666,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteExtensionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExtensionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExtensionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_extension_with_options_async(
         self,
@@ -4851,10 +5713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteExtensionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExtensionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExtensionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_extension(
         self,
@@ -4916,10 +5784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteExternalDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_external_data_service_with_options_async(
         self,
@@ -4955,10 +5829,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteExternalDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_external_data_service(
         self,
@@ -5020,10 +5900,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_hadoop_data_source_with_options_async(
         self,
@@ -5059,10 +5945,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_hadoop_data_source(
         self,
@@ -5089,6 +5981,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hadoop_data_source_with_options_async(request, runtime)
+
+    def delete_index_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteIndexResponse:
+        """
+        @summary 删除索引
+        
+        @param request: DeleteIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteIndexResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteIndexResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_index_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteIndexResponse:
+        """
+        @summary 删除索引
+        
+        @param request: DeleteIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteIndexResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteIndexResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_index(
+        self,
+        request: gpdb_20160503_models.DeleteIndexRequest,
+    ) -> gpdb_20160503_models.DeleteIndexResponse:
+        """
+        @summary 删除索引
+        
+        @param request: DeleteIndexRequest
+        @return: DeleteIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_index_with_options(request, runtime)
+
+    async def delete_index_async(
+        self,
+        request: gpdb_20160503_models.DeleteIndexRequest,
+    ) -> gpdb_20160503_models.DeleteIndexResponse:
+        """
+        @summary 删除索引
+        
+        @param request: DeleteIndexRequest
+        @return: DeleteIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_index_with_options_async(request, runtime)
 
     def delete_jdbcdata_source_with_options(
         self,
@@ -5124,10 +6152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_jdbcdata_source_with_options_async(
         self,
@@ -5163,10 +6197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_jdbcdata_source(
         self,
@@ -5236,10 +6276,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_namespace_with_options_async(
         self,
@@ -5283,10 +6329,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_namespace(
         self,
@@ -5348,10 +6400,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_remote_adbdata_source_with_options_async(
         self,
@@ -5387,10 +6445,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteRemoteADBDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_remote_adbdata_source(
         self,
@@ -5456,10 +6520,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteSecretResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteSecretResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteSecretResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_secret_with_options_async(
         self,
@@ -5499,10 +6569,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteSecretResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteSecretResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteSecretResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_secret(
         self,
@@ -5564,10 +6640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_streaming_data_service_with_options_async(
         self,
@@ -5603,10 +6685,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_streaming_data_service(
         self,
@@ -5668,10 +6756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_streaming_data_source_with_options_async(
         self,
@@ -5707,10 +6801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_streaming_data_source(
         self,
@@ -5772,10 +6872,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_streaming_job_with_options_async(
         self,
@@ -5811,10 +6917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteStreamingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteStreamingJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_streaming_job(
         self,
@@ -5884,10 +6996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteVectorIndexResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteVectorIndexResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteVectorIndexResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_vector_index_with_options_async(
         self,
@@ -5931,10 +7049,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteVectorIndexResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteVectorIndexResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DeleteVectorIndexResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_vector_index(
         self,
@@ -6000,10 +7124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_accounts_with_options_async(
         self,
@@ -6043,10 +7173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_accounts(
         self,
@@ -6128,10 +7264,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_active_sqlrecords_with_options_async(
         self,
@@ -6179,10 +7321,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeActiveSQLRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_active_sqlrecords(
         self,
@@ -6246,10 +7394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeAvailableResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAvailableResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAvailableResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_available_resources_with_options_async(
         self,
@@ -6287,10 +7441,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeAvailableResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAvailableResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeAvailableResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_available_resources(
         self,
@@ -6354,10 +7514,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeBackupJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_job_with_options_async(
         self,
@@ -6391,10 +7557,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeBackupJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_job(
         self,
@@ -6456,10 +7628,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_policy_with_options_async(
         self,
@@ -6495,10 +7673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_policy(
         self,
@@ -6576,10 +7760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_collection_with_options_async(
         self,
@@ -6623,10 +7813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_collection(
         self,
@@ -6653,6 +7849,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_collection_with_options_async(request, runtime)
+
+    def describe_create_index_job_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeCreateIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeCreateIndexJobResponse:
+        """
+        @summary 获取创建索引任务
+        
+        @param request: DescribeCreateIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCreateIndexJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCreateIndexJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCreateIndexJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCreateIndexJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_create_index_job_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeCreateIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeCreateIndexJobResponse:
+        """
+        @summary 获取创建索引任务
+        
+        @param request: DescribeCreateIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCreateIndexJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCreateIndexJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCreateIndexJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeCreateIndexJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_create_index_job(
+        self,
+        request: gpdb_20160503_models.DescribeCreateIndexJobRequest,
+    ) -> gpdb_20160503_models.DescribeCreateIndexJobResponse:
+        """
+        @summary 获取创建索引任务
+        
+        @param request: DescribeCreateIndexJobRequest
+        @return: DescribeCreateIndexJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_create_index_job_with_options(request, runtime)
+
+    async def describe_create_index_job_async(
+        self,
+        request: gpdb_20160503_models.DescribeCreateIndexJobRequest,
+    ) -> gpdb_20160503_models.DescribeCreateIndexJobResponse:
+        """
+        @summary 获取创建索引任务
+        
+        @param request: DescribeCreateIndexJobRequest
+        @return: DescribeCreateIndexJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_create_index_job_with_options_async(request, runtime)
 
     def describe_dbcluster_node_with_options(
         self,
@@ -6691,10 +8023,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_node_with_options_async(
         self,
@@ -6733,10 +8071,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterNodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_node(
         self,
@@ -6818,10 +8162,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_performance_with_options_async(
         self,
@@ -6867,10 +8217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_performance(
         self,
@@ -6942,10 +8298,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_attribute_with_options_async(
         self,
@@ -6987,10 +8349,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_attribute(
         self,
@@ -7072,10 +8440,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_data_bloat_with_options_async(
         self,
@@ -7119,10 +8493,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataBloatResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_data_bloat(
         self,
@@ -7200,10 +8580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_data_skew_with_options_async(
         self,
@@ -7247,10 +8633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDataSkewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_data_skew(
         self,
@@ -7328,10 +8720,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_diagnosis_summary_with_options_async(
         self,
@@ -7375,10 +8773,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_diagnosis_summary(
         self,
@@ -7462,10 +8866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_error_log_with_options_async(
         self,
@@ -7519,10 +8929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceErrorLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_error_log(
         self,
@@ -7596,10 +9012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_iparray_list_with_options_async(
         self,
@@ -7639,10 +9061,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_iparray_list(
         self,
@@ -7719,10 +9147,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_index_usage_with_options_async(
         self,
@@ -7765,10 +9199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_index_usage(
         self,
@@ -7834,10 +9274,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_net_info_with_options_async(
         self,
@@ -7871,10 +9317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_net_info(
         self,
@@ -7940,10 +9392,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_performance_with_options_async(
         self,
@@ -7983,10 +9441,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_performance(
         self,
@@ -8060,10 +9524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_plans_with_options_async(
         self,
@@ -8111,10 +9581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_plans(
         self,
@@ -8180,10 +9656,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_sslwith_options_async(
         self,
@@ -8215,10 +9697,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_ssl(
         self,
@@ -8278,10 +9766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstance_support_max_performance_with_options_async(
         self,
@@ -8315,10 +9809,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstance_support_max_performance(
         self,
@@ -8417,10 +9917,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbinstances_with_options_async(
         self,
@@ -8493,10 +9999,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbinstances(
         self,
@@ -8568,10 +10080,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbresource_group_with_options_async(
         self,
@@ -8607,10 +10125,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbresource_group(
         self,
@@ -8670,10 +10194,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbresource_management_mode_with_options_async(
         self,
@@ -8707,10 +10237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbresource_management_mode(
         self,
@@ -8776,10 +10312,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBVersionInfosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBVersionInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBVersionInfosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbversion_infos_with_options_async(
         self,
@@ -8819,10 +10361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBVersionInfosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBVersionInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDBVersionInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbversion_infos(
         self,
@@ -8898,10 +10446,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_data_backups_with_options_async(
         self,
@@ -8951,10 +10505,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_data_backups(
         self,
@@ -9018,10 +10578,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_data_re_distribute_info_with_options_async(
         self,
@@ -9055,10 +10621,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataReDistributeInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_data_re_distribute_info(
         self,
@@ -9128,10 +10700,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataShareInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_data_share_instances_with_options_async(
         self,
@@ -9175,10 +10753,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataShareInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_data_share_instances(
         self,
@@ -9252,10 +10836,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_data_share_performance_with_options_async(
         self,
@@ -9299,10 +10889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDataSharePerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_data_share_performance(
         self,
@@ -9372,10 +10968,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_dimensions_with_options_async(
         self,
@@ -9411,10 +11013,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisDimensionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_dimensions(
         self,
@@ -9494,10 +11102,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_monitor_performance_with_options_async(
         self,
@@ -9543,10 +11157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_monitor_performance(
         self,
@@ -9634,10 +11254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_records_with_options_async(
         self,
@@ -9691,10 +11317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_records(
         self,
@@ -9767,10 +11399,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_sqlinfo_with_options_async(
         self,
@@ -9809,10 +11447,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_sqlinfo(
         self,
@@ -9888,10 +11532,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDocumentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDocumentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDocumentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_document_with_options_async(
         self,
@@ -9935,10 +11585,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDocumentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDocumentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDocumentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_document(
         self,
@@ -9999,10 +11655,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDownloadRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_download_records_with_options_async(
         self,
@@ -10037,10 +11699,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDownloadRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_download_records(
         self,
@@ -10104,10 +11772,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_download_sqllogs_with_options_async(
         self,
@@ -10139,10 +11813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeDownloadSQLLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_download_sqllogs(
         self,
@@ -10204,10 +11884,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeExternalDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_external_data_service_with_options_async(
         self,
@@ -10243,10 +11929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeExternalDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_external_data_service(
         self,
@@ -10306,10 +11998,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_hadoop_clusters_in_same_net_with_options_async(
         self,
@@ -10343,10 +12041,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_hadoop_clusters_in_same_net(
         self,
@@ -10410,10 +12114,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopConfigsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_hadoop_configs_with_options_async(
         self,
@@ -10451,10 +12161,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopConfigsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_hadoop_configs(
         self,
@@ -10516,10 +12232,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_hadoop_data_source_with_options_async(
         self,
@@ -10555,10 +12277,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_hadoop_data_source(
         self,
@@ -10622,10 +12350,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHealthStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHealthStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHealthStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_health_status_with_options_async(
         self,
@@ -10663,10 +12397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeHealthStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHealthStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeHealthStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_health_status(
         self,
@@ -10736,10 +12476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeIMVInfosResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIMVInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIMVInfosResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_imvinfos_with_options_async(
         self,
@@ -10775,10 +12521,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeIMVInfosResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIMVInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIMVInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_imvinfos(
         self,
@@ -10805,6 +12557,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_imvinfos_with_options_async(request, runtime)
+
+    def describe_index_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeIndexResponse:
+        """
+        @summary 获取索引详情
+        
+        @param request: DescribeIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIndexResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIndexResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_index_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeIndexRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeIndexResponse:
+        """
+        @summary 获取索引详情
+        
+        @param request: DescribeIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIndex',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIndexResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeIndexResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_index(
+        self,
+        request: gpdb_20160503_models.DescribeIndexRequest,
+    ) -> gpdb_20160503_models.DescribeIndexResponse:
+        """
+        @summary 获取索引详情
+        
+        @param request: DescribeIndexRequest
+        @return: DescribeIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_index_with_options(request, runtime)
+
+    async def describe_index_async(
+        self,
+        request: gpdb_20160503_models.DescribeIndexRequest,
+    ) -> gpdb_20160503_models.DescribeIndexResponse:
+        """
+        @summary 获取索引详情
+        
+        @param request: DescribeIndexRequest
+        @return: DescribeIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_index_with_options_async(request, runtime)
 
     def describe_jdbcdata_source_with_options(
         self,
@@ -10838,10 +12726,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_jdbcdata_source_with_options_async(
         self,
@@ -10875,10 +12769,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_jdbcdata_source(
         self,
@@ -10944,10 +12844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeLogBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeLogBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeLogBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_log_backups_with_options_async(
         self,
@@ -10987,10 +12893,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeLogBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeLogBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeLogBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_log_backups(
         self,
@@ -11052,10 +12964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeModifyParameterLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeModifyParameterLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeModifyParameterLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_modify_parameter_log_with_options_async(
         self,
@@ -11091,10 +13009,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeModifyParameterLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeModifyParameterLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeModifyParameterLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_modify_parameter_log(
         self,
@@ -11164,10 +13088,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeNamespaceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeNamespaceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeNamespaceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_namespace_with_options_async(
         self,
@@ -11211,10 +13141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeNamespaceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeNamespaceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeNamespaceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_namespace(
         self,
@@ -11276,10 +13212,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_parameters_with_options_async(
         self,
@@ -11315,10 +13257,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_parameters(
         self,
@@ -11404,10 +13352,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_rds_vswitchs_with_options_async(
         self,
@@ -11459,10 +13413,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_rds_vswitchs(
         self,
@@ -11546,10 +13506,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVpcsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVpcsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVpcsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_rds_vpcs_with_options_async(
         self,
@@ -11599,10 +13565,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVpcsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVpcsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRdsVpcsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_rds_vpcs(
         self,
@@ -11672,10 +13644,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -11711,10 +13689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -11782,10 +13766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRolesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRolesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRolesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_roles_with_options_async(
         self,
@@ -11819,10 +13809,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRolesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRolesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeRolesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_roles(
         self,
@@ -11906,10 +13902,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogCountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogCountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogCountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sqllog_count_with_options_async(
         self,
@@ -11967,10 +13969,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogCountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogCountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sqllog_count(
         self,
@@ -12062,10 +14070,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sqllogs_with_options_async(
         self,
@@ -12127,10 +14141,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sqllogs(
         self,
@@ -12228,10 +14248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogsV2Response(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsV2Response(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsV2Response(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sqllogs_v2with_options_async(
         self,
@@ -12299,10 +14325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogsV2Response(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsV2Response(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSQLLogsV2Response(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sqllogs_v2(
         self,
@@ -12372,10 +14404,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSampleDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSampleDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSampleDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sample_data_with_options_async(
         self,
@@ -12411,10 +14449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSampleDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSampleDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSampleDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sample_data(
         self,
@@ -12480,10 +14524,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_streaming_data_service_with_options_async(
         self,
@@ -12519,10 +14569,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_streaming_data_service(
         self,
@@ -12584,10 +14640,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_streaming_data_source_with_options_async(
         self,
@@ -12623,10 +14685,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_streaming_data_source(
         self,
@@ -12688,10 +14756,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_streaming_job_with_options_async(
         self,
@@ -12727,10 +14801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeStreamingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeStreamingJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_streaming_job(
         self,
@@ -12790,10 +14870,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSupportFeaturesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_support_features_with_options_async(
         self,
@@ -12827,10 +14913,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSupportFeaturesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_support_features(
         self,
@@ -12900,10 +14992,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_table_with_options_async(
         self,
@@ -12947,10 +15045,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_table(
         self,
@@ -13020,10 +15124,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeTagsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTagsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTagsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tags_with_options_async(
         self,
@@ -13067,10 +15177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeTagsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTagsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeTagsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tags(
         self,
@@ -13132,10 +15248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_user_encryption_key_list_with_options_async(
         self,
@@ -13171,10 +15293,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_user_encryption_key_list(
         self,
@@ -13240,10 +15368,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_waiting_sqlinfo_with_options_async(
         self,
@@ -13283,10 +15417,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_waiting_sqlinfo(
         self,
@@ -13374,10 +15514,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_waiting_sqlrecords_with_options_async(
         self,
@@ -13431,10 +15577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DescribeWaitingSQLRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_waiting_sqlrecords(
         self,
@@ -13506,10 +15658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DisableDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DisableDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DisableDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_dbresource_group_with_options_async(
         self,
@@ -13547,10 +15705,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DisableDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DisableDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DisableDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_dbresource_group(
         self,
@@ -13635,10 +15799,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def download_diagnosis_records_with_options_async(
         self,
@@ -13689,10 +15859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadDiagnosisRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def download_diagnosis_records(
         self,
@@ -13790,10 +15966,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def download_sqllogs_records_with_options_async(
         self,
@@ -13855,10 +16037,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.DownloadSQLLogsRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def download_sqllogs_records(
         self,
@@ -13922,10 +16110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.EnableDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.EnableDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.EnableDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_dbresource_group_with_options_async(
         self,
@@ -13963,10 +16157,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.EnableDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.EnableDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.EnableDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_dbresource_group(
         self,
@@ -14058,10 +16258,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ExecuteStatementResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ExecuteStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ExecuteStatementResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def execute_statement_with_options_async(
         self,
@@ -14119,10 +16325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ExecuteStatementResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ExecuteStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ExecuteStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def execute_statement(
         self,
@@ -14182,10 +16394,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_account_with_options_async(
         self,
@@ -14219,10 +16437,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_account(
         self,
@@ -14288,10 +16512,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetSecretValueResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetSecretValueResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetSecretValueResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_secret_value_with_options_async(
         self,
@@ -14331,10 +16561,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetSecretValueResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetSecretValueResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetSecretValueResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_secret_value(
         self,
@@ -14410,10 +16646,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetUploadDocumentJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUploadDocumentJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUploadDocumentJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_upload_document_job_with_options_async(
         self,
@@ -14463,10 +16705,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetUploadDocumentJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUploadDocumentJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUploadDocumentJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_upload_document_job(
         self,
@@ -14551,10 +16799,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_upsert_collection_data_job_with_options_async(
         self,
@@ -14605,10 +16859,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GetUpsertCollectionDataJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_upsert_collection_data_job(
         self,
@@ -14688,10 +16948,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GrantCollectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GrantCollectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GrantCollectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_collection_with_options_async(
         self,
@@ -14739,10 +17005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.GrantCollectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.GrantCollectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.GrantCollectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_collection(
         self,
@@ -14804,10 +17076,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.HandleActiveSQLRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.HandleActiveSQLRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.HandleActiveSQLRecordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def handle_active_sqlrecord_with_options_async(
         self,
@@ -14843,10 +17121,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.HandleActiveSQLRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.HandleActiveSQLRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.HandleActiveSQLRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def handle_active_sqlrecord(
         self,
@@ -14914,10 +17198,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.InitVectorDatabaseResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.InitVectorDatabaseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.InitVectorDatabaseResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def init_vector_database_with_options_async(
         self,
@@ -14959,10 +17249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.InitVectorDatabaseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.InitVectorDatabaseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.InitVectorDatabaseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def init_vector_database(
         self,
@@ -15022,10 +17318,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListBackupJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListBackupJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListBackupJobsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_backup_jobs_with_options_async(
         self,
@@ -15059,10 +17361,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListBackupJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListBackupJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListBackupJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_backup_jobs(
         self,
@@ -15130,10 +17438,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListCollectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListCollectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListCollectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_collections_with_options_async(
         self,
@@ -15175,10 +17489,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListCollectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListCollectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListCollectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_collections(
         self,
@@ -15248,10 +17568,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDatabasesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDatabasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDatabasesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_databases_with_options_async(
         self,
@@ -15295,10 +17621,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDatabasesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDatabasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDatabasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_databases(
         self,
@@ -15364,10 +17696,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDocumentCollectionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentCollectionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentCollectionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_document_collections_with_options_async(
         self,
@@ -15407,10 +17745,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDocumentCollectionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentCollectionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentCollectionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_document_collections(
         self,
@@ -15482,10 +17826,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDocumentsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_documents_with_options_async(
         self,
@@ -15531,10 +17881,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListDocumentsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListDocumentsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_documents(
         self,
@@ -15598,10 +17954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListExternalDataServicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataServicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataServicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_external_data_services_with_options_async(
         self,
@@ -15639,10 +18001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListExternalDataServicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataServicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataServicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_external_data_services(
         self,
@@ -15706,10 +18074,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListExternalDataSourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataSourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataSourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_external_data_sources_with_options_async(
         self,
@@ -15747,10 +18121,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListExternalDataSourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataSourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListExternalDataSourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_external_data_sources(
         self,
@@ -15777,6 +18157,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_external_data_sources_with_options_async(request, runtime)
+
+    def list_indices_with_options(
+        self,
+        request: gpdb_20160503_models.ListIndicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListIndicesResponse:
+        """
+        @summary 获取索引列表
+        
+        @param request: ListIndicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListIndicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListIndicesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_indices_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListIndicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListIndicesResponse:
+        """
+        @summary 获取索引列表
+        
+        @param request: ListIndicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListIndicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListIndicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_indices(
+        self,
+        request: gpdb_20160503_models.ListIndicesRequest,
+    ) -> gpdb_20160503_models.ListIndicesResponse:
+        """
+        @summary 获取索引列表
+        
+        @param request: ListIndicesRequest
+        @return: ListIndicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_indices_with_options(request, runtime)
+
+    async def list_indices_async(
+        self,
+        request: gpdb_20160503_models.ListIndicesRequest,
+    ) -> gpdb_20160503_models.ListIndicesResponse:
+        """
+        @summary 获取索引列表
+        
+        @param request: ListIndicesRequest
+        @return: ListIndicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_indices_with_options_async(request, runtime)
 
     def list_instance_extensions_with_options(
         self,
@@ -15818,10 +18330,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListInstanceExtensionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListInstanceExtensionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListInstanceExtensionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_instance_extensions_with_options_async(
         self,
@@ -15863,10 +18381,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListInstanceExtensionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListInstanceExtensionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListInstanceExtensionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_instance_extensions(
         self,
@@ -15934,10 +18458,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListNamespacesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListNamespacesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListNamespacesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_namespaces_with_options_async(
         self,
@@ -15979,10 +18509,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListNamespacesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListNamespacesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListNamespacesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_namespaces(
         self,
@@ -16044,10 +18580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_remote_adbdata_sources_with_options_async(
         self,
@@ -16083,10 +18625,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListRemoteADBDataSourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_remote_adbdata_sources(
         self,
@@ -16158,10 +18706,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListSchemasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSchemasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSchemasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_schemas_with_options_async(
         self,
@@ -16207,10 +18761,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListSchemasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSchemasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSchemasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_schemas(
         self,
@@ -16272,10 +18832,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListSecretsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSecretsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSecretsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_secrets_with_options_async(
         self,
@@ -16311,10 +18877,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListSecretsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSecretsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListSecretsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_secrets(
         self,
@@ -16378,10 +18950,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingDataServicesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataServicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataServicesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_streaming_data_services_with_options_async(
         self,
@@ -16419,10 +18997,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingDataServicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataServicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataServicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_streaming_data_services(
         self,
@@ -16486,10 +19070,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingDataSourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_streaming_data_sources_with_options_async(
         self,
@@ -16527,10 +19117,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingDataSourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_streaming_data_sources(
         self,
@@ -16594,10 +19190,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingJobsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_streaming_jobs_with_options_async(
         self,
@@ -16635,10 +19237,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListStreamingJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListStreamingJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_streaming_jobs(
         self,
@@ -16712,10 +19320,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListTablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tables_with_options_async(
         self,
@@ -16763,10 +19377,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListTablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tables(
         self,
@@ -16840,10 +19460,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -16891,10 +19517,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
@@ -16958,10 +19590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyAccountDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyAccountDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyAccountDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_description_with_options_async(
         self,
@@ -16999,10 +19637,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyAccountDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyAccountDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyAccountDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_description(
         self,
@@ -17070,10 +19714,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_backup_policy_with_options_async(
         self,
@@ -17115,10 +19765,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_backup_policy(
         self,
@@ -17184,10 +19840,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_config_with_options_async(
         self,
@@ -17227,10 +19889,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_config(
         self,
@@ -17296,10 +19964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_connection_string_with_options_async(
         self,
@@ -17339,10 +20013,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_connection_string(
         self,
@@ -17369,6 +20049,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
+
+    def modify_dbinstance_deployment_mode_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceDeploymentModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse:
+        """
+        @summary 修改实例部署模式
+        
+        @param request: ModifyDBInstanceDeploymentModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceDeploymentModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.deploy_mode):
+            query['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDeploymentMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_dbinstance_deployment_mode_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceDeploymentModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse:
+        """
+        @summary 修改实例部署模式
+        
+        @param request: ModifyDBInstanceDeploymentModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceDeploymentModeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.deploy_mode):
+            query['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDeploymentMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_dbinstance_deployment_mode(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceDeploymentModeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse:
+        """
+        @summary 修改实例部署模式
+        
+        @param request: ModifyDBInstanceDeploymentModeRequest
+        @return: ModifyDBInstanceDeploymentModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_deployment_mode_with_options(request, runtime)
+
+    async def modify_dbinstance_deployment_mode_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceDeploymentModeRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceDeploymentModeResponse:
+        """
+        @summary 修改实例部署模式
+        
+        @param request: ModifyDBInstanceDeploymentModeRequest
+        @return: ModifyDBInstanceDeploymentModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_deployment_mode_with_options_async(request, runtime)
 
     def modify_dbinstance_description_with_options(
         self,
@@ -17408,10 +20208,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_description_with_options_async(
         self,
@@ -17451,10 +20257,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_description(
         self,
@@ -17530,10 +20342,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_maintain_time_with_options_async(
         self,
@@ -17575,10 +20393,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_maintain_time(
         self,
@@ -17657,10 +20481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_network_type_with_options_async(
         self,
@@ -17705,10 +20535,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_network_type(
         self,
@@ -17782,10 +20618,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_pay_type_with_options_async(
         self,
@@ -17823,10 +20665,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstancePayTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_pay_type(
         self,
@@ -17898,10 +20746,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_resource_group_with_options_async(
         self,
@@ -17947,10 +20801,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_resource_group(
         self,
@@ -18016,10 +20876,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbinstance_sslwith_options_async(
         self,
@@ -18055,10 +20921,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbinstance_ssl(
         self,
@@ -18124,10 +20996,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbresource_group_with_options_async(
         self,
@@ -18167,10 +21045,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbresource_group(
         self,
@@ -18236,10 +21120,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyExternalDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_external_data_service_with_options_async(
         self,
@@ -18279,10 +21169,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyExternalDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_external_data_service(
         self,
@@ -18364,10 +21260,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_hadoop_data_source_with_options_async(
         self,
@@ -18423,10 +21325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_hadoop_data_source(
         self,
@@ -18498,10 +21406,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_jdbcdata_source_with_options_async(
         self,
@@ -18547,10 +21461,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_jdbcdata_source(
         self,
@@ -18599,6 +21519,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.master_aispec):
+            query['MasterAISpec'] = request.master_aispec
         if not UtilClient.is_unset(request.master_cu):
             query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.resource_group_id):
@@ -18617,10 +21539,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyMasterSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyMasterSpecResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyMasterSpecResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_master_spec_with_options_async(
         self,
@@ -18643,6 +21571,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.master_aispec):
+            query['MasterAISpec'] = request.master_aispec
         if not UtilClient.is_unset(request.master_cu):
             query['MasterCU'] = request.master_cu
         if not UtilClient.is_unset(request.resource_group_id):
@@ -18661,10 +21591,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyMasterSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyMasterSpecResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyMasterSpecResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_master_spec(
         self,
@@ -18736,10 +21672,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyParametersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyParametersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyParametersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_parameters_with_options_async(
         self,
@@ -18779,10 +21721,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyParametersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyParametersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyParametersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_parameters(
         self,
@@ -18858,10 +21806,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_remote_adbdata_source_with_options_async(
         self,
@@ -18903,10 +21857,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyRemoteADBDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_remote_adbdata_source(
         self,
@@ -18969,10 +21929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_sqlcollector_policy_with_options_async(
         self,
@@ -19009,10 +21975,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_sqlcollector_policy(
         self,
@@ -19090,10 +22062,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySecurityIpsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySecurityIpsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySecurityIpsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_security_ips_with_options_async(
         self,
@@ -19139,10 +22117,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySecurityIpsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySecurityIpsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifySecurityIpsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_security_ips(
         self,
@@ -19216,10 +22200,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_streaming_data_service_with_options_async(
         self,
@@ -19259,10 +22249,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_streaming_data_service(
         self,
@@ -19328,10 +22324,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_streaming_data_source_with_options_async(
         self,
@@ -19371,10 +22373,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_streaming_data_source(
         self,
@@ -19480,10 +22488,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingJobResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_streaming_job_with_options_async(
         self,
@@ -19563,10 +22577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyStreamingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyStreamingJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_streaming_job(
         self,
@@ -19628,10 +22648,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyVectorConfigurationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyVectorConfigurationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyVectorConfigurationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_vector_configuration_with_options_async(
         self,
@@ -19667,10 +22693,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifyVectorConfigurationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyVectorConfigurationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ModifyVectorConfigurationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_vector_configuration(
         self,
@@ -19730,10 +22762,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.PauseDataRedistributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseDataRedistributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseDataRedistributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def pause_data_redistribute_with_options_async(
         self,
@@ -19767,10 +22805,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.PauseDataRedistributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseDataRedistributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseDataRedistributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pause_data_redistribute(
         self,
@@ -19836,10 +22880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.PauseInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def pause_instance_with_options_async(
         self,
@@ -19879,10 +22929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.PauseInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.PauseInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def pause_instance(
         self,
@@ -19996,10 +23052,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.QueryCollectionDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryCollectionDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryCollectionDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_collection_data_with_options_async(
         self,
@@ -20075,10 +23137,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.QueryCollectionDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryCollectionDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryCollectionDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_collection_data(
         self,
@@ -20180,10 +23248,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.QueryContentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryContentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryContentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_content_with_options_async(
         self,
@@ -20259,10 +23333,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.QueryContentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryContentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.QueryContentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_content(
         self,
@@ -20466,10 +23546,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RebalanceDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RebalanceDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RebalanceDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rebalance_dbinstance_with_options_async(
         self,
@@ -20503,10 +23589,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RebalanceDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RebalanceDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RebalanceDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rebalance_dbinstance(
         self,
@@ -20568,10 +23660,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_instance_public_connection_with_options_async(
         self,
@@ -20607,10 +23705,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_instance_public_connection(
         self,
@@ -20690,10 +23794,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RerankResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RerankResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RerankResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def rerank_with_options_async(
         self,
@@ -20747,10 +23857,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RerankResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RerankResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RerankResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def rerank(
         self,
@@ -20812,10 +23928,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResetAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_account_password_with_options_async(
         self,
@@ -20851,10 +23973,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResetAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_account_password(
         self,
@@ -20914,10 +24042,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResetIMVMonitorDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetIMVMonitorDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetIMVMonitorDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_imvmonitor_data_with_options_async(
         self,
@@ -20951,10 +24085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResetIMVMonitorDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetIMVMonitorDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResetIMVMonitorDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_imvmonitor_data(
         self,
@@ -21018,10 +24158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RestartDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RestartDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RestartDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def restart_dbinstance_with_options_async(
         self,
@@ -21059,10 +24205,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.RestartDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.RestartDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.RestartDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def restart_dbinstance(
         self,
@@ -21130,10 +24282,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResumeDataRedistributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeDataRedistributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeDataRedistributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def resume_data_redistribute_with_options_async(
         self,
@@ -21167,10 +24325,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResumeDataRedistributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeDataRedistributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeDataRedistributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def resume_data_redistribute(
         self,
@@ -21236,10 +24400,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResumeInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def resume_instance_with_options_async(
         self,
@@ -21279,10 +24449,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ResumeInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.ResumeInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def resume_instance(
         self,
@@ -21362,10 +24538,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_dbinstance_plan_status_with_options_async(
         self,
@@ -21407,10 +24589,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDBInstancePlanStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_dbinstance_plan_status(
         self,
@@ -21490,10 +24678,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SetDataShareInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDataShareInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDataShareInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_data_share_instance_with_options_async(
         self,
@@ -21539,10 +24733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SetDataShareInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDataShareInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SetDataShareInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_data_share_instance(
         self,
@@ -21614,10 +24814,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def switch_dbinstance_net_type_with_options_async(
         self,
@@ -21655,10 +24861,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def switch_dbinstance_net_type(
         self,
@@ -21734,10 +24946,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -21783,10 +25001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
@@ -21858,10 +25082,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.TextEmbeddingResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.TextEmbeddingResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.TextEmbeddingResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def text_embedding_with_options_async(
         self,
@@ -21907,10 +25137,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.TextEmbeddingResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.TextEmbeddingResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.TextEmbeddingResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def text_embedding(
         self,
@@ -21978,10 +25214,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_dbresource_group_with_role_with_options_async(
         self,
@@ -22023,10 +25265,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind_dbresource_group_with_role(
         self,
@@ -22090,10 +25338,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UnloadSampleDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnloadSampleDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnloadSampleDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unload_sample_data_with_options_async(
         self,
@@ -22131,10 +25385,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UnloadSampleDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnloadSampleDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UnloadSampleDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unload_sample_data(
         self,
@@ -22216,10 +25476,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -22267,10 +25533,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
@@ -22352,10 +25624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_collection_data_metadata_with_options_async(
         self,
@@ -22411,10 +25689,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateCollectionDataMetadataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_collection_data_metadata(
         self,
@@ -22490,10 +25774,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpdateDBInstancePlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_dbinstance_plan_with_options_async(
         self,
@@ -22543,10 +25833,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpdateDBInstancePlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpdateDBInstancePlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_dbinstance_plan(
         self,
@@ -22641,10 +25937,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeDBInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_dbinstance_with_options_async(
         self,
@@ -22705,10 +26007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeDBInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_dbinstance(
         self,
@@ -22784,10 +26092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeDBVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBVersionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_dbversion_with_options_async(
         self,
@@ -22831,10 +26145,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeDBVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeDBVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_dbversion(
         self,
@@ -22898,10 +26218,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeExtensionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeExtensionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeExtensionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upgrade_extensions_with_options_async(
         self,
@@ -22939,10 +26265,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpgradeExtensionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeExtensionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpgradeExtensionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upgrade_extensions(
         self,
@@ -23047,10 +26379,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UploadDocumentAsyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UploadDocumentAsyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UploadDocumentAsyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upload_document_async_with_options_async(
         self,
@@ -23129,10 +26467,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UploadDocumentAsyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UploadDocumentAsyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UploadDocumentAsyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upload_document_async(
         self,
@@ -23374,10 +26718,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertChunksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertChunksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertChunksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upsert_chunks_with_options_async(
         self,
@@ -23431,10 +26781,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertChunksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertChunksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertChunksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upsert_chunks(
         self,
@@ -23516,10 +26872,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertCollectionDataResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upsert_collection_data_with_options_async(
         self,
@@ -23571,10 +26933,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertCollectionDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upsert_collection_data(
         self,
@@ -23654,10 +27022,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def upsert_collection_data_async_with_options_async(
         self,
@@ -23711,10 +27085,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                gpdb_20160503_models.UpsertCollectionDataAsyncResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def upsert_collection_data_async(
         self,

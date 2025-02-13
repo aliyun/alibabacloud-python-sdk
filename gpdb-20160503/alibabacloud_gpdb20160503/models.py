@@ -579,6 +579,160 @@ class BindDBResourceGroupWithRoleResponse(TeaModel):
         return self
 
 
+class CancelCreateIndexJobRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        job_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CancelCreateIndexJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CancelCreateIndexJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelCreateIndexJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelCreateIndexJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelUploadDocumentJobRequest(TeaModel):
     def __init__(
         self,
@@ -1462,6 +1616,116 @@ class CheckServiceLinkedRoleResponse(TeaModel):
         return self
 
 
+class CloneDBInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        backup_id: str = None,
+        dbinstance_id: str = None,
+        src_db_instance_name: str = None,
+    ):
+        # This parameter is required.
+        self.backup_id = backup_id
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.src_db_instance_name = src_db_instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.src_db_instance_name is not None:
+            result['SrcDbInstanceName'] = self.src_db_instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('SrcDbInstanceName') is not None:
+            self.src_db_instance_name = m.get('SrcDbInstanceName')
+        return self
+
+
+class CloneDBInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CloneDBInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloneDBInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloneDBInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAccountRequest(TeaModel):
     def __init__(
         self,
@@ -1726,6 +1990,7 @@ class CreateCollectionRequest(TeaModel):
         dimension: int = None,
         external_storage: int = None,
         full_text_retrieval_fields: str = None,
+        hnsw_ef_construction: str = None,
         hnsw_m: int = None,
         manager_account: str = None,
         manager_account_password: str = None,
@@ -1763,6 +2028,7 @@ class CreateCollectionRequest(TeaModel):
         self.external_storage = external_storage
         # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        self.hnsw_ef_construction = hnsw_ef_construction
         # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
         # 
         # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
@@ -1845,6 +2111,8 @@ class CreateCollectionRequest(TeaModel):
             result['ExternalStorage'] = self.external_storage
         if self.full_text_retrieval_fields is not None:
             result['FullTextRetrievalFields'] = self.full_text_retrieval_fields
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
         if self.hnsw_m is not None:
             result['HnswM'] = self.hnsw_m
         if self.manager_account is not None:
@@ -1883,6 +2151,8 @@ class CreateCollectionRequest(TeaModel):
             self.external_storage = m.get('ExternalStorage')
         if m.get('FullTextRetrievalFields') is not None:
             self.full_text_retrieval_fields = m.get('FullTextRetrievalFields')
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
         if m.get('HnswM') is not None:
             self.hnsw_m = m.get('HnswM')
         if m.get('ManagerAccount') is not None:
@@ -2059,6 +2329,7 @@ class CreateDBInstanceRequest(TeaModel):
         idle_time: int = None,
         instance_network_type: str = None,
         instance_spec: str = None,
+        master_aispec: str = None,
         master_cu: int = None,
         master_node_num: str = None,
         owner_id: int = None,
@@ -2187,6 +2458,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter is required when creating an elastic storage mode instance or a Serverless mode instance.
         self.instance_spec = instance_spec
+        self.master_aispec = master_aispec
         # Master resources, with the following values: 
         # - 2 CU 
         # - 4 CU 
@@ -2365,6 +2637,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['InstanceNetworkType'] = self.instance_network_type
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec
+        if self.master_aispec is not None:
+            result['MasterAISpec'] = self.master_aispec
         if self.master_cu is not None:
             result['MasterCU'] = self.master_cu
         if self.master_node_num is not None:
@@ -2457,6 +2731,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.instance_network_type = m.get('InstanceNetworkType')
         if m.get('InstanceSpec') is not None:
             self.instance_spec = m.get('InstanceSpec')
+        if m.get('MasterAISpec') is not None:
+            self.master_aispec = m.get('MasterAISpec')
         if m.get('MasterCU') is not None:
             self.master_cu = m.get('MasterCU')
         if m.get('MasterNodeNum') is not None:
@@ -2979,6 +3255,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         embedding_model: str = None,
         external_storage: int = None,
         full_text_retrieval_fields: str = None,
+        hnsw_ef_construction: str = None,
         hnsw_m: int = None,
         manager_account: str = None,
         manager_account_password: str = None,
@@ -3045,6 +3322,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         self.external_storage = external_storage
         # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        self.hnsw_ef_construction = hnsw_ef_construction
         # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
         # 
         # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
@@ -3120,6 +3398,8 @@ class CreateDocumentCollectionRequest(TeaModel):
             result['ExternalStorage'] = self.external_storage
         if self.full_text_retrieval_fields is not None:
             result['FullTextRetrievalFields'] = self.full_text_retrieval_fields
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
         if self.hnsw_m is not None:
             result['HnswM'] = self.hnsw_m
         if self.manager_account is not None:
@@ -3156,6 +3436,8 @@ class CreateDocumentCollectionRequest(TeaModel):
             self.external_storage = m.get('ExternalStorage')
         if m.get('FullTextRetrievalFields') is not None:
             self.full_text_retrieval_fields = m.get('FullTextRetrievalFields')
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
         if m.get('HnswM') is not None:
             self.hnsw_m = m.get('HnswM')
         if m.get('ManagerAccount') is not None:
@@ -3737,6 +4019,177 @@ class CreateHadoopDataSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHadoopDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateIndexRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        index_config: str = None,
+        index_field: str = None,
+        index_name: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        self.index_config = index_config
+        self.index_field = index_field
+        self.index_name = index_name
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.index_config is not None:
+            result['IndexConfig'] = self.index_config
+        if self.index_field is not None:
+            result['IndexField'] = self.index_field
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IndexConfig') is not None:
+            self.index_config = m.get('IndexConfig')
+        if m.get('IndexField') is not None:
+            self.index_field = m.get('IndexField')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.job_id = job_id
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIndexResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5553,6 +6006,7 @@ class CreateVectorIndexRequest(TeaModel):
         dbinstance_id: str = None,
         dimension: int = None,
         external_storage: int = None,
+        hnsw_ef_construction: int = None,
         hnsw_m: int = None,
         manager_account: str = None,
         manager_account_password: str = None,
@@ -5584,6 +6038,7 @@ class CreateVectorIndexRequest(TeaModel):
         # > - When set to 0, the segment-page storage mode is used to build the index, which can use the shared_buffer in PostgreSQL for caching and supports deletion and update operations.
         # > - When set to 1, the index is built using mmap, which does not support deletion and update operations.
         self.external_storage = external_storage
+        self.hnsw_ef_construction = hnsw_ef_construction
         # The maximum number of neighbors in the HNSW algorithm, ranging from 1 to 1000. The API will automatically set this value based on the vector dimension, and it generally does not need to be manually set.
         # 
         # > It is suggested to set this based on the vector dimension as follows:
@@ -5638,6 +6093,8 @@ class CreateVectorIndexRequest(TeaModel):
             result['Dimension'] = self.dimension
         if self.external_storage is not None:
             result['ExternalStorage'] = self.external_storage
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
         if self.hnsw_m is not None:
             result['HnswM'] = self.hnsw_m
         if self.manager_account is not None:
@@ -5666,6 +6123,8 @@ class CreateVectorIndexRequest(TeaModel):
             self.dimension = m.get('Dimension')
         if m.get('ExternalStorage') is not None:
             self.external_storage = m.get('ExternalStorage')
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
         if m.get('HnswM') is not None:
             self.hnsw_m = m.get('HnswM')
         if m.get('ManagerAccount') is not None:
@@ -7410,6 +7869,160 @@ class DeleteHadoopDataSourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteHadoopDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteIndexRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        index_name: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.index_name = index_name
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteIndexResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9943,6 +10556,232 @@ class DescribeCollectionResponse(TeaModel):
         return self
 
 
+class DescribeCreateIndexJobRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        job_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.job_id = job_id
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeCreateIndexJobResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        id: str = None,
+        progress: int = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        # Job ID。
+        self.id = id
+        self.progress = progress
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeCreateIndexJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job: DescribeCreateIndexJobResponseBodyJob = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.job = job
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.job:
+            self.job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Job') is not None:
+            temp_model = DescribeCreateIndexJobResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCreateIndexJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCreateIndexJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCreateIndexJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterNodeRequest(TeaModel):
     def __init__(
         self,
@@ -10590,6 +11429,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         lock_reason: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
+        master_aispec: str = None,
         master_cu: int = None,
         master_node_num: int = None,
         max_connections: int = None,
@@ -10607,6 +11447,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         security_iplist: str = None,
         seg_disk_performance_level: str = None,
         seg_node_num: int = None,
+        segment_aispec: str = None,
         segment_counts: int = None,
         serverless_mode: str = None,
         serverless_resource: int = None,
@@ -10740,6 +11581,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.maintain_end_time = maintain_end_time
         # Maintenance start time.
         self.maintain_start_time = maintain_start_time
+        self.master_aispec = master_aispec
         # Master resources.
         self.master_cu = master_cu
         # Number of Master nodes.
@@ -10787,6 +11629,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # > This parameter applies only to instances in the storage elastic mode and Serverless manual scheduling mode.
         self.seg_node_num = seg_node_num
+        self.segment_aispec = segment_aispec
         # Number of compute groups.
         # 
         # > This parameter applies only to storage-reserved mode instances.
@@ -10921,6 +11764,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['MaintainEndTime'] = self.maintain_end_time
         if self.maintain_start_time is not None:
             result['MaintainStartTime'] = self.maintain_start_time
+        if self.master_aispec is not None:
+            result['MasterAISpec'] = self.master_aispec
         if self.master_cu is not None:
             result['MasterCU'] = self.master_cu
         if self.master_node_num is not None:
@@ -10955,6 +11800,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['SegDiskPerformanceLevel'] = self.seg_disk_performance_level
         if self.seg_node_num is not None:
             result['SegNodeNum'] = self.seg_node_num
+        if self.segment_aispec is not None:
+            result['SegmentAISpec'] = self.segment_aispec
         if self.segment_counts is not None:
             result['SegmentCounts'] = self.segment_counts
         if self.serverless_mode is not None:
@@ -11055,6 +11902,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.maintain_end_time = m.get('MaintainEndTime')
         if m.get('MaintainStartTime') is not None:
             self.maintain_start_time = m.get('MaintainStartTime')
+        if m.get('MasterAISpec') is not None:
+            self.master_aispec = m.get('MasterAISpec')
         if m.get('MasterCU') is not None:
             self.master_cu = m.get('MasterCU')
         if m.get('MasterNodeNum') is not None:
@@ -11089,6 +11938,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.seg_disk_performance_level = m.get('SegDiskPerformanceLevel')
         if m.get('SegNodeNum') is not None:
             self.seg_node_num = m.get('SegNodeNum')
+        if m.get('SegmentAISpec') is not None:
+            self.segment_aispec = m.get('SegmentAISpec')
         if m.get('SegmentCounts') is not None:
             self.segment_counts = m.get('SegmentCounts')
         if m.get('ServerlessMode') is not None:
@@ -19755,6 +20606,184 @@ class DescribeIMVInfosResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeIMVInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeIndexRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        index_name: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.index_name = index_name
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DescribeIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        index_def: str = None,
+        index_name: str = None,
+        message: str = None,
+        namespace: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.collection = collection
+        self.index_def = index_def
+        self.index_name = index_name
+        self.message = message
+        self.namespace = namespace
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.index_def is not None:
+            result['IndexDef'] = self.index_def
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('IndexDef') is not None:
+            self.index_def = m.get('IndexDef')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeIndexResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29352,6 +30381,242 @@ class ListExternalDataSourcesResponse(TeaModel):
         return self
 
 
+class ListIndicesRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListIndicesResponseBodyIndicesIndices(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        index_def: str = None,
+        index_name: str = None,
+        namespace: str = None,
+    ):
+        self.collection = collection
+        self.index_def = index_def
+        self.index_name = index_name
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.index_def is not None:
+            result['IndexDef'] = self.index_def
+        if self.index_name is not None:
+            result['IndexName'] = self.index_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('IndexDef') is not None:
+            self.index_def = m.get('IndexDef')
+        if m.get('IndexName') is not None:
+            self.index_name = m.get('IndexName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        return self
+
+
+class ListIndicesResponseBodyIndices(TeaModel):
+    def __init__(
+        self,
+        indices: List[ListIndicesResponseBodyIndicesIndices] = None,
+    ):
+        self.indices = indices
+
+    def validate(self):
+        if self.indices:
+            for k in self.indices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Indices'] = []
+        if self.indices is not None:
+            for k in self.indices:
+                result['Indices'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.indices = []
+        if m.get('Indices') is not None:
+            for k in m.get('Indices'):
+                temp_model = ListIndicesResponseBodyIndicesIndices()
+                self.indices.append(temp_model.from_map(k))
+        return self
+
+
+class ListIndicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        indices: ListIndicesResponseBodyIndices = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.indices = indices
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.indices:
+            self.indices.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.indices is not None:
+            result['Indices'] = self.indices.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Indices') is not None:
+            temp_model = ListIndicesResponseBodyIndices()
+            self.indices = temp_model.from_map(m['Indices'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListIndicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIndicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIndicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstanceExtensionsRequest(TeaModel):
     def __init__(
         self,
@@ -32528,6 +33793,121 @@ class ModifyDBInstanceConnectionStringResponse(TeaModel):
         return self
 
 
+class ModifyDBInstanceDeploymentModeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        deploy_mode: str = None,
+        standby_vswitch_id: str = None,
+        standby_zone_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.deploy_mode = deploy_mode
+        self.standby_vswitch_id = standby_vswitch_id
+        self.standby_zone_id = standby_zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.standby_vswitch_id is not None:
+            result['StandbyVSwitchId'] = self.standby_vswitch_id
+        if self.standby_zone_id is not None:
+            result['StandbyZoneId'] = self.standby_zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('StandbyVSwitchId') is not None:
+            self.standby_vswitch_id = m.get('StandbyVSwitchId')
+        if m.get('StandbyZoneId') is not None:
+            self.standby_zone_id = m.get('StandbyZoneId')
+        return self
+
+
+class ModifyDBInstanceDeploymentModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceDeploymentModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBInstanceDeploymentModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceDeploymentModeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBInstanceDescriptionRequest(TeaModel):
     def __init__(
         self,
@@ -34024,6 +35404,7 @@ class ModifyMasterSpecRequest(TeaModel):
         self,
         dbinstance_description: str = None,
         dbinstance_id: str = None,
+        master_aispec: str = None,
         master_cu: int = None,
         resource_group_id: str = None,
     ):
@@ -34035,6 +35416,7 @@ class ModifyMasterSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.master_aispec = master_aispec
         # The specifications of coordinator node resources. Valid values:
         # 
         # *   2 CU
@@ -34044,8 +35426,6 @@ class ModifyMasterSpecRequest(TeaModel):
         # *   32 CU
         # 
         # >  You are charged for coordinator node resources of more than 8 compute units (CUs).
-        # 
-        # This parameter is required.
         self.master_cu = master_cu
         # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
@@ -34063,6 +35443,8 @@ class ModifyMasterSpecRequest(TeaModel):
             result['DBInstanceDescription'] = self.dbinstance_description
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.master_aispec is not None:
+            result['MasterAISpec'] = self.master_aispec
         if self.master_cu is not None:
             result['MasterCU'] = self.master_cu
         if self.resource_group_id is not None:
@@ -34075,6 +35457,8 @@ class ModifyMasterSpecRequest(TeaModel):
             self.dbinstance_description = m.get('DBInstanceDescription')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('MasterAISpec') is not None:
+            self.master_aispec = m.get('MasterAISpec')
         if m.get('MasterCU') is not None:
             self.master_cu = m.get('MasterCU')
         if m.get('ResourceGroupId') is not None:
