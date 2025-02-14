@@ -65,6 +65,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -115,6 +117,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -435,6 +439,8 @@ class Client(OpenApiClient):
             query['originLongitude'] = request.origin_longitude
         if not UtilClient.is_unset(request.plate):
             query['plate'] = request.plate
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -489,6 +495,8 @@ class Client(OpenApiClient):
             query['originLongitude'] = request.origin_longitude
         if not UtilClient.is_unset(request.plate):
             query['plate'] = request.plate
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -567,6 +575,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -617,6 +627,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1883,6 +1895,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1937,6 +1951,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2015,6 +2031,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2065,6 +2083,8 @@ class Client(OpenApiClient):
             query['originLatitude'] = request.origin_latitude
         if not UtilClient.is_unset(request.origin_longitude):
             query['originLongitude'] = request.origin_longitude
+        if not UtilClient.is_unset(request.show_polyline):
+            query['showPolyline'] = request.show_polyline
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

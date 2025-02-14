@@ -1,3 +1,21 @@
+2025-02-14 Version: 4.1.0
+- Support API DrivingDirection.
+- Update API BicyclingDirectionNova: add param showPolyline.
+- Update API BicyclingDirectionNova: update response param.
+- Update API DrivingDirectionNova: add param showPolyline.
+- Update API DrivingDirectionNova: update response param.
+- Update API ElectrobikeDirectionNova: add param showPolyline.
+- Update API ElectrobikeDirectionNova: update response param.
+- Update API GeoCode: update response param.
+- Update API NearbySearchNova: update response param.
+- Update API PlaceSearchNova: update response param.
+- Update API RgeoCode: update response param.
+- Update API TransitIntegratedDirection: add param showPolyline.
+- Update API TransitIntegratedDirection: update response param.
+- Update API WalkingDirectionNova: add param showPolyline.
+- Update API WalkingDirectionNova: update response param.
+
+
 2025-02-14 Version: 4.0.0
 - Support API DrivingDirection.
 - Update API BicyclingDirectionNova: update response param.

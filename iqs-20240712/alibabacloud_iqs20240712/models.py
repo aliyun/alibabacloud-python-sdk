@@ -336,11 +336,13 @@ class BicyclingDirectionNovaRequest(TeaModel):
         destination_longitude: str = None,
         origin_latitude: str = None,
         origin_longitude: str = None,
+        show_polyline: bool = None,
     ):
         self.destination_latitude = destination_latitude
         self.destination_longitude = destination_longitude
         self.origin_latitude = origin_latitude
         self.origin_longitude = origin_longitude
+        self.show_polyline = show_polyline
 
     def validate(self):
         pass
@@ -359,6 +361,8 @@ class BicyclingDirectionNovaRequest(TeaModel):
             result['originLatitude'] = self.origin_latitude
         if self.origin_longitude is not None:
             result['originLongitude'] = self.origin_longitude
+        if self.show_polyline is not None:
+            result['showPolyline'] = self.show_polyline
         return result
 
     def from_map(self, m: dict = None):
@@ -371,6 +375,8 @@ class BicyclingDirectionNovaRequest(TeaModel):
             self.origin_latitude = m.get('originLatitude')
         if m.get('originLongitude') is not None:
             self.origin_longitude = m.get('originLongitude')
+        if m.get('showPolyline') is not None:
+            self.show_polyline = m.get('showPolyline')
         return self
 
 
@@ -1222,6 +1228,7 @@ class DrivingDirectionNovaRequest(TeaModel):
         origin_latitude: str = None,
         origin_longitude: str = None,
         plate: str = None,
+        show_polyline: bool = None,
     ):
         self.car_type = car_type
         self.destination_latitude = destination_latitude
@@ -1229,6 +1236,7 @@ class DrivingDirectionNovaRequest(TeaModel):
         self.origin_latitude = origin_latitude
         self.origin_longitude = origin_longitude
         self.plate = plate
+        self.show_polyline = show_polyline
 
     def validate(self):
         pass
@@ -1251,6 +1259,8 @@ class DrivingDirectionNovaRequest(TeaModel):
             result['originLongitude'] = self.origin_longitude
         if self.plate is not None:
             result['plate'] = self.plate
+        if self.show_polyline is not None:
+            result['showPolyline'] = self.show_polyline
         return result
 
     def from_map(self, m: dict = None):
@@ -1267,6 +1277,8 @@ class DrivingDirectionNovaRequest(TeaModel):
             self.origin_longitude = m.get('originLongitude')
         if m.get('plate') is not None:
             self.plate = m.get('plate')
+        if m.get('showPolyline') is not None:
+            self.show_polyline = m.get('showPolyline')
         return self
 
 
@@ -1677,11 +1689,13 @@ class ElectrobikeDirectionNovaRequest(TeaModel):
         destination_longitude: str = None,
         origin_latitude: str = None,
         origin_longitude: str = None,
+        show_polyline: bool = None,
     ):
         self.destination_latitude = destination_latitude
         self.destination_longitude = destination_longitude
         self.origin_latitude = origin_latitude
         self.origin_longitude = origin_longitude
+        self.show_polyline = show_polyline
 
     def validate(self):
         pass
@@ -1700,6 +1714,8 @@ class ElectrobikeDirectionNovaRequest(TeaModel):
             result['originLatitude'] = self.origin_latitude
         if self.origin_longitude is not None:
             result['originLongitude'] = self.origin_longitude
+        if self.show_polyline is not None:
+            result['showPolyline'] = self.show_polyline
         return result
 
     def from_map(self, m: dict = None):
@@ -1712,6 +1728,8 @@ class ElectrobikeDirectionNovaRequest(TeaModel):
             self.origin_latitude = m.get('originLatitude')
         if m.get('originLongitude') is not None:
             self.origin_longitude = m.get('originLongitude')
+        if m.get('showPolyline') is not None:
+            self.show_polyline = m.get('showPolyline')
         return self
 
 
@@ -4062,6 +4080,7 @@ class TransitIntegratedDirectionRequest(TeaModel):
         origin_city: str = None,
         origin_latitude: str = None,
         origin_longitude: str = None,
+        show_polyline: bool = None,
     ):
         self.destination_city = destination_city
         self.destination_latitude = destination_latitude
@@ -4069,6 +4088,7 @@ class TransitIntegratedDirectionRequest(TeaModel):
         self.origin_city = origin_city
         self.origin_latitude = origin_latitude
         self.origin_longitude = origin_longitude
+        self.show_polyline = show_polyline
 
     def validate(self):
         pass
@@ -4091,6 +4111,8 @@ class TransitIntegratedDirectionRequest(TeaModel):
             result['originLatitude'] = self.origin_latitude
         if self.origin_longitude is not None:
             result['originLongitude'] = self.origin_longitude
+        if self.show_polyline is not None:
+            result['showPolyline'] = self.show_polyline
         return result
 
     def from_map(self, m: dict = None):
@@ -4107,6 +4129,8 @@ class TransitIntegratedDirectionRequest(TeaModel):
             self.origin_latitude = m.get('originLatitude')
         if m.get('originLongitude') is not None:
             self.origin_longitude = m.get('originLongitude')
+        if m.get('showPolyline') is not None:
+            self.show_polyline = m.get('showPolyline')
         return self
 
 
@@ -5585,11 +5609,13 @@ class WalkingDirectionNovaRequest(TeaModel):
         destination_longitude: str = None,
         origin_latitude: str = None,
         origin_longitude: str = None,
+        show_polyline: bool = None,
     ):
         self.destination_latitude = destination_latitude
         self.destination_longitude = destination_longitude
         self.origin_latitude = origin_latitude
         self.origin_longitude = origin_longitude
+        self.show_polyline = show_polyline
 
     def validate(self):
         pass
@@ -5608,6 +5634,8 @@ class WalkingDirectionNovaRequest(TeaModel):
             result['originLatitude'] = self.origin_latitude
         if self.origin_longitude is not None:
             result['originLongitude'] = self.origin_longitude
+        if self.show_polyline is not None:
+            result['showPolyline'] = self.show_polyline
         return result
 
     def from_map(self, m: dict = None):
@@ -5620,6 +5648,8 @@ class WalkingDirectionNovaRequest(TeaModel):
             self.origin_latitude = m.get('originLatitude')
         if m.get('originLongitude') is not None:
             self.origin_longitude = m.get('originLongitude')
+        if m.get('showPolyline') is not None:
+            self.show_polyline = m.get('showPolyline')
         return self
 
 
