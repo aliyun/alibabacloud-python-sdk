@@ -1,3 +1,7 @@
+2025-02-14 Version: 2.0.1
+- Update API ListXTelephones: update response param.
+
+
 2024-11-13 Version: 2.0.0
 - Update API BindAXBCall: update response param.
 - Update API BindXB: update response param.

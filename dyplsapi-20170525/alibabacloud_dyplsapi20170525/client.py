@@ -87,10 +87,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.AddAxnTrackNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddAxnTrackNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddAxnTrackNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_axn_track_no_with_options_async(
         self,
@@ -137,10 +143,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.AddAxnTrackNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddAxnTrackNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddAxnTrackNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_axn_track_no(
         self,
@@ -215,10 +227,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.AddSecretBlacklistResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddSecretBlacklistResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddSecretBlacklistResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def add_secret_blacklist_with_options_async(
         self,
@@ -261,10 +279,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.AddSecretBlacklistResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddSecretBlacklistResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.AddSecretBlacklistResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def add_secret_blacklist(
         self,
@@ -346,10 +370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAXBCallResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAXBCallResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAXBCallResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_axbcall_with_options_async(
         self,
@@ -399,10 +429,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAXBCallResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAXBCallResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAXBCallResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_axbcall(
         self,
@@ -500,10 +536,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxbResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxbResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxbResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_axb_with_options_async(
         self,
@@ -575,10 +617,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxbResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxbResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxbResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_axb(
         self,
@@ -682,10 +730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxgResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxgResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxgResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_axg_with_options_async(
         self,
@@ -755,10 +809,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxgResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxgResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxgResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_axg(
         self,
@@ -864,10 +924,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxnResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_axn_with_options_async(
         self,
@@ -939,10 +1005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxnResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_axn(
         self,
@@ -1044,10 +1116,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxnExtensionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnExtensionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnExtensionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_axn_extension_with_options_async(
         self,
@@ -1119,10 +1197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindAxnExtensionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnExtensionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindAxnExtensionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_axn_extension(
         self,
@@ -1198,10 +1282,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindBatchAxgResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindBatchAxgResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindBatchAxgResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_batch_axg_with_options_async(
         self,
@@ -1243,10 +1333,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindBatchAxgResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindBatchAxgResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindBatchAxgResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_batch_axg(
         self,
@@ -1316,10 +1412,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindXBResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindXBResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindXBResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_xbwith_options_async(
         self,
@@ -1367,10 +1469,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BindXBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindXBResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BindXBResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_xb(
         self,
@@ -1447,10 +1555,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BuySecretNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BuySecretNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BuySecretNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def buy_secret_no_with_options_async(
         self,
@@ -1501,10 +1615,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.BuySecretNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BuySecretNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.BuySecretNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def buy_secret_no(
         self,
@@ -1583,10 +1703,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def cancel_pick_up_waybill_with_options_async(
         self,
@@ -1629,10 +1755,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CancelPickUpWaybillResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def cancel_pick_up_waybill(
         self,
@@ -1724,10 +1856,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ConfigXResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ConfigXResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ConfigXResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def config_xwith_options_async(
         self,
@@ -1787,10 +1925,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ConfigXResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ConfigXResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ConfigXResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def config_x(
         self,
@@ -1863,10 +2007,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateAxgGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateAxgGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateAxgGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_axg_group_with_options_async(
         self,
@@ -1913,10 +2063,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateAxgGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateAxgGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateAxgGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_axg_group(
         self,
@@ -2021,10 +2177,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_pick_up_waybill_with_options_async(
         self,
@@ -2097,10 +2259,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_pick_up_waybill(
         self,
@@ -2183,10 +2351,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_pick_up_waybill_pre_query_with_options_async(
         self,
@@ -2237,10 +2411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreatePickUpWaybillPreQueryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_pick_up_waybill_pre_query(
         self,
@@ -2318,10 +2498,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateSmsSignResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateSmsSignResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateSmsSignResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_sms_sign_with_options_async(
         self,
@@ -2367,10 +2553,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.CreateSmsSignResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateSmsSignResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.CreateSmsSignResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_sms_sign(
         self,
@@ -2434,10 +2626,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.DeleteAxgGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteAxgGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteAxgGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_axg_group_with_options_async(
         self,
@@ -2475,10 +2673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.DeleteAxgGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteAxgGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteAxgGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_axg_group(
         self,
@@ -2543,10 +2747,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_secret_blacklist_with_options_async(
         self,
@@ -2589,10 +2799,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.DeleteSecretBlacklistResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_secret_blacklist(
         self,
@@ -2664,10 +2880,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_secret_asr_detail_with_options_async(
         self,
@@ -2707,10 +2929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetSecretAsrDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_secret_asr_detail(
         self,
@@ -2791,10 +3019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_total_public_url_with_options_async(
         self,
@@ -2841,10 +3075,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetTotalPublicUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_total_public_url(
         self,
@@ -2920,10 +3160,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetXConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_xconfig_with_options_async(
         self,
@@ -2967,10 +3213,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetXConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_xconfig(
         self,
@@ -3040,10 +3292,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetXDefaultConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_xdefault_config_with_options_async(
         self,
@@ -3087,10 +3345,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.GetXDefaultConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.GetXDefaultConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_xdefault_config(
         self,
@@ -3162,10 +3426,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ListXTelephonesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ListXTelephonesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ListXTelephonesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_xtelephones_with_options_async(
         self,
@@ -3211,10 +3481,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ListXTelephonesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ListXTelephonesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ListXTelephonesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_xtelephones(
         self,
@@ -3284,10 +3560,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.LockSecretNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.LockSecretNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.LockSecretNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def lock_secret_no_with_options_async(
         self,
@@ -3331,10 +3613,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.LockSecretNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.LockSecretNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.LockSecretNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def lock_secret_no(
         self,
@@ -3416,10 +3704,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.OperateAxgGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateAxgGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateAxgGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def operate_axg_group_with_options_async(
         self,
@@ -3467,10 +3761,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.OperateAxgGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateAxgGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateAxgGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def operate_axg_group(
         self,
@@ -3552,10 +3852,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.OperateBlackNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateBlackNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateBlackNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def operate_black_no_with_options_async(
         self,
@@ -3603,10 +3909,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.OperateBlackNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateBlackNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.OperateBlackNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def operate_black_no(
         self,
@@ -3685,10 +3997,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_phone_no_aby_track_no_with_options_async(
         self,
@@ -3733,10 +4051,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryPhoneNoAByTrackNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_phone_no_aby_track_no(
         self,
@@ -3822,10 +4146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_record_file_download_url_with_options_async(
         self,
@@ -3879,10 +4209,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QueryRecordFileDownloadUrlResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_record_file_download_url(
         self,
@@ -3971,10 +4307,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_secret_no_detail_with_options_async(
         self,
@@ -4017,10 +4359,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_secret_no_detail(
         self,
@@ -4096,10 +4444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_secret_no_remain_with_options_async(
         self,
@@ -4143,10 +4497,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySecretNoRemainResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_secret_no_remain(
         self,
@@ -4220,10 +4580,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySoundRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySoundRecordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySoundRecordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_sound_record_with_options_async(
         self,
@@ -4267,10 +4633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySoundRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySoundRecordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySoundRecordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_sound_record(
         self,
@@ -4338,10 +4710,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySubsIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubsIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubsIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_subs_id_with_options_async(
         self,
@@ -4383,10 +4761,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySubsIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubsIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubsIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_subs_id(
         self,
@@ -4465,10 +4849,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def query_subscription_detail_with_options_async(
         self,
@@ -4517,10 +4907,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.QuerySubscriptionDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def query_subscription_detail(
         self,
@@ -4599,10 +4995,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ReleaseSecretNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ReleaseSecretNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ReleaseSecretNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_secret_no_with_options_async(
         self,
@@ -4645,10 +5047,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.ReleaseSecretNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ReleaseSecretNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.ReleaseSecretNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_secret_no(
         self,
@@ -4724,10 +5132,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnBindAXBResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindAXBResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindAXBResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_bind_axbwith_options_async(
         self,
@@ -4771,10 +5185,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnBindAXBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindAXBResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindAXBResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_bind_axb(
         self,
@@ -4846,10 +5266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnBindXBResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindXBResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindXBResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def un_bind_xbwith_options_async(
         self,
@@ -4895,10 +5321,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnBindXBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindXBResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnBindXBResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def un_bind_xb(
         self,
@@ -4970,10 +5402,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnbindSubscriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnbindSubscriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnbindSubscriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_subscription_with_options_async(
         self,
@@ -5019,10 +5457,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnbindSubscriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnbindSubscriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnbindSubscriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind_subscription(
         self,
@@ -5096,10 +5540,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnlockSecretNoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnlockSecretNoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnlockSecretNoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unlock_secret_no_with_options_async(
         self,
@@ -5143,10 +5593,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UnlockSecretNoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnlockSecretNoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UnlockSecretNoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unlock_secret_no(
         self,
@@ -5251,10 +5707,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdateSubscriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UpdateSubscriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UpdateSubscriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_subscription_with_options_async(
         self,
@@ -5325,10 +5787,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            dyplsapi_20170525_models.UpdateSubscriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UpdateSubscriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dyplsapi_20170525_models.UpdateSubscriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_subscription(
         self,
