@@ -204,6 +204,7 @@ class AIAgentTemplateConfigAvatarChat3DLlmHistory(TeaModel):
 class AIAgentTemplateConfigAvatarChat3D(TeaModel):
     def __init__(
         self,
+        asr_language_id: str = None,
         asr_max_silence: int = None,
         avatar_id: str = None,
         bailian_app_params: str = None,
@@ -225,6 +226,7 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.avatar_id = avatar_id
         self.bailian_app_params = bailian_app_params
@@ -258,6 +260,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_language_id is not None:
+            result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
         if self.avatar_id is not None:
@@ -304,6 +308,8 @@ class AIAgentTemplateConfigAvatarChat3D(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrLanguageId') is not None:
+            self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('AvatarId') is not None:
@@ -386,6 +392,7 @@ class AIAgentTemplateConfigVisionChatLlmHistory(TeaModel):
 class AIAgentTemplateConfigVisionChat(TeaModel):
     def __init__(
         self,
+        asr_language_id: str = None,
         asr_max_silence: int = None,
         bailian_app_params: str = None,
         enable_intelligent_segment: bool = None,
@@ -406,6 +413,7 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.bailian_app_params = bailian_app_params
         self.enable_intelligent_segment = enable_intelligent_segment
@@ -438,6 +446,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_language_id is not None:
+            result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
         if self.bailian_app_params is not None:
@@ -482,6 +492,8 @@ class AIAgentTemplateConfigVisionChat(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrLanguageId') is not None:
+            self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('BailianAppParams') is not None:
@@ -562,6 +574,7 @@ class AIAgentTemplateConfigVoiceChatLlmHistory(TeaModel):
 class AIAgentTemplateConfigVoiceChat(TeaModel):
     def __init__(
         self,
+        asr_language_id: str = None,
         asr_max_silence: int = None,
         avatar_url: str = None,
         avatar_url_type: str = None,
@@ -584,6 +597,7 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.asr_language_id = asr_language_id
         self.asr_max_silence = asr_max_silence
         self.avatar_url = avatar_url
         self.avatar_url_type = avatar_url_type
@@ -618,6 +632,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
             return _map
 
         result = dict()
+        if self.asr_language_id is not None:
+            result['AsrLanguageId'] = self.asr_language_id
         if self.asr_max_silence is not None:
             result['AsrMaxSilence'] = self.asr_max_silence
         if self.avatar_url is not None:
@@ -666,6 +682,8 @@ class AIAgentTemplateConfigVoiceChat(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AsrLanguageId') is not None:
+            self.asr_language_id = m.get('AsrLanguageId')
         if m.get('AsrMaxSilence') is not None:
             self.asr_max_silence = m.get('AsrMaxSilence')
         if m.get('AvatarUrl') is not None:
@@ -1041,11 +1059,600 @@ class Channel(TeaModel):
         return self
 
 
+class ChannelAssemblyChannelOutPutConfigList(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        format: str = None,
+        manifest_name: str = None,
+        manifest_settings: str = None,
+        playback_url: str = None,
+        source_group_name: str = None,
+    ):
+        self.channel_name = channel_name
+        self.format = format
+        self.manifest_name = manifest_name
+        self.manifest_settings = manifest_settings
+        self.playback_url = playback_url
+        self.source_group_name = source_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.manifest_settings is not None:
+            result['ManifestSettings'] = self.manifest_settings
+        if self.playback_url is not None:
+            result['PlaybackUrl'] = self.playback_url
+        if self.source_group_name is not None:
+            result['SourceGroupName'] = self.source_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('ManifestSettings') is not None:
+            self.manifest_settings = m.get('ManifestSettings')
+        if m.get('PlaybackUrl') is not None:
+            self.playback_url = m.get('PlaybackUrl')
+        if m.get('SourceGroupName') is not None:
+            self.source_group_name = m.get('SourceGroupName')
+        return self
+
+
+class ChannelAssemblyChannel(TeaModel):
+    def __init__(
+        self,
+        access_policy: bool = None,
+        access_token: str = None,
+        arn: str = None,
+        channel_name: str = None,
+        channel_tier: str = None,
+        filler_source_location_name: str = None,
+        filler_source_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        out_put_config_list: List[ChannelAssemblyChannelOutPutConfigList] = None,
+        playback_mode: str = None,
+        state: int = None,
+    ):
+        self.access_policy = access_policy
+        self.access_token = access_token
+        self.arn = arn
+        self.channel_name = channel_name
+        self.channel_tier = channel_tier
+        self.filler_source_location_name = filler_source_location_name
+        self.filler_source_name = filler_source_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.out_put_config_list = out_put_config_list
+        self.playback_mode = playback_mode
+        self.state = state
+
+    def validate(self):
+        if self.out_put_config_list:
+            for k in self.out_put_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_policy is not None:
+            result['AccessPolicy'] = self.access_policy
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.channel_tier is not None:
+            result['ChannelTier'] = self.channel_tier
+        if self.filler_source_location_name is not None:
+            result['FillerSourceLocationName'] = self.filler_source_location_name
+        if self.filler_source_name is not None:
+            result['FillerSourceName'] = self.filler_source_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        result['OutPutConfigList'] = []
+        if self.out_put_config_list is not None:
+            for k in self.out_put_config_list:
+                result['OutPutConfigList'].append(k.to_map() if k else None)
+        if self.playback_mode is not None:
+            result['PlaybackMode'] = self.playback_mode
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPolicy') is not None:
+            self.access_policy = m.get('AccessPolicy')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ChannelTier') is not None:
+            self.channel_tier = m.get('ChannelTier')
+        if m.get('FillerSourceLocationName') is not None:
+            self.filler_source_location_name = m.get('FillerSourceLocationName')
+        if m.get('FillerSourceName') is not None:
+            self.filler_source_name = m.get('FillerSourceName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        self.out_put_config_list = []
+        if m.get('OutPutConfigList') is not None:
+            for k in m.get('OutPutConfigList'):
+                temp_model = ChannelAssemblyChannelOutPutConfigList()
+                self.out_put_config_list.append(temp_model.from_map(k))
+        if m.get('PlaybackMode') is not None:
+            self.playback_mode = m.get('PlaybackMode')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ChannelAssemblyProgramAdBreaks(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        message_type: str = None,
+        offset_millis: int = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        splice_insert_settings: str = None,
+        time_signal_settings: str = None,
+    ):
+        self.channel_name = channel_name
+        self.message_type = message_type
+        self.offset_millis = offset_millis
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.splice_insert_settings = splice_insert_settings
+        self.time_signal_settings = time_signal_settings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.offset_millis is not None:
+            result['OffsetMillis'] = self.offset_millis
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.splice_insert_settings is not None:
+            result['SpliceInsertSettings'] = self.splice_insert_settings
+        if self.time_signal_settings is not None:
+            result['TimeSignalSettings'] = self.time_signal_settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('OffsetMillis') is not None:
+            self.offset_millis = m.get('OffsetMillis')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SpliceInsertSettings') is not None:
+            self.splice_insert_settings = m.get('SpliceInsertSettings')
+        if m.get('TimeSignalSettings') is not None:
+            self.time_signal_settings = m.get('TimeSignalSettings')
+        return self
+
+
+class ChannelAssemblyProgram(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: List[ChannelAssemblyProgramAdBreaks] = None,
+        arn: str = None,
+        channel_name: str = None,
+        clip_range: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        transition: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        self.arn = arn
+        self.channel_name = channel_name
+        self.clip_range = clip_range
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+        self.transition = transition
+
+    def validate(self):
+        if self.ad_breaks:
+            for k in self.ad_breaks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdBreaks'] = []
+        if self.ad_breaks is not None:
+            for k in self.ad_breaks:
+                result['AdBreaks'].append(k.to_map() if k else None)
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.clip_range is not None:
+            result['ClipRange'] = self.clip_range
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.transition is not None:
+            result['Transition'] = self.transition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ad_breaks = []
+        if m.get('AdBreaks') is not None:
+            for k in m.get('AdBreaks'):
+                temp_model = ChannelAssemblyProgramAdBreaks()
+                self.ad_breaks.append(temp_model.from_map(k))
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClipRange') is not None:
+            self.clip_range = m.get('ClipRange')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Transition') is not None:
+            self.transition = m.get('Transition')
+        return self
+
+
+class ChannelAssemblyScheduleDataAdBreaks(TeaModel):
+    def __init__(
+        self,
+        message_type: str = None,
+        offset_millis: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        splice_insert_settings: str = None,
+        time_signal_settings: str = None,
+    ):
+        self.message_type = message_type
+        self.offset_millis = offset_millis
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.splice_insert_settings = splice_insert_settings
+        self.time_signal_settings = time_signal_settings
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.offset_millis is not None:
+            result['OffsetMillis'] = self.offset_millis
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.splice_insert_settings is not None:
+            result['SpliceInsertSettings'] = self.splice_insert_settings
+        if self.time_signal_settings is not None:
+            result['TimeSignalSettings'] = self.time_signal_settings
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('OffsetMillis') is not None:
+            self.offset_millis = m.get('OffsetMillis')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SpliceInsertSettings') is not None:
+            self.splice_insert_settings = m.get('SpliceInsertSettings')
+        if m.get('TimeSignalSettings') is not None:
+            self.time_signal_settings = m.get('TimeSignalSettings')
+        return self
+
+
+class ChannelAssemblyScheduleData(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: List[ChannelAssemblyScheduleDataAdBreaks] = None,
+        approximate_duration_seconds: int = None,
+        approximate_start_time: str = None,
+        entry_type: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        self.approximate_duration_seconds = approximate_duration_seconds
+        self.approximate_start_time = approximate_start_time
+        self.entry_type = entry_type
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+
+    def validate(self):
+        if self.ad_breaks:
+            for k in self.ad_breaks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdBreaks'] = []
+        if self.ad_breaks is not None:
+            for k in self.ad_breaks:
+                result['AdBreaks'].append(k.to_map() if k else None)
+        if self.approximate_duration_seconds is not None:
+            result['ApproximateDurationSeconds'] = self.approximate_duration_seconds
+        if self.approximate_start_time is not None:
+            result['ApproximateStartTime'] = self.approximate_start_time
+        if self.entry_type is not None:
+            result['EntryType'] = self.entry_type
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ad_breaks = []
+        if m.get('AdBreaks') is not None:
+            for k in m.get('AdBreaks'):
+                temp_model = ChannelAssemblyScheduleDataAdBreaks()
+                self.ad_breaks.append(temp_model.from_map(k))
+        if m.get('ApproximateDurationSeconds') is not None:
+            self.approximate_duration_seconds = m.get('ApproximateDurationSeconds')
+        if m.get('ApproximateStartTime') is not None:
+            self.approximate_start_time = m.get('ApproximateStartTime')
+        if m.get('EntryType') is not None:
+            self.entry_type = m.get('EntryType')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ChannelAssemblySource(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        http_package_configurations: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        state: int = None,
+    ):
+        self.arn = arn
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.http_package_configurations = http_package_configurations
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.http_package_configurations is not None:
+            result['HttpPackageConfigurations'] = self.http_package_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('HttpPackageConfigurations') is not None:
+            self.http_package_configurations = m.get('HttpPackageConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ChannelAssemblySourceLocation(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        base_url: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        segment_delivery_configurations: str = None,
+        source_location_name: str = None,
+        state: int = None,
+    ):
+        self.arn = arn
+        self.base_url = base_url
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.segment_delivery_configurations = segment_delivery_configurations
+        self.source_location_name = source_location_name
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.segment_delivery_configurations is not None:
+            result['SegmentDeliveryConfigurations'] = self.segment_delivery_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('SegmentDeliveryConfigurations') is not None:
+            self.segment_delivery_configurations = m.get('SegmentDeliveryConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
 class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
     def __init__(
         self,
         business_type: str = None,
         feature_ids: str = None,
+        is_trial: bool = None,
         sdk_id: int = None,
         sdk_name: str = None,
         subscription: str = None,
@@ -1054,6 +1661,7 @@ class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
     ):
         self.business_type = business_type
         self.feature_ids = feature_ids
+        self.is_trial = is_trial
         self.sdk_id = sdk_id
         self.sdk_name = sdk_name
         self.subscription = subscription
@@ -1073,6 +1681,8 @@ class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
             result['BusinessType'] = self.business_type
         if self.feature_ids is not None:
             result['FeatureIds'] = self.feature_ids
+        if self.is_trial is not None:
+            result['IsTrial'] = self.is_trial
         if self.sdk_id is not None:
             result['SdkId'] = self.sdk_id
         if self.sdk_name is not None:
@@ -1091,6 +1701,8 @@ class LicenseInstanceAppDTOLicenseConfigs(TeaModel):
             self.business_type = m.get('BusinessType')
         if m.get('FeatureIds') is not None:
             self.feature_ids = m.get('FeatureIds')
+        if m.get('IsTrial') is not None:
+            self.is_trial = m.get('IsTrial')
         if m.get('SdkId') is not None:
             self.sdk_id = m.get('SdkId')
         if m.get('SdkName') is not None:
@@ -2388,6 +3000,680 @@ class SourceLocation(TeaModel):
         return self
 
 
+class VodPackagingAssetInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class VodPackagingAsset(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        content_id: str = None,
+        create_time: str = None,
+        group_name: str = None,
+        input: VodPackagingAssetInput = None,
+    ):
+        self.asset_name = asset_name
+        self.content_id = content_id
+        self.create_time = create_time
+        self.group_name = group_name
+        self.input = input
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Input') is not None:
+            temp_model = VodPackagingAssetInput()
+            self.input = temp_model.from_map(m['Input'])
+        return self
+
+
+class VodPackagingConfigDrmProvider(TeaModel):
+    def __init__(
+        self,
+        encryption_method: str = None,
+        iv: str = None,
+        system_ids: List[str] = None,
+        url: str = None,
+    ):
+        self.encryption_method = encryption_method
+        self.iv = iv
+        self.system_ids = system_ids
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption_method is not None:
+            result['EncryptionMethod'] = self.encryption_method
+        if self.iv is not None:
+            result['IV'] = self.iv
+        if self.system_ids is not None:
+            result['SystemIds'] = self.system_ids
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptionMethod') is not None:
+            self.encryption_method = m.get('EncryptionMethod')
+        if m.get('IV') is not None:
+            self.iv = m.get('IV')
+        if m.get('SystemIds') is not None:
+            self.system_ids = m.get('SystemIds')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class VodPackagingConfigStreamSelection(TeaModel):
+    def __init__(
+        self,
+        max_video_bits_per_second: int = None,
+        min_video_bits_per_second: int = None,
+        stream_order: str = None,
+    ):
+        self.max_video_bits_per_second = max_video_bits_per_second
+        self.min_video_bits_per_second = min_video_bits_per_second
+        self.stream_order = stream_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_video_bits_per_second is not None:
+            result['MaxVideoBitsPerSecond'] = self.max_video_bits_per_second
+        if self.min_video_bits_per_second is not None:
+            result['MinVideoBitsPerSecond'] = self.min_video_bits_per_second
+        if self.stream_order is not None:
+            result['StreamOrder'] = self.stream_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxVideoBitsPerSecond') is not None:
+            self.max_video_bits_per_second = m.get('MaxVideoBitsPerSecond')
+        if m.get('MinVideoBitsPerSecond') is not None:
+            self.min_video_bits_per_second = m.get('MinVideoBitsPerSecond')
+        if m.get('StreamOrder') is not None:
+            self.stream_order = m.get('StreamOrder')
+        return self
+
+
+class VodPackagingConfig(TeaModel):
+    def __init__(
+        self,
+        drm_provider: VodPackagingConfigDrmProvider = None,
+        manifest_name: str = None,
+        segment_duration: int = None,
+        stream_selection: VodPackagingConfigStreamSelection = None,
+    ):
+        self.drm_provider = drm_provider
+        self.manifest_name = manifest_name
+        self.segment_duration = segment_duration
+        self.stream_selection = stream_selection
+
+    def validate(self):
+        if self.drm_provider:
+            self.drm_provider.validate()
+        if self.stream_selection:
+            self.stream_selection.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drm_provider is not None:
+            result['DrmProvider'] = self.drm_provider.to_map()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        if self.stream_selection is not None:
+            result['StreamSelection'] = self.stream_selection.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DrmProvider') is not None:
+            temp_model = VodPackagingConfigDrmProvider()
+            self.drm_provider = temp_model.from_map(m['DrmProvider'])
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        if m.get('StreamSelection') is not None:
+            temp_model = VodPackagingConfigStreamSelection()
+            self.stream_selection = temp_model.from_map(m['StreamSelection'])
+        return self
+
+
+class VodPackagingConfiguration(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        package_config: VodPackagingConfig = None,
+        protocol: str = None,
+    ):
+        self.configuration_name = configuration_name
+        self.create_time = create_time
+        self.description = description
+        self.group_name = group_name
+        self.package_config = package_config
+        self.protocol = protocol
+
+    def validate(self):
+        if self.package_config:
+            self.package_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.package_config is not None:
+            result['PackageConfig'] = self.package_config.to_map()
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PackageConfig') is not None:
+            temp_model = VodPackagingConfig()
+            self.package_config = temp_model.from_map(m['PackageConfig'])
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class VodPackagingGroup(TeaModel):
+    def __init__(
+        self,
+        approximate_asset_count: int = None,
+        configuration_count: int = None,
+        create_time: str = None,
+        description: str = None,
+        domain_name: str = None,
+        group_name: str = None,
+    ):
+        self.approximate_asset_count = approximate_asset_count
+        self.configuration_count = configuration_count
+        self.create_time = create_time
+        self.description = description
+        self.domain_name = domain_name
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approximate_asset_count is not None:
+            result['ApproximateAssetCount'] = self.approximate_asset_count
+        if self.configuration_count is not None:
+            result['ConfigurationCount'] = self.configuration_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApproximateAssetCount') is not None:
+            self.approximate_asset_count = m.get('ApproximateAssetCount')
+        if m.get('ConfigurationCount') is not None:
+            self.configuration_count = m.get('ConfigurationCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class AddAdInsertionRequest(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_ad_segment_url_prefix: str = None,
+        cdn_content_segment_url_prefix: str = None,
+        client_token: str = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 内容URL前缀
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        # 
+        # This parameter is required.
+        self.ads_url = ads_url
+        # 广告分片的CDN前缀
+        self.cdn_ad_segment_url_prefix = cdn_ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.cdn_content_segment_url_prefix = cdn_content_segment_url_prefix
+        self.client_token = client_token
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        # 
+        # This parameter is required.
+        self.content_url_prefix = content_url_prefix
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_ad_segment_url_prefix is not None:
+            result['CdnAdSegmentUrlPrefix'] = self.cdn_ad_segment_url_prefix
+        if self.cdn_content_segment_url_prefix is not None:
+            result['CdnContentSegmentUrlPrefix'] = self.cdn_content_segment_url_prefix
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnAdSegmentUrlPrefix') is not None:
+            self.cdn_ad_segment_url_prefix = m.get('CdnAdSegmentUrlPrefix')
+        if m.get('CdnContentSegmentUrlPrefix') is not None:
+            self.cdn_content_segment_url_prefix = m.get('CdnContentSegmentUrlPrefix')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class AddAdInsertionResponseBodyConfigCdnConfig(TeaModel):
+    def __init__(
+        self,
+        ad_segment_url_prefix: str = None,
+        content_segment_url_prefix: str = None,
+    ):
+        # 广告分片的CDN前缀
+        self.ad_segment_url_prefix = ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.content_segment_url_prefix = content_segment_url_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_segment_url_prefix is not None:
+            result['AdSegmentUrlPrefix'] = self.ad_segment_url_prefix
+        if self.content_segment_url_prefix is not None:
+            result['ContentSegmentUrlPrefix'] = self.content_segment_url_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdSegmentUrlPrefix') is not None:
+            self.ad_segment_url_prefix = m.get('AdSegmentUrlPrefix')
+        if m.get('ContentSegmentUrlPrefix') is not None:
+            self.content_segment_url_prefix = m.get('ContentSegmentUrlPrefix')
+        return self
+
+
+class AddAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        hls_prefix: str = None,
+    ):
+        # HLS清单播放端点前缀
+        self.hls_prefix = hls_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hls_prefix is not None:
+            result['HlsPrefix'] = self.hls_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HlsPrefix') is not None:
+            self.hls_prefix = m.get('HlsPrefix')
+        return self
+
+
+class AddAdInsertionResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_config: AddAdInsertionResponseBodyConfigCdnConfig = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        create_time: str = None,
+        last_modified: str = None,
+        manifest_endpoint_config: AddAdInsertionResponseBodyConfigManifestEndpointConfig = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 广告标记透传
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        self.ads_url = ads_url
+        # CDN配置
+        self.cdn_config = cdn_config
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        self.content_url_prefix = content_url_prefix
+        # 创建时间
+        self.create_time = create_time
+        # 修改时间
+        self.last_modified = last_modified
+        # 清单播放端点配置
+        self.manifest_endpoint_config = manifest_endpoint_config
+        # 广告插入配置名称
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        if self.cdn_config:
+            self.cdn_config.validate()
+        if self.manifest_endpoint_config:
+            self.manifest_endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_config is not None:
+            result['CdnConfig'] = self.cdn_config.to_map()
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_endpoint_config is not None:
+            result['ManifestEndpointConfig'] = self.manifest_endpoint_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnConfig') is not None:
+            temp_model = AddAdInsertionResponseBodyConfigCdnConfig()
+            self.cdn_config = temp_model.from_map(m['CdnConfig'])
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestEndpointConfig') is not None:
+            temp_model = AddAdInsertionResponseBodyConfigManifestEndpointConfig()
+            self.manifest_endpoint_config = temp_model.from_map(m['ManifestEndpointConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class AddAdInsertionResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: AddAdInsertionResponseBodyConfig = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = AddAdInsertionResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddAdInsertionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddAdInsertionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddAdInsertionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddCategoryRequest(TeaModel):
     def __init__(
         self,
@@ -3230,6 +4516,454 @@ class AddFavoritePublicMediaResponse(TeaModel):
         return self
 
 
+class AddMediaConnectFlowInputRequest(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        flow_id: str = None,
+        input_from_url: str = None,
+        input_name: str = None,
+        input_protocol: str = None,
+        max_bitrate: int = None,
+        pair_flow_id: str = None,
+        pair_output_name: str = None,
+        srt_latency: int = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: str = None,
+    ):
+        # IP whitelist, in CIDR format, separated by commas if multiple IP ranges are specified
+        self.cidrs = cidrs
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Input URL, required when the input type is RTMP-PULL/SRT-Listener
+        self.input_from_url = input_from_url
+        # Input name
+        # 
+        # This parameter is required.
+        self.input_name = input_name
+        # Input type
+        # 
+        # This parameter is required.
+        self.input_protocol = input_protocol
+        # Input bitrate, in bps
+        self.max_bitrate = max_bitrate
+        # Paired Flow ID, required when the input type is Flow
+        self.pair_flow_id = pair_flow_id
+        # Output name of the paired Flow, required when the input type is Flow
+        self.pair_output_name = pair_output_name
+        # SRT latency, required when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT encryption key, required when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, required when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.input_from_url is not None:
+            result['InputFromUrl'] = self.input_from_url
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
+        if self.input_protocol is not None:
+            result['InputProtocol'] = self.input_protocol
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.pair_flow_id is not None:
+            result['PairFlowId'] = self.pair_flow_id
+        if self.pair_output_name is not None:
+            result['PairOutputName'] = self.pair_output_name
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('InputFromUrl') is not None:
+            self.input_from_url = m.get('InputFromUrl')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
+        if m.get('InputProtocol') is not None:
+            self.input_protocol = m.get('InputProtocol')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('PairFlowId') is not None:
+            self.pair_flow_id = m.get('PairFlowId')
+        if m.get('PairOutputName') is not None:
+            self.pair_output_name = m.get('PairOutputName')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class AddMediaConnectFlowInputResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        input_url: str = None,
+    ):
+        # Input URL
+        self.input_url = input_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_url is not None:
+            result['InputUrl'] = self.input_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputUrl') is not None:
+            self.input_url = m.get('InputUrl')
+        return self
+
+
+class AddMediaConnectFlowInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: AddMediaConnectFlowInputResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # 请求ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = AddMediaConnectFlowInputResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class AddMediaConnectFlowInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddMediaConnectFlowInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddMediaConnectFlowInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddMediaConnectFlowOutputRequest(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        flow_id: str = None,
+        output_name: str = None,
+        output_protocol: str = None,
+        output_to_url: str = None,
+        pair_flow_id: str = None,
+        pair_input_name: str = None,
+        player_limit: int = None,
+        srt_latency: int = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: str = None,
+    ):
+        # IP whitelist, in CIDR format, separated by commas if multiple IP segments are provided
+        self.cidrs = cidrs
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Output name
+        # 
+        # This parameter is required.
+        self.output_name = output_name
+        # Output protocol
+        # 
+        # This parameter is required.
+        self.output_protocol = output_protocol
+        # Output address, required when the output type is RTMP-PUSH/SRT-Caller mode
+        self.output_to_url = output_to_url
+        # Paired Flow instance ID, required when the output type is Flow
+        self.pair_flow_id = pair_flow_id
+        # Input name of the paired Flow, required when the output type is Flow
+        self.pair_input_name = pair_input_name
+        # Maximum number of players
+        self.player_limit = player_limit
+        # SRT latency, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT passphrase, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.output_name is not None:
+            result['OutputName'] = self.output_name
+        if self.output_protocol is not None:
+            result['OutputProtocol'] = self.output_protocol
+        if self.output_to_url is not None:
+            result['OutputToUrl'] = self.output_to_url
+        if self.pair_flow_id is not None:
+            result['PairFlowId'] = self.pair_flow_id
+        if self.pair_input_name is not None:
+            result['PairInputName'] = self.pair_input_name
+        if self.player_limit is not None:
+            result['PlayerLimit'] = self.player_limit
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('OutputName') is not None:
+            self.output_name = m.get('OutputName')
+        if m.get('OutputProtocol') is not None:
+            self.output_protocol = m.get('OutputProtocol')
+        if m.get('OutputToUrl') is not None:
+            self.output_to_url = m.get('OutputToUrl')
+        if m.get('PairFlowId') is not None:
+            self.pair_flow_id = m.get('PairFlowId')
+        if m.get('PairInputName') is not None:
+            self.pair_input_name = m.get('PairInputName')
+        if m.get('PlayerLimit') is not None:
+            self.player_limit = m.get('PlayerLimit')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class AddMediaConnectFlowOutputResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        output_url: str = None,
+    ):
+        # Output address
+        self.output_url = output_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_url is not None:
+            result['OutputUrl'] = self.output_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputUrl') is not None:
+            self.output_url = m.get('OutputUrl')
+        return self
+
+
+class AddMediaConnectFlowOutputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: AddMediaConnectFlowOutputResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # 请求ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = AddMediaConnectFlowOutputResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class AddMediaConnectFlowOutputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddMediaConnectFlowOutputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddMediaConnectFlowOutputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddMediaMarksRequest(TeaModel):
     def __init__(
         self,
@@ -3783,6 +5517,283 @@ class AlterSearchIndexResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AlterSearchIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchCreateVodPackagingAssetRequestAssetsInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class BatchCreateVodPackagingAssetRequestAssets(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        content_id: str = None,
+        input: BatchCreateVodPackagingAssetRequestAssetsInput = None,
+    ):
+        self.asset_name = asset_name
+        self.content_id = content_id
+        self.input = input
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('Input') is not None:
+            temp_model = BatchCreateVodPackagingAssetRequestAssetsInput()
+            self.input = temp_model.from_map(m['Input'])
+        return self
+
+
+class BatchCreateVodPackagingAssetRequest(TeaModel):
+    def __init__(
+        self,
+        assets: List[BatchCreateVodPackagingAssetRequestAssets] = None,
+        group_name: str = None,
+    ):
+        self.assets = assets
+        self.group_name = group_name
+
+    def validate(self):
+        if self.assets:
+            for k in self.assets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Assets'] = []
+        if self.assets is not None:
+            for k in self.assets:
+                result['Assets'].append(k.to_map() if k else None)
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assets = []
+        if m.get('Assets') is not None:
+            for k in m.get('Assets'):
+                temp_model = BatchCreateVodPackagingAssetRequestAssets()
+                self.assets.append(temp_model.from_map(k))
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class BatchCreateVodPackagingAssetShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        assets_shrink: str = None,
+        group_name: str = None,
+    ):
+        self.assets_shrink = assets_shrink
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assets_shrink is not None:
+            result['Assets'] = self.assets_shrink
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Assets') is not None:
+            self.assets_shrink = m.get('Assets')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class BatchCreateVodPackagingAssetResponseBodyResultList(TeaModel):
+    def __init__(
+        self,
+        asset: VodPackagingAsset = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.asset = asset
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        if self.asset:
+            self.asset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset is not None:
+            result['Asset'] = self.asset.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asset') is not None:
+            temp_model = VodPackagingAsset()
+            self.asset = temp_model.from_map(m['Asset'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class BatchCreateVodPackagingAssetResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        request_id: str = None,
+        result_list: List[BatchCreateVodPackagingAssetResponseBodyResultList] = None,
+    ):
+        self.group_name = group_name
+        self.request_id = request_id
+        self.result_list = result_list
+
+    def validate(self):
+        if self.result_list:
+            for k in self.result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultList'] = []
+        if self.result_list is not None:
+            for k in self.result_list:
+                result['ResultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_list = []
+        if m.get('ResultList') is not None:
+            for k in m.get('ResultList'):
+                temp_model = BatchCreateVodPackagingAssetResponseBodyResultList()
+                self.result_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchCreateVodPackagingAssetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchCreateVodPackagingAssetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchCreateVodPackagingAssetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4775,6 +6786,155 @@ class CreateAvatarTrainingJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAvatarTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateChannelRequest(TeaModel):
+    def __init__(
+        self,
+        access_policy: bool = None,
+        access_token: str = None,
+        channel_name: str = None,
+        channel_tier: str = None,
+        filler_source_location_name: str = None,
+        filler_source_name: str = None,
+        out_put_config_list: str = None,
+        playback_mode: str = None,
+    ):
+        self.access_policy = access_policy
+        self.access_token = access_token
+        # This parameter is required.
+        self.channel_name = channel_name
+        # This parameter is required.
+        self.channel_tier = channel_tier
+        self.filler_source_location_name = filler_source_location_name
+        self.filler_source_name = filler_source_name
+        # This parameter is required.
+        self.out_put_config_list = out_put_config_list
+        # This parameter is required.
+        self.playback_mode = playback_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_policy is not None:
+            result['AccessPolicy'] = self.access_policy
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.channel_tier is not None:
+            result['ChannelTier'] = self.channel_tier
+        if self.filler_source_location_name is not None:
+            result['FillerSourceLocationName'] = self.filler_source_location_name
+        if self.filler_source_name is not None:
+            result['FillerSourceName'] = self.filler_source_name
+        if self.out_put_config_list is not None:
+            result['OutPutConfigList'] = self.out_put_config_list
+        if self.playback_mode is not None:
+            result['PlaybackMode'] = self.playback_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPolicy') is not None:
+            self.access_policy = m.get('AccessPolicy')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ChannelTier') is not None:
+            self.channel_tier = m.get('ChannelTier')
+        if m.get('FillerSourceLocationName') is not None:
+            self.filler_source_location_name = m.get('FillerSourceLocationName')
+        if m.get('FillerSourceName') is not None:
+            self.filler_source_name = m.get('FillerSourceName')
+        if m.get('OutPutConfigList') is not None:
+            self.out_put_config_list = m.get('OutPutConfigList')
+        if m.get('PlaybackMode') is not None:
+            self.playback_mode = m.get('PlaybackMode')
+        return self
+
+
+class CreateChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel: ChannelAssemblyChannel = None,
+        request_id: str = None,
+    ):
+        self.channel = channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.channel:
+            self.channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            temp_model = ChannelAssemblyChannel()
+            self.channel = temp_model.from_map(m['Channel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5818,6 +7978,776 @@ class CreateEditingProjectResponse(TeaModel):
         return self
 
 
+class CreateLivePackageChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        client_token: str = None,
+        description: str = None,
+        group_name: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.client_token = client_token
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # 输入协议，目前仅支持HLS
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        # 
+        # This parameter is required.
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        # 
+        # This parameter is required.
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        password: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.id = id
+        self.password = password
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class CreateLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        ingest_endpoints: List[CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints] = None,
+        last_modified: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        self.channel_name = channel_name
+        # 代表创建时间的资源属性字段
+        self.create_time = create_time
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        self.ingest_endpoints = ingest_endpoints
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 输入协议，目前仅支持HLS
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        if self.ingest_endpoints:
+            for k in self.ingest_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        result['IngestEndpoints'] = []
+        if self.ingest_endpoints is not None:
+            for k in self.ingest_endpoints:
+                result['IngestEndpoints'].append(k.to_map() if k else None)
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        self.ingest_endpoints = []
+        if m.get('IngestEndpoints') is not None:
+            for k in m.get('IngestEndpoints'):
+                temp_model = CreateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints()
+                self.ingest_endpoints.append(temp_model.from_map(k))
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class CreateLivePackageChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel: CreateLivePackageChannelResponseBodyLivePackageChannel = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel = live_package_channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel:
+            self.live_package_channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel is not None:
+            result['LivePackageChannel'] = self.live_package_channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannel') is not None:
+            temp_model = CreateLivePackageChannelResponseBodyLivePackageChannel()
+            self.live_package_channel = temp_model.from_map(m['LivePackageChannel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLivePackageChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivePackageChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivePackageChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLivePackageChannelGroupRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        group_name: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        last_modified: str = None,
+        origin_domain: str = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        # 修改时间
+        self.last_modified = last_modified
+        # 源站域名
+        self.origin_domain = origin_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.origin_domain is not None:
+            result['OriginDomain'] = self.origin_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('OriginDomain') is not None:
+            self.origin_domain = m.get('OriginDomain')
+        return self
+
+
+class CreateLivePackageChannelGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel_group: CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel_group = live_package_channel_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel_group:
+            self.live_package_channel_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel_group is not None:
+            result['LivePackageChannelGroup'] = self.live_package_channel_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannelGroup') is not None:
+            temp_model = CreateLivePackageChannelGroupResponseBodyLivePackageChannelGroup()
+            self.live_package_channel_group = temp_model.from_map(m['LivePackageChannelGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLivePackageChannelGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivePackageChannelGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivePackageChannelGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLivePackageOriginEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        client_token: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.client_token = client_token
+        # 端点描述，最大1000个字符
+        self.description = description
+        # 端点名称，要求在单个频道中唯一。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # 频道组名称。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 播放列表名，缺省为manifest。
+        # 1 ~ 100个字符。
+        # 正则匹配输入：[A-Za-z0-9_]+\
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        endpoint_url: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        last_modified: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称
+        self.channel_name = channel_name
+        # 创建时间
+        self.create_time = create_time
+        # 端点描述
+        self.description = description
+        # 端点名称
+        self.endpoint_name = endpoint_name
+        # 源站端点回源播放地址
+        self.endpoint_url = endpoint_url
+        # 频道组名称
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 播放列表名
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_url is not None:
+            result['EndpointUrl'] = self.endpoint_url
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointUrl') is not None:
+            self.endpoint_url = m.get('EndpointUrl')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class CreateLivePackageOriginEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_origin_endpoint: CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
+        request_id: str = None,
+    ):
+        self.live_package_origin_endpoint = live_package_origin_endpoint
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_origin_endpoint:
+            self.live_package_origin_endpoint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_origin_endpoint is not None:
+            result['LivePackageOriginEndpoint'] = self.live_package_origin_endpoint.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageOriginEndpoint') is not None:
+            temp_model = CreateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint()
+            self.live_package_origin_endpoint = temp_model.from_map(m['LivePackageOriginEndpoint'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLivePackageOriginEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLivePackageOriginEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLivePackageOriginEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLiveRecordTemplateRequestRecordFormat(TeaModel):
     def __init__(
         self,
@@ -6565,6 +9495,165 @@ class CreateLiveTranscodeTemplateResponse(TeaModel):
         return self
 
 
+class CreateMediaConnectFlowRequest(TeaModel):
+    def __init__(
+        self,
+        flow_name: str = None,
+        flow_region: str = None,
+    ):
+        # Flow instance name
+        # 
+        # This parameter is required.
+        self.flow_name = flow_name
+        # Region to which the Flow instance belongs
+        # 
+        # This parameter is required.
+        self.flow_region = flow_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_name is not None:
+            result['FlowName'] = self.flow_name
+        if self.flow_region is not None:
+            result['FlowRegion'] = self.flow_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowName') is not None:
+            self.flow_name = m.get('FlowName')
+        if m.get('FlowRegion') is not None:
+            self.flow_region = m.get('FlowRegion')
+        return self
+
+
+class CreateMediaConnectFlowResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+    ):
+        # Flow instance ID
+        self.flow_id = flow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        return self
+
+
+class CreateMediaConnectFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: CreateMediaConnectFlowResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description information returned by the interface
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = CreateMediaConnectFlowResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class CreateMediaConnectFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMediaConnectFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMediaConnectFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePipelineRequest(TeaModel):
     def __init__(
         self,
@@ -6770,6 +9859,157 @@ class CreatePipelineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePipelineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProgramRequest(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: str = None,
+        channel_name: str = None,
+        clip_range: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        transition: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.clip_range = clip_range
+        # This parameter is required.
+        self.program_name = program_name
+        # This parameter is required.
+        self.source_location_name = source_location_name
+        # This parameter is required.
+        self.source_name = source_name
+        # This parameter is required.
+        self.source_type = source_type
+        # This parameter is required.
+        self.transition = transition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_breaks is not None:
+            result['AdBreaks'] = self.ad_breaks
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.clip_range is not None:
+            result['ClipRange'] = self.clip_range
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.transition is not None:
+            result['Transition'] = self.transition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdBreaks') is not None:
+            self.ad_breaks = m.get('AdBreaks')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClipRange') is not None:
+            self.clip_range = m.get('ClipRange')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Transition') is not None:
+            self.transition = m.get('Transition')
+        return self
+
+
+class CreateProgramResponseBody(TeaModel):
+    def __init__(
+        self,
+        program: ChannelAssemblyProgram = None,
+        request_id: str = None,
+    ):
+        self.program = program
+        self.request_id = request_id
+
+    def validate(self):
+        if self.program:
+            self.program.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.program is not None:
+            result['Program'] = self.program.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Program') is not None:
+            temp_model = ChannelAssemblyProgram()
+            self.program = temp_model.from_map(m['Program'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateProgramResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProgramResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProgramResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7028,6 +10268,254 @@ class CreateSearchLibResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSearchLibResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSourceRequest(TeaModel):
+    def __init__(
+        self,
+        http_package_configurations: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        # This parameter is required.
+        self.http_package_configurations = http_package_configurations
+        # This parameter is required.
+        self.source_location_name = source_location_name
+        # This parameter is required.
+        self.source_name = source_name
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_package_configurations is not None:
+            result['HttpPackageConfigurations'] = self.http_package_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpPackageConfigurations') is not None:
+            self.http_package_configurations = m.get('HttpPackageConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source: ChannelAssemblySource = None,
+    ):
+        self.request_id = request_id
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Source') is not None:
+            temp_model = ChannelAssemblySource()
+            self.source = temp_model.from_map(m['Source'])
+        return self
+
+
+class CreateSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSourceLocationRequest(TeaModel):
+    def __init__(
+        self,
+        base_url: str = None,
+        enable_segment_delivery: bool = None,
+        segment_delivery_url: str = None,
+        source_location_name: str = None,
+    ):
+        # This parameter is required.
+        self.base_url = base_url
+        self.enable_segment_delivery = enable_segment_delivery
+        self.segment_delivery_url = segment_delivery_url
+        # This parameter is required.
+        self.source_location_name = source_location_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.enable_segment_delivery is not None:
+            result['EnableSegmentDelivery'] = self.enable_segment_delivery
+        if self.segment_delivery_url is not None:
+            result['SegmentDeliveryUrl'] = self.segment_delivery_url
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('EnableSegmentDelivery') is not None:
+            self.enable_segment_delivery = m.get('EnableSegmentDelivery')
+        if m.get('SegmentDeliveryUrl') is not None:
+            self.segment_delivery_url = m.get('SegmentDeliveryUrl')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        return self
+
+
+class CreateSourceLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source_location: ChannelAssemblySourceLocation = None,
+    ):
+        self.request_id = request_id
+        self.source_location = source_location
+
+    def validate(self):
+        if self.source_location:
+            self.source_location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source_location is not None:
+            result['SourceLocation'] = self.source_location.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceLocation') is not None:
+            temp_model = ChannelAssemblySourceLocation()
+            self.source_location = temp_model.from_map(m['SourceLocation'])
+        return self
+
+
+class CreateSourceLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSourceLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSourceLocationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7427,6 +10915,642 @@ class CreateUploadStreamResponse(TeaModel):
         return self
 
 
+class CreateVodPackagingAssetRequestInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateVodPackagingAssetRequest(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        content_id: str = None,
+        description: str = None,
+        group_name: str = None,
+        input: CreateVodPackagingAssetRequestInput = None,
+    ):
+        self.asset_name = asset_name
+        self.content_id = content_id
+        self.description = description
+        self.group_name = group_name
+        self.input = input
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Input') is not None:
+            temp_model = CreateVodPackagingAssetRequestInput()
+            self.input = temp_model.from_map(m['Input'])
+        return self
+
+
+class CreateVodPackagingAssetShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        content_id: str = None,
+        description: str = None,
+        group_name: str = None,
+        input_shrink: str = None,
+    ):
+        self.asset_name = asset_name
+        self.content_id = content_id
+        self.description = description
+        self.group_name = group_name
+        self.input_shrink = input_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.input_shrink is not None:
+            result['Input'] = self.input_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Input') is not None:
+            self.input_shrink = m.get('Input')
+        return self
+
+
+class CreateVodPackagingAssetResponseBody(TeaModel):
+    def __init__(
+        self,
+        asset: VodPackagingAsset = None,
+        request_id: str = None,
+    ):
+        self.asset = asset
+        self.request_id = request_id
+
+    def validate(self):
+        if self.asset:
+            self.asset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset is not None:
+            result['Asset'] = self.asset.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asset') is not None:
+            temp_model = VodPackagingAsset()
+            self.asset = temp_model.from_map(m['Asset'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVodPackagingAssetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVodPackagingAssetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVodPackagingAssetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVodPackagingConfigurationRequestPackageConfigDrmProvider(TeaModel):
+    def __init__(
+        self,
+        encryption_method: str = None,
+        iv: str = None,
+        system_ids: List[str] = None,
+        url: str = None,
+    ):
+        self.encryption_method = encryption_method
+        self.iv = iv
+        self.system_ids = system_ids
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption_method is not None:
+            result['EncryptionMethod'] = self.encryption_method
+        if self.iv is not None:
+            result['IV'] = self.iv
+        if self.system_ids is not None:
+            result['SystemIds'] = self.system_ids
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptionMethod') is not None:
+            self.encryption_method = m.get('EncryptionMethod')
+        if m.get('IV') is not None:
+            self.iv = m.get('IV')
+        if m.get('SystemIds') is not None:
+            self.system_ids = m.get('SystemIds')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class CreateVodPackagingConfigurationRequestPackageConfigStreamSelection(TeaModel):
+    def __init__(
+        self,
+        max_video_bits_per_second: int = None,
+        min_video_bits_per_second: int = None,
+        stream_order: str = None,
+    ):
+        self.max_video_bits_per_second = max_video_bits_per_second
+        self.min_video_bits_per_second = min_video_bits_per_second
+        self.stream_order = stream_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_video_bits_per_second is not None:
+            result['MaxVideoBitsPerSecond'] = self.max_video_bits_per_second
+        if self.min_video_bits_per_second is not None:
+            result['MinVideoBitsPerSecond'] = self.min_video_bits_per_second
+        if self.stream_order is not None:
+            result['StreamOrder'] = self.stream_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxVideoBitsPerSecond') is not None:
+            self.max_video_bits_per_second = m.get('MaxVideoBitsPerSecond')
+        if m.get('MinVideoBitsPerSecond') is not None:
+            self.min_video_bits_per_second = m.get('MinVideoBitsPerSecond')
+        if m.get('StreamOrder') is not None:
+            self.stream_order = m.get('StreamOrder')
+        return self
+
+
+class CreateVodPackagingConfigurationRequestPackageConfig(TeaModel):
+    def __init__(
+        self,
+        drm_provider: CreateVodPackagingConfigurationRequestPackageConfigDrmProvider = None,
+        manifest_name: str = None,
+        segment_duration: int = None,
+        stream_selection: CreateVodPackagingConfigurationRequestPackageConfigStreamSelection = None,
+    ):
+        self.drm_provider = drm_provider
+        self.manifest_name = manifest_name
+        self.segment_duration = segment_duration
+        self.stream_selection = stream_selection
+
+    def validate(self):
+        if self.drm_provider:
+            self.drm_provider.validate()
+        if self.stream_selection:
+            self.stream_selection.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drm_provider is not None:
+            result['DrmProvider'] = self.drm_provider.to_map()
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        if self.stream_selection is not None:
+            result['StreamSelection'] = self.stream_selection.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DrmProvider') is not None:
+            temp_model = CreateVodPackagingConfigurationRequestPackageConfigDrmProvider()
+            self.drm_provider = temp_model.from_map(m['DrmProvider'])
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        if m.get('StreamSelection') is not None:
+            temp_model = CreateVodPackagingConfigurationRequestPackageConfigStreamSelection()
+            self.stream_selection = temp_model.from_map(m['StreamSelection'])
+        return self
+
+
+class CreateVodPackagingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+        description: str = None,
+        group_name: str = None,
+        package_config: CreateVodPackagingConfigurationRequestPackageConfig = None,
+        protocol: str = None,
+    ):
+        self.configuration_name = configuration_name
+        self.description = description
+        self.group_name = group_name
+        self.package_config = package_config
+        self.protocol = protocol
+
+    def validate(self):
+        if self.package_config:
+            self.package_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.package_config is not None:
+            result['PackageConfig'] = self.package_config.to_map()
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PackageConfig') is not None:
+            temp_model = CreateVodPackagingConfigurationRequestPackageConfig()
+            self.package_config = temp_model.from_map(m['PackageConfig'])
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class CreateVodPackagingConfigurationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+        description: str = None,
+        group_name: str = None,
+        package_config_shrink: str = None,
+        protocol: str = None,
+    ):
+        self.configuration_name = configuration_name
+        self.description = description
+        self.group_name = group_name
+        self.package_config_shrink = package_config_shrink
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.package_config_shrink is not None:
+            result['PackageConfig'] = self.package_config_shrink
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PackageConfig') is not None:
+            self.package_config_shrink = m.get('PackageConfig')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class CreateVodPackagingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_configuration: VodPackagingConfiguration = None,
+        request_id: str = None,
+    ):
+        self.packaging_configuration = packaging_configuration
+        self.request_id = request_id
+
+    def validate(self):
+        if self.packaging_configuration:
+            self.packaging_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.packaging_configuration is not None:
+            result['PackagingConfiguration'] = self.packaging_configuration.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackagingConfiguration') is not None:
+            temp_model = VodPackagingConfiguration()
+            self.packaging_configuration = temp_model.from_map(m['PackagingConfiguration'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVodPackagingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVodPackagingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVodPackagingConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVodPackagingGroupRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        group_name: str = None,
+    ):
+        self.description = description
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class CreateVodPackagingGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_group: VodPackagingGroup = None,
+        request_id: str = None,
+    ):
+        self.packaging_group = packaging_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.packaging_group:
+            self.packaging_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.packaging_group is not None:
+            result['PackagingGroup'] = self.packaging_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackagingGroup') is not None:
+            temp_model = VodPackagingGroup()
+            self.packaging_group = temp_model.from_map(m['PackagingGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateVodPackagingGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVodPackagingGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVodPackagingGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DecryptKMSDataKeyRequest(TeaModel):
     def __init__(
         self,
@@ -7566,6 +11690,207 @@ class DecryptKMSDataKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DecryptKMSDataKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAIAgentDialogueRequest(TeaModel):
+    def __init__(
+        self,
+        dialogue_id: str = None,
+        session_id: str = None,
+    ):
+        # This parameter is required.
+        self.dialogue_id = dialogue_id
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialogue_id is not None:
+            result['DialogueId'] = self.dialogue_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DialogueId') is not None:
+            self.dialogue_id = m.get('DialogueId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class DeleteAIAgentDialogueResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAIAgentDialogueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAIAgentDialogueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAIAgentDialogueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAdInsertionRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DeleteAdInsertionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAdInsertionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAdInsertionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAdInsertionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7815,6 +12140,108 @@ class DeleteCategoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCategoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        return self
+
+
+class DeleteChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8509,6 +12936,328 @@ class DeleteEditingProjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEditingProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLivePackageChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # 频道名称
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DeleteLivePackageChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLivePackageChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLivePackageChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLivePackageChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLivePackageChannelGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DeleteLivePackageChannelGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLivePackageChannelGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLivePackageChannelGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLivePackageChannelGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLivePackageOriginEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+    ):
+        # 频道名称
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 端点名称
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DeleteLivePackageOriginEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLivePackageOriginEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLivePackageOriginEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLivePackageOriginEndpointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9295,6 +14044,375 @@ class DeleteLiveTranscodeTemplateResponse(TeaModel):
         return self
 
 
+class DeleteMediaConnectFlowRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        return self
+
+
+class DeleteMediaConnectFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # Returned error code, where `0` indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class DeleteMediaConnectFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaConnectFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaConnectFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMediaConnectFlowInputRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        return self
+
+
+class DeleteMediaConnectFlowInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # 请求ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class DeleteMediaConnectFlowInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaConnectFlowInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaConnectFlowInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteMediaConnectFlowOutputRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        output_name: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Output name
+        # 
+        # This parameter is required.
+        self.output_name = output_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.output_name is not None:
+            result['OutputName'] = self.output_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('OutputName') is not None:
+            self.output_name = m.get('OutputName')
+        return self
+
+
+class DeleteMediaConnectFlowOutputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class DeleteMediaConnectFlowOutputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMediaConnectFlowOutputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMediaConnectFlowOutputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteMediaFromSearchLibRequest(TeaModel):
     def __init__(
         self,
@@ -9922,6 +15040,115 @@ class DeletePlayInfoResponse(TeaModel):
         return self
 
 
+class DeleteProgramRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        program_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        # This parameter is required.
+        self.program_name = program_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        return self
+
+
+class DeleteProgramResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteProgramResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteProgramResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteProgramResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSmartJobRequest(TeaModel):
     def __init__(
         self,
@@ -10015,6 +15242,236 @@ class DeleteSmartJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmartJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSourceRequest(TeaModel):
+    def __init__(
+        self,
+        soft_delete: bool = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        self.soft_delete = soft_delete
+        # This parameter is required.
+        self.source_location_name = source_location_name
+        # This parameter is required.
+        self.source_name = source_name
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.soft_delete is not None:
+            result['SoftDelete'] = self.soft_delete
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoftDelete') is not None:
+            self.soft_delete = m.get('SoftDelete')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class DeleteSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSourceLocationRequest(TeaModel):
+    def __init__(
+        self,
+        soft_delete: bool = None,
+        source_location_name: str = None,
+    ):
+        self.soft_delete = soft_delete
+        # This parameter is required.
+        self.source_location_name = source_location_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.soft_delete is not None:
+            result['SoftDelete'] = self.soft_delete
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SoftDelete') is not None:
+            self.soft_delete = m.get('SoftDelete')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        return self
+
+
+class DeleteSourceLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSourceLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSourceLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSourceLocationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10116,6 +15573,291 @@ class DeleteTemplateResponse(TeaModel):
         return self
 
 
+class DeleteVodPackagingAssetRequest(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+    ):
+        self.asset_name = asset_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        return self
+
+
+class DeleteVodPackagingAssetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVodPackagingAssetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVodPackagingAssetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVodPackagingAssetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVodPackagingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+    ):
+        self.configuration_name = configuration_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        return self
+
+
+class DeleteVodPackagingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVodPackagingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVodPackagingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVodPackagingConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteVodPackagingGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class DeleteVodPackagingGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteVodPackagingGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteVodPackagingGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteVodPackagingGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAIAgentInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -10149,12 +15891,14 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
         self,
         call_log_url: str = None,
         runtime_config: AIAgentRuntimeConfig = None,
+        session_id: str = None,
         status: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
         self.call_log_url = call_log_url
         self.runtime_config = runtime_config
+        self.session_id = session_id
         self.status = status
         self.template_config = template_config
         self.user_data = user_data
@@ -10175,6 +15919,8 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
             result['CallLogUrl'] = self.call_log_url
         if self.runtime_config is not None:
             result['RuntimeConfig'] = self.runtime_config.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.status is not None:
             result['Status'] = self.status
         if self.template_config is not None:
@@ -10190,6 +15936,8 @@ class DescribeAIAgentInstanceResponseBodyInstance(TeaModel):
         if m.get('RuntimeConfig') is not None:
             temp_model = AIAgentRuntimeConfig()
             self.runtime_config = temp_model.from_map(m['RuntimeConfig'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TemplateConfig') is not None:
@@ -12187,6 +17935,7 @@ class GenerateAIAgentCallRequest(TeaModel):
         self,
         aiagent_id: str = None,
         expire: int = None,
+        session_id: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
         user_id: str = None,
@@ -12194,6 +17943,7 @@ class GenerateAIAgentCallRequest(TeaModel):
         # This parameter is required.
         self.aiagent_id = aiagent_id
         self.expire = expire
+        self.session_id = session_id
         self.template_config = template_config
         self.user_data = user_data
         self.user_id = user_id
@@ -12212,6 +17962,8 @@ class GenerateAIAgentCallRequest(TeaModel):
             result['AIAgentId'] = self.aiagent_id
         if self.expire is not None:
             result['Expire'] = self.expire
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.template_config is not None:
             result['TemplateConfig'] = self.template_config.to_map()
         if self.user_data is not None:
@@ -12226,6 +17978,8 @@ class GenerateAIAgentCallRequest(TeaModel):
             self.aiagent_id = m.get('AIAgentId')
         if m.get('Expire') is not None:
             self.expire = m.get('Expire')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TemplateConfig') is not None:
             temp_model = AIAgentTemplateConfig()
             self.template_config = temp_model.from_map(m['TemplateConfig'])
@@ -12241,6 +17995,7 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         self,
         aiagent_id: str = None,
         expire: int = None,
+        session_id: str = None,
         template_config_shrink: str = None,
         user_data: str = None,
         user_id: str = None,
@@ -12248,6 +18003,7 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
         # This parameter is required.
         self.aiagent_id = aiagent_id
         self.expire = expire
+        self.session_id = session_id
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
         self.user_id = user_id
@@ -12265,6 +18021,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
             result['AIAgentId'] = self.aiagent_id
         if self.expire is not None:
             result['Expire'] = self.expire
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.template_config_shrink is not None:
             result['TemplateConfig'] = self.template_config_shrink
         if self.user_data is not None:
@@ -12279,6 +18037,8 @@ class GenerateAIAgentCallShrinkRequest(TeaModel):
             self.aiagent_id = m.get('AIAgentId')
         if m.get('Expire') is not None:
             self.expire = m.get('Expire')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TemplateConfig') is not None:
             self.template_config_shrink = m.get('TemplateConfig')
         if m.get('UserData') is not None:
@@ -12502,6 +18262,435 @@ class GenerateKMSDataKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateKMSDataKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateMessageChatTokenRequest(TeaModel):
+    def __init__(
+        self,
+        aiagent_id: str = None,
+        expire: int = None,
+        role: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.aiagent_id = aiagent_id
+        self.expire = expire
+        self.role = role
+        # This parameter is required.
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aiagent_id is not None:
+            result['AIAgentId'] = self.aiagent_id
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AIAgentId') is not None:
+            self.aiagent_id = m.get('AIAgentId')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GenerateMessageChatTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_sign: str = None,
+        nonce: str = None,
+        request_id: str = None,
+        role: str = None,
+        time_stamp: int = None,
+        token: str = None,
+        user_id: str = None,
+    ):
+        self.app_id = app_id
+        self.app_sign = app_sign
+        self.nonce = nonce
+        self.request_id = request_id
+        self.role = role
+        self.time_stamp = time_stamp
+        self.token = token
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_sign is not None:
+            result['AppSign'] = self.app_sign
+        if self.nonce is not None:
+            result['Nonce'] = self.nonce
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppSign') is not None:
+            self.app_sign = m.get('AppSign')
+        if m.get('Nonce') is not None:
+            self.nonce = m.get('Nonce')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GenerateMessageChatTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateMessageChatTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateMessageChatTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAdInsertionRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetAdInsertionResponseBodyConfigCdnConfig(TeaModel):
+    def __init__(
+        self,
+        ad_segment_url_prefix: str = None,
+        content_segment_url_prefix: str = None,
+    ):
+        # 广告分片的CDN前缀
+        self.ad_segment_url_prefix = ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.content_segment_url_prefix = content_segment_url_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_segment_url_prefix is not None:
+            result['AdSegmentUrlPrefix'] = self.ad_segment_url_prefix
+        if self.content_segment_url_prefix is not None:
+            result['ContentSegmentUrlPrefix'] = self.content_segment_url_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdSegmentUrlPrefix') is not None:
+            self.ad_segment_url_prefix = m.get('AdSegmentUrlPrefix')
+        if m.get('ContentSegmentUrlPrefix') is not None:
+            self.content_segment_url_prefix = m.get('ContentSegmentUrlPrefix')
+        return self
+
+
+class GetAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        hls_prefix: str = None,
+    ):
+        # HLS清单播放端点前缀
+        self.hls_prefix = hls_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hls_prefix is not None:
+            result['HlsPrefix'] = self.hls_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HlsPrefix') is not None:
+            self.hls_prefix = m.get('HlsPrefix')
+        return self
+
+
+class GetAdInsertionResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_config: GetAdInsertionResponseBodyConfigCdnConfig = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        create_time: str = None,
+        last_modified: str = None,
+        manifest_endpoint_config: GetAdInsertionResponseBodyConfigManifestEndpointConfig = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 广告标记透传
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        self.ads_url = ads_url
+        # CDN配置
+        self.cdn_config = cdn_config
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        self.content_url_prefix = content_url_prefix
+        # 创建时间
+        self.create_time = create_time
+        # 修改时间
+        self.last_modified = last_modified
+        # 清单播放端点配置
+        self.manifest_endpoint_config = manifest_endpoint_config
+        # 广告插入配置名称
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        if self.cdn_config:
+            self.cdn_config.validate()
+        if self.manifest_endpoint_config:
+            self.manifest_endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_config is not None:
+            result['CdnConfig'] = self.cdn_config.to_map()
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_endpoint_config is not None:
+            result['ManifestEndpointConfig'] = self.manifest_endpoint_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnConfig') is not None:
+            temp_model = GetAdInsertionResponseBodyConfigCdnConfig()
+            self.cdn_config = temp_model.from_map(m['CdnConfig'])
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestEndpointConfig') is not None:
+            temp_model = GetAdInsertionResponseBodyConfigManifestEndpointConfig()
+            self.manifest_endpoint_config = temp_model.from_map(m['ManifestEndpointConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class GetAdInsertionResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: GetAdInsertionResponseBodyConfig = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = GetAdInsertionResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAdInsertionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAdInsertionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAdInsertionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13626,6 +19815,110 @@ class GetCategoriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCategoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        return self
+
+
+class GetChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel: ChannelAssemblyChannel = None,
+        request_id: str = None,
+    ):
+        self.channel = channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.channel:
+            self.channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            temp_model = ChannelAssemblyChannel()
+            self.channel = temp_model.from_map(m['Channel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16728,6 +23021,657 @@ class GetLiveEditingJobResponse(TeaModel):
         return self
 
 
+class GetLivePackageChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # 频道名称
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        password: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.id = id
+        self.password = password
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class GetLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        ingest_endpoints: List[GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints] = None,
+        last_modified: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        self.channel_name = channel_name
+        # 代表创建时间的资源属性字段
+        self.create_time = create_time
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        self.ingest_endpoints = ingest_endpoints
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 输入协议，目前仅支持HLS
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        if self.ingest_endpoints:
+            for k in self.ingest_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        result['IngestEndpoints'] = []
+        if self.ingest_endpoints is not None:
+            for k in self.ingest_endpoints:
+                result['IngestEndpoints'].append(k.to_map() if k else None)
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        self.ingest_endpoints = []
+        if m.get('IngestEndpoints') is not None:
+            for k in m.get('IngestEndpoints'):
+                temp_model = GetLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints()
+                self.ingest_endpoints.append(temp_model.from_map(k))
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class GetLivePackageChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel: GetLivePackageChannelResponseBodyLivePackageChannel = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel = live_package_channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel:
+            self.live_package_channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel is not None:
+            result['LivePackageChannel'] = self.live_package_channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannel') is not None:
+            temp_model = GetLivePackageChannelResponseBodyLivePackageChannel()
+            self.live_package_channel = temp_model.from_map(m['LivePackageChannel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLivePackageChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLivePackageChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLivePackageChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLivePackageChannelGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        last_modified: str = None,
+        origin_domain: str = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        # 修改时间
+        self.last_modified = last_modified
+        # 源站域名
+        self.origin_domain = origin_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.origin_domain is not None:
+            result['OriginDomain'] = self.origin_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('OriginDomain') is not None:
+            self.origin_domain = m.get('OriginDomain')
+        return self
+
+
+class GetLivePackageChannelGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel_group: GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel_group = live_package_channel_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel_group:
+            self.live_package_channel_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel_group is not None:
+            result['LivePackageChannelGroup'] = self.live_package_channel_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannelGroup') is not None:
+            temp_model = GetLivePackageChannelGroupResponseBodyLivePackageChannelGroup()
+            self.live_package_channel_group = temp_model.from_map(m['LivePackageChannelGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLivePackageChannelGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLivePackageChannelGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLivePackageChannelGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLivePackageOriginEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+    ):
+        # 频道名称
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 端点名称
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        endpoint_url: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        last_modified: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称
+        self.channel_name = channel_name
+        # 创建时间
+        self.create_time = create_time
+        # 端点描述
+        self.description = description
+        # 端点名称
+        self.endpoint_name = endpoint_name
+        # 源站端点回源播放地址
+        self.endpoint_url = endpoint_url
+        # 频道组名称
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 播放列表名
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_url is not None:
+            result['EndpointUrl'] = self.endpoint_url
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointUrl') is not None:
+            self.endpoint_url = m.get('EndpointUrl')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class GetLivePackageOriginEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_origin_endpoint: GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
+        request_id: str = None,
+    ):
+        self.live_package_origin_endpoint = live_package_origin_endpoint
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_origin_endpoint:
+            self.live_package_origin_endpoint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_origin_endpoint is not None:
+            result['LivePackageOriginEndpoint'] = self.live_package_origin_endpoint.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageOriginEndpoint') is not None:
+            temp_model = GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint()
+            self.live_package_origin_endpoint = temp_model.from_map(m['LivePackageOriginEndpoint'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLivePackageOriginEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLivePackageOriginEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLivePackageOriginEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLiveRecordJobRequest(TeaModel):
     def __init__(
         self,
@@ -18356,6 +25300,633 @@ class GetLiveTranscodeTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLiveTranscodeTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaConnectFlowRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        return self
+
+
+class GetMediaConnectFlowResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        flow_id: str = None,
+        flow_name: str = None,
+        flow_status: str = None,
+        start_time: str = None,
+    ):
+        # Flow creation time
+        self.create_time = create_time
+        # Flow instance ID
+        self.flow_id = flow_id
+        # Flow instance name
+        self.flow_name = flow_name
+        # Flow status
+        self.flow_status = flow_status
+        # Flow start time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.flow_name is not None:
+            result['FlowName'] = self.flow_name
+        if self.flow_status is not None:
+            result['FlowStatus'] = self.flow_status
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('FlowName') is not None:
+            self.flow_name = m.get('FlowName')
+        if m.get('FlowStatus') is not None:
+            self.flow_status = m.get('FlowStatus')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetMediaConnectFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: GetMediaConnectFlowResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        retcode: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Interface call description information
+        self.description = description
+        # 请求ID
+        self.request_id = request_id
+        # Return status code, 0 indicates success
+        self.retcode = retcode
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.retcode is not None:
+            result['Retcode'] = self.retcode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = GetMediaConnectFlowResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Retcode') is not None:
+            self.retcode = m.get('Retcode')
+        return self
+
+
+class GetMediaConnectFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaConnectFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaConnectFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaConnectFlowInputRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        return self
+
+
+class GetMediaConnectFlowInputResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        create_time: str = None,
+        input_name: str = None,
+        input_protocol: str = None,
+        input_url: str = None,
+        max_bitrate: int = None,
+        pair_flow_id: str = None,
+        pair_output_name: str = None,
+        srt_latency: int = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: int = None,
+    ):
+        # IP whitelist, in CIDR format, multiple IP segments separated by commas
+        self.cidrs = cidrs
+        # Flow creation time
+        self.create_time = create_time
+        # Input name
+        self.input_name = input_name
+        # Input type
+        self.input_protocol = input_protocol
+        # Input URL
+        self.input_url = input_url
+        # Input bitrate, in bps
+        self.max_bitrate = max_bitrate
+        # Peer Flow instance ID, required when the output type is Flow
+        self.pair_flow_id = pair_flow_id
+        # Peer Flow output name, required only when the input type is Flow
+        self.pair_output_name = pair_output_name
+        # SRT latency, in ms, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.input_name is not None:
+            result['InputName'] = self.input_name
+        if self.input_protocol is not None:
+            result['InputProtocol'] = self.input_protocol
+        if self.input_url is not None:
+            result['InputUrl'] = self.input_url
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.pair_flow_id is not None:
+            result['PairFlowId'] = self.pair_flow_id
+        if self.pair_output_name is not None:
+            result['PairOutputName'] = self.pair_output_name
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InputName') is not None:
+            self.input_name = m.get('InputName')
+        if m.get('InputProtocol') is not None:
+            self.input_protocol = m.get('InputProtocol')
+        if m.get('InputUrl') is not None:
+            self.input_url = m.get('InputUrl')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('PairFlowId') is not None:
+            self.pair_flow_id = m.get('PairFlowId')
+        if m.get('PairOutputName') is not None:
+            self.pair_output_name = m.get('PairOutputName')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class GetMediaConnectFlowInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: GetMediaConnectFlowInputResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Interface call description
+        self.description = description
+        # 请求ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = GetMediaConnectFlowInputResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class GetMediaConnectFlowInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaConnectFlowInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaConnectFlowInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMediaConnectFlowOutputRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        output_name: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Output name
+        # 
+        # This parameter is required.
+        self.output_name = output_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.output_name is not None:
+            result['OutputName'] = self.output_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('OutputName') is not None:
+            self.output_name = m.get('OutputName')
+        return self
+
+
+class GetMediaConnectFlowOutputResponseBodyContent(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        create_time: str = None,
+        output_name: str = None,
+        output_protocol: str = None,
+        output_url: str = None,
+        pair_flow_id: str = None,
+        pair_input_name: str = None,
+        player_limit: int = None,
+        srt_latency: int = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: int = None,
+    ):
+        # IP whitelist in CIDR format, multiple IP segments separated by commas
+        self.cidrs = cidrs
+        # Flow creation time
+        self.create_time = create_time
+        # Output name
+        self.output_name = output_name
+        # Output protocol
+        self.output_protocol = output_protocol
+        # Output URL
+        self.output_url = output_url
+        # Peer Flow instance ID, required when the output type is Flow
+        self.pair_flow_id = pair_flow_id
+        # Peer Flow\\"s input name, required when the output type is Flow
+        self.pair_input_name = pair_input_name
+        # Player limit
+        self.player_limit = player_limit
+        # SRT latency, in milliseconds, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT encryption key, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, required only when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.output_name is not None:
+            result['OutputName'] = self.output_name
+        if self.output_protocol is not None:
+            result['OutputProtocol'] = self.output_protocol
+        if self.output_url is not None:
+            result['OutputUrl'] = self.output_url
+        if self.pair_flow_id is not None:
+            result['PairFlowId'] = self.pair_flow_id
+        if self.pair_input_name is not None:
+            result['PairInputName'] = self.pair_input_name
+        if self.player_limit is not None:
+            result['PlayerLimit'] = self.player_limit
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('OutputName') is not None:
+            self.output_name = m.get('OutputName')
+        if m.get('OutputProtocol') is not None:
+            self.output_protocol = m.get('OutputProtocol')
+        if m.get('OutputUrl') is not None:
+            self.output_url = m.get('OutputUrl')
+        if m.get('PairFlowId') is not None:
+            self.pair_flow_id = m.get('PairFlowId')
+        if m.get('PairInputName') is not None:
+            self.pair_input_name = m.get('PairInputName')
+        if m.get('PlayerLimit') is not None:
+            self.player_limit = m.get('PlayerLimit')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class GetMediaConnectFlowOutputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: GetMediaConnectFlowOutputResponseBodyContent = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # API call description
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        if self.content:
+            self.content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            temp_model = GetMediaConnectFlowOutputResponseBodyContent()
+            self.content = temp_model.from_map(m['Content'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class GetMediaConnectFlowOutputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMediaConnectFlowOutputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMediaConnectFlowOutputResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22005,6 +29576,117 @@ class GetPlayInfoResponse(TeaModel):
         return self
 
 
+class GetProgramRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        program_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        # This parameter is required.
+        self.program_name = program_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        return self
+
+
+class GetProgramResponseBody(TeaModel):
+    def __init__(
+        self,
+        program: ChannelAssemblyProgram = None,
+        request_id: str = None,
+    ):
+        self.program = program
+        self.request_id = request_id
+
+    def validate(self):
+        if self.program:
+            self.program.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.program is not None:
+            result['Program'] = self.program.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Program') is not None:
+            temp_model = ChannelAssemblyProgram()
+            self.program = temp_model.from_map(m['Program'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetProgramResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetProgramResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetProgramResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetProjectExportJobRequest(TeaModel):
     def __init__(
         self,
@@ -24014,6 +31696,228 @@ class GetSnapshotUrlsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSnapshotUrlsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSourceRequest(TeaModel):
+    def __init__(
+        self,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        # This parameter is required.
+        self.source_location_name = source_location_name
+        # This parameter is required.
+        self.source_name = source_name
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class GetSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source: ChannelAssemblySource = None,
+    ):
+        self.request_id = request_id
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Source') is not None:
+            temp_model = ChannelAssemblySource()
+            self.source = temp_model.from_map(m['Source'])
+        return self
+
+
+class GetSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSourceLocationRequest(TeaModel):
+    def __init__(
+        self,
+        source_location_name: str = None,
+    ):
+        # This parameter is required.
+        self.source_location_name = source_location_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        return self
+
+
+class GetSourceLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source_location: ChannelAssemblySourceLocation = None,
+    ):
+        self.request_id = request_id
+        self.source_location = source_location
+
+    def validate(self):
+        if self.source_location:
+            self.source_location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source_location is not None:
+            result['SourceLocation'] = self.source_location.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceLocation') is not None:
+            temp_model = ChannelAssemblySourceLocation()
+            self.source_location = temp_model.from_map(m['SourceLocation'])
+        return self
+
+
+class GetSourceLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSourceLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSourceLocationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29295,6 +37199,455 @@ class GetVideoListResponse(TeaModel):
         return self
 
 
+class GetVodPackagingAssetRequest(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+    ):
+        self.asset_name = asset_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        return self
+
+
+class GetVodPackagingAssetResponseBodyAssetEgressEndpoints(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+        status: str = None,
+        url: str = None,
+    ):
+        self.configuration_name = configuration_name
+        self.status = status
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetVodPackagingAssetResponseBodyAssetInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetVodPackagingAssetResponseBodyAsset(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        content_id: str = None,
+        create_time: str = None,
+        egress_endpoints: List[GetVodPackagingAssetResponseBodyAssetEgressEndpoints] = None,
+        group_name: str = None,
+        input: GetVodPackagingAssetResponseBodyAssetInput = None,
+    ):
+        self.asset_name = asset_name
+        self.content_id = content_id
+        self.create_time = create_time
+        self.egress_endpoints = egress_endpoints
+        self.group_name = group_name
+        self.input = input
+
+    def validate(self):
+        if self.egress_endpoints:
+            for k in self.egress_endpoints:
+                if k:
+                    k.validate()
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.content_id is not None:
+            result['ContentId'] = self.content_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['EgressEndpoints'] = []
+        if self.egress_endpoints is not None:
+            for k in self.egress_endpoints:
+                result['EgressEndpoints'].append(k.to_map() if k else None)
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ContentId') is not None:
+            self.content_id = m.get('ContentId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.egress_endpoints = []
+        if m.get('EgressEndpoints') is not None:
+            for k in m.get('EgressEndpoints'):
+                temp_model = GetVodPackagingAssetResponseBodyAssetEgressEndpoints()
+                self.egress_endpoints.append(temp_model.from_map(k))
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Input') is not None:
+            temp_model = GetVodPackagingAssetResponseBodyAssetInput()
+            self.input = temp_model.from_map(m['Input'])
+        return self
+
+
+class GetVodPackagingAssetResponseBody(TeaModel):
+    def __init__(
+        self,
+        asset: GetVodPackagingAssetResponseBodyAsset = None,
+        request_id: str = None,
+    ):
+        self.asset = asset
+        self.request_id = request_id
+
+    def validate(self):
+        if self.asset:
+            self.asset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset is not None:
+            result['Asset'] = self.asset.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asset') is not None:
+            temp_model = GetVodPackagingAssetResponseBodyAsset()
+            self.asset = temp_model.from_map(m['Asset'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetVodPackagingAssetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVodPackagingAssetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVodPackagingAssetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVodPackagingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        configuration_name: str = None,
+    ):
+        self.configuration_name = configuration_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration_name is not None:
+            result['ConfigurationName'] = self.configuration_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigurationName') is not None:
+            self.configuration_name = m.get('ConfigurationName')
+        return self
+
+
+class GetVodPackagingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_configuration: VodPackagingConfiguration = None,
+        request_id: str = None,
+    ):
+        self.packaging_configuration = packaging_configuration
+        self.request_id = request_id
+
+    def validate(self):
+        if self.packaging_configuration:
+            self.packaging_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.packaging_configuration is not None:
+            result['PackagingConfiguration'] = self.packaging_configuration.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackagingConfiguration') is not None:
+            temp_model = VodPackagingConfiguration()
+            self.packaging_configuration = temp_model.from_map(m['PackagingConfiguration'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetVodPackagingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVodPackagingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVodPackagingConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVodPackagingGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class GetVodPackagingGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_group: VodPackagingGroup = None,
+        request_id: str = None,
+    ):
+        self.packaging_group = packaging_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.packaging_group:
+            self.packaging_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.packaging_group is not None:
+            result['PackagingGroup'] = self.packaging_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackagingGroup') is not None:
+            temp_model = VodPackagingGroup()
+            self.packaging_group = temp_model.from_map(m['PackagingGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetVodPackagingGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVodPackagingGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVodPackagingGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWorkflowTaskRequest(TeaModel):
     def __init__(
         self,
@@ -29723,6 +38076,199 @@ class InsertMediaToSearchLibResponse(TeaModel):
         return self
 
 
+class ListAIAgentDialoguesRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        session_id: str = None,
+        start_time: int = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.session_id = session_id
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListAIAgentDialoguesResponseBodyDialogues(TeaModel):
+    def __init__(
+        self,
+        dialogue_id: str = None,
+        producer: str = None,
+        round_id: str = None,
+        text: str = None,
+        time: int = None,
+    ):
+        self.dialogue_id = dialogue_id
+        self.producer = producer
+        self.round_id = round_id
+        self.text = text
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialogue_id is not None:
+            result['DialogueId'] = self.dialogue_id
+        if self.producer is not None:
+            result['Producer'] = self.producer
+        if self.round_id is not None:
+            result['RoundId'] = self.round_id
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DialogueId') is not None:
+            self.dialogue_id = m.get('DialogueId')
+        if m.get('Producer') is not None:
+            self.producer = m.get('Producer')
+        if m.get('RoundId') is not None:
+            self.round_id = m.get('RoundId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class ListAIAgentDialoguesResponseBody(TeaModel):
+    def __init__(
+        self,
+        dialogues: List[ListAIAgentDialoguesResponseBodyDialogues] = None,
+        request_id: str = None,
+    ):
+        self.dialogues = dialogues
+        self.request_id = request_id
+
+    def validate(self):
+        if self.dialogues:
+            for k in self.dialogues:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Dialogues'] = []
+        if self.dialogues is not None:
+            for k in self.dialogues:
+                result['Dialogues'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dialogues = []
+        if m.get('Dialogues') is not None:
+            for k in m.get('Dialogues'):
+                temp_model = ListAIAgentDialoguesResponseBodyDialogues()
+                self.dialogues.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAIAgentDialoguesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAIAgentDialoguesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAIAgentDialoguesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAIAgentInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -29909,6 +38455,593 @@ class ListAIAgentInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAIAgentInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAdInsertionsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        # 按广告名称查询，支持模糊匹配
+        self.keyword = keyword
+        # 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+        self.max_results = max_results
+        # 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+        self.next_token = next_token
+        # 分页参数，页码
+        self.page_no = page_no
+        # 分页参数，页宽
+        self.page_size = page_size
+        # 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListAdInsertionsResponseBodyConfigsCdnConfig(TeaModel):
+    def __init__(
+        self,
+        ad_segment_url_prefix: str = None,
+        content_segment_url_prefix: str = None,
+    ):
+        # 广告分片的CDN前缀
+        self.ad_segment_url_prefix = ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.content_segment_url_prefix = content_segment_url_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_segment_url_prefix is not None:
+            result['AdSegmentUrlPrefix'] = self.ad_segment_url_prefix
+        if self.content_segment_url_prefix is not None:
+            result['ContentSegmentUrlPrefix'] = self.content_segment_url_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdSegmentUrlPrefix') is not None:
+            self.ad_segment_url_prefix = m.get('AdSegmentUrlPrefix')
+        if m.get('ContentSegmentUrlPrefix') is not None:
+            self.content_segment_url_prefix = m.get('ContentSegmentUrlPrefix')
+        return self
+
+
+class ListAdInsertionsResponseBodyConfigsManifestEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        hls_prefix: str = None,
+    ):
+        # HLS清单播放端点前缀
+        self.hls_prefix = hls_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hls_prefix is not None:
+            result['HlsPrefix'] = self.hls_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HlsPrefix') is not None:
+            self.hls_prefix = m.get('HlsPrefix')
+        return self
+
+
+class ListAdInsertionsResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_config: ListAdInsertionsResponseBodyConfigsCdnConfig = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        create_time: str = None,
+        last_modified: str = None,
+        manifest_endpoint_config: ListAdInsertionsResponseBodyConfigsManifestEndpointConfig = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 广告标记透传
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        self.ads_url = ads_url
+        # CDN配置
+        self.cdn_config = cdn_config
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        self.content_url_prefix = content_url_prefix
+        # 创建时间
+        self.create_time = create_time
+        # 修改时间
+        self.last_modified = last_modified
+        # 清单播放端点配置
+        self.manifest_endpoint_config = manifest_endpoint_config
+        # 广告插入配置名称
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        if self.cdn_config:
+            self.cdn_config.validate()
+        if self.manifest_endpoint_config:
+            self.manifest_endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_config is not None:
+            result['CdnConfig'] = self.cdn_config.to_map()
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_endpoint_config is not None:
+            result['ManifestEndpointConfig'] = self.manifest_endpoint_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnConfig') is not None:
+            temp_model = ListAdInsertionsResponseBodyConfigsCdnConfig()
+            self.cdn_config = temp_model.from_map(m['CdnConfig'])
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestEndpointConfig') is not None:
+            temp_model = ListAdInsertionsResponseBodyConfigsManifestEndpointConfig()
+            self.manifest_endpoint_config = temp_model.from_map(m['ManifestEndpointConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class ListAdInsertionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListAdInsertionsResponseBodyConfigs] = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.configs = configs
+        # 获取后续数据的最大记录数，使用此方式获取数据时分页参数将无效
+        self.max_results = max_results
+        # 获取后续数据的Token，使用此方式获取数据时分页参数将无效
+        self.next_token = next_token
+        # 分页参数，页码
+        self.page_no = page_no
+        # 分页参数，页宽
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        # 分页参数，排序方式，asc:按创建时间升序，desc:按创建时间降序
+        self.sort_by = sort_by
+        # 总记录数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListAdInsertionsResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAdInsertionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAdInsertionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAdInsertionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAlertsRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        gmt_end: str = None,
+        gmt_start: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_arn: str = None,
+        sort_by: str = None,
+        sort_by_modified_time: str = None,
+    ):
+        self.category = category
+        self.gmt_end = gmt_end
+        self.gmt_start = gmt_start
+        self.page_no = page_no
+        self.page_size = page_size
+        # This parameter is required.
+        self.resource_arn = resource_arn
+        self.sort_by = sort_by
+        self.sort_by_modified_time = sort_by_modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.gmt_end is not None:
+            result['GmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_by_modified_time is not None:
+            result['SortByModifiedTime'] = self.sort_by_modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('GmtEnd') is not None:
+            self.gmt_end = m.get('GmtEnd')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortByModifiedTime') is not None:
+            self.sort_by_modified_time = m.get('SortByModifiedTime')
+        return self
+
+
+class ListAlertsResponseBodyAlerts(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        code: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        message: str = None,
+        related_resource_arns: str = None,
+        resource_arn: str = None,
+    ):
+        self.category = category
+        self.code = code
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.message = message
+        self.related_resource_arns = related_resource_arns
+        self.resource_arn = resource_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.related_resource_arns is not None:
+            result['RelatedResourceArns'] = self.related_resource_arns
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RelatedResourceArns') is not None:
+            self.related_resource_arns = m.get('RelatedResourceArns')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        return self
+
+
+class ListAlertsResponseBody(TeaModel):
+    def __init__(
+        self,
+        alerts: List[ListAlertsResponseBodyAlerts] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.alerts = alerts
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.alerts:
+            for k in self.alerts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Alerts'] = []
+        if self.alerts is not None:
+            for k in self.alerts:
+                result['Alerts'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alerts = []
+        if m.get('Alerts') is not None:
+            for k in m.get('Alerts'):
+                temp_model = ListAlertsResponseBodyAlerts()
+                self.alerts.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAlertsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAlertsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAlertsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30957,6 +40090,390 @@ class ListBatchMediaProducingJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListBatchMediaProducingJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChannelAlertsRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        gmt_end: str = None,
+        gmt_start: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_arn: str = None,
+        sort_by_modified_time: str = None,
+    ):
+        self.category = category
+        self.gmt_end = gmt_end
+        self.gmt_start = gmt_start
+        self.page_no = page_no
+        self.page_size = page_size
+        # This parameter is required.
+        self.resource_arn = resource_arn
+        self.sort_by_modified_time = sort_by_modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.gmt_end is not None:
+            result['GmtEnd'] = self.gmt_end
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        if self.sort_by_modified_time is not None:
+            result['SortByModifiedTime'] = self.sort_by_modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('GmtEnd') is not None:
+            self.gmt_end = m.get('GmtEnd')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        if m.get('SortByModifiedTime') is not None:
+            self.sort_by_modified_time = m.get('SortByModifiedTime')
+        return self
+
+
+class ListChannelAlertsResponseBodyProgramAlerts(TeaModel):
+    def __init__(
+        self,
+        arn: str = None,
+        category: str = None,
+        count: int = None,
+        gmt_modified: str = None,
+        program_name: str = None,
+    ):
+        self.arn = arn
+        self.category = category
+        self.count = count
+        self.gmt_modified = gmt_modified
+        self.program_name = program_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arn is not None:
+            result['Arn'] = self.arn
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arn') is not None:
+            self.arn = m.get('Arn')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        return self
+
+
+class ListChannelAlertsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        program_alerts: List[ListChannelAlertsResponseBodyProgramAlerts] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.program_alerts = program_alerts
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.program_alerts:
+            for k in self.program_alerts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['ProgramAlerts'] = []
+        if self.program_alerts is not None:
+            for k in self.program_alerts:
+                result['ProgramAlerts'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.program_alerts = []
+        if m.get('ProgramAlerts') is not None:
+            for k in m.get('ProgramAlerts'):
+                temp_model = ListChannelAlertsResponseBodyProgramAlerts()
+                self.program_alerts.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListChannelAlertsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChannelAlertsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChannelAlertsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        channel_tier: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        playback_mode: str = None,
+        sort_by: str = None,
+        sort_by_modified_time: str = None,
+        state: int = None,
+    ):
+        self.channel_name = channel_name
+        self.channel_tier = channel_tier
+        self.page_no = page_no
+        self.page_size = page_size
+        self.playback_mode = playback_mode
+        self.sort_by = sort_by
+        self.sort_by_modified_time = sort_by_modified_time
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.channel_tier is not None:
+            result['ChannelTier'] = self.channel_tier
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.playback_mode is not None:
+            result['PlaybackMode'] = self.playback_mode
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_by_modified_time is not None:
+            result['SortByModifiedTime'] = self.sort_by_modified_time
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ChannelTier') is not None:
+            self.channel_tier = m.get('ChannelTier')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PlaybackMode') is not None:
+            self.playback_mode = m.get('PlaybackMode')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortByModifiedTime') is not None:
+            self.sort_by_modified_time = m.get('SortByModifiedTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ListChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel_list: List[ChannelAssemblyChannel] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.channel_list = channel_list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.channel_list:
+            for k in self.channel_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ChannelList'] = []
+        if self.channel_list is not None:
+            for k in self.channel_list:
+                result['ChannelList'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.channel_list = []
+        if m.get('ChannelList') is not None:
+            for k in m.get('ChannelList'):
+                temp_model = ChannelAssemblyChannel()
+                self.channel_list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChannelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33061,6 +42578,788 @@ class ListEditingProjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEditingProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLivePackageChannelGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        # 描述
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        last_modified: str = None,
+        origin_domain: str = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # 代表资源一级ID的资源属性字段
+        self.group_name = group_name
+        # 修改时间
+        self.last_modified = last_modified
+        # 源站域名
+        self.origin_domain = origin_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.origin_domain is not None:
+            result['OriginDomain'] = self.origin_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('OriginDomain') is not None:
+            self.origin_domain = m.get('OriginDomain')
+        return self
+
+
+class ListLivePackageChannelGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel_groups: List[ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.live_package_channel_groups = live_package_channel_groups
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.live_package_channel_groups:
+            for k in self.live_package_channel_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LivePackageChannelGroups'] = []
+        if self.live_package_channel_groups is not None:
+            for k in self.live_package_channel_groups:
+                result['LivePackageChannelGroups'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.live_package_channel_groups = []
+        if m.get('LivePackageChannelGroups') is not None:
+            for k in m.get('LivePackageChannelGroups'):
+                temp_model = ListLivePackageChannelGroupsResponseBodyLivePackageChannelGroups()
+                self.live_package_channel_groups.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLivePackageChannelGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLivePackageChannelGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLivePackageChannelGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLivePackageChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        # This parameter is required.
+        self.group_name = group_name
+        # 列表操作私有参数
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        password: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.id = id
+        self.password = password
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListLivePackageChannelsResponseBodyLivePackageChannels(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        ingest_endpoints: List[ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints] = None,
+        last_modified: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        self.channel_name = channel_name
+        # 代表创建时间的资源属性字段
+        self.create_time = create_time
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        self.ingest_endpoints = ingest_endpoints
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 输入协议，目前仅支持HLS
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        if self.ingest_endpoints:
+            for k in self.ingest_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        result['IngestEndpoints'] = []
+        if self.ingest_endpoints is not None:
+            for k in self.ingest_endpoints:
+                result['IngestEndpoints'].append(k.to_map() if k else None)
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        self.ingest_endpoints = []
+        if m.get('IngestEndpoints') is not None:
+            for k in m.get('IngestEndpoints'):
+                temp_model = ListLivePackageChannelsResponseBodyLivePackageChannelsIngestEndpoints()
+                self.ingest_endpoints.append(temp_model.from_map(k))
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class ListLivePackageChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channels: List[ListLivePackageChannelsResponseBodyLivePackageChannels] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.live_package_channels = live_package_channels
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.live_package_channels:
+            for k in self.live_package_channels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LivePackageChannels'] = []
+        if self.live_package_channels is not None:
+            for k in self.live_package_channels:
+                result['LivePackageChannels'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.live_package_channels = []
+        if m.get('LivePackageChannels') is not None:
+            for k in m.get('LivePackageChannels'):
+                temp_model = ListLivePackageChannelsResponseBodyLivePackageChannels()
+                self.live_package_channels.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLivePackageChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLivePackageChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLivePackageChannelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLivePackageOriginEndpointsRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        # This parameter is required.
+        self.group_name = group_name
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        endpoint_url: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        last_modified: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称
+        self.channel_name = channel_name
+        # 创建时间
+        self.create_time = create_time
+        # 端点描述
+        self.description = description
+        # 端点名称
+        self.endpoint_name = endpoint_name
+        # 源站端点回源播放地址
+        self.endpoint_url = endpoint_url
+        # 频道组名称
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 播放列表名
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_url is not None:
+            result['EndpointUrl'] = self.endpoint_url
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointUrl') is not None:
+            self.endpoint_url = m.get('EndpointUrl')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class ListLivePackageOriginEndpointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_origin_endpoints: List[ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.live_package_origin_endpoints = live_package_origin_endpoints
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.live_package_origin_endpoints:
+            for k in self.live_package_origin_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LivePackageOriginEndpoints'] = []
+        if self.live_package_origin_endpoints is not None:
+            for k in self.live_package_origin_endpoints:
+                result['LivePackageOriginEndpoints'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.live_package_origin_endpoints = []
+        if m.get('LivePackageOriginEndpoints') is not None:
+            for k in m.get('LivePackageOriginEndpoints'):
+                temp_model = ListLivePackageOriginEndpointsResponseBodyLivePackageOriginEndpoints()
+                self.live_package_origin_endpoints.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLivePackageOriginEndpointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLivePackageOriginEndpointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLivePackageOriginEndpointsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38206,6 +48505,158 @@ class ListPipelinesResponse(TeaModel):
         return self
 
 
+class ListProgramsRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        program_name: str = None,
+        sort_by: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.page_no = page_no
+        self.page_size = page_size
+        self.program_name = program_name
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListProgramsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        programs: List[ChannelAssemblyProgram] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.programs = programs
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.programs:
+            for k in self.programs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Programs'] = []
+        if self.programs is not None:
+            for k in self.programs:
+                result['Programs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.programs = []
+        if m.get('Programs') is not None:
+            for k in m.get('Programs'):
+                temp_model = ChannelAssemblyProgram()
+                self.programs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProgramsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProgramsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProgramsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPublicMediaBasicInfosRequest(TeaModel):
     def __init__(
         self,
@@ -38730,6 +49181,153 @@ class ListPublicMediaBasicInfosResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPublicMediaBasicInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSchedulesRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        window_duration_seconds: int = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.page_no = page_no
+        self.page_size = page_size
+        # This parameter is required.
+        self.window_duration_seconds = window_duration_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.window_duration_seconds is not None:
+            result['WindowDurationSeconds'] = self.window_duration_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('WindowDurationSeconds') is not None:
+            self.window_duration_seconds = m.get('WindowDurationSeconds')
+        return self
+
+
+class ListSchedulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        programs: List[ChannelAssemblyScheduleData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.programs = programs
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.programs:
+            for k in self.programs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Programs'] = []
+        if self.programs is not None:
+            for k in self.programs:
+                result['Programs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.programs = []
+        if m.get('Programs') is not None:
+            for k in m.get('Programs'):
+                temp_model = ChannelAssemblyScheduleData()
+                self.programs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSchedulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSchedulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSchedulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -40173,6 +50771,332 @@ class ListSnapshotJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSnapshotJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSourceLocationsRequest(TeaModel):
+    def __init__(
+        self,
+        filter_state: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        sort_by_modified_time: str = None,
+        source_location_name: str = None,
+    ):
+        self.filter_state = filter_state
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.sort_by_modified_time = sort_by_modified_time
+        self.source_location_name = source_location_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_state is not None:
+            result['FilterState'] = self.filter_state
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_by_modified_time is not None:
+            result['SortByModifiedTime'] = self.sort_by_modified_time
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterState') is not None:
+            self.filter_state = m.get('FilterState')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortByModifiedTime') is not None:
+            self.sort_by_modified_time = m.get('SortByModifiedTime')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        return self
+
+
+class ListSourceLocationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        source_location_list: List[ChannelAssemblySourceLocation] = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.source_location_list = source_location_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.source_location_list:
+            for k in self.source_location_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SourceLocationList'] = []
+        if self.source_location_list is not None:
+            for k in self.source_location_list:
+                result['SourceLocationList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.source_location_list = []
+        if m.get('SourceLocationList') is not None:
+            for k in m.get('SourceLocationList'):
+                temp_model = ChannelAssemblySourceLocation()
+                self.source_location_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSourceLocationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSourceLocationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSourceLocationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSourcesRequest(TeaModel):
+    def __init__(
+        self,
+        filter_state: bool = None,
+        page_no: str = None,
+        page_size: str = None,
+        sort_by: str = None,
+        sort_by_modified_time: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        self.filter_state = filter_state
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.sort_by_modified_time = sort_by_modified_time
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_state is not None:
+            result['FilterState'] = self.filter_state
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_by_modified_time is not None:
+            result['SortByModifiedTime'] = self.sort_by_modified_time
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilterState') is not None:
+            self.filter_state = m.get('FilterState')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortByModifiedTime') is not None:
+            self.sort_by_modified_time = m.get('SortByModifiedTime')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListSourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        source_list: List[ChannelAssemblySource] = None,
+        total_count: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.source_list = source_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.source_list:
+            for k in self.source_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SourceList'] = []
+        if self.source_list is not None:
+            for k in self.source_list:
+                result['SourceList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.source_list = []
+        if m.get('SourceList') is not None:
+            for k in m.get('SourceList'):
+                temp_model = ChannelAssemblySource()
+                self.source_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42378,6 +53302,557 @@ class ListTranscodeJobsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTranscodeJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVodPackagingAssetsRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        self.group_name = group_name
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListVodPackagingAssetsResponseBodyAssetsInput(TeaModel):
+    def __init__(
+        self,
+        media: str = None,
+        type: str = None,
+    ):
+        self.media = media
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media is not None:
+            result['Media'] = self.media
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Media') is not None:
+            self.media = m.get('Media')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListVodPackagingAssetsResponseBodyAssets(TeaModel):
+    def __init__(
+        self,
+        asset_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        input: ListVodPackagingAssetsResponseBodyAssetsInput = None,
+    ):
+        self.asset_name = asset_name
+        self.create_time = create_time
+        self.description = description
+        self.group_name = group_name
+        self.input = input
+
+    def validate(self):
+        if self.input:
+            self.input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.input is not None:
+            result['Input'] = self.input.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Input') is not None:
+            temp_model = ListVodPackagingAssetsResponseBodyAssetsInput()
+            self.input = temp_model.from_map(m['Input'])
+        return self
+
+
+class ListVodPackagingAssetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        assets: List[ListVodPackagingAssetsResponseBodyAssets] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.assets = assets
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.assets:
+            for k in self.assets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Assets'] = []
+        if self.assets is not None:
+            for k in self.assets:
+                result['Assets'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assets = []
+        if m.get('Assets') is not None:
+            for k in m.get('Assets'):
+                temp_model = ListVodPackagingAssetsResponseBodyAssets()
+                self.assets.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListVodPackagingAssetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVodPackagingAssetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVodPackagingAssetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVodPackagingConfigurationsRequest(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        self.group_name = group_name
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListVodPackagingConfigurationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_configurations: List[VodPackagingConfiguration] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.packaging_configurations = packaging_configurations
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.packaging_configurations:
+            for k in self.packaging_configurations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PackagingConfigurations'] = []
+        if self.packaging_configurations is not None:
+            for k in self.packaging_configurations:
+                result['PackagingConfigurations'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.packaging_configurations = []
+        if m.get('PackagingConfigurations') is not None:
+            for k in m.get('PackagingConfigurations'):
+                temp_model = VodPackagingConfiguration()
+                self.packaging_configurations.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListVodPackagingConfigurationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVodPackagingConfigurationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVodPackagingConfigurationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListVodPackagingGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+    ):
+        self.keyword = keyword
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListVodPackagingGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        packaging_groups: List[VodPackagingGroup] = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sort_by: str = None,
+        total_count: int = None,
+    ):
+        self.packaging_groups = packaging_groups
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sort_by = sort_by
+        self.total_count = total_count
+
+    def validate(self):
+        if self.packaging_groups:
+            for k in self.packaging_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PackagingGroups'] = []
+        if self.packaging_groups is not None:
+            for k in self.packaging_groups:
+                result['PackagingGroups'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.packaging_groups = []
+        if m.get('PackagingGroups') is not None:
+            for k in m.get('PackagingGroups'):
+                temp_model = VodPackagingGroup()
+                self.packaging_groups.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListVodPackagingGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVodPackagingGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVodPackagingGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -52229,6 +63704,109 @@ class SendAIAgentSpeechResponse(TeaModel):
         return self
 
 
+class SendAIAgentTextRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        text: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class SendAIAgentTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendAIAgentTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendAIAgentTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendAIAgentTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendLiveSnapshotJobCommandRequest(TeaModel):
     def __init__(
         self,
@@ -53054,6 +64632,7 @@ class StartAIAgentInstanceRequest(TeaModel):
         self,
         aiagent_id: str = None,
         runtime_config: AIAgentRuntimeConfig = None,
+        session_id: str = None,
         template_config: AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
@@ -53061,6 +64640,7 @@ class StartAIAgentInstanceRequest(TeaModel):
         self.aiagent_id = aiagent_id
         # This parameter is required.
         self.runtime_config = runtime_config
+        self.session_id = session_id
         self.template_config = template_config
         self.user_data = user_data
 
@@ -53080,6 +64660,8 @@ class StartAIAgentInstanceRequest(TeaModel):
             result['AIAgentId'] = self.aiagent_id
         if self.runtime_config is not None:
             result['RuntimeConfig'] = self.runtime_config.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.template_config is not None:
             result['TemplateConfig'] = self.template_config.to_map()
         if self.user_data is not None:
@@ -53093,6 +64675,8 @@ class StartAIAgentInstanceRequest(TeaModel):
         if m.get('RuntimeConfig') is not None:
             temp_model = AIAgentRuntimeConfig()
             self.runtime_config = temp_model.from_map(m['RuntimeConfig'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TemplateConfig') is not None:
             temp_model = AIAgentTemplateConfig()
             self.template_config = temp_model.from_map(m['TemplateConfig'])
@@ -53106,6 +64690,7 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         self,
         aiagent_id: str = None,
         runtime_config_shrink: str = None,
+        session_id: str = None,
         template_config_shrink: str = None,
         user_data: str = None,
     ):
@@ -53113,6 +64698,7 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
         self.aiagent_id = aiagent_id
         # This parameter is required.
         self.runtime_config_shrink = runtime_config_shrink
+        self.session_id = session_id
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
 
@@ -53129,6 +64715,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
             result['AIAgentId'] = self.aiagent_id
         if self.runtime_config_shrink is not None:
             result['RuntimeConfig'] = self.runtime_config_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.template_config_shrink is not None:
             result['TemplateConfig'] = self.template_config_shrink
         if self.user_data is not None:
@@ -53141,6 +64729,8 @@ class StartAIAgentInstanceShrinkRequest(TeaModel):
             self.aiagent_id = m.get('AIAgentId')
         if m.get('RuntimeConfig') is not None:
             self.runtime_config_shrink = m.get('RuntimeConfig')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TemplateConfig') is not None:
             self.template_config_shrink = m.get('TemplateConfig')
         if m.get('UserData') is not None:
@@ -53218,6 +64808,108 @@ class StartAIAgentInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartAIAgentInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        return self
+
+
+class StartChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -53710,6 +65402,108 @@ class StopAIAgentInstanceResponse(TeaModel):
         return self
 
 
+class StopChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+    ):
+        # This parameter is required.
+        self.channel_name = channel_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        return self
+
+
+class StopChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StopChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopRtcRobotInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -53812,6 +65606,7 @@ class SubmitASRJobRequest(TeaModel):
         self,
         description: str = None,
         duration: str = None,
+        editing_config: str = None,
         input_file: str = None,
         start_time: str = None,
         title: str = None,
@@ -53821,6 +65616,7 @@ class SubmitASRJobRequest(TeaModel):
         self.description = description
         # The speech duration.
         self.duration = duration
+        self.editing_config = editing_config
         # The input file. You can specify an Object Storage Service (OSS) URL or the ID of a media asset in the media asset library.
         self.input_file = input_file
         # The start time of the speech to recognize.
@@ -53843,6 +65639,8 @@ class SubmitASRJobRequest(TeaModel):
             result['Description'] = self.description
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.editing_config is not None:
+            result['EditingConfig'] = self.editing_config
         if self.input_file is not None:
             result['InputFile'] = self.input_file
         if self.start_time is not None:
@@ -53859,6 +65657,8 @@ class SubmitASRJobRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('EditingConfig') is not None:
+            self.editing_config = m.get('EditingConfig')
         if m.get('InputFile') is not None:
             self.input_file = m.get('InputFile')
         if m.get('StartTime') is not None:
@@ -55651,21 +67451,43 @@ class SubmitDynamicChartJobRequest(TeaModel):
         unit: str = None,
         user_data: str = None,
     ):
+        # The axis configurations. If XAxisFontInterval is set to 0 or left empty, the system automatically determines an optimal interval.
         self.axis_params = axis_params
+        # The chart background.
         self.background = background
+        # The chart configurations.
         self.chart_config = chart_config
+        # The chart title.
         self.chart_title = chart_title
+        # The chart type.
+        # 
+        # Valid values:
+        # 
+        # *   Line: line chart
+        # *   Histogram: bar chart
+        # *   Pie: pie chart
+        # 
         # This parameter is required.
         self.chart_type = chart_type
+        # The data source.
         self.data_source = data_source
+        # The job description.
         self.description = description
+        # The input data for the chart.
+        # 
         # This parameter is required.
         self.input = input
+        # The output configurations.
+        # 
         # This parameter is required.
         self.output_config = output_config
+        # The subtitle.
         self.subtitle = subtitle
+        # The job title.
         self.title = title
+        # Unit
         self.unit = unit
+        # The custom data in JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -55742,7 +67564,9 @@ class SubmitDynamicChartJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56339,6 +68163,126 @@ class SubmitDynamicImageJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitDynamicImageJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitHighlightExtractionJobRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        input_config: str = None,
+        output_config: str = None,
+        user_data: str = None,
+    ):
+        self.client_token = client_token
+        self.input_config = input_config
+        self.output_config = output_config
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.input_config is not None:
+            result['InputConfig'] = self.input_config
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InputConfig') is not None:
+            self.input_config = m.get('InputConfig')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class SubmitHighlightExtractionJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+    ):
+        self.job_id = job_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitHighlightExtractionJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitHighlightExtractionJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitHighlightExtractionJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -69123,6 +81067,11 @@ class SubmitVideoTranslationJobRequest(TeaModel):
         editing_config: str = None,
         input_config: str = None,
         output_config: str = None,
+        signature: str = None,
+        signature_mehtod: str = None,
+        signature_nonce: str = None,
+        signature_type: str = None,
+        signature_version: str = None,
         title: str = None,
         user_data: str = None,
     ):
@@ -69140,6 +81089,11 @@ class SubmitVideoTranslationJobRequest(TeaModel):
         # *   The output parameters of the video translation job.
         # *   A video translation job can generate a video or subtitle file as the output.
         self.output_config = output_config
+        self.signature = signature
+        self.signature_mehtod = signature_mehtod
+        self.signature_nonce = signature_nonce
+        self.signature_type = signature_type
+        self.signature_version = signature_version
         # *   The job title.
         self.title = title
         # *   The user-defined data.
@@ -69165,6 +81119,16 @@ class SubmitVideoTranslationJobRequest(TeaModel):
             result['InputConfig'] = self.input_config
         if self.output_config is not None:
             result['OutputConfig'] = self.output_config
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.signature_mehtod is not None:
+            result['SignatureMehtod'] = self.signature_mehtod
+        if self.signature_nonce is not None:
+            result['SignatureNonce'] = self.signature_nonce
+        if self.signature_type is not None:
+            result['SignatureType'] = self.signature_type
+        if self.signature_version is not None:
+            result['SignatureVersion'] = self.signature_version
         if self.title is not None:
             result['Title'] = self.title
         if self.user_data is not None:
@@ -69183,6 +81147,16 @@ class SubmitVideoTranslationJobRequest(TeaModel):
             self.input_config = m.get('InputConfig')
         if m.get('OutputConfig') is not None:
             self.output_config = m.get('OutputConfig')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('SignatureMehtod') is not None:
+            self.signature_mehtod = m.get('SignatureMehtod')
+        if m.get('SignatureNonce') is not None:
+            self.signature_nonce = m.get('SignatureNonce')
+        if m.get('SignatureType') is not None:
+            self.signature_type = m.get('SignatureType')
+        if m.get('SignatureVersion') is not None:
+            self.signature_version = m.get('SignatureVersion')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('UserData') is not None:
@@ -69583,6 +81557,338 @@ class UpdateAIAgentInstanceResponse(TeaModel):
         return self
 
 
+class UpdateAdInsertionRequest(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_ad_segment_url_prefix: str = None,
+        cdn_content_segment_url_prefix: str = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 内容URL前缀
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        # 
+        # This parameter is required.
+        self.ads_url = ads_url
+        # 广告分片的CDN前缀
+        self.cdn_ad_segment_url_prefix = cdn_ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.cdn_content_segment_url_prefix = cdn_content_segment_url_prefix
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        # 
+        # This parameter is required.
+        self.content_url_prefix = content_url_prefix
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_ad_segment_url_prefix is not None:
+            result['CdnAdSegmentUrlPrefix'] = self.cdn_ad_segment_url_prefix
+        if self.cdn_content_segment_url_prefix is not None:
+            result['CdnContentSegmentUrlPrefix'] = self.cdn_content_segment_url_prefix
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnAdSegmentUrlPrefix') is not None:
+            self.cdn_ad_segment_url_prefix = m.get('CdnAdSegmentUrlPrefix')
+        if m.get('CdnContentSegmentUrlPrefix') is not None:
+            self.cdn_content_segment_url_prefix = m.get('CdnContentSegmentUrlPrefix')
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class UpdateAdInsertionResponseBodyConfigCdnConfig(TeaModel):
+    def __init__(
+        self,
+        ad_segment_url_prefix: str = None,
+        content_segment_url_prefix: str = None,
+    ):
+        # 广告分片的CDN前缀
+        self.ad_segment_url_prefix = ad_segment_url_prefix
+        # 视频内容分片的CDN前缀
+        self.content_segment_url_prefix = content_segment_url_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_segment_url_prefix is not None:
+            result['AdSegmentUrlPrefix'] = self.ad_segment_url_prefix
+        if self.content_segment_url_prefix is not None:
+            result['ContentSegmentUrlPrefix'] = self.content_segment_url_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdSegmentUrlPrefix') is not None:
+            self.ad_segment_url_prefix = m.get('AdSegmentUrlPrefix')
+        if m.get('ContentSegmentUrlPrefix') is not None:
+            self.content_segment_url_prefix = m.get('ContentSegmentUrlPrefix')
+        return self
+
+
+class UpdateAdInsertionResponseBodyConfigManifestEndpointConfig(TeaModel):
+    def __init__(
+        self,
+        hls_prefix: str = None,
+    ):
+        # HLS清单播放端点前缀
+        self.hls_prefix = hls_prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hls_prefix is not None:
+            result['HlsPrefix'] = self.hls_prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HlsPrefix') is not None:
+            self.hls_prefix = m.get('HlsPrefix')
+        return self
+
+
+class UpdateAdInsertionResponseBodyConfig(TeaModel):
+    def __init__(
+        self,
+        ad_marker_passthrough: str = None,
+        ads_url: str = None,
+        cdn_config: UpdateAdInsertionResponseBodyConfigCdnConfig = None,
+        config_aliases: str = None,
+        content_url_prefix: str = None,
+        create_time: str = None,
+        last_modified: str = None,
+        manifest_endpoint_config: UpdateAdInsertionResponseBodyConfigManifestEndpointConfig = None,
+        name: str = None,
+        personalization_threshold: int = None,
+        slate_ad_url: str = None,
+    ):
+        # 广告标记透传
+        self.ad_marker_passthrough = ad_marker_passthrough
+        # 广告策略服务器URL
+        self.ads_url = ads_url
+        # CDN配置
+        self.cdn_config = cdn_config
+        # 动态配置别名
+        self.config_aliases = config_aliases
+        # 内容URL前缀
+        self.content_url_prefix = content_url_prefix
+        # 创建时间
+        self.create_time = create_time
+        # 修改时间
+        self.last_modified = last_modified
+        # 清单播放端点配置
+        self.manifest_endpoint_config = manifest_endpoint_config
+        # 广告插入配置名称
+        self.name = name
+        # 个性化配置阈值
+        self.personalization_threshold = personalization_threshold
+        # slate广告URL
+        self.slate_ad_url = slate_ad_url
+
+    def validate(self):
+        if self.cdn_config:
+            self.cdn_config.validate()
+        if self.manifest_endpoint_config:
+            self.manifest_endpoint_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_marker_passthrough is not None:
+            result['AdMarkerPassthrough'] = self.ad_marker_passthrough
+        if self.ads_url is not None:
+            result['AdsUrl'] = self.ads_url
+        if self.cdn_config is not None:
+            result['CdnConfig'] = self.cdn_config.to_map()
+        if self.config_aliases is not None:
+            result['ConfigAliases'] = self.config_aliases
+        if self.content_url_prefix is not None:
+            result['ContentUrlPrefix'] = self.content_url_prefix
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_endpoint_config is not None:
+            result['ManifestEndpointConfig'] = self.manifest_endpoint_config.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.personalization_threshold is not None:
+            result['PersonalizationThreshold'] = self.personalization_threshold
+        if self.slate_ad_url is not None:
+            result['SlateAdUrl'] = self.slate_ad_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdMarkerPassthrough') is not None:
+            self.ad_marker_passthrough = m.get('AdMarkerPassthrough')
+        if m.get('AdsUrl') is not None:
+            self.ads_url = m.get('AdsUrl')
+        if m.get('CdnConfig') is not None:
+            temp_model = UpdateAdInsertionResponseBodyConfigCdnConfig()
+            self.cdn_config = temp_model.from_map(m['CdnConfig'])
+        if m.get('ConfigAliases') is not None:
+            self.config_aliases = m.get('ConfigAliases')
+        if m.get('ContentUrlPrefix') is not None:
+            self.content_url_prefix = m.get('ContentUrlPrefix')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestEndpointConfig') is not None:
+            temp_model = UpdateAdInsertionResponseBodyConfigManifestEndpointConfig()
+            self.manifest_endpoint_config = temp_model.from_map(m['ManifestEndpointConfig'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PersonalizationThreshold') is not None:
+            self.personalization_threshold = m.get('PersonalizationThreshold')
+        if m.get('SlateAdUrl') is not None:
+            self.slate_ad_url = m.get('SlateAdUrl')
+        return self
+
+
+class UpdateAdInsertionResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: UpdateAdInsertionResponseBodyConfig = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.request_id = request_id
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = UpdateAdInsertionResponseBodyConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAdInsertionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAdInsertionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAdInsertionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAvatarTrainingJobRequest(TeaModel):
     def __init__(
         self,
@@ -69896,6 +82202,141 @@ class UpdateCategoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateCategoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateChannelRequest(TeaModel):
+    def __init__(
+        self,
+        access_policy: bool = None,
+        access_token: str = None,
+        channel_name: str = None,
+        filler_source_location_name: str = None,
+        filler_source_name: str = None,
+        out_put_config_list: str = None,
+    ):
+        self.access_policy = access_policy
+        self.access_token = access_token
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.filler_source_location_name = filler_source_location_name
+        self.filler_source_name = filler_source_name
+        # This parameter is required.
+        self.out_put_config_list = out_put_config_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_policy is not None:
+            result['AccessPolicy'] = self.access_policy
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.filler_source_location_name is not None:
+            result['FillerSourceLocationName'] = self.filler_source_location_name
+        if self.filler_source_name is not None:
+            result['FillerSourceName'] = self.filler_source_name
+        if self.out_put_config_list is not None:
+            result['OutPutConfigList'] = self.out_put_config_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPolicy') is not None:
+            self.access_policy = m.get('AccessPolicy')
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('FillerSourceLocationName') is not None:
+            self.filler_source_location_name = m.get('FillerSourceLocationName')
+        if m.get('FillerSourceName') is not None:
+            self.filler_source_name = m.get('FillerSourceName')
+        if m.get('OutPutConfigList') is not None:
+            self.out_put_config_list = m.get('OutPutConfigList')
+        return self
+
+
+class UpdateChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        channel: ChannelAssemblyChannel = None,
+        request_id: str = None,
+    ):
+        self.channel = channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.channel:
+            self.channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            temp_model = ChannelAssemblyChannel()
+            self.channel = temp_model.from_map(m['Channel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateChannelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -70282,6 +82723,936 @@ class UpdateEditingProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEditingProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLivePackageChannelRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        description: str = None,
+        group_name: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # 输入协议，目前仅支持HLS
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        # 
+        # This parameter is required.
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        # 
+        # This parameter is required.
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        password: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.id = id
+        self.password = password
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateLivePackageChannelResponseBodyLivePackageChannel(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        ingest_endpoints: List[UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints] = None,
+        last_modified: str = None,
+        protocol: str = None,
+        segment_count: int = None,
+        segment_duration: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        self.channel_name = channel_name
+        # 代表创建时间的资源属性字段
+        self.create_time = create_time
+        # 频道描述，最大1000个字符
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        self.ingest_endpoints = ingest_endpoints
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 输入协议，目前仅支持HLS
+        self.protocol = protocol
+        # 输入流m3u8切片个数，2～100
+        self.segment_count = segment_count
+        # 输入流切片时长，1～30
+        self.segment_duration = segment_duration
+
+    def validate(self):
+        if self.ingest_endpoints:
+            for k in self.ingest_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        result['IngestEndpoints'] = []
+        if self.ingest_endpoints is not None:
+            for k in self.ingest_endpoints:
+                result['IngestEndpoints'].append(k.to_map() if k else None)
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.segment_count is not None:
+            result['SegmentCount'] = self.segment_count
+        if self.segment_duration is not None:
+            result['SegmentDuration'] = self.segment_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        self.ingest_endpoints = []
+        if m.get('IngestEndpoints') is not None:
+            for k in m.get('IngestEndpoints'):
+                temp_model = UpdateLivePackageChannelResponseBodyLivePackageChannelIngestEndpoints()
+                self.ingest_endpoints.append(temp_model.from_map(k))
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SegmentCount') is not None:
+            self.segment_count = m.get('SegmentCount')
+        if m.get('SegmentDuration') is not None:
+            self.segment_duration = m.get('SegmentDuration')
+        return self
+
+
+class UpdateLivePackageChannelResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel: UpdateLivePackageChannelResponseBodyLivePackageChannel = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel = live_package_channel
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel:
+            self.live_package_channel.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel is not None:
+            result['LivePackageChannel'] = self.live_package_channel.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannel') is not None:
+            temp_model = UpdateLivePackageChannelResponseBodyLivePackageChannel()
+            self.live_package_channel = temp_model.from_map(m['LivePackageChannel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLivePackageChannelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLivePackageChannelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLivePackageChannelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLivePackageChannelCredentialsRequest(TeaModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+        rotate_credentials: int = None,
+    ):
+        # 频道名称，字符必须为大小写英文字母或-、_。
+        # 1 ~ 200个字符。
+        # 格式：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 频道组名称
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # 刷新密钥选项, 1: 刷新endpoint1，2:刷新endpoint2，3: 刷新endpoint1&2
+        # 
+        # This parameter is required.
+        self.rotate_credentials = rotate_credentials
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.rotate_credentials is not None:
+            result['RotateCredentials'] = self.rotate_credentials
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('RotateCredentials') is not None:
+            self.rotate_credentials = m.get('RotateCredentials')
+        return self
+
+
+class UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        password: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.id = id
+        self.password = password
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class UpdateLivePackageChannelCredentialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        ingest_endpoints: List[UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints] = None,
+        request_id: str = None,
+    ):
+        self.ingest_endpoints = ingest_endpoints
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ingest_endpoints:
+            for k in self.ingest_endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IngestEndpoints'] = []
+        if self.ingest_endpoints is not None:
+            for k in self.ingest_endpoints:
+                result['IngestEndpoints'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ingest_endpoints = []
+        if m.get('IngestEndpoints') is not None:
+            for k in m.get('IngestEndpoints'):
+                temp_model = UpdateLivePackageChannelCredentialsResponseBodyIngestEndpoints()
+                self.ingest_endpoints.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLivePackageChannelCredentialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLivePackageChannelCredentialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLivePackageChannelCredentialsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLivePackageChannelGroupRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        group_name: str = None,
+    ):
+        # 频道组描述
+        self.description = description
+        # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        group_name: str = None,
+        last_modified: str = None,
+        origin_domain: str = None,
+    ):
+        # 创建时间
+        self.create_time = create_time
+        # 描述
+        self.description = description
+        # 频道组名称
+        self.group_name = group_name
+        # 修改时间
+        self.last_modified = last_modified
+        # 源站域名
+        self.origin_domain = origin_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.origin_domain is not None:
+            result['OriginDomain'] = self.origin_domain
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('OriginDomain') is not None:
+            self.origin_domain = m.get('OriginDomain')
+        return self
+
+
+class UpdateLivePackageChannelGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_channel_group: UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup = None,
+        request_id: str = None,
+    ):
+        self.live_package_channel_group = live_package_channel_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_channel_group:
+            self.live_package_channel_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_channel_group is not None:
+            result['LivePackageChannelGroup'] = self.live_package_channel_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageChannelGroup') is not None:
+            temp_model = UpdateLivePackageChannelGroupResponseBodyLivePackageChannelGroup()
+            self.live_package_channel_group = temp_model.from_map(m['LivePackageChannelGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLivePackageChannelGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLivePackageChannelGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLivePackageChannelGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLivePackageOriginEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # 端点描述，最大1000个字符
+        self.description = description
+        # 端点名称，要求在单个频道中唯一。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.endpoint_name = endpoint_name
+        # 频道组名称。
+        # 1 ~ 200个字符。
+        # 正则匹配输入：[A-Za-z0-9_-]+\
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 播放列表名，缺省为manifest。
+        # 1 ~ 100个字符。
+        # 正则匹配输入：[A-Za-z0-9_]+\
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(TeaModel):
+    def __init__(
+        self,
+        authorization_code: str = None,
+        channel_name: str = None,
+        create_time: str = None,
+        description: str = None,
+        endpoint_name: str = None,
+        endpoint_url: str = None,
+        group_name: str = None,
+        ip_blacklist: str = None,
+        ip_whitelist: str = None,
+        last_modified: str = None,
+        manifest_name: str = None,
+        protocol: str = None,
+        timeshift_vision: int = None,
+    ):
+        # 回源授权码，与IpWhitelist必选其一
+        self.authorization_code = authorization_code
+        # 频道名称
+        self.channel_name = channel_name
+        # 创建时间
+        self.create_time = create_time
+        # 端点描述
+        self.description = description
+        # 端点名称
+        self.endpoint_name = endpoint_name
+        # 源站端点回源播放地址
+        self.endpoint_url = endpoint_url
+        # 频道组名称
+        self.group_name = group_name
+        # IP黑名单，支持无类别域间路由（CIDR），逗号分隔
+        self.ip_blacklist = ip_blacklist
+        # IP白名单，支持无类别域间路由（CIDR），逗号分隔，与AuthorizationCode必选其一
+        self.ip_whitelist = ip_whitelist
+        # 最后修改时间
+        self.last_modified = last_modified
+        # 播放列表名
+        self.manifest_name = manifest_name
+        # 端点分发协议，暂只支持HLS
+        self.protocol = protocol
+        # 时移天数，最大30天，0表示不支持时移
+        self.timeshift_vision = timeshift_vision
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorization_code is not None:
+            result['AuthorizationCode'] = self.authorization_code
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_url is not None:
+            result['EndpointUrl'] = self.endpoint_url
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.ip_blacklist is not None:
+            result['IpBlacklist'] = self.ip_blacklist
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+        if self.last_modified is not None:
+            result['LastModified'] = self.last_modified
+        if self.manifest_name is not None:
+            result['ManifestName'] = self.manifest_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeshift_vision is not None:
+            result['TimeshiftVision'] = self.timeshift_vision
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorizationCode') is not None:
+            self.authorization_code = m.get('AuthorizationCode')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointUrl') is not None:
+            self.endpoint_url = m.get('EndpointUrl')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('IpBlacklist') is not None:
+            self.ip_blacklist = m.get('IpBlacklist')
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+        if m.get('LastModified') is not None:
+            self.last_modified = m.get('LastModified')
+        if m.get('ManifestName') is not None:
+            self.manifest_name = m.get('ManifestName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TimeshiftVision') is not None:
+            self.timeshift_vision = m.get('TimeshiftVision')
+        return self
+
+
+class UpdateLivePackageOriginEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        live_package_origin_endpoint: UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint = None,
+        request_id: str = None,
+    ):
+        self.live_package_origin_endpoint = live_package_origin_endpoint
+        self.request_id = request_id
+
+    def validate(self):
+        if self.live_package_origin_endpoint:
+            self.live_package_origin_endpoint.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.live_package_origin_endpoint is not None:
+            result['LivePackageOriginEndpoint'] = self.live_package_origin_endpoint.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LivePackageOriginEndpoint') is not None:
+            temp_model = UpdateLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint()
+            self.live_package_origin_endpoint = temp_model.from_map(m['LivePackageOriginEndpoint'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLivePackageOriginEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLivePackageOriginEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLivePackageOriginEndpointResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -71339,6 +84710,470 @@ class UpdateLiveTranscodeTemplateResponse(TeaModel):
         return self
 
 
+class UpdateMediaConnectFlowInputRequest(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        flow_id: str = None,
+        input_from_url: str = None,
+        max_bitrate: int = None,
+        srt_latency: int = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: int = None,
+    ):
+        # IP whitelist
+        self.cidrs = cidrs
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Input URL, modifiable when the input type is RTMP-PULL/SRT-Listener
+        self.input_from_url = input_from_url
+        # Input bitrate
+        self.max_bitrate = max_bitrate
+        # SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.input_from_url is not None:
+            result['InputFromUrl'] = self.input_from_url
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('InputFromUrl') is not None:
+            self.input_from_url = m.get('InputFromUrl')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class UpdateMediaConnectFlowInputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # 请求 ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class UpdateMediaConnectFlowInputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaConnectFlowInputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaConnectFlowInputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMediaConnectFlowOutputRequest(TeaModel):
+    def __init__(
+        self,
+        cidrs: str = None,
+        flow_id: str = None,
+        output_name: str = None,
+        output_to_url: str = None,
+        player_limit: str = None,
+        srt_latency: str = None,
+        srt_passphrase: str = None,
+        srt_pbkey_len: str = None,
+    ):
+        # IP whitelist
+        self.cidrs = cidrs
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Output name
+        # 
+        # This parameter is required.
+        self.output_name = output_name
+        # Output address, modifiable when the output type is RTMP-PUSH/SRT-Caller mode
+        self.output_to_url = output_to_url
+        # Player limit
+        self.player_limit = player_limit
+        # SRT latency, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_latency = srt_latency
+        # SRT encryption key, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_passphrase = srt_passphrase
+        # SRT encryption length, modifiable when the input type is SRT-Listener/SRT-Caller
+        self.srt_pbkey_len = srt_pbkey_len
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.output_name is not None:
+            result['OutputName'] = self.output_name
+        if self.output_to_url is not None:
+            result['OutputToUrl'] = self.output_to_url
+        if self.player_limit is not None:
+            result['PlayerLimit'] = self.player_limit
+        if self.srt_latency is not None:
+            result['SrtLatency'] = self.srt_latency
+        if self.srt_passphrase is not None:
+            result['SrtPassphrase'] = self.srt_passphrase
+        if self.srt_pbkey_len is not None:
+            result['SrtPbkeyLen'] = self.srt_pbkey_len
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('OutputName') is not None:
+            self.output_name = m.get('OutputName')
+        if m.get('OutputToUrl') is not None:
+            self.output_to_url = m.get('OutputToUrl')
+        if m.get('PlayerLimit') is not None:
+            self.player_limit = m.get('PlayerLimit')
+        if m.get('SrtLatency') is not None:
+            self.srt_latency = m.get('SrtLatency')
+        if m.get('SrtPassphrase') is not None:
+            self.srt_passphrase = m.get('SrtPassphrase')
+        if m.get('SrtPbkeyLen') is not None:
+            self.srt_pbkey_len = m.get('SrtPbkeyLen')
+        return self
+
+
+class UpdateMediaConnectFlowOutputResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # Returned error code, 0 indicates success
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class UpdateMediaConnectFlowOutputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaConnectFlowOutputResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaConnectFlowOutputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMediaConnectFlowStatusRequest(TeaModel):
+    def __init__(
+        self,
+        flow_id: str = None,
+        status: str = None,
+    ):
+        # Flow instance ID
+        # 
+        # This parameter is required.
+        self.flow_id = flow_id
+        # Flow status:
+        # - online: Start Flow
+        # - offline: Stop Flow
+        # 
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateMediaConnectFlowStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        description: str = None,
+        request_id: str = None,
+        ret_code: int = None,
+    ):
+        # Response body
+        self.content = content
+        # Description of the API call
+        self.description = description
+        # Request ID
+        self.request_id = request_id
+        # 返回的错误码，0表示成功
+        self.ret_code = ret_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.ret_code is not None:
+            result['RetCode'] = self.ret_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RetCode') is not None:
+            self.ret_code = m.get('RetCode')
+        return self
+
+
+class UpdateMediaConnectFlowStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMediaConnectFlowStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMediaConnectFlowStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateMediaInfoRequest(TeaModel):
     def __init__(
         self,
@@ -71945,6 +85780,153 @@ class UpdatePipelineResponse(TeaModel):
         return self
 
 
+class UpdateProgramRequest(TeaModel):
+    def __init__(
+        self,
+        ad_breaks: str = None,
+        channel_name: str = None,
+        clip_range: str = None,
+        program_name: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+        transition: str = None,
+    ):
+        self.ad_breaks = ad_breaks
+        # This parameter is required.
+        self.channel_name = channel_name
+        self.clip_range = clip_range
+        # This parameter is required.
+        self.program_name = program_name
+        self.source_location_name = source_location_name
+        self.source_name = source_name
+        self.source_type = source_type
+        self.transition = transition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ad_breaks is not None:
+            result['AdBreaks'] = self.ad_breaks
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+        if self.clip_range is not None:
+            result['ClipRange'] = self.clip_range
+        if self.program_name is not None:
+            result['ProgramName'] = self.program_name
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.transition is not None:
+            result['Transition'] = self.transition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdBreaks') is not None:
+            self.ad_breaks = m.get('AdBreaks')
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+        if m.get('ClipRange') is not None:
+            self.clip_range = m.get('ClipRange')
+        if m.get('ProgramName') is not None:
+            self.program_name = m.get('ProgramName')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Transition') is not None:
+            self.transition = m.get('Transition')
+        return self
+
+
+class UpdateProgramResponseBody(TeaModel):
+    def __init__(
+        self,
+        program: ChannelAssemblyProgram = None,
+        request_id: str = None,
+    ):
+        self.program = program
+        self.request_id = request_id
+
+    def validate(self):
+        if self.program:
+            self.program.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.program is not None:
+            result['Program'] = self.program.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Program') is not None:
+            temp_model = ChannelAssemblyProgram()
+            self.program = temp_model.from_map(m['Program'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateProgramResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateProgramResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateProgramResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateRtcRobotInstanceRequestConfig(TeaModel):
     def __init__(
         self,
@@ -72119,6 +86101,253 @@ class UpdateRtcRobotInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateRtcRobotInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSourceRequest(TeaModel):
+    def __init__(
+        self,
+        http_package_configurations: str = None,
+        source_location_name: str = None,
+        source_name: str = None,
+        source_type: str = None,
+    ):
+        # This parameter is required.
+        self.http_package_configurations = http_package_configurations
+        # This parameter is required.
+        self.source_location_name = source_location_name
+        # This parameter is required.
+        self.source_name = source_name
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_package_configurations is not None:
+            result['HttpPackageConfigurations'] = self.http_package_configurations
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        if self.source_name is not None:
+            result['SourceName'] = self.source_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpPackageConfigurations') is not None:
+            self.http_package_configurations = m.get('HttpPackageConfigurations')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        if m.get('SourceName') is not None:
+            self.source_name = m.get('SourceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class UpdateSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source: ChannelAssemblySource = None,
+    ):
+        self.request_id = request_id
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source is not None:
+            result['Source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Source') is not None:
+            temp_model = ChannelAssemblySource()
+            self.source = temp_model.from_map(m['Source'])
+        return self
+
+
+class UpdateSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSourceLocationRequest(TeaModel):
+    def __init__(
+        self,
+        base_url: str = None,
+        enable_segment_delivery: bool = None,
+        segment_delivery_url: str = None,
+        source_location_name: str = None,
+    ):
+        self.base_url = base_url
+        self.enable_segment_delivery = enable_segment_delivery
+        self.segment_delivery_url = segment_delivery_url
+        # This parameter is required.
+        self.source_location_name = source_location_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+        if self.enable_segment_delivery is not None:
+            result['EnableSegmentDelivery'] = self.enable_segment_delivery
+        if self.segment_delivery_url is not None:
+            result['SegmentDeliveryUrl'] = self.segment_delivery_url
+        if self.source_location_name is not None:
+            result['SourceLocationName'] = self.source_location_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+        if m.get('EnableSegmentDelivery') is not None:
+            self.enable_segment_delivery = m.get('EnableSegmentDelivery')
+        if m.get('SegmentDeliveryUrl') is not None:
+            self.segment_delivery_url = m.get('SegmentDeliveryUrl')
+        if m.get('SourceLocationName') is not None:
+            self.source_location_name = m.get('SourceLocationName')
+        return self
+
+
+class UpdateSourceLocationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        source_location: ChannelAssemblySourceLocation = None,
+    ):
+        self.request_id = request_id
+        self.source_location = source_location
+
+    def validate(self):
+        if self.source_location:
+            self.source_location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.source_location is not None:
+            result['SourceLocation'] = self.source_location.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SourceLocation') is not None:
+            temp_model = ChannelAssemblySourceLocation()
+            self.source_location = temp_model.from_map(m['SourceLocation'])
+        return self
+
+
+class UpdateSourceLocationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSourceLocationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSourceLocationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

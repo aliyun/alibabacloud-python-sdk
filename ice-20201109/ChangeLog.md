@@ -1,3 +1,91 @@
+2025-02-14 Version: 4.0.0
+- Support API AddAdInsertion.
+- Support API AddMediaConnectFlowInput.
+- Support API AddMediaConnectFlowOutput.
+- Support API BatchCreateVodPackagingAsset.
+- Support API CreateChannel.
+- Support API CreateLivePackageChannel.
+- Support API CreateLivePackageChannelGroup.
+- Support API CreateLivePackageOriginEndpoint.
+- Support API CreateMediaConnectFlow.
+- Support API CreateProgram.
+- Support API CreateSource.
+- Support API CreateSourceLocation.
+- Support API CreateVodPackagingAsset.
+- Support API CreateVodPackagingConfiguration.
+- Support API CreateVodPackagingGroup.
+- Support API DeleteAIAgentDialogue.
+- Support API DeleteAdInsertion.
+- Support API DeleteChannel.
+- Support API DeleteLivePackageChannel.
+- Support API DeleteLivePackageChannelGroup.
+- Support API DeleteLivePackageOriginEndpoint.
+- Support API DeleteMediaConnectFlow.
+- Support API DeleteMediaConnectFlowInput.
+- Support API DeleteMediaConnectFlowOutput.
+- Support API DeleteProgram.
+- Support API DeleteSource.
+- Support API DeleteSourceLocation.
+- Support API DeleteVodPackagingAsset.
+- Support API DeleteVodPackagingConfiguration.
+- Support API DeleteVodPackagingGroup.
+- Support API GenerateMessageChatToken.
+- Support API GetAdInsertion.
+- Support API GetChannel.
+- Support API GetLivePackageChannel.
+- Support API GetLivePackageChannelGroup.
+- Support API GetLivePackageOriginEndpoint.
+- Support API GetMediaConnectFlow.
+- Support API GetMediaConnectFlowInput.
+- Support API GetMediaConnectFlowOutput.
+- Support API GetProgram.
+- Support API GetSource.
+- Support API GetSourceLocation.
+- Support API GetVodPackagingAsset.
+- Support API GetVodPackagingConfiguration.
+- Support API GetVodPackagingGroup.
+- Support API ListAIAgentDialogues.
+- Support API ListAdInsertions.
+- Support API ListAlerts.
+- Support API ListChannelAlerts.
+- Support API ListChannels.
+- Support API ListLivePackageChannelGroups.
+- Support API ListLivePackageChannels.
+- Support API ListLivePackageOriginEndpoints.
+- Support API ListPrograms.
+- Support API ListSchedules.
+- Support API ListSourceLocations.
+- Support API ListSources.
+- Support API ListVodPackagingAssets.
+- Support API ListVodPackagingConfigurations.
+- Support API ListVodPackagingGroups.
+- Support API SendAIAgentText.
+- Support API StartChannel.
+- Support API StopChannel.
+- Support API SubmitHighlightExtractionJob.
+- Support API UpdateAdInsertion.
+- Support API UpdateChannel.
+- Support API UpdateLivePackageChannel.
+- Support API UpdateLivePackageChannelCredentials.
+- Support API UpdateLivePackageChannelGroup.
+- Support API UpdateLivePackageOriginEndpoint.
+- Support API UpdateMediaConnectFlowInput.
+- Support API UpdateMediaConnectFlowOutput.
+- Support API UpdateMediaConnectFlowStatus.
+- Support API UpdateProgram.
+- Support API UpdateSource.
+- Support API UpdateSourceLocation.
+- Update API DescribeAIAgentInstance: update response param.
+- Update API GenerateAIAgentCall: add param SessionId.
+- Update API StartAIAgentInstance: add param SessionId.
+- Update API SubmitASRJob: add param EditingConfig.
+- Update API SubmitVideoTranslationJob: add param Signature.
+- Update API SubmitVideoTranslationJob: add param SignatureMehtod.
+- Update API SubmitVideoTranslationJob: add param SignatureNonce.
+- Update API SubmitVideoTranslationJob: add param SignatureType.
+- Update API SubmitVideoTranslationJob: add param SignatureVersion.
+
+
 2025-01-17 Version: 3.11.0
 - Support API GetMediaConvertJob.
 - Support API SubmitMediaConvertJob.
