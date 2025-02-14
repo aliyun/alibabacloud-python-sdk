@@ -1,3 +1,16 @@
+2025-02-14 Version: 4.0.0
+- Support API DrivingDirection.
+- Update API BicyclingDirectionNova: update response param.
+- Update API DrivingDirectionNova: update response param.
+- Update API ElectrobikeDirectionNova: update response param.
+- Update API GeoCode: update response param.
+- Update API NearbySearchNova: update response param.
+- Update API PlaceSearchNova: update response param.
+- Update API RgeoCode: update response param.
+- Update API TransitIntegratedDirection: update response param.
+- Update API WalkingDirectionNova: update response param.
+
+
 2025-02-12 Version: 3.2.0
 - Support API DrivingDirection.
 

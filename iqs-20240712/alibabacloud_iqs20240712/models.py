@@ -695,19 +695,11 @@ class BicyclingDirectionNovaResponseBodyData(TeaModel):
 class BicyclingDirectionNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: BicyclingDirectionNovaResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -721,16 +713,8 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -739,17 +723,9 @@ class BicyclingDirectionNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = BicyclingDirectionNovaResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -1615,19 +1591,11 @@ class DrivingDirectionNovaResponseBodyData(TeaModel):
 class DrivingDirectionNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: DrivingDirectionNovaResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -1641,16 +1609,8 @@ class DrivingDirectionNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -1659,17 +1619,9 @@ class DrivingDirectionNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = DrivingDirectionNovaResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -2084,19 +2036,11 @@ class ElectrobikeDirectionNovaResponseBodyData(TeaModel):
 class ElectrobikeDirectionNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: ElectrobikeDirectionNovaResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -2110,16 +2054,8 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -2128,17 +2064,9 @@ class ElectrobikeDirectionNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = ElectrobikeDirectionNovaResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -2345,19 +2273,11 @@ class GeoCodeResponseBodyData(TeaModel):
 class GeoCodeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: List[GeoCodeResponseBodyData] = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -2373,18 +2293,10 @@ class GeoCodeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -2393,19 +2305,11 @@ class GeoCodeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         self.data = []
         if m.get('data') is not None:
             for k in m.get('data'):
                 temp_model = GeoCodeResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -2762,19 +2666,11 @@ class NearbySearchNovaResponseBodyData(TeaModel):
 class NearbySearchNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: List[NearbySearchNovaResponseBodyData] = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -2790,18 +2686,10 @@ class NearbySearchNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -2810,19 +2698,11 @@ class NearbySearchNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         self.data = []
         if m.get('data') is not None:
             for k in m.get('data'):
                 temp_model = NearbySearchNovaResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -3161,19 +3041,11 @@ class PlaceSearchNovaResponseBodyData(TeaModel):
 class PlaceSearchNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: List[PlaceSearchNovaResponseBodyData] = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -3189,18 +3061,10 @@ class PlaceSearchNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         result['data'] = []
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -3209,19 +3073,11 @@ class PlaceSearchNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         self.data = []
         if m.get('data') is not None:
             for k in m.get('data'):
                 temp_model = PlaceSearchNovaResponseBodyData()
                 self.data.append(temp_model.from_map(k))
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -4118,19 +3974,11 @@ class RgeoCodeResponseBodyData(TeaModel):
 class RgeoCodeResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: RgeoCodeResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -4144,16 +3992,8 @@ class RgeoCodeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -4162,17 +4002,9 @@ class RgeoCodeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = RgeoCodeResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -5667,19 +5499,11 @@ class TransitIntegratedDirectionResponseBodyData(TeaModel):
 class TransitIntegratedDirectionResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: TransitIntegratedDirectionResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -5693,16 +5517,8 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -5711,17 +5527,9 @@ class TransitIntegratedDirectionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = TransitIntegratedDirectionResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
@@ -6136,19 +5944,11 @@ class WalkingDirectionNovaResponseBodyData(TeaModel):
 class WalkingDirectionNovaResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         data: WalkingDirectionNovaResponseBodyData = None,
-        error_code: int = None,
-        error_message: str = None,
-        message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        self.code = code
         self.data = data
-        self.error_code = error_code
-        self.error_message = error_message
-        self.message = message
         self.request_id = request_id
         self.success = success
 
@@ -6162,16 +5962,8 @@ class WalkingDirectionNovaResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.message is not None:
-            result['message'] = self.message
         if self.request_id is not None:
             result['requestId'] = self.request_id
         if self.success is not None:
@@ -6180,17 +5972,9 @@ class WalkingDirectionNovaResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('data') is not None:
             temp_model = WalkingDirectionNovaResponseBodyData()
             self.data = temp_model.from_map(m['data'])
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
