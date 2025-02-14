@@ -213,6 +213,10 @@ class CreateDataLimitRequest(TeaModel):
         self.event_status = event_status
         # This parameter is deprecated.
         self.feature_type = feature_type
+        # Specifies whether to immediately scan the authorized asset. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.instantly_scan = instantly_scan
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
@@ -231,7 +235,7 @@ class CreateDataLimitRequest(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.ocr_status = ocr_status
-        # The name of the data asset.
+        # The name of the asset. The value is a connection string. It consists of an instance ID and a database name, which are separated by a comma (,). This parameter is required.
         self.parent_id = parent_id
         # The password that is used to access the database.
         self.password = password
@@ -482,6 +486,7 @@ class CreateRuleRequest(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        # The IDs of the models for sensitive data audit.
         self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         # 
@@ -525,6 +530,7 @@ class CreateRuleRequest(TeaModel):
         self.support_form = support_form
         # The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.target = target
+        # The IDs of the templates that are used to audit sensitive data.
         self.template_rule_ids = template_rule_ids
         # The risk level of the alert that is triggered. Valid values:
         # 
@@ -1827,6 +1833,13 @@ class DescribeColumnsRequest(TeaModel):
     ):
         # The page number of the page to return.
         self.current_page = current_page
+        # The engine type. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MariaDB**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.engine_type = engine_type
         # The ID of the instance to which data in the column of the table belongs.
         # 
@@ -1839,6 +1852,10 @@ class DescribeColumnsRequest(TeaModel):
         # *   **zh_cn**: Chinese
         # *   **en_us**: English
         self.lang = lang
+        # The data tag.
+        # 
+        # *   101: personal sensitive information
+        # *   102: personal information
         self.model_tag_id = model_tag_id
         # The search keyword. Fuzzy match is supported.
         # 
@@ -1848,6 +1865,20 @@ class DescribeColumnsRequest(TeaModel):
         self.page_size = page_size
         # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        # The ID of the service to which the data object belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: Object Storage Service (OSS)
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore (OTS)
+        # *   **5**: ApsaraDB RDS
+        # *   **6**: self-managed database
+        # *   **7**: PolarDB for Xscale (PolarDB-X)
+        # *   **8**: PolarDB
+        # *   **9**: AnalyticDB for PostgreSQL
+        # *   **10**: ApsaraDB for OceanBase
+        # *   **11**: ApsaraDB for MongoDB
+        # *   **25**: ApsaraDB for Redis
         self.product_id = product_id
         # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         # 
@@ -1877,7 +1908,13 @@ class DescribeColumnsRequest(TeaModel):
         self.table_id = table_id
         # The name of the table.
         self.table_name = table_name
+        # The ID of the industry-specific classification template.
+        # 
+        # >  You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the IDs of industry-specific classification templates.
         self.template_id = template_id
+        # The ID of the template rule that is hit.
+        # 
+        # >  You can call the [DescribeCategoryTemplateRuleList](https://help.aliyun.com/document_detail/410143.html) operation to obtain the IDs of hit template rules.
         self.template_rule_id = template_rule_id
 
     def validate(self):
@@ -2016,14 +2053,17 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         self,
         creation_time: int = None,
         data_type: str = None,
+        engine_type: str = None,
         id: str = None,
         instance_id: int = None,
         instance_name: str = None,
+        masking_status: int = None,
         model_tags: List[DescribeColumnsResponseBodyItemsModelTags] = None,
         name: str = None,
         odps_risk_level_name: str = None,
         odps_risk_level_value: int = None,
         product_code: str = None,
+        product_id: int = None,
         region_id: str = None,
         revision_id: int = None,
         revision_status: int = None,
@@ -2040,12 +2080,14 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         self.creation_time = creation_time
         # The type of data in the column of the table.
         self.data_type = data_type
+        self.engine_type = engine_type
         # The ID of the column of the table.
         self.id = id
         # The ID of the instance to which data in the column of the table belongs.
         self.instance_id = instance_id
         # The name of the instance to which data in the column of the table belongs.
         self.instance_name = instance_name
+        self.masking_status = masking_status
         # A list of tags for data that hits the recognition model.
         self.model_tags = model_tags
         # The name of the column of the table.
@@ -2068,6 +2110,8 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         self.odps_risk_level_value = odps_risk_level_value
         # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        self.product_id = product_id
+        # The region in which the asset resides.
         self.region_id = region_id
         # The ID of the revision record.
         self.revision_id = revision_id
@@ -2130,12 +2174,16 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.id is not None:
             result['Id'] = self.id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.masking_status is not None:
+            result['MaskingStatus'] = self.masking_status
         result['ModelTags'] = []
         if self.model_tags is not None:
             for k in self.model_tags:
@@ -2148,6 +2196,8 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             result['OdpsRiskLevelValue'] = self.odps_risk_level_value
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.revision_id is not None:
@@ -2178,12 +2228,16 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('MaskingStatus') is not None:
+            self.masking_status = m.get('MaskingStatus')
         self.model_tags = []
         if m.get('ModelTags') is not None:
             for k in m.get('ModelTags'):
@@ -2197,6 +2251,8 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RevisionId') is not None:
@@ -2233,7 +2289,7 @@ class DescribeColumnsResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # A list of columns.
+        # The columns.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -2331,6 +2387,7 @@ class DescribeColumnsV2Request(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        engine_type: str = None,
         instance_id: int = None,
         instance_name: str = None,
         lang: str = None,
@@ -2346,6 +2403,7 @@ class DescribeColumnsV2Request(TeaModel):
     ):
         # The page number. Default value: **1**.
         self.current_page = current_page
+        self.engine_type = engine_type
         # The ID of the instance to which data in the column of the table belongs.
         # 
         # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation to obtain the ID of the instance to which the data in the column of the table belongs.
@@ -2405,6 +2463,8 @@ class DescribeColumnsV2Request(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -2435,6 +2495,8 @@ class DescribeColumnsV2Request(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -2510,14 +2572,18 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
         self,
         creation_time: int = None,
         data_type: str = None,
+        engine_type: str = None,
         id: str = None,
         instance_id: int = None,
         instance_name: str = None,
+        masking_status: int = None,
         model_tags: List[DescribeColumnsV2ResponseBodyItemsModelTags] = None,
         name: str = None,
         odps_risk_level_name: str = None,
         odps_risk_level_value: int = None,
         product_code: str = None,
+        product_id: int = None,
+        region_id: str = None,
         revision_id: int = None,
         revision_status: int = None,
         risk_level_id: int = None,
@@ -2533,12 +2599,14 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
         self.creation_time = creation_time
         # The type of data in the column of the table.
         self.data_type = data_type
+        self.engine_type = engine_type
         # The ID of the column of the table.
         self.id = id
         # The ID of the instance to which data in the column of the table belongs.
         self.instance_id = instance_id
         # The name of the instance to which data in the column of the table belongs.
         self.instance_name = instance_name
+        self.masking_status = masking_status
         # A list of data tags.
         self.model_tags = model_tags
         # The name of the column of the table.
@@ -2562,6 +2630,8 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
         self.odps_risk_level_value = odps_risk_level_value
         # The name of the service to which data in the column of the table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        self.product_id = product_id
+        self.region_id = region_id
         # The ID of the revision record.
         self.revision_id = revision_id
         # Indicates whether the column is revised. Valid values:
@@ -2625,12 +2695,16 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.id is not None:
             result['Id'] = self.id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.masking_status is not None:
+            result['MaskingStatus'] = self.masking_status
         result['ModelTags'] = []
         if self.model_tags is not None:
             for k in self.model_tags:
@@ -2643,6 +2717,10 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
             result['OdpsRiskLevelValue'] = self.odps_risk_level_value
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.revision_id is not None:
             result['RevisionId'] = self.revision_id
         if self.revision_status is not None:
@@ -2671,12 +2749,16 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('MaskingStatus') is not None:
+            self.masking_status = m.get('MaskingStatus')
         self.model_tags = []
         if m.get('ModelTags') is not None:
             for k in m.get('ModelTags'):
@@ -2690,6 +2772,10 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
             self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RevisionId') is not None:
             self.revision_id = m.get('RevisionId')
         if m.get('RevisionStatus') is not None:
@@ -4322,6 +4408,7 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
         # *   The value is a UNIX timestamp.
         # *   Unit: milliseconds.
         self.last_finished_time = last_finished_time
+        # The last scan start time of data assets, in milliseconds.
         self.last_start_time = last_start_time
         # The region in which the data asset resides.
         self.local_name = local_name
@@ -4594,7 +4681,7 @@ class DescribeDataLimitsResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # A list of data assets.
+        # The data assets.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -5505,25 +5592,37 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
         column_comment: str = None,
         column_name: str = None,
         data_type: str = None,
+        engine_type: str = None,
         id: str = None,
+        instance_name: str = None,
+        masking_status: int = None,
         model_tags: List[DescribeDataObjectColumnDetailResponseBodyItemsModelTags] = None,
         primary_key: bool = None,
+        product_id: int = None,
+        region_id: str = None,
         risk_level_id: int = None,
         risk_level_name: str = None,
         rule_id: int = None,
         rule_name: str = None,
+        table_name: str = None,
     ):
         self.categories = categories
         self.column_comment = column_comment
         self.column_name = column_name
         self.data_type = data_type
+        self.engine_type = engine_type
         self.id = id
+        self.instance_name = instance_name
+        self.masking_status = masking_status
         self.model_tags = model_tags
         self.primary_key = primary_key
+        self.product_id = product_id
+        self.region_id = region_id
         self.risk_level_id = risk_level_id
         self.risk_level_name = risk_level_name
         self.rule_id = rule_id
         self.rule_name = rule_name
+        self.table_name = table_name
 
     def validate(self):
         if self.model_tags:
@@ -5545,14 +5644,24 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
             result['ColumnName'] = self.column_name
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.masking_status is not None:
+            result['MaskingStatus'] = self.masking_status
         result['ModelTags'] = []
         if self.model_tags is not None:
             for k in self.model_tags:
                 result['ModelTags'].append(k.to_map() if k else None)
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
         if self.risk_level_name is not None:
@@ -5561,6 +5670,8 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
@@ -5573,8 +5684,14 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
             self.column_name = m.get('ColumnName')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MaskingStatus') is not None:
+            self.masking_status = m.get('MaskingStatus')
         self.model_tags = []
         if m.get('ModelTags') is not None:
             for k in m.get('ModelTags'):
@@ -5582,6 +5699,10 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
                 self.model_tags.append(temp_model.from_map(k))
         if m.get('PrimaryKey') is not None:
             self.primary_key = m.get('PrimaryKey')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RiskLevelName') is not None:
@@ -5590,6 +5711,8 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         return self
 
 
@@ -5798,25 +5921,37 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
         column_comment: str = None,
         column_name: str = None,
         data_type: str = None,
+        engine_type: str = None,
         id: str = None,
+        instance_name: str = None,
+        masking_status: int = None,
         model_tags: List[DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags] = None,
         primary_key: bool = None,
+        product_id: int = None,
+        region_id: str = None,
         risk_level_id: int = None,
         risk_level_name: str = None,
         rule_id: int = None,
         rule_name: str = None,
+        table_name: str = None,
     ):
         self.categories = categories
         self.column_comment = column_comment
         self.column_name = column_name
         self.data_type = data_type
+        self.engine_type = engine_type
         self.id = id
+        self.instance_name = instance_name
+        self.masking_status = masking_status
         self.model_tags = model_tags
         self.primary_key = primary_key
+        self.product_id = product_id
+        self.region_id = region_id
         self.risk_level_id = risk_level_id
         self.risk_level_name = risk_level_name
         self.rule_id = rule_id
         self.rule_name = rule_name
+        self.table_name = table_name
 
     def validate(self):
         if self.model_tags:
@@ -5838,14 +5973,24 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
             result['ColumnName'] = self.column_name
         if self.data_type is not None:
             result['DataType'] = self.data_type
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.id is not None:
             result['Id'] = self.id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.masking_status is not None:
+            result['MaskingStatus'] = self.masking_status
         result['ModelTags'] = []
         if self.model_tags is not None:
             for k in self.model_tags:
                 result['ModelTags'].append(k.to_map() if k else None)
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
         if self.risk_level_name is not None:
@@ -5854,6 +5999,8 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
@@ -5866,8 +6013,14 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
             self.column_name = m.get('ColumnName')
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MaskingStatus') is not None:
+            self.masking_status = m.get('MaskingStatus')
         self.model_tags = []
         if m.get('ModelTags') is not None:
             for k in m.get('ModelTags'):
@@ -5875,6 +6028,10 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
                 self.model_tags.append(temp_model.from_map(k))
         if m.get('PrimaryKey') is not None:
             self.primary_key = m.get('PrimaryKey')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RiskLevelName') is not None:
@@ -5883,6 +6040,8 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         return self
 
 
@@ -8812,6 +8971,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         self.labelsec = labelsec
         # The time when the data asset was last scanned. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_finish_time = last_finish_time
+        # If the management account has opened multiple accounts and the asset belongs to other member accounts, this field displays the UID of the member accounts.
         self.member_ali_uid = member_ali_uid
         # A list of tags.
         self.model_tags = model_tags
@@ -8979,7 +9139,7 @@ class DescribeInstancesResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of the data assets.
+        # The data assets.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -9750,6 +9910,7 @@ class DescribeOssObjectsRequest(TeaModel):
         self.last_scan_time_end = last_scan_time_end
         # The start time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_scan_time_start = last_scan_time_start
+        # When you query data by page, use the `Marker` parameter to query the data that follows the `Marker` value.
         self.marker = marker
         # The search keyword. Fuzzy match is supported.
         self.name = name
@@ -9943,7 +10104,7 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         self.risk_level_name = risk_level_name
         # The number of rules that are hit.
         self.rule_count = rule_count
-        # A list of rules.
+        # The rules.
         self.rule_list = rule_list
         # The number of fields that are hit.
         self.sensitive_count = sensitive_count
@@ -10056,9 +10217,13 @@ class DescribeOssObjectsResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # A list of OSS objects.
+        # The OSS objects.
         self.items = items
+        # This parameter is deprecated.
         self.marker = marker
+        # The ID value from which the next page of results starts.
+        # 
+        # >  This parameter is returned only when the `Truncated` parameter is set to `true`.
         self.next_marker = next_marker
         # The number of entries returned per page.
         self.page_size = page_size
@@ -10066,6 +10231,10 @@ class DescribeOssObjectsResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.truncated = truncated
 
     def validate(self):
@@ -11033,6 +11202,10 @@ class DescribeRulesRequest(TeaModel):
         self.category = category
         # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
+        # The external cooperation channel. Valid values:
+        # 
+        # *   DAS
+        # *   YAOCHI
         self.cooperation_channel = cooperation_channel
         # The page number of the page to return.
         self.current_page = current_page
@@ -11085,6 +11258,10 @@ class DescribeRulesRequest(TeaModel):
         # *   **3**: anomalous event detection rule
         # *   **99**: custom rule
         self.rule_type = rule_type
+        # Specifies whether to query a simplified rule. The simplified rule contains only the rule name. Valid values:
+        # 
+        # *   true
+        # *   false
         self.simplify = simplify
         # The status of the sensitive data detection rule. Valid values:
         # 
@@ -11275,6 +11452,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        # The IDs of the models for sensitive data audit.
         self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         self.name = name
@@ -11313,6 +11491,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         self.support_form = support_form
         # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.target = target
+        # The IDs of the templates that are used to audit sensitive data.
         self.template_rule_ids = template_rule_ids
         # The ID of the account that is used to create the sensitive data detection rule.
         self.user_id = user_id
@@ -11462,7 +11641,7 @@ class DescribeRulesResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of the sensitive data detection rules.
+        # The sensitive data detection rules.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -13609,6 +13788,7 @@ class ModifyRuleRequest(TeaModel):
         # *   **1**: rule-based match
         # *   **2**: dictionary-based match
         self.match_type = match_type
+        # The IDs of the models for sensitive data audit.
         self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         # 
@@ -13640,6 +13820,7 @@ class ModifyRuleRequest(TeaModel):
         # *   **1**: structured data assets
         # *   **2**: unstructured data assets
         self.support_form = support_form
+        # The IDs of the templates that are used to audit sensitive data.
         self.template_rule_ids = template_rule_ids
         # The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
         # 

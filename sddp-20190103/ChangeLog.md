@@ -1,3 +1,16 @@
+2025-02-14 Version: 1.4.3
+- Update API CreateRule: add param ModelRuleIds.
+- Update API CreateRule: add param TemplateRuleIds.
+- Update API DescribeColumns: update response param.
+- Update API DescribeColumnsV2: add param EngineType.
+- Update API DescribeColumnsV2: update response param.
+- Update API DescribeDataObjectColumnDetail: update response param.
+- Update API DescribeDataObjectColumnDetailV2: update response param.
+- Update API DescribeRules: update response param.
+- Update API ModifyRule: add param ModelRuleIds.
+- Update API ModifyRule: add param TemplateRuleIds.
+
+
 2025-01-13 Version: 1.4.2
 - Update API CreateRule: add param ModelRuleIds.
 - Update API CreateRule: add param TemplateRuleIds.
