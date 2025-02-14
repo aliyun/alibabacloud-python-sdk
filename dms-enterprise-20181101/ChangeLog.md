@@ -1,3 +1,17 @@
+2025-02-14 Version: 1.68.0
+- Support API CreateDataLakeFunction.
+- Support API CreateDifyInstance.
+- Support API DeleteDataLakeFunction.
+- Support API DescribeDifyDefaultVpc.
+- Support API GetDataLakeFunction.
+- Support API ListDataLakeFunction.
+- Support API ListDataLakeFunctionName.
+- Support API UpdateDataLakeFunction.
+- Update API CreateDataImportOrder: update param Param.
+- Update API UpdateDataLakeTable: add param TableName.
+- Update API UpdateUser: add param UidString.
+
+
 2025-02-13 Version: 1.67.0
 - Support API CreateDifyInstance.
 - Support API DescribeDifyDefaultVpc.

@@ -3671,6 +3671,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_lake_database_with_options_async(request, runtime)
 
+    def create_data_lake_function_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
+        """
+        @summary 新建湖仓自定义函数
+        
+        @param tmp_req: CreateDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataLakeFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.function_input):
+            request.function_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.function_input, 'FunctionInput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.function_input_shrink):
+            body['FunctionInput'] = request.function_input_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDataLakeFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDataLakeFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_data_lake_function_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
+        """
+        @summary 新建湖仓自定义函数
+        
+        @param tmp_req: CreateDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataLakeFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.function_input):
+            request.function_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.function_input, 'FunctionInput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.function_input_shrink):
+            body['FunctionInput'] = request.function_input_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDataLakeFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.CreateDataLakeFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_data_lake_function(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
+        """
+        @summary 新建湖仓自定义函数
+        
+        @param request: CreateDataLakeFunctionRequest
+        @return: CreateDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_lake_function_with_options(request, runtime)
+
+    async def create_data_lake_function_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataLakeFunctionResponse:
+        """
+        @summary 新建湖仓自定义函数
+        
+        @param request: CreateDataLakeFunctionRequest
+        @return: CreateDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_lake_function_with_options_async(request, runtime)
+
     def create_data_lake_partition_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateDataLakePartitionRequest,
@@ -7178,6 +7318,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_lake_database_with_options_async(request, runtime)
+
+    def delete_data_lake_function_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
+        """
+        @summary 删除湖仓自定义函数
+        
+        @param request: DeleteDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_data_lake_function_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
+        """
+        @summary 删除湖仓自定义函数
+        
+        @param request: DeleteDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_data_lake_function(
+        self,
+        request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
+        """
+        @summary 删除湖仓自定义函数
+        
+        @param request: DeleteDataLakeFunctionRequest
+        @return: DeleteDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_lake_function_with_options(request, runtime)
+
+    async def delete_data_lake_function_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.DeleteDataLakeFunctionResponse:
+        """
+        @summary 删除湖仓自定义函数
+        
+        @param request: DeleteDataLakeFunctionRequest
+        @return: DeleteDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_lake_function_with_options_async(request, runtime)
 
     def delete_data_lake_partition_with_options(
         self,
@@ -12742,6 +13010,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_lake_database_with_options_async(request, runtime)
+
+    def get_data_lake_function_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
+        """
+        @summary 获取湖仓自定义函数详细信息
+        
+        @param request: GetDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.GetDataLakeFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.GetDataLakeFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_data_lake_function_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
+        """
+        @summary 获取湖仓自定义函数详细信息
+        
+        @param request: GetDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.GetDataLakeFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.GetDataLakeFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_data_lake_function(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
+        """
+        @summary 获取湖仓自定义函数详细信息
+        
+        @param request: GetDataLakeFunctionRequest
+        @return: GetDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_lake_function_with_options(request, runtime)
+
+    async def get_data_lake_function_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.GetDataLakeFunctionResponse:
+        """
+        @summary 获取湖仓自定义函数详细信息
+        
+        @param request: GetDataLakeFunctionRequest
+        @return: GetDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_lake_function_with_options_async(request, runtime)
 
     def get_data_lake_partition_with_options(
         self,
@@ -20458,6 +20854,270 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_lake_database_with_options_async(request, runtime)
+
+    def list_data_lake_function_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
+        """
+        @summary 获取数据湖函数列表
+        
+        @param request: ListDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name_pattern):
+            query['FunctionNamePattern'] = request.function_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_data_lake_function_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
+        """
+        @summary 获取数据湖函数列表
+        
+        @param request: ListDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name_pattern):
+            query['FunctionNamePattern'] = request.function_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_data_lake_function(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
+        """
+        @summary 获取数据湖函数列表
+        
+        @param request: ListDataLakeFunctionRequest
+        @return: ListDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_lake_function_with_options(request, runtime)
+
+    async def list_data_lake_function_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionResponse:
+        """
+        @summary 获取数据湖函数列表
+        
+        @param request: ListDataLakeFunctionRequest
+        @return: ListDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_lake_function_with_options_async(request, runtime)
+
+    def list_data_lake_function_name_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
+        """
+        @summary 获取数据湖函数名列表
+        
+        @param request: ListDataLakeFunctionNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeFunctionNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name_pattern):
+            query['FunctionNamePattern'] = request.function_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeFunctionName',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_data_lake_function_name_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
+        """
+        @summary 获取数据湖函数名列表
+        
+        @param request: ListDataLakeFunctionNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLakeFunctionNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name_pattern):
+            query['FunctionNamePattern'] = request.function_name_pattern
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataLakeFunctionName',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_data_lake_function_name(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
+        """
+        @summary 获取数据湖函数名列表
+        
+        @param request: ListDataLakeFunctionNameRequest
+        @return: ListDataLakeFunctionNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_lake_function_name_with_options(request, runtime)
+
+    async def list_data_lake_function_name_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDataLakeFunctionNameRequest,
+    ) -> dms_enterprise_20181101_models.ListDataLakeFunctionNameResponse:
+        """
+        @summary 获取数据湖函数名列表
+        
+        @param request: ListDataLakeFunctionNameRequest
+        @return: ListDataLakeFunctionNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_lake_function_name_with_options_async(request, runtime)
 
     def list_data_lake_partition_with_options(
         self,
@@ -31342,6 +32002,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_lake_database_with_options_async(request, runtime)
+
+    def update_data_lake_function_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
+        """
+        @summary 更新湖仓自定义函数
+        
+        @param tmp_req: UpdateDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateDataLakeFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.function_input):
+            request.function_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.function_input, 'FunctionInput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.function_input_shrink):
+            body['FunctionInput'] = request.function_input_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_data_lake_function_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
+        """
+        @summary 更新湖仓自定义函数
+        
+        @param tmp_req: UpdateDataLakeFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataLakeFunctionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateDataLakeFunctionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.function_input):
+            request.function_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.function_input, 'FunctionInput', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not UtilClient.is_unset(request.data_region):
+            query['DataRegion'] = request.data_region
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.function_input_shrink):
+            body['FunctionInput'] = request.function_input_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataLakeFunction',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_data_lake_function(
+        self,
+        request: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
+        """
+        @summary 更新湖仓自定义函数
+        
+        @param request: UpdateDataLakeFunctionRequest
+        @return: UpdateDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_lake_function_with_options(request, runtime)
+
+    async def update_data_lake_function_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateDataLakeFunctionRequest,
+    ) -> dms_enterprise_20181101_models.UpdateDataLakeFunctionResponse:
+        """
+        @summary 更新湖仓自定义函数
+        
+        @param request: UpdateDataLakeFunctionRequest
+        @return: UpdateDataLakeFunctionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_lake_function_with_options_async(request, runtime)
 
     def update_data_lake_partition_with_options(
         self,

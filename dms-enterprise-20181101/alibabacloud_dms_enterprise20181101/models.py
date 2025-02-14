@@ -8478,6 +8478,224 @@ class CreateDataLakeDatabaseResponse(TeaModel):
         return self
 
 
+class CreateDataLakeFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_input: DLFunctionInput = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_input = function_input
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.function_input:
+            self.function_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_input is not None:
+            result['FunctionInput'] = self.function_input.to_map()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionInput') is not None:
+            temp_model = DLFunctionInput()
+            self.function_input = temp_model.from_map(m['FunctionInput'])
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDataLakeFunctionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_input_shrink: str = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_input_shrink = function_input_shrink
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_input_shrink is not None:
+            result['FunctionInput'] = self.function_input_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionInput') is not None:
+            self.function_input_shrink = m.get('FunctionInput')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateDataLakeFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        function: DLFunction = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.function = function
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Function') is not None:
+            temp_model = DLFunction()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataLakeFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataLakeFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataLakeFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDataLakePartitionRequest(TeaModel):
     def __init__(
         self,
@@ -14349,6 +14567,153 @@ class DeleteDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataLakeFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_name: str = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_name = function_name
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteDataLakeFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataLakeFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataLakeFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataLakeFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24748,6 +25113,161 @@ class GetDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataLakeFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_name: str = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_name = function_name
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDataLakeFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        function: DLFunction = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.function = function
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Function') is not None:
+            temp_model = DLFunction()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDataLakeFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataLakeFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataLakeFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42039,6 +42559,353 @@ class ListDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakeFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_name_pattern: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        self.db_name = db_name
+        self.function_name_pattern = function_name_pattern
+        self.max_results = max_results
+        self.next_token = next_token
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_name_pattern is not None:
+            result['FunctionNamePattern'] = self.function_name_pattern
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionNamePattern') is not None:
+            self.function_name_pattern = m.get('FunctionNamePattern')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakeFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        function_list: List[DLFunction] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.function_list = function_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.function_list:
+            for k in self.function_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        result['FunctionList'] = []
+        if self.function_list is not None:
+            for k in self.function_list:
+                result['FunctionList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        self.function_list = []
+        if m.get('FunctionList') is not None:
+            for k in m.get('FunctionList'):
+                temp_model = DLFunction()
+                self.function_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataLakeFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakeFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakeFunctionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataLakeFunctionNameRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_name_pattern: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        tid: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        self.function_name_pattern = function_name_pattern
+        self.max_results = max_results
+        self.next_token = next_token
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_name_pattern is not None:
+            result['FunctionNamePattern'] = self.function_name_pattern
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionNamePattern') is not None:
+            self.function_name_pattern = m.get('FunctionNamePattern')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDataLakeFunctionNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        function_name_list: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.function_name_list = function_name_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.function_name_list is not None:
+            result['FunctionNameList'] = self.function_name_list
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FunctionNameList') is not None:
+            self.function_name_list = m.get('FunctionNameList')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDataLakeFunctionNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataLakeFunctionNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataLakeFunctionNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -64000,6 +64867,238 @@ class UpdateDataLakeDatabaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDataLakeDatabaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataLakeFunctionRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_input: DLFunctionInput = None,
+        function_name: str = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_input = function_input
+        # This parameter is required.
+        self.function_name = function_name
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.function_input:
+            self.function_input.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_input is not None:
+            result['FunctionInput'] = self.function_input.to_map()
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionInput') is not None:
+            temp_model = DLFunctionInput()
+            self.function_input = temp_model.from_map(m['FunctionInput'])
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateDataLakeFunctionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        data_region: str = None,
+        db_name: str = None,
+        function_input_shrink: str = None,
+        function_name: str = None,
+        tid: int = None,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.catalog_name = catalog_name
+        # This parameter is required.
+        self.data_region = data_region
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.function_input_shrink = function_input_shrink
+        # This parameter is required.
+        self.function_name = function_name
+        self.tid = tid
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+        if self.data_region is not None:
+            result['DataRegion'] = self.data_region
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.function_input_shrink is not None:
+            result['FunctionInput'] = self.function_input_shrink
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+        if m.get('DataRegion') is not None:
+            self.data_region = m.get('DataRegion')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FunctionInput') is not None:
+            self.function_input_shrink = m.get('FunctionInput')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateDataLakeFunctionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        function: DLFunction = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.function = function
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Function') is not None:
+            temp_model = DLFunction()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataLakeFunctionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataLakeFunctionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataLakeFunctionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
