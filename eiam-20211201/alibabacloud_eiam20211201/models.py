@@ -6267,7 +6267,10 @@ class GetApplicationResponseBodyApplication(TeaModel):
         features: str = None,
         instance_id: str = None,
         logo_url: str = None,
+        m_2mclient_status: str = None,
         managed_service_code: str = None,
+        resource_server_identifier: str = None,
+        resource_server_status: str = None,
         service_managed: bool = None,
         sso_type: str = None,
         status: str = None,
@@ -6311,8 +6314,11 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.instance_id = instance_id
         # The URL of the application icon.
         self.logo_url = logo_url
+        self.m_2mclient_status = m_2mclient_status
         # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
+        self.resource_server_identifier = resource_server_identifier
+        self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
         # The type of the single sign-on (SSO) protocol. Valid values:
@@ -6363,8 +6369,14 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.logo_url is not None:
             result['LogoUrl'] = self.logo_url
+        if self.m_2mclient_status is not None:
+            result['M2MClientStatus'] = self.m_2mclient_status
         if self.managed_service_code is not None:
             result['ManagedServiceCode'] = self.managed_service_code
+        if self.resource_server_identifier is not None:
+            result['ResourceServerIdentifier'] = self.resource_server_identifier
+        if self.resource_server_status is not None:
+            result['ResourceServerStatus'] = self.resource_server_status
         if self.service_managed is not None:
             result['ServiceManaged'] = self.service_managed
         if self.sso_type is not None:
@@ -6403,8 +6415,14 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LogoUrl') is not None:
             self.logo_url = m.get('LogoUrl')
+        if m.get('M2MClientStatus') is not None:
+            self.m_2mclient_status = m.get('M2MClientStatus')
         if m.get('ManagedServiceCode') is not None:
             self.managed_service_code = m.get('ManagedServiceCode')
+        if m.get('ResourceServerIdentifier') is not None:
+            self.resource_server_identifier = m.get('ResourceServerIdentifier')
+        if m.get('ResourceServerStatus') is not None:
+            self.resource_server_status = m.get('ResourceServerStatus')
         if m.get('ServiceManaged') is not None:
             self.service_managed = m.get('ServiceManaged')
         if m.get('SsoType') is not None:
@@ -14282,8 +14300,11 @@ class ListApplicationsRequest(TeaModel):
         application_name: str = None,
         authorization_type: str = None,
         instance_id: str = None,
+        m_2mclient_status: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_server_status: str = None,
+        sso_type: str = None,
         status: str = None,
     ):
         # The IDs of the applications.
@@ -14299,10 +14320,13 @@ class ListApplicationsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.m_2mclient_status = m_2mclient_status
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.resource_server_status = resource_server_status
+        self.sso_type = sso_type
         # The status of the application. Valid values:
         # 
         # *   Enabled: The application is enabled.
@@ -14326,10 +14350,16 @@ class ListApplicationsRequest(TeaModel):
             result['AuthorizationType'] = self.authorization_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.m_2mclient_status is not None:
+            result['M2MClientStatus'] = self.m_2mclient_status
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_server_status is not None:
+            result['ResourceServerStatus'] = self.resource_server_status
+        if self.sso_type is not None:
+            result['SsoType'] = self.sso_type
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -14344,10 +14374,16 @@ class ListApplicationsRequest(TeaModel):
             self.authorization_type = m.get('AuthorizationType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('M2MClientStatus') is not None:
+            self.m_2mclient_status = m.get('M2MClientStatus')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceServerStatus') is not None:
+            self.resource_server_status = m.get('ResourceServerStatus')
+        if m.get('SsoType') is not None:
+            self.sso_type = m.get('SsoType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -14366,7 +14402,10 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         features: str = None,
         instance_id: str = None,
         logo_url: str = None,
+        m_2mclient_status: str = None,
         managed_service_code: str = None,
+        resource_server_identifier: str = None,
+        resource_server_status: str = None,
         service_managed: bool = None,
         sso_type: str = None,
         status: str = None,
@@ -14399,8 +14438,11 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         self.instance_id = instance_id
         # The URL of the application icon.
         self.logo_url = logo_url
+        self.m_2mclient_status = m_2mclient_status
         # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
+        self.resource_server_identifier = resource_server_identifier
+        self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
         # The type of the single sign-on (SSO) protocol. Valid values:
@@ -14445,8 +14487,14 @@ class ListApplicationsResponseBodyApplications(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.logo_url is not None:
             result['LogoUrl'] = self.logo_url
+        if self.m_2mclient_status is not None:
+            result['M2MClientStatus'] = self.m_2mclient_status
         if self.managed_service_code is not None:
             result['ManagedServiceCode'] = self.managed_service_code
+        if self.resource_server_identifier is not None:
+            result['ResourceServerIdentifier'] = self.resource_server_identifier
+        if self.resource_server_status is not None:
+            result['ResourceServerStatus'] = self.resource_server_status
         if self.service_managed is not None:
             result['ServiceManaged'] = self.service_managed
         if self.sso_type is not None:
@@ -14479,8 +14527,14 @@ class ListApplicationsResponseBodyApplications(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LogoUrl') is not None:
             self.logo_url = m.get('LogoUrl')
+        if m.get('M2MClientStatus') is not None:
+            self.m_2mclient_status = m.get('M2MClientStatus')
         if m.get('ManagedServiceCode') is not None:
             self.managed_service_code = m.get('ManagedServiceCode')
+        if m.get('ResourceServerIdentifier') is not None:
+            self.resource_server_identifier = m.get('ResourceServerIdentifier')
+        if m.get('ResourceServerStatus') is not None:
+            self.resource_server_status = m.get('ResourceServerStatus')
         if m.get('ServiceManaged') is not None:
             self.service_managed = m.get('ServiceManaged')
         if m.get('SsoType') is not None:

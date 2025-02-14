@@ -1,3 +1,12 @@
+2025-02-14 Version: 1.8.1
+- Update API GetApplication: update response param.
+- Update API ListApplications: add param M2MClientStatus.
+- Update API ListApplications: add param ResourceServerStatus.
+- Update API ListApplications: add param SsoType.
+- Update API ListApplications: update response param.
+- Update API ListIdentityProviders: update response param.
+
+
 2025-01-15 Version: 1.8.0
 - Support API GetInstanceLicense.
 - Update API CreateIdentityProvider: update param LarkConfig.
