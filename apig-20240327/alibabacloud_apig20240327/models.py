@@ -133,22 +133,17 @@ class ApiKeyIdentityConfigApikeySource(TeaModel):
         return self
 
 
-class ApiKeyIdentityConfig(TeaModel):
+class ApiKeyIdentityConfigCredentials(TeaModel):
     def __init__(
         self,
         apikey: str = None,
-        apikey_source: ApiKeyIdentityConfigApikeySource = None,
         generate_mode: str = None,
-        type: str = None,
     ):
         self.apikey = apikey
-        self.apikey_source = apikey_source
         self.generate_mode = generate_mode
-        self.type = type
 
     def validate(self):
-        if self.apikey_source:
-            self.apikey_source.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -158,23 +153,64 @@ class ApiKeyIdentityConfig(TeaModel):
         result = dict()
         if self.apikey is not None:
             result['apikey'] = self.apikey
-        if self.apikey_source is not None:
-            result['apikeySource'] = self.apikey_source.to_map()
         if self.generate_mode is not None:
             result['generateMode'] = self.generate_mode
-        if self.type is not None:
-            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('apikey') is not None:
             self.apikey = m.get('apikey')
+        if m.get('generateMode') is not None:
+            self.generate_mode = m.get('generateMode')
+        return self
+
+
+class ApiKeyIdentityConfig(TeaModel):
+    def __init__(
+        self,
+        apikey_source: ApiKeyIdentityConfigApikeySource = None,
+        credentials: List[ApiKeyIdentityConfigCredentials] = None,
+        type: str = None,
+    ):
+        self.apikey_source = apikey_source
+        self.credentials = credentials
+        self.type = type
+
+    def validate(self):
+        if self.apikey_source:
+            self.apikey_source.validate()
+        if self.credentials:
+            for k in self.credentials:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apikey_source is not None:
+            result['apikeySource'] = self.apikey_source.to_map()
+        result['credentials'] = []
+        if self.credentials is not None:
+            for k in self.credentials:
+                result['credentials'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('apikeySource') is not None:
             temp_model = ApiKeyIdentityConfigApikeySource()
             self.apikey_source = temp_model.from_map(m['apikeySource'])
-        if m.get('generateMode') is not None:
-            self.generate_mode = m.get('generateMode')
+        self.credentials = []
+        if m.get('credentials') is not None:
+            for k in m.get('credentials'):
+                temp_model = ApiKeyIdentityConfigCredentials()
+                self.credentials.append(temp_model.from_map(k))
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -813,6 +849,39 @@ class Attachment(TeaModel):
         return self
 
 
+class AuthConfig(TeaModel):
+    def __init__(
+        self,
+        auth_mode: str = None,
+        auth_type: str = None,
+    ):
+        self.auth_mode = auth_mode
+        self.auth_type = auth_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_mode is not None:
+            result['authMode'] = self.auth_mode
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authMode') is not None:
+            self.auth_mode = m.get('authMode')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        return self
+
+
 class AuthorizationResourceInfo(TeaModel):
     def __init__(
         self,
@@ -974,6 +1043,45 @@ class CheckServiceLinkedRoleResult(TeaModel):
         m = m or dict()
         if m.get('existed') is not None:
             self.existed = m.get('existed')
+        return self
+
+
+class ConsumerInfo(TeaModel):
+    def __init__(
+        self,
+        consumer_id: str = None,
+        enable: bool = None,
+        name: str = None,
+    ):
+        self.consumer_id = consumer_id
+        self.enable = enable
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consumer_id is not None:
+            result['consumerId'] = self.consumer_id
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerId') is not None:
+            self.consumer_id = m.get('consumerId')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -2100,9 +2208,11 @@ class HttpApiApiInfo(TeaModel):
     def __init__(
         self,
         ai_protocols: List[str] = None,
+        auth_config: AuthConfig = None,
         base_path: str = None,
         deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
+        enabel_auth: bool = None,
         environments: List[HttpApiApiInfoEnvironments] = None,
         http_api_id: str = None,
         ingress_info: HttpApiApiInfoIngressInfo = None,
@@ -2113,9 +2223,11 @@ class HttpApiApiInfo(TeaModel):
         version_info: HttpApiVersionInfo = None,
     ):
         self.ai_protocols = ai_protocols
+        self.auth_config = auth_config
         self.base_path = base_path
         self.deploy_configs = deploy_configs
         self.description = description
+        self.enabel_auth = enabel_auth
         self.environments = environments
         self.http_api_id = http_api_id
         self.ingress_info = ingress_info
@@ -2126,6 +2238,8 @@ class HttpApiApiInfo(TeaModel):
         self.version_info = version_info
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.deploy_configs:
             for k in self.deploy_configs:
                 if k:
@@ -2147,6 +2261,8 @@ class HttpApiApiInfo(TeaModel):
         result = dict()
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.base_path is not None:
             result['basePath'] = self.base_path
         result['deployConfigs'] = []
@@ -2155,6 +2271,8 @@ class HttpApiApiInfo(TeaModel):
                 result['deployConfigs'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
+        if self.enabel_auth is not None:
+            result['enabelAuth'] = self.enabel_auth
         result['environments'] = []
         if self.environments is not None:
             for k in self.environments:
@@ -2179,6 +2297,9 @@ class HttpApiApiInfo(TeaModel):
         m = m or dict()
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('basePath') is not None:
             self.base_path = m.get('basePath')
         self.deploy_configs = []
@@ -2188,6 +2309,8 @@ class HttpApiApiInfo(TeaModel):
                 self.deploy_configs.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('enabelAuth') is not None:
+            self.enabel_auth = m.get('enabelAuth')
         self.environments = []
         if m.get('environments') is not None:
             for k in m.get('environments'):
@@ -2572,7 +2695,9 @@ class HttpApiResponseContract(TeaModel):
 class HttpApiOperation(TeaModel):
     def __init__(
         self,
+        auth_config: AuthConfig = None,
         description: str = None,
+        enable_auth: bool = None,
         method: str = None,
         mock: HttpApiMockContract = None,
         name: str = None,
@@ -2580,7 +2705,9 @@ class HttpApiOperation(TeaModel):
         request: HttpApiRequestContract = None,
         response: HttpApiResponseContract = None,
     ):
+        self.auth_config = auth_config
         self.description = description
+        self.enable_auth = enable_auth
         # This parameter is required.
         self.method = method
         self.mock = mock
@@ -2592,6 +2719,8 @@ class HttpApiOperation(TeaModel):
         self.response = response
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.mock:
             self.mock.validate()
         if self.request:
@@ -2605,8 +2734,12 @@ class HttpApiOperation(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.description is not None:
             result['description'] = self.description
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
         if self.method is not None:
             result['method'] = self.method
         if self.mock is not None:
@@ -2623,8 +2756,13 @@ class HttpApiOperation(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
         if m.get('method') is not None:
             self.method = m.get('method')
         if m.get('mock') is not None:
@@ -2646,8 +2784,10 @@ class HttpApiOperation(TeaModel):
 class HttpApiOperationInfo(TeaModel):
     def __init__(
         self,
+        auth_config: AuthConfig = None,
         create_timestamp: int = None,
         description: str = None,
+        enable_auth: bool = None,
         method: str = None,
         mock: HttpApiMockContract = None,
         name: str = None,
@@ -2656,8 +2796,10 @@ class HttpApiOperationInfo(TeaModel):
         request: HttpApiRequestContract = None,
         response: HttpApiResponseContract = None,
     ):
+        self.auth_config = auth_config
         self.create_timestamp = create_timestamp
         self.description = description
+        self.enable_auth = enable_auth
         self.method = method
         self.mock = mock
         self.name = name
@@ -2667,6 +2809,8 @@ class HttpApiOperationInfo(TeaModel):
         self.response = response
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.mock:
             self.mock.validate()
         if self.request:
@@ -2680,10 +2824,14 @@ class HttpApiOperationInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
         if self.description is not None:
             result['description'] = self.description
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
         if self.method is not None:
             result['method'] = self.method
         if self.mock is not None:
@@ -2702,10 +2850,15 @@ class HttpApiOperationInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
         if m.get('method') is not None:
             self.method = m.get('method')
         if m.get('mock') is not None:
@@ -4902,7 +5055,7 @@ class SslCertMetaInfo(TeaModel):
         return self
 
 
-class TlsCipherSuitesConfigCipherSuites(TeaModel):
+class TlsCipherSuitesConfigTlsCipherSuite(TeaModel):
     def __init__(
         self,
         name: str = None,
@@ -4938,15 +5091,15 @@ class TlsCipherSuitesConfigCipherSuites(TeaModel):
 class TlsCipherSuitesConfig(TeaModel):
     def __init__(
         self,
-        cipher_suites: List[TlsCipherSuitesConfigCipherSuites] = None,
         config_type: str = None,
+        tls_cipher_suite: List[TlsCipherSuitesConfigTlsCipherSuite] = None,
     ):
-        self.cipher_suites = cipher_suites
         self.config_type = config_type
+        self.tls_cipher_suite = tls_cipher_suite
 
     def validate(self):
-        if self.cipher_suites:
-            for k in self.cipher_suites:
+        if self.tls_cipher_suite:
+            for k in self.tls_cipher_suite:
                 if k:
                     k.validate()
 
@@ -4956,23 +5109,23 @@ class TlsCipherSuitesConfig(TeaModel):
             return _map
 
         result = dict()
-        result['cipherSuites'] = []
-        if self.cipher_suites is not None:
-            for k in self.cipher_suites:
-                result['cipherSuites'].append(k.to_map() if k else None)
         if self.config_type is not None:
             result['configType'] = self.config_type
+        result['tlsCipherSuite'] = []
+        if self.tls_cipher_suite is not None:
+            for k in self.tls_cipher_suite:
+                result['tlsCipherSuite'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.cipher_suites = []
-        if m.get('cipherSuites') is not None:
-            for k in m.get('cipherSuites'):
-                temp_model = TlsCipherSuitesConfigCipherSuites()
-                self.cipher_suites.append(temp_model.from_map(k))
         if m.get('configType') is not None:
             self.config_type = m.get('configType')
+        self.tls_cipher_suite = []
+        if m.get('tlsCipherSuite') is not None:
+            for k in m.get('tlsCipherSuite'):
+                temp_model = TlsCipherSuitesConfigTlsCipherSuite()
+                self.tls_cipher_suite.append(temp_model.from_map(k))
         return self
 
 
@@ -5101,6 +5254,119 @@ class AddGatewaySecurityGroupRuleResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        service: str = None,
+    ):
+        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDomainRequest(TeaModel):
     def __init__(
         self,
@@ -5134,7 +5400,9 @@ class CreateDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol = protocol
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The TLS cipher suites config.
         self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
@@ -5342,6 +5610,7 @@ class CreateEnvironmentRequest(TeaModel):
         # 
         # This parameter is required.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5560,9 +5829,11 @@ class CreateHttpApiRequest(TeaModel):
     def __init__(
         self,
         ai_protocols: List[str] = None,
+        auth_config: AuthConfig = None,
         base_path: str = None,
         deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
+        enable_auth: bool = None,
         ingress_config: CreateHttpApiRequestIngressConfig = None,
         name: str = None,
         protocols: List[str] = None,
@@ -5570,12 +5841,16 @@ class CreateHttpApiRequest(TeaModel):
         type: str = None,
         version_config: HttpApiVersionConfig = None,
     ):
+        # The AI protocols list.
         self.ai_protocols = ai_protocols
+        self.auth_config = auth_config
         # Base path of the API, which must start with a \\"/\\".
         self.base_path = base_path
+        # The deploy configs.
         self.deploy_configs = deploy_configs
         # Description of the API.
         self.description = description
+        self.enable_auth = enable_auth
         # Configuration information for the HTTP Ingress API.
         self.ingress_config = ingress_config
         # Name of the API.
@@ -5584,6 +5859,7 @@ class CreateHttpApiRequest(TeaModel):
         self.name = name
         # List of API access protocols.
         self.protocols = protocols
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Type of the HTTP API.
         # - Http
@@ -5595,6 +5871,8 @@ class CreateHttpApiRequest(TeaModel):
         self.version_config = version_config
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.deploy_configs:
             for k in self.deploy_configs:
                 if k:
@@ -5612,6 +5890,8 @@ class CreateHttpApiRequest(TeaModel):
         result = dict()
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.base_path is not None:
             result['basePath'] = self.base_path
         result['deployConfigs'] = []
@@ -5620,6 +5900,8 @@ class CreateHttpApiRequest(TeaModel):
                 result['deployConfigs'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
         if self.name is not None:
@@ -5638,6 +5920,9 @@ class CreateHttpApiRequest(TeaModel):
         m = m or dict()
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('basePath') is not None:
             self.base_path = m.get('basePath')
         self.deploy_configs = []
@@ -5647,6 +5932,8 @@ class CreateHttpApiRequest(TeaModel):
                 self.deploy_configs.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
         if m.get('ingressConfig') is not None:
             temp_model = CreateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
@@ -5983,6 +6270,635 @@ class CreateHttpApiOperationResponse(TeaModel):
         return self
 
 
+class CreateHttpApiRouteRequestBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        # Service port, not provided for dynamic ports.
+        self.port = port
+        # Service protocol:
+        # - HTTP.
+        # - HTTPS.
+        self.protocol = protocol
+        # Service ID.
+        self.service_id = service_id
+        # Service version, valid only in label-based scenarios.
+        self.version = version
+        # Percentage value of traffic distribution.
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class CreateHttpApiRouteRequestBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[CreateHttpApiRouteRequestBackendConfigServices] = None,
+    ):
+        # Backend service scenario.
+        # - SingleService: Single service.
+        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
+        # - Mock: Mock service.
+        # - Redirect: Redirect service.
+        self.scene = scene
+        # List of backend services.
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = CreateHttpApiRouteRequestBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class CreateHttpApiRouteRequest(TeaModel):
+    def __init__(
+        self,
+        backend_config: CreateHttpApiRouteRequestBackendConfig = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        environment_id: str = None,
+        match: HttpRouteMatch = None,
+        name: str = None,
+    ):
+        # Backend service configuration for the route.
+        self.backend_config = backend_config
+        # Route description.
+        self.description = description
+        # Domain IDs.
+        self.domain_ids = domain_ids
+        # Environment ID.
+        self.environment_id = environment_id
+        # Route match rules.
+        self.match = match
+        # Route name.
+        self.name = name
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendConfig') is not None:
+            temp_model = CreateHttpApiRouteRequestBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateHttpApiRouteResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        route_id: str = None,
+    ):
+        # Route ID。
+        self.route_id = route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
+class CreateHttpApiRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateHttpApiRouteResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response data.
+        self.data = data
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateHttpApiRouteResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateHttpApiRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHttpApiRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        config: str = None,
+        description: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.class_name = class_name
+        # This parameter is required.
+        self.config = config
+        self.description = description
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['className'] = self.class_name
+        if self.config is not None:
+            result['config'] = self.config
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('className') is not None:
+            self.class_name = m.get('className')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreatePolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        policy_id: str = None,
+    ):
+        self.policy_id = policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        return self
+
+
+class CreatePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreatePolicyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreatePolicyResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreatePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePolicyAttachmentRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_id: str = None,
+        attach_resource_type: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        policy_id: str = None,
+    ):
+        # This parameter is required.
+        self.attach_resource_id = attach_resource_id
+        # This parameter is required.
+        self.attach_resource_type = attach_resource_type
+        # This parameter is required.
+        self.environment_id = environment_id
+        # This parameter is required.
+        self.gateway_id = gateway_id
+        # This parameter is required.
+        self.policy_id = policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        return self
+
+
+class CreatePolicyAttachmentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        policy_attachment_id: str = None,
+    ):
+        self.policy_attachment_id = policy_attachment_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_attachment_id is not None:
+            result['policyAttachmentId'] = self.policy_attachment_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policyAttachmentId') is not None:
+            self.policy_attachment_id = m.get('policyAttachmentId')
+        return self
+
+
+class CreatePolicyAttachmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreatePolicyAttachmentResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreatePolicyAttachmentResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreatePolicyAttachmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePolicyAttachmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePolicyAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainResponseBody(TeaModel):
     def __init__(
         self,
@@ -6232,6 +7148,117 @@ class DeleteGatewayResponse(TeaModel):
         return self
 
 
+class DeleteGatewaySecurityGroupRuleRequest(TeaModel):
+    def __init__(
+        self,
+        cascading_delete: bool = None,
+    ):
+        # Whether to cascade delete the security group rules.
+        self.cascading_delete = cascading_delete
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cascading_delete is not None:
+            result['cascadingDelete'] = self.cascading_delete
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cascadingDelete') is not None:
+            self.cascading_delete = m.get('cascadingDelete')
+        return self
+
+
+class DeleteGatewaySecurityGroupRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteGatewaySecurityGroupRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteGatewaySecurityGroupRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteGatewaySecurityGroupRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteHttpApiResponseBody(TeaModel):
     def __init__(
         self,
@@ -6398,6 +7425,928 @@ class DeleteHttpApiOperationResponse(TeaModel):
         return self
 
 
+class DeleteHttpApiRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteHttpApiRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHttpApiRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeletePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePolicyAttachmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeletePolicyAttachmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePolicyAttachmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePolicyAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(TeaModel):
+    def __init__(
+        self,
+        match: HttpApiBackendMatchConditions = None,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        self.match = match
+        self.port = port
+        self.protocol = protocol
+        self.service_id = service_id
+        self.version = version
+        self.weight = weight
+
+    def validate(self):
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('match') is not None:
+            temp_model = HttpApiBackendMatchConditions()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class DeployHttpApiRequestRestApiConfigEnvironment(TeaModel):
+    def __init__(
+        self,
+        backend_scene: str = None,
+        custom_domain_ids: List[str] = None,
+        environment_id: str = None,
+        service_configs: List[DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
+    ):
+        self.backend_scene = backend_scene
+        self.custom_domain_ids = custom_domain_ids
+        self.environment_id = environment_id
+        self.service_configs = service_configs
+
+    def validate(self):
+        if self.service_configs:
+            for k in self.service_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_scene is not None:
+            result['backendScene'] = self.backend_scene
+        if self.custom_domain_ids is not None:
+            result['customDomainIds'] = self.custom_domain_ids
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        result['serviceConfigs'] = []
+        if self.service_configs is not None:
+            for k in self.service_configs:
+                result['serviceConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendScene') is not None:
+            self.backend_scene = m.get('backendScene')
+        if m.get('customDomainIds') is not None:
+            self.custom_domain_ids = m.get('customDomainIds')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        self.service_configs = []
+        if m.get('serviceConfigs') is not None:
+            for k in m.get('serviceConfigs'):
+                temp_model = DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs()
+                self.service_configs.append(temp_model.from_map(k))
+        return self
+
+
+class DeployHttpApiRequestRestApiConfig(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        environment: DeployHttpApiRequestRestApiConfigEnvironment = None,
+        revision_id: str = None,
+    ):
+        self.description = description
+        self.environment = environment
+        self.revision_id = revision_id
+
+    def validate(self):
+        if self.environment:
+            self.environment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.environment is not None:
+            result['environment'] = self.environment.to_map()
+        if self.revision_id is not None:
+            result['revisionId'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('environment') is not None:
+            temp_model = DeployHttpApiRequestRestApiConfigEnvironment()
+            self.environment = temp_model.from_map(m['environment'])
+        if m.get('revisionId') is not None:
+            self.revision_id = m.get('revisionId')
+        return self
+
+
+class DeployHttpApiRequest(TeaModel):
+    def __init__(
+        self,
+        rest_api_config: DeployHttpApiRequestRestApiConfig = None,
+        route_id: str = None,
+    ):
+        self.rest_api_config = rest_api_config
+        self.route_id = route_id
+
+    def validate(self):
+        if self.rest_api_config:
+            self.rest_api_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rest_api_config is not None:
+            result['restApiConfig'] = self.rest_api_config.to_map()
+        if self.route_id is not None:
+            result['routeId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('restApiConfig') is not None:
+            temp_model = DeployHttpApiRequestRestApiConfig()
+            self.rest_api_config = temp_model.from_map(m['restApiConfig'])
+        if m.get('routeId') is not None:
+            self.route_id = m.get('routeId')
+        return self
+
+
+class DeployHttpApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeployHttpApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeployHttpApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportHttpApiResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        spec_content_base_64: str = None,
+    ):
+        # Base64编码的API定义。
+        self.spec_content_base_64 = spec_content_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spec_content_base_64 is not None:
+            result['specContentBase64'] = self.spec_content_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('specContentBase64') is not None:
+            self.spec_content_base_64 = m.get('specContentBase64')
+        return self
+
+
+class ExportHttpApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ExportHttpApiResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # API definition information.
+        self.data = data
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ExportHttpApiResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ExportHttpApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportHttpApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDashboardRequestFilter(TeaModel):
+    def __init__(
+        self,
+        route_name: str = None,
+    ):
+        self.route_name = route_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_name is not None:
+            result['routeName'] = self.route_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('routeName') is not None:
+            self.route_name = m.get('routeName')
+        return self
+
+
+class GetDashboardRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        api_id: str = None,
+        filter: GetDashboardRequestFilter = None,
+        name: str = None,
+        plugin_class_id: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.api_id = api_id
+        self.filter = filter
+        self.name = name
+        self.plugin_class_id = plugin_class_id
+        self.source = source
+
+    def validate(self):
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['acceptLanguage'] = self.accept_language
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.filter is not None:
+            result['filter'] = self.filter.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.plugin_class_id is not None:
+            result['pluginClassId'] = self.plugin_class_id
+        if self.source is not None:
+            result['source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('acceptLanguage') is not None:
+            self.accept_language = m.get('acceptLanguage')
+        if m.get('apiId') is not None:
+            self.api_id = m.get('apiId')
+        if m.get('filter') is not None:
+            temp_model = GetDashboardRequestFilter()
+            self.filter = temp_model.from_map(m['filter'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pluginClassId') is not None:
+            self.plugin_class_id = m.get('pluginClassId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        return self
+
+
+class GetDashboardShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        api_id: str = None,
+        filter_shrink: str = None,
+        name: str = None,
+        plugin_class_id: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.api_id = api_id
+        self.filter_shrink = filter_shrink
+        self.name = name
+        self.plugin_class_id = plugin_class_id
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['acceptLanguage'] = self.accept_language
+        if self.api_id is not None:
+            result['apiId'] = self.api_id
+        if self.filter_shrink is not None:
+            result['filter'] = self.filter_shrink
+        if self.name is not None:
+            result['name'] = self.name
+        if self.plugin_class_id is not None:
+            result['pluginClassId'] = self.plugin_class_id
+        if self.source is not None:
+            result['source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('acceptLanguage') is not None:
+            self.accept_language = m.get('acceptLanguage')
+        if m.get('apiId') is not None:
+            self.api_id = m.get('apiId')
+        if m.get('filter') is not None:
+            self.filter_shrink = m.get('filter')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pluginClassId') is not None:
+            self.plugin_class_id = m.get('pluginClassId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        return self
+
+
+class GetDashboardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        name: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.name = name
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.title is not None:
+            result['title'] = self.title
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GetDashboardResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetDashboardResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetDashboardResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetDashboardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDashboardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDashboardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDomainRequest(TeaModel):
     def __init__(
         self,
@@ -6470,8 +8419,8 @@ class GetDomainResponseBodyData(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
-        ca_cert_indentifier: str = None,
-        cert_indentifier: str = None,
+        ca_cert_identifier: str = None,
+        cert_identifier: str = None,
         cert_name: str = None,
         create_from: str = None,
         create_timestamp: int = None,
@@ -6494,10 +8443,8 @@ class GetDomainResponseBodyData(TeaModel):
     ):
         # Encryption algorithm name
         self.algorithm = algorithm
-        # Cloud Shield CA certificate identity.
-        self.ca_cert_indentifier = ca_cert_indentifier
-        # Cloud Shield certificate identity.
-        self.cert_indentifier = cert_indentifier
+        self.ca_cert_identifier = ca_cert_identifier
+        self.cert_identifier = cert_identifier
         # Certificate name
         self.cert_name = cert_name
         # Where it was created from.
@@ -6551,10 +8498,10 @@ class GetDomainResponseBodyData(TeaModel):
         result = dict()
         if self.algorithm is not None:
             result['algorithm'] = self.algorithm
-        if self.ca_cert_indentifier is not None:
-            result['caCertIndentifier'] = self.ca_cert_indentifier
-        if self.cert_indentifier is not None:
-            result['certIndentifier'] = self.cert_indentifier
+        if self.ca_cert_identifier is not None:
+            result['caCertIdentifier'] = self.ca_cert_identifier
+        if self.cert_identifier is not None:
+            result['certIdentifier'] = self.cert_identifier
         if self.cert_name is not None:
             result['certName'] = self.cert_name
         if self.create_from is not None:
@@ -6599,10 +8546,10 @@ class GetDomainResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('algorithm') is not None:
             self.algorithm = m.get('algorithm')
-        if m.get('caCertIndentifier') is not None:
-            self.ca_cert_indentifier = m.get('caCertIndentifier')
-        if m.get('certIndentifier') is not None:
-            self.cert_indentifier = m.get('certIndentifier')
+        if m.get('caCertIdentifier') is not None:
+            self.ca_cert_identifier = m.get('caCertIdentifier')
+        if m.get('certIdentifier') is not None:
+            self.cert_identifier = m.get('certIdentifier')
         if m.get('certName') is not None:
             self.cert_name = m.get('certName')
         if m.get('createFrom') is not None:
@@ -6744,6 +8691,7 @@ class GetEnvironmentRequest(TeaModel):
         with_statistics: bool = None,
         with_vpc_info: bool = None,
     ):
+        # Indicates whether to return online resource info.
         self.with_statistics = with_statistics
         # Option for vpc info.
         self.with_vpc_info = with_vpc_info
@@ -6778,7 +8726,9 @@ class GetEnvironmentResponseBodyDataStatisticsInfo(TeaModel):
         resource_statistics: List[ResourceStatistic] = None,
         total_count: int = None,
     ):
+        # The array of related resource information.
         self.resource_statistics = resource_statistics
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6842,7 +8792,9 @@ class GetEnvironmentResponseBodyData(TeaModel):
         self.gateway_info = gateway_info
         # Environment name.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Related resource information.
         self.statistics_info = statistics_info
         # List of subdomains.
         self.sub_domain_infos = sub_domain_infos
@@ -7236,7 +9188,9 @@ class GetGatewayResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource.
         self.key = key
+        # The tag value of the resource.
         self.value = value
 
     def validate(self):
@@ -7457,6 +9411,7 @@ class GetGatewayResponseBodyData(TeaModel):
         self.name = name
         # Number of gateway instance nodes.
         self.replicas = replicas
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The security group of the gateway.
         self.security_group = security_group
@@ -7474,6 +9429,7 @@ class GetGatewayResponseBodyData(TeaModel):
         # - Deleting: Deleting.
         # - DeleteFailed: Deletion failed.
         self.status = status
+        # The resource tags.
         self.tags = tags
         # Target version of the gateway. When it is inconsistent with the current version, an upgrade can be performed.
         self.target_version = target_version
@@ -7912,9 +9868,13 @@ class GetHttpApiRouteResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response status code.
         self.code = code
+        # Route detail data.
         self.data = data
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7992,6 +9952,1162 @@ class GetHttpApiRouteResponse(TeaModel):
         return self
 
 
+class GetPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PolicyDetailInfo = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = PolicyDetailInfo()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPolicyAttachmentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attach_resource_id: str = None,
+        attach_resource_type: str = None,
+        config: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        policy_attachment_id: str = None,
+        policy_id: str = None,
+    ):
+        self.attach_resource_id = attach_resource_id
+        self.attach_resource_type = attach_resource_type
+        self.config = config
+        self.environment_id = environment_id
+        self.gateway_id = gateway_id
+        self.policy_attachment_id = policy_attachment_id
+        self.policy_id = policy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.config is not None:
+            result['config'] = self.config
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.policy_attachment_id is not None:
+            result['policyAttachmentId'] = self.policy_attachment_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('policyAttachmentId') is not None:
+            self.policy_attachment_id = m.get('policyAttachmentId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        return self
+
+
+class GetPolicyAttachmentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPolicyAttachmentResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetPolicyAttachmentResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetPolicyAttachmentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPolicyAttachmentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPolicyAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceOverviewResponseBodyDataApi(TeaModel):
+    def __init__(
+        self,
+        published_count: int = None,
+        total_count: int = None,
+    ):
+        self.published_count = published_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.published_count is not None:
+            result['publishedCount'] = self.published_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('publishedCount') is not None:
+            self.published_count = m.get('publishedCount')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class GetResourceOverviewResponseBodyDataGateway(TeaModel):
+    def __init__(
+        self,
+        running_count: int = None,
+        total_count: int = None,
+    ):
+        self.running_count = running_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.running_count is not None:
+            result['runningCount'] = self.running_count
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('runningCount') is not None:
+            self.running_count = m.get('runningCount')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class GetResourceOverviewResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        api: GetResourceOverviewResponseBodyDataApi = None,
+        gateway: GetResourceOverviewResponseBodyDataGateway = None,
+    ):
+        self.api = api
+        self.gateway = gateway
+
+    def validate(self):
+        if self.api:
+            self.api.validate()
+        if self.gateway:
+            self.gateway.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api is not None:
+            result['api'] = self.api.to_map()
+        if self.gateway is not None:
+            result['gateway'] = self.gateway.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('api') is not None:
+            temp_model = GetResourceOverviewResponseBodyDataApi()
+            self.api = temp_model.from_map(m['api'])
+        if m.get('gateway') is not None:
+            temp_model = GetResourceOverviewResponseBodyDataGateway()
+            self.gateway = temp_model.from_map(m['gateway'])
+        return self
+
+
+class GetResourceOverviewResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetResourceOverviewResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetResourceOverviewResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetResourceOverviewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceOverviewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceOverviewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTraceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['acceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('acceptLanguage') is not None:
+            self.accept_language = m.get('acceptLanguage')
+        return self
+
+
+class GetTraceConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        sample_ratio: int = None,
+        service_id: str = None,
+        service_port: str = None,
+        trace_type: str = None,
+    ):
+        self.enable = enable
+        self.sample_ratio = sample_ratio
+        self.service_id = service_id
+        self.service_port = service_port
+        self.trace_type = trace_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.sample_ratio is not None:
+            result['sampleRatio'] = self.sample_ratio
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.service_port is not None:
+            result['servicePort'] = self.service_port
+        if self.trace_type is not None:
+            result['traceType'] = self.trace_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('sampleRatio') is not None:
+            self.sample_ratio = m.get('sampleRatio')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('servicePort') is not None:
+            self.service_port = m.get('servicePort')
+        if m.get('traceType') is not None:
+            self.trace_type = m.get('traceType')
+        return self
+
+
+class GetTraceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetTraceConfigResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetTraceConfigResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetTraceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTraceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTraceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportHttpApiRequestSpecOssConfig(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        object_key: str = None,
+        region_id: str = None,
+    ):
+        # The name of the Object Storage Service (OSS) bucket that stores the dictionary file.
+        self.bucket_name = bucket_name
+        # The file path.
+        self.object_key = object_key
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        if self.object_key is not None:
+            result['objectKey'] = self.object_key
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        if m.get('objectKey') is not None:
+            self.object_key = m.get('objectKey')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ImportHttpApiRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dry_run: bool = None,
+        name: str = None,
+        resource_group_id: str = None,
+        spec_content_base_64: str = None,
+        spec_file_url: str = None,
+        spec_oss_config: ImportHttpApiRequestSpecOssConfig = None,
+        strategy: str = None,
+        target_http_api_id: str = None,
+        version_config: HttpApiVersionConfig = None,
+    ):
+        # The description of the imported API. If not provided, it will be extracted from the API definition. The length is limited to 255 bytes.
+        self.description = description
+        # Pre-import check. If enabled, only the check will be performed without importing the API.
+        self.dry_run = dry_run
+        # The name of the imported API. If not provided, it will be extracted from the API definition file. If the API name and version configuration already exist, this import will update the existing API definition based on the `strategy` field.
+        self.name = name
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Base64 encoded API definition, supporting OAS2.0 and OAS3.0 specifications, in YAML or JSON format. It has a higher priority than the `specFileUrl` parameter. If the file size exceeds 10MB, please use the `specFileUrl` parameter to transfer.
+        self.spec_content_base_64 = spec_content_base_64
+        # Download URL for the API definition file, which must be accessible from the public network or via an internal OSS download address within the same region. The file URL must have download permissions. For non-publicly readable OSS file links, refer to the documentation at https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects, and provide a URL with download permissions. Currently, only API definition files stored on OSS are supported.
+        self.spec_file_url = spec_file_url
+        # The oss config info.
+        self.spec_oss_config = spec_oss_config
+        # When the imported API name and version management match an existing API, you need to specify an update strategy.
+        # - SpecOnly: Completely based on the imported file.
+        # - SpecFirst: Prioritize the imported file, add new interfaces and update existing ones, while keeping interfaces not mentioned in the file unchanged.
+        # - ExistFirst: Prioritize the existing API, only add new interfaces without updating existing ones.
+        # If not specified, the default strategy is ExistFirst.
+        self.strategy = strategy
+        # If this field is specified, this import will update the specified API instead of importing or searching for an existing API based on the API name and version management configuration. The target API must be of REST type.
+        self.target_http_api_id = target_http_api_id
+        # API versioning configuration. If versioning is enabled, and the version number and API name match an existing API, this import will be treated as an update. If versioning is not enabled, and the API name matches an existing API, this import will also be treated as an update.
+        self.version_config = version_config
+
+    def validate(self):
+        if self.spec_oss_config:
+            self.spec_oss_config.validate()
+        if self.version_config:
+            self.version_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        if self.name is not None:
+            result['name'] = self.name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.spec_content_base_64 is not None:
+            result['specContentBase64'] = self.spec_content_base_64
+        if self.spec_file_url is not None:
+            result['specFileUrl'] = self.spec_file_url
+        if self.spec_oss_config is not None:
+            result['specOssConfig'] = self.spec_oss_config.to_map()
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+        if self.target_http_api_id is not None:
+            result['targetHttpApiId'] = self.target_http_api_id
+        if self.version_config is not None:
+            result['versionConfig'] = self.version_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('specContentBase64') is not None:
+            self.spec_content_base_64 = m.get('specContentBase64')
+        if m.get('specFileUrl') is not None:
+            self.spec_file_url = m.get('specFileUrl')
+        if m.get('specOssConfig') is not None:
+            temp_model = ImportHttpApiRequestSpecOssConfig()
+            self.spec_oss_config = temp_model.from_map(m['specOssConfig'])
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
+        if m.get('targetHttpApiId') is not None:
+            self.target_http_api_id = m.get('targetHttpApiId')
+        if m.get('versionConfig') is not None:
+            temp_model = HttpApiVersionConfig()
+            self.version_config = temp_model.from_map(m['versionConfig'])
+        return self
+
+
+class ImportHttpApiResponseBodyDataDryRunInfoFailureComponents(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        name: str = None,
+    ):
+        # Error message.
+        self.error_message = error_message
+        # 数据结构名称。
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ImportHttpApiResponseBodyDataDryRunInfoFailureOperations(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        method: str = None,
+        path: str = None,
+    ):
+        # Error message
+        self.error_message = error_message
+        # API method.
+        self.method = method
+        # API path.
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.method is not None:
+            result['method'] = self.method
+        if self.path is not None:
+            result['path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        return self
+
+
+class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        name: str = None,
+    ):
+        # Action to be executed after the precheck.
+        # - Create: Create
+        # - Update: Update
+        self.action = action
+        # Data structure name.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        method: str = None,
+        name: str = None,
+        path: str = None,
+    ):
+        # Action to be executed after the precheck.
+        # - Create: Create
+        # - Update: Update
+        self.action = action
+        # API method.
+        self.method = method
+        # API name.
+        self.name = name
+        # API path.
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.method is not None:
+            result['method'] = self.method
+        if self.name is not None:
+            result['name'] = self.name
+        if self.path is not None:
+            result['path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('method') is not None:
+            self.method = m.get('method')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        return self
+
+
+class ImportHttpApiResponseBodyDataDryRunInfo(TeaModel):
+    def __init__(
+        self,
+        error_messages: List[str] = None,
+        exist_http_api_info: HttpApiApiInfo = None,
+        failure_components: List[ImportHttpApiResponseBodyDataDryRunInfoFailureComponents] = None,
+        failure_operations: List[ImportHttpApiResponseBodyDataDryRunInfoFailureOperations] = None,
+        success_components: List[ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents] = None,
+        success_operations: List[ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations] = None,
+        warning_messages: List[str] = None,
+    ):
+        # Error messages. If there are any error messages, the API cannot be imported successfully.
+        self.error_messages = error_messages
+        # 已存在的API信息。若该字段非空，则导入动作将更新该API。
+        self.exist_http_api_info = exist_http_api_info
+        # List of data structures that failed the precheck.
+        self.failure_components = failure_components
+        # List of APIs that failed the precheck.
+        self.failure_operations = failure_operations
+        # List of data structures that passed the precheck.
+        self.success_components = success_components
+        # List of successfully pre-checked interfaces.
+        self.success_operations = success_operations
+        # Warning messages. If there are any warning messages, some interfaces or data interfaces may not be imported successfully.
+        self.warning_messages = warning_messages
+
+    def validate(self):
+        if self.exist_http_api_info:
+            self.exist_http_api_info.validate()
+        if self.failure_components:
+            for k in self.failure_components:
+                if k:
+                    k.validate()
+        if self.failure_operations:
+            for k in self.failure_operations:
+                if k:
+                    k.validate()
+        if self.success_components:
+            for k in self.success_components:
+                if k:
+                    k.validate()
+        if self.success_operations:
+            for k in self.success_operations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_messages is not None:
+            result['errorMessages'] = self.error_messages
+        if self.exist_http_api_info is not None:
+            result['existHttpApiInfo'] = self.exist_http_api_info.to_map()
+        result['failureComponents'] = []
+        if self.failure_components is not None:
+            for k in self.failure_components:
+                result['failureComponents'].append(k.to_map() if k else None)
+        result['failureOperations'] = []
+        if self.failure_operations is not None:
+            for k in self.failure_operations:
+                result['failureOperations'].append(k.to_map() if k else None)
+        result['successComponents'] = []
+        if self.success_components is not None:
+            for k in self.success_components:
+                result['successComponents'].append(k.to_map() if k else None)
+        result['successOperations'] = []
+        if self.success_operations is not None:
+            for k in self.success_operations:
+                result['successOperations'].append(k.to_map() if k else None)
+        if self.warning_messages is not None:
+            result['warningMessages'] = self.warning_messages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessages') is not None:
+            self.error_messages = m.get('errorMessages')
+        if m.get('existHttpApiInfo') is not None:
+            temp_model = HttpApiApiInfo()
+            self.exist_http_api_info = temp_model.from_map(m['existHttpApiInfo'])
+        self.failure_components = []
+        if m.get('failureComponents') is not None:
+            for k in m.get('failureComponents'):
+                temp_model = ImportHttpApiResponseBodyDataDryRunInfoFailureComponents()
+                self.failure_components.append(temp_model.from_map(k))
+        self.failure_operations = []
+        if m.get('failureOperations') is not None:
+            for k in m.get('failureOperations'):
+                temp_model = ImportHttpApiResponseBodyDataDryRunInfoFailureOperations()
+                self.failure_operations.append(temp_model.from_map(k))
+        self.success_components = []
+        if m.get('successComponents') is not None:
+            for k in m.get('successComponents'):
+                temp_model = ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents()
+                self.success_components.append(temp_model.from_map(k))
+        self.success_operations = []
+        if m.get('successOperations') is not None:
+            for k in m.get('successOperations'):
+                temp_model = ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations()
+                self.success_operations.append(temp_model.from_map(k))
+        if m.get('warningMessages') is not None:
+            self.warning_messages = m.get('warningMessages')
+        return self
+
+
+class ImportHttpApiResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dry_run_info: ImportHttpApiResponseBodyDataDryRunInfo = None,
+        http_api_id: str = None,
+        name: str = None,
+    ):
+        # Pre-import check result.
+        self.dry_run_info = dry_run_info
+        # HTTP API ID.
+        self.http_api_id = http_api_id
+        # API name.
+        self.name = name
+
+    def validate(self):
+        if self.dry_run_info:
+            self.dry_run_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run_info is not None:
+            result['dryRunInfo'] = self.dry_run_info.to_map()
+        if self.http_api_id is not None:
+            result['httpApiId'] = self.http_api_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dryRunInfo') is not None:
+            temp_model = ImportHttpApiResponseBodyDataDryRunInfo()
+            self.dry_run_info = temp_model.from_map(m['dryRunInfo'])
+        if m.get('httpApiId') is not None:
+            self.http_api_id = m.get('httpApiId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ImportHttpApiResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ImportHttpApiResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # API information.
+        self.data = data
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ImportHttpApiResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ImportHttpApiResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportHttpApiResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDomainsRequest(TeaModel):
     def __init__(
         self,
@@ -8009,6 +11125,7 @@ class ListDomainsRequest(TeaModel):
         self.page_number = page_number
         # Number of items per page, default is 10.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8219,6 +11336,7 @@ class ListEnvironmentsRequest(TeaModel):
         self.page_number = page_number
         # Page size, default is 10.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8414,13 +11532,15 @@ class ListEnvironmentsResponse(TeaModel):
         return self
 
 
-class ListGatewaysRequestTags(TeaModel):
+class ListGatewaysRequestTag(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -8456,24 +11576,26 @@ class ListGatewaysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
-        tags: List[ListGatewaysRequestTags] = None,
+        tag: List[ListGatewaysRequestTag] = None,
     ):
-        # Query exactly by gateway ID.
+        # Query exactly by Gateway ID.
         self.gateway_id = gateway_id
         # Keyword, search with full match, case-insensitive.
         self.keyword = keyword
-        # Query exactly by gateway name.
+        # Query exactly by Gateway name.
         self.name = name
         # Page number.
         self.page_number = page_number
         # Page size.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        self.tags = tags
+        # Filter list by tags
+        self.tag = tag
 
     def validate(self):
-        if self.tags:
-            for k in self.tags:
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -8495,10 +11617,10 @@ class ListGatewaysRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
-        result['tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['tags'].append(k.to_map() if k else None)
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8515,11 +11637,11 @@ class ListGatewaysRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
-        self.tags = []
-        if m.get('tags') is not None:
-            for k in m.get('tags'):
-                temp_model = ListGatewaysRequestTags()
-                self.tags.append(temp_model.from_map(k))
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = ListGatewaysRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -8532,20 +11654,22 @@ class ListGatewaysShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
-        tags_shrink: str = None,
+        tag_shrink: str = None,
     ):
-        # Query exactly by gateway ID.
+        # Query exactly by Gateway ID.
         self.gateway_id = gateway_id
         # Keyword, search with full match, case-insensitive.
         self.keyword = keyword
-        # Query exactly by gateway name.
+        # Query exactly by Gateway name.
         self.name = name
         # Page number.
         self.page_number = page_number
         # Page size.
         self.page_size = page_size
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        self.tags_shrink = tags_shrink
+        # Filter list by tags
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -8568,8 +11692,8 @@ class ListGatewaysShrinkRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
-        if self.tags_shrink is not None:
-            result['tags'] = self.tags_shrink
+        if self.tag_shrink is not None:
+            result['tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -8586,8 +11710,8 @@ class ListGatewaysShrinkRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
-        if m.get('tags') is not None:
-            self.tags_shrink = m.get('tags')
+        if m.get('tag') is not None:
+            self.tag_shrink = m.get('tag')
         return self
 
 
@@ -8655,7 +11779,7 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(TeaModel):
         self.gateway_default = gateway_default
         # Load balancer ID.
         self.load_balancer_id = load_balancer_id
-        # Mode of load balancer provision for the gateway:
+        # Load balancer provision mode for the gateway:
         # - Managed: Managed by the Cloud Native API Gateway.
         self.mode = mode
         # List of listening ports.
@@ -8760,11 +11884,13 @@ class ListGatewaysResponseBodyDataItemsSecurityGroup(TeaModel):
 class ListGatewaysResponseBodyDataItemsTags(TeaModel):
     def __init__(
         self,
-        tag_key: str = None,
-        tag_value: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        # The key of the tag.
+        self.key = key
+        # The value of the tag.
+        self.value = value
 
     def validate(self):
         pass
@@ -8775,18 +11901,18 @@ class ListGatewaysResponseBodyDataItemsTags(TeaModel):
             return _map
 
         result = dict()
-        if self.tag_key is not None:
-            result['tagKey'] = self.tag_key
-        if self.tag_value is not None:
-            result['tagValue'] = self.tag_value
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('tagKey') is not None:
-            self.tag_key = m.get('tagKey')
-        if m.get('tagValue') is not None:
-            self.tag_value = m.get('tagValue')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -8926,6 +12052,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         security_group: ListGatewaysResponseBodyDataItemsSecurityGroup = None,
         spec: str = None,
         status: str = None,
+        sub_domain_infos: List[SubDomainInfo] = None,
         tags: List[ListGatewaysResponseBodyDataItemsTags] = None,
         target_version: str = None,
         update_timestamp: int = None,
@@ -8944,7 +12071,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         self.create_from = create_from
         # Creation timestamp, in milliseconds.
         self.create_timestamp = create_timestamp
-        # Expiration timestamp for the prepaid (annual or monthly) plan. Unit: milliseconds.
+        # Expiration timestamp for prepaid (annual or monthly) subscriptions. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
         # Gateway ID.
         self.gateway_id = gateway_id
@@ -8954,6 +12081,7 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         self.name = name
         # Number of gateway instance nodes.
         self.replicas = replicas
+        # Resource group ID.
         self.resource_group_id = resource_group_id
         # The Security Group.
         self.security_group = security_group
@@ -8971,15 +12099,20 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         # - Deleting: Deleting.
         # - DeleteFailed: Deletion failed.
         self.status = status
+        self.sub_domain_infos = sub_domain_infos
+        # Array of tags.
         self.tags = tags
-        # Target version of the gateway. When it is inconsistent with `version`, a version upgrade can be performed.
+        # Target version of the gateway. When it is inconsistent with the current `version`, an upgrade can be performed.
         self.target_version = target_version
         # Update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
+        # The vSwtich.
         self.v_switch = v_switch
         # Gateway version.
         self.version = version
+        # The VPC.
         self.vpc = vpc
+        # The Zones.
         self.zones = zones
 
     def validate(self):
@@ -8989,6 +12122,10 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
                     k.validate()
         if self.security_group:
             self.security_group.validate()
+        if self.sub_domain_infos:
+            for k in self.sub_domain_infos:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -9034,6 +12171,10 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             result['spec'] = self.spec
         if self.status is not None:
             result['status'] = self.status
+        result['subDomainInfos'] = []
+        if self.sub_domain_infos is not None:
+            for k in self.sub_domain_infos:
+                result['subDomainInfos'].append(k.to_map() if k else None)
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -9084,6 +12225,11 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             self.spec = m.get('spec')
         if m.get('status') is not None:
             self.status = m.get('status')
+        self.sub_domain_infos = []
+        if m.get('subDomainInfos') is not None:
+            for k in m.get('subDomainInfos'):
+                temp_model = SubDomainInfo()
+                self.sub_domain_infos.append(temp_model.from_map(k))
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -9176,7 +12322,7 @@ class ListGatewaysResponseBody(TeaModel):
     ):
         # Response status code.
         self.code = code
-        # Result of the gateway list query.
+        # Result of gateway list query.
         self.data = data
         # Response message.
         self.message = message
@@ -9290,6 +12436,7 @@ class ListHttpApiOperationsRequest(TeaModel):
         self.with_consumer_in_environment_id = with_consumer_in_environment_id
         # Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
         self.with_consumer_info_by_id = with_consumer_info_by_id
+        # Plugin ID, use this plugin ID to retrieve the plugin release information.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -9512,6 +12659,7 @@ class ListHttpApisRequest(TeaModel):
         with_consumer_info_by_id: str = None,
         with_environment_info: bool = None,
         with_environment_info_by_id: str = None,
+        with_ingress_info: bool = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
         # Cloud-native API Gateway ID.
@@ -9538,6 +12686,7 @@ class ListHttpApisRequest(TeaModel):
         self.with_consumer_info_by_id = with_consumer_info_by_id
         self.with_environment_info = with_environment_info
         self.with_environment_info_by_id = with_environment_info_by_id
+        self.with_ingress_info = with_ingress_info
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -9573,6 +12722,8 @@ class ListHttpApisRequest(TeaModel):
             result['withEnvironmentInfo'] = self.with_environment_info
         if self.with_environment_info_by_id is not None:
             result['withEnvironmentInfoById'] = self.with_environment_info_by_id
+        if self.with_ingress_info is not None:
+            result['withIngressInfo'] = self.with_ingress_info
         if self.with_plugin_attachment_by_plugin_id is not None:
             result['withPluginAttachmentByPluginId'] = self.with_plugin_attachment_by_plugin_id
         return result
@@ -9603,6 +12754,8 @@ class ListHttpApisRequest(TeaModel):
             self.with_environment_info = m.get('withEnvironmentInfo')
         if m.get('withEnvironmentInfoById') is not None:
             self.with_environment_info_by_id = m.get('withEnvironmentInfoById')
+        if m.get('withIngressInfo') is not None:
+            self.with_ingress_info = m.get('withIngressInfo')
         if m.get('withPluginAttachmentByPluginId') is not None:
             self.with_plugin_attachment_by_plugin_id = m.get('withPluginAttachmentByPluginId')
         return self
@@ -9757,11 +12910,622 @@ class ListHttpApisResponse(TeaModel):
         return self
 
 
+class ListPolicyClassesRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_type: str = None,
+        direction: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        self.attach_resource_type = attach_resource_type
+        self.direction = direction
+        self.page_number = page_number
+        self.page_size = page_size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListPolicyClassesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[PolicyClassInfo] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = PolicyClassInfo()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListPolicyClassesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPolicyClassesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListPolicyClassesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListPolicyClassesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPolicyClassesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPolicyClassesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSslCertsRequest(TeaModel):
+    def __init__(
+        self,
+        cert_name_like: str = None,
+        domain_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.cert_name_like = cert_name_like
+        self.domain_name = domain_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name_like is not None:
+            result['certNameLike'] = self.cert_name_like
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('certNameLike') is not None:
+            self.cert_name_like = m.get('certNameLike')
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListSslCertsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[SslCertMetaInfo] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = SslCertMetaInfo()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListSslCertsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListSslCertsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListSslCertsResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListSslCertsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSslCertsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSslCertsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListZonesResponseBodyDataItems(TeaModel):
+    def __init__(
+        self,
+        zone_id: str = None,
+    ):
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
+class ListZonesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[ListZonesResponseBodyDataItems] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListZonesResponseBodyDataItems()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class ListZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListZonesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListZonesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class RestartGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestartGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestartGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDomainRequest(TeaModel):
     def __init__(
         self,
-        ca_cert_indentifier: str = None,
-        cert_indentifier: str = None,
+        ca_cert_identifier: str = None,
+        cert_identifier: str = None,
         force_https: bool = None,
         http_2option: str = None,
         protocol: str = None,
@@ -9769,10 +13533,8 @@ class UpdateDomainRequest(TeaModel):
         tls_max: str = None,
         tls_min: str = None,
     ):
-        # Cloud Shield CA certificate identifier.
-        self.ca_cert_indentifier = ca_cert_indentifier
-        # Cloud Shield certificate identifier.
-        self.cert_indentifier = cert_indentifier
+        self.ca_cert_identifier = ca_cert_identifier
+        self.cert_identifier = cert_identifier
         # Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
         self.force_https = force_https
         # HTTP/2 settings.
@@ -9784,6 +13546,7 @@ class UpdateDomainRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol = protocol
+        # TLS Cipher Suite Configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
         # Maximum TLS protocol version, supports up to TLS 1.3.
         self.tls_max = tls_max
@@ -9800,10 +13563,10 @@ class UpdateDomainRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.ca_cert_indentifier is not None:
-            result['caCertIndentifier'] = self.ca_cert_indentifier
-        if self.cert_indentifier is not None:
-            result['certIndentifier'] = self.cert_indentifier
+        if self.ca_cert_identifier is not None:
+            result['caCertIdentifier'] = self.ca_cert_identifier
+        if self.cert_identifier is not None:
+            result['certIdentifier'] = self.cert_identifier
         if self.force_https is not None:
             result['forceHttps'] = self.force_https
         if self.http_2option is not None:
@@ -9820,10 +13583,10 @@ class UpdateDomainRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('caCertIndentifier') is not None:
-            self.ca_cert_indentifier = m.get('caCertIndentifier')
-        if m.get('certIndentifier') is not None:
-            self.cert_indentifier = m.get('certIndentifier')
+        if m.get('caCertIdentifier') is not None:
+            self.ca_cert_identifier = m.get('caCertIdentifier')
+        if m.get('certIdentifier') is not None:
+            self.cert_identifier = m.get('certIdentifier')
         if m.get('forceHttps') is not None:
             self.force_https = m.get('forceHttps')
         if m.get('http2Option') is not None:
@@ -10080,6 +13843,228 @@ class UpdateEnvironmentResponse(TeaModel):
         return self
 
 
+class UpdateGatewayFeatureRequest(TeaModel):
+    def __init__(
+        self,
+        value: str = None,
+    ):
+        # Parameter value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdateGatewayFeatureResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateGatewayFeatureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGatewayFeatureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGatewayFeatureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateGatewayNameRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # Gateway name.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateGatewayNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateGatewayNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateGatewayNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateGatewayNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateHttpApiRequestIngressConfig(TeaModel):
     def __init__(
         self,
@@ -10140,21 +14125,27 @@ class UpdateHttpApiRequest(TeaModel):
     def __init__(
         self,
         ai_protocols: List[str] = None,
+        auth_config: AuthConfig = None,
         base_path: str = None,
         deploy_configs: List[HttpApiDeployConfig] = None,
         description: str = None,
+        enable_auth: bool = None,
         ingress_config: UpdateHttpApiRequestIngressConfig = None,
         protocols: List[str] = None,
         version_config: HttpApiVersionConfig = None,
     ):
+        # List of AI protocols.
         self.ai_protocols = ai_protocols
+        self.auth_config = auth_config
         # Base path of the API, which must start with a \\"/\\".
         # 
         # This parameter is required.
         self.base_path = base_path
+        # List of API deployment configurations.
         self.deploy_configs = deploy_configs
         # API description.
         self.description = description
+        self.enable_auth = enable_auth
         # Configuration information for the HTTP Ingress API.
         self.ingress_config = ingress_config
         # List of API access protocols.
@@ -10163,6 +14154,8 @@ class UpdateHttpApiRequest(TeaModel):
         self.version_config = version_config
 
     def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
         if self.deploy_configs:
             for k in self.deploy_configs:
                 if k:
@@ -10180,6 +14173,8 @@ class UpdateHttpApiRequest(TeaModel):
         result = dict()
         if self.ai_protocols is not None:
             result['aiProtocols'] = self.ai_protocols
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
         if self.base_path is not None:
             result['basePath'] = self.base_path
         result['deployConfigs'] = []
@@ -10188,6 +14183,8 @@ class UpdateHttpApiRequest(TeaModel):
                 result['deployConfigs'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
         if self.ingress_config is not None:
             result['ingressConfig'] = self.ingress_config.to_map()
         if self.protocols is not None:
@@ -10200,6 +14197,9 @@ class UpdateHttpApiRequest(TeaModel):
         m = m or dict()
         if m.get('aiProtocols') is not None:
             self.ai_protocols = m.get('aiProtocols')
+        if m.get('authConfig') is not None:
+            temp_model = AuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
         if m.get('basePath') is not None:
             self.base_path = m.get('basePath')
         self.deploy_configs = []
@@ -10209,6 +14209,8 @@ class UpdateHttpApiRequest(TeaModel):
                 self.deploy_configs.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
         if m.get('ingressConfig') is not None:
             temp_model = UpdateHttpApiRequestIngressConfig()
             self.ingress_config = temp_model.from_map(m['ingressConfig'])
@@ -10412,6 +14414,483 @@ class UpdateHttpApiOperationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateHttpApiOperationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHttpApiRouteRequestBackendConfigServices(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+        service_id: str = None,
+        version: str = None,
+        weight: int = None,
+    ):
+        # Service port, do not pass in for dynamic ports.
+        self.port = port
+        # Service protocol:
+        # - HTTP.
+        # - HTTPS.
+        self.protocol = protocol
+        # Service ID.
+        self.service_id = service_id
+        # Service version.
+        self.version = version
+        # Percentage value of traffic ratio.
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class UpdateHttpApiRouteRequestBackendConfig(TeaModel):
+    def __init__(
+        self,
+        scene: str = None,
+        services: List[UpdateHttpApiRouteRequestBackendConfigServices] = None,
+    ):
+        # Backend service scenario.
+        self.scene = scene
+        # List of backend services.
+        self.services = services
+
+    def validate(self):
+        if self.services:
+            for k in self.services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene is not None:
+            result['scene'] = self.scene
+        result['services'] = []
+        if self.services is not None:
+            for k in self.services:
+                result['services'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        self.services = []
+        if m.get('services') is not None:
+            for k in m.get('services'):
+                temp_model = UpdateHttpApiRouteRequestBackendConfigServices()
+                self.services.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateHttpApiRouteRequest(TeaModel):
+    def __init__(
+        self,
+        backend_config: UpdateHttpApiRouteRequestBackendConfig = None,
+        description: str = None,
+        domain_ids: List[str] = None,
+        environment_id: str = None,
+        match: HttpRouteMatch = None,
+    ):
+        # Backend service configuration for the route.
+        self.backend_config = backend_config
+        # Route description.
+        self.description = description
+        # List of domain IDs.
+        self.domain_ids = domain_ids
+        # Environment ID.
+        self.environment_id = environment_id
+        # Route match rule.
+        self.match = match
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+        if self.match:
+            self.match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['backendConfig'] = self.backend_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_ids is not None:
+            result['domainIds'] = self.domain_ids
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendConfig') is not None:
+            temp_model = UpdateHttpApiRouteRequestBackendConfig()
+            self.backend_config = temp_model.from_map(m['backendConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domainIds') is not None:
+            self.domain_ids = m.get('domainIds')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        return self
+
+
+class UpdateHttpApiRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateHttpApiRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHttpApiRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHttpApiRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePolicyRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        description: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.config = config
+        self.description = description
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.description is not None:
+            result['description'] = self.description
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdatePolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdatePolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        version: str = None,
+    ):
+        # Gateway version.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpgradeGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # Response status code.
+        self.code = code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpgradeGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpgradeGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

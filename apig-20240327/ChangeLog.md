@@ -1,3 +1,39 @@
+2025-02-14 Version: 3.0.0
+- Support API ChangeResourceGroup.
+- Support API CreateHttpApiRoute.
+- Support API CreatePolicy.
+- Support API CreatePolicyAttachment.
+- Support API DeleteGatewaySecurityGroupRule.
+- Support API DeleteHttpApiRoute.
+- Support API DeletePolicy.
+- Support API DeletePolicyAttachment.
+- Support API DeployHttpApi.
+- Support API ExportHttpApi.
+- Support API GetDashboard.
+- Support API GetPolicy.
+- Support API GetPolicyAttachment.
+- Support API GetResourceOverview.
+- Support API GetTraceConfig.
+- Support API ImportHttpApi.
+- Support API ListPolicyClasses.
+- Support API ListSslCerts.
+- Support API ListZones.
+- Support API RestartGateway.
+- Support API UpdateGatewayFeature.
+- Support API UpdateGatewayName.
+- Support API UpdateHttpApiRoute.
+- Support API UpdatePolicy.
+- Support API UpgradeGateway.
+- Update API CreateHttpApi: update param body.
+- Update API GetDomain: update response param.
+- Update API ListGateways: add param tag.
+- Update API ListGateways: delete param tags.
+- Update API ListGateways: update response param.
+- Update API ListHttpApis: add param withIngressInfo.
+- Update API UpdateDomain: update param body.
+- Update API UpdateHttpApi: update param body.
+
+
 2024-12-03 Version: 2.0.1
 - Update API CreateDomain: update param body.
 - Update API GetDomain: update response param.
