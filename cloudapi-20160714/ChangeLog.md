@@ -1,3 +1,9 @@
+2025-02-14 Version: 4.7.3
+- Update API ListPrivateDNS: add param PageNumber.
+- Update API ListPrivateDNS: add param PageSize.
+- Update API ModifyApiGroup: add param RpsLimitForServerless.
+
+
 2025-02-12 Version: 4.7.2
 - Update API ModifyApiGroup: add param RpsLimitForServerless.
 

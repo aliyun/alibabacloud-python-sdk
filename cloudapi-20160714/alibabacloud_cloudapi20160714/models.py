@@ -9693,6 +9693,9 @@ class DescribeApiResponseBodyServiceConfigFunctionComputeConfig(TeaModel):
         self.role_arn = role_arn
         # The service name defined in Function Compute.
         self.service_name = service_name
+        # The name of the trigger.
+        # 
+        # You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
         self.trigger_name = trigger_name
 
     def validate(self):
@@ -12216,6 +12219,7 @@ class DescribeApiGroupsRequest(TeaModel):
         sort: str = None,
         tag: List[DescribeApiGroupsRequestTag] = None,
     ):
+        # The root path of the API.
         self.base_path = base_path
         # Specifies whether to enable tag verification.
         self.enable_tag_auth = enable_tag_auth
@@ -22206,6 +22210,9 @@ class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFuncti
         self.role_arn = role_arn
         # The service name that is defined in Function Compute.
         self.service_name = service_name
+        # The name of the trigger.
+        # 
+        # You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
         self.trigger_name = trigger_name
 
     def validate(self):
@@ -40300,11 +40307,15 @@ class ListPrivateDNSRequest(TeaModel):
     def __init__(
         self,
         intranet_domain: str = None,
+        page_number: int = None,
+        page_size: int = None,
         security_token: str = None,
         type: str = None,
     ):
         # The internal domain name.
         self.intranet_domain = intranet_domain
+        self.page_number = page_number
+        self.page_size = page_size
         self.security_token = security_token
         # The internal domain name resolution type. Valid values:
         # 
@@ -40323,6 +40334,10 @@ class ListPrivateDNSRequest(TeaModel):
         result = dict()
         if self.intranet_domain is not None:
             result['IntranetDomain'] = self.intranet_domain
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.type is not None:
@@ -40333,6 +40348,10 @@ class ListPrivateDNSRequest(TeaModel):
         m = m or dict()
         if m.get('IntranetDomain') is not None:
             self.intranet_domain = m.get('IntranetDomain')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('Type') is not None:

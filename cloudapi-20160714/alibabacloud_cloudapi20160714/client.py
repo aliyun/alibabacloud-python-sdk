@@ -19553,6 +19553,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.intranet_domain):
             query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
@@ -19598,6 +19602,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.intranet_domain):
             query['IntranetDomain'] = request.intranet_domain
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.type):
