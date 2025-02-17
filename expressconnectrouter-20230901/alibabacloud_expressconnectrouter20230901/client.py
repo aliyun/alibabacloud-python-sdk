@@ -41,12 +41,136 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def activate_flow_log_with_options(
+        self,
+        request: express_connect_router_20230901_models.ActivateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
+        """
+        @summary Enables log delivery.
+        
+        @param request: ActivateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_id):
+            body['FlowLogId'] = request.flow_log_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActivateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ActivateFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ActivateFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def activate_flow_log_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.ActivateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
+        """
+        @summary Enables log delivery.
+        
+        @param request: ActivateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_id):
+            body['FlowLogId'] = request.flow_log_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ActivateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ActivateFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ActivateFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def activate_flow_log(
+        self,
+        request: express_connect_router_20230901_models.ActivateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
+        """
+        @summary Enables log delivery.
+        
+        @param request: ActivateFlowLogRequest
+        @return: ActivateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.activate_flow_log_with_options(request, runtime)
+
+    async def activate_flow_log_async(
+        self,
+        request: express_connect_router_20230901_models.ActivateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.ActivateFlowLogResponse:
+        """
+        @summary Enables log delivery.
+        
+        @param request: ActivateFlowLogRequest
+        @return: ActivateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.activate_flow_log_with_options_async(request, runtime)
+
     def attach_express_connect_router_child_instance_with_options(
         self,
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Associates a virtual border router (VBR) with an Express Connect router (ECR).
+        
+        @description Before you call the *AttachExpressConnectRouterChildInstance** operation to associate a VBR with an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: AttachExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AttachExpressConnectRouterChildInstanceResponse
@@ -63,6 +187,8 @@ class Client(OpenApiClient):
             body['ChildInstanceType'] = request.child_instance_type
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ecr_id):
@@ -81,10 +207,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_express_connect_router_child_instance_with_options_async(
         self,
@@ -92,6 +224,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Associates a virtual border router (VBR) with an Express Connect router (ECR).
+        
+        @description Before you call the *AttachExpressConnectRouterChildInstance** operation to associate a VBR with an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: AttachExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AttachExpressConnectRouterChildInstanceResponse
@@ -108,6 +244,8 @@ class Client(OpenApiClient):
             body['ChildInstanceType'] = request.child_instance_type
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ecr_id):
@@ -126,16 +264,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_express_connect_router_child_instance(
         self,
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Associates a virtual border router (VBR) with an Express Connect router (ECR).
+        
+        @description Before you call the *AttachExpressConnectRouterChildInstance** operation to associate a VBR with an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: AttachExpressConnectRouterChildInstanceRequest
         @return: AttachExpressConnectRouterChildInstanceResponse
         """
@@ -147,6 +295,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Associates a virtual border router (VBR) with an Express Connect router (ECR).
+        
+        @description Before you call the *AttachExpressConnectRouterChildInstance** operation to associate a VBR with an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: AttachExpressConnectRouterChildInstanceRequest
         @return: AttachExpressConnectRouterChildInstanceResponse
         """
@@ -159,6 +311,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
         """
+        @summary Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+        
         @param request: CheckAddRegionToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckAddRegionToExpressConnectRouterResponse
@@ -187,10 +341,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_add_region_to_express_connect_router_with_options_async(
         self,
@@ -198,6 +358,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
         """
+        @summary Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+        
         @param request: CheckAddRegionToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckAddRegionToExpressConnectRouterResponse
@@ -226,16 +388,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_add_region_to_express_connect_router(
         self,
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
         """
+        @summary Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+        
         @param request: CheckAddRegionToExpressConnectRouterRequest
         @return: CheckAddRegionToExpressConnectRouterResponse
         """
@@ -247,6 +417,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
         """
+        @summary Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+        
         @param request: CheckAddRegionToExpressConnectRouterRequest
         @return: CheckAddRegionToExpressConnectRouterResponse
         """
@@ -259,6 +431,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
         """
+        @summary Creates an Express Connect Router (ECR).
+        
+        @description After you create an ECR, it enters the *Active** state.
+        
         @param request: CreateExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateExpressConnectRouterResponse
@@ -277,8 +453,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
-            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -293,10 +469,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_connect_router_with_options_async(
         self,
@@ -304,6 +486,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
         """
+        @summary Creates an Express Connect Router (ECR).
+        
+        @description After you create an ECR, it enters the *Active** state.
+        
         @param request: CreateExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateExpressConnectRouterResponse
@@ -322,8 +508,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
-            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -338,16 +524,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_connect_router(
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
         """
+        @summary Creates an Express Connect Router (ECR).
+        
+        @description After you create an ECR, it enters the *Active** state.
+        
         @param request: CreateExpressConnectRouterRequest
         @return: CreateExpressConnectRouterResponse
         """
@@ -359,6 +555,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
         """
+        @summary Creates an Express Connect Router (ECR).
+        
+        @description After you create an ECR, it enters the *Active** state.
+        
         @param request: CreateExpressConnectRouterRequest
         @return: CreateExpressConnectRouterResponse
         """
@@ -371,6 +571,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
         """
+        @summary Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+        
         @param request: CreateExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateExpressConnectRouterAssociationResponse
@@ -379,6 +581,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
+        if not UtilClient.is_unset(request.allowed_prefixes_mode):
+            body['AllowedPrefixesMode'] = request.allowed_prefixes_mode
         if not UtilClient.is_unset(request.association_region_id):
             body['AssociationRegionId'] = request.association_region_id
         if not UtilClient.is_unset(request.cen_id):
@@ -387,6 +591,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_attachment):
             body['CreateAttachment'] = request.create_attachment
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ecr_id):
@@ -413,10 +619,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_express_connect_router_association_with_options_async(
         self,
@@ -424,6 +636,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
         """
+        @summary Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+        
         @param request: CreateExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateExpressConnectRouterAssociationResponse
@@ -432,6 +646,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
+        if not UtilClient.is_unset(request.allowed_prefixes_mode):
+            body['AllowedPrefixesMode'] = request.allowed_prefixes_mode
         if not UtilClient.is_unset(request.association_region_id):
             body['AssociationRegionId'] = request.association_region_id
         if not UtilClient.is_unset(request.cen_id):
@@ -440,6 +656,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.create_attachment):
             body['CreateAttachment'] = request.create_attachment
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ecr_id):
@@ -466,16 +684,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_express_connect_router_association(
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
         """
+        @summary Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+        
         @param request: CreateExpressConnectRouterAssociationRequest
         @return: CreateExpressConnectRouterAssociationResponse
         """
@@ -487,11 +713,285 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
         """
+        @summary Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+        
         @param request: CreateExpressConnectRouterAssociationRequest
         @return: CreateExpressConnectRouterAssociationResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_express_connect_router_association_with_options_async(request, runtime)
+
+    def create_flow_log_with_options(
+        self,
+        request: express_connect_router_20230901_models.CreateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
+        """
+        @summary 创建流日志
+        
+        @param request: CreateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sampling_rate):
+            query['SamplingRate'] = request.sampling_rate
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            body['FlowLogName'] = request.flow_log_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_flow_log_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.CreateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
+        """
+        @summary 创建流日志
+        
+        @param request: CreateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sampling_rate):
+            query['SamplingRate'] = request.sampling_rate
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            body['FlowLogName'] = request.flow_log_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.CreateFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_flow_log(
+        self,
+        request: express_connect_router_20230901_models.CreateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
+        """
+        @summary 创建流日志
+        
+        @param request: CreateFlowLogRequest
+        @return: CreateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_flow_log_with_options(request, runtime)
+
+    async def create_flow_log_async(
+        self,
+        request: express_connect_router_20230901_models.CreateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.CreateFlowLogResponse:
+        """
+        @summary 创建流日志
+        
+        @param request: CreateFlowLogRequest
+        @return: CreateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_flow_log_with_options_async(request, runtime)
+
+    def deactivate_flow_log_with_options(
+        self,
+        request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
+        """
+        @summary 停止流日志
+        
+        @param request: DeactivateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeactivateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_id):
+            body['FlowLogId'] = request.flow_log_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeactivateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def deactivate_flow_log_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
+        """
+        @summary 停止流日志
+        
+        @param request: DeactivateFlowLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeactivateFlowLogResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_id):
+            body['FlowLogId'] = request.flow_log_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeactivateFlowLog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeactivateFlowLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def deactivate_flow_log(
+        self,
+        request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
+        """
+        @summary 停止流日志
+        
+        @param request: DeactivateFlowLogRequest
+        @return: DeactivateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deactivate_flow_log_with_options(request, runtime)
+
+    async def deactivate_flow_log_async(
+        self,
+        request: express_connect_router_20230901_models.DeactivateFlowLogRequest,
+    ) -> express_connect_router_20230901_models.DeactivateFlowLogResponse:
+        """
+        @summary 停止流日志
+        
+        @param request: DeactivateFlowLogRequest
+        @return: DeactivateFlowLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deactivate_flow_log_with_options_async(request, runtime)
 
     def delete_express_connect_router_with_options(
         self,
@@ -499,6 +999,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR).
+        
+        @description Take note of the following items:
+        Before you call this operation, make sure that all resources are disassociated from the ECR.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: DeleteExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteExpressConnectRouterResponse
@@ -525,10 +1031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_express_connect_router_with_options_async(
         self,
@@ -536,6 +1048,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR).
+        
+        @description Take note of the following items:
+        Before you call this operation, make sure that all resources are disassociated from the ECR.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: DeleteExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteExpressConnectRouterResponse
@@ -562,16 +1080,28 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_express_connect_router(
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR).
+        
+        @description Take note of the following items:
+        Before you call this operation, make sure that all resources are disassociated from the ECR.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: DeleteExpressConnectRouterRequest
         @return: DeleteExpressConnectRouterResponse
         """
@@ -583,6 +1113,12 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR).
+        
+        @description Take note of the following items:
+        Before you call this operation, make sure that all resources are disassociated from the ECR.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: DeleteExpressConnectRouterRequest
         @return: DeleteExpressConnectRouterResponse
         """
@@ -595,6 +1131,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
         """
+        @summary Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+        
         @param request: DeleteExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteExpressConnectRouterAssociationResponse
@@ -625,10 +1163,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_express_connect_router_association_with_options_async(
         self,
@@ -636,6 +1180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
         """
+        @summary Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+        
         @param request: DeleteExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteExpressConnectRouterAssociationResponse
@@ -666,16 +1212,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_express_connect_router_association(
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
         """
+        @summary Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+        
         @param request: DeleteExpressConnectRouterAssociationRequest
         @return: DeleteExpressConnectRouterAssociationResponse
         """
@@ -687,11 +1241,137 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
         """
+        @summary Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+        
         @param request: DeleteExpressConnectRouterAssociationRequest
         @return: DeleteExpressConnectRouterAssociationResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_express_connect_router_association_with_options_async(request, runtime)
+
+    def delete_flowlog_with_options(
+        self,
+        request: express_connect_router_20230901_models.DeleteFlowlogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
+        """
+        @summary 删除流日志
+        
+        @param request: DeleteFlowlogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowlogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowlog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteFlowlogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteFlowlogResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_flowlog_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.DeleteFlowlogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
+        """
+        @summary 删除流日志
+        
+        @param request: DeleteFlowlogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowlogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlowlog',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteFlowlogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DeleteFlowlogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_flowlog(
+        self,
+        request: express_connect_router_20230901_models.DeleteFlowlogRequest,
+    ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
+        """
+        @summary 删除流日志
+        
+        @param request: DeleteFlowlogRequest
+        @return: DeleteFlowlogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_flowlog_with_options(request, runtime)
+
+    async def delete_flowlog_async(
+        self,
+        request: express_connect_router_20230901_models.DeleteFlowlogRequest,
+    ) -> express_connect_router_20230901_models.DeleteFlowlogResponse:
+        """
+        @summary 删除流日志
+        
+        @param request: DeleteFlowlogRequest
+        @return: DeleteFlowlogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_flowlog_with_options_async(request, runtime)
 
     def describe_disabled_express_connect_router_route_entries_with_options(
         self,
@@ -699,6 +1379,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries that are disabled on an Express Connect router (ECR).
+        
         @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
@@ -729,10 +1411,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_disabled_express_connect_router_route_entries_with_options_async(
         self,
@@ -740,6 +1428,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries that are disabled on an Express Connect router (ECR).
+        
         @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
@@ -770,16 +1460,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_disabled_express_connect_router_route_entries(
         self,
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries that are disabled on an Express Connect router (ECR).
+        
         @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
         """
@@ -791,6 +1489,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries that are disabled on an Express Connect router (ECR).
+        
         @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
         """
@@ -803,6 +1503,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
         """
+        @summary Queries a list of Express Connect routers (ECRs).
+        
         @param request: DescribeExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterResponse
@@ -823,8 +1525,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tag_models):
-            body['TagModels'] = request.tag_models
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -839,10 +1541,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_with_options_async(
         self,
@@ -850,6 +1558,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
         """
+        @summary Queries a list of Express Connect routers (ECRs).
+        
         @param request: DescribeExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterResponse
@@ -870,8 +1580,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tag_models):
-            body['TagModels'] = request.tag_models
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -886,16 +1596,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
         """
+        @summary Queries a list of Express Connect routers (ECRs).
+        
         @param request: DescribeExpressConnectRouterRequest
         @return: DescribeExpressConnectRouterResponse
         """
@@ -907,6 +1625,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
         """
+        @summary Queries a list of Express Connect routers (ECRs).
+        
         @param request: DescribeExpressConnectRouterRequest
         @return: DescribeExpressConnectRouterResponse
         """
@@ -919,6 +1639,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         """
+        @summary Queries the historical route prefixes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
@@ -951,10 +1673,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_allowed_prefix_history_with_options_async(
         self,
@@ -962,6 +1690,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         """
+        @summary Queries the historical route prefixes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
@@ -994,16 +1724,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_allowed_prefix_history(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         """
+        @summary Queries the historical route prefixes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
         """
@@ -1015,6 +1753,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
         """
+        @summary Queries the historical route prefixes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
         """
@@ -1027,6 +1767,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
         """
+        @summary Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterAssociationResponse
@@ -1069,10 +1811,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_association_with_options_async(
         self,
@@ -1080,6 +1828,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
         """
+        @summary Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterAssociationResponse
@@ -1122,16 +1872,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_association(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
         """
+        @summary Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAssociationRequest
         @return: DescribeExpressConnectRouterAssociationResponse
         """
@@ -1143,6 +1901,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
         """
+        @summary Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterAssociationRequest
         @return: DescribeExpressConnectRouterAssociationResponse
         """
@@ -1155,6 +1915,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
         """
+        @summary Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterChildInstanceResponse
@@ -1193,10 +1955,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_child_instance_with_options_async(
         self,
@@ -1204,6 +1972,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
         """
+        @summary Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterChildInstanceResponse
@@ -1242,16 +2012,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_child_instance(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
         """
+        @summary Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterChildInstanceRequest
         @return: DescribeExpressConnectRouterChildInstanceResponse
         """
@@ -1263,6 +2041,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
         """
+        @summary Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterChildInstanceRequest
         @return: DescribeExpressConnectRouterChildInstanceResponse
         """
@@ -1275,6 +2055,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Queries the cross-region forwarding modes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
@@ -1301,10 +2083,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_inter_region_transit_mode_with_options_async(
         self,
@@ -1312,6 +2100,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Queries the cross-region forwarding modes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
@@ -1338,16 +2128,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_inter_region_transit_mode(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Queries the cross-region forwarding modes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
         """
@@ -1359,6 +2157,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Queries the cross-region forwarding modes of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
         """
@@ -1371,6 +2171,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
         """
+        @summary Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+        
         @param request: DescribeExpressConnectRouterRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterRegionResponse
@@ -1397,10 +2199,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_region_with_options_async(
         self,
@@ -1408,6 +2216,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
         """
+        @summary Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+        
         @param request: DescribeExpressConnectRouterRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterRegionResponse
@@ -1434,16 +2244,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_region(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
         """
+        @summary Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+        
         @param request: DescribeExpressConnectRouterRegionRequest
         @return: DescribeExpressConnectRouterRegionResponse
         """
@@ -1455,6 +2273,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
         """
+        @summary Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+        
         @param request: DescribeExpressConnectRouterRegionRequest
         @return: DescribeExpressConnectRouterRegionResponse
         """
@@ -1467,6 +2287,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterRouteEntriesResponse
@@ -1507,10 +2329,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_express_connect_router_route_entries_with_options_async(
         self,
@@ -1518,6 +2346,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExpressConnectRouterRouteEntriesResponse
@@ -1558,16 +2388,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_express_connect_router_route_entries(
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterRouteEntriesRequest
         @return: DescribeExpressConnectRouterRouteEntriesResponse
         """
@@ -1579,11 +2417,161 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Queries the route entries of an Express Connect router (ECR).
+        
         @param request: DescribeExpressConnectRouterRouteEntriesRequest
         @return: DescribeExpressConnectRouterRouteEntriesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_route_entries_with_options_async(request, runtime)
+
+    def describe_flow_logs_with_options(
+        self,
+        request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
+        """
+        @summary 查询流日志
+        
+        @param request: DescribeFlowLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowLogs',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_flow_logs_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
+        """
+        @summary 查询流日志
+        
+        @param request: DescribeFlowLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowLogs',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeFlowLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_flow_logs(
+        self,
+        request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
+    ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
+        """
+        @summary 查询流日志
+        
+        @param request: DescribeFlowLogsRequest
+        @return: DescribeFlowLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_flow_logs_with_options(request, runtime)
+
+    async def describe_flow_logs_async(
+        self,
+        request: express_connect_router_20230901_models.DescribeFlowLogsRequest,
+    ) -> express_connect_router_20230901_models.DescribeFlowLogsResponse:
+        """
+        @summary 查询流日志
+        
+        @param request: DescribeFlowLogsRequest
+        @return: DescribeFlowLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_flow_logs_with_options_async(request, runtime)
 
     def describe_instance_granted_to_express_connect_router_with_options(
         self,
@@ -1591,12 +2579,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
         """
+        @summary Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+        
         @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.caller_type):
+            body['CallerType'] = request.caller_type
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -1633,10 +2625,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_instance_granted_to_express_connect_router_with_options_async(
         self,
@@ -1644,12 +2642,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
         """
+        @summary Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+        
         @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.caller_type):
+            body['CallerType'] = request.caller_type
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -1686,16 +2688,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_instance_granted_to_express_connect_router(
         self,
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
         """
+        @summary Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+        
         @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
@@ -1707,6 +2717,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
         """
+        @summary Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+        
         @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
@@ -1719,6 +2731,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+        
+        @description Before you call the *DetachExpressConnectRouterChildInstance** operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: DetachExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetachExpressConnectRouterChildInstanceResponse
@@ -1749,10 +2765,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_express_connect_router_child_instance_with_options_async(
         self,
@@ -1760,6 +2782,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+        
+        @description Before you call the *DetachExpressConnectRouterChildInstance** operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: DetachExpressConnectRouterChildInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DetachExpressConnectRouterChildInstanceResponse
@@ -1790,16 +2816,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_express_connect_router_child_instance(
         self,
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+        
+        @description Before you call the *DetachExpressConnectRouterChildInstance** operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: DetachExpressConnectRouterChildInstanceRequest
         @return: DetachExpressConnectRouterChildInstanceResponse
         """
@@ -1811,6 +2847,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
         """
+        @summary Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+        
+        @description Before you call the *DetachExpressConnectRouterChildInstance** operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active** state.
+        
         @param request: DetachExpressConnectRouterChildInstanceRequest
         @return: DetachExpressConnectRouterChildInstanceResponse
         """
@@ -1823,6 +2863,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Disables route entries of an Express Connect router (ECR).
+        
         @param request: DisableExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableExpressConnectRouterRouteEntriesResponse
@@ -1853,10 +2895,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_express_connect_router_route_entries_with_options_async(
         self,
@@ -1864,6 +2912,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Disables route entries of an Express Connect router (ECR).
+        
         @param request: DisableExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableExpressConnectRouterRouteEntriesResponse
@@ -1894,16 +2944,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_express_connect_router_route_entries(
         self,
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Disables route entries of an Express Connect router (ECR).
+        
         @param request: DisableExpressConnectRouterRouteEntriesRequest
         @return: DisableExpressConnectRouterRouteEntriesResponse
         """
@@ -1915,6 +2973,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Disables route entries of an Express Connect router (ECR).
+        
         @param request: DisableExpressConnectRouterRouteEntriesRequest
         @return: DisableExpressConnectRouterRouteEntriesResponse
         """
@@ -1927,6 +2987,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Enables route entries of an Express Connect router (ECR).
+        
         @param request: EnableExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableExpressConnectRouterRouteEntriesResponse
@@ -1957,10 +3019,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_express_connect_router_route_entries_with_options_async(
         self,
@@ -1968,6 +3036,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Enables route entries of an Express Connect router (ECR).
+        
         @param request: EnableExpressConnectRouterRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableExpressConnectRouterRouteEntriesResponse
@@ -1998,16 +3068,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_express_connect_router_route_entries(
         self,
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Enables route entries of an Express Connect router (ECR).
+        
         @param request: EnableExpressConnectRouterRouteEntriesRequest
         @return: EnableExpressConnectRouterRouteEntriesResponse
         """
@@ -2019,6 +3097,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
         """
+        @summary Enables route entries of an Express Connect router (ECR).
+        
         @param request: EnableExpressConnectRouterRouteEntriesRequest
         @return: EnableExpressConnectRouterRouteEntriesResponse
         """
@@ -2031,6 +3111,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+        
+        @description    If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: ForceDeleteExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ForceDeleteExpressConnectRouterResponse
@@ -2057,10 +3142,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def force_delete_express_connect_router_with_options_async(
         self,
@@ -2068,6 +3159,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+        
+        @description    If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: ForceDeleteExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ForceDeleteExpressConnectRouterResponse
@@ -2094,16 +3190,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def force_delete_express_connect_router(
         self,
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+        
+        @description    If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: ForceDeleteExpressConnectRouterRequest
         @return: ForceDeleteExpressConnectRouterResponse
         """
@@ -2115,6 +3222,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
         """
+        @summary Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+        
+        @description    If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+        You can delete only ECRs that are in the **Active** state.
+        
         @param request: ForceDeleteExpressConnectRouterRequest
         @return: ForceDeleteExpressConnectRouterResponse
         """
@@ -2127,6 +3239,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
         """
+        @summary Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+        
+        @description When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+        
         @param request: GrantInstanceToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GrantInstanceToExpressConnectRouterResponse
@@ -2161,10 +3277,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def grant_instance_to_express_connect_router_with_options_async(
         self,
@@ -2172,6 +3294,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
         """
+        @summary Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+        
+        @description When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+        
         @param request: GrantInstanceToExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GrantInstanceToExpressConnectRouterResponse
@@ -2206,16 +3332,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def grant_instance_to_express_connect_router(
         self,
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
         """
+        @summary Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+        
+        @description When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+        
         @param request: GrantInstanceToExpressConnectRouterRequest
         @return: GrantInstanceToExpressConnectRouterResponse
         """
@@ -2227,6 +3363,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
         """
+        @summary Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+        
+        @description When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+        
         @param request: GrantInstanceToExpressConnectRouterRequest
         @return: GrantInstanceToExpressConnectRouterResponse
         """
@@ -2239,6 +3379,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
         """
+        @summary Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+        
         @param request: ListExpressConnectRouterSupportedRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListExpressConnectRouterSupportedRegionResponse
@@ -2263,10 +3405,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_express_connect_router_supported_region_with_options_async(
         self,
@@ -2274,6 +3422,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
         """
+        @summary Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+        
         @param request: ListExpressConnectRouterSupportedRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListExpressConnectRouterSupportedRegionResponse
@@ -2298,16 +3448,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_express_connect_router_supported_region(
         self,
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
         """
+        @summary Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+        
         @param request: ListExpressConnectRouterSupportedRegionRequest
         @return: ListExpressConnectRouterSupportedRegionResponse
         """
@@ -2319,6 +3477,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
         """
+        @summary Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+        
         @param request: ListExpressConnectRouterSupportedRegionRequest
         @return: ListExpressConnectRouterSupportedRegionResponse
         """
@@ -2331,6 +3491,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListTagResourcesResponse:
         """
+        @summary Queries a list of tags that are added to an Express Connect router (ECR).
+        
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTagResourcesResponse
@@ -2361,10 +3523,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ListTagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -2372,6 +3540,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListTagResourcesResponse:
         """
+        @summary Queries a list of tags that are added to an Express Connect router (ECR).
+        
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTagResourcesResponse
@@ -2402,16 +3572,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ListTagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tag_resources(
         self,
         request: express_connect_router_20230901_models.ListTagResourcesRequest,
     ) -> express_connect_router_20230901_models.ListTagResourcesResponse:
         """
+        @summary Queries a list of tags that are added to an Express Connect router (ECR).
+        
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
         """
@@ -2423,6 +3601,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ListTagResourcesRequest,
     ) -> express_connect_router_20230901_models.ListTagResourcesResponse:
         """
+        @summary Queries a list of tags that are added to an Express Connect router (ECR).
+        
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
         """
@@ -2435,6 +3615,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
         """
+        @summary Modifies the properties such as the name of an Express Connect router (ECR).
+        
+        @description You can modify only properties of ECRs in the *Active** state.
+        
         @param request: ModifyExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterResponse
@@ -2465,10 +3649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_router_with_options_async(
         self,
@@ -2476,6 +3666,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
         """
+        @summary Modifies the properties such as the name of an Express Connect router (ECR).
+        
+        @description You can modify only properties of ECRs in the *Active** state.
+        
         @param request: ModifyExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterResponse
@@ -2506,16 +3700,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_router(
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
         """
+        @summary Modifies the properties such as the name of an Express Connect router (ECR).
+        
+        @description You can modify only properties of ECRs in the *Active** state.
+        
         @param request: ModifyExpressConnectRouterRequest
         @return: ModifyExpressConnectRouterResponse
         """
@@ -2527,6 +3731,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
         """
+        @summary Modifies the properties such as the name of an Express Connect router (ECR).
+        
+        @description You can modify only properties of ECRs in the *Active** state.
+        
         @param request: ModifyExpressConnectRouterRequest
         @return: ModifyExpressConnectRouterResponse
         """
@@ -2539,6 +3747,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
         """
+        @summary Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
@@ -2547,6 +3757,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
+        if not UtilClient.is_unset(request.allowed_prefixes_mode):
+            body['AllowedPrefixesMode'] = request.allowed_prefixes_mode
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
         if not UtilClient.is_unset(request.client_token):
@@ -2571,10 +3783,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_router_association_allowed_prefix_with_options_async(
         self,
@@ -2582,6 +3800,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
         """
+        @summary Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
@@ -2590,6 +3810,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
+        if not UtilClient.is_unset(request.allowed_prefixes_mode):
+            body['AllowedPrefixesMode'] = request.allowed_prefixes_mode
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
         if not UtilClient.is_unset(request.client_token):
@@ -2614,16 +3836,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_router_association_allowed_prefix(
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
         """
+        @summary Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
         """
@@ -2635,6 +3865,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
         """
+        @summary Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
         """
@@ -2647,6 +3879,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
@@ -2675,10 +3909,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_express_connect_router_inter_region_transit_mode_with_options_async(
         self,
@@ -2686,6 +3926,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
@@ -2714,16 +3956,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_express_connect_router_inter_region_transit_mode(
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
         """
@@ -2735,11 +3985,153 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
         """
+        @summary Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+        
         @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_inter_region_transit_mode_with_options_async(request, runtime)
+
+    def modify_flow_log_attribute_with_options(
+        self,
+        request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
+        """
+        @summary 修改流日志
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFlowLogAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.sampling_rate):
+            query['SamplingRate'] = request.sampling_rate
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            body['FlowLogName'] = request.flow_log_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlowLogAttribute',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_flow_log_attribute_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
+        """
+        @summary 修改流日志
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFlowLogAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.sampling_rate):
+            query['SamplingRate'] = request.sampling_rate
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            body['FlowLogName'] = request.flow_log_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlowLogAttribute',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.ModifyFlowLogAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_flow_log_attribute(
+        self,
+        request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
+    ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
+        """
+        @summary 修改流日志
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @return: ModifyFlowLogAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_flow_log_attribute_with_options(request, runtime)
+
+    async def modify_flow_log_attribute_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyFlowLogAttributeRequest,
+    ) -> express_connect_router_20230901_models.ModifyFlowLogAttributeResponse:
+        """
+        @summary 修改流日志
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @return: ModifyFlowLogAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_flow_log_attribute_with_options_async(request, runtime)
 
     def move_resource_group_with_options(
         self,
@@ -2747,6 +4139,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.MoveResourceGroupResponse:
         """
+        @summary Modifies the resource group to which an Express Connect router (ECR) belongs.
+        
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: MoveResourceGroupResponse
@@ -2777,10 +4171,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.MoveResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.MoveResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.MoveResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def move_resource_group_with_options_async(
         self,
@@ -2788,6 +4188,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.MoveResourceGroupResponse:
         """
+        @summary Modifies the resource group to which an Express Connect router (ECR) belongs.
+        
         @param request: MoveResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: MoveResourceGroupResponse
@@ -2818,16 +4220,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.MoveResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.MoveResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.MoveResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def move_resource_group(
         self,
         request: express_connect_router_20230901_models.MoveResourceGroupRequest,
     ) -> express_connect_router_20230901_models.MoveResourceGroupResponse:
         """
+        @summary Modifies the resource group to which an Express Connect router (ECR) belongs.
+        
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
         """
@@ -2839,6 +4249,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.MoveResourceGroupRequest,
     ) -> express_connect_router_20230901_models.MoveResourceGroupResponse:
         """
+        @summary Modifies the resource group to which an Express Connect router (ECR) belongs.
+        
         @param request: MoveResourceGroupRequest
         @return: MoveResourceGroupResponse
         """
@@ -2851,6 +4263,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
         """
+        @summary Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+        
         @param request: RevokeInstanceFromExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeInstanceFromExpressConnectRouterResponse
@@ -2885,10 +4299,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def revoke_instance_from_express_connect_router_with_options_async(
         self,
@@ -2896,6 +4316,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
         """
+        @summary Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+        
         @param request: RevokeInstanceFromExpressConnectRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeInstanceFromExpressConnectRouterResponse
@@ -2930,16 +4352,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def revoke_instance_from_express_connect_router(
         self,
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
         """
+        @summary Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+        
         @param request: RevokeInstanceFromExpressConnectRouterRequest
         @return: RevokeInstanceFromExpressConnectRouterResponse
         """
@@ -2951,6 +4381,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
         """
+        @summary Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+        
         @param request: RevokeInstanceFromExpressConnectRouterRequest
         @return: RevokeInstanceFromExpressConnectRouterResponse
         """
@@ -2963,6 +4395,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
         """
+        @summary Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+        
+        @description Updates are allowed only when the ECR is in the *Active** state.
+        
         @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
@@ -2989,10 +4425,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def synchronize_express_connect_router_inter_region_bandwidth_with_options_async(
         self,
@@ -3000,6 +4442,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
         """
+        @summary Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+        
+        @description Updates are allowed only when the ECR is in the *Active** state.
+        
         @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
@@ -3026,16 +4472,26 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def synchronize_express_connect_router_inter_region_bandwidth(
         self,
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
         """
+        @summary Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+        
+        @description Updates are allowed only when the ECR is in the *Active** state.
+        
         @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
         """
@@ -3047,6 +4503,10 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
         """
+        @summary Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+        
+        @description Updates are allowed only when the ECR is in the *Active** state.
+        
         @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
         """
@@ -3059,6 +4519,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.TagResourcesResponse:
         """
+        @summary Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+        
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TagResourcesResponse
@@ -3089,10 +4551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.TagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.TagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.TagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def tag_resources_with_options_async(
         self,
@@ -3100,6 +4568,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.TagResourcesResponse:
         """
+        @summary Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+        
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TagResourcesResponse
@@ -3130,16 +4600,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.TagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.TagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.TagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def tag_resources(
         self,
         request: express_connect_router_20230901_models.TagResourcesRequest,
     ) -> express_connect_router_20230901_models.TagResourcesResponse:
         """
+        @summary Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+        
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
         """
@@ -3151,6 +4629,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.TagResourcesRequest,
     ) -> express_connect_router_20230901_models.TagResourcesResponse:
         """
+        @summary Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+        
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
         """
@@ -3163,6 +4643,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.UntagResourcesResponse:
         """
+        @summary Removes tags from an Express Connect router (ECR).
+        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -3195,10 +4677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.UntagResourcesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.UntagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.UntagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def untag_resources_with_options_async(
         self,
@@ -3206,6 +4694,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.UntagResourcesResponse:
         """
+        @summary Removes tags from an Express Connect router (ECR).
+        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -3238,16 +4728,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            express_connect_router_20230901_models.UntagResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.UntagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                express_connect_router_20230901_models.UntagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def untag_resources(
         self,
         request: express_connect_router_20230901_models.UntagResourcesRequest,
     ) -> express_connect_router_20230901_models.UntagResourcesResponse:
         """
+        @summary Removes tags from an Express Connect router (ECR).
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
@@ -3259,6 +4757,8 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.UntagResourcesRequest,
     ) -> express_connect_router_20230901_models.UntagResourcesResponse:
         """
+        @summary Removes tags from an Express Connect router (ECR).
+        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
