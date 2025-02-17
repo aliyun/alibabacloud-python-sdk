@@ -2396,7 +2396,7 @@ class RunDataAnalysisRequest(TeaModel):
         query: str = None,
         session_id: str = None,
         specification_type: str = None,
-        user_params: Dict[str, Any] = None,
+        user_params: Any = None,
     ):
         self.data_role = data_role
         self.generate_sql_only = generate_sql_only

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dataanalysisgbi20240823.
 
-Created on 15/01/2025
+Created on 17/02/2025
 
 @author: Alibaba Cloud SDK
 """

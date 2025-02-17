@@ -1,3 +1,7 @@
+2025-02-17 Version: 1.3.2
+- Update API RunDataAnalysis: update param body.
+
+
 2025-01-15 Version: 1.3.1
 - Update API ResyncTable: update param body.
 - Update API SyncRemoteTables: update param body.
