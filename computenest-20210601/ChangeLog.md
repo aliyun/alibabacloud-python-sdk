@@ -1,3 +1,13 @@
+2025-02-17 Version: 3.7.0
+- Support API DeployServiceInstance.
+- Support API DescribeRegions.
+- Support API GetServiceInstanceSubscriptionEstimateCost.
+- Support API RenewServiceInstanceResources.
+- Update API GetService: update param ServiceVersion.
+- Update API ListServiceInstanceLogs: add param SortOrder.
+- Update API ListServiceUsages: update response param.
+
+
 2024-12-09 Version: 3.5.0
 - Support API CheckServiceDeployable.
 - Support API GetService.

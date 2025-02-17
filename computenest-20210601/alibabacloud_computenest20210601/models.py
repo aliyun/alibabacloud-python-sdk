@@ -12,9 +12,13 @@ class CommodityValueResultOrder(TeaModel):
         discount_amount: str = None,
         original_amount: str = None,
     ):
+        # 货币代码。
         self.currency = currency
+        # 优惠后。
         self.trade_amount = trade_amount
+        # 抵扣金额。
         self.discount_amount = discount_amount
+        # 优惠前。
         self.original_amount = original_amount
 
     def validate(self):
@@ -58,10 +62,20 @@ class CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs(TeaModel):
         value: str = None,
         unit: str = None,
     ):
+        # 属性类型，可选值：
+        # 
+        # 1. 1：商品属性 
+        # 2. 2：规格属性 
+        # 3. 3：模块属性 
+        # 4. 4：外部参数（备用）
         self.type = type
+        # Name
         self.name = name
+        # Module attr code
         self.code = code
+        # Value
         self.value = value
+        # Unit
         self.unit = unit
 
     def validate(self):
@@ -115,16 +129,27 @@ class CommodityValueResultSubOrdersSubOrderModuleInstance(TeaModel):
         price_type: str = None,
         module_attrs: List[CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs] = None,
     ):
+        # 模块ID。
         self.module_id = module_id
+        # 模块名称。
         self.module_name = module_name
+        # 模块代码。
         self.module_code = module_code
+        # 产品原价（元）。
         self.total_product_fee = total_product_fee
+        # 折扣费用（元）。
         self.discount_fee = discount_fee
+        # 实付金额（元）。
         self.pay_fee = pay_fee
+        # 价格单位。
         self.price_unit = price_unit
+        # 是否计价项。
         self.is_pricing_module = is_pricing_module
+        # 在订单中是否需要支付。
         self.need_order_pay = need_order_pay
+        # 定价类型。
         self.price_type = price_type
+        # 模块属性。
         self.module_attrs = module_attrs
 
     def validate(self):
@@ -200,6 +225,7 @@ class CommodityValueResultSubOrdersSubOrder(TeaModel):
         self,
         module_instance: List[CommodityValueResultSubOrdersSubOrderModuleInstance] = None,
     ):
+        # 模块（实例）信息。
         self.module_instance = module_instance
 
     def validate(self):
@@ -235,6 +261,7 @@ class CommodityValueResultSubOrders(TeaModel):
         self,
         sub_order: List[CommodityValueResultSubOrdersSubOrder] = None,
     ):
+        # 订单子项。
         self.sub_order = sub_order
 
     def validate(self):
@@ -274,10 +301,15 @@ class CommodityValueResultCoupons(TeaModel):
         coupon_option_no: str = None,
         selected: bool = None,
     ):
+        # 可支付金额。
         self.can_prom_fee = can_prom_fee
+        # Coupon Description
         self.coupon_desc = coupon_desc
+        # Coupon Name
         self.coupon_name = coupon_name
+        # Coupon OptionNo
         self.coupon_option_no = coupon_option_no
+        # 是否选中。
         self.selected = selected
 
     def validate(self):
@@ -324,9 +356,15 @@ class CommodityValueResult(TeaModel):
         sub_orders: CommodityValueResultSubOrders = None,
         coupons: List[CommodityValueResultCoupons] = None,
     ):
+        # 订单信息。
         self.order = order
+        # 询价类型，可选值：
+        # 1. Buy：新购询价。
+        # 2. ModificationBuy：变配询价。
         self.inquiry_type = inquiry_type
+        # 订单子项。
         self.sub_orders = sub_orders
+        # 优惠券。
         self.coupons = coupons
 
     def validate(self):
@@ -380,6 +418,7 @@ class CommodityValue(TeaModel):
         self,
         result: CommodityValueResult = None,
     ):
+        # Result模型。
         self.result = result
 
     def validate(self):
@@ -411,8 +450,14 @@ class CancelServiceUsageRequest(TeaModel):
         need_delete: bool = None,
         service_id: str = None,
     ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to delete the application.
+        # 
+        # >  After you delete the application, you must re-enter the application information the next time you submit an application.
         self.need_delete = need_delete
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -449,6 +494,7 @@ class CancelServiceUsageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -645,12 +691,22 @@ class CheckServiceDeployableRequest(TeaModel):
         service_version: str = None,
         trial_type: str = None,
     ):
+        # Total amount of postpaid.
         self.post_paid_amount = post_paid_amount
+        # Total amount of prepayment.
         self.pre_paid_amount = pre_paid_amount
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
         self.service_version = service_version
+        # The trial type of the service instance. Valid values:
+        # 
+        # *   **Trial**: Trials are supported.
+        # *   **NotTrial**: Trials are not supported.
         self.trial_type = trial_type
 
     def validate(self):
@@ -700,8 +756,15 @@ class CheckServiceDeployableResponseBodyCheckResults(TeaModel):
         type: str = None,
         value: str = None,
     ):
+        # Returns a hint message for the result.
         self.message = message
+        # Check type, invalid values:
+        # 
+        # - Balance ：Account balance.
+        # 
+        # - Quota:  Account quota.
         self.type = type
+        # Inspection result.
         self.value = value
 
     def validate(self):
@@ -738,6 +801,7 @@ class CheckServiceDeployableResponseBody(TeaModel):
         check_results: List[CheckServiceDeployableResponseBodyCheckResults] = None,
         request_id: str = None,
     ):
+        # Inspection result.
         self.check_results = check_results
         # Id of the request
         self.request_id = request_id
@@ -1829,9 +1893,13 @@ class CreateServiceUsageRequest(TeaModel):
         service_id: str = None,
         user_information: Dict[str, str] = None,
     ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The application information.
         self.user_information = user_information
 
     def validate(self):
@@ -1869,9 +1937,13 @@ class CreateServiceUsageShrinkRequest(TeaModel):
         service_id: str = None,
         user_information_shrink: str = None,
     ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The application information.
         self.user_information_shrink = user_information_shrink
 
     def validate(self):
@@ -1907,6 +1979,7 @@ class CreateServiceUsageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2081,6 +2154,272 @@ class DeleteServiceInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteServiceInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeployServiceInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        service_instance_id: str = None,
+    ):
+        # Ensures idempotency of the request. Generate a unique value for this parameter from your client to ensure it is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
+        self.client_token = client_token
+        # Region ID. Allowed values:
+        # 
+        # - cn-hangzhou: East China 1 (Hangzhou).
+        # 
+        # - ap-southeast-1: Singapore.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # Service instance ID.
+        # 
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class DeployServiceInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeployServiceInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeployServiceInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeployServiceInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRegionsResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region_endpoint: str = None,
+        region_id: str = None,
+    ):
+        # The region endpoint.
+        self.region_endpoint = region_endpoint
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_endpoint is not None:
+            result['RegionEndpoint'] = self.region_endpoint
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionEndpoint') is not None:
+            self.region_endpoint = m.get('RegionEndpoint')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[DescribeRegionsResponseBodyRegions] = None,
+        request_id: str = None,
+    ):
+        # The available regions.
+        self.regions = regions
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = DescribeRegionsResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3319,6 +3658,7 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
         pay_period: int = None,
         pay_period_unit: str = None,
     ):
+        # 优惠券ID
         self.coupon_id = coupon_id
         # The subscription duration.
         self.pay_period = pay_period
@@ -3374,13 +3714,11 @@ class GetServiceEstimateCostRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The commodity details.
+        # The information about the subscription duration.
         self.commodity = commodity
-        # The name of the configuration update operation.
+        # The name of the configuration change operation.
         self.operation_name = operation_name
-        # The parameters that are specified for service instance deployment.
-        # 
-        # >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+        # The parameters that are specified to deploy the service instance.
         self.parameters = parameters
         # The region ID.
         self.region_id = region_id
@@ -3392,12 +3730,9 @@ class GetServiceEstimateCostRequest(TeaModel):
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
-        # The package name.
+        # The name of the package specification.
         self.specification_name = specification_name
-        # The name of the template. This parameter is returned only if you specify TemplateId.
-        # 
-        # > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
-        # > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
+        # The template name.
         self.template_name = template_name
         # The trial policy. Valid values:
         # 
@@ -3484,13 +3819,11 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The commodity details.
+        # The information about the subscription duration.
         self.commodity_shrink = commodity_shrink
-        # The name of the configuration update operation.
+        # The name of the configuration change operation.
         self.operation_name = operation_name
-        # The parameters that are specified for service instance deployment.
-        # 
-        # >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+        # The parameters that are specified to deploy the service instance.
         self.parameters_shrink = parameters_shrink
         # The region ID.
         self.region_id = region_id
@@ -3502,12 +3835,9 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
-        # The package name.
+        # The name of the package specification.
         self.specification_name = specification_name
-        # The name of the template. This parameter is returned only if you specify TemplateId.
-        # 
-        # > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
-        # > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
+        # The template name.
         self.template_name = template_name
         # The trial policy. Valid values:
         # 
@@ -3582,11 +3912,11 @@ class GetServiceEstimateCostResponseBody(TeaModel):
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
-        # Estimated commodity cost.
+        # The estimated price.
         self.commodity = commodity
         # The request ID.
         self.request_id = request_id
-        # Estimated resource cost.
+        # The resources.
         self.resources = resources
 
     def validate(self):
@@ -4606,6 +4936,409 @@ class GetServiceInstanceResponse(TeaModel):
         return self
 
 
+class GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod(TeaModel):
+    def __init__(
+        self,
+        period: int = None,
+        period_unit: str = None,
+        resource_arn: str = None,
+    ):
+        # Renewal duration. The unit is specified by PeriodUnit.
+        self.period = period
+        # The time unit for the resource renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        self.period_unit = period_unit
+        # Resource ARN (Aliyun Resource Name).
+        self.resource_arn = resource_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        order_type: str = None,
+        period: int = None,
+        period_unit: str = None,
+        region_id: str = None,
+        resource_period: List[GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod] = None,
+        service_instance_id: str = None,
+    ):
+        # Ensures idempotence of the request. Generate a parameter value from your client to ensure its uniqueness across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters.
+        self.client_token = client_token
+        # Order type. Possible value: Renewal.
+        # 
+        # This parameter is required.
+        self.order_type = order_type
+        # The renewal duration for all prepaid resources of the service instance. The unit is specified by PeriodUnit.
+        self.period = period
+        # The time unit for the renewal duration of all prepaid resources of the service instance, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        self.period_unit = period_unit
+        # Region ID.
+        self.region_id = region_id
+        # Resource renewal configuration.
+        self.resource_period = resource_period
+        # Service instance ID.
+        # 
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.resource_period:
+            for k in self.resource_period:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ResourcePeriod'] = []
+        if self.resource_period is not None:
+            for k in self.resource_period:
+                result['ResourcePeriod'].append(k.to_map() if k else None)
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.resource_period = []
+        if m.get('ResourcePeriod') is not None:
+            for k in m.get('ResourcePeriod'):
+                temp_model = GetServiceInstanceSubscriptionEstimateCostRequestResourcePeriod()
+                self.resource_period.append(temp_model.from_map(k))
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        original_amount: float = None,
+        resource: str = None,
+        trade_amount: float = None,
+    ):
+        # Discount amount.
+        self.discount_amount = discount_amount
+        # Original price.
+        self.original_amount = original_amount
+        # Pricing module identifier.
+        self.resource = resource
+        # Discounted price.
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        rule_desc_id: int = None,
+    ):
+        # Promotion description.
+        self.description = description
+        # Promotion name.
+        self.name = name
+        # Promotion ID.
+        self.rule_desc_id = rule_desc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_desc_id is not None:
+            result['RuleDescId'] = self.rule_desc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleDescId') is not None:
+            self.rule_desc_id = m.get('RuleDescId')
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        detail_infos: List[GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos] = None,
+        discount_amount: float = None,
+        original_amount: float = None,
+        period: int = None,
+        period_unit: str = None,
+        resource_arn: str = None,
+        rules: List[GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules] = None,
+        trade_amount: float = None,
+    ):
+        # Currency. Valid values:
+        # - CNY: Chinese Yuan.
+        # - USD: US Dollar.
+        # - JPY: Japanese Yen.
+        self.currency = currency
+        # The price details of the pricing module.
+        self.detail_infos = detail_infos
+        # Discount.
+        self.discount_amount = discount_amount
+        # Original price.
+        self.original_amount = original_amount
+        # Renewal duration. The unit is specified by PeriodUnit.
+        self.period = period
+        # The time unit for the renewal duration, which is the unit of the Period parameter. Valid values: Month, Year. Default value: Month.
+        self.period_unit = period_unit
+        # Resource ARN (Aliyun Resource Name).
+        self.resource_arn = resource_arn
+        # Promotion details.
+        self.rules = rules
+        # Discounted price.
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        if self.detail_infos:
+            for k in self.detail_infos:
+                if k:
+                    k.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        result['DetailInfos'] = []
+        if self.detail_infos is not None:
+            for k in self.detail_infos:
+                result['DetailInfos'].append(k.to_map() if k else None)
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        self.detail_infos = []
+        if m.get('DetailInfos') is not None:
+            for k in m.get('DetailInfos'):
+                temp_model = GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesDetailInfos()
+                self.detail_infos.append(temp_model.from_map(k))
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePricesRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_prices: List[GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices] = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # List of resource price information.
+        self.resource_prices = resource_prices
+
+    def validate(self):
+        if self.resource_prices:
+            for k in self.resource_prices:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourcePrices'] = []
+        if self.resource_prices is not None:
+            for k in self.resource_prices:
+                result['ResourcePrices'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_prices = []
+        if m.get('ResourcePrices') is not None:
+            for k in m.get('ResourcePrices'):
+                temp_model = GetServiceInstanceSubscriptionEstimateCostResponseBodyResourcePrices()
+                self.resource_prices.append(temp_model.from_map(k))
+        return self
+
+
+class GetServiceInstanceSubscriptionEstimateCostResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceInstanceSubscriptionEstimateCostResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceInstanceSubscriptionEstimateCostResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetServiceProvisionsRequest(TeaModel):
     def __init__(
         self,
@@ -5499,6 +6232,8 @@ class GetUserInformationRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -5531,10 +6266,21 @@ class GetUserInformationResponseBodyDeliverySettings(TeaModel):
         oss_expiration_days: int = None,
         oss_path: str = None,
     ):
+        # Indicates whether screencast delivery to OSS is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.actiontrail_delivery_to_oss_enabled = actiontrail_delivery_to_oss_enabled
+        # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
+        # Indicates whether screencast delivery to Object Storage Service (OSS) is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.oss_enabled = oss_enabled
+        # The number of days for which the screencasts are saved.
         self.oss_expiration_days = oss_expiration_days
+        # The OSS path.
         self.oss_path = oss_path
 
     def validate(self):
@@ -5579,7 +6325,9 @@ class GetUserInformationResponseBody(TeaModel):
         delivery_settings: GetUserInformationResponseBodyDeliverySettings = None,
         request_id: str = None,
     ):
+        # The delivery settings.
         self.delivery_settings = delivery_settings
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5776,6 +6524,7 @@ class ListServiceInstanceLogsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
         service_instance_id: str = None,
+        sort_order: str = None,
     ):
         # The filters.
         self.filter = filter
@@ -5802,6 +6551,12 @@ class ListServiceInstanceLogsRequest(TeaModel):
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
+        # Sort Order. Possible values:
+        # 
+        # + Ascending: Ascending order
+        # 
+        # + Descending (default value): Descending order
+        self.sort_order = sort_order
 
     def validate(self):
         if self.filter:
@@ -5831,6 +6586,8 @@ class ListServiceInstanceLogsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
             result['ServiceInstanceId'] = self.service_instance_id
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
         return result
 
     def from_map(self, m: dict = None):
@@ -5852,6 +6609,8 @@ class ListServiceInstanceLogsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:
             self.service_instance_id = m.get('ServiceInstanceId')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
         return self
 
 
@@ -6489,10 +7248,16 @@ class ListServiceInstanceUpgradeHistoryRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -6540,13 +7305,25 @@ class ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory(TeaModel):
         type: str = None,
         upgrade_history_id: str = None,
     ):
+        # The time when the update ended.
         self.end_time = end_time
+        # The version before the upgrade.
         self.from_version = from_version
+        # The upgrade result.
         self.results = results
+        # The time when the update started.
         self.start_time = start_time
+        # The state of the update. Valid values:
+        # 
+        # *   upgrading: The service instance is being upgraded.
+        # *   UpgradeSuccessful: The service instance is upgraded.
+        # *   UpgradeFailed: The service instance failed to be upgraded.
         self.status = status
+        # The version after the upgrade.
         self.to_version = to_version
+        # The update type.
         self.type = type
+        # The ID of the upgrade record.
         self.upgrade_history_id = upgrade_history_id
 
     def validate(self):
@@ -6606,10 +7383,15 @@ class ListServiceInstanceUpgradeHistoryResponseBody(TeaModel):
         total_count: int = None,
         upgrade_history: List[ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory] = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The upgrade history.
         self.upgrade_history = upgrade_history
 
     def validate(self):
@@ -7445,7 +8227,14 @@ class ListServiceUsagesRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # 
+        # *   ServiceId: the ID of the service.
+        # *   ServiceName: the service name.
+        # *   Status: the state of the service.
+        # *   SupplierName: the name of the service provider.
         self.name = name
+        # The parameter values of the filter.
         self.value = value
 
     def validate(self):
@@ -7479,8 +8268,11 @@ class ListServiceUsagesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The filters.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):
@@ -7532,14 +8324,28 @@ class ListServiceUsagesResponseBodyServiceUsages(TeaModel):
         user_ali_uid: int = None,
         user_information: Dict[str, str] = None,
     ):
+        # The review comment.
         self.comments = comments
+        # The time when the application was created.
         self.create_time = create_time
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The state of the service application. Valid values:
+        # 
+        # *   Submitted: The application is submitted for review.
+        # *   Approved: The application is approved.
+        # *   Rejected: The application is rejected.
+        # *   Canceled: The application is canceled.
         self.status = status
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The time when the application was updated.
         self.update_time = update_time
+        # The ID of the Alibaba Cloud account.
         self.user_ali_uid = user_ali_uid
+        # The information about the applicant.
         self.user_information = user_information
 
     def validate(self):
@@ -7601,11 +8407,17 @@ class ListServiceUsagesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
         service_usages: List[ListServiceUsagesResponseBodyServiceUsages] = None,
+        total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The service applications.
         self.service_usages = service_usages
+        self.total_count = total_count
 
     def validate(self):
         if self.service_usages:
@@ -7629,6 +8441,8 @@ class ListServiceUsagesResponseBody(TeaModel):
         if self.service_usages is not None:
             for k in self.service_usages:
                 result['ServiceUsages'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -7644,6 +8458,8 @@ class ListServiceUsagesResponseBody(TeaModel):
             for k in m.get('ServiceUsages'):
                 temp_model = ListServiceUsagesResponseBodyServiceUsages()
                 self.service_usages.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -8473,7 +9289,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8509,12 +9327,23 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -8569,9 +9398,17 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
         self.resource_type = resource_type
+        # The key of the tag.
         self.tag_key = tag_key
+        # The values of the tags.
         self.tag_value = tag_value
 
     def validate(self):
@@ -8613,8 +9450,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # A list of resources that have tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -8839,6 +9679,299 @@ class ListTagValuesResponse(TeaModel):
         return self
 
 
+class RenewServiceInstanceResourcesRequestResourcePeriod(TeaModel):
+    def __init__(
+        self,
+        period: int = None,
+        period_unit: str = None,
+        resource_arn: str = None,
+    ):
+        # The renewal duration for the resource. The unit is specified by PeriodUnit.
+        self.period = period
+        # The time unit for the renewal duration of the resource, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+        self.period_unit = period_unit
+        # Resource ARN (Aliyun Resource Name).
+        self.resource_arn = resource_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        return self
+
+
+class RenewServiceInstanceResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        period: int = None,
+        period_unit: str = None,
+        region_id: str = None,
+        resource_period: List[RenewServiceInstanceResourcesRequestResourcePeriod] = None,
+        service_instance_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The renewal duration for all prepaid resources in the service instance. The unit is specified by PeriodUnit.
+        self.period = period
+        # The time unit for the renewal duration of all prepaid resources in the service instance, which is the unit for the Period parameter. Valid values: Month, Year. Default value: Month.
+        self.period_unit = period_unit
+        # Region ID.
+        self.region_id = region_id
+        # List of resource renewals.
+        self.resource_period = resource_period
+        # Service instance ID.
+        # 
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.resource_period:
+            for k in self.resource_period:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['ResourcePeriod'] = []
+        if self.resource_period is not None:
+            for k in self.resource_period:
+                result['ResourcePeriod'].append(k.to_map() if k else None)
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.resource_period = []
+        if m.get('ResourcePeriod') is not None:
+            for k in m.get('ResourcePeriod'):
+                temp_model = RenewServiceInstanceResourcesRequestResourcePeriod()
+                self.resource_period.append(temp_model.from_map(k))
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class RenewServiceInstanceResourcesResponseBodyFailureDetails(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        resource_arn: str = None,
+    ):
+        # Error code.
+        self.error_code = error_code
+        # Error message.
+        self.error_message = error_message
+        # Resource ARN (Aliyun Resource Name).
+        self.resource_arn = resource_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.resource_arn is not None:
+            result['ResourceArn'] = self.resource_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ResourceArn') is not None:
+            self.resource_arn = m.get('ResourceArn')
+        return self
+
+
+class RenewServiceInstanceResourcesResponseBodyRenewalResult(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        succeeded: int = None,
+        total_count: int = None,
+    ):
+        # Number of failed renewals.
+        self.failed = failed
+        # Number of successfully renewed resources.
+        self.succeeded = succeeded
+        # Number of renewed resources.
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class RenewServiceInstanceResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        failure_details: List[RenewServiceInstanceResourcesResponseBodyFailureDetails] = None,
+        renewal_result: RenewServiceInstanceResourcesResponseBodyRenewalResult = None,
+        request_id: str = None,
+    ):
+        # Details of failed renewals.
+        self.failure_details = failure_details
+        # Renewal result.
+        self.renewal_result = renewal_result
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.failure_details:
+            for k in self.failure_details:
+                if k:
+                    k.validate()
+        if self.renewal_result:
+            self.renewal_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailureDetails'] = []
+        if self.failure_details is not None:
+            for k in self.failure_details:
+                result['FailureDetails'].append(k.to_map() if k else None)
+        if self.renewal_result is not None:
+            result['RenewalResult'] = self.renewal_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failure_details = []
+        if m.get('FailureDetails') is not None:
+            for k in m.get('FailureDetails'):
+                temp_model = RenewServiceInstanceResourcesResponseBodyFailureDetails()
+                self.failure_details.append(temp_model.from_map(k))
+        if m.get('RenewalResult') is not None:
+            temp_model = RenewServiceInstanceResourcesResponseBodyRenewalResult()
+            self.renewal_result = temp_model.from_map(m['RenewalResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RenewServiceInstanceResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewServiceInstanceResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewServiceInstanceResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartServiceInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -8963,8 +10096,11 @@ class RollbackServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
         self.region_id = region_id
+        # The service instance ID.
         self.service_instance_id = service_instance_id
 
     def validate(self):
@@ -9000,6 +10136,7 @@ class RollbackServiceInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9621,9 +10758,16 @@ class UpdateServiceInstanceAttributesRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # Specifies whether to authorize the service provider to perform O\\&M operations on the service instance.
         self.enable_operation = enable_operation
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
+        # You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -9660,6 +10804,7 @@ class UpdateServiceInstanceAttributesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9728,10 +10873,12 @@ class UpdateServiceInstanceSpecRequestCommodity(TeaModel):
         self,
         auto_pay: bool = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable automatic payment.
         # 
-        # *   **true**\
-        # *   **false**\
+        # Valid values:
+        # 
+        # *   **true (default)**: automatically completes the payment. You must make sure that your account balance is sufficient.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated. If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.[](https://rdsnext.console.aliyun.com/dashboard/cn-beijing)
         self.auto_pay = auto_pay
 
     def validate(self):
@@ -9770,23 +10917,46 @@ class UpdateServiceInstanceSpecRequest(TeaModel):
         self.client_token = client_token
         # The information about the order placed in Alibaba Cloud Marketplace. You do not need to specify this parameter if the service is not published in Alibaba Cloud Marketplace or uses the pay-as-you-go billing method.
         self.commodity = commodity
-        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. A dry run includes checks on the permissions and instance state.
         # 
-        # *   **true: performs a dry run for the request, but does not create a service instance.**\
-        # *   **false: performs a dry run for the request, and creates a service instance if the request passes the dry run.**\
+        # Valid values:
+        # 
+        # *   true: performs a dry run but does not create a service instance.
+        # *   false: performs a dry run and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
-        # Specifies whether to enable Prometheus on the customer side. Valid values:
+        # Specifies whether to enable Prometheus monitoring on the user side.
         # 
-        # *   **true**\
-        # *   **false**\
+        # Valid values:
+        # 
+        # true
+        # 
+        # false
         self.enable_user_prometheus = enable_user_prometheus
-        # The name of the configuration update operation.
+        # The name of the configuration change operation.
+        # 
+        # To obtain the names and content of the configuration change operations of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig** in the value of **OperationMetadata**.
         self.operation_name = operation_name
-        # The configuration parameters of the service instance.
+        # The configuration parameter.
+        # 
+        # This parameter is available if the service provider set **Method** to **Change Parameter** when configuring configuration change operations.
+        # 
+        # > 
+        # 
+        # *   To obtain the parameters of the service that support configuration change, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig** in the value of **OperationMetadata**.
+        # 
+        # *   You can also view the parameters of the service that support configuration change in the **configuration change** dialog box in the [Compute Nest console](https://computenest.console.aliyun.com/service/instance/cn-hangzhou).
+        # 
+        # For example, if the service supports Elastic Compute Service (ECS) instance type upgrade, you must specify an instance type that has higher specifications than the current one.
         self.parameters = parameters
-        # The name of the specification package.
+        # The name of the configuration plan.
+        # 
+        # This parameter is available if the service provider set **Method** to **Change Plan** when configuring configuration change operations.
+        # 
+        # To obtain the configuration plan names of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **PredefinedParameters** in the value of **DeployMetadata**.
         self.predefined_parameters_name = predefined_parameters_name
-        # The service instance ID.
+        # The ID of the service instance.
+        # 
+        # You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
@@ -9846,10 +11016,12 @@ class UpdateServiceInstanceSpecShrinkRequestCommodity(TeaModel):
         self,
         auto_pay: bool = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to enable automatic payment.
         # 
-        # *   **true**\
-        # *   **false**\
+        # Valid values:
+        # 
+        # *   **true (default)**: automatically completes the payment. You must make sure that your account balance is sufficient.
+        # *   **false**: does not automatically complete the payment. An unpaid order is generated. If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.[](https://rdsnext.console.aliyun.com/dashboard/cn-beijing)
         self.auto_pay = auto_pay
 
     def validate(self):
@@ -9888,23 +11060,46 @@ class UpdateServiceInstanceSpecShrinkRequest(TeaModel):
         self.client_token = client_token
         # The information about the order placed in Alibaba Cloud Marketplace. You do not need to specify this parameter if the service is not published in Alibaba Cloud Marketplace or uses the pay-as-you-go billing method.
         self.commodity = commodity
-        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. A dry run includes checks on the permissions and instance state.
         # 
-        # *   **true: performs a dry run for the request, but does not create a service instance.**\
-        # *   **false: performs a dry run for the request, and creates a service instance if the request passes the dry run.**\
+        # Valid values:
+        # 
+        # *   true: performs a dry run but does not create a service instance.
+        # *   false: performs a dry run and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
-        # Specifies whether to enable Prometheus on the customer side. Valid values:
+        # Specifies whether to enable Prometheus monitoring on the user side.
         # 
-        # *   **true**\
-        # *   **false**\
+        # Valid values:
+        # 
+        # true
+        # 
+        # false
         self.enable_user_prometheus = enable_user_prometheus
-        # The name of the configuration update operation.
+        # The name of the configuration change operation.
+        # 
+        # To obtain the names and content of the configuration change operations of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig** in the value of **OperationMetadata**.
         self.operation_name = operation_name
-        # The configuration parameters of the service instance.
+        # The configuration parameter.
+        # 
+        # This parameter is available if the service provider set **Method** to **Change Parameter** when configuring configuration change operations.
+        # 
+        # > 
+        # 
+        # *   To obtain the parameters of the service that support configuration change, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **ModifyParametersConfig** in the value of **OperationMetadata**.
+        # 
+        # *   You can also view the parameters of the service that support configuration change in the **configuration change** dialog box in the [Compute Nest console](https://computenest.console.aliyun.com/service/instance/cn-hangzhou).
+        # 
+        # For example, if the service supports Elastic Compute Service (ECS) instance type upgrade, you must specify an instance type that has higher specifications than the current one.
         self.parameters_shrink = parameters_shrink
-        # The name of the specification package.
+        # The name of the configuration plan.
+        # 
+        # This parameter is available if the service provider set **Method** to **Change Plan** when configuring configuration change operations.
+        # 
+        # To obtain the configuration plan names of the service, you can call the [GetService](https://help.aliyun.com/document_detail/2340828.html) operation. In the response, check the value of **PredefinedParameters** in the value of **DeployMetadata**.
         self.predefined_parameters_name = predefined_parameters_name
-        # The service instance ID.
+        # The ID of the service instance.
+        # 
+        # You can call the [ListServiceInstances](https://help.aliyun.com/document_detail/396200.html) operation to obtain the ID of the service instance.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
@@ -10042,9 +11237,13 @@ class UpdateServiceUsageRequest(TeaModel):
         service_id: str = None,
         user_information: Dict[str, str] = None,
     ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The information about the applicant.
         self.user_information = user_information
 
     def validate(self):
@@ -10082,9 +11281,13 @@ class UpdateServiceUsageShrinkRequest(TeaModel):
         service_id: str = None,
         user_information_shrink: str = None,
     ):
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The information about the applicant.
         self.user_information_shrink = user_information_shrink
 
     def validate(self):
@@ -10120,6 +11323,7 @@ class UpdateServiceUsageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10192,10 +11396,21 @@ class UpdateUserInformationRequestDeliverySettings(TeaModel):
         oss_expiration_days: int = None,
         oss_path: str = None,
     ):
+        # Specifies whether to enable screencast delivery to OSS. Valid values:
+        # 
+        # *   true
+        # *   false
         self.actiontrail_delivery_to_oss_enabled = actiontrail_delivery_to_oss_enabled
+        # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
+        # Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+        # 
+        # *   true
+        # *   false
         self.oss_enabled = oss_enabled
+        # The number of days for which the screencasts are saved.
         self.oss_expiration_days = oss_expiration_days
+        # The OSS path.
         self.oss_path = oss_path
 
     def validate(self):
@@ -10240,7 +11455,10 @@ class UpdateUserInformationRequest(TeaModel):
         delivery_settings: UpdateUserInformationRequestDeliverySettings = None,
         region_id: str = None,
     ):
+        # The modified delivery settings.
         self.delivery_settings = delivery_settings
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -10275,6 +11493,7 @@ class UpdateUserInformationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10348,11 +11567,20 @@ class UpgradeServiceInstanceRequest(TeaModel):
         service_instance_id: str = None,
         service_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   **true**: performs a dry run for the request, but does not upgrade service instance.
+        # *   **false**: performs a dry run for the request, and upgrade service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The parameters required for the upgrade. This parameter is required if the destination version of the service has new parameters.
         self.parameters = parameters
+        # The region ID.
         self.region_id = region_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The destination version.
         self.service_version = service_version
 
     def validate(self):
@@ -10405,11 +11633,20 @@ class UpgradeServiceInstanceShrinkRequest(TeaModel):
         service_instance_id: str = None,
         service_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   **true**: performs a dry run for the request, but does not upgrade service instance.
+        # *   **false**: performs a dry run for the request, and upgrade service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The parameters required for the upgrade. This parameter is required if the destination version of the service has new parameters.
         self.parameters_shrink = parameters_shrink
+        # The region ID.
         self.region_id = region_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The destination version.
         self.service_version = service_version
 
     def validate(self):
@@ -10458,7 +11695,9 @@ class UpgradeServiceInstanceResponseBody(TeaModel):
         request_id: str = None,
         upgrade_required_parameters: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The parameters required for the upgrade. This parameter is returned only if DryRun is set to true in the request. You can specify the required parameters based on the returned value when you perform an actual request.
         self.upgrade_required_parameters = upgrade_required_parameters
 
     def validate(self):
