@@ -1,3 +1,23 @@
+2025-02-17 Version: 6.0.0
+- Support API EndTerminalSession.
+- Support API ModifySnapshotCategory.
+- Delete API ModifyAutoSnapshotPolicy.
+- Update API CreateAutoProvisioningGroup: add param LaunchConfiguration.
+- Update API CreateAutoProvisioningGroup: add param PrePaidOptions.
+- Update API CreateAutoProvisioningGroup: update param DefaultTargetCapacityType.
+- Update API CreateElasticityAssurance: add param AutoRenew.
+- Update API CreateElasticityAssurance: add param AutoRenewPeriod.
+- Update API CreateImagePipeline: add param AdvancedOptions.
+- Update API CreateImagePipeline: add param ImportImageOptions.
+- Update API CreateImagePipeline: add param NvmeSupport.
+- Update API CreateImagePipeline: update param BaseImage.
+- Update API CreateKeyPair: update response param.
+- Update API DescribeImagePipelines: update response param.
+- Update API DescribeRenewalPrice: update response param.
+- Update API RenewElasticityAssurances: add param AutoRenew.
+- Update API RenewElasticityAssurances: add param AutoRenewPeriod.
+
+
 2025-01-13 Version: 5.0.2
 - Update API CreateImagePipeline: add param AdvancedOptions.
 - Update API CreateImagePipeline: add param ImportImageOptions.
