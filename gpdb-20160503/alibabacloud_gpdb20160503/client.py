@@ -1810,6 +1810,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ainode_spec_infos):
+            query['AINodeSpecInfos'] = request.ainode_spec_infos
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
         if not UtilClient.is_unset(request.client_token):
@@ -1939,6 +1941,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ainode_spec_infos):
+            query['AINodeSpecInfos'] = request.ainode_spec_infos
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
         if not UtilClient.is_unset(request.client_token):

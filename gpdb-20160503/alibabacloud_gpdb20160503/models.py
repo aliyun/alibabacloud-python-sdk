@@ -2266,6 +2266,39 @@ class CreateCollectionResponse(TeaModel):
         return self
 
 
+class CreateDBInstanceRequestAINodeSpecInfos(TeaModel):
+    def __init__(
+        self,
+        ainode_num: str = None,
+        ainode_spec: str = None,
+    ):
+        self.ainode_num = ainode_num
+        self.ainode_spec = ainode_spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ainode_num is not None:
+            result['AINodeNum'] = self.ainode_num
+        if self.ainode_spec is not None:
+            result['AINodeSpec'] = self.ainode_spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AINodeNum') is not None:
+            self.ainode_num = m.get('AINodeNum')
+        if m.get('AINodeSpec') is not None:
+            self.ainode_spec = m.get('AINodeSpec')
+        return self
+
+
 class CreateDBInstanceRequestTag(TeaModel):
     def __init__(
         self,
@@ -2312,6 +2345,7 @@ class CreateDBInstanceRequestTag(TeaModel):
 class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        ainode_spec_infos: List[CreateDBInstanceRequestAINodeSpecInfos] = None,
         backup_id: str = None,
         client_token: str = None,
         create_sample_data: bool = None,
@@ -2357,6 +2391,7 @@ class CreateDBInstanceRequest(TeaModel):
         vector_configuration_status: str = None,
         zone_id: str = None,
     ):
+        self.ainode_spec_infos = ainode_spec_infos
         # Backup set ID.
         # 
         # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) interface to view the backup set IDs of all backup sets under the target instance.
@@ -2592,6 +2627,10 @@ class CreateDBInstanceRequest(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ainode_spec_infos:
+            for k in self.ainode_spec_infos:
+                if k:
+                    k.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -2603,6 +2642,10 @@ class CreateDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        result['AINodeSpecInfos'] = []
+        if self.ainode_spec_infos is not None:
+            for k in self.ainode_spec_infos:
+                result['AINodeSpecInfos'].append(k.to_map() if k else None)
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
         if self.client_token is not None:
@@ -2697,6 +2740,11 @@ class CreateDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.ainode_spec_infos = []
+        if m.get('AINodeSpecInfos') is not None:
+            for k in m.get('AINodeSpecInfos'):
+                temp_model = CreateDBInstanceRequestAINodeSpecInfos()
+                self.ainode_spec_infos.append(temp_model.from_map(k))
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
         if m.get('ClientToken') is not None:
