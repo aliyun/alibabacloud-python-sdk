@@ -4773,6 +4773,458 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
+    def list_instances_ecs_info_list_with_options(
+        self,
+        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
+        """
+        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
+        
+        @param request: ListInstancesEcsInfoListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesEcsInfoListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.info_type):
+            query['info_type'] = request.info_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.managed_type):
+            query['managed_type'] = request.managed_type
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancesEcsInfoList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listInstancesEcsInfoList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_instances_ecs_info_list_with_options_async(
+        self,
+        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
+        """
+        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
+        
+        @param request: ListInstancesEcsInfoListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesEcsInfoListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.info_type):
+            query['info_type'] = request.info_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.managed_type):
+            query['managed_type'] = request.managed_type
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancesEcsInfoList',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listInstancesEcsInfoList',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_instances_ecs_info_list(
+        self,
+        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
+        """
+        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
+        
+        @param request: ListInstancesEcsInfoListRequest
+        @return: ListInstancesEcsInfoListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instances_ecs_info_list_with_options(request, headers, runtime)
+
+    async def list_instances_ecs_info_list_async(
+        self,
+        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
+        """
+        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
+        
+        @param request: ListInstancesEcsInfoListRequest
+        @return: ListInstancesEcsInfoListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instances_ecs_info_list_with_options_async(request, headers, runtime)
+
+    def list_instances_with_ecs_info_with_options(
+        self,
+        tmp_req: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
+        """
+        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
+        
+        @param tmp_req: ListInstancesWithEcsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesWithEcsInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.ListInstancesWithEcsInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_tag):
+            request.instance_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.health_status):
+            query['health_status'] = request.health_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id_name):
+            query['instance_id_name'] = request.instance_id_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['instance_name'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_tag_shrink):
+            query['instance_tag'] = request.instance_tag_shrink
+        if not UtilClient.is_unset(request.is_managed):
+            query['is_managed'] = request.is_managed
+        if not UtilClient.is_unset(request.os_name):
+            query['os_name'] = request.os_name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['private_ip'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['public_ip'] = request.public_ip
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id_name):
+            query['resource_group_id_name'] = request.resource_group_id_name
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['resource_group_name'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancesWithEcsInfo',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listInstancesWithEcsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_instances_with_ecs_info_with_options_async(
+        self,
+        tmp_req: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
+        """
+        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
+        
+        @param tmp_req: ListInstancesWithEcsInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesWithEcsInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sys_om20231230_models.ListInstancesWithEcsInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_tag):
+            request.instance_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.health_status):
+            query['health_status'] = request.health_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id_name):
+            query['instance_id_name'] = request.instance_id_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['instance_name'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_tag_shrink):
+            query['instance_tag'] = request.instance_tag_shrink
+        if not UtilClient.is_unset(request.is_managed):
+            query['is_managed'] = request.is_managed
+        if not UtilClient.is_unset(request.os_name):
+            query['os_name'] = request.os_name
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.private_ip):
+            query['private_ip'] = request.private_ip
+        if not UtilClient.is_unset(request.public_ip):
+            query['public_ip'] = request.public_ip
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resource_group_id'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_group_id_name):
+            query['resource_group_id_name'] = request.resource_group_id_name
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['resource_group_name'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancesWithEcsInfo',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listInstancesWithEcsInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_instances_with_ecs_info(
+        self,
+        request: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
+        """
+        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
+        
+        @param request: ListInstancesWithEcsInfoRequest
+        @return: ListInstancesWithEcsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instances_with_ecs_info_with_options(request, headers, runtime)
+
+    async def list_instances_with_ecs_info_async(
+        self,
+        request: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
+        """
+        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
+        
+        @param request: ListInstancesWithEcsInfoRequest
+        @return: ListInstancesWithEcsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instances_with_ecs_info_with_options_async(request, headers, runtime)
+
+    def list_plugins_instances_with_options(
+        self,
+        request: sys_om20231230_models.ListPluginsInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
+        """
+        @summary 获取插件的安装/更新/卸载实例列表
+        
+        @param request: ListPluginsInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance_id_name):
+            query['instance_id_name'] = request.instance_id_name
+        if not UtilClient.is_unset(request.instance_tag):
+            query['instance_tag'] = request.instance_tag
+        if not UtilClient.is_unset(request.operation_type):
+            query['operation_type'] = request.operation_type
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginsInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/listPluginsInstances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPluginsInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPluginsInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_plugins_instances_with_options_async(
+        self,
+        request: sys_om20231230_models.ListPluginsInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
+        """
+        @summary 获取插件的安装/更新/卸载实例列表
+        
+        @param request: ListPluginsInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.instance_id_name):
+            query['instance_id_name'] = request.instance_id_name
+        if not UtilClient.is_unset(request.instance_tag):
+            query['instance_tag'] = request.instance_tag
+        if not UtilClient.is_unset(request.operation_type):
+            query['operation_type'] = request.operation_type
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['plugin_id'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginsInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/agent/listPluginsInstances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPluginsInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                sys_om20231230_models.ListPluginsInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_plugins_instances(
+        self,
+        request: sys_om20231230_models.ListPluginsInstancesRequest,
+    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
+        """
+        @summary 获取插件的安装/更新/卸载实例列表
+        
+        @param request: ListPluginsInstancesRequest
+        @return: ListPluginsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_plugins_instances_with_options(request, headers, runtime)
+
+    async def list_plugins_instances_async(
+        self,
+        request: sys_om20231230_models.ListPluginsInstancesRequest,
+    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
+        """
+        @summary 获取插件的安装/更新/卸载实例列表
+        
+        @param request: ListPluginsInstancesRequest
+        @return: ListPluginsInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_plugins_instances_with_options_async(request, headers, runtime)
+
     def list_pods_of_instance_with_options(
         self,
         request: sys_om20231230_models.ListPodsOfInstanceRequest,

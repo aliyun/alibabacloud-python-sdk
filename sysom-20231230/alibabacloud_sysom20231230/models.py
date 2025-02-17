@@ -7210,6 +7210,967 @@ class ListInstancesResponse(TeaModel):
         return self
 
 
+class ListInstancesEcsInfoListRequest(TeaModel):
+    def __init__(
+        self,
+        info_type: str = None,
+        instance_id: str = None,
+        managed_type: str = None,
+        plugin_id: str = None,
+        region: str = None,
+    ):
+        # This parameter is required.
+        self.info_type = info_type
+        self.instance_id = instance_id
+        self.managed_type = managed_type
+        self.plugin_id = plugin_id
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.info_type is not None:
+            result['info_type'] = self.info_type
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.managed_type is not None:
+            result['managed_type'] = self.managed_type
+        if self.plugin_id is not None:
+            result['plugin_id'] = self.plugin_id
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('info_type') is not None:
+            self.info_type = m.get('info_type')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('managed_type') is not None:
+            self.managed_type = m.get('managed_type')
+        if m.get('plugin_id') is not None:
+            self.plugin_id = m.get('plugin_id')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class ListInstancesEcsInfoListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+        type: str = None,
+    ):
+        self.ip = ip
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['ip'] = self.ip
+        if self.tag_key is not None:
+            result['tag_key'] = self.tag_key
+        if self.tag_value is not None:
+            result['tag_value'] = self.tag_value
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        if m.get('tag_key') is not None:
+            self.tag_key = m.get('tag_key')
+        if m.get('tag_value') is not None:
+            self.tag_value = m.get('tag_value')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListInstancesEcsInfoListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListInstancesEcsInfoListResponseBodyData] = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListInstancesEcsInfoListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class ListInstancesEcsInfoListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstancesEcsInfoListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstancesEcsInfoListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInstancesWithEcsInfoRequestInstanceTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListInstancesWithEcsInfoRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        health_status: str = None,
+        instance_id: str = None,
+        instance_id_name: str = None,
+        instance_name: str = None,
+        instance_tag: ListInstancesWithEcsInfoRequestInstanceTag = None,
+        is_managed: int = None,
+        os_name: str = None,
+        page_size: int = None,
+        private_ip: str = None,
+        public_ip: str = None,
+        region: str = None,
+        resource_group_id: str = None,
+        resource_group_id_name: str = None,
+        resource_group_name: str = None,
+    ):
+        self.current = current
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.instance_id_name = instance_id_name
+        self.instance_name = instance_name
+        self.instance_tag = instance_tag
+        self.is_managed = is_managed
+        self.os_name = os_name
+        self.page_size = page_size
+        self.private_ip = private_ip
+        self.public_ip = public_ip
+        # This parameter is required.
+        self.region = region
+        self.resource_group_id = resource_group_id
+        self.resource_group_id_name = resource_group_id_name
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        if self.instance_tag:
+            self.instance_tag.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.health_status is not None:
+            result['health_status'] = self.health_status
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.instance_id_name is not None:
+            result['instance_id_name'] = self.instance_id_name
+        if self.instance_name is not None:
+            result['instance_name'] = self.instance_name
+        if self.instance_tag is not None:
+            result['instance_tag'] = self.instance_tag.to_map()
+        if self.is_managed is not None:
+            result['is_managed'] = self.is_managed
+        if self.os_name is not None:
+            result['os_name'] = self.os_name
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.private_ip is not None:
+            result['private_ip'] = self.private_ip
+        if self.public_ip is not None:
+            result['public_ip'] = self.public_ip
+        if self.region is not None:
+            result['region'] = self.region
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
+        if self.resource_group_id_name is not None:
+            result['resource_group_id_name'] = self.resource_group_id_name
+        if self.resource_group_name is not None:
+            result['resource_group_name'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('health_status') is not None:
+            self.health_status = m.get('health_status')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('instance_id_name') is not None:
+            self.instance_id_name = m.get('instance_id_name')
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        if m.get('instance_tag') is not None:
+            temp_model = ListInstancesWithEcsInfoRequestInstanceTag()
+            self.instance_tag = temp_model.from_map(m['instance_tag'])
+        if m.get('is_managed') is not None:
+            self.is_managed = m.get('is_managed')
+        if m.get('os_name') is not None:
+            self.os_name = m.get('os_name')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('private_ip') is not None:
+            self.private_ip = m.get('private_ip')
+        if m.get('public_ip') is not None:
+            self.public_ip = m.get('public_ip')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('resource_group_id_name') is not None:
+            self.resource_group_id_name = m.get('resource_group_id_name')
+        if m.get('resource_group_name') is not None:
+            self.resource_group_name = m.get('resource_group_name')
+        return self
+
+
+class ListInstancesWithEcsInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        health_status: str = None,
+        instance_id: str = None,
+        instance_id_name: str = None,
+        instance_name: str = None,
+        instance_tag_shrink: str = None,
+        is_managed: int = None,
+        os_name: str = None,
+        page_size: int = None,
+        private_ip: str = None,
+        public_ip: str = None,
+        region: str = None,
+        resource_group_id: str = None,
+        resource_group_id_name: str = None,
+        resource_group_name: str = None,
+    ):
+        self.current = current
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.instance_id_name = instance_id_name
+        self.instance_name = instance_name
+        self.instance_tag_shrink = instance_tag_shrink
+        self.is_managed = is_managed
+        self.os_name = os_name
+        self.page_size = page_size
+        self.private_ip = private_ip
+        self.public_ip = public_ip
+        # This parameter is required.
+        self.region = region
+        self.resource_group_id = resource_group_id
+        self.resource_group_id_name = resource_group_id_name
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.health_status is not None:
+            result['health_status'] = self.health_status
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.instance_id_name is not None:
+            result['instance_id_name'] = self.instance_id_name
+        if self.instance_name is not None:
+            result['instance_name'] = self.instance_name
+        if self.instance_tag_shrink is not None:
+            result['instance_tag'] = self.instance_tag_shrink
+        if self.is_managed is not None:
+            result['is_managed'] = self.is_managed
+        if self.os_name is not None:
+            result['os_name'] = self.os_name
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.private_ip is not None:
+            result['private_ip'] = self.private_ip
+        if self.public_ip is not None:
+            result['public_ip'] = self.public_ip
+        if self.region is not None:
+            result['region'] = self.region
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
+        if self.resource_group_id_name is not None:
+            result['resource_group_id_name'] = self.resource_group_id_name
+        if self.resource_group_name is not None:
+            result['resource_group_name'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('health_status') is not None:
+            self.health_status = m.get('health_status')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('instance_id_name') is not None:
+            self.instance_id_name = m.get('instance_id_name')
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        if m.get('instance_tag') is not None:
+            self.instance_tag_shrink = m.get('instance_tag')
+        if m.get('is_managed') is not None:
+            self.is_managed = m.get('is_managed')
+        if m.get('os_name') is not None:
+            self.os_name = m.get('os_name')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('private_ip') is not None:
+            self.private_ip = m.get('private_ip')
+        if m.get('public_ip') is not None:
+            self.public_ip = m.get('public_ip')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('resource_group_id_name') is not None:
+            self.resource_group_id_name = m.get('resource_group_id_name')
+        if m.get('resource_group_name') is not None:
+            self.resource_group_name = m.get('resource_group_name')
+        return self
+
+
+class ListInstancesWithEcsInfoResponseBodyDataInstanceTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['tag_key'] = self.tag_key
+        if self.tag_value is not None:
+            result['tag_value'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tag_key') is not None:
+            self.tag_key = m.get('tag_key')
+        if m.get('tag_value') is not None:
+            self.tag_value = m.get('tag_value')
+        return self
+
+
+class ListInstancesWithEcsInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_tag: List[ListInstancesWithEcsInfoResponseBodyDataInstanceTag] = None,
+        os_arch: str = None,
+        os_health_score: str = None,
+        os_name: str = None,
+        private_ip: str = None,
+        public_ip: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+        status: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_tag = instance_tag
+        self.os_arch = os_arch
+        self.os_health_score = os_health_score
+        self.os_name = os_name
+        self.private_ip = private_ip
+        self.public_ip = public_ip
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+        self.status = status
+
+    def validate(self):
+        if self.instance_tag:
+            for k in self.instance_tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.instance_name is not None:
+            result['instance_name'] = self.instance_name
+        result['instance_tag'] = []
+        if self.instance_tag is not None:
+            for k in self.instance_tag:
+                result['instance_tag'].append(k.to_map() if k else None)
+        if self.os_arch is not None:
+            result['os_arch'] = self.os_arch
+        if self.os_health_score is not None:
+            result['os_health_score'] = self.os_health_score
+        if self.os_name is not None:
+            result['os_name'] = self.os_name
+        if self.private_ip is not None:
+            result['private_ip'] = self.private_ip
+        if self.public_ip is not None:
+            result['public_ip'] = self.public_ip
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['resource_group_name'] = self.resource_group_name
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        self.instance_tag = []
+        if m.get('instance_tag') is not None:
+            for k in m.get('instance_tag'):
+                temp_model = ListInstancesWithEcsInfoResponseBodyDataInstanceTag()
+                self.instance_tag.append(temp_model.from_map(k))
+        if m.get('os_arch') is not None:
+            self.os_arch = m.get('os_arch')
+        if m.get('os_health_score') is not None:
+            self.os_health_score = m.get('os_health_score')
+        if m.get('os_name') is not None:
+            self.os_name = m.get('os_name')
+        if m.get('private_ip') is not None:
+            self.private_ip = m.get('private_ip')
+        if m.get('public_ip') is not None:
+            self.public_ip = m.get('public_ip')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('resource_group_name') is not None:
+            self.resource_group_name = m.get('resource_group_name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListInstancesWithEcsInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListInstancesWithEcsInfoResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListInstancesWithEcsInfoResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListInstancesWithEcsInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstancesWithEcsInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstancesWithEcsInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPluginsInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        instance_id_name: str = None,
+        instance_tag: str = None,
+        operation_type: str = None,
+        page_size: int = None,
+        plugin_id: str = None,
+        region: str = None,
+    ):
+        self.current = current
+        self.instance_id_name = instance_id_name
+        self.instance_tag = instance_tag
+        # This parameter is required.
+        self.operation_type = operation_type
+        self.page_size = page_size
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        # This parameter is required.
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.instance_id_name is not None:
+            result['instance_id_name'] = self.instance_id_name
+        if self.instance_tag is not None:
+            result['instance_tag'] = self.instance_tag
+        if self.operation_type is not None:
+            result['operation_type'] = self.operation_type
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.plugin_id is not None:
+            result['plugin_id'] = self.plugin_id
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('instance_id_name') is not None:
+            self.instance_id_name = m.get('instance_id_name')
+        if m.get('instance_tag') is not None:
+            self.instance_tag = m.get('instance_tag')
+        if m.get('operation_type') is not None:
+            self.operation_type = m.get('operation_type')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('plugin_id') is not None:
+            self.plugin_id = m.get('plugin_id')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class ListPluginsInstancesResponseBodyDataInstanceTag(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['tag_key'] = self.tag_key
+        if self.tag_value is not None:
+            result['tag_value'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tag_key') is not None:
+            self.tag_key = m.get('tag_key')
+        if m.get('tag_value') is not None:
+            self.tag_value = m.get('tag_value')
+        return self
+
+
+class ListPluginsInstancesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_tag: List[ListPluginsInstancesResponseBodyDataInstanceTag] = None,
+        os_name: str = None,
+        private_ip: str = None,
+        public_ip: str = None,
+        region: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_tag = instance_tag
+        self.os_name = os_name
+        self.private_ip = private_ip
+        self.public_ip = public_ip
+        self.region = region
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        if self.instance_tag:
+            for k in self.instance_tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.instance_name is not None:
+            result['instance_name'] = self.instance_name
+        result['instance_tag'] = []
+        if self.instance_tag is not None:
+            for k in self.instance_tag:
+                result['instance_tag'].append(k.to_map() if k else None)
+        if self.os_name is not None:
+            result['os_name'] = self.os_name
+        if self.private_ip is not None:
+            result['private_ip'] = self.private_ip
+        if self.public_ip is not None:
+            result['public_ip'] = self.public_ip
+        if self.region is not None:
+            result['region'] = self.region
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['resource_group_name'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('instance_name') is not None:
+            self.instance_name = m.get('instance_name')
+        self.instance_tag = []
+        if m.get('instance_tag') is not None:
+            for k in m.get('instance_tag'):
+                temp_model = ListPluginsInstancesResponseBodyDataInstanceTag()
+                self.instance_tag.append(temp_model.from_map(k))
+        if m.get('os_name') is not None:
+            self.os_name = m.get('os_name')
+        if m.get('private_ip') is not None:
+            self.private_ip = m.get('private_ip')
+        if m.get('public_ip') is not None:
+            self.public_ip = m.get('public_ip')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
+        if m.get('resource_group_name') is not None:
+            self.resource_group_name = m.get('resource_group_name')
+        return self
+
+
+class ListPluginsInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListPluginsInstancesResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListPluginsInstancesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListPluginsInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPluginsInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPluginsInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPodsOfInstanceRequest(TeaModel):
     def __init__(
         self,
