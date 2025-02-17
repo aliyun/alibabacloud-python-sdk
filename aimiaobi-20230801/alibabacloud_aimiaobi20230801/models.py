@@ -22074,6 +22074,221 @@ class ListSearchTasksResponse(TeaModel):
         return self
 
 
+class ListStyleLearningResultRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        current: int = None,
+        size: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.current = current
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListStyleLearningResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aigc_result: str = None,
+        id: int = None,
+        rewrite_result: str = None,
+        style_name: str = None,
+        task_id: str = None,
+    ):
+        self.aigc_result = aigc_result
+        self.id = id
+        self.rewrite_result = rewrite_result
+        self.style_name = style_name
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aigc_result is not None:
+            result['AigcResult'] = self.aigc_result
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rewrite_result is not None:
+            result['RewriteResult'] = self.rewrite_result
+        if self.style_name is not None:
+            result['StyleName'] = self.style_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AigcResult') is not None:
+            self.aigc_result = m.get('AigcResult')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RewriteResult') is not None:
+            self.rewrite_result = m.get('RewriteResult')
+        if m.get('StyleName') is not None:
+            self.style_name = m.get('StyleName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ListStyleLearningResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[ListStyleLearningResultResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListStyleLearningResultResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListStyleLearningResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListStyleLearningResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListStyleLearningResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTimedViewAttitudeRequest(TeaModel):
     def __init__(
         self,
@@ -24461,6 +24676,433 @@ class RunBookSmartCardResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunBookSmartCardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunCommentGenerationRequest(TeaModel):
+    def __init__(
+        self,
+        allow_emoji: bool = None,
+        extra_info: str = None,
+        length: str = None,
+        length_range: Dict[str, Any] = None,
+        num_comments: str = None,
+        sentiment: Dict[str, Any] = None,
+        source_material: str = None,
+        style: str = None,
+        type: Dict[str, Any] = None,
+        workspace_id: str = None,
+    ):
+        self.allow_emoji = allow_emoji
+        self.extra_info = extra_info
+        self.length = length
+        # This parameter is required.
+        self.length_range = length_range
+        # This parameter is required.
+        self.num_comments = num_comments
+        # This parameter is required.
+        self.sentiment = sentiment
+        # This parameter is required.
+        self.source_material = source_material
+        self.style = style
+        # This parameter is required.
+        self.type = type
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_emoji is not None:
+            result['AllowEmoji'] = self.allow_emoji
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.length_range is not None:
+            result['LengthRange'] = self.length_range
+        if self.num_comments is not None:
+            result['NumComments'] = self.num_comments
+        if self.sentiment is not None:
+            result['Sentiment'] = self.sentiment
+        if self.source_material is not None:
+            result['SourceMaterial'] = self.source_material
+        if self.style is not None:
+            result['Style'] = self.style
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowEmoji') is not None:
+            self.allow_emoji = m.get('AllowEmoji')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('LengthRange') is not None:
+            self.length_range = m.get('LengthRange')
+        if m.get('NumComments') is not None:
+            self.num_comments = m.get('NumComments')
+        if m.get('Sentiment') is not None:
+            self.sentiment = m.get('Sentiment')
+        if m.get('SourceMaterial') is not None:
+            self.source_material = m.get('SourceMaterial')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunCommentGenerationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        allow_emoji: bool = None,
+        extra_info: str = None,
+        length: str = None,
+        length_range_shrink: str = None,
+        num_comments: str = None,
+        sentiment_shrink: str = None,
+        source_material: str = None,
+        style: str = None,
+        type_shrink: str = None,
+        workspace_id: str = None,
+    ):
+        self.allow_emoji = allow_emoji
+        self.extra_info = extra_info
+        self.length = length
+        # This parameter is required.
+        self.length_range_shrink = length_range_shrink
+        # This parameter is required.
+        self.num_comments = num_comments
+        # This parameter is required.
+        self.sentiment_shrink = sentiment_shrink
+        # This parameter is required.
+        self.source_material = source_material
+        self.style = style
+        # This parameter is required.
+        self.type_shrink = type_shrink
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_emoji is not None:
+            result['AllowEmoji'] = self.allow_emoji
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.length is not None:
+            result['Length'] = self.length
+        if self.length_range_shrink is not None:
+            result['LengthRange'] = self.length_range_shrink
+        if self.num_comments is not None:
+            result['NumComments'] = self.num_comments
+        if self.sentiment_shrink is not None:
+            result['Sentiment'] = self.sentiment_shrink
+        if self.source_material is not None:
+            result['SourceMaterial'] = self.source_material
+        if self.style is not None:
+            result['Style'] = self.style
+        if self.type_shrink is not None:
+            result['Type'] = self.type_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowEmoji') is not None:
+            self.allow_emoji = m.get('AllowEmoji')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        if m.get('LengthRange') is not None:
+            self.length_range_shrink = m.get('LengthRange')
+        if m.get('NumComments') is not None:
+            self.num_comments = m.get('NumComments')
+        if m.get('Sentiment') is not None:
+            self.sentiment_shrink = m.get('Sentiment')
+        if m.get('SourceMaterial') is not None:
+            self.source_material = m.get('SourceMaterial')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        if m.get('Type') is not None:
+            self.type_shrink = m.get('Type')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunCommentGenerationResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        event: str = None,
+        event_info: str = None,
+        request_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.event = event
+        self.event_info = event_info
+        self.request_id = request_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.event_info is not None:
+            result['EventInfo'] = self.event_info
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('EventInfo') is not None:
+            self.event_info = m.get('EventInfo')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+    ):
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunCommentGenerationResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunCommentGenerationResponseBodyPayloadOutput = None,
+        usage: RunCommentGenerationResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunCommentGenerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: bool = None,
+        header: RunCommentGenerationResponseBodyHeader = None,
+        payload: RunCommentGenerationResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.end = end
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Header') is not None:
+            temp_model = RunCommentGenerationResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunCommentGenerationResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunCommentGenerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunCommentGenerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunCommentGenerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28506,6 +29148,414 @@ class RunKeywordsExtractionGenerationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunKeywordsExtractionGenerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunMultiDocIntroductionRequest(TeaModel):
+    def __init__(
+        self,
+        doc_ids: List[str] = None,
+        key_point_prompt: str = None,
+        session_id: str = None,
+        summary_prompt: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.doc_ids = doc_ids
+        self.key_point_prompt = key_point_prompt
+        # This parameter is required.
+        self.session_id = session_id
+        self.summary_prompt = summary_prompt
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_ids is not None:
+            result['DocIds'] = self.doc_ids
+        if self.key_point_prompt is not None:
+            result['KeyPointPrompt'] = self.key_point_prompt
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocIds') is not None:
+            self.doc_ids = m.get('DocIds')
+        if m.get('KeyPointPrompt') is not None:
+            self.key_point_prompt = m.get('KeyPointPrompt')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunMultiDocIntroductionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        doc_ids_shrink: str = None,
+        key_point_prompt: str = None,
+        session_id: str = None,
+        summary_prompt: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.doc_ids_shrink = doc_ids_shrink
+        self.key_point_prompt = key_point_prompt
+        # This parameter is required.
+        self.session_id = session_id
+        self.summary_prompt = summary_prompt
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_ids_shrink is not None:
+            result['DocIds'] = self.doc_ids_shrink
+        if self.key_point_prompt is not None:
+            result['KeyPointPrompt'] = self.key_point_prompt
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.summary_prompt is not None:
+            result['SummaryPrompt'] = self.summary_prompt
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocIds') is not None:
+            self.doc_ids_shrink = m.get('DocIds')
+        if m.get('KeyPointPrompt') is not None:
+            self.key_point_prompt = m.get('KeyPointPrompt')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('SummaryPrompt') is not None:
+            self.summary_prompt = m.get('SummaryPrompt')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunMultiDocIntroductionResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        event_info: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.event_info = event_info
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.event_info is not None:
+            result['EventInfo'] = self.event_info
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('EventInfo') is not None:
+            self.event_info = m.get('EventInfo')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints(TeaModel):
+    def __init__(
+        self,
+        key_point: str = None,
+        source: str = None,
+    ):
+        self.key_point = key_point
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_point is not None:
+            result['KeyPoint'] = self.key_point
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyPoint') is not None:
+            self.key_point = m.get('KeyPoint')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class RunMultiDocIntroductionResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        key_points: List[RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints] = None,
+        summary: str = None,
+    ):
+        self.key_points = key_points
+        self.summary = summary
+
+    def validate(self):
+        if self.key_points:
+            for k in self.key_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPoints'] = []
+        if self.key_points is not None:
+            for k in self.key_points:
+                result['KeyPoints'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_points = []
+        if m.get('KeyPoints') is not None:
+            for k in m.get('KeyPoints'):
+                temp_model = RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints()
+                self.key_points.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class RunMultiDocIntroductionResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunMultiDocIntroductionResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunMultiDocIntroductionResponseBodyPayloadOutput = None,
+        usage: RunMultiDocIntroductionResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunMultiDocIntroductionResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunMultiDocIntroductionResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunMultiDocIntroductionResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunMultiDocIntroductionResponseBodyHeader = None,
+        payload: RunMultiDocIntroductionResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = RunMultiDocIntroductionResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunMultiDocIntroductionResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunMultiDocIntroductionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunMultiDocIntroductionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunMultiDocIntroductionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

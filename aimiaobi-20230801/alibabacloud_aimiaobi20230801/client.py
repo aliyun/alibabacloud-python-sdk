@@ -9517,6 +9517,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_search_tasks_with_options_async(request, runtime)
 
+    def list_style_learning_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果列表
+        
+        @param request: ListStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.ListStyleLearningResultResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.ListStyleLearningResultResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_style_learning_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListStyleLearningResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果列表
+        
+        @param request: ListStyleLearningResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStyleLearningResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListStyleLearningResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.ListStyleLearningResultResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.ListStyleLearningResultResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_style_learning_result(
+        self,
+        request: ai_miao_bi_20230801_models.ListStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.ListStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果列表
+        
+        @param request: ListStyleLearningResultRequest
+        @return: ListStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_style_learning_result_with_options(request, runtime)
+
+    async def list_style_learning_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListStyleLearningResultRequest,
+    ) -> ai_miao_bi_20230801_models.ListStyleLearningResultResponse:
+        """
+        @summary 获取文体学习分析结果列表
+        
+        @param request: ListStyleLearningResultRequest
+        @return: ListStyleLearningResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_style_learning_result_with_options_async(request, runtime)
+
     def list_timed_view_attitude_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListTimedViewAttitudeRequest,
@@ -10584,6 +10704,166 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_book_smart_card_with_options_async(request, runtime)
+
+    def run_comment_generation_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunCommentGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCommentGenerationResponse:
+        """
+        @summary 客户之声预测
+        
+        @param tmp_req: RunCommentGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommentGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunCommentGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.length_range):
+            request.length_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.length_range, 'LengthRange', 'json')
+        if not UtilClient.is_unset(tmp_req.sentiment):
+            request.sentiment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sentiment, 'Sentiment', 'json')
+        if not UtilClient.is_unset(tmp_req.type):
+            request.type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.type, 'Type', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_emoji):
+            body['AllowEmoji'] = request.allow_emoji
+        if not UtilClient.is_unset(request.extra_info):
+            body['ExtraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.length_range_shrink):
+            body['LengthRange'] = request.length_range_shrink
+        if not UtilClient.is_unset(request.num_comments):
+            body['NumComments'] = request.num_comments
+        if not UtilClient.is_unset(request.sentiment_shrink):
+            body['Sentiment'] = request.sentiment_shrink
+        if not UtilClient.is_unset(request.source_material):
+            body['SourceMaterial'] = request.source_material
+        if not UtilClient.is_unset(request.style):
+            body['Style'] = request.style
+        if not UtilClient.is_unset(request.type_shrink):
+            body['Type'] = request.type_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommentGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunCommentGenerationResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunCommentGenerationResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def run_comment_generation_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunCommentGenerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCommentGenerationResponse:
+        """
+        @summary 客户之声预测
+        
+        @param tmp_req: RunCommentGenerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCommentGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunCommentGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.length_range):
+            request.length_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.length_range, 'LengthRange', 'json')
+        if not UtilClient.is_unset(tmp_req.sentiment):
+            request.sentiment_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sentiment, 'Sentiment', 'json')
+        if not UtilClient.is_unset(tmp_req.type):
+            request.type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.type, 'Type', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_emoji):
+            body['AllowEmoji'] = request.allow_emoji
+        if not UtilClient.is_unset(request.extra_info):
+            body['ExtraInfo'] = request.extra_info
+        if not UtilClient.is_unset(request.length):
+            body['Length'] = request.length
+        if not UtilClient.is_unset(request.length_range_shrink):
+            body['LengthRange'] = request.length_range_shrink
+        if not UtilClient.is_unset(request.num_comments):
+            body['NumComments'] = request.num_comments
+        if not UtilClient.is_unset(request.sentiment_shrink):
+            body['Sentiment'] = request.sentiment_shrink
+        if not UtilClient.is_unset(request.source_material):
+            body['SourceMaterial'] = request.source_material
+        if not UtilClient.is_unset(request.style):
+            body['Style'] = request.style
+        if not UtilClient.is_unset(request.type_shrink):
+            body['Type'] = request.type_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCommentGeneration',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunCommentGenerationResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunCommentGenerationResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def run_comment_generation(
+        self,
+        request: ai_miao_bi_20230801_models.RunCommentGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunCommentGenerationResponse:
+        """
+        @summary 客户之声预测
+        
+        @param request: RunCommentGenerationRequest
+        @return: RunCommentGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_comment_generation_with_options(request, runtime)
+
+    async def run_comment_generation_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunCommentGenerationRequest,
+    ) -> ai_miao_bi_20230801_models.RunCommentGenerationResponse:
+        """
+        @summary 客户之声预测
+        
+        @param request: RunCommentGenerationRequest
+        @return: RunCommentGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_comment_generation_with_options_async(request, runtime)
 
     def run_continue_content_with_options(
         self,
@@ -11956,6 +12236,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_keywords_extraction_generation_with_options_async(request, runtime)
+
+    def run_multi_doc_introduction_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunMultiDocIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse:
+        """
+        @summary 文档批量导读
+        
+        @param tmp_req: RunMultiDocIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMultiDocIntroductionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunMultiDocIntroductionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunMultiDocIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def run_multi_doc_introduction_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunMultiDocIntroductionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse:
+        """
+        @summary 文档批量导读
+        
+        @param tmp_req: RunMultiDocIntroductionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMultiDocIntroductionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunMultiDocIntroductionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.doc_ids):
+            request.doc_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.doc_ids_shrink):
+            body['DocIds'] = request.doc_ids_shrink
+        if not UtilClient.is_unset(request.key_point_prompt):
+            body['KeyPointPrompt'] = request.key_point_prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.summary_prompt):
+            body['SummaryPrompt'] = request.summary_prompt
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunMultiDocIntroduction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def run_multi_doc_introduction(
+        self,
+        request: ai_miao_bi_20230801_models.RunMultiDocIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse:
+        """
+        @summary 文档批量导读
+        
+        @param request: RunMultiDocIntroductionRequest
+        @return: RunMultiDocIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_multi_doc_introduction_with_options(request, runtime)
+
+    async def run_multi_doc_introduction_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunMultiDocIntroductionRequest,
+    ) -> ai_miao_bi_20230801_models.RunMultiDocIntroductionResponse:
+        """
+        @summary 文档批量导读
+        
+        @param request: RunMultiDocIntroductionRequest
+        @return: RunMultiDocIntroductionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_multi_doc_introduction_with_options_async(request, runtime)
 
     def run_search_generation_with_options(
         self,

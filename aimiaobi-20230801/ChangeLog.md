@@ -1,3 +1,9 @@
+2025-02-17 Version: 1.19.0
+- Support API ListStyleLearningResult.
+- Support API RunCommentGeneration.
+- Support API RunMultiDocIntroduction.
+
+
 2025-01-20 Version: 1.18.0
 - Support API RunSearchSimilarArticles.
 
