@@ -439,6 +439,310 @@ class DeliveryInfo(TeaModel):
         return self
 
 
+class DistributionSku(TeaModel):
+    def __init__(
+        self,
+        alias_title: str = None,
+        bar_code: str = None,
+        credit_period: int = None,
+        dx_price: int = None,
+        has_credit: bool = None,
+        has_invoice: bool = None,
+        jx_price: int = None,
+        pic_url: str = None,
+        quantity: int = None,
+        sku_id: str = None,
+        sku_status: str = None,
+        tax_code: str = None,
+        tax_rate: int = None,
+        title: str = None,
+    ):
+        self.alias_title = alias_title
+        self.bar_code = bar_code
+        self.credit_period = credit_period
+        self.dx_price = dx_price
+        self.has_credit = has_credit
+        self.has_invoice = has_invoice
+        self.jx_price = jx_price
+        self.pic_url = pic_url
+        self.quantity = quantity
+        self.sku_id = sku_id
+        self.sku_status = sku_status
+        self.tax_code = tax_code
+        self.tax_rate = tax_rate
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias_title is not None:
+            result['aliasTitle'] = self.alias_title
+        if self.bar_code is not None:
+            result['barCode'] = self.bar_code
+        if self.credit_period is not None:
+            result['creditPeriod'] = self.credit_period
+        if self.dx_price is not None:
+            result['dxPrice'] = self.dx_price
+        if self.has_credit is not None:
+            result['hasCredit'] = self.has_credit
+        if self.has_invoice is not None:
+            result['hasInvoice'] = self.has_invoice
+        if self.jx_price is not None:
+            result['jxPrice'] = self.jx_price
+        if self.pic_url is not None:
+            result['picUrl'] = self.pic_url
+        if self.quantity is not None:
+            result['quantity'] = self.quantity
+        if self.sku_id is not None:
+            result['skuId'] = self.sku_id
+        if self.sku_status is not None:
+            result['skuStatus'] = self.sku_status
+        if self.tax_code is not None:
+            result['taxCode'] = self.tax_code
+        if self.tax_rate is not None:
+            result['taxRate'] = self.tax_rate
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliasTitle') is not None:
+            self.alias_title = m.get('aliasTitle')
+        if m.get('barCode') is not None:
+            self.bar_code = m.get('barCode')
+        if m.get('creditPeriod') is not None:
+            self.credit_period = m.get('creditPeriod')
+        if m.get('dxPrice') is not None:
+            self.dx_price = m.get('dxPrice')
+        if m.get('hasCredit') is not None:
+            self.has_credit = m.get('hasCredit')
+        if m.get('hasInvoice') is not None:
+            self.has_invoice = m.get('hasInvoice')
+        if m.get('jxPrice') is not None:
+            self.jx_price = m.get('jxPrice')
+        if m.get('picUrl') is not None:
+            self.pic_url = m.get('picUrl')
+        if m.get('quantity') is not None:
+            self.quantity = m.get('quantity')
+        if m.get('skuId') is not None:
+            self.sku_id = m.get('skuId')
+        if m.get('skuStatus') is not None:
+            self.sku_status = m.get('skuStatus')
+        if m.get('taxCode') is not None:
+            self.tax_code = m.get('taxCode')
+        if m.get('taxRate') is not None:
+            self.tax_rate = m.get('taxRate')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class DistributionProduct(TeaModel):
+    def __init__(
+        self,
+        category_chain: str = None,
+        category_leaf_id: int = None,
+        category_leaf_name: str = None,
+        channel_code: str = None,
+        distribute_status: str = None,
+        pic_url: str = None,
+        product_id: str = None,
+        seller_id: str = None,
+        short_title: str = None,
+        skus: List[DistributionSku] = None,
+        title: str = None,
+        white_background_pic_url: str = None,
+    ):
+        self.category_chain = category_chain
+        self.category_leaf_id = category_leaf_id
+        self.category_leaf_name = category_leaf_name
+        self.channel_code = channel_code
+        self.distribute_status = distribute_status
+        self.pic_url = pic_url
+        self.product_id = product_id
+        self.seller_id = seller_id
+        self.short_title = short_title
+        self.skus = skus
+        self.title = title
+        self.white_background_pic_url = white_background_pic_url
+
+    def validate(self):
+        if self.skus:
+            for k in self.skus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_chain is not None:
+            result['categoryChain'] = self.category_chain
+        if self.category_leaf_id is not None:
+            result['categoryLeafId'] = self.category_leaf_id
+        if self.category_leaf_name is not None:
+            result['categoryLeafName'] = self.category_leaf_name
+        if self.channel_code is not None:
+            result['channelCode'] = self.channel_code
+        if self.distribute_status is not None:
+            result['distributeStatus'] = self.distribute_status
+        if self.pic_url is not None:
+            result['picUrl'] = self.pic_url
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.seller_id is not None:
+            result['sellerId'] = self.seller_id
+        if self.short_title is not None:
+            result['shortTitle'] = self.short_title
+        result['skus'] = []
+        if self.skus is not None:
+            for k in self.skus:
+                result['skus'].append(k.to_map() if k else None)
+        if self.title is not None:
+            result['title'] = self.title
+        if self.white_background_pic_url is not None:
+            result['whiteBackgroundPicUrl'] = self.white_background_pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categoryChain') is not None:
+            self.category_chain = m.get('categoryChain')
+        if m.get('categoryLeafId') is not None:
+            self.category_leaf_id = m.get('categoryLeafId')
+        if m.get('categoryLeafName') is not None:
+            self.category_leaf_name = m.get('categoryLeafName')
+        if m.get('channelCode') is not None:
+            self.channel_code = m.get('channelCode')
+        if m.get('distributeStatus') is not None:
+            self.distribute_status = m.get('distributeStatus')
+        if m.get('picUrl') is not None:
+            self.pic_url = m.get('picUrl')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('sellerId') is not None:
+            self.seller_id = m.get('sellerId')
+        if m.get('shortTitle') is not None:
+            self.short_title = m.get('shortTitle')
+        self.skus = []
+        if m.get('skus') is not None:
+            for k in m.get('skus'):
+                temp_model = DistributionSku()
+                self.skus.append(temp_model.from_map(k))
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('whiteBackgroundPicUrl') is not None:
+            self.white_background_pic_url = m.get('whiteBackgroundPicUrl')
+        return self
+
+
+class DistributeProductCommand(TeaModel):
+    def __init__(
+        self,
+        lm_shop_id: str = None,
+        products: List[DistributionProduct] = None,
+        request_id: str = None,
+        request_time: str = None,
+        request_user: str = None,
+    ):
+        self.lm_shop_id = lm_shop_id
+        self.products = products
+        self.request_id = request_id
+        self.request_time = request_time
+        self.request_user = request_user
+
+    def validate(self):
+        if self.products:
+            for k in self.products:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lm_shop_id is not None:
+            result['lmShopId'] = self.lm_shop_id
+        result['products'] = []
+        if self.products is not None:
+            for k in self.products:
+                result['products'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.request_time is not None:
+            result['requestTime'] = self.request_time
+        if self.request_user is not None:
+            result['requestUser'] = self.request_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lmShopId') is not None:
+            self.lm_shop_id = m.get('lmShopId')
+        self.products = []
+        if m.get('products') is not None:
+            for k in m.get('products'):
+                temp_model = DistributionProduct()
+                self.products.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('requestTime') is not None:
+            self.request_time = m.get('requestTime')
+        if m.get('requestUser') is not None:
+            self.request_user = m.get('requestUser')
+        return self
+
+
+class DistributeProductResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
 class DistributionMaxRefundFee(TeaModel):
     def __init__(
         self,
@@ -928,6 +1232,59 @@ class GeneralBillPageResult(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('total') is not None:
             self.total = m.get('total')
+        return self
+
+
+class GetDistributionProductResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        products: List[DistributionProduct] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.products = products
+        self.request_id = request_id
+
+    def validate(self):
+        if self.products:
+            for k in self.products:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['products'] = []
+        if self.products is not None:
+            for k in self.products:
+                result['products'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.products = []
+        if m.get('products') is not None:
+            for k in m.get('products'):
+                temp_model = DistributionProduct()
+                self.products.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
@@ -2107,6 +2464,7 @@ class Sku(TeaModel):
         self,
         barcode: str = None,
         can_sell: bool = None,
+        discount_retail_price: int = None,
         division_code: str = None,
         fuzzy_quantity: str = None,
         mark_price: int = None,
@@ -2126,6 +2484,7 @@ class Sku(TeaModel):
     ):
         self.barcode = barcode
         self.can_sell = can_sell
+        self.discount_retail_price = discount_retail_price
         self.division_code = division_code
         self.fuzzy_quantity = fuzzy_quantity
         self.mark_price = mark_price
@@ -2159,6 +2518,8 @@ class Sku(TeaModel):
             result['barcode'] = self.barcode
         if self.can_sell is not None:
             result['canSell'] = self.can_sell
+        if self.discount_retail_price is not None:
+            result['discountRetailPrice'] = self.discount_retail_price
         if self.division_code is not None:
             result['divisionCode'] = self.division_code
         if self.fuzzy_quantity is not None:
@@ -2201,6 +2562,8 @@ class Sku(TeaModel):
             self.barcode = m.get('barcode')
         if m.get('canSell') is not None:
             self.can_sell = m.get('canSell')
+        if m.get('discountRetailPrice') is not None:
+            self.discount_retail_price = m.get('discountRetailPrice')
         if m.get('divisionCode') is not None:
             self.division_code = m.get('divisionCode')
         if m.get('fuzzyQuantity') is not None:
@@ -2251,6 +2614,7 @@ class Product(TeaModel):
         extend_properties: List[ProductExtendProperty] = None,
         fuzzy_quantity: str = None,
         images: List[str] = None,
+        in_group: bool = None,
         limit_rules: List[LimitRule] = None,
         lm_item_id: str = None,
         pic_url: str = None,
@@ -2277,6 +2641,7 @@ class Product(TeaModel):
         self.extend_properties = extend_properties
         self.fuzzy_quantity = fuzzy_quantity
         self.images = images
+        self.in_group = in_group
         self.limit_rules = limit_rules
         self.lm_item_id = lm_item_id
         self.pic_url = pic_url
@@ -2348,6 +2713,8 @@ class Product(TeaModel):
             result['fuzzyQuantity'] = self.fuzzy_quantity
         if self.images is not None:
             result['images'] = self.images
+        if self.in_group is not None:
+            result['inGroup'] = self.in_group
         result['limitRules'] = []
         if self.limit_rules is not None:
             for k in self.limit_rules:
@@ -2416,6 +2783,8 @@ class Product(TeaModel):
             self.fuzzy_quantity = m.get('fuzzyQuantity')
         if m.get('images') is not None:
             self.images = m.get('images')
+        if m.get('inGroup') is not None:
+            self.in_group = m.get('inGroup')
         self.limit_rules = []
         if m.get('limitRules') is not None:
             for k in m.get('limitRules'):
@@ -4192,6 +4561,110 @@ class SkuSaleInfoListResult(TeaModel):
             for k in m.get('skuSaleInfos'):
                 temp_model = SkuSaleInfo()
                 self.sku_sale_infos.append(temp_model.from_map(k))
+        return self
+
+
+class StopDistributionCommand(TeaModel):
+    def __init__(
+        self,
+        lm_shop_id: str = None,
+        product_id: str = None,
+        request_id: str = None,
+        request_time: str = None,
+        request_user: str = None,
+    ):
+        self.lm_shop_id = lm_shop_id
+        self.product_id = product_id
+        self.request_id = request_id
+        self.request_time = request_time
+        self.request_user = request_user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lm_shop_id is not None:
+            result['lmShopId'] = self.lm_shop_id
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.request_time is not None:
+            result['requestTime'] = self.request_time
+        if self.request_user is not None:
+            result['requestUser'] = self.request_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lmShopId') is not None:
+            self.lm_shop_id = m.get('lmShopId')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('requestTime') is not None:
+            self.request_time = m.get('requestTime')
+        if m.get('requestUser') is not None:
+            self.request_user = m.get('requestUser')
+        return self
+
+
+class StopDistributionResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        products: List[DistributionProduct] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.products = products
+        self.request_id = request_id
+
+    def validate(self):
+        if self.products:
+            for k in self.products:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['products'] = []
+        if self.products is not None:
+            for k in self.products:
+                result['products'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.products = []
+        if m.get('products') is not None:
+            for k in m.get('products'):
+                temp_model = DistributionProduct()
+                self.products.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         return self
 
 
