@@ -2154,7 +2154,7 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         # *   The prefix can contain lowercase letters, digits, and hyphens (-). It must start with a lowercase letter.
         # *   The prefix can be up to 30 characters in length.
         self.connection_string_prefix = connection_string_prefix
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -2261,6 +2261,128 @@ class AllocateClusterPublicConnectionResponse(TeaModel):
         return self
 
 
+class ApplyAdviceByIdRequest(TeaModel):
+    def __init__(
+        self,
+        advice_date: int = None,
+        advice_id: str = None,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The date on which you want to apply the suggestion. Format: yyyyMMdd.
+        self.advice_date = advice_date
+        # The suggestion ID.
+        self.advice_id = advice_id
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_date is not None:
+            result['AdviceDate'] = self.advice_date
+        if self.advice_id is not None:
+            result['AdviceId'] = self.advice_id
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceDate') is not None:
+            self.advice_date = m.get('AdviceDate')
+        if m.get('AdviceId') is not None:
+            self.advice_id = m.get('AdviceId')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ApplyAdviceByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ApplyAdviceByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyAdviceByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyAdviceByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachUserENIRequest(TeaModel):
     def __init__(
         self,
@@ -2362,6 +2484,121 @@ class AttachUserENIResponse(TeaModel):
         return self
 
 
+class BatchApplyAdviceByIdListRequest(TeaModel):
+    def __init__(
+        self,
+        advice_date: int = None,
+        advice_id_list: str = None,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        self.advice_date = advice_date
+        self.advice_id_list = advice_id_list
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_date is not None:
+            result['AdviceDate'] = self.advice_date
+        if self.advice_id_list is not None:
+            result['AdviceIdList'] = self.advice_id_list
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceDate') is not None:
+            self.advice_date = m.get('AdviceDate')
+        if m.get('AdviceIdList') is not None:
+            self.advice_id_list = m.get('AdviceIdList')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class BatchApplyAdviceByIdListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchApplyAdviceByIdListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchApplyAdviceByIdListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchApplyAdviceByIdListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindAccountRequest(TeaModel):
     def __init__(
         self,
@@ -2373,7 +2610,7 @@ class BindAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -2596,15 +2833,362 @@ class BindDBResourceGroupWithUserResponse(TeaModel):
         return self
 
 
+class CancelSparkReplStatementRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        session_id: int = None,
+        statement_id: int = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+        self.app_id = app_id
+        # The session ID.
+        self.session_id = session_id
+        # The unique ID of the code block in the Spark job.
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class CancelSparkReplStatementResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: int = None,
+        code: str = None,
+        code_state: str = None,
+        code_type: str = None,
+        columns: List[str] = None,
+        end_time: int = None,
+        error: str = None,
+        output: str = None,
+        output_type: str = None,
+        start_time: int = None,
+        statement_id: int = None,
+    ):
+        # The ID of the Alibaba Cloud account that owns the cluster.
+        self.aliyun_uid = aliyun_uid
+        # The code that is executed.
+        self.code = code
+        # The code execution status. Valid values:
+        # 
+        # *   CANCELLED
+        # *   RUNNING
+        # *   SUCCEEDED
+        # *   ERROR
+        self.code_state = code_state
+        # The code type. Valid values:
+        # 
+        # *   SCALA
+        # *   PYTHON
+        self.code_type = code_type
+        # The column names.
+        self.columns = columns
+        # The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.end_time = end_time
+        # The error message.
+        self.error = error
+        # The code execution result, which is a JSON string that conforms to Apache Livy.
+        self.output = output
+        # The execution result type, which is in the JSON format. Valid values:
+        # 
+        # *   TEXT: the text content that conforms to Apache Livy.
+        # *   TABLE: the table content that conforms to Apache Livy.
+        self.output_type = output_type
+        # The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.start_time = start_time
+        # The unique ID of the code block in the Spark job.
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.code_state is not None:
+            result['CodeState'] = self.code_state
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.output_type is not None:
+            result['OutputType'] = self.output_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CodeState') is not None:
+            self.code_state = m.get('CodeState')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('OutputType') is not None:
+            self.output_type = m.get('OutputType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class CancelSparkReplStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CancelSparkReplStatementResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CancelSparkReplStatementResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelSparkReplStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelSparkReplStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelSparkReplStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelSparkWarehouseBatchSQLRequest(TeaModel):
+    def __init__(
+        self,
+        agency: str = None,
+        dbcluster_id: str = None,
+        query_id: str = None,
+    ):
+        self.agency = agency
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agency is not None:
+            result['Agency'] = self.agency
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Agency') is not None:
+            self.agency = m.get('Agency')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class CancelSparkWarehouseBatchSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SparkBatchSQL = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SparkBatchSQL()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelSparkWarehouseBatchSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelSparkWarehouseBatchSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelSparkWarehouseBatchSQLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckBindRamUserRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The region ID of the cluster.
         self.region_id = region_id
@@ -2823,6 +3407,202 @@ class CheckSampleDataSetResponse(TeaModel):
         return self
 
 
+class CreateAPSJobRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_name: str = None,
+        db_list: str = None,
+        destination_endpoint_instance_id: str = None,
+        destination_endpoint_password: str = None,
+        destination_endpoint_user_name: str = None,
+        partition_list: str = None,
+        region_id: str = None,
+        source_endpoint_instance_id: str = None,
+        source_endpoint_password: str = None,
+        source_endpoint_region: str = None,
+        source_endpoint_user_name: str = None,
+        target_table_mode: str = None,
+    ):
+        # This parameter is required.
+        self.aps_job_name = aps_job_name
+        # This parameter is required.
+        self.db_list = db_list
+        # This parameter is required.
+        self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        self.destination_endpoint_password = destination_endpoint_password
+        self.destination_endpoint_user_name = destination_endpoint_user_name
+        self.partition_list = partition_list
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        self.source_endpoint_password = source_endpoint_password
+        self.source_endpoint_region = source_endpoint_region
+        self.source_endpoint_user_name = source_endpoint_user_name
+        self.target_table_mode = target_table_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_name is not None:
+            result['ApsJobName'] = self.aps_job_name
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        if self.destination_endpoint_instance_id is not None:
+            result['DestinationEndpointInstanceID'] = self.destination_endpoint_instance_id
+        if self.destination_endpoint_password is not None:
+            result['DestinationEndpointPassword'] = self.destination_endpoint_password
+        if self.destination_endpoint_user_name is not None:
+            result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
+        if self.partition_list is not None:
+            result['PartitionList'] = self.partition_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source_endpoint_instance_id is not None:
+            result['SourceEndpointInstanceID'] = self.source_endpoint_instance_id
+        if self.source_endpoint_password is not None:
+            result['SourceEndpointPassword'] = self.source_endpoint_password
+        if self.source_endpoint_region is not None:
+            result['SourceEndpointRegion'] = self.source_endpoint_region
+        if self.source_endpoint_user_name is not None:
+            result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.target_table_mode is not None:
+            result['TargetTableMode'] = self.target_table_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobName') is not None:
+            self.aps_job_name = m.get('ApsJobName')
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        if m.get('DestinationEndpointInstanceID') is not None:
+            self.destination_endpoint_instance_id = m.get('DestinationEndpointInstanceID')
+        if m.get('DestinationEndpointPassword') is not None:
+            self.destination_endpoint_password = m.get('DestinationEndpointPassword')
+        if m.get('DestinationEndpointUserName') is not None:
+            self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
+        if m.get('PartitionList') is not None:
+            self.partition_list = m.get('PartitionList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourceEndpointInstanceID') is not None:
+            self.source_endpoint_instance_id = m.get('SourceEndpointInstanceID')
+        if m.get('SourceEndpointPassword') is not None:
+            self.source_endpoint_password = m.get('SourceEndpointPassword')
+        if m.get('SourceEndpointRegion') is not None:
+            self.source_endpoint_region = m.get('SourceEndpointRegion')
+        if m.get('SourceEndpointUserName') is not None:
+            self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('TargetTableMode') is not None:
+            self.target_table_mode = m.get('TargetTableMode')
+        return self
+
+
+class CreateAPSJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAPSJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAPSJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAPSJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAccountRequest(TeaModel):
     def __init__(
         self,
@@ -2862,7 +3642,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_type = account_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -2981,19 +3761,1694 @@ class CreateAccountResponse(TeaModel):
         return self
 
 
+class CreateApsCopyWorkloadRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        db_name: str = None,
+        region_id: str = None,
+        table_name: str = None,
+        workload_id: str = None,
+        workload_type: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.datasource_id = datasource_id
+        self.db_name = db_name
+        self.region_id = region_id
+        self.table_name = table_name
+        # This parameter is required.
+        self.workload_id = workload_id
+        # This parameter is required.
+        self.workload_type = workload_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
+        return self
+
+
+class CreateApsCopyWorkloadResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateApsCopyWorkloadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApsCopyWorkloadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApsCopyWorkloadResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApsDatasoureRequestDatabricksInfo(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        workspace_url: str = None,
+    ):
+        self.access_token = access_token
+        self.workspace_url = workspace_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.workspace_url is not None:
+            result['WorkspaceURL'] = self.workspace_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('WorkspaceURL') is not None:
+            self.workspace_url = m.get('WorkspaceURL')
+        return self
+
+
+class CreateApsDatasoureRequestHiveInfo(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        host_config: str = None,
+        meta_store_uri: str = None,
+        security_group: str = None,
+        vswitch: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.host_config = host_config
+        self.meta_store_uri = meta_store_uri
+        self.security_group = security_group
+        self.vswitch = vswitch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.host_config is not None:
+            result['HostConfig'] = self.host_config
+        if self.meta_store_uri is not None:
+            result['MetaStoreUri'] = self.meta_store_uri
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.vswitch is not None:
+            result['Vswitch'] = self.vswitch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('HostConfig') is not None:
+            self.host_config = m.get('HostConfig')
+        if m.get('MetaStoreUri') is not None:
+            self.meta_store_uri = m.get('MetaStoreUri')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('Vswitch') is not None:
+            self.vswitch = m.get('Vswitch')
+        return self
+
+
+class CreateApsDatasoureRequestKafkaInfo(TeaModel):
+    def __init__(
+        self,
+        kafka_cluster_id: str = None,
+        kafka_topic: str = None,
+    ):
+        self.kafka_cluster_id = kafka_cluster_id
+        self.kafka_topic = kafka_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kafka_cluster_id is not None:
+            result['KafkaClusterId'] = self.kafka_cluster_id
+        if self.kafka_topic is not None:
+            result['KafkaTopic'] = self.kafka_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KafkaClusterId') is not None:
+            self.kafka_cluster_id = m.get('KafkaClusterId')
+        if m.get('KafkaTopic') is not None:
+            self.kafka_topic = m.get('KafkaTopic')
+        return self
+
+
+class CreateApsDatasoureRequestPolarDBMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        across: bool = None,
+        across_role: str = None,
+        across_uid: str = None,
+        connect_url: str = None,
+        instance_id: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group: str = None,
+        user_name: str = None,
+    ):
+        self.across = across
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.connect_url = connect_url
+        self.instance_id = instance_id
+        self.password = password
+        self.region_id = region_id
+        self.security_group = security_group
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across is not None:
+            result['Across'] = self.across
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Across') is not None:
+            self.across = m.get('Across')
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class CreateApsDatasoureRequestPolarDBXInfo(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateApsDatasoureRequestRdsMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        connect_url: str = None,
+        instance_id: str = None,
+        password: str = None,
+        region_id: str = None,
+        security_group: str = None,
+        user_name: str = None,
+    ):
+        self.connect_url = connect_url
+        self.instance_id = instance_id
+        self.password = password
+        self.region_id = region_id
+        self.security_group = security_group
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class CreateApsDatasoureRequestSlsInfo(TeaModel):
+    def __init__(
+        self,
+        across: bool = None,
+        across_role: str = None,
+        across_uid: str = None,
+        project: str = None,
+        source_region_id: str = None,
+        store: str = None,
+    ):
+        self.across = across
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.project = project
+        self.source_region_id = source_region_id
+        # sls logstore。
+        self.store = store
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across is not None:
+            result['Across'] = self.across
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.store is not None:
+            result['Store'] = self.store
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Across') is not None:
+            self.across = m.get('Across')
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('Store') is not None:
+            self.store = m.get('Store')
+        return self
+
+
+class CreateApsDatasoureRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        databricks_info: CreateApsDatasoureRequestDatabricksInfo = None,
+        datasource_description: str = None,
+        datasource_name: str = None,
+        datasource_type: str = None,
+        hive_info: CreateApsDatasoureRequestHiveInfo = None,
+        kafka_info: CreateApsDatasoureRequestKafkaInfo = None,
+        mode: str = None,
+        polar_dbmysql_info: CreateApsDatasoureRequestPolarDBMysqlInfo = None,
+        polar_dbxinfo: CreateApsDatasoureRequestPolarDBXInfo = None,
+        rds_mysql_info: CreateApsDatasoureRequestRdsMysqlInfo = None,
+        region_id: str = None,
+        sls_info: CreateApsDatasoureRequestSlsInfo = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.databricks_info = databricks_info
+        self.datasource_description = datasource_description
+        # This parameter is required.
+        self.datasource_name = datasource_name
+        # This parameter is required.
+        self.datasource_type = datasource_type
+        self.hive_info = hive_info
+        self.kafka_info = kafka_info
+        self.mode = mode
+        self.polar_dbmysql_info = polar_dbmysql_info
+        self.polar_dbxinfo = polar_dbxinfo
+        self.rds_mysql_info = rds_mysql_info
+        # This parameter is required.
+        self.region_id = region_id
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.databricks_info:
+            self.databricks_info.validate()
+        if self.hive_info:
+            self.hive_info.validate()
+        if self.kafka_info:
+            self.kafka_info.validate()
+        if self.polar_dbmysql_info:
+            self.polar_dbmysql_info.validate()
+        if self.polar_dbxinfo:
+            self.polar_dbxinfo.validate()
+        if self.rds_mysql_info:
+            self.rds_mysql_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.databricks_info is not None:
+            result['DatabricksInfo'] = self.databricks_info.to_map()
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.hive_info is not None:
+            result['HiveInfo'] = self.hive_info.to_map()
+        if self.kafka_info is not None:
+            result['KafkaInfo'] = self.kafka_info.to_map()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.polar_dbmysql_info is not None:
+            result['PolarDBMysqlInfo'] = self.polar_dbmysql_info.to_map()
+        if self.polar_dbxinfo is not None:
+            result['PolarDBXInfo'] = self.polar_dbxinfo.to_map()
+        if self.rds_mysql_info is not None:
+            result['RdsMysqlInfo'] = self.rds_mysql_info.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabricksInfo') is not None:
+            temp_model = CreateApsDatasoureRequestDatabricksInfo()
+            self.databricks_info = temp_model.from_map(m['DatabricksInfo'])
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('HiveInfo') is not None:
+            temp_model = CreateApsDatasoureRequestHiveInfo()
+            self.hive_info = temp_model.from_map(m['HiveInfo'])
+        if m.get('KafkaInfo') is not None:
+            temp_model = CreateApsDatasoureRequestKafkaInfo()
+            self.kafka_info = temp_model.from_map(m['KafkaInfo'])
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('PolarDBMysqlInfo') is not None:
+            temp_model = CreateApsDatasoureRequestPolarDBMysqlInfo()
+            self.polar_dbmysql_info = temp_model.from_map(m['PolarDBMysqlInfo'])
+        if m.get('PolarDBXInfo') is not None:
+            temp_model = CreateApsDatasoureRequestPolarDBXInfo()
+            self.polar_dbxinfo = temp_model.from_map(m['PolarDBXInfo'])
+        if m.get('RdsMysqlInfo') is not None:
+            temp_model = CreateApsDatasoureRequestRdsMysqlInfo()
+            self.rds_mysql_info = temp_model.from_map(m['RdsMysqlInfo'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            temp_model = CreateApsDatasoureRequestSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class CreateApsDatasoureShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        databricks_info_shrink: str = None,
+        datasource_description: str = None,
+        datasource_name: str = None,
+        datasource_type: str = None,
+        hive_info_shrink: str = None,
+        kafka_info_shrink: str = None,
+        mode: str = None,
+        polar_dbmysql_info_shrink: str = None,
+        polar_dbxinfo_shrink: str = None,
+        rds_mysql_info_shrink: str = None,
+        region_id: str = None,
+        sls_info_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.databricks_info_shrink = databricks_info_shrink
+        self.datasource_description = datasource_description
+        # This parameter is required.
+        self.datasource_name = datasource_name
+        # This parameter is required.
+        self.datasource_type = datasource_type
+        self.hive_info_shrink = hive_info_shrink
+        self.kafka_info_shrink = kafka_info_shrink
+        self.mode = mode
+        self.polar_dbmysql_info_shrink = polar_dbmysql_info_shrink
+        self.polar_dbxinfo_shrink = polar_dbxinfo_shrink
+        self.rds_mysql_info_shrink = rds_mysql_info_shrink
+        # This parameter is required.
+        self.region_id = region_id
+        self.sls_info_shrink = sls_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.databricks_info_shrink is not None:
+            result['DatabricksInfo'] = self.databricks_info_shrink
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.hive_info_shrink is not None:
+            result['HiveInfo'] = self.hive_info_shrink
+        if self.kafka_info_shrink is not None:
+            result['KafkaInfo'] = self.kafka_info_shrink
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.polar_dbmysql_info_shrink is not None:
+            result['PolarDBMysqlInfo'] = self.polar_dbmysql_info_shrink
+        if self.polar_dbxinfo_shrink is not None:
+            result['PolarDBXInfo'] = self.polar_dbxinfo_shrink
+        if self.rds_mysql_info_shrink is not None:
+            result['RdsMysqlInfo'] = self.rds_mysql_info_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info_shrink is not None:
+            result['SlsInfo'] = self.sls_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabricksInfo') is not None:
+            self.databricks_info_shrink = m.get('DatabricksInfo')
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('HiveInfo') is not None:
+            self.hive_info_shrink = m.get('HiveInfo')
+        if m.get('KafkaInfo') is not None:
+            self.kafka_info_shrink = m.get('KafkaInfo')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('PolarDBMysqlInfo') is not None:
+            self.polar_dbmysql_info_shrink = m.get('PolarDBMysqlInfo')
+        if m.get('PolarDBXInfo') is not None:
+            self.polar_dbxinfo_shrink = m.get('PolarDBXInfo')
+        if m.get('RdsMysqlInfo') is not None:
+            self.rds_mysql_info_shrink = m.get('RdsMysqlInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            self.sls_info_shrink = m.get('SlsInfo')
+        return self
+
+
+class CreateApsDatasoureResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        dbcluster_id: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.dbcluster_id = dbcluster_id
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateApsDatasoureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApsDatasoureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApsDatasoureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApsHiveJobRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_config: str = None,
+        conflict_strategy: str = None,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        full_compute_unit: str = None,
+        oss_location: str = None,
+        parallelism: int = None,
+        region_id: str = None,
+        resource_group: str = None,
+        sync_allow_expression: str = None,
+        sync_deny_expression: str = None,
+        target_type: str = None,
+        workload_name: str = None,
+    ):
+        self.advanced_config = advanced_config
+        self.conflict_strategy = conflict_strategy
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.full_compute_unit = full_compute_unit
+        # This parameter is required.
+        self.oss_location = oss_location
+        self.parallelism = parallelism
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_group = resource_group
+        self.sync_allow_expression = sync_allow_expression
+        self.sync_deny_expression = sync_deny_expression
+        self.target_type = target_type
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        if self.conflict_strategy is not None:
+            result['ConflictStrategy'] = self.conflict_strategy
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.sync_allow_expression is not None:
+            result['SyncAllowExpression'] = self.sync_allow_expression
+        if self.sync_deny_expression is not None:
+            result['SyncDenyExpression'] = self.sync_deny_expression
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        if m.get('ConflictStrategy') is not None:
+            self.conflict_strategy = m.get('ConflictStrategy')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SyncAllowExpression') is not None:
+            self.sync_allow_expression = m.get('SyncAllowExpression')
+        if m.get('SyncDenyExpression') is not None:
+            self.sync_deny_expression = m.get('SyncDenyExpression')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class CreateApsHiveJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateApsHiveJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApsHiveJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApsHiveJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateApsSlsADBJobRequestColumns(TeaModel):
+    def __init__(
+        self,
+        map_name: str = None,
+        map_type: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.map_name = map_name
+        self.map_type = map_type
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.map_name is not None:
+            result['MapName'] = self.map_name
+        if self.map_type is not None:
+            result['MapType'] = self.map_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MapName') is not None:
+            self.map_name = m.get('MapName')
+        if m.get('MapType') is not None:
+            self.map_type = m.get('MapType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateApsSlsADBJobRequestUnixTimestampConvert(TeaModel):
+    def __init__(
+        self,
+        convert: str = None,
+        format: str = None,
+        transform: bool = None,
+    ):
+        self.convert = convert
+        self.format = format
+        self.transform = transform
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.convert is not None:
+            result['Convert'] = self.convert
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.transform is not None:
+            result['Transform'] = self.transform
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Convert') is not None:
+            self.convert = m.get('Convert')
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('Transform') is not None:
+            self.transform = m.get('Transform')
+        return self
+
+
+class CreateApsSlsADBJobRequest(TeaModel):
+    def __init__(
+        self,
+        across_role: str = None,
+        across_uid: str = None,
+        advanced_config: str = None,
+        columns: List[CreateApsSlsADBJobRequestColumns] = None,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        db_name: str = None,
+        dirty_data_handle_mode: str = None,
+        dirty_data_process_pattern: str = None,
+        exactly_once: str = None,
+        full_compute_unit: str = None,
+        hudi_advanced_config: str = None,
+        incremental_compute_unit: str = None,
+        lakehouse_id: int = None,
+        max_offsets_per_trigger: int = None,
+        oss_location: str = None,
+        output_format: str = None,
+        partition_specs: List[Dict[str, Any]] = None,
+        password: str = None,
+        primary_key_definition: str = None,
+        project: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        source_region_id: str = None,
+        starting_offsets: str = None,
+        store: str = None,
+        table_name: str = None,
+        target_generate_rule: str = None,
+        target_type: str = None,
+        unix_timestamp_convert: CreateApsSlsADBJobRequestUnixTimestampConvert = None,
+        user_name: str = None,
+        workload_name: str = None,
+    ):
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.advanced_config = advanced_config
+        # This parameter is required.
+        self.columns = columns
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.dirty_data_handle_mode = dirty_data_handle_mode
+        self.dirty_data_process_pattern = dirty_data_process_pattern
+        self.exactly_once = exactly_once
+        self.full_compute_unit = full_compute_unit
+        self.hudi_advanced_config = hudi_advanced_config
+        self.incremental_compute_unit = incremental_compute_unit
+        # lakehosue ID。
+        self.lakehouse_id = lakehouse_id
+        self.max_offsets_per_trigger = max_offsets_per_trigger
+        self.oss_location = oss_location
+        self.output_format = output_format
+        self.partition_specs = partition_specs
+        # This parameter is required.
+        self.password = password
+        self.primary_key_definition = primary_key_definition
+        self.project = project
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group = resource_group
+        self.source_region_id = source_region_id
+        # This parameter is required.
+        self.starting_offsets = starting_offsets
+        # sls Store。
+        self.store = store
+        # This parameter is required.
+        self.table_name = table_name
+        self.target_generate_rule = target_generate_rule
+        self.target_type = target_type
+        self.unix_timestamp_convert = unix_timestamp_convert
+        # This parameter is required.
+        self.user_name = user_name
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+        if self.unix_timestamp_convert:
+            self.unix_timestamp_convert.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dirty_data_handle_mode is not None:
+            result['DirtyDataHandleMode'] = self.dirty_data_handle_mode
+        if self.dirty_data_process_pattern is not None:
+            result['DirtyDataProcessPattern'] = self.dirty_data_process_pattern
+        if self.exactly_once is not None:
+            result['ExactlyOnce'] = self.exactly_once
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.hudi_advanced_config is not None:
+            result['HudiAdvancedConfig'] = self.hudi_advanced_config
+        if self.incremental_compute_unit is not None:
+            result['IncrementalComputeUnit'] = self.incremental_compute_unit
+        if self.lakehouse_id is not None:
+            result['LakehouseId'] = self.lakehouse_id
+        if self.max_offsets_per_trigger is not None:
+            result['MaxOffsetsPerTrigger'] = self.max_offsets_per_trigger
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.partition_specs is not None:
+            result['PartitionSpecs'] = self.partition_specs
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.primary_key_definition is not None:
+            result['PrimaryKeyDefinition'] = self.primary_key_definition
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.store is not None:
+            result['Store'] = self.store
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.target_generate_rule is not None:
+            result['TargetGenerateRule'] = self.target_generate_rule
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.unix_timestamp_convert is not None:
+            result['UnixTimestampConvert'] = self.unix_timestamp_convert.to_map()
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = CreateApsSlsADBJobRequestColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DirtyDataHandleMode') is not None:
+            self.dirty_data_handle_mode = m.get('DirtyDataHandleMode')
+        if m.get('DirtyDataProcessPattern') is not None:
+            self.dirty_data_process_pattern = m.get('DirtyDataProcessPattern')
+        if m.get('ExactlyOnce') is not None:
+            self.exactly_once = m.get('ExactlyOnce')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('HudiAdvancedConfig') is not None:
+            self.hudi_advanced_config = m.get('HudiAdvancedConfig')
+        if m.get('IncrementalComputeUnit') is not None:
+            self.incremental_compute_unit = m.get('IncrementalComputeUnit')
+        if m.get('LakehouseId') is not None:
+            self.lakehouse_id = m.get('LakehouseId')
+        if m.get('MaxOffsetsPerTrigger') is not None:
+            self.max_offsets_per_trigger = m.get('MaxOffsetsPerTrigger')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('PartitionSpecs') is not None:
+            self.partition_specs = m.get('PartitionSpecs')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PrimaryKeyDefinition') is not None:
+            self.primary_key_definition = m.get('PrimaryKeyDefinition')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('Store') is not None:
+            self.store = m.get('Store')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TargetGenerateRule') is not None:
+            self.target_generate_rule = m.get('TargetGenerateRule')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('UnixTimestampConvert') is not None:
+            temp_model = CreateApsSlsADBJobRequestUnixTimestampConvert()
+            self.unix_timestamp_convert = temp_model.from_map(m['UnixTimestampConvert'])
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class CreateApsSlsADBJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        across_role: str = None,
+        across_uid: str = None,
+        advanced_config: str = None,
+        columns_shrink: str = None,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        db_name: str = None,
+        dirty_data_handle_mode: str = None,
+        dirty_data_process_pattern: str = None,
+        exactly_once: str = None,
+        full_compute_unit: str = None,
+        hudi_advanced_config: str = None,
+        incremental_compute_unit: str = None,
+        lakehouse_id: int = None,
+        max_offsets_per_trigger: int = None,
+        oss_location: str = None,
+        output_format: str = None,
+        partition_specs_shrink: str = None,
+        password: str = None,
+        primary_key_definition: str = None,
+        project: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        source_region_id: str = None,
+        starting_offsets: str = None,
+        store: str = None,
+        table_name: str = None,
+        target_generate_rule: str = None,
+        target_type: str = None,
+        unix_timestamp_convert_shrink: str = None,
+        user_name: str = None,
+        workload_name: str = None,
+    ):
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.advanced_config = advanced_config
+        # This parameter is required.
+        self.columns_shrink = columns_shrink
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.dirty_data_handle_mode = dirty_data_handle_mode
+        self.dirty_data_process_pattern = dirty_data_process_pattern
+        self.exactly_once = exactly_once
+        self.full_compute_unit = full_compute_unit
+        self.hudi_advanced_config = hudi_advanced_config
+        self.incremental_compute_unit = incremental_compute_unit
+        # lakehosue ID。
+        self.lakehouse_id = lakehouse_id
+        self.max_offsets_per_trigger = max_offsets_per_trigger
+        self.oss_location = oss_location
+        self.output_format = output_format
+        self.partition_specs_shrink = partition_specs_shrink
+        # This parameter is required.
+        self.password = password
+        self.primary_key_definition = primary_key_definition
+        self.project = project
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group = resource_group
+        self.source_region_id = source_region_id
+        # This parameter is required.
+        self.starting_offsets = starting_offsets
+        # sls Store。
+        self.store = store
+        # This parameter is required.
+        self.table_name = table_name
+        self.target_generate_rule = target_generate_rule
+        self.target_type = target_type
+        self.unix_timestamp_convert_shrink = unix_timestamp_convert_shrink
+        # This parameter is required.
+        self.user_name = user_name
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        if self.columns_shrink is not None:
+            result['Columns'] = self.columns_shrink
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dirty_data_handle_mode is not None:
+            result['DirtyDataHandleMode'] = self.dirty_data_handle_mode
+        if self.dirty_data_process_pattern is not None:
+            result['DirtyDataProcessPattern'] = self.dirty_data_process_pattern
+        if self.exactly_once is not None:
+            result['ExactlyOnce'] = self.exactly_once
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.hudi_advanced_config is not None:
+            result['HudiAdvancedConfig'] = self.hudi_advanced_config
+        if self.incremental_compute_unit is not None:
+            result['IncrementalComputeUnit'] = self.incremental_compute_unit
+        if self.lakehouse_id is not None:
+            result['LakehouseId'] = self.lakehouse_id
+        if self.max_offsets_per_trigger is not None:
+            result['MaxOffsetsPerTrigger'] = self.max_offsets_per_trigger
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.partition_specs_shrink is not None:
+            result['PartitionSpecs'] = self.partition_specs_shrink
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.primary_key_definition is not None:
+            result['PrimaryKeyDefinition'] = self.primary_key_definition
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.store is not None:
+            result['Store'] = self.store
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.target_generate_rule is not None:
+            result['TargetGenerateRule'] = self.target_generate_rule
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.unix_timestamp_convert_shrink is not None:
+            result['UnixTimestampConvert'] = self.unix_timestamp_convert_shrink
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        if m.get('Columns') is not None:
+            self.columns_shrink = m.get('Columns')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DirtyDataHandleMode') is not None:
+            self.dirty_data_handle_mode = m.get('DirtyDataHandleMode')
+        if m.get('DirtyDataProcessPattern') is not None:
+            self.dirty_data_process_pattern = m.get('DirtyDataProcessPattern')
+        if m.get('ExactlyOnce') is not None:
+            self.exactly_once = m.get('ExactlyOnce')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('HudiAdvancedConfig') is not None:
+            self.hudi_advanced_config = m.get('HudiAdvancedConfig')
+        if m.get('IncrementalComputeUnit') is not None:
+            self.incremental_compute_unit = m.get('IncrementalComputeUnit')
+        if m.get('LakehouseId') is not None:
+            self.lakehouse_id = m.get('LakehouseId')
+        if m.get('MaxOffsetsPerTrigger') is not None:
+            self.max_offsets_per_trigger = m.get('MaxOffsetsPerTrigger')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('PartitionSpecs') is not None:
+            self.partition_specs_shrink = m.get('PartitionSpecs')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PrimaryKeyDefinition') is not None:
+            self.primary_key_definition = m.get('PrimaryKeyDefinition')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('Store') is not None:
+            self.store = m.get('Store')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TargetGenerateRule') is not None:
+            self.target_generate_rule = m.get('TargetGenerateRule')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('UnixTimestampConvert') is not None:
+            self.unix_timestamp_convert_shrink = m.get('UnixTimestampConvert')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class CreateApsSlsADBJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateApsSlsADBJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApsSlsADBJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApsSlsADBJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDBClusterRequestTag(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # The method that you want to use to restore data. Valid values:
         # 
-        # >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
+        # *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
         self.key = key
-        # The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # The region ID of the source cluster.
         # 
-        # >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # >  This parameter must be specified for cloning clusters across regions.
         self.value = value
 
     def validate(self):
@@ -3049,94 +5504,88 @@ class CreateDBClusterRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the backup set that you want to use to restore data.
-        # 
-        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
+        # The default resource group ID.
         self.backup_set_id = backup_set_id
-        # The region ID of the source cluster.
-        # 
-        # >  This parameter must be specified for cloning clusters across regions.
         self.clone_source_region_id = clone_source_region_id
-        # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
+        # The key of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
         # 
-        # >  This parameter must be specified with a unit.
+        # >  The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.compute_resource = compute_resource
-        # The description of the cluster.
-        # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length
+        # The virtual private cloud (VPC) ID of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The network type of the cluster. Only **VPC** is supported.
-        self.dbcluster_network_type = dbcluster_network_type
-        # The version of the cluster. Set the value to **5.0**.
-        # 
-        # This parameter is required.
-        self.dbcluster_version = dbcluster_version
-        self.disk_encryption = disk_encryption
-        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
-        # 
-        # *   **true** (default)
-        # *   **false**\
-        self.enable_default_resource_pool = enable_default_resource_pool
-        self.kms_id = kms_id
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
-        # 
-        # This parameter is required.
-        self.pay_type = pay_type
-        # The subscription type of the subscription cluster. Valid values:
-        # 
-        # *   **Year**: subscription on a yearly basis.
-        # *   **Month**: subscription on a monthly basis.
-        # 
-        # >  This parameter must be specified when PayType is set to Prepaid.
-        self.period = period
-        self.product_form = product_form
-        # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        self.reserved_node_count = reserved_node_count
-        self.reserved_node_size = reserved_node_size
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
-        # The point in time to which you want to restore data from the backup set.
-        self.restore_to_time = restore_to_time
-        # The method that you want to use to restore data. Valid values:
-        # 
-        # *   **backup**: restores data from a backup set. You must also specify the **BackupSetId** and **SourceDBClusterId** parameters.
-        # *   **timepoint**: restores data to a point in time. You must also specify the **RestoreToTime** and **SourceDBClusterId** parameters.
-        self.restore_type = restore_type
-        # The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster. If you want to restore a Data Lakehouse Edition cluster from a Data Warehouse Edition cluster, you must specify this parameter.
-        self.source_db_cluster_id = source_db_cluster_id
-        # The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
-        # 
-        # >  This parameter must be specified with a unit.
-        self.storage_resource = storage_resource
-        # The tags to add to the cluster.
-        self.tag = tag
         # The subscription duration of the subscription cluster.
         # 
         # *   Valid values when **Period** is set to Year: 1 to 3 (integer).
         # *   Valid values when **Period** is set to Month: 1 to 9 (integer).
         # 
         # >  This parameter must be specified when PayType is set to **Prepaid**.
-        self.used_time = used_time
-        # The virtual private cloud (VPC) ID of the cluster.
+        self.dbcluster_network_type = dbcluster_network_type
+        # The subscription type of the subscription cluster. Valid values:
+        # 
+        # *   **Year**: subscription on a yearly basis.
+        # *   **Month**: subscription on a monthly basis.
+        # 
+        # >  This parameter must be specified when PayType is set to Prepaid.
         # 
         # This parameter is required.
-        self.vpcid = vpcid
+        self.dbcluster_version = dbcluster_version
+        self.disk_encryption = disk_encryption
+        # The value of tag N to add to the cluster. You can use tags to filter clusters. Valid values of N: 1 to 20. The values that you specify for N must be unique and consecutive integers that start from 1. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+        # 
+        # >  The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        self.enable_default_resource_pool = enable_default_resource_pool
+        self.kms_id = kms_id
         # The vSwitch ID of the cluster.
         # 
         # This parameter is required.
-        self.v_switch_id = v_switch_id
-        # The zone ID.
+        self.pay_type = pay_type
+        # The amount of reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent zone list.
+        # >  This parameter must be specified with a unit.
+        self.period = period
+        self.product_form = product_form
+        # The description of the cluster.
+        # 
+        # *   The description cannot start with `http://` or `https://`.
+        # *   The description must be 2 to 256 characters in length
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
+        # The ID of the backup set that you want to use to restore data.
+        # 
+        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/612318.html) operation to query the backup sets of the cluster.
+        self.resource_group_id = resource_group_id
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        self.restore_to_time = restore_to_time
+        # The order ID.
+        self.restore_type = restore_type
+        # The request ID.
+        self.source_db_cluster_id = source_db_cluster_id
+        # The tags to add to the cluster.
+        self.storage_resource = storage_resource
+        # The point in time to which you want to restore data from the backup set.
+        self.tag = tag
+        # The amount of reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
+        # 
+        # >  This parameter must be specified with a unit.
+        self.used_time = used_time
+        # Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
+        # 
+        # *   **true** (default)
+        # *   **false**\
+        # 
+        # This parameter is required.
+        self.vpcid = vpcid
+        # The resource group ID.
+        # 
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   **Postpaid**: pay-as-you-go.
+        # *   **Prepaid**: subscription.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -3273,13 +5722,9 @@ class CreateDBClusterResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # The order ID.
         self.order_id = order_id
-        # The request ID.
         self.request_id = request_id
-        # The default resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3853,7 +6298,7 @@ class CreateElasticPlanRequest(TeaModel):
         self.cron_expression = cron_expression
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -4023,6 +6468,282 @@ class CreateElasticPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateElasticPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLakeStorageRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        read: bool = None,
+        type: str = None,
+        write: bool = None,
+    ):
+        # The account ID.
+        self.account = account
+        # The read permissions.
+        self.read = read
+        # The account type.
+        self.type = type
+        # The write permissions.
+        self.write = write
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.read is not None:
+            result['Read'] = self.read
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.write is not None:
+            result['Write'] = self.write
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Read') is not None:
+            self.read = m.get('Read')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Write') is not None:
+            self.write = m.get('Write')
+        return self
+
+
+class CreateLakeStorageRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        description: str = None,
+        permissions: List[CreateLakeStorageRequestPermissions] = None,
+        region_id: str = None,
+    ):
+        # *\
+        self.client_token = client_token
+        # The ID of the AnalyticDB for MySQL cluster with which you want to associate the lake storage.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The permissions that you want to grant on the lake storage to the Alibaba Cloud account besides the permissions that are automatically granted to the Resource Access Management (RAM) user or the Alibaba Cloud account.
+        self.permissions = permissions
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = CreateLakeStorageRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateLakeStorageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbcluster_id: str = None,
+        description: str = None,
+        permissions_shrink: str = None,
+        region_id: str = None,
+    ):
+        # *\
+        self.client_token = client_token
+        # The ID of the AnalyticDB for MySQL cluster with which you want to associate the lake storage.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The permissions that you want to grant on the lake storage to the Alibaba Cloud account besides the permissions that are automatically granted to the Resource Access Management (RAM) user or the Alibaba Cloud account.
+        self.permissions_shrink = permissions_shrink
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.permissions_shrink is not None:
+            result['Permissions'] = self.permissions_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Permissions') is not None:
+            self.permissions_shrink = m.get('Permissions')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateLakeStorageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The usage details of cluster resources.
+        self.data = data
+        # The HTTP status code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. If the operation is asynchronously implemented, the job ID is returned.
+        self.message = message
+        # The request ID
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLakeStorageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLakeStorageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLakeStorageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4852,7 +7573,7 @@ class DeleteAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -4955,6 +7676,448 @@ class DeleteAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApsDatasoureRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The data source ID.
+        # 
+        # This parameter is required.
+        self.datasource_id = datasource_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteApsDatasoureResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # The response code.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteApsDatasoureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApsDatasoureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApsDatasoureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApsJobRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.aps_job_id = aps_job_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteApsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        code: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.code = code
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteApsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBackupsRequest(TeaModel):
+    def __init__(
+        self,
+        backup_ids: str = None,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The ID of the backup set that you want to delete. Separate multiple backup set IDs with commas (,).
+        # 
+        # This parameter is required.
+        self.backup_ids = backup_ids
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the cluster.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_ids is not None:
+            result['BackupIds'] = self.backup_ids
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupIds') is not None:
+            self.backup_ids = m.get('BackupIds')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DeleteBackupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBackupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteBackupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteBackupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5073,7 +8236,7 @@ class DeleteDBResourceGroupRequest(TeaModel):
         dbcluster_id: str = None,
         group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -5185,7 +8348,7 @@ class DeleteElasticPlanRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -5285,6 +8448,157 @@ class DeleteElasticPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteElasticPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLakeStorageRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        lake_storage_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the lake storage.
+        # 
+        # This parameter is required.
+        self.lake_storage_id = lake_storage_id
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteLakeStorageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        self.code = code
+        # Indicates whether the delete operation was successful.
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The returned message. If the operation is asynchronously implemented, the job ID is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteLakeStorageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLakeStorageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLakeStorageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5908,6 +9222,553 @@ class DeleteSparkTemplateFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSparkTemplateFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAPSADBInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeAPSADBInstancesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        compute_resource: str = None,
+        dbcluster_description: str = None,
+        dbcluster_id: str = None,
+        dbcluster_status: str = None,
+        reserved_acu: str = None,
+        storage_resource: int = None,
+        zone_id: str = None,
+    ):
+        self.compute_resource = compute_resource
+        self.dbcluster_description = dbcluster_description
+        self.dbcluster_id = dbcluster_id
+        self.dbcluster_status = dbcluster_status
+        self.reserved_acu = reserved_acu
+        self.storage_resource = storage_resource
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource
+        if self.dbcluster_description is not None:
+            result['DBClusterDescription'] = self.dbcluster_description
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbcluster_status is not None:
+            result['DBClusterStatus'] = self.dbcluster_status
+        if self.reserved_acu is not None:
+            result['ReservedACU'] = self.reserved_acu
+        if self.storage_resource is not None:
+            result['StorageResource'] = self.storage_resource
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            self.compute_resource = m.get('ComputeResource')
+        if m.get('DBClusterDescription') is not None:
+            self.dbcluster_description = m.get('DBClusterDescription')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBClusterStatus') is not None:
+            self.dbcluster_status = m.get('DBClusterStatus')
+        if m.get('ReservedACU') is not None:
+            self.reserved_acu = m.get('ReservedACU')
+        if m.get('StorageResource') is not None:
+            self.storage_resource = m.get('StorageResource')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeAPSADBInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[DescribeAPSADBInstancesResponseBodyItems] = None,
+        message: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.items = items
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeAPSADBInstancesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAPSADBInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAPSADBInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAPSADBInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAbnormalPatternDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
+        self.end_time = end_time
+        # The language. Valid values:
+        # 
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English.
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults(TeaModel):
+    def __init__(
+        self,
+        access_ip: str = None,
+        detail: str = None,
+        failed_count: int = None,
+        pattern_id: str = None,
+        query_count: int = None,
+        related_metrics: str = None,
+        sqlpattern: str = None,
+        tables: str = None,
+        user: str = None,
+    ):
+        # The IP address of the SQL client that submits the SQL pattern.
+        self.access_ip = access_ip
+        # The description of the detection result.
+        self.detail = detail
+        # The number of failed SQL patterns within the time range.
+        self.failed_count = failed_count
+        # The SQL pattern ID.
+        self.pattern_id = pattern_id
+        # The number of executed SQL patterns within the time range.
+        self.query_count = query_count
+        # The metrics related to the SQL pattern.
+        self.related_metrics = related_metrics
+        # The SQL statement that represents the SQL pattern.
+        self.sqlpattern = sqlpattern
+        # The names of tables.
+        self.tables = tables
+        # The name of the database account that is used to submit the query.
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_ip is not None:
+            result['AccessIp'] = self.access_ip
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.pattern_id is not None:
+            result['PatternId'] = self.pattern_id
+        if self.query_count is not None:
+            result['QueryCount'] = self.query_count
+        if self.related_metrics is not None:
+            result['RelatedMetrics'] = self.related_metrics
+        if self.sqlpattern is not None:
+            result['SQLPattern'] = self.sqlpattern
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessIp') is not None:
+            self.access_ip = m.get('AccessIp')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('PatternId') is not None:
+            self.pattern_id = m.get('PatternId')
+        if m.get('QueryCount') is not None:
+            self.query_count = m.get('QueryCount')
+        if m.get('RelatedMetrics') is not None:
+            self.related_metrics = m.get('RelatedMetrics')
+        if m.get('SQLPattern') is not None:
+            self.sqlpattern = m.get('SQLPattern')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DescribeAbnormalPatternDetectionResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        results: List[DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults] = None,
+    ):
+        # The name of the detection item.
+        self.name = name
+        # The detection result.
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAbnormalPatternDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeAbnormalPatternDetectionResponseBodyDetectionItems] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeAbnormalPatternDetectionResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAbnormalPatternDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAbnormalPatternDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAbnormalPatternDetectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7473,6 +11334,134 @@ class DescribeAdbMySqlTablesResponse(TeaModel):
         return self
 
 
+class DescribeAdviceServiceEnabledRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeAdviceServiceEnabledResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a **Success** message is returned.
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the suggestion feature is enabled. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAdviceServiceEnabledResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAdviceServiceEnabledResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAdviceServiceEnabledResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAllDataSourceRequest(TeaModel):
     def __init__(
         self,
@@ -7882,6 +11871,373 @@ class DescribeAllDataSourceResponse(TeaModel):
         return self
 
 
+class DescribeAppliedAdvicesRequest(TeaModel):
+    def __init__(
+        self,
+        advice_type: str = None,
+        dbcluster_id: str = None,
+        end_time: int = None,
+        keyword: str = None,
+        lang: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        schema_table_name: str = None,
+        start_time: int = None,
+    ):
+        # The type of the suggestion. Valid values:
+        # 
+        # *   **INDEX**: index optimization.
+        # *   **TIERING**: hot and cold data optimization.
+        self.advice_type = advice_type
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end date of the time range to query. Specify the date in the yyyyMMdd format.
+        self.end_time = end_time
+        # The keyword that is used to query information by table name.
+        self.keyword = keyword
+        # The display language of the suggestion. Valid values:
+        # 
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database.
+        #     *   `TableName`: the name of the table.
+        #     *   `JobStatus`: the status of the BUILD job that is triggered on the table.
+        #     *   `SubmitTime`: the time when the suggestion was submitted.
+        #     *   `Benefit`: the expected benefits of the applied optimization suggestion.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, optimization suggestions are sorted in descending order based on the submission time.
+        self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**(Default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The name of the table in the **DatabaseName.TableName** format.
+        self.schema_table_name = schema_table_name
+        # The start date of the time range to query. Specify the date in the yyyyMMdd format.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_type is not None:
+            result['AdviceType'] = self.advice_type
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.schema_table_name is not None:
+            result['SchemaTableName'] = self.schema_table_name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceType') is not None:
+            self.advice_type = m.get('AdviceType')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SchemaTableName') is not None:
+            self.schema_table_name = m.get('SchemaTableName')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeAppliedAdvicesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        advice_id: str = None,
+        benefit: str = None,
+        build_sql: str = None,
+        job_status: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rollback_sql: str = None,
+        sql: str = None,
+        schema_name: str = None,
+        submit_status: str = None,
+        submit_time: str = None,
+        table_name: str = None,
+        total_count: int = None,
+    ):
+        # The suggestion ID.
+        self.advice_id = advice_id
+        # The benefit of the suggestion.
+        self.benefit = benefit
+        # The SQL statement that is used to execute the BUILD job.
+        self.build_sql = build_sql
+        # The status of the suggestion execution job. Valid values:
+        # 
+        # *   **SUCCEED**\
+        # *   **FAILED**\
+        self.job_status = job_status
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**(Default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The SQL statement that is used to roll back the suggestion.
+        self.rollback_sql = rollback_sql
+        # The SQL statement that is used to apply the suggestion.
+        self.sql = sql
+        # The name of the database.
+        self.schema_name = schema_name
+        # The submission status of the suggestion. Valid values:
+        # 
+        # *   **SUCCEED**\
+        # *   **FAILED**\
+        self.submit_status = submit_status
+        # The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
+        self.submit_time = submit_time
+        # The name of the table.
+        self.table_name = table_name
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_id is not None:
+            result['AdviceId'] = self.advice_id
+        if self.benefit is not None:
+            result['Benefit'] = self.benefit
+        if self.build_sql is not None:
+            result['BuildSQL'] = self.build_sql
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rollback_sql is not None:
+            result['RollbackSQL'] = self.rollback_sql
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.submit_status is not None:
+            result['SubmitStatus'] = self.submit_status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceId') is not None:
+            self.advice_id = m.get('AdviceId')
+        if m.get('Benefit') is not None:
+            self.benefit = m.get('Benefit')
+        if m.get('BuildSQL') is not None:
+            self.build_sql = m.get('BuildSQL')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RollbackSQL') is not None:
+            self.rollback_sql = m.get('RollbackSQL')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SubmitStatus') is not None:
+            self.submit_status = m.get('SubmitStatus')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAppliedAdvicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeAppliedAdvicesResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        schema_table_names: List[str] = None,
+        total_count: int = None,
+    ):
+        # The queried applied optimization suggestions.
+        self.items = items
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30**(Default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The name of the table in the DatabaseName.TableName format.
+        self.schema_table_names = schema_table_names
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_table_names is not None:
+            result['SchemaTableNames'] = self.schema_table_names
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeAppliedAdvicesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaTableNames') is not None:
+            self.schema_table_names = m.get('SchemaTableNames')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAppliedAdvicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppliedAdvicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppliedAdvicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApsActionLogsRequest(TeaModel):
     def __init__(
         self,
@@ -8208,6 +12564,1998 @@ class DescribeApsActionLogsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeApsActionLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsDatasourceRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The data source ID.
+        # 
+        # This parameter is required.
+        self.datasource_id = datasource_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        workspace_url: str = None,
+    ):
+        # The token that is used to access Databricks.
+        self.access_token = access_token
+        # The URL of the workspace.
+        self.workspace_url = workspace_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.workspace_url is not None:
+            result['workspaceURL'] = self.workspace_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('workspaceURL') is not None:
+            self.workspace_url = m.get('workspaceURL')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo(TeaModel):
+    def __init__(
+        self,
+        emr_cluster_id: str = None,
+        meta_store_uri: str = None,
+        security_group: str = None,
+        vswitch: str = None,
+    ):
+        # The ID of the E-MapReduce (EMR) cluster.
+        self.emr_cluster_id = emr_cluster_id
+        # The URL of the Hive Metastore.
+        self.meta_store_uri = meta_store_uri
+        # The security group ID.
+        self.security_group = security_group
+        # The vSwitch ID.
+        self.vswitch = vswitch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.emr_cluster_id is not None:
+            result['EmrClusterId'] = self.emr_cluster_id
+        if self.meta_store_uri is not None:
+            result['MetaStoreUri'] = self.meta_store_uri
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.vswitch is not None:
+            result['Vswitch'] = self.vswitch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmrClusterId') is not None:
+            self.emr_cluster_id = m.get('EmrClusterId')
+        if m.get('MetaStoreUri') is not None:
+            self.meta_store_uri = m.get('MetaStoreUri')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('Vswitch') is not None:
+            self.vswitch = m.get('Vswitch')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo(TeaModel):
+    def __init__(
+        self,
+        kafka_cluster_id: str = None,
+        kafka_topic: str = None,
+    ):
+        # The ID of the Kafka instance.
+        self.kafka_cluster_id = kafka_cluster_id
+        # The topic of the Kafka instance.
+        self.kafka_topic = kafka_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kafka_cluster_id is not None:
+            result['KafkaClusterId'] = self.kafka_cluster_id
+        if self.kafka_topic is not None:
+            result['KafkaTopic'] = self.kafka_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KafkaClusterId') is not None:
+            self.kafka_cluster_id = m.get('KafkaClusterId')
+        if m.get('KafkaTopic') is not None:
+            self.kafka_topic = m.get('KafkaTopic')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        across: bool = None,
+        across_role: str = None,
+        across_uid: str = None,
+        connect_url: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        security_group: str = None,
+        user_name: str = None,
+    ):
+        # *\
+        self.across = across
+        # *\
+        self.across_role = across_role
+        # *\
+        self.across_uid = across_uid
+        # *\
+        self.connect_url = connect_url
+        # *\
+        self.instance_id = instance_id
+        # *\
+        self.region_id = region_id
+        # *\
+        self.security_group = security_group
+        # *\
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across is not None:
+            result['Across'] = self.across
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Across') is not None:
+            self.across = m.get('Across')
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        connect_url: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        security_group: str = None,
+        user_name: str = None,
+    ):
+        # *\
+        self.connect_url = connect_url
+        # *\
+        self.instance_id = instance_id
+        # *\
+        self.region_id = region_id
+        # *\
+        self.security_group = security_group
+        # *\
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo(TeaModel):
+    def __init__(
+        self,
+        across: bool = None,
+        across_role: str = None,
+        across_uid: str = None,
+        project: str = None,
+        source_region_id: str = None,
+        store: str = None,
+    ):
+        # Indicates whether the data source is a cross-account resource. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.across = across
+        # The name of the cross-account role.
+        self.across_role = across_role
+        # The cross-account UID.
+        self.across_uid = across_uid
+        # The name of the SLS project.
+        self.project = project
+        # The region ID.
+        self.source_region_id = source_region_id
+        # The name of the SLS Logstore.
+        self.store = store
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across is not None:
+            result['Across'] = self.across
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.store is not None:
+            result['Store'] = self.store
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Across') is not None:
+            self.across = m.get('Across')
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('Store') is not None:
+            self.store = m.get('Store')
+        return self
+
+
+class DescribeApsDatasourceResponseBodyApsDatasource(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        dbcluster_id: str = None,
+        databricks_info: DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo = None,
+        datasource_description: str = None,
+        datasource_name: str = None,
+        datasource_type: str = None,
+        hive_info: DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo = None,
+        kafka_info: DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo = None,
+        polar_dbmysql_info: DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo = None,
+        rds_mysql_info: DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo = None,
+        sls_info: DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo = None,
+    ):
+        # The time when the data source was created.
+        self.create_time = create_time
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The information about Databricks.
+        self.databricks_info = databricks_info
+        # The description of the data source.
+        self.datasource_description = datasource_description
+        # The name of the data source.
+        self.datasource_name = datasource_name
+        # The type of the data source.
+        self.datasource_type = datasource_type
+        # The information about the Hive data source.
+        self.hive_info = hive_info
+        # The information about the Kafka instance.
+        self.kafka_info = kafka_info
+        # The parameter is no longer supported.
+        self.polar_dbmysql_info = polar_dbmysql_info
+        # The parameter is no longer supported.
+        self.rds_mysql_info = rds_mysql_info
+        # The Simple Log Service (SLS) project.
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.databricks_info:
+            self.databricks_info.validate()
+        if self.hive_info:
+            self.hive_info.validate()
+        if self.kafka_info:
+            self.kafka_info.validate()
+        if self.polar_dbmysql_info:
+            self.polar_dbmysql_info.validate()
+        if self.rds_mysql_info:
+            self.rds_mysql_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.databricks_info is not None:
+            result['DatabricksInfo'] = self.databricks_info.to_map()
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.hive_info is not None:
+            result['HiveInfo'] = self.hive_info.to_map()
+        if self.kafka_info is not None:
+            result['KafkaInfo'] = self.kafka_info.to_map()
+        if self.polar_dbmysql_info is not None:
+            result['PolarDBMysqlInfo'] = self.polar_dbmysql_info.to_map()
+        if self.rds_mysql_info is not None:
+            result['RdsMysqlInfo'] = self.rds_mysql_info.to_map()
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabricksInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo()
+            self.databricks_info = temp_model.from_map(m['DatabricksInfo'])
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('HiveInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo()
+            self.hive_info = temp_model.from_map(m['HiveInfo'])
+        if m.get('KafkaInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo()
+            self.kafka_info = temp_model.from_map(m['KafkaInfo'])
+        if m.get('PolarDBMysqlInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo()
+            self.polar_dbmysql_info = temp_model.from_map(m['PolarDBMysqlInfo'])
+        if m.get('RdsMysqlInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo()
+            self.rds_mysql_info = temp_model.from_map(m['RdsMysqlInfo'])
+        if m.get('SlsInfo') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class DescribeApsDatasourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_datasource: DescribeApsDatasourceResponseBodyApsDatasource = None,
+        request_id: str = None,
+    ):
+        # *\
+        self.aps_datasource = aps_datasource
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.aps_datasource:
+            self.aps_datasource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_datasource is not None:
+            result['ApsDatasource'] = self.aps_datasource.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsDatasource') is not None:
+            temp_model = DescribeApsDatasourceResponseBodyApsDatasource()
+            self.aps_datasource = temp_model.from_map(m['ApsDatasource'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeApsDatasourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsDatasourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsDatasourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsDatasourcesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_name: str = None,
+        datasource_type: str = None,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        start_time: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster.
+        self.dbcluster_id = dbcluster_id
+        # The name of the data source.
+        self.datasource_name = datasource_name
+        # The type of the data source.
+        self.datasource_type = datasource_type
+        # The end of the time range to query.
+        self.end_time = end_time
+        # The page number.
+        # 
+        # This parameter is required.
+        self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # The region ID.
+        self.region_id = region_id
+        # The beginning of the time range to query.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeApsDatasourcesResponseBodyApsDatasources(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        datasource_description: str = None,
+        datasource_id: int = None,
+        datasource_name: str = None,
+        datasource_type: str = None,
+        has_job: bool = None,
+    ):
+        # The time when the data source was created.
+        self.create_time = create_time
+        # The description of the data source.
+        self.datasource_description = datasource_description
+        # The data source ID.
+        self.datasource_id = datasource_id
+        # The name of the data source.
+        self.datasource_name = datasource_name
+        # The type of the data source.
+        self.datasource_type = datasource_type
+        # Indicates whether a job is using the data source.
+        self.has_job = has_job
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.datasource_type is not None:
+            result['DatasourceType'] = self.datasource_type
+        if self.has_job is not None:
+            result['HasJob'] = self.has_job
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('DatasourceType') is not None:
+            self.datasource_type = m.get('DatasourceType')
+        if m.get('HasJob') is not None:
+            self.has_job = m.get('HasJob')
+        return self
+
+
+class DescribeApsDatasourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_datasources: List[DescribeApsDatasourcesResponseBodyApsDatasources] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # *\
+        self.aps_datasources = aps_datasources
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.aps_datasources:
+            for k in self.aps_datasources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApsDatasources'] = []
+        if self.aps_datasources is not None:
+            for k in self.aps_datasources:
+                result['ApsDatasources'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.aps_datasources = []
+        if m.get('ApsDatasources') is not None:
+            for k in m.get('ApsDatasources'):
+                temp_model = DescribeApsDatasourcesResponseBodyApsDatasources()
+                self.aps_datasources.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApsDatasourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsDatasourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsDatasourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsHiveWorkloadRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+        workload_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.region_id = region_id
+        # This parameter is required.
+        self.workload_id = workload_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        return self
+
+
+class DescribeApsHiveWorkloadResponseBodyApsWorkload(TeaModel):
+    def __init__(
+        self,
+        advanced_config: str = None,
+        conflict_strategy: str = None,
+        create_time: str = None,
+        dbcluster_id: str = None,
+        datasource_id: int = None,
+        datasource_name: str = None,
+        emr_cluster_id: str = None,
+        full_compute_unit: str = None,
+        meta_store_uri: str = None,
+        oss_location: str = None,
+        parallelism: int = None,
+        region_id: str = None,
+        resource_group: str = None,
+        state: str = None,
+        sync_allow_expression: str = None,
+        sync_deny_expression: str = None,
+        target_type: str = None,
+        vswitch: str = None,
+        workload_id: str = None,
+        workload_name: str = None,
+        workload_type_name: str = None,
+    ):
+        self.advanced_config = advanced_config
+        self.conflict_strategy = conflict_strategy
+        self.create_time = create_time
+        self.dbcluster_id = dbcluster_id
+        self.datasource_id = datasource_id
+        self.datasource_name = datasource_name
+        self.emr_cluster_id = emr_cluster_id
+        self.full_compute_unit = full_compute_unit
+        # hive meta store url。
+        self.meta_store_uri = meta_store_uri
+        self.oss_location = oss_location
+        self.parallelism = parallelism
+        self.region_id = region_id
+        self.resource_group = resource_group
+        self.state = state
+        self.sync_allow_expression = sync_allow_expression
+        self.sync_deny_expression = sync_deny_expression
+        self.target_type = target_type
+        self.vswitch = vswitch
+        self.workload_id = workload_id
+        self.workload_name = workload_name
+        self.workload_type_name = workload_type_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        if self.conflict_strategy is not None:
+            result['ConflictStrategy'] = self.conflict_strategy
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.emr_cluster_id is not None:
+            result['EmrClusterId'] = self.emr_cluster_id
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.meta_store_uri is not None:
+            result['MetaStoreUri'] = self.meta_store_uri
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.parallelism is not None:
+            result['Parallelism'] = self.parallelism
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.state is not None:
+            result['State'] = self.state
+        if self.sync_allow_expression is not None:
+            result['SyncAllowExpression'] = self.sync_allow_expression
+        if self.sync_deny_expression is not None:
+            result['SyncDenyExpression'] = self.sync_deny_expression
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.vswitch is not None:
+            result['Vswitch'] = self.vswitch
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        if self.workload_type_name is not None:
+            result['WorkloadTypeName'] = self.workload_type_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        if m.get('ConflictStrategy') is not None:
+            self.conflict_strategy = m.get('ConflictStrategy')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('EmrClusterId') is not None:
+            self.emr_cluster_id = m.get('EmrClusterId')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('MetaStoreUri') is not None:
+            self.meta_store_uri = m.get('MetaStoreUri')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('Parallelism') is not None:
+            self.parallelism = m.get('Parallelism')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('SyncAllowExpression') is not None:
+            self.sync_allow_expression = m.get('SyncAllowExpression')
+        if m.get('SyncDenyExpression') is not None:
+            self.sync_deny_expression = m.get('SyncDenyExpression')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('Vswitch') is not None:
+            self.vswitch = m.get('Vswitch')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        if m.get('WorkloadTypeName') is not None:
+            self.workload_type_name = m.get('WorkloadTypeName')
+        return self
+
+
+class DescribeApsHiveWorkloadResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_workload: DescribeApsHiveWorkloadResponseBodyApsWorkload = None,
+        request_id: str = None,
+    ):
+        self.aps_workload = aps_workload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.aps_workload:
+            self.aps_workload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_workload is not None:
+            result['ApsWorkload'] = self.aps_workload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsWorkload') is not None:
+            temp_model = DescribeApsHiveWorkloadResponseBodyApsWorkload()
+            self.aps_workload = temp_model.from_map(m['ApsWorkload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeApsHiveWorkloadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsHiveWorkloadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsHiveWorkloadResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsJobDetailRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        region_id: str = None,
+    ):
+        # The job ID.
+        # 
+        # This parameter is required.
+        self.aps_job_id = aps_job_id
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeApsJobDetailResponseBodyAPSJobDetail(TeaModel):
+    def __init__(
+        self,
+        db_list: str = None,
+        destination_endpoint_instance_id: str = None,
+        destination_endpoint_region: str = None,
+        partition_list: str = None,
+        source_endpoint_instance_id: str = None,
+        source_endpoint_region: str = None,
+        status: str = None,
+        target_table_mode: str = None,
+    ):
+        # The objects that are synchronized.
+        self.db_list = db_list
+        # The ID of the destination cluster.
+        self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        # The region of the destination cluster.
+        self.destination_endpoint_region = destination_endpoint_region
+        # The partitions.
+        self.partition_list = partition_list
+        # The ID of the source instance.
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        # The region of the source instance.
+        self.source_endpoint_region = source_endpoint_region
+        # The status of the job.
+        self.status = status
+        # The mode of the destination table.
+        self.target_table_mode = target_table_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        if self.destination_endpoint_instance_id is not None:
+            result['DestinationEndpointInstanceID'] = self.destination_endpoint_instance_id
+        if self.destination_endpoint_region is not None:
+            result['DestinationEndpointRegion'] = self.destination_endpoint_region
+        if self.partition_list is not None:
+            result['PartitionList'] = self.partition_list
+        if self.source_endpoint_instance_id is not None:
+            result['SourceEndpointInstanceID'] = self.source_endpoint_instance_id
+        if self.source_endpoint_region is not None:
+            result['SourceEndpointRegion'] = self.source_endpoint_region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_table_mode is not None:
+            result['TargetTableMode'] = self.target_table_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        if m.get('DestinationEndpointInstanceID') is not None:
+            self.destination_endpoint_instance_id = m.get('DestinationEndpointInstanceID')
+        if m.get('DestinationEndpointRegion') is not None:
+            self.destination_endpoint_region = m.get('DestinationEndpointRegion')
+        if m.get('PartitionList') is not None:
+            self.partition_list = m.get('PartitionList')
+        if m.get('SourceEndpointInstanceID') is not None:
+            self.source_endpoint_instance_id = m.get('SourceEndpointInstanceID')
+        if m.get('SourceEndpointRegion') is not None:
+            self.source_endpoint_region = m.get('SourceEndpointRegion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetTableMode') is not None:
+            self.target_table_mode = m.get('TargetTableMode')
+        return self
+
+
+class DescribeApsJobDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        apsjob_detail: DescribeApsJobDetailResponseBodyAPSJobDetail = None,
+        request_id: str = None,
+    ):
+        # The queried job.
+        self.apsjob_detail = apsjob_detail
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.apsjob_detail:
+            self.apsjob_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apsjob_detail is not None:
+            result['APSJobDetail'] = self.apsjob_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('APSJobDetail') is not None:
+            temp_model = DescribeApsJobDetailResponseBodyAPSJobDetail()
+            self.apsjob_detail = temp_model.from_map(m['APSJobDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeApsJobDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsJobDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsJobDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsJobsRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_name: str = None,
+        create_time_end: str = None,
+        create_time_start: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        self.aps_job_name = aps_job_name
+        self.create_time_end = create_time_end
+        self.create_time_start = create_time_start
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_name is not None:
+            result['ApsJobName'] = self.aps_job_name
+        if self.create_time_end is not None:
+            result['CreateTimeEnd'] = self.create_time_end
+        if self.create_time_start is not None:
+            result['CreateTimeStart'] = self.create_time_start
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobName') is not None:
+            self.aps_job_name = m.get('ApsJobName')
+        if m.get('CreateTimeEnd') is not None:
+            self.create_time_end = m.get('CreateTimeEnd')
+        if m.get('CreateTimeStart') is not None:
+            self.create_time_start = m.get('CreateTimeStart')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeApsJobsResponseBodyAPSJobs(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        aps_job_name: str = None,
+        create_time: str = None,
+        delay: int = None,
+        destination_instance_id: str = None,
+        err_message: str = None,
+        projress: str = None,
+        source_instance_id: str = None,
+        status: str = None,
+        sub_status: str = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.aps_job_name = aps_job_name
+        self.create_time = create_time
+        self.delay = delay
+        self.destination_instance_id = destination_instance_id
+        self.err_message = err_message
+        self.projress = projress
+        self.source_instance_id = source_instance_id
+        self.status = status
+        self.sub_status = sub_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.aps_job_name is not None:
+            result['ApsJobName'] = self.aps_job_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.destination_instance_id is not None:
+            result['DestinationInstanceID'] = self.destination_instance_id
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.projress is not None:
+            result['Projress'] = self.projress
+        if self.source_instance_id is not None:
+            result['SourceInstanceID'] = self.source_instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('ApsJobName') is not None:
+            self.aps_job_name = m.get('ApsJobName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('DestinationInstanceID') is not None:
+            self.destination_instance_id = m.get('DestinationInstanceID')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Projress') is not None:
+            self.projress = m.get('Projress')
+        if m.get('SourceInstanceID') is not None:
+            self.source_instance_id = m.get('SourceInstanceID')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        return self
+
+
+class DescribeApsJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        apsjobs: List[DescribeApsJobsResponseBodyAPSJobs] = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: str = None,
+    ):
+        self.apsjobs = apsjobs
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.apsjobs:
+            for k in self.apsjobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['APSJobs'] = []
+        if self.apsjobs is not None:
+            for k in self.apsjobs:
+                result['APSJobs'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.apsjobs = []
+        if m.get('APSJobs') is not None:
+            for k in m.get('APSJobs'):
+                temp_model = DescribeApsJobsResponseBodyAPSJobs()
+                self.apsjobs.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApsJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsMigrationWorkloadsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        oss_location: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+        workload_name: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query.
+        self.end_time = end_time
+        # The Object Storage Service (OSS) URL.
+        self.oss_location = oss_location
+        # The page number.
+        # 
+        # This parameter is required.
+        self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # This parameter is required.
+        self.page_size = page_size
+        # The start of the time range to query.
+        self.start_time = start_time
+        # The name of the workload.
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads(TeaModel):
+    def __init__(
+        self,
+        acu_count: int = None,
+        create_time: str = None,
+        failed_msg: str = None,
+        id: str = None,
+        max_rt: str = None,
+        modify_time: str = None,
+        name: str = None,
+        oss_location: str = None,
+        state: str = None,
+        target_type: str = None,
+        workload_sub_type: str = None,
+    ):
+        # The number of AnalyticDB compute units (ACUs).
+        self.acu_count = acu_count
+        # The time when the job was created.
+        self.create_time = create_time
+        # The error message.
+        self.failed_msg = failed_msg
+        # The job ID.
+        self.id = id
+        # The maximum response time.
+        self.max_rt = max_rt
+        # The time when the migration job was modified.
+        self.modify_time = modify_time
+        # The name of the workload.
+        self.name = name
+        # The OSS URL.
+        self.oss_location = oss_location
+        # The status.
+        self.state = state
+        # The destination type.
+        self.target_type = target_type
+        # The sub-type of the workload.
+        self.workload_sub_type = workload_sub_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acu_count is not None:
+            result['AcuCount'] = self.acu_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.failed_msg is not None:
+            result['FailedMsg'] = self.failed_msg
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.max_rt is not None:
+            result['MaxRT'] = self.max_rt
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.state is not None:
+            result['State'] = self.state
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.workload_sub_type is not None:
+            result['WorkloadSubType'] = self.workload_sub_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcuCount') is not None:
+            self.acu_count = m.get('AcuCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FailedMsg') is not None:
+            self.failed_msg = m.get('FailedMsg')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaxRT') is not None:
+            self.max_rt = m.get('MaxRT')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('WorkloadSubType') is not None:
+            self.workload_sub_type = m.get('WorkloadSubType')
+        return self
+
+
+class DescribeApsMigrationWorkloadsResponseBody(TeaModel):
+    def __init__(
+        self,
+        migration_workloads: List[DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # *\
+        self.migration_workloads = migration_workloads
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.migration_workloads:
+            for k in self.migration_workloads:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MigrationWorkloads'] = []
+        if self.migration_workloads is not None:
+            for k in self.migration_workloads:
+                result['MigrationWorkloads'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.migration_workloads = []
+        if m.get('MigrationWorkloads') is not None:
+            for k in m.get('MigrationWorkloads'):
+                temp_model = DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads()
+                self.migration_workloads.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApsMigrationWorkloadsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsMigrationWorkloadsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsMigrationWorkloadsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApsProgressRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+        workload_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.region_id = region_id
+        # This parameter is required.
+        self.workload_id = workload_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        return self
+
+
+class DescribeApsProgressResponseBodyApsHiveProgress(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        progress: str = None,
+        speed: str = None,
+        tb_name: str = None,
+    ):
+        self.db_name = db_name
+        self.progress = progress
+        self.speed = speed
+        self.tb_name = tb_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.tb_name is not None:
+            result['TbName'] = self.tb_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('TbName') is not None:
+            self.tb_name = m.get('TbName')
+        return self
+
+
+class DescribeApsProgressResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_hive_progress: List[DescribeApsProgressResponseBodyApsHiveProgress] = None,
+        request_id: str = None,
+        success_percentage: int = None,
+        success_table_count: int = None,
+        total_table_count: int = None,
+    ):
+        self.aps_hive_progress = aps_hive_progress
+        self.request_id = request_id
+        self.success_percentage = success_percentage
+        self.success_table_count = success_table_count
+        self.total_table_count = total_table_count
+
+    def validate(self):
+        if self.aps_hive_progress:
+            for k in self.aps_hive_progress:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApsHiveProgress'] = []
+        if self.aps_hive_progress is not None:
+            for k in self.aps_hive_progress:
+                result['ApsHiveProgress'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_percentage is not None:
+            result['SuccessPercentage'] = self.success_percentage
+        if self.success_table_count is not None:
+            result['SuccessTableCount'] = self.success_table_count
+        if self.total_table_count is not None:
+            result['TotalTableCount'] = self.total_table_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.aps_hive_progress = []
+        if m.get('ApsHiveProgress') is not None:
+            for k in m.get('ApsHiveProgress'):
+                temp_model = DescribeApsProgressResponseBodyApsHiveProgress()
+                self.aps_hive_progress.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessPercentage') is not None:
+            self.success_percentage = m.get('SuccessPercentage')
+        if m.get('SuccessTableCount') is not None:
+            self.success_table_count = m.get('SuccessTableCount')
+        if m.get('TotalTableCount') is not None:
+            self.total_table_count = m.get('TotalTableCount')
+        return self
+
+
+class DescribeApsProgressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApsProgressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApsProgressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8594,7 +14942,7 @@ class DescribeAuditLogRecordsRequest(TeaModel):
         # *   **DROP**\
         # *   **CREATE**\
         # 
-        # >  You can query only a single type of SQL statements at a time. If you leave this parameter empty, the **SELECT** statements are queried.
+        # >  You can query only a single type of SQL statements at a time. If you leave this parameter empty, all types of SQL statements are queried.
         self.sql_type = sql_type
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
@@ -8902,6 +15250,349 @@ class DescribeAuditLogRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAuditLogRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAvailableAdvicesRequest(TeaModel):
+    def __init__(
+        self,
+        advice_date: int = None,
+        advice_type: str = None,
+        dbcluster_id: str = None,
+        keyword: str = None,
+        lang: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        schema_table_name: str = None,
+    ):
+        # The date when the suggestion is generated. Specify the date in the yyyyMMdd format.
+        # 
+        # >  Suggestions are generated after analysis after midnight every day. You must specify a date that is at least one day earlier than the current date. For example, if the current date is 20240627, you must specify 20240626 or an earlier date.
+        self.advice_date = advice_date
+        # The type of the suggestion. Valid values:
+        # 
+        # *   **INDEX**: index optimization.
+        # *   **TIERING**: hot and cold data optimization.
+        self.advice_type = advice_type
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The keyword that is used to query information by table name.
+        self.keyword = keyword
+        # The display language of suggestions. Valid values:
+        # 
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database.
+        #     *   `TableName`: the name of the table.
+        #     *   `Benefit`: the expected benefits of the applied optimization suggestion.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, the query results are sorted in descending order based on the Benefit field.
+        self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The name of the table in the DatabaseName.TableName format.
+        self.schema_table_name = schema_table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_date is not None:
+            result['AdviceDate'] = self.advice_date
+        if self.advice_type is not None:
+            result['AdviceType'] = self.advice_type
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.schema_table_name is not None:
+            result['SchemaTableName'] = self.schema_table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceDate') is not None:
+            self.advice_date = m.get('AdviceDate')
+        if m.get('AdviceType') is not None:
+            self.advice_type = m.get('AdviceType')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SchemaTableName') is not None:
+            self.schema_table_name = m.get('SchemaTableName')
+        return self
+
+
+class DescribeAvailableAdvicesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        advice_date: str = None,
+        advice_id: str = None,
+        advice_type: str = None,
+        benefit: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        reason: str = None,
+        sql: str = None,
+        schema_name: str = None,
+        table_name: str = None,
+        total_count: int = None,
+    ):
+        # The date when the suggestion is generated.The date is in the yyyyMMdd format.
+        self.advice_date = advice_date
+        # The suggestion ID.
+        self.advice_id = advice_id
+        # The type of the suggestion. Valid values:
+        # 
+        # *   **INDEX**: index optimization.
+        # *   **TIERING**: hot and cold data optimization.
+        self.advice_type = advice_type
+        # The benefit of the suggestion.
+        self.benefit = benefit
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The reason why the suggestion was generated.
+        self.reason = reason
+        # The SQL statement that is used to apply the suggestion.
+        self.sql = sql
+        # The name of the database.
+        self.schema_name = schema_name
+        # The name of the table.
+        self.table_name = table_name
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice_date is not None:
+            result['AdviceDate'] = self.advice_date
+        if self.advice_id is not None:
+            result['AdviceId'] = self.advice_id
+        if self.advice_type is not None:
+            result['AdviceType'] = self.advice_type
+        if self.benefit is not None:
+            result['Benefit'] = self.benefit
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdviceDate') is not None:
+            self.advice_date = m.get('AdviceDate')
+        if m.get('AdviceId') is not None:
+            self.advice_id = m.get('AdviceId')
+        if m.get('AdviceType') is not None:
+            self.advice_type = m.get('AdviceType')
+        if m.get('Benefit') is not None:
+            self.benefit = m.get('Benefit')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAvailableAdvicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeAvailableAdvicesResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        schema_table_names: List[str] = None,
+        total_count: int = None,
+    ):
+        # The queried suggestions.
+        self.items = items
+        # The page number. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The name of the table in the DatabaseName.TableName format.
+        self.schema_table_names = schema_table_names
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_table_names is not None:
+            result['SchemaTableNames'] = self.schema_table_names
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeAvailableAdvicesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaTableNames') is not None:
+            self.schema_table_names = m.get('SchemaTableNames')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAvailableAdvicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAvailableAdvicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAvailableAdvicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9403,6 +16094,422 @@ class DescribeBackupsResponse(TeaModel):
         return self
 
 
+class DescribeBadSqlDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        self.end_time = end_time
+        # The language. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        detail: str = None,
+        operator_id: str = None,
+        stage_id: str = None,
+    ):
+        # The diagnostic code.
+        self.code = code
+        # The information about the diagnostic result.
+        self.detail = detail
+        # The operator ID.
+        self.operator_id = operator_id
+        # The stage ID.
+        self.stage_id = stage_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.operator_id is not None:
+            result['OperatorId'] = self.operator_id
+        if self.stage_id is not None:
+            result['StageId'] = self.stage_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('OperatorId') is not None:
+            self.operator_id = m.get('OperatorId')
+        if m.get('StageId') is not None:
+            self.stage_id = m.get('StageId')
+        return self
+
+
+class DescribeBadSqlDetectionResponseBodyDetectionItemsResults(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        diagnosis_results: List[DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults] = None,
+        operator_cost: int = None,
+        output_data_size: int = None,
+        pattern_id: str = None,
+        peak_memory: int = None,
+        process_id: str = None,
+        sql: str = None,
+        scan_size: int = None,
+        start_time: str = None,
+        total_stages: int = None,
+    ):
+        # The total execution duration. Unit: milliseconds.
+        # 
+        # >  This value is the cumulative value of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` parameters.
+        self.cost = cost
+        # The diagnostic result items.
+        self.diagnosis_results = diagnosis_results
+        # The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+        self.operator_cost = operator_cost
+        # The amount of returned data. Unit: bytes.
+        self.output_data_size = output_data_size
+        # The SQL pattern ID.
+        self.pattern_id = pattern_id
+        # The peak memory. Unit: bytes.
+        self.peak_memory = peak_memory
+        # The query ID.
+        self.process_id = process_id
+        # The SQL statement.
+        # 
+        # >  For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster, including the complete SQL statements.
+        self.sql = sql
+        # The amount of scanned data. Unit: bytes.
+        self.scan_size = scan_size
+        # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
+        self.start_time = start_time
+        # The total number of stages generated.
+        self.total_stages = total_stages
+
+    def validate(self):
+        if self.diagnosis_results:
+            for k in self.diagnosis_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['DiagnosisResults'] = []
+        if self.diagnosis_results is not None:
+            for k in self.diagnosis_results:
+                result['DiagnosisResults'].append(k.to_map() if k else None)
+        if self.operator_cost is not None:
+            result['OperatorCost'] = self.operator_cost
+        if self.output_data_size is not None:
+            result['OutputDataSize'] = self.output_data_size
+        if self.pattern_id is not None:
+            result['PatternId'] = self.pattern_id
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.scan_size is not None:
+            result['ScanSize'] = self.scan_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.total_stages is not None:
+            result['TotalStages'] = self.total_stages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.diagnosis_results = []
+        if m.get('DiagnosisResults') is not None:
+            for k in m.get('DiagnosisResults'):
+                temp_model = DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults()
+                self.diagnosis_results.append(temp_model.from_map(k))
+        if m.get('OperatorCost') is not None:
+            self.operator_cost = m.get('OperatorCost')
+        if m.get('OutputDataSize') is not None:
+            self.output_data_size = m.get('OutputDataSize')
+        if m.get('PatternId') is not None:
+            self.pattern_id = m.get('PatternId')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('ScanSize') is not None:
+            self.scan_size = m.get('ScanSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TotalStages') is not None:
+            self.total_stages = m.get('TotalStages')
+        return self
+
+
+class DescribeBadSqlDetectionResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        results: List[DescribeBadSqlDetectionResponseBodyDetectionItemsResults] = None,
+        status: str = None,
+    ):
+        # The information about the detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The detection result items.
+        self.results = results
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DescribeBadSqlDetectionResponseBodyDetectionItemsResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeBadSqlDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeBadSqlDetectionResponseBodyDetectionItems] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The information about the request denial.
+        self.access_denied_detail = access_denied_detail
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeBadSqlDetectionResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeBadSqlDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBadSqlDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBadSqlDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeClusterAccessWhiteListRequest(TeaModel):
     def __init__(
         self,
@@ -9610,9 +16717,9 @@ class DescribeClusterNetInfoRequest(TeaModel):
         dbcluster_id: str = None,
         engine: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -10247,9 +17354,9 @@ class DescribeClusterResourceUsageRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -10339,7 +17446,7 @@ class DescribeClusterResourceUsageResponseBodyData(TeaModel):
     ):
         # The AnalyticDB compute unit (ACU) usage of the cluster.
         self.acu_info = acu_info
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.end_time = end_time
@@ -10713,6 +17820,147 @@ class DescribeColumnsResponse(TeaModel):
         return self
 
 
+class DescribeCompactionServiceSwitchRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class DescribeCompactionServiceSwitchResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable_compaction_service: bool = None,
+    ):
+        # Indicates whether the remote build feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        self.enable_compaction_service = enable_compaction_service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_compaction_service is not None:
+            result['EnableCompactionService'] = self.enable_compaction_service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableCompactionService') is not None:
+            self.enable_compaction_service = m.get('EnableCompactionService')
+        return self
+
+
+class DescribeCompactionServiceSwitchResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeCompactionServiceSwitchResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeCompactionServiceSwitchResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCompactionServiceSwitchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCompactionServiceSwitchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCompactionServiceSwitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeComputeResourceUsageRequest(TeaModel):
     def __init__(
         self,
@@ -10967,6 +18215,245 @@ class DescribeComputeResourceUsageResponse(TeaModel):
         return self
 
 
+class DescribeControllerDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ** format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time. The maximum time range that can be specified is 30 days.
+        self.end_time = end_time
+        # The language. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeControllerDetectionResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # The information about the detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeControllerDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeControllerDetectionResponseBodyDetectionItems] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeControllerDetectionResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeControllerDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeControllerDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeControllerDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -11071,6 +18558,145 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTags(TeaModel):
         return self
 
 
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        step_desc: str = None,
+        step_name: str = None,
+        step_progress: str = None,
+        step_status: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.step_desc = step_desc
+        self.step_name = step_name
+        self.step_progress = step_progress
+        self.step_status = step_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_desc is not None:
+            result['StepDesc'] = self.step_desc
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_progress is not None:
+            result['StepProgress'] = self.step_progress
+        if self.step_status is not None:
+            result['StepStatus'] = self.step_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepDesc') is not None:
+            self.step_desc = m.get('StepDesc')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepProgress') is not None:
+            self.step_progress = m.get('StepProgress')
+        if m.get('StepStatus') is not None:
+            self.step_status = m.get('StepStatus')
+        return self
+
+
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList(TeaModel):
+    def __init__(
+        self,
+        step_list: List[DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList] = None,
+    ):
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            for k in self.step_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['StepList'] = []
+        if self.step_list is not None:
+            for k in self.step_list:
+                result['StepList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.step_list = []
+        if m.get('StepList') is not None:
+            for k in m.get('StepList'):
+                temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList()
+                self.step_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        progress: str = None,
+        status: str = None,
+        step_list: DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList = None,
+    ):
+        self.name = name
+        self.progress = progress
+        self.status = status
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            self.step_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_list is not None:
+            result['StepList'] = self.step_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepList') is not None:
+            temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList()
+            self.step_list = temp_model.from_map(m['StepList'])
+        return self
+
+
 class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
@@ -11109,7 +18735,11 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         storage_resource_total: str = None,
         supported_features: Dict[str, str] = None,
         tags: DescribeDBClusterAttributeResponseBodyItemsDBClusterTags = None,
+        task_info: DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo = None,
         user_enistatus: bool = None,
+        user_enivswitch_options: str = None,
+        user_enivpc_id: str = None,
+        user_enizone_options: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
@@ -11228,11 +18858,15 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.supported_features = supported_features
         # The tags that are added to the cluster.
         self.tags = tags
+        self.task_info = task_info
         # Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.user_enistatus = user_enistatus
+        self.user_enivswitch_options = user_enivswitch_options
+        self.user_enivpc_id = user_enivpc_id
+        self.user_enizone_options = user_enizone_options
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
         # The vSwitch ID of the cluster.
@@ -11243,6 +18877,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
     def validate(self):
         if self.tags:
             self.tags.validate()
+        if self.task_info:
+            self.task_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11320,8 +18956,16 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['SupportedFeatures'] = self.supported_features
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.task_info is not None:
+            result['TaskInfo'] = self.task_info.to_map()
         if self.user_enistatus is not None:
             result['UserENIStatus'] = self.user_enistatus
+        if self.user_enivswitch_options is not None:
+            result['UserENIVSwitchOptions'] = self.user_enivswitch_options
+        if self.user_enivpc_id is not None:
+            result['UserENIVpcId'] = self.user_enivpc_id
+        if self.user_enizone_options is not None:
+            result['UserENIZoneOptions'] = self.user_enizone_options
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
@@ -11403,8 +19047,17 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TaskInfo') is not None:
+            temp_model = DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo()
+            self.task_info = temp_model.from_map(m['TaskInfo'])
         if m.get('UserENIStatus') is not None:
             self.user_enistatus = m.get('UserENIStatus')
+        if m.get('UserENIVSwitchOptions') is not None:
+            self.user_enivswitch_options = m.get('UserENIVSwitchOptions')
+        if m.get('UserENIVpcId') is not None:
+            self.user_enivpc_id = m.get('UserENIVpcId')
+        if m.get('UserENIZoneOptions') is not None:
+            self.user_enizone_options = m.get('UserENIZoneOptions')
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
@@ -11455,7 +19108,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         items: DescribeDBClusterAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The queried information about the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The queried cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -11978,6 +19631,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         self,
         name: str = None,
         tags: str = None,
+        translate_key: str = None,
         values: List[str] = None,
     ):
         # *   CPU
@@ -12166,6 +19820,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         self.name = name
         # The tags that are added to the cluster.
         self.tags = tags
+        self.translate_key = translate_key
         # The values of the performance metric at different points in time.
         self.values = values
 
@@ -12182,6 +19837,8 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
             result['Name'] = self.name
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.translate_key is not None:
+            result['TranslateKey'] = self.translate_key
         if self.values is not None:
             result['Values'] = self.values
         return result
@@ -12192,6 +19849,8 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
             self.name = m.get('Name')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('TranslateKey') is not None:
+            self.translate_key = m.get('TranslateKey')
         if m.get('Values') is not None:
             self.values = m.get('Values')
         return self
@@ -12873,7 +20532,7 @@ class DescribeDBClustersRequest(TeaModel):
         # *   The description cannot start with `http://` or `https://`.
         # *   The description must be 2 to 256 characters in length
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # If you do not specify this parameter, the information about all clusters that reside in the region is returned.
         self.dbcluster_ids = dbcluster_ids
@@ -12898,6 +20557,11 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **NetAddressDeleting**\
         # *   **NetAddressModifying**\
         self.dbcluster_status = dbcluster_status
+        # The database engine version of the cluster. Valid values:
+        # 
+        # *   3.0: Data Warehouse Edition.
+        # *   5.0 (default): Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+        # *   All: Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
         self.dbcluster_version = dbcluster_version
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -12907,6 +20571,12 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        # The edition of the cluster. Valid values:
+        # 
+        # *   EnterpriseVersion: Enterprise Edition.
+        # *   BasicVersion: Basic Edition.
+        # 
+        # If you leave this parameter empty, the information about clusters of all editions is returned.
         self.product_version = product_version
         # The region ID of the cluster.
         # 
@@ -13065,11 +20735,21 @@ class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList(TeaMo
         step_progress: str = None,
         step_status: str = None,
     ):
+        # The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The description of the job step.
         self.step_desc = step_desc
+        # The name of the job step.
         self.step_name = step_name
+        # The progress of the job step. Unit: %.
         self.step_progress = step_progress
+        # The status of the job step. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
         self.step_status = step_status
 
     def validate(self):
@@ -13155,9 +20835,17 @@ class DescribeDBClustersResponseBodyItemsDBClusterTaskInfo(TeaModel):
         status: str = None,
         step_list: DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList = None,
     ):
+        # The name of the job.
         self.name = name
+        # The progress of the job. Unit: %.
         self.progress = progress
+        # The status of the job. Valid values:
+        # 
+        # *   **NOT_RUN**\
+        # *   **RUNNING**\
+        # *   **SUCCEED**\
         self.status = status
+        # The job steps.
         self.step_list = step_list
 
     def validate(self):
@@ -13241,6 +20929,13 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
+        # 
+        # *   **BASIC**: reserved mode for Basic Edition.
+        # *   **CLUSTER**: reserved mode for Cluster Edition.
+        # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
+        # 
+        # >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
         self.category = category
         # The billing method of the cluster. Valid values:
         # 
@@ -13255,7 +20950,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.create_time = create_time
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster. **VPC** is returned.
         self.dbcluster_network_type = dbcluster_network_type
@@ -13282,16 +20977,35 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_status = dbcluster_status
         # The type of the cluster. By default, **Common** is returned, which indicates a common cluster.
         self.dbcluster_type = dbcluster_type
+        # The node specifications of the cluster. This parameter is returned only for Data Warehouse Edition clusters.
         self.dbnode_class = dbnode_class
+        # The number of node groups.
         self.dbnode_count = dbnode_count
+        # The storage capacity of the cluster. Unit: GB.
         self.dbnode_storage = dbnode_storage
         # The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0** is returned.
         self.dbversion = dbversion
+        # The disk type of the cluster. Valid values:
+        # 
+        # *   **local_ssd**: local disk.
+        # *   **cloud**: basic disk.
+        # *   **cloud_ssd**: standard SSD.
+        # *   **cloud_efficiency**: ultra disk.
+        # *   **cloud_essd**: PL1 Enterprise SSD (ESSD).
+        # *   **cloud_essd2**: PL2 ESSD.
+        # *   **cloud_essd3**: PL3 ESSD.
+        # 
+        # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.disk_type = disk_type
+        # The ID of the Data Transmission Service (DTS) synchronization job This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
+        # The number of elastic I/O units (EIUs). For more information, see the "[EIUs](https://help.aliyun.com/document_detail/189505.html)" section of the Scale out elastic I/O resources topic.
+        # 
+        # >  This parameter is returned only for clusters in elastic mode.
         self.elastic_ioresource = elastic_ioresource
         # The engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
+        # The number of compute nodes that are used by the cluster in elastic mode.
         self.executor_count = executor_count
         # The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         # 
@@ -13312,7 +21026,9 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # 
         # *   This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
+        # The internal IP address of the cluster.
         self.inner_ip = inner_ip
+        # The internal port of the cluster.
         self.inner_port = inner_port
         # The lock status of the cluster. Valid values:
         # 
@@ -13333,14 +21049,25 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        # The service type of the cluster. Valid values:
+        # 
+        # *   LegacyForm
+        # *   IntegrationForm
         self.product_form = product_form
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **BasicVersion**: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
+        # The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
         # The remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
+        # The number of reserved resource nodes.
         self.reserved_node_count = reserved_node_count
+        # The single-node specifications of reserved resources.
         self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -13348,7 +21075,9 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
+        # The job progress.
         self.task_info = task_info
+        # The ID of the cluster that resides in the VPC.
         self.vpccloud_instance_id = vpccloud_instance_id
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
@@ -14517,6 +22246,7 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         execution_time: int = None,
         output_data_size: int = None,
         output_rows: int = None,
+        pattern_id: str = None,
         peak_memory: int = None,
         process_id: str = None,
         query_properties: List[DescribeDiagnosisRecordsResponseBodyQuerysQueryProperties] = None,
@@ -14551,6 +22281,7 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
         self.output_data_size = output_data_size
         # The number of rows returned.
         self.output_rows = output_rows
+        self.pattern_id = pattern_id
         # The peak memory. Unit: bytes.
         self.peak_memory = peak_memory
         # The query ID.
@@ -14622,6 +22353,8 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
             result['OutputDataSize'] = self.output_data_size
         if self.output_rows is not None:
             result['OutputRows'] = self.output_rows
+        if self.pattern_id is not None:
+            result['PatternId'] = self.pattern_id
         if self.peak_memory is not None:
             result['PeakMemory'] = self.peak_memory
         if self.process_id is not None:
@@ -14676,6 +22409,8 @@ class DescribeDiagnosisRecordsResponseBodyQuerys(TeaModel):
             self.output_data_size = m.get('OutputDataSize')
         if m.get('OutputRows') is not None:
             self.output_rows = m.get('OutputRows')
+        if m.get('PatternId') is not None:
+            self.pattern_id = m.get('PatternId')
         if m.get('PeakMemory') is not None:
             self.peak_memory = m.get('PeakMemory')
         if m.get('ProcessId') is not None:
@@ -14851,7 +22586,7 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         self.lang = lang
         # The query ID.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the query ID.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the query ID.
         self.process_id = process_id
         # The IP address and port number of the AnalyticDB for MySQL frontend node on which the SQL statement is executed.
         # 
@@ -14859,7 +22594,7 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         self.process_rc_host = process_rc_host
         # The execution start time of the SQL statement. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the execution start time of the SQL statement.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the execution start time of the SQL statement.
         self.process_start_time = process_start_time
         # The status of the SQL statement. Valid values:
         # 
@@ -14867,7 +22602,7 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         # *   **finished**\
         # *   **failed**\
         # 
-        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the status of the SQL statement.
+        # >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the status of the SQL statement.
         self.process_state = process_state
         # The region ID of the cluster.
         # 
@@ -15306,7 +23041,7 @@ class DescribeElasticPlanAttributeRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -15522,7 +23257,7 @@ class DescribeElasticPlanJobsRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -15625,6 +23360,7 @@ class DescribeElasticPlanJobsResponseBodyJobs(TeaModel):
         # > 
         # 
         # *   If Type is set to EXECUTOR, ElasticAcu indicates the amount of elastic resources in the current resource group.
+        # 
         # *   If Type is set to WORKER, ElasticAcu indicates the total amount of elastic storage resources in the current cluster.
         self.elastic_acu = elastic_acu
         # The name of the scaling plan.
@@ -15638,6 +23374,7 @@ class DescribeElasticPlanJobsResponseBodyJobs(TeaModel):
         # > 
         # 
         # *   If Type is set to EXECUTOR, InstanceSize indicates the number of compute nodes in the cluster.
+        # 
         # *   If Type is set to EXECUTOR, InstanceSize indicates the number of storage replica sets in the cluster.
         self.instance_size = instance_size
         # The amount of reserved resources.
@@ -15645,6 +23382,7 @@ class DescribeElasticPlanJobsResponseBodyJobs(TeaModel):
         # > 
         # 
         # *   If Type is set to EXECUTOR, ReserveAcu indicates the amount of reserved resources in the current resource group.
+        # 
         # *   If Type is set to WORKER, ReserveAcu indicates the total amount of reserved storage resources in the current cluster.
         self.reserve_acu = reserve_acu
         # The name of the resource group.
@@ -15666,6 +23404,7 @@ class DescribeElasticPlanJobsResponseBodyJobs(TeaModel):
         # > 
         # 
         # *   If Type is set to EXECUTOR, TotalAcu indicates the total amount of computing resources in the current resource group.
+        # 
         # *   If Type is set to WORKER, TotalAcu indicates the total amount of storage resources in the cluster.
         self.total_acu = total_acu
         # The type of the scaling plan job. Valid values:
@@ -15848,7 +23587,7 @@ class DescribeElasticPlanSpecificationsRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -16493,6 +24232,143 @@ class DescribeEnabledPrivilegesResponse(TeaModel):
         return self
 
 
+class DescribeEssdCacheConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class DescribeEssdCacheConfigResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable_essd_cache: bool = None,
+        essd_cache_size: int = None,
+    ):
+        self.enable_essd_cache = enable_essd_cache
+        self.essd_cache_size = essd_cache_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_essd_cache is not None:
+            result['EnableEssdCache'] = self.enable_essd_cache
+        if self.essd_cache_size is not None:
+            result['EssdCacheSize'] = self.essd_cache_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableEssdCache') is not None:
+            self.enable_essd_cache = m.get('EnableEssdCache')
+        if m.get('EssdCacheSize') is not None:
+            self.essd_cache_size = m.get('EssdCacheSize')
+        return self
+
+
+class DescribeEssdCacheConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeEssdCacheConfigResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeEssdCacheConfigResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeEssdCacheConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeEssdCacheConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeEssdCacheConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeExcessivePrimaryKeysRequest(TeaModel):
     def __init__(
         self,
@@ -16891,6 +24767,735 @@ class DescribeExcessivePrimaryKeysResponse(TeaModel):
         return self
 
 
+class DescribeExecutorDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
+        self.end_time = end_time
+        # The language. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        # 
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults(TeaModel):
+    def __init__(
+        self,
+        avg_value: float = None,
+        max_value: int = None,
+        operator_count: int = None,
+        operator_name: str = None,
+        total_value: int = None,
+    ):
+        # The average value of the operator metric.
+        self.avg_value = avg_value
+        # The maximum value of the operator metric.
+        self.max_value = max_value
+        # The number of occurrences of the operator.
+        self.operator_count = operator_count
+        # The name of the operator.
+        self.operator_name = operator_name
+        # The cumulative value of the operator metric.
+        self.total_value = total_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_value is not None:
+            result['AvgValue'] = self.avg_value
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.operator_count is not None:
+            result['OperatorCount'] = self.operator_count
+        if self.operator_name is not None:
+            result['OperatorName'] = self.operator_name
+        if self.total_value is not None:
+            result['TotalValue'] = self.total_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgValue') is not None:
+            self.avg_value = m.get('AvgValue')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('OperatorCount') is not None:
+            self.operator_count = m.get('OperatorCount')
+        if m.get('OperatorName') is not None:
+            self.operator_name = m.get('OperatorName')
+        if m.get('TotalValue') is not None:
+            self.total_value = m.get('TotalValue')
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        search_results: List[DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults] = None,
+    ):
+        # The name of the detection metric.
+        self.metric_name = metric_name
+        # The detection result items of operator metric aggregation.
+        self.search_results = search_results
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['SearchResults'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['SearchResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.search_results = []
+        if m.get('SearchResults') is not None:
+            for k in m.get('SearchResults'):
+                temp_model = DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults()
+                self.search_results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults(TeaModel):
+    def __init__(
+        self,
+        input_rows: int = None,
+        input_size: int = None,
+        operator_cost: float = None,
+        operator_info: str = None,
+        operator_name: str = None,
+        output_rows: int = None,
+        output_size: int = None,
+        peak_memory: int = None,
+        process_id: str = None,
+        stage_id: str = None,
+    ):
+        # The number of rows input by the operator.
+        self.input_rows = input_rows
+        # The amount of data input by the operator. Unit: bytes.
+        self.input_size = input_size
+        # The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+        self.operator_cost = operator_cost
+        # The property information about the operator.
+        self.operator_info = operator_info
+        # The name of the operator.
+        self.operator_name = operator_name
+        # The number of rows output by the operator.
+        self.output_rows = output_rows
+        # The amount of data output by the operator. Unit: bytes.
+        self.output_size = output_size
+        # The peak memory. Unit: bytes.
+        self.peak_memory = peak_memory
+        # The query ID.
+        self.process_id = process_id
+        # The stage ID.
+        self.stage_id = stage_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_rows is not None:
+            result['InputRows'] = self.input_rows
+        if self.input_size is not None:
+            result['InputSize'] = self.input_size
+        if self.operator_cost is not None:
+            result['OperatorCost'] = self.operator_cost
+        if self.operator_info is not None:
+            result['OperatorInfo'] = self.operator_info
+        if self.operator_name is not None:
+            result['OperatorName'] = self.operator_name
+        if self.output_rows is not None:
+            result['OutputRows'] = self.output_rows
+        if self.output_size is not None:
+            result['OutputSize'] = self.output_size
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.stage_id is not None:
+            result['StageId'] = self.stage_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputRows') is not None:
+            self.input_rows = m.get('InputRows')
+        if m.get('InputSize') is not None:
+            self.input_size = m.get('InputSize')
+        if m.get('OperatorCost') is not None:
+            self.operator_cost = m.get('OperatorCost')
+        if m.get('OperatorInfo') is not None:
+            self.operator_info = m.get('OperatorInfo')
+        if m.get('OperatorName') is not None:
+            self.operator_name = m.get('OperatorName')
+        if m.get('OutputRows') is not None:
+            self.output_rows = m.get('OutputRows')
+        if m.get('OutputSize') is not None:
+            self.output_size = m.get('OutputSize')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('StageId') is not None:
+            self.stage_id = m.get('StageId')
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        search_results: List[DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults] = None,
+    ):
+        # The name of the detection metric.
+        self.metric_name = metric_name
+        # The detection result items of abnormal operators.
+        self.search_results = search_results
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['SearchResults'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['SearchResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.search_results = []
+        if m.get('SearchResults') is not None:
+            for k in m.get('SearchResults'):
+                temp_model = DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults()
+                self.search_results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItemsResults(TeaModel):
+    def __init__(
+        self,
+        operator_agg: List[DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg] = None,
+        operator_details: List[DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails] = None,
+    ):
+        # The detection result items of operator metric aggregation.
+        self.operator_agg = operator_agg
+        # The detection result items of abnormal operators.
+        self.operator_details = operator_details
+
+    def validate(self):
+        if self.operator_agg:
+            for k in self.operator_agg:
+                if k:
+                    k.validate()
+        if self.operator_details:
+            for k in self.operator_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperatorAgg'] = []
+        if self.operator_agg is not None:
+            for k in self.operator_agg:
+                result['OperatorAgg'].append(k.to_map() if k else None)
+        result['OperatorDetails'] = []
+        if self.operator_details is not None:
+            for k in self.operator_details:
+                result['OperatorDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operator_agg = []
+        if m.get('OperatorAgg') is not None:
+            for k in m.get('OperatorAgg'):
+                temp_model = DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg()
+                self.operator_agg.append(temp_model.from_map(k))
+        self.operator_details = []
+        if m.get('OperatorDetails') is not None:
+            for k in m.get('OperatorDetails'):
+                temp_model = DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails()
+                self.operator_details.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeExecutorDetectionResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        results: DescribeExecutorDetectionResponseBodyDetectionItemsResults = None,
+        status: str = None,
+    ):
+        # The information about the detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The detection result items.
+        self.results = results
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        if self.results:
+            self.results.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.results is not None:
+            result['Results'] = self.results.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Results') is not None:
+            temp_model = DescribeExecutorDetectionResponseBodyDetectionItemsResults()
+            self.results = temp_model.from_map(m['Results'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeExecutorDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeExecutorDetectionResponseBodyDetectionItems] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeExecutorDetectionResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeExecutorDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeExecutorDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeExecutorDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInclinedNodesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The language of file titles and error messages. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeInclinedNodesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        disk_usage_ratio: str = None,
+        node: str = None,
+    ):
+        # The disk usage of the storage node.
+        self.disk_usage_ratio = disk_usage_ratio
+        # The number of the storage node.
+        self.node = node
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_usage_ratio is not None:
+            result['DiskUsageRatio'] = self.disk_usage_ratio
+        if self.node is not None:
+            result['Node'] = self.node
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskUsageRatio') is not None:
+            self.disk_usage_ratio = m.get('DiskUsageRatio')
+        if m.get('Node') is not None:
+            self.node = m.get('Node')
+        return self
+
+
+class DescribeInclinedNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeInclinedNodesResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        # The queried storage nodes.
+        self.items = items
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeInclinedNodesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInclinedNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInclinedNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInclinedNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeJobResourceUsageRequest(TeaModel):
     def __init__(
         self,
@@ -17195,6 +25800,939 @@ class DescribeJobResourceUsageResponse(TeaModel):
         return self
 
 
+class DescribeKernelVersionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # > 
+        # 
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeKernelVersionResponseBodyAvailableKernelVersions(TeaModel):
+    def __init__(
+        self,
+        expire_date: str = None,
+        kernel_version: str = None,
+        release_date: str = None,
+    ):
+        # The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+        self.expire_date = expire_date
+        # The minor version. Example: **3.1.9**.
+        self.kernel_version = kernel_version
+        # The time when the minor version was released. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.release_date = release_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_date is not None:
+            result['ExpireDate'] = self.expire_date
+        if self.kernel_version is not None:
+            result['KernelVersion'] = self.kernel_version
+        if self.release_date is not None:
+            result['ReleaseDate'] = self.release_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireDate') is not None:
+            self.expire_date = m.get('ExpireDate')
+        if m.get('KernelVersion') is not None:
+            self.kernel_version = m.get('KernelVersion')
+        if m.get('ReleaseDate') is not None:
+            self.release_date = m.get('ReleaseDate')
+        return self
+
+
+class DescribeKernelVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        available_kernel_versions: List[DescribeKernelVersionResponseBodyAvailableKernelVersions] = None,
+        expire_date: str = None,
+        kernel_version: str = None,
+        request_id: str = None,
+    ):
+        # The minor versions to which you can update the current minor version of the cluster.
+        self.available_kernel_versions = available_kernel_versions
+        # The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+        self.expire_date = expire_date
+        # The minor version of the cluster. Example: **3.1.8**.
+        self.kernel_version = kernel_version
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.available_kernel_versions:
+            for k in self.available_kernel_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableKernelVersions'] = []
+        if self.available_kernel_versions is not None:
+            for k in self.available_kernel_versions:
+                result['AvailableKernelVersions'].append(k.to_map() if k else None)
+        if self.expire_date is not None:
+            result['ExpireDate'] = self.expire_date
+        if self.kernel_version is not None:
+            result['KernelVersion'] = self.kernel_version
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_kernel_versions = []
+        if m.get('AvailableKernelVersions') is not None:
+            for k in m.get('AvailableKernelVersions'):
+                temp_model = DescribeKernelVersionResponseBodyAvailableKernelVersions()
+                self.available_kernel_versions.append(temp_model.from_map(k))
+        if m.get('ExpireDate') is not None:
+            self.expire_date = m.get('ExpireDate')
+        if m.get('KernelVersion') is not None:
+            self.kernel_version = m.get('KernelVersion')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeKernelVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeKernelVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeKernelVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeLakeCacheSizeRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class DescribeLakeCacheSizeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        dbcluster_id: str = None,
+        data_size: int = None,
+        enable_lake_cache: bool = None,
+        instances: List[str] = None,
+    ):
+        # The size of the lake cache space. Unit: GB.
+        self.capacity = capacity
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The size of the data that occupies the lake cache space. Unit: GB.
+        self.data_size = data_size
+        # Indicates whether the lake cache feature is enabled.
+        self.enable_lake_cache = enable_lake_cache
+        # The clusters that share the lake cache space.
+        self.instances = instances
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.enable_lake_cache is not None:
+            result['EnableLakeCache'] = self.enable_lake_cache
+        if self.instances is not None:
+            result['Instances'] = self.instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('EnableLakeCache') is not None:
+            self.enable_lake_cache = m.get('EnableLakeCache')
+        if m.get('Instances') is not None:
+            self.instances = m.get('Instances')
+        return self
+
+
+class DescribeLakeCacheSizeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeLakeCacheSizeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The status code. The value 200 indicates that the request is successful.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeLakeCacheSizeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeLakeCacheSizeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLakeCacheSizeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLakeCacheSizeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOperatorPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeOperatorPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        dbcluster_id: str = None,
+        expired_time: str = None,
+        privileges: str = None,
+        request_id: str = None,
+    ):
+        # The time when the permissions take effect.
+        self.created_time = created_time
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The time when the permissions expire.
+        self.expired_time = expired_time
+        # The queried permissions.
+        self.privileges = privileges
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.privileges is not None:
+            result['Privileges'] = self.privileges
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('Privileges') is not None:
+            self.privileges = m.get('Privileges')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOperatorPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOperatorPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOperatorPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeOversizeNonPartitionTableInfosRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        order: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time. The specified time range must be less than seven days.
+        self.end_time = end_time
+        # The language of file titles and error messages. Valid values:
+        # 
+        # *   **zh (default)**: simplified Chinese.
+        # *   **en**: English
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON format.
+        # 
+        # Example:
+        # 
+        #     [
+        # 
+        #         {
+        # 
+        #             "Field":"Name",
+        # 
+        #             "Type":"Asc"
+        # 
+        #         }
+        # 
+        #     ]
+        # 
+        # Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+        # 
+        # Field and Type are case-insensitive.
+        self.order = order
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The page number. Pages start from page 1. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   30
+        # *   50
+        # *   100
+        # 
+        # Default value: 30.
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # >
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # The information about the detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The severity level of the detection result.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeOversizeNonPartitionTableInfosResponseBodyTables(TeaModel):
+    def __init__(
+        self,
+        data_size: int = None,
+        index_size: int = None,
+        local_data_size: int = None,
+        primary_key_size: int = None,
+        remote_data_size: int = None,
+        row_count: int = None,
+        schema_name: str = None,
+        space_ratio: float = None,
+        table_name: str = None,
+    ):
+        # The data size of the table. Unit: bytes.
+        self.data_size = data_size
+        # The data size of regular indexes. Unit: bytes.
+        self.index_size = index_size
+        # The size of hot data. Unit: bytes.
+        self.local_data_size = local_data_size
+        # The data size of the primary key index. Unit: bytes.
+        self.primary_key_size = primary_key_size
+        # The size of cold data. Unit: bytes.
+        self.remote_data_size = remote_data_size
+        # The number of rows in the table.
+        self.row_count = row_count
+        # The name of the database.
+        self.schema_name = schema_name
+        # The percentage of the table size. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        self.space_ratio = space_ratio
+        # The name of the table.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.local_data_size is not None:
+            result['LocalDataSize'] = self.local_data_size
+        if self.primary_key_size is not None:
+            result['PrimaryKeySize'] = self.primary_key_size
+        if self.remote_data_size is not None:
+            result['RemoteDataSize'] = self.remote_data_size
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('LocalDataSize') is not None:
+            self.local_data_size = m.get('LocalDataSize')
+        if m.get('PrimaryKeySize') is not None:
+            self.primary_key_size = m.get('PrimaryKeySize')
+        if m.get('RemoteDataSize') is not None:
+            self.remote_data_size = m.get('RemoteDataSize')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeOversizeNonPartitionTableInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        tables: List[DescribeOversizeNonPartitionTableInfosResponseBodyTables] = None,
+        total_count: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The queried oversized non-partitioned tables.
+        self.tables = tables
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DescribeOversizeNonPartitionTableInfosResponseBodyTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeOversizeNonPartitionTableInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOversizeNonPartitionTableInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOversizeNonPartitionTableInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePatternPerformanceRequest(TeaModel):
     def __init__(
         self,
@@ -17388,19 +26926,31 @@ class DescribePatternPerformanceResponseBodyPerformances(TeaModel):
 class DescribePatternPerformanceResponseBody(TeaModel):
     def __init__(
         self,
+        access_ip: str = None,
         end_time: str = None,
+        failed_count: int = None,
         performances: List[DescribePatternPerformanceResponseBodyPerformances] = None,
+        query_count: int = None,
         request_id: str = None,
+        sqlpattern: str = None,
         start_time: str = None,
+        tables: str = None,
+        user: str = None,
     ):
+        self.access_ip = access_ip
         # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
         self.end_time = end_time
+        self.failed_count = failed_count
         # The queried performance metrics.
         self.performances = performances
+        self.query_count = query_count
         # The request ID.
         self.request_id = request_id
+        self.sqlpattern = sqlpattern
         # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
         self.start_time = start_time
+        self.tables = tables
+        self.user = user
 
     def validate(self):
         if self.performances:
@@ -17414,31 +26964,55 @@ class DescribePatternPerformanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_ip is not None:
+            result['AccessIp'] = self.access_ip
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
         result['Performances'] = []
         if self.performances is not None:
             for k in self.performances:
                 result['Performances'].append(k.to_map() if k else None)
+        if self.query_count is not None:
+            result['QueryCount'] = self.query_count
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.sqlpattern is not None:
+            result['SQLPattern'] = self.sqlpattern
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        if self.user is not None:
+            result['User'] = self.user
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessIp') is not None:
+            self.access_ip = m.get('AccessIp')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
         self.performances = []
         if m.get('Performances') is not None:
             for k in m.get('Performances'):
                 temp_model = DescribePatternPerformanceResponseBodyPerformances()
                 self.performances.append(temp_model.from_map(k))
+        if m.get('QueryCount') is not None:
+            self.query_count = m.get('QueryCount')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SQLPattern') is not None:
+            self.sqlpattern = m.get('SQLPattern')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        if m.get('User') is not None:
+            self.user = m.get('User')
         return self
 
 
@@ -18707,6 +28281,7 @@ class DescribeSQLPatternsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         # The page number.
         self.page_number = page_number
@@ -18991,6 +28566,376 @@ class DescribeSchemasResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSchemasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSparkAppDiagnosisInfoRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        dbcluster_id: str = None,
+        language: str = None,
+        region_id: str = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The execution language of the Spark application.
+        # 
+        # This parameter is required.
+        self.language = language
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSparkAppDiagnosisInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        app_id: str = None,
+        cpu_utilization: float = None,
+        diagnosis_info_list: List[Adb4MysqlSparkDiagnosisInfo] = None,
+        duration_in_millis: int = None,
+        jvmgc_cost_in_millis: int = None,
+        peak_memory_in_byte: int = None,
+        request_id: str = None,
+        shuffle_read_in_byte: int = None,
+        shuffle_write_in_byte: int = None,
+        spill_in_byte: int = None,
+        started_time: int = None,
+        state: str = None,
+    ):
+        # The information about the request denial.
+        self.access_denied_detail = access_denied_detail
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+        self.app_id = app_id
+        # The CPU utilization. Unit: %.
+        self.cpu_utilization = cpu_utilization
+        # The queried diagnostic information.
+        self.diagnosis_info_list = diagnosis_info_list
+        # The execution duration of the application. Unit: milliseconds.
+        self.duration_in_millis = duration_in_millis
+        # The amount of time consumed by the Java virtual machine to perform garbage collection operations. Unit: milliseconds.
+        self.jvmgc_cost_in_millis = jvmgc_cost_in_millis
+        # The peak memory usage. Unit: bytes.
+        self.peak_memory_in_byte = peak_memory_in_byte
+        # The request ID.
+        self.request_id = request_id
+        # The amount of data used for shuffle reads. Unit: bytes.
+        self.shuffle_read_in_byte = shuffle_read_in_byte
+        # The amount of data used for shuffle writes. Unit: bytes.
+        self.shuffle_write_in_byte = shuffle_write_in_byte
+        # The amount of data spilled to disks when the memory is insufficient. Unit: bytes.
+        self.spill_in_byte = spill_in_byte
+        # The time when the application started to be executed.
+        self.started_time = started_time
+        # The status of the asynchronous import or export job. Valid values:
+        # 
+        # *   **RUNNING**\
+        # *   **FINISHED**\
+        # *   **FAILED**\
+        self.state = state
+
+    def validate(self):
+        if self.diagnosis_info_list:
+            for k in self.diagnosis_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.cpu_utilization is not None:
+            result['CpuUtilization'] = self.cpu_utilization
+        result['DiagnosisInfoList'] = []
+        if self.diagnosis_info_list is not None:
+            for k in self.diagnosis_info_list:
+                result['DiagnosisInfoList'].append(k.to_map() if k else None)
+        if self.duration_in_millis is not None:
+            result['DurationInMillis'] = self.duration_in_millis
+        if self.jvmgc_cost_in_millis is not None:
+            result['JVMGcCostInMillis'] = self.jvmgc_cost_in_millis
+        if self.peak_memory_in_byte is not None:
+            result['PeakMemoryInByte'] = self.peak_memory_in_byte
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.shuffle_read_in_byte is not None:
+            result['ShuffleReadInByte'] = self.shuffle_read_in_byte
+        if self.shuffle_write_in_byte is not None:
+            result['ShuffleWriteInByte'] = self.shuffle_write_in_byte
+        if self.spill_in_byte is not None:
+            result['SpillInByte'] = self.spill_in_byte
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CpuUtilization') is not None:
+            self.cpu_utilization = m.get('CpuUtilization')
+        self.diagnosis_info_list = []
+        if m.get('DiagnosisInfoList') is not None:
+            for k in m.get('DiagnosisInfoList'):
+                temp_model = Adb4MysqlSparkDiagnosisInfo()
+                self.diagnosis_info_list.append(temp_model.from_map(k))
+        if m.get('DurationInMillis') is not None:
+            self.duration_in_millis = m.get('DurationInMillis')
+        if m.get('JVMGcCostInMillis') is not None:
+            self.jvmgc_cost_in_millis = m.get('JVMGcCostInMillis')
+        if m.get('PeakMemoryInByte') is not None:
+            self.peak_memory_in_byte = m.get('PeakMemoryInByte')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ShuffleReadInByte') is not None:
+            self.shuffle_read_in_byte = m.get('ShuffleReadInByte')
+        if m.get('ShuffleWriteInByte') is not None:
+            self.shuffle_write_in_byte = m.get('ShuffleWriteInByte')
+        if m.get('SpillInByte') is not None:
+            self.spill_in_byte = m.get('SpillInByte')
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class DescribeSparkAppDiagnosisInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSparkAppDiagnosisInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSparkAppDiagnosisInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSparkAppTypeRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the Spark application IDs.
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSparkAppTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        request_id: str = None,
+        type: str = None,
+    ):
+        # The detailed reason why the access was denied.
+        self.access_denied_detail = access_denied_detail
+        # The request ID.
+        self.request_id = request_id
+        # The type of the Spark application. Valid values:
+        # 
+        # *   BATCH
+        # *   SQLENGINE
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSparkAppTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSparkAppTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSparkAppTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19433,6 +29378,494 @@ class DescribeSparkCodeWebUiResponse(TeaModel):
         return self
 
 
+class DescribeSparkSQLDiagnosisAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        dbcluster_id: str = None,
+        inner_query_id: int = None,
+        language: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.inner_query_id = inner_query_id
+        # This parameter is required.
+        self.language = language
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.inner_query_id is not None:
+            result['InnerQueryId'] = self.inner_query_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('InnerQueryId') is not None:
+            self.inner_query_id = m.get('InnerQueryId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics(TeaModel):
+    def __init__(
+        self,
+        operator_list_sorted_by_exclusive_time: List[SparkOperatorInfo] = None,
+        operator_list_sorted_by_max_memory: List[SparkOperatorInfo] = None,
+    ):
+        self.operator_list_sorted_by_exclusive_time = operator_list_sorted_by_exclusive_time
+        self.operator_list_sorted_by_max_memory = operator_list_sorted_by_max_memory
+
+    def validate(self):
+        if self.operator_list_sorted_by_exclusive_time:
+            for k in self.operator_list_sorted_by_exclusive_time:
+                if k:
+                    k.validate()
+        if self.operator_list_sorted_by_max_memory:
+            for k in self.operator_list_sorted_by_max_memory:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperatorListSortedByExclusiveTime'] = []
+        if self.operator_list_sorted_by_exclusive_time is not None:
+            for k in self.operator_list_sorted_by_exclusive_time:
+                result['OperatorListSortedByExclusiveTime'].append(k.to_map() if k else None)
+        result['OperatorListSortedByMaxMemory'] = []
+        if self.operator_list_sorted_by_max_memory is not None:
+            for k in self.operator_list_sorted_by_max_memory:
+                result['OperatorListSortedByMaxMemory'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operator_list_sorted_by_exclusive_time = []
+        if m.get('OperatorListSortedByExclusiveTime') is not None:
+            for k in m.get('OperatorListSortedByExclusiveTime'):
+                temp_model = SparkOperatorInfo()
+                self.operator_list_sorted_by_exclusive_time.append(temp_model.from_map(k))
+        self.operator_list_sorted_by_max_memory = []
+        if m.get('OperatorListSortedByMaxMemory') is not None:
+            for k in m.get('OperatorListSortedByMaxMemory'):
+                temp_model = SparkOperatorInfo()
+                self.operator_list_sorted_by_max_memory.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSparkSQLDiagnosisAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        app_id: str = None,
+        diagnosis_infos: List[Adb4MysqlSparkDiagnosisInfo] = None,
+        elapsed_time: int = None,
+        inner_query_id: int = None,
+        operator_list_sorted_by_metrics: DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics = None,
+        request_id: str = None,
+        root: OperatorNode = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.app_id = app_id
+        self.diagnosis_infos = diagnosis_infos
+        self.elapsed_time = elapsed_time
+        self.inner_query_id = inner_query_id
+        self.operator_list_sorted_by_metrics = operator_list_sorted_by_metrics
+        self.request_id = request_id
+        self.root = root
+
+    def validate(self):
+        if self.diagnosis_infos:
+            for k in self.diagnosis_infos:
+                if k:
+                    k.validate()
+        if self.operator_list_sorted_by_metrics:
+            self.operator_list_sorted_by_metrics.validate()
+        if self.root:
+            self.root.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        result['DiagnosisInfos'] = []
+        if self.diagnosis_infos is not None:
+            for k in self.diagnosis_infos:
+                result['DiagnosisInfos'].append(k.to_map() if k else None)
+        if self.elapsed_time is not None:
+            result['ElapsedTime'] = self.elapsed_time
+        if self.inner_query_id is not None:
+            result['InnerQueryId'] = self.inner_query_id
+        if self.operator_list_sorted_by_metrics is not None:
+            result['OperatorListSortedByMetrics'] = self.operator_list_sorted_by_metrics.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.root is not None:
+            result['Root'] = self.root.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        self.diagnosis_infos = []
+        if m.get('DiagnosisInfos') is not None:
+            for k in m.get('DiagnosisInfos'):
+                temp_model = Adb4MysqlSparkDiagnosisInfo()
+                self.diagnosis_infos.append(temp_model.from_map(k))
+        if m.get('ElapsedTime') is not None:
+            self.elapsed_time = m.get('ElapsedTime')
+        if m.get('InnerQueryId') is not None:
+            self.inner_query_id = m.get('InnerQueryId')
+        if m.get('OperatorListSortedByMetrics') is not None:
+            temp_model = DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics()
+            self.operator_list_sorted_by_metrics = temp_model.from_map(m['OperatorListSortedByMetrics'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Root') is not None:
+            temp_model = OperatorNode()
+            self.root = temp_model.from_map(m['Root'])
+        return self
+
+
+class DescribeSparkSQLDiagnosisAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSparkSQLDiagnosisAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSparkSQLDiagnosisAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSparkSQLDiagnosisListRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        max_start_time: str = None,
+        min_start_time: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        statement_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.max_start_time = max_start_time
+        self.min_start_time = min_start_time
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.max_start_time is not None:
+            result['MaxStartTime'] = self.max_start_time
+        if self.min_start_time is not None:
+            result['MinStartTime'] = self.min_start_time
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('MaxStartTime') is not None:
+            self.max_start_time = m.get('MaxStartTime')
+        if m.get('MinStartTime') is not None:
+            self.min_start_time = m.get('MinStartTime')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        elapsed_time: int = None,
+        inner_query_id: int = None,
+        max_exclusive_time: int = None,
+        peak_memory: int = None,
+        sql: str = None,
+        scan_row_count: int = None,
+        start_time: str = None,
+        state: str = None,
+        statement_id: int = None,
+    ):
+        self.app_id = app_id
+        self.elapsed_time = elapsed_time
+        self.inner_query_id = inner_query_id
+        self.max_exclusive_time = max_exclusive_time
+        self.peak_memory = peak_memory
+        self.sql = sql
+        self.scan_row_count = scan_row_count
+        self.start_time = start_time
+        self.state = state
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.elapsed_time is not None:
+            result['ElapsedTime'] = self.elapsed_time
+        if self.inner_query_id is not None:
+            result['InnerQueryId'] = self.inner_query_id
+        if self.max_exclusive_time is not None:
+            result['MaxExclusiveTime'] = self.max_exclusive_time
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.scan_row_count is not None:
+            result['ScanRowCount'] = self.scan_row_count
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ElapsedTime') is not None:
+            self.elapsed_time = m.get('ElapsedTime')
+        if m.get('InnerQueryId') is not None:
+            self.inner_query_id = m.get('InnerQueryId')
+        if m.get('MaxExclusiveTime') is not None:
+            self.max_exclusive_time = m.get('MaxExclusiveTime')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('ScanRowCount') is not None:
+            self.scan_row_count = m.get('ScanRowCount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class DescribeSparkSQLDiagnosisListResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sqldiagnosis_list: List[DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList] = None,
+        total_count: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sqldiagnosis_list = sqldiagnosis_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sqldiagnosis_list:
+            for k in self.sqldiagnosis_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SQLDiagnosisList'] = []
+        if self.sqldiagnosis_list is not None:
+            for k in self.sqldiagnosis_list:
+                result['SQLDiagnosisList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sqldiagnosis_list = []
+        if m.get('SQLDiagnosisList') is not None:
+            for k in m.get('SQLDiagnosisList'):
+                temp_model = DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList()
+                self.sqldiagnosis_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSparkSQLDiagnosisListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSparkSQLDiagnosisListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSparkSQLDiagnosisListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSqlPatternRequest(TeaModel):
     def __init__(
         self,
@@ -19807,7 +30240,7 @@ class DescribeStorageResourceUsageRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -19896,7 +30329,7 @@ class DescribeStorageResourceUsageResponseBodyData(TeaModel):
     ):
         # The AnalyticDB compute unit (ACU) usage of the cluster.
         self.acu_info = acu_info
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
@@ -20287,6 +30720,585 @@ class DescribeTableAccessCountResponse(TeaModel):
         return self
 
 
+class DescribeTableDetailRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+        schema_name: str = None,
+        table_name: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        self.region_id = region_id
+        # The name of the database.
+        self.schema_name = schema_name
+        # The name of the table.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeTableDetailResponseBodyItemsShard(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        size: int = None,
+    ):
+        # The shard ID. Only the numeric part of the shard name is returned.
+        self.id = id
+        # The number of rows in the table.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class DescribeTableDetailResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        shard: List[DescribeTableDetailResponseBodyItemsShard] = None,
+    ):
+        # The queried shards.
+        self.shard = shard
+
+    def validate(self):
+        if self.shard:
+            for k in self.shard:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Shard'] = []
+        if self.shard is not None:
+            for k in self.shard:
+                result['Shard'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.shard = []
+        if m.get('Shard') is not None:
+            for k in m.get('Shard'):
+                temp_model = DescribeTableDetailResponseBodyItemsShard()
+                self.shard.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTableDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        avg_size: str = None,
+        items: DescribeTableDetailResponseBodyItems = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The detailed reason why the access was denied.
+        self.access_denied_detail = access_denied_detail
+        # The average number of rows in a shard.
+        self.avg_size = avg_size
+        # The queried data distribution.
+        self.items = items
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            self.items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.avg_size is not None:
+            result['AvgSize'] = self.avg_size
+        if self.items is not None:
+            result['Items'] = self.items.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('AvgSize') is not None:
+            self.avg_size = m.get('AvgSize')
+        if m.get('Items') is not None:
+            temp_model = DescribeTableDetailResponseBodyItems()
+            self.items = temp_model.from_map(m['Items'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeTableDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTableDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTableDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTablePartitionDiagnoseRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        lang: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
+        # *   **zh**: simplified Chinese.
+        # *   **en**: English.
+        # *   **ja**: Japanese.
+        # *   **zh-tw**: traditional Chinese.
+        self.lang = lang
+        # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"TotalSize","Type":"Desc"}]`.
+        # 
+        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # 
+        #     *   `SchemaName`: the name of the database to which the table belongs.
+        #     *   `TableName`: the name of the table.
+        #     *   `TotalSize`: the total data size of the table.
+        #     *   `SpaceRatio`: the storage percentage of the table.
+        # 
+        # *   `Type` specifies the sorting order. Valid values:
+        # 
+        #     *   `Asc`: ascending order.
+        #     *   `Desc`: descending order.
+        # 
+        # >  If you do not specify this parameter, the query results are sorted by the TotalSize field in descending order.
+        self.order = order
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeTablePartitionDiagnoseResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # The detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeTablePartitionDiagnoseResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        partition_detail: str = None,
+        partition_number: int = None,
+        schema_name: str = None,
+        space_ratio: float = None,
+        table_name: str = None,
+        total_size: int = None,
+    ):
+        # The improper partitions.
+        self.partition_detail = partition_detail
+        # The number of partitions.
+        self.partition_number = partition_number
+        # The name of the database.
+        self.schema_name = schema_name
+        # The storage percentage of the table. Unit: %.
+        # 
+        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        self.space_ratio = space_ratio
+        # The name of the table.
+        self.table_name = table_name
+        # The total data size of the table. Unit: bytes.
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.partition_detail is not None:
+            result['PartitionDetail'] = self.partition_detail
+        if self.partition_number is not None:
+            result['PartitionNumber'] = self.partition_number
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.space_ratio is not None:
+            result['SpaceRatio'] = self.space_ratio
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PartitionDetail') is not None:
+            self.partition_detail = m.get('PartitionDetail')
+        if m.get('PartitionNumber') is not None:
+            self.partition_number = m.get('PartitionNumber')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SpaceRatio') is not None:
+            self.space_ratio = m.get('SpaceRatio')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeTablePartitionDiagnoseResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeTablePartitionDiagnoseResponseBodyDetectionItems] = None,
+        items: List[DescribeTablePartitionDiagnoseResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        suggest_max_records_per_partition: int = None,
+        suggest_min_records_per_partition: int = None,
+        total_count: int = None,
+    ):
+        # The information about the request denial.
+        self.access_denied_detail = access_denied_detail
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The queried partition diagnostic information.
+        self.items = items
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The recommended maximum number of rows in each partition.
+        self.suggest_max_records_per_partition = suggest_max_records_per_partition
+        # The recommended minimum number of rows in each partition.
+        self.suggest_min_records_per_partition = suggest_min_records_per_partition
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.suggest_max_records_per_partition is not None:
+            result['SuggestMaxRecordsPerPartition'] = self.suggest_max_records_per_partition
+        if self.suggest_min_records_per_partition is not None:
+            result['SuggestMinRecordsPerPartition'] = self.suggest_min_records_per_partition
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeTablePartitionDiagnoseResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeTablePartitionDiagnoseResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuggestMaxRecordsPerPartition') is not None:
+            self.suggest_max_records_per_partition = m.get('SuggestMaxRecordsPerPartition')
+        if m.get('SuggestMinRecordsPerPartition') is not None:
+            self.suggest_min_records_per_partition = m.get('SuggestMinRecordsPerPartition')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeTablePartitionDiagnoseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTablePartitionDiagnoseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTablePartitionDiagnoseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTablesRequest(TeaModel):
     def __init__(
         self,
@@ -20624,6 +31636,843 @@ class DescribeUserQuotaResponse(TeaModel):
         return self
 
 
+class DescribeWorkerDetectionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        lang: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        self.end_time = end_time
+        # The language. Valid values:
+        # 
+        # *   **zh** (default): simplified Chinese.
+        # *   **en**: English
+        self.lang = lang
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults(TeaModel):
+    def __init__(
+        self,
+        avg_value: float = None,
+        max_value: int = None,
+        operator_count: int = None,
+        operator_name: str = None,
+        total_value: int = None,
+    ):
+        # The average value of the operator metric.
+        self.avg_value = avg_value
+        # The maximum value of the operator metric.
+        self.max_value = max_value
+        # The number of occurrences of the operator.
+        self.operator_count = operator_count
+        # The name of the operator.
+        self.operator_name = operator_name
+        # The cumulative value of the operator metric.
+        self.total_value = total_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_value is not None:
+            result['AvgValue'] = self.avg_value
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.operator_count is not None:
+            result['OperatorCount'] = self.operator_count
+        if self.operator_name is not None:
+            result['OperatorName'] = self.operator_name
+        if self.total_value is not None:
+            result['TotalValue'] = self.total_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgValue') is not None:
+            self.avg_value = m.get('AvgValue')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('OperatorCount') is not None:
+            self.operator_count = m.get('OperatorCount')
+        if m.get('OperatorName') is not None:
+            self.operator_name = m.get('OperatorName')
+        if m.get('TotalValue') is not None:
+            self.total_value = m.get('TotalValue')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        search_results: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults] = None,
+    ):
+        # The detection result items of operator metric aggregation.
+        self.metric_name = metric_name
+        # The detection result items of operator metric aggregation.
+        self.search_results = search_results
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['SearchResults'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['SearchResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.search_results = []
+        if m.get('SearchResults') is not None:
+            for k in m.get('SearchResults'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults()
+                self.search_results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults(TeaModel):
+    def __init__(
+        self,
+        input_rows: int = None,
+        input_size: int = None,
+        operator_cost: int = None,
+        operator_info: str = None,
+        operator_name: str = None,
+        output_rows: int = None,
+        output_size: int = None,
+        peak_memory: int = None,
+        process_id: str = None,
+        stage_id: str = None,
+    ):
+        # The number of rows input by the operator.
+        self.input_rows = input_rows
+        # The amount of data input by the operator. Unit: bytes.
+        self.input_size = input_size
+        # The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+        self.operator_cost = operator_cost
+        # The property information about the operator.
+        self.operator_info = operator_info
+        # The name of the operator.
+        self.operator_name = operator_name
+        # The number of rows output by the operator.
+        self.output_rows = output_rows
+        # The amount of data output by the operator. Unit: bytes.
+        self.output_size = output_size
+        # The peak memory. Unit: bytes.
+        self.peak_memory = peak_memory
+        # The query ID that can be used for diagnostics.
+        self.process_id = process_id
+        # The stage ID.
+        self.stage_id = stage_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_rows is not None:
+            result['InputRows'] = self.input_rows
+        if self.input_size is not None:
+            result['InputSize'] = self.input_size
+        if self.operator_cost is not None:
+            result['OperatorCost'] = self.operator_cost
+        if self.operator_info is not None:
+            result['OperatorInfo'] = self.operator_info
+        if self.operator_name is not None:
+            result['OperatorName'] = self.operator_name
+        if self.output_rows is not None:
+            result['OutputRows'] = self.output_rows
+        if self.output_size is not None:
+            result['OutputSize'] = self.output_size
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.stage_id is not None:
+            result['StageId'] = self.stage_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputRows') is not None:
+            self.input_rows = m.get('InputRows')
+        if m.get('InputSize') is not None:
+            self.input_size = m.get('InputSize')
+        if m.get('OperatorCost') is not None:
+            self.operator_cost = m.get('OperatorCost')
+        if m.get('OperatorInfo') is not None:
+            self.operator_info = m.get('OperatorInfo')
+        if m.get('OperatorName') is not None:
+            self.operator_name = m.get('OperatorName')
+        if m.get('OutputRows') is not None:
+            self.output_rows = m.get('OutputRows')
+        if m.get('OutputSize') is not None:
+            self.output_size = m.get('OutputSize')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('StageId') is not None:
+            self.stage_id = m.get('StageId')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        search_results: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults] = None,
+    ):
+        # The name of the detection metric.
+        self.metric_name = metric_name
+        # The detection result items of abnormal operators.
+        self.search_results = search_results
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['SearchResults'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['SearchResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.search_results = []
+        if m.get('SearchResults') is not None:
+            for k in m.get('SearchResults'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults()
+                self.search_results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables(TeaModel):
+    def __init__(
+        self,
+        ddl: str = None,
+        partition_count: str = None,
+        partition_ids: str = None,
+        schema_name: str = None,
+        table_name: str = None,
+        total_data_size: int = None,
+    ):
+        # The SQL statement that is used to create the table.
+        self.ddl = ddl
+        # The number of partitions.
+        self.partition_count = partition_count
+        # The ID of the improper partition.
+        self.partition_ids = partition_ids
+        # The name of the database.
+        self.schema_name = schema_name
+        # The name of the table.
+        self.table_name = table_name
+        # The total data size of the table.
+        self.total_data_size = total_data_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl is not None:
+            result['DDL'] = self.ddl
+        if self.partition_count is not None:
+            result['PartitionCount'] = self.partition_count
+        if self.partition_ids is not None:
+            result['PartitionIds'] = self.partition_ids
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_data_size is not None:
+            result['TotalDataSize'] = self.total_data_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DDL') is not None:
+            self.ddl = m.get('DDL')
+        if m.get('PartitionCount') is not None:
+            self.partition_count = m.get('PartitionCount')
+        if m.get('PartitionIds') is not None:
+            self.partition_ids = m.get('PartitionIds')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalDataSize') is not None:
+            self.total_data_size = m.get('TotalDataSize')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables(TeaModel):
+    def __init__(
+        self,
+        ddl: str = None,
+        partition_count: int = None,
+        schema_name: str = None,
+        shard_skewed_rows: str = None,
+        table_name: str = None,
+        total_data_size: int = None,
+        total_local_data_size: str = None,
+        total_pk_size: int = None,
+        total_remote_data_size: int = None,
+        total_row_count: int = None,
+    ):
+        # The SQL statement that is used to create the table.
+        self.ddl = ddl
+        # The number of partitions.
+        self.partition_count = partition_count
+        # The name of the database.
+        self.schema_name = schema_name
+        # The number of skewed rows in the table.
+        self.shard_skewed_rows = shard_skewed_rows
+        # The name of the table.
+        self.table_name = table_name
+        # The total data size of the table. Unit: bytes.
+        self.total_data_size = total_data_size
+        # The size of hot data. Unit: bytes.
+        self.total_local_data_size = total_local_data_size
+        # The data size of the primary key. Unit: bytes.
+        self.total_pk_size = total_pk_size
+        # The size of cold data. Unit: bytes.
+        self.total_remote_data_size = total_remote_data_size
+        # The number of rows in the table.
+        self.total_row_count = total_row_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ddl is not None:
+            result['DDL'] = self.ddl
+        if self.partition_count is not None:
+            result['PartitionCount'] = self.partition_count
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.shard_skewed_rows is not None:
+            result['ShardSkewedRows'] = self.shard_skewed_rows
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.total_data_size is not None:
+            result['TotalDataSize'] = self.total_data_size
+        if self.total_local_data_size is not None:
+            result['TotalLocalDataSize'] = self.total_local_data_size
+        if self.total_pk_size is not None:
+            result['TotalPkSize'] = self.total_pk_size
+        if self.total_remote_data_size is not None:
+            result['TotalRemoteDataSize'] = self.total_remote_data_size
+        if self.total_row_count is not None:
+            result['TotalRowCount'] = self.total_row_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DDL') is not None:
+            self.ddl = m.get('DDL')
+        if m.get('PartitionCount') is not None:
+            self.partition_count = m.get('PartitionCount')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('ShardSkewedRows') is not None:
+            self.shard_skewed_rows = m.get('ShardSkewedRows')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TotalDataSize') is not None:
+            self.total_data_size = m.get('TotalDataSize')
+        if m.get('TotalLocalDataSize') is not None:
+            self.total_local_data_size = m.get('TotalLocalDataSize')
+        if m.get('TotalPkSize') is not None:
+            self.total_pk_size = m.get('TotalPkSize')
+        if m.get('TotalRemoteDataSize') is not None:
+            self.total_remote_data_size = m.get('TotalRemoteDataSize')
+        if m.get('TotalRowCount') is not None:
+            self.total_row_count = m.get('TotalRowCount')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults(TeaModel):
+    def __init__(
+        self,
+        access_count: int = None,
+        avg_scan_cost: float = None,
+        avg_scan_size: float = None,
+        max_scan_cost: int = None,
+        max_scan_size: int = None,
+        table_name: str = None,
+    ):
+        # The number of accesses to the table.
+        self.access_count = access_count
+        # The average amount of time for scanning. Unit: milliseconds.
+        self.avg_scan_cost = avg_scan_cost
+        # The average data size for scanning. Unit: bytes.
+        self.avg_scan_size = avg_scan_size
+        # The maximum amount of time for scanning. Unit: milliseconds.
+        self.max_scan_cost = max_scan_cost
+        # The maximum data size for scanning. Unit: bytes.
+        self.max_scan_size = max_scan_size
+        # The name of the table.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_count is not None:
+            result['AccessCount'] = self.access_count
+        if self.avg_scan_cost is not None:
+            result['AvgScanCost'] = self.avg_scan_cost
+        if self.avg_scan_size is not None:
+            result['AvgScanSize'] = self.avg_scan_size
+        if self.max_scan_cost is not None:
+            result['MaxScanCost'] = self.max_scan_cost
+        if self.max_scan_size is not None:
+            result['MaxScanSize'] = self.max_scan_size
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessCount') is not None:
+            self.access_count = m.get('AccessCount')
+        if m.get('AvgScanCost') is not None:
+            self.avg_scan_cost = m.get('AvgScanCost')
+        if m.get('AvgScanSize') is not None:
+            self.avg_scan_size = m.get('AvgScanSize')
+        if m.get('MaxScanCost') is not None:
+            self.max_scan_cost = m.get('MaxScanCost')
+        if m.get('MaxScanSize') is not None:
+            self.max_scan_size = m.get('MaxScanSize')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables(TeaModel):
+    def __init__(
+        self,
+        metric_name: str = None,
+        search_results: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults] = None,
+    ):
+        # The name of the detection metric.
+        self.metric_name = metric_name
+        # The detection result items of table access.
+        self.search_results = search_results
+
+    def validate(self):
+        if self.search_results:
+            for k in self.search_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['SearchResults'] = []
+        if self.search_results is not None:
+            for k in self.search_results:
+                result['SearchResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.search_results = []
+        if m.get('SearchResults') is not None:
+            for k in m.get('SearchResults'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults()
+                self.search_results.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItemsResults(TeaModel):
+    def __init__(
+        self,
+        operator_agg: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg] = None,
+        operator_details: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails] = None,
+        partitioned_tables: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables] = None,
+        skewed_tables: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables] = None,
+        top_access_tables: List[DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables] = None,
+    ):
+        # The detection result items of operator metric aggregation.
+        self.operator_agg = operator_agg
+        # The detection result items of abnormal operators.
+        self.operator_details = operator_details
+        # The detection result items of improper partitioned tables.
+        self.partitioned_tables = partitioned_tables
+        # The detection result items of skewed tables.
+        self.skewed_tables = skewed_tables
+        # The detection result items of table access.
+        self.top_access_tables = top_access_tables
+
+    def validate(self):
+        if self.operator_agg:
+            for k in self.operator_agg:
+                if k:
+                    k.validate()
+        if self.operator_details:
+            for k in self.operator_details:
+                if k:
+                    k.validate()
+        if self.partitioned_tables:
+            for k in self.partitioned_tables:
+                if k:
+                    k.validate()
+        if self.skewed_tables:
+            for k in self.skewed_tables:
+                if k:
+                    k.validate()
+        if self.top_access_tables:
+            for k in self.top_access_tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperatorAgg'] = []
+        if self.operator_agg is not None:
+            for k in self.operator_agg:
+                result['OperatorAgg'].append(k.to_map() if k else None)
+        result['OperatorDetails'] = []
+        if self.operator_details is not None:
+            for k in self.operator_details:
+                result['OperatorDetails'].append(k.to_map() if k else None)
+        result['PartitionedTables'] = []
+        if self.partitioned_tables is not None:
+            for k in self.partitioned_tables:
+                result['PartitionedTables'].append(k.to_map() if k else None)
+        result['SkewedTables'] = []
+        if self.skewed_tables is not None:
+            for k in self.skewed_tables:
+                result['SkewedTables'].append(k.to_map() if k else None)
+        result['TopAccessTables'] = []
+        if self.top_access_tables is not None:
+            for k in self.top_access_tables:
+                result['TopAccessTables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operator_agg = []
+        if m.get('OperatorAgg') is not None:
+            for k in m.get('OperatorAgg'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg()
+                self.operator_agg.append(temp_model.from_map(k))
+        self.operator_details = []
+        if m.get('OperatorDetails') is not None:
+            for k in m.get('OperatorDetails'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails()
+                self.operator_details.append(temp_model.from_map(k))
+        self.partitioned_tables = []
+        if m.get('PartitionedTables') is not None:
+            for k in m.get('PartitionedTables'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables()
+                self.partitioned_tables.append(temp_model.from_map(k))
+        self.skewed_tables = []
+        if m.get('SkewedTables') is not None:
+            for k in m.get('SkewedTables'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables()
+                self.skewed_tables.append(temp_model.from_map(k))
+        self.top_access_tables = []
+        if m.get('TopAccessTables') is not None:
+            for k in m.get('TopAccessTables'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables()
+                self.top_access_tables.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWorkerDetectionResponseBodyDetectionItems(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        name: str = None,
+        results: DescribeWorkerDetectionResponseBodyDetectionItemsResults = None,
+        status: str = None,
+    ):
+        # The information about the detection result.
+        self.message = message
+        # The name of the detection item.
+        self.name = name
+        # The detection result items.
+        self.results = results
+        # The severity level of the detection result. Valid values:
+        # 
+        # *   NORMAL
+        # *   WARNING
+        # *   CRITICAL
+        self.status = status
+
+    def validate(self):
+        if self.results:
+            self.results.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.results is not None:
+            result['Results'] = self.results.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Results') is not None:
+            temp_model = DescribeWorkerDetectionResponseBodyDetectionItemsResults()
+            self.results = temp_model.from_map(m['Results'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeWorkerDetectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        detection_items: List[DescribeWorkerDetectionResponseBodyDetectionItems] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The queried detection items and detection results.
+        self.detection_items = detection_items
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.detection_items:
+            for k in self.detection_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        result['DetectionItems'] = []
+        if self.detection_items is not None:
+            for k in self.detection_items:
+                result['DetectionItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        self.detection_items = []
+        if m.get('DetectionItems') is not None:
+            for k in m.get('DetectionItems'):
+                temp_model = DescribeWorkerDetectionResponseBodyDetectionItems()
+                self.detection_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeWorkerDetectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWorkerDetectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWorkerDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DetachUserENIRequest(TeaModel):
     def __init__(
         self,
@@ -20723,6 +32572,114 @@ class DetachUserENIResponse(TeaModel):
         return self
 
 
+class DisableAdviceServiceRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DisableAdviceServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableAdviceServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableAdviceServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableAdviceServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableElasticPlanRequest(TeaModel):
     def __init__(
         self,
@@ -20731,7 +32688,7 @@ class DisableElasticPlanRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -21068,6 +33025,245 @@ class DownloadDiagnosisRecordsResponse(TeaModel):
         return self
 
 
+class DownloadInstanceCACertificateRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        engine: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
+        self.engine = engine
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DownloadInstanceCACertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        request_id: str = None,
+    ):
+        # The OSS URL of the downloaded certificate.
+        self.download_url = download_url
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DownloadInstanceCACertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadInstanceCACertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadInstanceCACertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableAdviceServiceRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class EnableAdviceServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableAdviceServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableAdviceServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableAdviceServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableElasticPlanRequest(TeaModel):
     def __init__(
         self,
@@ -21076,7 +33272,7 @@ class EnableElasticPlanRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -21176,6 +33372,401 @@ class EnableElasticPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableElasticPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteSparkReplStatementRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        code: str = None,
+        code_type: str = None,
+        session_id: int = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+        self.app_id = app_id
+        # The code that you want to execute.
+        # 
+        # This parameter is required.
+        self.code = code
+        # The language type of the code. Valid values:
+        # 
+        # *   SCALA
+        # *   PYTHON
+        # 
+        # This parameter is required.
+        self.code_type = code_type
+        # The ID of the session that you want to use to execute the code.
+        # 
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class ExecuteSparkReplStatementResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: int = None,
+        code: str = None,
+        code_state: str = None,
+        code_type: str = None,
+        columns: List[str] = None,
+        end_time: int = None,
+        error: str = None,
+        output: str = None,
+        output_type: str = None,
+        start_time: int = None,
+        statement_id: int = None,
+    ):
+        # The ID of the Alibaba Cloud account that owns the cluster.
+        self.aliyun_uid = aliyun_uid
+        # The code that is executed.
+        self.code = code
+        # The code execution status. Valid values:
+        # 
+        # *   CANCELLED
+        # *   RUNNING
+        # *   SUCCEEDED
+        # *   ERROR
+        self.code_state = code_state
+        # The code type. Valid values:
+        # 
+        # *   SCALA
+        # *   PYTHON
+        self.code_type = code_type
+        # The column names.
+        self.columns = columns
+        # The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.end_time = end_time
+        # The error message.
+        self.error = error
+        # The code execution result, which is a JSON string that conforms to Apache Livy.
+        self.output = output
+        # The execution result type, which is in the JSON format. Valid values:
+        # 
+        # *   TEXT: the text content that conforms to Apache Livy.
+        # *   TABLE: the table content that conforms to Apache Livy.
+        self.output_type = output_type
+        # The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.start_time = start_time
+        # The unique ID of the code block in the Spark job.
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.code_state is not None:
+            result['CodeState'] = self.code_state
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.output_type is not None:
+            result['OutputType'] = self.output_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CodeState') is not None:
+            self.code_state = m.get('CodeState')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('OutputType') is not None:
+            self.output_type = m.get('OutputType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class ExecuteSparkReplStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExecuteSparkReplStatementResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ExecuteSparkReplStatementResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteSparkReplStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSparkReplStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSparkReplStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteSparkWarehouseBatchSQLRequest(TeaModel):
+    def __init__(
+        self,
+        agency: str = None,
+        dbcluster_id: str = None,
+        execute_result_limit: int = None,
+        execute_time_limit_in_seconds: int = None,
+        query: str = None,
+        resource_group_name: str = None,
+        runtime_config: str = None,
+        schema: str = None,
+    ):
+        self.agency = agency
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.execute_result_limit = execute_result_limit
+        self.execute_time_limit_in_seconds = execute_time_limit_in_seconds
+        # This parameter is required.
+        self.query = query
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+        self.runtime_config = runtime_config
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agency is not None:
+            result['Agency'] = self.agency
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.execute_result_limit is not None:
+            result['ExecuteResultLimit'] = self.execute_result_limit
+        if self.execute_time_limit_in_seconds is not None:
+            result['ExecuteTimeLimitInSeconds'] = self.execute_time_limit_in_seconds
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.runtime_config is not None:
+            result['RuntimeConfig'] = self.runtime_config
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Agency') is not None:
+            self.agency = m.get('Agency')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExecuteResultLimit') is not None:
+            self.execute_result_limit = m.get('ExecuteResultLimit')
+        if m.get('ExecuteTimeLimitInSeconds') is not None:
+            self.execute_time_limit_in_seconds = m.get('ExecuteTimeLimitInSeconds')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RuntimeConfig') is not None:
+            self.runtime_config = m.get('RuntimeConfig')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class ExecuteSparkWarehouseBatchSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SparkBatchSQL = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SparkBatchSQL()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteSparkWarehouseBatchSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSparkWarehouseBatchSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSparkWarehouseBatchSQLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21300,6 +33891,303 @@ class ExistRunningSQLEngineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExistRunningSQLEngineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetApsManagedDatabasesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetApsManagedDatabasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetApsManagedDatabasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApsManagedDatabasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApsManagedDatabasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCreateTableSQLRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        schema_name: str = None,
+        table_name: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The name of the database.
+        self.schema_name = schema_name
+        # The name of the table.
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetCreateTableSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sql: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The SQL statement.
+        self.sql = sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        return self
+
+
+class GetCreateTableSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCreateTableSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCreateTableSQLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21551,6 +34439,336 @@ class GetDatabaseObjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDatabaseObjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLakeStorageRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        lake_storage_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The lake storage ID.
+        self.lake_storage_id = lake_storage_id
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetLakeStorageResponseBodyDataPermissions(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        read: bool = None,
+        type: str = None,
+        write: bool = None,
+    ):
+        # The account ID.
+        self.account = account
+        # The read permissions.
+        self.read = read
+        # The account type.
+        self.type = type
+        # The write permissions.
+        self.write = write
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.read is not None:
+            result['Read'] = self.read
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.write is not None:
+            result['Write'] = self.write
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Read') is not None:
+            self.read = m.get('Read')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Write') is not None:
+            self.write = m.get('Write')
+        return self
+
+
+class GetLakeStorageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator_uid: str = None,
+        dbcluster_id: str = None,
+        description: str = None,
+        file_size: str = None,
+        lake_storage_id: str = None,
+        operator_uid: str = None,
+        owner_uid: str = None,
+        partition_count: str = None,
+        permissions: List[GetLakeStorageResponseBodyDataPermissions] = None,
+        region_id: str = None,
+        row_count: int = None,
+        table_count: int = None,
+        update_time: str = None,
+    ):
+        # The time when the lake storage was created.
+        self.create_time = create_time
+        # The creator UID.
+        self.creator_uid = creator_uid
+        # The ID of the AnalyticDB for MySQL cluster.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The total storage size.
+        self.file_size = file_size
+        # The unique identifier of the lake storage.
+        self.lake_storage_id = lake_storage_id
+        # The operator UID.
+        self.operator_uid = operator_uid
+        # The owner UID.
+        self.owner_uid = owner_uid
+        # The number of partitions.
+        self.partition_count = partition_count
+        # The permissions on the lake storage.
+        self.permissions = permissions
+        # The region ID.
+        self.region_id = region_id
+        # The total number of entries returned.
+        self.row_count = row_count
+        # The number of the tables.
+        self.table_count = table_count
+        # The time when the lake storage was last updated.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_uid is not None:
+            result['CreatorUid'] = self.creator_uid
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.operator_uid is not None:
+            result['OperatorUid'] = self.operator_uid
+        if self.owner_uid is not None:
+            result['OwnerUid'] = self.owner_uid
+        if self.partition_count is not None:
+            result['PartitionCount'] = self.partition_count
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorUid') is not None:
+            self.creator_uid = m.get('CreatorUid')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('OperatorUid') is not None:
+            self.operator_uid = m.get('OperatorUid')
+        if m.get('OwnerUid') is not None:
+            self.owner_uid = m.get('OwnerUid')
+        if m.get('PartitionCount') is not None:
+            self.partition_count = m.get('PartitionCount')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = GetLakeStorageResponseBodyDataPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetLakeStorageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetLakeStorageResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The queried lake storage.
+        self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetLakeStorageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetLakeStorageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLakeStorageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLakeStorageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22330,7 +35548,7 @@ class GetSparkAppStateResponseBodyData(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The alert message returned for the operation, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
@@ -22477,7 +35695,7 @@ class GetSparkAppWebUiAddressRequest(TeaModel):
         self.app_id = app_id
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -22795,110 +36013,6 @@ class GetSparkConfigLogPathResponse(TeaModel):
         return self
 
 
-class GetSparkDefinitionsRequest(TeaModel):
-    def __init__(
-        self,
-        dbcluster_id: str = None,
-    ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        self.dbcluster_id = dbcluster_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        return self
-
-
-class GetSparkDefinitionsResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        request_id: str = None,
-    ):
-        # The common definitions of Spark applications.
-        self.data = data
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetSparkDefinitionsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetSparkDefinitionsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetSparkDefinitionsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetSparkLogAnalyzeTaskRequest(TeaModel):
     def __init__(
         self,
@@ -23003,6 +36117,433 @@ class GetSparkLogAnalyzeTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSparkLogAnalyzeTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSparkReplSessionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        session_id: int = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+        self.app_id = app_id
+        # The ID of the session that executes the code.
+        # 
+        # This parameter is required.
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class GetSparkReplSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        active: str = None,
+        aliyun_uid: str = None,
+        attempt_id: str = None,
+        error: str = None,
+        session_id: int = None,
+        state: str = None,
+        web_ui_address: str = None,
+    ):
+        # Indicates whether the session is active. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.active = active
+        # The ID of the Alibaba Cloud account that owns the cluster.
+        self.aliyun_uid = aliyun_uid
+        # The attempt ID of the Spark application.
+        self.attempt_id = attempt_id
+        # The error message.
+        self.error = error
+        # The ID of the session that executes the code.
+        self.session_id = session_id
+        # The status of the session. Valid values:
+        # 
+        # *   IDLE
+        # *   BUSY
+        # *   DEAD
+        self.state = state
+        # The URL of the web UI for the Spark application.
+        self.web_ui_address = web_ui_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.attempt_id is not None:
+            result['AttemptId'] = self.attempt_id
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.web_ui_address is not None:
+            result['WebUiAddress'] = self.web_ui_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('AttemptId') is not None:
+            self.attempt_id = m.get('AttemptId')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('WebUiAddress') is not None:
+            self.web_ui_address = m.get('WebUiAddress')
+        return self
+
+
+class GetSparkReplSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetSparkReplSessionResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetSparkReplSessionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSparkReplSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSparkReplSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSparkReplSessionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSparkReplStatementRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        session_id: int = None,
+        statement_id: int = None,
+    ):
+        # The application ID.
+        # 
+        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+        self.app_id = app_id
+        # The ID of the session that executes the code.
+        self.session_id = session_id
+        # The unique ID of the code block in the Spark job.
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class GetSparkReplStatementResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: int = None,
+        code: str = None,
+        code_state: str = None,
+        code_type: str = None,
+        columns: List[str] = None,
+        end_time: int = None,
+        error: str = None,
+        output: str = None,
+        output_type: str = None,
+        start_time: int = None,
+        statement_id: int = None,
+    ):
+        # The ID of the Alibaba Cloud account that owns the cluster.
+        self.aliyun_uid = aliyun_uid
+        # The code that is executed.
+        self.code = code
+        # The code execution status. Valid values:
+        # 
+        # *   CANCELLED
+        # *   RUNNING
+        # *   SUCCEEDED
+        # *   ERROR
+        self.code_state = code_state
+        # The code type. Valid values:
+        # 
+        # *   PYTHON
+        # *   SCALA
+        self.code_type = code_type
+        # The column names.
+        self.columns = columns
+        # The end time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.end_time = end_time
+        # The error message.
+        self.error = error
+        # The code execution result, which is a JSON string.
+        self.output = output
+        # The execution result type.
+        # 
+        # Valid values:
+        # 
+        # *   TABLE
+        # *   TEXT
+        self.output_type = output_type
+        # The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.start_time = start_time
+        # The unique ID of the code block in the Spark job.
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.code_state is not None:
+            result['CodeState'] = self.code_state
+        if self.code_type is not None:
+            result['CodeType'] = self.code_type
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.output_type is not None:
+            result['OutputType'] = self.output_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statement_id is not None:
+            result['StatementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CodeState') is not None:
+            self.code_state = m.get('CodeState')
+        if m.get('CodeType') is not None:
+            self.code_type = m.get('CodeType')
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('OutputType') is not None:
+            self.output_type = m.get('OutputType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatementId') is not None:
+            self.statement_id = m.get('StatementId')
+        return self
+
+
+class GetSparkReplStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetSparkReplStatementResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetSparkReplStatementResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSparkReplStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSparkReplStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSparkReplStatementResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23646,6 +37187,122 @@ class GetSparkTemplateFullTreeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSparkTemplateFullTreeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSparkWarehouseBatchSQLRequest(TeaModel):
+    def __init__(
+        self,
+        agency: str = None,
+        dbcluster_id: str = None,
+        query_id: str = None,
+    ):
+        self.agency = agency
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agency is not None:
+            result['Agency'] = self.agency
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Agency') is not None:
+            self.agency = m.get('Agency')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class GetSparkWarehouseBatchSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SparkBatchSQL = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = SparkBatchSQL()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSparkWarehouseBatchSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSparkWarehouseBatchSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSparkWarehouseBatchSQLResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24863,6 +38520,276 @@ class GetViewObjectsResponse(TeaModel):
         return self
 
 
+class GrantOperatorPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        expired_time: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        privileges: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The expiration time of the service account permissions. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
+        self.expired_time = expired_time
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The name of the permissions. Valid values:
+        # 
+        # *   **Control**: the configuration permissions. The service account is granted the permissions to query and modify cluster configurations.
+        # *   **Data**: the data permissions. The service account is granted the permissions to query schemas, indexes, and SQL statements.
+        # 
+        # This parameter is required.
+        self.privileges = privileges
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.privileges is not None:
+            result['Privileges'] = self.privileges
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Privileges') is not None:
+            self.privileges = m.get('Privileges')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GrantOperatorPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GrantOperatorPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GrantOperatorPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GrantOperatorPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class KillProcessRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        process_id: str = None,
+        region_id: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The query ID.
+        # 
+        # >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/143382.html) operation to query the IDs of queries that are being executed.
+        self.process_id = process_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class KillProcessResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        request_id: str = None,
+    ):
+        # The details about the access denial.
+        self.access_denied_detail = access_denied_detail
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class KillProcessResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: KillProcessResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = KillProcessResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class KillSparkAppRequest(TeaModel):
     def __init__(
         self,
@@ -25271,6 +39198,1828 @@ class KillSparkSQLEngineResponse(TeaModel):
         return self
 
 
+class ListApsLifecycleStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        start_time: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        self.end_time = end_time
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListApsLifecycleStrategyResponseBodyItemsOperationTables(TeaModel):
+    def __init__(
+        self,
+        database_name: str = None,
+        process_all: str = None,
+        table_names: List[str] = None,
+    ):
+        # The name of the database.
+        self.database_name = database_name
+        # Indicates whether all tables in the database are selected.
+        self.process_all = process_all
+        # The names of the tables.
+        self.table_names = table_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.process_all is not None:
+            result['ProcessAll'] = self.process_all
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('ProcessAll') is not None:
+            self.process_all = m.get('ProcessAll')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
+        return self
+
+
+class ListApsLifecycleStrategyResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        created_time: str = None,
+        dbcluster_id: str = None,
+        modified_time: str = None,
+        operation_tables: List[ListApsLifecycleStrategyResponseBodyItemsOperationTables] = None,
+        status: str = None,
+        strategy_databases: int = None,
+        strategy_desc: str = None,
+        strategy_name: str = None,
+        strategy_tables: int = None,
+        strategy_type: str = None,
+        strategy_value: str = None,
+    ):
+        # The job ID.
+        self.aps_job_id = aps_job_id
+        # The time when the policy was created.
+        self.created_time = created_time
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The time when the policy was modified.
+        self.modified_time = modified_time
+        # *\
+        self.operation_tables = operation_tables
+        # The status of the lifecycle management policy. Valid values:
+        # 
+        # 1.  on: enables the current policy.
+        # 2.  off: disables the current policy.
+        self.status = status
+        # The number of databases that are managed during the lifecycle management.
+        self.strategy_databases = strategy_databases
+        # The description of the lifecycle management policy.
+        self.strategy_desc = strategy_desc
+        # The name of the lifecycle management policy.
+        self.strategy_name = strategy_name
+        # The number of tables that are managed during the lifecycle management.
+        self.strategy_tables = strategy_tables
+        # The type of the lifecycle management policy.
+        self.strategy_type = strategy_type
+        # The value of the lifecycle management policy.
+        self.strategy_value = strategy_value
+
+    def validate(self):
+        if self.operation_tables:
+            for k in self.operation_tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        result['OperationTables'] = []
+        if self.operation_tables is not None:
+            for k in self.operation_tables:
+                result['OperationTables'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.strategy_databases is not None:
+            result['StrategyDatabases'] = self.strategy_databases
+        if self.strategy_desc is not None:
+            result['StrategyDesc'] = self.strategy_desc
+        if self.strategy_name is not None:
+            result['StrategyName'] = self.strategy_name
+        if self.strategy_tables is not None:
+            result['StrategyTables'] = self.strategy_tables
+        if self.strategy_type is not None:
+            result['StrategyType'] = self.strategy_type
+        if self.strategy_value is not None:
+            result['StrategyValue'] = self.strategy_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        self.operation_tables = []
+        if m.get('OperationTables') is not None:
+            for k in m.get('OperationTables'):
+                temp_model = ListApsLifecycleStrategyResponseBodyItemsOperationTables()
+                self.operation_tables.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StrategyDatabases') is not None:
+            self.strategy_databases = m.get('StrategyDatabases')
+        if m.get('StrategyDesc') is not None:
+            self.strategy_desc = m.get('StrategyDesc')
+        if m.get('StrategyName') is not None:
+            self.strategy_name = m.get('StrategyName')
+        if m.get('StrategyTables') is not None:
+            self.strategy_tables = m.get('StrategyTables')
+        if m.get('StrategyType') is not None:
+            self.strategy_type = m.get('StrategyType')
+        if m.get('StrategyValue') is not None:
+            self.strategy_value = m.get('StrategyValue')
+        return self
+
+
+class ListApsLifecycleStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[ListApsLifecycleStrategyResponseBodyItems] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The queried lifecycle management policies.
+        self.items = items
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = ListApsLifecycleStrategyResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApsLifecycleStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApsLifecycleStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApsLifecycleStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApsOptimizationStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListApsOptimizationStrategyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        status: str = None,
+        strategy_desc: str = None,
+        strategy_name: str = None,
+        strategy_type: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.status = status
+        self.strategy_desc = strategy_desc
+        self.strategy_name = strategy_name
+        self.strategy_type = strategy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.strategy_desc is not None:
+            result['StrategyDesc'] = self.strategy_desc
+        if self.strategy_name is not None:
+            result['StrategyName'] = self.strategy_name
+        if self.strategy_type is not None:
+            result['StrategyType'] = self.strategy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StrategyDesc') is not None:
+            self.strategy_desc = m.get('StrategyDesc')
+        if m.get('StrategyName') is not None:
+            self.strategy_name = m.get('StrategyName')
+        if m.get('StrategyType') is not None:
+            self.strategy_type = m.get('StrategyType')
+        return self
+
+
+class ListApsOptimizationStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListApsOptimizationStrategyResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListApsOptimizationStrategyResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListApsOptimizationStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApsOptimizationStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApsOptimizationStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApsOptimizationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        start_time: str = None,
+        strategy_type: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        self.end_time = end_time
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        self.start_time = start_time
+        # The type of the lifecycle management policy.
+        # 
+        # This parameter is required.
+        self.strategy_type = strategy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.strategy_type is not None:
+            result['StrategyType'] = self.strategy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StrategyType') is not None:
+            self.strategy_type = m.get('StrategyType')
+        return self
+
+
+class ListApsOptimizationTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        compute_unit: str = None,
+        created_time: str = None,
+        dbcluster_id: str = None,
+        modified_time: str = None,
+        strategy_type: str = None,
+        task_desc: str = None,
+        task_duration: int = None,
+        task_id: str = None,
+        task_message: str = None,
+        task_status: str = None,
+    ):
+        # The computing resources used by the optimization job.
+        self.compute_unit = compute_unit
+        # The time when the optimization job was created.
+        self.created_time = created_time
+        # The cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The time when the optimization job was modified.
+        self.modified_time = modified_time
+        # The type of the lifecycle management policy.
+        self.strategy_type = strategy_type
+        # The description of the optimization job.
+        self.task_desc = task_desc
+        # The execution duration of the optimization job.
+        self.task_duration = task_duration
+        # The job ID.
+        self.task_id = task_id
+        # The error message.
+        self.task_message = task_message
+        # The execution status. Valid values:
+        # 
+        # 1.  NEW
+        # 2.  RUNNING
+        # 3.  SUCCESS
+        # 4.  STOPPED
+        # 5.  FAILED
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_unit is not None:
+            result['ComputeUnit'] = self.compute_unit
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.strategy_type is not None:
+            result['StrategyType'] = self.strategy_type
+        if self.task_desc is not None:
+            result['TaskDesc'] = self.task_desc
+        if self.task_duration is not None:
+            result['TaskDuration'] = self.task_duration
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_message is not None:
+            result['TaskMessage'] = self.task_message
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeUnit') is not None:
+            self.compute_unit = m.get('ComputeUnit')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('StrategyType') is not None:
+            self.strategy_type = m.get('StrategyType')
+        if m.get('TaskDesc') is not None:
+            self.task_desc = m.get('TaskDesc')
+        if m.get('TaskDuration') is not None:
+            self.task_duration = m.get('TaskDuration')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskMessage') is not None:
+            self.task_message = m.get('TaskMessage')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        return self
+
+
+class ListApsOptimizationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[ListApsOptimizationTasksResponseBodyItems] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The queried optimization jobs.
+        self.items = items
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = ListApsOptimizationTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApsOptimizationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApsOptimizationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApsOptimizationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLakeStoragesRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        filter: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.filter = filter
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListLakeStoragesResponseBodyItemsPermissions(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        read: bool = None,
+        type: str = None,
+        write: bool = None,
+    ):
+        # 具有该权限的账户或RAM用户ID
+        self.account = account
+        # 表示是否允许读取湖存储的权限
+        self.read = read
+        # 指定权限的账户类型
+        self.type = type
+        # 表示是否允许向湖存储写入数据的权限
+        self.write = write
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.read is not None:
+            result['Read'] = self.read
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.write is not None:
+            result['Write'] = self.write
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Read') is not None:
+            self.read = m.get('Read')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Write') is not None:
+            self.write = m.get('Write')
+        return self
+
+
+class ListLakeStoragesResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator_uid: str = None,
+        dbcluster_id: str = None,
+        description: str = None,
+        file_size: str = None,
+        lake_storage_id: str = None,
+        operator_uid: str = None,
+        owner_uid: str = None,
+        permissions: List[ListLakeStoragesResponseBodyItemsPermissions] = None,
+        region_id: str = None,
+        table_count: int = None,
+        total_rows: int = None,
+        total_storage: str = None,
+        update_time: str = None,
+    ):
+        # 湖存储被创建的时间
+        self.create_time = create_time
+        # 创建湖存储的用户账号的唯一标识符
+        self.creator_uid = creator_uid
+        # 用于指定和挂载到特定ADB主实例的湖存储
+        self.dbcluster_id = dbcluster_id
+        # 对湖存储的描述信息
+        self.description = description
+        self.file_size = file_size
+        # 用于识别特定湖存储的唯一标识符
+        self.lake_storage_id = lake_storage_id
+        # 最后操作湖存储的用户账号的唯一标识符
+        self.operator_uid = operator_uid
+        # 拥有湖存储资源的用户账号的唯一标识符
+        self.owner_uid = owner_uid
+        # 设置湖存储的读/写权限和账户级别权限的数组
+        self.permissions = permissions
+        # 指定要操作的湖存储所在区域的ID
+        self.region_id = region_id
+        # 湖存储中库表的总数量
+        self.table_count = table_count
+        # 湖存储中所有库表的总数据行数
+        self.total_rows = total_rows
+        # 湖存储中数据的总存储量
+        self.total_storage = total_storage
+        # 湖存储最后一次更新的时间
+        self.update_time = update_time
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_uid is not None:
+            result['CreatorUid'] = self.creator_uid
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.operator_uid is not None:
+            result['OperatorUid'] = self.operator_uid
+        if self.owner_uid is not None:
+            result['OwnerUid'] = self.owner_uid
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        if self.total_rows is not None:
+            result['TotalRows'] = self.total_rows
+        if self.total_storage is not None:
+            result['TotalStorage'] = self.total_storage
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorUid') is not None:
+            self.creator_uid = m.get('CreatorUid')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('OperatorUid') is not None:
+            self.operator_uid = m.get('OperatorUid')
+        if m.get('OwnerUid') is not None:
+            self.owner_uid = m.get('OwnerUid')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = ListLakeStoragesResponseBodyItemsPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        if m.get('TotalRows') is not None:
+            self.total_rows = m.get('TotalRows')
+        if m.get('TotalStorage') is not None:
+            self.total_storage = m.get('TotalStorage')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListLakeStoragesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[ListLakeStoragesResponseBodyItems] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.items = items
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = ListLakeStoragesResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListLakeStoragesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListLakeStoragesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListLakeStoragesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListResultExportJobHistoryRequestOrder(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        type: str = None,
+    ):
+        # The field that is used to sort the SQL statements. Valid values:
+        # 
+        # *   CreateTime
+        # *   DatabaseUser
+        # *   TimeCost
+        # *   ResourceGroup
+        # *   Status
+        # *   Progress
+        # *   ExportRows
+        self.field = field
+        # The sorting order. Valid values (case-insensitive):
+        # 
+        # *   **Desc**: descending order.
+        # *   **Asc**: ascending order.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListResultExportJobHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        database_user: str = None,
+        end_time: str = None,
+        order: ListResultExportJobHistoryRequestOrder = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        start_time: str = None,
+        status_list: List[str] = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The name of the database account.
+        self.database_user = database_user
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
+        self.end_time = end_time
+        # The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+        # 
+        # *   `Field` specifies the field that is used to sort the SQL statements. Valid values:
+        # 
+        #     *   `CreateTime`: the time when the result set export job was created.
+        #     *   `Status`: the execution status.
+        #     *   `DatabaseUser`: the name of the database account.
+        #     *   `TimeCost`: the execution duration.
+        #     *   `ResourceGroup`: the name of the resource group.
+        #     *   `ExportRows`: the number of exported rows.
+        #     *   `Progress`: the export progress.
+        # 
+        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
+        # 
+        #     *   `Desc`: descending order.
+        #     *   `Asc`: ascending order.
+        self.order = order
+        # The page number. Pages start from page 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+        self.resource_group = resource_group
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        self.start_time = start_time
+        # The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+        self.status_list = status_list
+
+    def validate(self):
+        if self.order:
+            self.order.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.database_user is not None:
+            result['DatabaseUser'] = self.database_user
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status_list is not None:
+            result['StatusList'] = self.status_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabaseUser') is not None:
+            self.database_user = m.get('DatabaseUser')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Order') is not None:
+            temp_model = ListResultExportJobHistoryRequestOrder()
+            self.order = temp_model.from_map(m['Order'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatusList') is not None:
+            self.status_list = m.get('StatusList')
+        return self
+
+
+class ListResultExportJobHistoryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        database_user: str = None,
+        end_time: str = None,
+        order_shrink: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        start_time: str = None,
+        status_list_shrink: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The name of the database account.
+        self.database_user = database_user
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time.
+        self.end_time = end_time
+        # The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+        # 
+        # *   `Field` specifies the field that is used to sort the SQL statements. Valid values:
+        # 
+        #     *   `CreateTime`: the time when the result set export job was created.
+        #     *   `Status`: the execution status.
+        #     *   `DatabaseUser`: the name of the database account.
+        #     *   `TimeCost`: the execution duration.
+        #     *   `ResourceGroup`: the name of the resource group.
+        #     *   `ExportRows`: the number of exported rows.
+        #     *   `Progress`: the export progress.
+        # 
+        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
+        # 
+        #     *   `Desc`: descending order.
+        #     *   `Asc`: ascending order.
+        self.order_shrink = order_shrink
+        # The page number. Pages start from page 1.
+        self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
+        self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+        self.resource_group = resource_group
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        self.start_time = start_time
+        # The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+        self.status_list_shrink = status_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.database_user is not None:
+            result['DatabaseUser'] = self.database_user
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.order_shrink is not None:
+            result['Order'] = self.order_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status_list_shrink is not None:
+            result['StatusList'] = self.status_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabaseUser') is not None:
+            self.database_user = m.get('DatabaseUser')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Order') is not None:
+            self.order_shrink = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StatusList') is not None:
+            self.status_list_shrink = m.get('StatusList')
+        return self
+
+
+class ListResultExportJobHistoryResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        create_time: str = None,
+        dbcluster_id: str = None,
+        database_user: str = None,
+        end_time: str = None,
+        engine: str = None,
+        export_job_id: str = None,
+        export_path: str = None,
+        export_rows: str = None,
+        export_type: str = None,
+        is_expired: bool = None,
+        message: str = None,
+        process_id: str = None,
+        progress: str = None,
+        resource_group: str = None,
+        schema: str = None,
+        sql: str = None,
+        start_time: str = None,
+        status: str = None,
+        time_cost: int = None,
+    ):
+        # The RAM user ID.
+        self.ali_uid = ali_uid
+        # The time when the result set export job was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ* format. The time is displayed in UTC.
+        self.create_time = create_time
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        self.dbcluster_id = dbcluster_id
+        # The name of the database account that is associated with the RAM user.
+        self.database_user = database_user
+        # The end time of the result set export job. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
+        # 
+        # >  The end time must be later than the start time.
+        self.end_time = end_time
+        # The engine that is used to execute the result set export job. Only XIHE is returned.
+        self.engine = engine
+        # The unique identifier of the result set export job.
+        self.export_job_id = export_job_id
+        # The complete URL of the path to store the exported result set.
+        self.export_path = export_path
+        # The number of exported rows. This parameter is returned only when the request was successful.
+        self.export_rows = export_rows
+        # The type of the result set export job.
+        self.export_type = export_type
+        # Indicates whether the result set export job has expired. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
+        self.is_expired = is_expired
+        # The returned message. This parameter is returned only when the request failed.
+        self.message = message
+        # The query ID that can be used for diagnostics.
+        # 
+        # >  You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612495.html) operation to query the execution information about a query.
+        self.process_id = process_id
+        # The progress of the result set export job. Unit: %. Valid values: 0 to 100.
+        self.progress = progress
+        # The name of the resource group that runs the result set export job.
+        self.resource_group = resource_group
+        # The name of the database.
+        self.schema = schema
+        # The SQL statement that is used in the result set export job.
+        self.sql = sql
+        # The start time of the result set export job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.start_time = start_time
+        # The execution status of the result set export job. Valid values:
+        # 
+        # 1.  **SUBMITTED**\
+        # 2.  **RUNNING**\
+        # 3.  **SUCCEEDED**\
+        # 4.  **FAILED**\
+        self.status = status
+        # The amount of time consumed to export execution records. Unit: milliseconds.
+        # 
+        # >  The value is the duration between the time when the result set export job starts and the time when the result set export job ends.
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.database_user is not None:
+            result['DatabaseUser'] = self.database_user
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.export_job_id is not None:
+            result['ExportJobId'] = self.export_job_id
+        if self.export_path is not None:
+            result['ExportPath'] = self.export_path
+        if self.export_rows is not None:
+            result['ExportRows'] = self.export_rows
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.is_expired is not None:
+            result['IsExpired'] = self.is_expired
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatabaseUser') is not None:
+            self.database_user = m.get('DatabaseUser')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('ExportJobId') is not None:
+            self.export_job_id = m.get('ExportJobId')
+        if m.get('ExportPath') is not None:
+            self.export_path = m.get('ExportPath')
+        if m.get('ExportRows') is not None:
+            self.export_rows = m.get('ExportRows')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('IsExpired') is not None:
+            self.is_expired = m.get('IsExpired')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class ListResultExportJobHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[ListResultExportJobHistoryResponseBodyItems] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The queried result set export jobs.
+        self.items = items
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, an **OK** message is returned.
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = ListResultExportJobHistoryResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListResultExportJobHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResultExportJobHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResultExportJobHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSparkAppAttemptsRequest(TeaModel):
     def __init__(
         self,
@@ -25338,7 +41087,7 @@ class ListSparkAppAttemptsResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The information about the attempts. Fields in the response parameter:
+        # The queried attempts. Fields in the response parameter:
         # 
         # *   **AttemptId**: the attempt ID.
         # 
@@ -25358,15 +41107,15 @@ class ListSparkAppAttemptsResponseBodyData(TeaModel):
         # 
         # *   **Message**: the alert message that is returned. If no alert is generated, null is returned.
         # 
-        # *   **Data**: the data of the Spark application template.
+        # *   **Data** the data of the Spark application template.
         # 
-        # *   **EstimateExecutionCpuTimeInSeconds**: the amount of time it takes to consume CPU resources for running the Spark application. Unit: milliseconds.
+        # *   **EstimateExecutionCpuTimeInSeconds**: the amount of time that is required to consume CPU resources for running the Spark application. Unit: milliseconds.
         # 
         # *   **LogRootPath**: the storage path of log files.
         # 
         # *   **LastAttemptId**: the ID of the last attempt.
         # 
-        # *   **WebUiAddress**: the web UI address.
+        # *   **WebUiAddress**: the web UI URL.
         # 
         # *   **SubmittedTimeInMillis**: the time when the Spark application was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -25380,7 +41129,7 @@ class ListSparkAppAttemptsResponseBodyData(TeaModel):
         # 
         # *   **ResourceGroupName**: the name of the job resource group.
         # 
-        # *   **DurationInMillis**: the amount of time it takes to run the Spark application. Unit: milliseconds.
+        # *   **DurationInMillis**: the amount of time that is required to run the Spark application. Unit: milliseconds.
         self.attempt_info_list = attempt_info_list
         # The page number.
         self.page_number = page_number
@@ -25511,6 +41260,7 @@ class ListSparkAppsRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        filters: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_group_name: str = None,
@@ -25519,6 +41269,7 @@ class ListSparkAppsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.filters = filters
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         # 
         # This parameter is required.
@@ -25543,6 +41294,8 @@ class ListSparkAppsRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.filters is not None:
+            result['Filters'] = self.filters
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -25555,6 +41308,8 @@ class ListSparkAppsRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Filters') is not None:
+            self.filters = m.get('Filters')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -26014,6 +41769,482 @@ class ListSparkTemplateFileIdsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSparkTemplateFileIdsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSparkWarehouseBatchSQLRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        page_number: int = None,
+        page_size: str = None,
+        resource_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class ListSparkWarehouseBatchSQLResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        queries: List[SparkBatchSQL] = None,
+        total: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.queries = queries
+        self.total = total
+
+    def validate(self):
+        if self.queries:
+            for k in self.queries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Queries'] = []
+        if self.queries is not None:
+            for k in self.queries:
+                result['Queries'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.queries = []
+        if m.get('Queries') is not None:
+            for k in m.get('Queries'):
+                temp_model = SparkBatchSQL()
+                self.queries.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSparkWarehouseBatchSQLResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListSparkWarehouseBatchSQLResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListSparkWarehouseBatchSQLResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListSparkWarehouseBatchSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSparkWarehouseBatchSQLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSparkWarehouseBatchSQLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. You can specify N tag keys. The tag key cannot be an empty string. Valid values of N: 1 to 20.
+        # 
+        # >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        self.key = key
+        # The tag value. You can specify N tag values. The tag value can be an empty string. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The cluster ID. You can specify N cluster IDs. Valid values of N: 1 to 50.
+        # 
+        # >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to **dbclusterlakeversion**.
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+        # The tags.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The cluster ID.
+        self.resource_id = resource_id
+        # The resource type.
+        self.resource_type = resource_type
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The queried clusters and tags.
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26535,6 +42766,1211 @@ class ModifyAccountPrivilegesResponse(TeaModel):
         return self
 
 
+class ModifyApsDatasoureRequestKafkaInfo(TeaModel):
+    def __init__(
+        self,
+        kafka_cluster_id: str = None,
+        kafka_topic: str = None,
+    ):
+        # The ID of the Kafka instance.
+        self.kafka_cluster_id = kafka_cluster_id
+        # The topic of the Kafka instance.
+        self.kafka_topic = kafka_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.kafka_cluster_id is not None:
+            result['KafkaClusterId'] = self.kafka_cluster_id
+        if self.kafka_topic is not None:
+            result['KafkaTopic'] = self.kafka_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KafkaClusterId') is not None:
+            self.kafka_cluster_id = m.get('KafkaClusterId')
+        if m.get('KafkaTopic') is not None:
+            self.kafka_topic = m.get('KafkaTopic')
+        return self
+
+
+class ModifyApsDatasoureRequestLakehouseId(TeaModel):
+    def __init__(
+        self,
+        security_group: str = None,
+        vpc_id: str = None,
+        vswitch: str = None,
+    ):
+        # The name of the security group.
+        self.security_group = security_group
+        # The virtual private cloud (VPC) ID.
+        self.vpc_id = vpc_id
+        # The name of the vSwitch.
+        self.vswitch = vswitch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vswitch is not None:
+            result['Vswitch'] = self.vswitch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroup') is not None:
+            self.security_group = m.get('SecurityGroup')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('Vswitch') is not None:
+            self.vswitch = m.get('Vswitch')
+        return self
+
+
+class ModifyApsDatasoureRequestPolarDBMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        connect_url: str = None,
+        password: str = None,
+        region_id: str = None,
+        user_name: str = None,
+    ):
+        # *\
+        self.connect_url = connect_url
+        # *\
+        self.password = password
+        # *\
+        self.region_id = region_id
+        # *\
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ModifyApsDatasoureRequestRdsMysqlInfo(TeaModel):
+    def __init__(
+        self,
+        connect_url: str = None,
+        password: str = None,
+        region_id: str = None,
+        user_name: str = None,
+    ):
+        # *\
+        self.connect_url = connect_url
+        # *\
+        self.password = password
+        # *\
+        self.region_id = region_id
+        # *\
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_url is not None:
+            result['ConnectUrl'] = self.connect_url
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectUrl') is not None:
+            self.connect_url = m.get('ConnectUrl')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ModifyApsDatasoureRequestSlsInfo(TeaModel):
+    def __init__(
+        self,
+        across: bool = None,
+        across_role: str = None,
+        across_uid: str = None,
+        source_region_id: str = None,
+    ):
+        # Specifies whether to use a cross-account resource as the data source. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.across = across
+        # The name of the cross-account role.
+        self.across_role = across_role
+        # The cross-account UID.
+        self.across_uid = across_uid
+        # The region ID.
+        self.source_region_id = source_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across is not None:
+            result['Across'] = self.across
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Across') is not None:
+            self.across = m.get('Across')
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        return self
+
+
+class ModifyApsDatasoureRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_description: str = None,
+        datasource_id: int = None,
+        datasource_name: str = None,
+        kafka_info: ModifyApsDatasoureRequestKafkaInfo = None,
+        lakehouse_id: ModifyApsDatasoureRequestLakehouseId = None,
+        polar_dbmysql_info: ModifyApsDatasoureRequestPolarDBMysqlInfo = None,
+        rds_mysql_info: ModifyApsDatasoureRequestRdsMysqlInfo = None,
+        region_id: str = None,
+        sls_info: ModifyApsDatasoureRequestSlsInfo = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The description of the data source.
+        self.datasource_description = datasource_description
+        # The data source ID.
+        # 
+        # This parameter is required.
+        self.datasource_id = datasource_id
+        # The name of the data source.
+        self.datasource_name = datasource_name
+        # *\
+        self.kafka_info = kafka_info
+        # The lakehouse ID.
+        self.lakehouse_id = lakehouse_id
+        # The retired data source.
+        self.polar_dbmysql_info = polar_dbmysql_info
+        # The retired data source.
+        self.rds_mysql_info = rds_mysql_info
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The information about Simple Log Service (SLS).
+        self.sls_info = sls_info
+
+    def validate(self):
+        if self.kafka_info:
+            self.kafka_info.validate()
+        if self.lakehouse_id:
+            self.lakehouse_id.validate()
+        if self.polar_dbmysql_info:
+            self.polar_dbmysql_info.validate()
+        if self.rds_mysql_info:
+            self.rds_mysql_info.validate()
+        if self.sls_info:
+            self.sls_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.kafka_info is not None:
+            result['KafkaInfo'] = self.kafka_info.to_map()
+        if self.lakehouse_id is not None:
+            result['LakehouseId'] = self.lakehouse_id.to_map()
+        if self.polar_dbmysql_info is not None:
+            result['PolarDBMysqlInfo'] = self.polar_dbmysql_info.to_map()
+        if self.rds_mysql_info is not None:
+            result['RdsMysqlInfo'] = self.rds_mysql_info.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info is not None:
+            result['SlsInfo'] = self.sls_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('KafkaInfo') is not None:
+            temp_model = ModifyApsDatasoureRequestKafkaInfo()
+            self.kafka_info = temp_model.from_map(m['KafkaInfo'])
+        if m.get('LakehouseId') is not None:
+            temp_model = ModifyApsDatasoureRequestLakehouseId()
+            self.lakehouse_id = temp_model.from_map(m['LakehouseId'])
+        if m.get('PolarDBMysqlInfo') is not None:
+            temp_model = ModifyApsDatasoureRequestPolarDBMysqlInfo()
+            self.polar_dbmysql_info = temp_model.from_map(m['PolarDBMysqlInfo'])
+        if m.get('RdsMysqlInfo') is not None:
+            temp_model = ModifyApsDatasoureRequestRdsMysqlInfo()
+            self.rds_mysql_info = temp_model.from_map(m['RdsMysqlInfo'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            temp_model = ModifyApsDatasoureRequestSlsInfo()
+            self.sls_info = temp_model.from_map(m['SlsInfo'])
+        return self
+
+
+class ModifyApsDatasoureShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        datasource_description: str = None,
+        datasource_id: int = None,
+        datasource_name: str = None,
+        kafka_info_shrink: str = None,
+        lakehouse_id_shrink: str = None,
+        polar_dbmysql_info_shrink: str = None,
+        rds_mysql_info_shrink: str = None,
+        region_id: str = None,
+        sls_info_shrink: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The description of the data source.
+        self.datasource_description = datasource_description
+        # The data source ID.
+        # 
+        # This parameter is required.
+        self.datasource_id = datasource_id
+        # The name of the data source.
+        self.datasource_name = datasource_name
+        # *\
+        self.kafka_info_shrink = kafka_info_shrink
+        # The lakehouse ID.
+        self.lakehouse_id_shrink = lakehouse_id_shrink
+        # The retired data source.
+        self.polar_dbmysql_info_shrink = polar_dbmysql_info_shrink
+        # The retired data source.
+        self.rds_mysql_info_shrink = rds_mysql_info_shrink
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The information about Simple Log Service (SLS).
+        self.sls_info_shrink = sls_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.datasource_description is not None:
+            result['DatasourceDescription'] = self.datasource_description
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.datasource_name is not None:
+            result['DatasourceName'] = self.datasource_name
+        if self.kafka_info_shrink is not None:
+            result['KafkaInfo'] = self.kafka_info_shrink
+        if self.lakehouse_id_shrink is not None:
+            result['LakehouseId'] = self.lakehouse_id_shrink
+        if self.polar_dbmysql_info_shrink is not None:
+            result['PolarDBMysqlInfo'] = self.polar_dbmysql_info_shrink
+        if self.rds_mysql_info_shrink is not None:
+            result['RdsMysqlInfo'] = self.rds_mysql_info_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sls_info_shrink is not None:
+            result['SlsInfo'] = self.sls_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DatasourceDescription') is not None:
+            self.datasource_description = m.get('DatasourceDescription')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DatasourceName') is not None:
+            self.datasource_name = m.get('DatasourceName')
+        if m.get('KafkaInfo') is not None:
+            self.kafka_info_shrink = m.get('KafkaInfo')
+        if m.get('LakehouseId') is not None:
+            self.lakehouse_id_shrink = m.get('LakehouseId')
+        if m.get('PolarDBMysqlInfo') is not None:
+            self.polar_dbmysql_info_shrink = m.get('PolarDBMysqlInfo')
+        if m.get('RdsMysqlInfo') is not None:
+            self.rds_mysql_info_shrink = m.get('RdsMysqlInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SlsInfo') is not None:
+            self.sls_info_shrink = m.get('SlsInfo')
+        return self
+
+
+class ModifyApsDatasoureResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.****\
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyApsDatasoureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyApsDatasoureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyApsDatasoureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyApsJobRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        db_list: str = None,
+        partition_list: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.aps_job_id = aps_job_id
+        # This parameter is required.
+        self.db_list = db_list
+        self.partition_list = partition_list
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        if self.partition_list is not None:
+            result['PartitionList'] = self.partition_list
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        if m.get('PartitionList') is not None:
+            self.partition_list = m.get('PartitionList')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyApsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        code: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.code = code
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyApsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyApsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyApsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyApsSlsADBJobRequestColumns(TeaModel):
+    def __init__(
+        self,
+        map_name: str = None,
+        map_type: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.map_name = map_name
+        self.map_type = map_type
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.map_name is not None:
+            result['MapName'] = self.map_name
+        if self.map_type is not None:
+            result['MapType'] = self.map_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MapName') is not None:
+            self.map_name = m.get('MapName')
+        if m.get('MapType') is not None:
+            self.map_type = m.get('MapType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyApsSlsADBJobRequest(TeaModel):
+    def __init__(
+        self,
+        columns: List[ModifyApsSlsADBJobRequestColumns] = None,
+        dbcluster_id: str = None,
+        db_name: str = None,
+        dirty_data_process_pattern: str = None,
+        exactly_once: str = None,
+        password: str = None,
+        region_id: str = None,
+        starting_offsets: str = None,
+        table_name: str = None,
+        unix_timestamp_convert: str = None,
+        user_name: str = None,
+        workload_id: str = None,
+        workload_name: str = None,
+    ):
+        self.columns = columns
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.db_name = db_name
+        self.dirty_data_process_pattern = dirty_data_process_pattern
+        self.exactly_once = exactly_once
+        self.password = password
+        # This parameter is required.
+        self.region_id = region_id
+        self.starting_offsets = starting_offsets
+        self.table_name = table_name
+        self.unix_timestamp_convert = unix_timestamp_convert
+        self.user_name = user_name
+        # This parameter is required.
+        self.workload_id = workload_id
+        self.workload_name = workload_name
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dirty_data_process_pattern is not None:
+            result['DirtyDataProcessPattern'] = self.dirty_data_process_pattern
+        if self.exactly_once is not None:
+            result['ExactlyOnce'] = self.exactly_once
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.unix_timestamp_convert is not None:
+            result['UnixTimestampConvert'] = self.unix_timestamp_convert
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = ModifyApsSlsADBJobRequestColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DirtyDataProcessPattern') is not None:
+            self.dirty_data_process_pattern = m.get('DirtyDataProcessPattern')
+        if m.get('ExactlyOnce') is not None:
+            self.exactly_once = m.get('ExactlyOnce')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('UnixTimestampConvert') is not None:
+            self.unix_timestamp_convert = m.get('UnixTimestampConvert')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class ModifyApsSlsADBJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        columns_shrink: str = None,
+        dbcluster_id: str = None,
+        db_name: str = None,
+        dirty_data_process_pattern: str = None,
+        exactly_once: str = None,
+        password: str = None,
+        region_id: str = None,
+        starting_offsets: str = None,
+        table_name: str = None,
+        unix_timestamp_convert: str = None,
+        user_name: str = None,
+        workload_id: str = None,
+        workload_name: str = None,
+    ):
+        self.columns_shrink = columns_shrink
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.db_name = db_name
+        self.dirty_data_process_pattern = dirty_data_process_pattern
+        self.exactly_once = exactly_once
+        self.password = password
+        # This parameter is required.
+        self.region_id = region_id
+        self.starting_offsets = starting_offsets
+        self.table_name = table_name
+        self.unix_timestamp_convert = unix_timestamp_convert
+        self.user_name = user_name
+        # This parameter is required.
+        self.workload_id = workload_id
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns_shrink is not None:
+            result['Columns'] = self.columns_shrink
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dirty_data_process_pattern is not None:
+            result['DirtyDataProcessPattern'] = self.dirty_data_process_pattern
+        if self.exactly_once is not None:
+            result['ExactlyOnce'] = self.exactly_once
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.unix_timestamp_convert is not None:
+            result['UnixTimestampConvert'] = self.unix_timestamp_convert
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Columns') is not None:
+            self.columns_shrink = m.get('Columns')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DirtyDataProcessPattern') is not None:
+            self.dirty_data_process_pattern = m.get('DirtyDataProcessPattern')
+        if m.get('ExactlyOnce') is not None:
+            self.exactly_once = m.get('ExactlyOnce')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('UnixTimestampConvert') is not None:
+            self.unix_timestamp_convert = m.get('UnixTimestampConvert')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class ModifyApsSlsADBJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyApsSlsADBJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyApsSlsADBJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyApsSlsADBJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyApsWorkloadNameRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+        workload_id: str = None,
+        workload_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.workload_id = workload_id
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class ModifyApsWorkloadNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyApsWorkloadNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyApsWorkloadNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyApsWorkloadNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAuditLogConfigRequest(TeaModel):
     def __init__(
         self,
@@ -26562,6 +43998,10 @@ class ModifyAuditLogConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The type of the compute engine. Valid values:
+        # 
+        # *   XIHE (**default**)
+        # *   SPARK
         self.engine_type = engine_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26882,6 +44322,120 @@ class ModifyBackupPolicyResponse(TeaModel):
         return self
 
 
+class ModifyClickhouseEngineRequest(TeaModel):
+    def __init__(
+        self,
+        cache_size: int = None,
+        dbcluster_id: str = None,
+        enabled: bool = None,
+        owner_id: str = None,
+    ):
+        self.cache_size = cache_size
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.enabled = enabled
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cache_size is not None:
+            result['CacheSize'] = self.cache_size
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CacheSize') is not None:
+            self.cache_size = m.get('CacheSize')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class ModifyClickhouseEngineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyClickhouseEngineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyClickhouseEngineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyClickhouseEngineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyClusterAccessWhiteListRequest(TeaModel):
     def __init__(
         self,
@@ -26900,7 +44454,7 @@ class ModifyClusterAccessWhiteListRequest(TeaModel):
         # *   The whitelist name must be 2 to 32 characters in length. The name can contain lowercase letters, digits, and underscores (_). The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   Each cluster supports up to 50 IP address whitelists.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -26961,7 +44515,7 @@ class ModifyClusterAccessWhiteListResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id
@@ -27052,11 +44606,11 @@ class ModifyClusterConnectionStringRequest(TeaModel):
         # 
         # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
-        # The public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.current_connection_string = current_connection_string
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -27160,6 +44714,119 @@ class ModifyClusterConnectionStringResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyClusterConnectionStringResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCompactionServiceSwitchRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        enable_compaction_service: bool = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the remote build feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter is required.
+        self.enable_compaction_service = enable_compaction_service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable_compaction_service is not None:
+            result['EnableCompactionService'] = self.enable_compaction_service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableCompactionService') is not None:
+            self.enable_compaction_service = m.get('EnableCompactionService')
+        return self
+
+
+class ModifyCompactionServiceSwitchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyCompactionServiceSwitchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCompactionServiceSwitchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCompactionServiceSwitchResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27569,6 +45236,276 @@ class ModifyDBClusterMaintainTimeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBClusterMaintainTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBClusterResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        new_resource_group_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the resource group to which you want to move the AnalyticDB for MySQL cluster.
+        # 
+        # >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management within a single Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        # 
+        # This parameter is required.
+        self.new_resource_group_id = new_resource_group_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBClusterResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBClusterVipRequest(TeaModel):
+    def __init__(
+        self,
+        connect_string: str = None,
+        dbcluster_id: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+    ):
+        # The endpoint of the cluster.
+        self.connect_string = connect_string
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The VPC ID.
+        # 
+        # > 
+        # 
+        # *   The new **VPC** must reside in the same region as the cluster.
+        # 
+        # This parameter is required.
+        self.vpcid = vpcid
+        # The vSwitch ID.
+        # 
+        # > 
+        # 
+        # *   The new vSwitch must reside in the same zone as the cluster.
+        # 
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_string is not None:
+            result['ConnectString'] = self.connect_string
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectString') is not None:
+            self.connect_string = m.get('ConnectString')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class ModifyDBClusterVipResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterVipResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterVipResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterVipResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28048,7 +45985,7 @@ class ModifyElasticPlanRequest(TeaModel):
         self.cron_expression = cron_expression
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -28180,6 +46117,308 @@ class ModifyElasticPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyElasticPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyEssdCacheConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        enable_essd_cache: bool = None,
+        essd_cache_size: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the disk cache feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter is required.
+        self.enable_essd_cache = enable_essd_cache
+        # The disk cache size. Unit: GB.
+        self.essd_cache_size = essd_cache_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable_essd_cache is not None:
+            result['EnableEssdCache'] = self.enable_essd_cache
+        if self.essd_cache_size is not None:
+            result['EssdCacheSize'] = self.essd_cache_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableEssdCache') is not None:
+            self.enable_essd_cache = m.get('EnableEssdCache')
+        if m.get('EssdCacheSize') is not None:
+            self.essd_cache_size = m.get('EssdCacheSize')
+        return self
+
+
+class ModifyEssdCacheConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyEssdCacheConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyEssdCacheConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyEssdCacheConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyLakeCacheSizeRequest(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        dbcluster_id: str = None,
+        enable_lake_cache: bool = None,
+    ):
+        # The lake cache size that you want to set. Unit: GB.
+        self.capacity = capacity
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the lake cache feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter is required.
+        self.enable_lake_cache = enable_lake_cache
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable_lake_cache is not None:
+            result['EnableLakeCache'] = self.enable_lake_cache
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableLakeCache') is not None:
+            self.enable_lake_cache = m.get('EnableLakeCache')
+        return self
+
+
+class ModifyLakeCacheSizeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        capacity: int = None,
+        data_size: int = None,
+        instances: List[str] = None,
+    ):
+        # The size of the lake cache space. Unit: GB.
+        self.capacity = capacity
+        # The size of the data that occupies the lake cache space. Unit: GB.
+        self.data_size = data_size
+        # The clusters that share the lake cache space.
+        self.instances = instances
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.instances is not None:
+            result['Instances'] = self.instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('Instances') is not None:
+            self.instances = m.get('Instances')
+        return self
+
+
+class ModifyLakeCacheSizeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ModifyLakeCacheSizeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The status code. The value 200 indicates that the request is successful.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ModifyLakeCacheSizeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyLakeCacheSizeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyLakeCacheSizeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyLakeCacheSizeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28581,6 +46820,187 @@ class ModifyPerformanceViewResponse(TeaModel):
         return self
 
 
+class ModifyUserEniVswitchOptionsRequest(TeaModel):
+    def __init__(
+        self,
+        db_cluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        v_switch_options: str = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.db_cluster_id = db_cluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The vSwitches that you want to use. The vSwitches must reside in the same virtual private cloud (VPC) and zone as ENIs. You can specify up to three vSwitches. Separate multiple vSwitches with commas (,).
+        # 
+        # > 
+        # 
+        # *   The vSwitches that you specify overwrite the existing vSwitches that are connected to ENIs.
+        # 
+        # *   You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/612399.html) operation to query the network information about ENIs in a cluster.
+        # 
+        # This parameter is required.
+        self.v_switch_options = v_switch_options
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.v_switch_options is not None:
+            result['VSwitchOptions'] = self.v_switch_options
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VSwitchOptions') is not None:
+            self.v_switch_options = m.get('VSwitchOptions')
+        return self
+
+
+class ModifyUserEniVswitchOptionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code or the error code.
+        self.code = code
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a **SUCCESS** message is returned.
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyUserEniVswitchOptionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyUserEniVswitchOptionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyUserEniVswitchOptionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PreloadSparkAppMetricsRequest(TeaModel):
     def __init__(
         self,
@@ -28903,163 +47323,6 @@ class ReleaseClusterPublicConnectionResponse(TeaModel):
         return self
 
 
-class RenameSparkTemplateFileRequest(TeaModel):
-    def __init__(
-        self,
-        dbcluster_id: str = None,
-        id: int = None,
-        name: str = None,
-    ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        # This parameter is required.
-        self.dbcluster_id = dbcluster_id
-        # The template file ID.
-        # 
-        # This parameter is required.
-        self.id = id
-        # The name of the template file that you want to rename.
-        # 
-        # This parameter is required.
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        return self
-
-
-class RenameSparkTemplateFileResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        succeeded: bool = None,
-    ):
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   True
-        # *   False
-        self.succeeded = succeeded
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.succeeded is not None:
-            result['Succeeded'] = self.succeeded
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Succeeded') is not None:
-            self.succeeded = m.get('Succeeded')
-        return self
-
-
-class RenameSparkTemplateFileResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: RenameSparkTemplateFileResponseBodyData = None,
-        request_id: str = None,
-    ):
-        # The data returned.
-        self.data = data
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = RenameSparkTemplateFileResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RenameSparkTemplateFileResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RenameSparkTemplateFileResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RenameSparkTemplateFileResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ResetAccountPasswordRequest(TeaModel):
     def __init__(
         self,
@@ -29088,7 +47351,7 @@ class ResetAccountPasswordRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -29203,6 +47466,129 @@ class ResetAccountPasswordResponse(TeaModel):
         return self
 
 
+class RevokeOperatorPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class RevokeOperatorPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RevokeOperatorPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RevokeOperatorPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RevokeOperatorPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetSparkAppLogRootPathRequest(TeaModel):
     def __init__(
         self,
@@ -29210,11 +47596,11 @@ class SetSparkAppLogRootPathRequest(TeaModel):
         oss_log_path: str = None,
         use_default_oss: bool = None,
     ):
-        # The database ID.
+        # The ID of the AnalyticDB for MySQL cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The Object Storage Service (OSS) log path.
+        # The path of Object Storage Service (OSS) logs.
         self.oss_log_path = oss_log_path
         # Specifies whether to use the default OSS log path.
         self.use_default_oss = use_default_oss
@@ -29256,15 +47642,15 @@ class SetSparkAppLogRootPathResponseBodyData(TeaModel):
         modified_uid: str = None,
         recorded_log_path: str = None,
     ):
-        # The recommended default OSS log path.
+        # The default log path.
         self.default_log_path = default_log_path
-        # Indicates whether an OSS log path exists.
+        # Indicates whether a log path exists.
         self.is_log_path_exists = is_log_path_exists
-        # The time when the modification was last modified.
+        # The last modification time.
         self.modified_timestamp = modified_timestamp
         # The modifier ID.
         self.modified_uid = modified_uid
-        # The OSS log path.
+        # The recorded log path.
         self.recorded_log_path = recorded_log_path
 
     def validate(self):
@@ -29377,6 +47763,344 @@ class SetSparkAppLogRootPathResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetSparkAppLogRootPathResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartApsJobRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.aps_job_id = aps_job_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartApsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        code: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.code = code
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartApsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartApsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartApsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartSparkReplSessionRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        dbcluster_id: str = None,
+        resource_group_name: str = None,
+    ):
+        # The configuration parameters that are used to start the Spark session, which are in the JSON format. For more information, see [Spark application configuration parameters](https://help.aliyun.com/document_detail/471203.html).
+        # 
+        # This parameter is required.
+        self.config = config
+        # The cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The name of the job resource group.
+        # 
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class StartSparkReplSessionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: str = None,
+        attempt_id: str = None,
+        error: str = None,
+        session_id: int = None,
+        state: str = None,
+        web_ui_address: str = None,
+    ):
+        # The ID of the Alibaba Cloud account that owns the cluster.
+        self.aliyun_uid = aliyun_uid
+        # The attempt ID of the Spark application.
+        self.attempt_id = attempt_id
+        # The error message.
+        self.error = error
+        # The ID of the session that executes the code.
+        self.session_id = session_id
+        # The status of the session. Valid values:
+        # 
+        # *   IDLE
+        # *   BUSY
+        # *   DEAD
+        self.state = state
+        # The URL of the web UI for the Spark application.
+        self.web_ui_address = web_ui_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.attempt_id is not None:
+            result['AttemptId'] = self.attempt_id
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.web_ui_address is not None:
+            result['WebUiAddress'] = self.web_ui_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('AttemptId') is not None:
+            self.attempt_id = m.get('AttemptId')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('WebUiAddress') is not None:
+            self.web_ui_address = m.get('WebUiAddress')
+        return self
+
+
+class StartSparkReplSessionResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: StartSparkReplSessionResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = StartSparkReplSessionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartSparkReplSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartSparkReplSessionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartSparkReplSessionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29576,6 +48300,197 @@ class StartSparkSQLEngineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartSparkSQLEngineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitResultExportJobRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        engine: str = None,
+        export_type: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        sql: str = None,
+        schema: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The engine that is used to run the result set export job. Set the value to XIHE.
+        self.engine = engine
+        self.export_type = export_type
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The name of the resource group that runs the result set export job.
+        self.resource_group = resource_group
+        # The SQL statement that is used in the result set export job. You can specify only SELECT statements. If you specify other SQL statements, the request fails.
+        # 
+        # This parameter is required.
+        self.sql = sql
+        # The name of the database.
+        # 
+        # This parameter is required.
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.sql is not None:
+            result['SQL'] = self.sql
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        return self
+
+
+class SubmitResultExportJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The ID of the result set export job.
+        self.data = data
+        # The response code. The status code 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, an **OK** message is returned.
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitResultExportJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitResultExportJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitResultExportJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29922,6 +48837,138 @@ class SubmitSparkLogAnalyzeTaskResponse(TeaModel):
         return self
 
 
+class SuspendApsJobRequest(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.aps_job_id = aps_job_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class SuspendApsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        aps_job_id: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.aps_job_id = aps_job_id
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aps_job_id is not None:
+            result['ApsJobId'] = self.aps_job_id
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApsJobId') is not None:
+            self.aps_job_id = m.get('ApsJobId')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SuspendApsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendApsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendApsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnbindAccountRequest(TeaModel):
     def __init__(
         self,
@@ -29934,7 +48981,7 @@ class UnbindAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -30141,6 +49188,471 @@ class UnbindDBResourceGroupWithUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindDBResourceGroupWithUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLakeStorageRequestPermissions(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        read: bool = None,
+        type: str = None,
+        write: bool = None,
+    ):
+        # The account ID.
+        # 
+        # This parameter is required.
+        self.account = account
+        # The read permissions.
+        # 
+        # This parameter is required.
+        self.read = read
+        # The account type.
+        # 
+        # This parameter is required.
+        self.type = type
+        # The write permissions.
+        # 
+        # This parameter is required.
+        self.write = write
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.read is not None:
+            result['Read'] = self.read
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.write is not None:
+            result['Write'] = self.write
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Read') is not None:
+            self.read = m.get('Read')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Write') is not None:
+            self.write = m.get('Write')
+        return self
+
+
+class UpdateLakeStorageRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        description: str = None,
+        lake_storage_id: str = None,
+        permissions: List[UpdateLakeStorageRequestPermissions] = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The unique identifier of the lake storage.
+        self.lake_storage_id = lake_storage_id
+        # The permissions on the lake storage.
+        self.permissions = permissions
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = UpdateLakeStorageRequestPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateLakeStorageShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        description: str = None,
+        lake_storage_id: str = None,
+        permissions_shrink: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The unique identifier of the lake storage.
+        self.lake_storage_id = lake_storage_id
+        # The permissions on the lake storage.
+        self.permissions_shrink = permissions_shrink
+        # The region ID.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.permissions_shrink is not None:
+            result['Permissions'] = self.permissions_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('Permissions') is not None:
+            self.permissions_shrink = m.get('Permissions')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateLakeStorageResponseBodyDataPermissions(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        read: bool = None,
+        type: str = None,
+        write: bool = None,
+    ):
+        # The account ID.
+        self.account = account
+        # The read permissions.
+        self.read = read
+        # The account type.
+        self.type = type
+        # The write permissions.
+        self.write = write
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.read is not None:
+            result['Read'] = self.read
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.write is not None:
+            result['Write'] = self.write
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('Read') is not None:
+            self.read = m.get('Read')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Write') is not None:
+            self.write = m.get('Write')
+        return self
+
+
+class UpdateLakeStorageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator_uid: str = None,
+        dbcluster_id: str = None,
+        description: str = None,
+        file_size: str = None,
+        lake_storage_id: str = None,
+        operator_uid: str = None,
+        owner_uid: str = None,
+        partition_count: str = None,
+        permissions: List[UpdateLakeStorageResponseBodyDataPermissions] = None,
+        region_id: str = None,
+        row_count: int = None,
+        table_count: int = None,
+        update_time: str = None,
+    ):
+        # The time when the lake storage was created.
+        self.create_time = create_time
+        # The creator UID.
+        self.creator_uid = creator_uid
+        # The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+        self.dbcluster_id = dbcluster_id
+        # The description of the lake storage.
+        self.description = description
+        # The total storage size.
+        self.file_size = file_size
+        # The unique identifier of the lake storage.
+        self.lake_storage_id = lake_storage_id
+        # The operator UID.
+        self.operator_uid = operator_uid
+        # The owner UID.
+        self.owner_uid = owner_uid
+        # The number of partitions.
+        self.partition_count = partition_count
+        # The permissions on the lake storage.
+        self.permissions = permissions
+        # The region ID.
+        self.region_id = region_id
+        # The total number of entries returned.
+        self.row_count = row_count
+        # The number of tables.
+        self.table_count = table_count
+        # The time when the lake storage was last updated.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_uid is not None:
+            result['CreatorUid'] = self.creator_uid
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_size is not None:
+            result['FileSize'] = self.file_size
+        if self.lake_storage_id is not None:
+            result['LakeStorageId'] = self.lake_storage_id
+        if self.operator_uid is not None:
+            result['OperatorUid'] = self.operator_uid
+        if self.owner_uid is not None:
+            result['OwnerUid'] = self.owner_uid
+        if self.partition_count is not None:
+            result['PartitionCount'] = self.partition_count
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.table_count is not None:
+            result['TableCount'] = self.table_count
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorUid') is not None:
+            self.creator_uid = m.get('CreatorUid')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSize') is not None:
+            self.file_size = m.get('FileSize')
+        if m.get('LakeStorageId') is not None:
+            self.lake_storage_id = m.get('LakeStorageId')
+        if m.get('OperatorUid') is not None:
+            self.operator_uid = m.get('OperatorUid')
+        if m.get('OwnerUid') is not None:
+            self.owner_uid = m.get('OwnerUid')
+        if m.get('PartitionCount') is not None:
+            self.partition_count = m.get('PartitionCount')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = UpdateLakeStorageResponseBodyDataPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('TableCount') is not None:
+            self.table_count = m.get('TableCount')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class UpdateLakeStorageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateLakeStorageResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code. A value of 200 indicates that the request is successful.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The HTTP status code. A value of 200 indicates that the request was successful.
+        self.http_status_code = http_status_code
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, an OK message is returned.
+        # *   If the request failed, an error message is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateLakeStorageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateLakeStorageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLakeStorageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLakeStorageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

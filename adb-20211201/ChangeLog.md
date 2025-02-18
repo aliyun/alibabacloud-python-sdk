@@ -1,3 +1,93 @@
+2025-02-18 Version: 2.1.0
+- Support API ApplyAdviceById.
+- Support API BatchApplyAdviceByIdList.
+- Support API CancelSparkReplStatement.
+- Support API CancelSparkWarehouseBatchSQL.
+- Support API CreateAPSJob.
+- Support API CreateApsCopyWorkload.
+- Support API CreateApsDatasoure.
+- Support API CreateApsHiveJob.
+- Support API CreateApsSlsADBJob.
+- Support API CreateLakeStorage.
+- Support API DeleteApsDatasoure.
+- Support API DeleteApsJob.
+- Support API DeleteBackups.
+- Support API DeleteLakeStorage.
+- Support API DescribeAPSADBInstances.
+- Support API DescribeAbnormalPatternDetection.
+- Support API DescribeAdviceServiceEnabled.
+- Support API DescribeAppliedAdvices.
+- Support API DescribeApsDatasource.
+- Support API DescribeApsDatasources.
+- Support API DescribeApsHiveWorkload.
+- Support API DescribeApsJobDetail.
+- Support API DescribeApsJobs.
+- Support API DescribeApsMigrationWorkloads.
+- Support API DescribeApsProgress.
+- Support API DescribeAvailableAdvices.
+- Support API DescribeBadSqlDetection.
+- Support API DescribeCompactionServiceSwitch.
+- Support API DescribeControllerDetection.
+- Support API DescribeEssdCacheConfig.
+- Support API DescribeExecutorDetection.
+- Support API DescribeInclinedNodes.
+- Support API DescribeKernelVersion.
+- Support API DescribeLakeCacheSize.
+- Support API DescribeOperatorPermission.
+- Support API DescribeOversizeNonPartitionTableInfos.
+- Support API DescribeSparkAppDiagnosisInfo.
+- Support API DescribeSparkAppType.
+- Support API DescribeSparkSQLDiagnosisAttribute.
+- Support API DescribeSparkSQLDiagnosisList.
+- Support API DescribeTableDetail.
+- Support API DescribeTablePartitionDiagnose.
+- Support API DescribeWorkerDetection.
+- Support API DisableAdviceService.
+- Support API DownloadInstanceCACertificate.
+- Support API EnableAdviceService.
+- Support API ExecuteSparkReplStatement.
+- Support API ExecuteSparkWarehouseBatchSQL.
+- Support API GetApsManagedDatabases.
+- Support API GetCreateTableSQL.
+- Support API GetLakeStorage.
+- Support API GetSparkReplSession.
+- Support API GetSparkReplStatement.
+- Support API GetSparkWarehouseBatchSQL.
+- Support API GrantOperatorPermission.
+- Support API KillProcess.
+- Support API ListApsLifecycleStrategy.
+- Support API ListApsOptimizationStrategy.
+- Support API ListApsOptimizationTasks.
+- Support API ListLakeStorages.
+- Support API ListResultExportJobHistory.
+- Support API ListSparkWarehouseBatchSQL.
+- Support API ListTagResources.
+- Support API ModifyApsDatasoure.
+- Support API ModifyApsJob.
+- Support API ModifyApsSlsADBJob.
+- Support API ModifyApsWorkloadName.
+- Support API ModifyClickhouseEngine.
+- Support API ModifyCompactionServiceSwitch.
+- Support API ModifyDBClusterResourceGroup.
+- Support API ModifyDBClusterVip.
+- Support API ModifyEssdCacheConfig.
+- Support API ModifyLakeCacheSize.
+- Support API ModifyUserEniVswitchOptions.
+- Support API RevokeOperatorPermission.
+- Support API StartApsJob.
+- Support API StartSparkReplSession.
+- Support API SubmitResultExportJob.
+- Support API SuspendApsJob.
+- Support API UpdateLakeStorage.
+- Delete API GetSparkDefinitions.
+- Delete API RenameSparkTemplateFile.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusterPerformance: update response param.
+- Update API DescribeDiagnosisRecords: update response param.
+- Update API DescribePatternPerformance: update response param.
+- Update API ListSparkApps: add param Filters.
+
+
 2024-10-16 Version: 1.3.15
 - Update API CreateDBResourceGroup: add param AutoStopInterval.
 - Update API DescribeDBResourceGroup: update response param.

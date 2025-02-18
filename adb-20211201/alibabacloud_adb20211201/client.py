@@ -123,10 +123,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.AllocateClusterPublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.AllocateClusterPublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.AllocateClusterPublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def allocate_cluster_public_connection_with_options_async(
         self,
@@ -164,10 +170,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.AllocateClusterPublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.AllocateClusterPublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.AllocateClusterPublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def allocate_cluster_public_connection(
         self,
@@ -199,13 +211,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cluster_public_connection_with_options_async(request, runtime)
 
+    def apply_advice_by_id_with_options(
+        self,
+        request: adb_20211201_models.ApplyAdviceByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ApplyAdviceByIdResponse:
+        """
+        @summary Applies an optimization suggestion.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: ApplyAdviceByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAdviceByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_id):
+            query['AdviceId'] = request.advice_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyAdviceById',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ApplyAdviceByIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ApplyAdviceByIdResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def apply_advice_by_id_with_options_async(
+        self,
+        request: adb_20211201_models.ApplyAdviceByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ApplyAdviceByIdResponse:
+        """
+        @summary Applies an optimization suggestion.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: ApplyAdviceByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAdviceByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_id):
+            query['AdviceId'] = request.advice_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyAdviceById',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ApplyAdviceByIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ApplyAdviceByIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def apply_advice_by_id(
+        self,
+        request: adb_20211201_models.ApplyAdviceByIdRequest,
+    ) -> adb_20211201_models.ApplyAdviceByIdResponse:
+        """
+        @summary Applies an optimization suggestion.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: ApplyAdviceByIdRequest
+        @return: ApplyAdviceByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.apply_advice_by_id_with_options(request, runtime)
+
+    async def apply_advice_by_id_async(
+        self,
+        request: adb_20211201_models.ApplyAdviceByIdRequest,
+    ) -> adb_20211201_models.ApplyAdviceByIdResponse:
+        """
+        @summary Applies an optimization suggestion.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: ApplyAdviceByIdRequest
+        @return: ApplyAdviceByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_advice_by_id_with_options_async(request, runtime)
+
     def attach_user_eniwith_options(
         self,
         request: adb_20211201_models.AttachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AttachUserENIResponse:
         """
-        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -231,10 +371,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.AttachUserENIResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.AttachUserENIResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.AttachUserENIResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def attach_user_eniwith_options_async(
         self,
@@ -242,7 +388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AttachUserENIResponse:
         """
-        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -268,17 +414,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.AttachUserENIResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.AttachUserENIResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.AttachUserENIResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def attach_user_eni(
         self,
         request: adb_20211201_models.AttachUserENIRequest,
     ) -> adb_20211201_models.AttachUserENIResponse:
         """
-        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -293,7 +445,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.AttachUserENIRequest,
     ) -> adb_20211201_models.AttachUserENIResponse:
         """
-        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -302,6 +454,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.attach_user_eniwith_options_async(request, runtime)
+
+    def batch_apply_advice_by_id_list_with_options(
+        self,
+        request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
+        """
+        @summary The request ID.
+        
+        @param request: BatchApplyAdviceByIdListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchApplyAdviceByIdListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_id_list):
+            query['AdviceIdList'] = request.advice_id_list
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchApplyAdviceByIdList',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BatchApplyAdviceByIdListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BatchApplyAdviceByIdListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def batch_apply_advice_by_id_list_with_options_async(
+        self,
+        request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
+        """
+        @summary The request ID.
+        
+        @param request: BatchApplyAdviceByIdListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchApplyAdviceByIdListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_id_list):
+            query['AdviceIdList'] = request.advice_id_list
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchApplyAdviceByIdList',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BatchApplyAdviceByIdListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BatchApplyAdviceByIdListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def batch_apply_advice_by_id_list(
+        self,
+        request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
+    ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
+        """
+        @summary The request ID.
+        
+        @param request: BatchApplyAdviceByIdListRequest
+        @return: BatchApplyAdviceByIdListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_apply_advice_by_id_list_with_options(request, runtime)
+
+    async def batch_apply_advice_by_id_list_async(
+        self,
+        request: adb_20211201_models.BatchApplyAdviceByIdListRequest,
+    ) -> adb_20211201_models.BatchApplyAdviceByIdListResponse:
+        """
+        @summary The request ID.
+        
+        @param request: BatchApplyAdviceByIdListRequest
+        @return: BatchApplyAdviceByIdListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_apply_advice_by_id_list_with_options_async(request, runtime)
 
     def bind_account_with_options(
         self,
@@ -339,10 +611,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.BindAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BindAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BindAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_account_with_options_async(
         self,
@@ -380,10 +658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.BindAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BindAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BindAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_account(
         self,
@@ -451,10 +735,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.BindDBResourceGroupWithUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def bind_dbresource_group_with_user_with_options_async(
         self,
@@ -492,10 +782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.BindDBResourceGroupWithUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def bind_dbresource_group_with_user(
         self,
@@ -526,6 +822,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_dbresource_group_with_user_with_options_async(request, runtime)
+
+    def cancel_spark_repl_statement_with_options(
+        self,
+        request: adb_20211201_models.CancelSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CancelSparkReplStatementResponse:
+        """
+        @summary Terminates part of the code in a Spark job.
+        
+        @param request: CancelSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkReplStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkReplStatementResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def cancel_spark_repl_statement_with_options_async(
+        self,
+        request: adb_20211201_models.CancelSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CancelSparkReplStatementResponse:
+        """
+        @summary Terminates part of the code in a Spark job.
+        
+        @param request: CancelSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkReplStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkReplStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def cancel_spark_repl_statement(
+        self,
+        request: adb_20211201_models.CancelSparkReplStatementRequest,
+    ) -> adb_20211201_models.CancelSparkReplStatementResponse:
+        """
+        @summary Terminates part of the code in a Spark job.
+        
+        @param request: CancelSparkReplStatementRequest
+        @return: CancelSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_spark_repl_statement_with_options(request, runtime)
+
+    async def cancel_spark_repl_statement_async(
+        self,
+        request: adb_20211201_models.CancelSparkReplStatementRequest,
+    ) -> adb_20211201_models.CancelSparkReplStatementResponse:
+        """
+        @summary Terminates part of the code in a Spark job.
+        
+        @param request: CancelSparkReplStatementRequest
+        @return: CancelSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_spark_repl_statement_with_options_async(request, runtime)
+
+    def cancel_spark_warehouse_batch_sqlwith_options(
+        self,
+        request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
+        """
+        @summary 取消一段Spark Batch SQL的状态
+        
+        @param request: CancelSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.query_id):
+            body['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkWarehouseBatchSQLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkWarehouseBatchSQLResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def cancel_spark_warehouse_batch_sqlwith_options_async(
+        self,
+        request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
+        """
+        @summary 取消一段Spark Batch SQL的状态
+        
+        @param request: CancelSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.query_id):
+            body['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkWarehouseBatchSQLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CancelSparkWarehouseBatchSQLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def cancel_spark_warehouse_batch_sql(
+        self,
+        request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
+        """
+        @summary 取消一段Spark Batch SQL的状态
+        
+        @param request: CancelSparkWarehouseBatchSQLRequest
+        @return: CancelSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_spark_warehouse_batch_sqlwith_options(request, runtime)
+
+    async def cancel_spark_warehouse_batch_sql_async(
+        self,
+        request: adb_20211201_models.CancelSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.CancelSparkWarehouseBatchSQLResponse:
+        """
+        @summary 取消一段Spark Batch SQL的状态
+        
+        @param request: CancelSparkWarehouseBatchSQLRequest
+        @return: CancelSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_spark_warehouse_batch_sqlwith_options_async(request, runtime)
 
     def check_bind_ram_user_with_options(
         self,
@@ -561,10 +1089,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CheckBindRamUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CheckBindRamUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CheckBindRamUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_bind_ram_user_with_options_async(
         self,
@@ -600,10 +1134,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CheckBindRamUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CheckBindRamUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CheckBindRamUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_bind_ram_user(
         self,
@@ -665,10 +1205,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CheckSampleDataSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CheckSampleDataSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CheckSampleDataSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def check_sample_data_set_with_options_async(
         self,
@@ -700,10 +1246,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CheckSampleDataSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CheckSampleDataSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CheckSampleDataSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def check_sample_data_set(
         self,
@@ -730,6 +1282,158 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_sample_data_set_with_options_async(request, runtime)
+
+    def create_apsjob_with_options(
+        self,
+        request: adb_20211201_models.CreateAPSJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateAPSJobResponse:
+        """
+        @summary 创建一站式链路
+        
+        @param request: CreateAPSJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAPSJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_name):
+            body['ApsJobName'] = request.aps_job_name
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            body['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            body['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            body['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.partition_list):
+            body['PartitionList'] = request.partition_list
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            body['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            body['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            body['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            body['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.target_table_mode):
+            body['TargetTableMode'] = request.target_table_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAPSJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAPSJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAPSJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_apsjob_with_options_async(
+        self,
+        request: adb_20211201_models.CreateAPSJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateAPSJobResponse:
+        """
+        @summary 创建一站式链路
+        
+        @param request: CreateAPSJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAPSJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_name):
+            body['ApsJobName'] = request.aps_job_name
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            body['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            body['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            body['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.partition_list):
+            body['PartitionList'] = request.partition_list
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            body['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            body['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            body['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            body['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.target_table_mode):
+            body['TargetTableMode'] = request.target_table_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAPSJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAPSJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAPSJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_apsjob(
+        self,
+        request: adb_20211201_models.CreateAPSJobRequest,
+    ) -> adb_20211201_models.CreateAPSJobResponse:
+        """
+        @summary 创建一站式链路
+        
+        @param request: CreateAPSJobRequest
+        @return: CreateAPSJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_apsjob_with_options(request, runtime)
+
+    async def create_apsjob_async(
+        self,
+        request: adb_20211201_models.CreateAPSJobRequest,
+    ) -> adb_20211201_models.CreateAPSJobResponse:
+        """
+        @summary 创建一站式链路
+        
+        @param request: CreateAPSJobRequest
+        @return: CreateAPSJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_apsjob_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
@@ -773,10 +1477,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_account_with_options_async(
         self,
@@ -820,10 +1530,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_account(
         self,
@@ -855,15 +1571,739 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
+    def create_aps_copy_workload_with_options(
+        self,
+        request: adb_20211201_models.CreateApsCopyWorkloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
+        """
+        @summary 创建工作负载复制链路
+        
+        @param request: CreateApsCopyWorkloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsCopyWorkloadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_type):
+            body['WorkloadType'] = request.workload_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsCopyWorkload',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsCopyWorkloadResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsCopyWorkloadResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_aps_copy_workload_with_options_async(
+        self,
+        request: adb_20211201_models.CreateApsCopyWorkloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
+        """
+        @summary 创建工作负载复制链路
+        
+        @param request: CreateApsCopyWorkloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsCopyWorkloadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_type):
+            body['WorkloadType'] = request.workload_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsCopyWorkload',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsCopyWorkloadResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsCopyWorkloadResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_aps_copy_workload(
+        self,
+        request: adb_20211201_models.CreateApsCopyWorkloadRequest,
+    ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
+        """
+        @summary 创建工作负载复制链路
+        
+        @param request: CreateApsCopyWorkloadRequest
+        @return: CreateApsCopyWorkloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_copy_workload_with_options(request, runtime)
+
+    async def create_aps_copy_workload_async(
+        self,
+        request: adb_20211201_models.CreateApsCopyWorkloadRequest,
+    ) -> adb_20211201_models.CreateApsCopyWorkloadResponse:
+        """
+        @summary 创建工作负载复制链路
+        
+        @param request: CreateApsCopyWorkloadRequest
+        @return: CreateApsCopyWorkloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_copy_workload_with_options_async(request, runtime)
+
+    def create_aps_datasoure_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreateApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsDatasoureResponse:
+        """
+        @summary 创建APS数据源。
+        
+        @param tmp_req: CreateApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsDatasoureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsDatasoureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.databricks_info):
+            request.databricks_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.databricks_info, 'DatabricksInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.hive_info):
+            request.hive_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hive_info, 'HiveInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.kafka_info):
+            request.kafka_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_info, 'KafkaInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbmysql_info):
+            request.polar_dbmysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbmysql_info, 'PolarDBMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbxinfo):
+            request.polar_dbxinfo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbxinfo, 'PolarDBXInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rds_mysql_info):
+            request.rds_mysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rds_mysql_info, 'RdsMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.databricks_info_shrink):
+            body['DatabricksInfo'] = request.databricks_info_shrink
+        if not UtilClient.is_unset(request.datasource_description):
+            body['DatasourceDescription'] = request.datasource_description
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.datasource_type):
+            body['DatasourceType'] = request.datasource_type
+        if not UtilClient.is_unset(request.hive_info_shrink):
+            body['HiveInfo'] = request.hive_info_shrink
+        if not UtilClient.is_unset(request.kafka_info_shrink):
+            body['KafkaInfo'] = request.kafka_info_shrink
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.polar_dbmysql_info_shrink):
+            body['PolarDBMysqlInfo'] = request.polar_dbmysql_info_shrink
+        if not UtilClient.is_unset(request.polar_dbxinfo_shrink):
+            body['PolarDBXInfo'] = request.polar_dbxinfo_shrink
+        if not UtilClient.is_unset(request.rds_mysql_info_shrink):
+            body['RdsMysqlInfo'] = request.rds_mysql_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsDatasoureResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsDatasoureResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_aps_datasoure_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreateApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsDatasoureResponse:
+        """
+        @summary 创建APS数据源。
+        
+        @param tmp_req: CreateApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsDatasoureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsDatasoureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.databricks_info):
+            request.databricks_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.databricks_info, 'DatabricksInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.hive_info):
+            request.hive_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hive_info, 'HiveInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.kafka_info):
+            request.kafka_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_info, 'KafkaInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbmysql_info):
+            request.polar_dbmysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbmysql_info, 'PolarDBMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbxinfo):
+            request.polar_dbxinfo_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbxinfo, 'PolarDBXInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rds_mysql_info):
+            request.rds_mysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rds_mysql_info, 'RdsMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.databricks_info_shrink):
+            body['DatabricksInfo'] = request.databricks_info_shrink
+        if not UtilClient.is_unset(request.datasource_description):
+            body['DatasourceDescription'] = request.datasource_description
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.datasource_type):
+            body['DatasourceType'] = request.datasource_type
+        if not UtilClient.is_unset(request.hive_info_shrink):
+            body['HiveInfo'] = request.hive_info_shrink
+        if not UtilClient.is_unset(request.kafka_info_shrink):
+            body['KafkaInfo'] = request.kafka_info_shrink
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.polar_dbmysql_info_shrink):
+            body['PolarDBMysqlInfo'] = request.polar_dbmysql_info_shrink
+        if not UtilClient.is_unset(request.polar_dbxinfo_shrink):
+            body['PolarDBXInfo'] = request.polar_dbxinfo_shrink
+        if not UtilClient.is_unset(request.rds_mysql_info_shrink):
+            body['RdsMysqlInfo'] = request.rds_mysql_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsDatasoureResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsDatasoureResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_aps_datasoure(
+        self,
+        request: adb_20211201_models.CreateApsDatasoureRequest,
+    ) -> adb_20211201_models.CreateApsDatasoureResponse:
+        """
+        @summary 创建APS数据源。
+        
+        @param request: CreateApsDatasoureRequest
+        @return: CreateApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_datasoure_with_options(request, runtime)
+
+    async def create_aps_datasoure_async(
+        self,
+        request: adb_20211201_models.CreateApsDatasoureRequest,
+    ) -> adb_20211201_models.CreateApsDatasoureResponse:
+        """
+        @summary 创建APS数据源。
+        
+        @param request: CreateApsDatasoureRequest
+        @return: CreateApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_datasoure_with_options_async(request, runtime)
+
+    def create_aps_hive_job_with_options(
+        self,
+        request: adb_20211201_models.CreateApsHiveJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsHiveJobResponse:
+        """
+        @summary 创建Hive数据迁移链路。
+        
+        @param request: CreateApsHiveJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsHiveJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.conflict_strategy):
+            body['ConflictStrategy'] = request.conflict_strategy
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.parallelism):
+            body['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.sync_allow_expression):
+            body['SyncAllowExpression'] = request.sync_allow_expression
+        if not UtilClient.is_unset(request.sync_deny_expression):
+            body['SyncDenyExpression'] = request.sync_deny_expression
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsHiveJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsHiveJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsHiveJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_aps_hive_job_with_options_async(
+        self,
+        request: adb_20211201_models.CreateApsHiveJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsHiveJobResponse:
+        """
+        @summary 创建Hive数据迁移链路。
+        
+        @param request: CreateApsHiveJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsHiveJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.conflict_strategy):
+            body['ConflictStrategy'] = request.conflict_strategy
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.parallelism):
+            body['Parallelism'] = request.parallelism
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.sync_allow_expression):
+            body['SyncAllowExpression'] = request.sync_allow_expression
+        if not UtilClient.is_unset(request.sync_deny_expression):
+            body['SyncDenyExpression'] = request.sync_deny_expression
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsHiveJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsHiveJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsHiveJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_aps_hive_job(
+        self,
+        request: adb_20211201_models.CreateApsHiveJobRequest,
+    ) -> adb_20211201_models.CreateApsHiveJobResponse:
+        """
+        @summary 创建Hive数据迁移链路。
+        
+        @param request: CreateApsHiveJobRequest
+        @return: CreateApsHiveJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_hive_job_with_options(request, runtime)
+
+    async def create_aps_hive_job_async(
+        self,
+        request: adb_20211201_models.CreateApsHiveJobRequest,
+    ) -> adb_20211201_models.CreateApsHiveJobResponse:
+        """
+        @summary 创建Hive数据迁移链路。
+        
+        @param request: CreateApsHiveJobRequest
+        @return: CreateApsHiveJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_hive_job_with_options_async(request, runtime)
+
+    def create_aps_sls_adbjob_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreateApsSlsADBJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
+        """
+        @summary 创建一个SLS到ADB数仓的APS链路
+        
+        @param tmp_req: CreateApsSlsADBJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsSlsADBJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsSlsADBJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.partition_specs):
+            request.partition_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition_specs, 'PartitionSpecs', 'json')
+        if not UtilClient.is_unset(tmp_req.unix_timestamp_convert):
+            request.unix_timestamp_convert_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.unix_timestamp_convert, 'UnixTimestampConvert', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.across_role):
+            body['AcrossRole'] = request.across_role
+        if not UtilClient.is_unset(request.across_uid):
+            body['AcrossUid'] = request.across_uid
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dirty_data_handle_mode):
+            body['DirtyDataHandleMode'] = request.dirty_data_handle_mode
+        if not UtilClient.is_unset(request.dirty_data_process_pattern):
+            body['DirtyDataProcessPattern'] = request.dirty_data_process_pattern
+        if not UtilClient.is_unset(request.exactly_once):
+            body['ExactlyOnce'] = request.exactly_once
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.hudi_advanced_config):
+            body['HudiAdvancedConfig'] = request.hudi_advanced_config
+        if not UtilClient.is_unset(request.incremental_compute_unit):
+            body['IncrementalComputeUnit'] = request.incremental_compute_unit
+        if not UtilClient.is_unset(request.lakehouse_id):
+            body['LakehouseId'] = request.lakehouse_id
+        if not UtilClient.is_unset(request.max_offsets_per_trigger):
+            body['MaxOffsetsPerTrigger'] = request.max_offsets_per_trigger
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.partition_specs_shrink):
+            body['PartitionSpecs'] = request.partition_specs_shrink
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.primary_key_definition):
+            body['PrimaryKeyDefinition'] = request.primary_key_definition
+        if not UtilClient.is_unset(request.project):
+            body['Project'] = request.project
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.source_region_id):
+            body['SourceRegionId'] = request.source_region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.store):
+            body['Store'] = request.store
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_generate_rule):
+            body['TargetGenerateRule'] = request.target_generate_rule
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.unix_timestamp_convert_shrink):
+            body['UnixTimestampConvert'] = request.unix_timestamp_convert_shrink
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsSlsADBJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsSlsADBJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsSlsADBJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_aps_sls_adbjob_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreateApsSlsADBJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
+        """
+        @summary 创建一个SLS到ADB数仓的APS链路
+        
+        @param tmp_req: CreateApsSlsADBJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsSlsADBJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsSlsADBJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.partition_specs):
+            request.partition_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition_specs, 'PartitionSpecs', 'json')
+        if not UtilClient.is_unset(tmp_req.unix_timestamp_convert):
+            request.unix_timestamp_convert_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.unix_timestamp_convert, 'UnixTimestampConvert', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.across_role):
+            body['AcrossRole'] = request.across_role
+        if not UtilClient.is_unset(request.across_uid):
+            body['AcrossUid'] = request.across_uid
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dirty_data_handle_mode):
+            body['DirtyDataHandleMode'] = request.dirty_data_handle_mode
+        if not UtilClient.is_unset(request.dirty_data_process_pattern):
+            body['DirtyDataProcessPattern'] = request.dirty_data_process_pattern
+        if not UtilClient.is_unset(request.exactly_once):
+            body['ExactlyOnce'] = request.exactly_once
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.hudi_advanced_config):
+            body['HudiAdvancedConfig'] = request.hudi_advanced_config
+        if not UtilClient.is_unset(request.incremental_compute_unit):
+            body['IncrementalComputeUnit'] = request.incremental_compute_unit
+        if not UtilClient.is_unset(request.lakehouse_id):
+            body['LakehouseId'] = request.lakehouse_id
+        if not UtilClient.is_unset(request.max_offsets_per_trigger):
+            body['MaxOffsetsPerTrigger'] = request.max_offsets_per_trigger
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.partition_specs_shrink):
+            body['PartitionSpecs'] = request.partition_specs_shrink
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.primary_key_definition):
+            body['PrimaryKeyDefinition'] = request.primary_key_definition
+        if not UtilClient.is_unset(request.project):
+            body['Project'] = request.project
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.source_region_id):
+            body['SourceRegionId'] = request.source_region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.store):
+            body['Store'] = request.store
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_generate_rule):
+            body['TargetGenerateRule'] = request.target_generate_rule
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.unix_timestamp_convert_shrink):
+            body['UnixTimestampConvert'] = request.unix_timestamp_convert_shrink
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsSlsADBJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsSlsADBJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateApsSlsADBJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_aps_sls_adbjob(
+        self,
+        request: adb_20211201_models.CreateApsSlsADBJobRequest,
+    ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
+        """
+        @summary 创建一个SLS到ADB数仓的APS链路
+        
+        @param request: CreateApsSlsADBJobRequest
+        @return: CreateApsSlsADBJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_sls_adbjob_with_options(request, runtime)
+
+    async def create_aps_sls_adbjob_async(
+        self,
+        request: adb_20211201_models.CreateApsSlsADBJobRequest,
+    ) -> adb_20211201_models.CreateApsSlsADBJobResponse:
+        """
+        @summary 创建一个SLS到ADB数仓的APS链路
+        
+        @param request: CreateApsSlsADBJobRequest
+        @return: CreateApsSlsADBJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_sls_adbjob_with_options_async(request, runtime)
+
     def create_dbcluster_with_options(
         self,
         request: adb_20211201_models.CreateDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary The request ID.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description CreateDBCluster
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -935,10 +2375,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbcluster_with_options_async(
         self,
@@ -946,9 +2392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary The request ID.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description CreateDBCluster
         
         @param request: CreateDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1020,19 +2466,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbcluster(
         self,
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary The request ID.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description CreateDBCluster
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1045,9 +2497,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
         """
-        @summary Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        @summary The request ID.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        @description CreateDBCluster
         
         @param request: CreateDBClusterRequest
         @return: CreateDBClusterResponse
@@ -1129,10 +2581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_dbresource_group_with_options_async(
         self,
@@ -1208,10 +2666,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_dbresource_group(
         self,
@@ -1293,10 +2757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateElasticPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateElasticPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateElasticPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_elastic_plan_with_options_async(
         self,
@@ -1348,10 +2818,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateElasticPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateElasticPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateElasticPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_elastic_plan(
         self,
@@ -1382,6 +2858,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_elastic_plan_with_options_async(request, runtime)
+
+    def create_lake_storage_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreateLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateLakeStorageResponse:
+        """
+        @summary Creates a lake storage.
+        
+        @param tmp_req: CreateLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLakeStorageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateLakeStorageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateLakeStorageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateLakeStorageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def create_lake_storage_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreateLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateLakeStorageResponse:
+        """
+        @summary Creates a lake storage.
+        
+        @param tmp_req: CreateLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLakeStorageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateLakeStorageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateLakeStorageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateLakeStorageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def create_lake_storage(
+        self,
+        request: adb_20211201_models.CreateLakeStorageRequest,
+    ) -> adb_20211201_models.CreateLakeStorageResponse:
+        """
+        @summary Creates a lake storage.
+        
+        @param request: CreateLakeStorageRequest
+        @return: CreateLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_lake_storage_with_options(request, runtime)
+
+    async def create_lake_storage_async(
+        self,
+        request: adb_20211201_models.CreateLakeStorageRequest,
+    ) -> adb_20211201_models.CreateLakeStorageResponse:
+        """
+        @summary Creates a lake storage.
+        
+        @param request: CreateLakeStorageRequest
+        @return: CreateLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_lake_storage_with_options_async(request, runtime)
 
     def create_oss_sub_directory_with_options(
         self,
@@ -1419,10 +3031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateOssSubDirectoryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateOssSubDirectoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateOssSubDirectoryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_oss_sub_directory_with_options_async(
         self,
@@ -1460,10 +3078,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateOssSubDirectoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateOssSubDirectoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateOssSubDirectoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_oss_sub_directory(
         self,
@@ -1551,10 +3175,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreatePerformanceViewResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreatePerformanceViewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreatePerformanceViewResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_performance_view_with_options_async(
         self,
@@ -1608,10 +3238,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreatePerformanceViewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreatePerformanceViewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreatePerformanceViewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_performance_view(
         self,
@@ -1681,10 +3317,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateSparkTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateSparkTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateSparkTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_spark_template_with_options_async(
         self,
@@ -1728,10 +3370,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.CreateSparkTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.CreateSparkTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.CreateSparkTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_spark_template(
         self,
@@ -1803,10 +3451,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_account_with_options_async(
         self,
@@ -1844,10 +3498,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_account(
         self,
@@ -1879,6 +3539,386 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
+    def delete_aps_datasoure_with_options(
+        self,
+        request: adb_20211201_models.DeleteApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsDatasoureResponse:
+        """
+        @summary Deletes an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsDatasoureResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsDatasoureResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsDatasoureResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_aps_datasoure_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsDatasoureResponse:
+        """
+        @summary Deletes an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsDatasoureResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsDatasoureResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsDatasoureResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_aps_datasoure(
+        self,
+        request: adb_20211201_models.DeleteApsDatasoureRequest,
+    ) -> adb_20211201_models.DeleteApsDatasoureResponse:
+        """
+        @summary Deletes an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteApsDatasoureRequest
+        @return: DeleteApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aps_datasoure_with_options(request, runtime)
+
+    async def delete_aps_datasoure_async(
+        self,
+        request: adb_20211201_models.DeleteApsDatasoureRequest,
+    ) -> adb_20211201_models.DeleteApsDatasoureResponse:
+        """
+        @summary Deletes an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteApsDatasoureRequest
+        @return: DeleteApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aps_datasoure_with_options_async(request, runtime)
+
+    def delete_aps_job_with_options(
+        self,
+        request: adb_20211201_models.DeleteApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsJobResponse:
+        """
+        @summary 删除aps任务
+        
+        @param request: DeleteApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_aps_job_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteApsJobResponse:
+        """
+        @summary 删除aps任务
+        
+        @param request: DeleteApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteApsJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_aps_job(
+        self,
+        request: adb_20211201_models.DeleteApsJobRequest,
+    ) -> adb_20211201_models.DeleteApsJobResponse:
+        """
+        @summary 删除aps任务
+        
+        @param request: DeleteApsJobRequest
+        @return: DeleteApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aps_job_with_options(request, runtime)
+
+    async def delete_aps_job_async(
+        self,
+        request: adb_20211201_models.DeleteApsJobRequest,
+    ) -> adb_20211201_models.DeleteApsJobResponse:
+        """
+        @summary 删除aps任务
+        
+        @param request: DeleteApsJobRequest
+        @return: DeleteApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aps_job_with_options_async(request, runtime)
+
+    def delete_backups_with_options(
+        self,
+        request: adb_20211201_models.DeleteBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteBackupsResponse:
+        """
+        @summary Manually deletes backup sets.
+        
+        @description    You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+        
+        @param request: DeleteBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_ids):
+            query['BackupIds'] = request.backup_ids
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackups',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_backups_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteBackupsResponse:
+        """
+        @summary Manually deletes backup sets.
+        
+        @description    You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+        
+        @param request: DeleteBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_ids):
+            query['BackupIds'] = request.backup_ids
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackups',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_backups(
+        self,
+        request: adb_20211201_models.DeleteBackupsRequest,
+    ) -> adb_20211201_models.DeleteBackupsResponse:
+        """
+        @summary Manually deletes backup sets.
+        
+        @description    You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+        
+        @param request: DeleteBackupsRequest
+        @return: DeleteBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backups_with_options(request, runtime)
+
+    async def delete_backups_async(
+        self,
+        request: adb_20211201_models.DeleteBackupsRequest,
+    ) -> adb_20211201_models.DeleteBackupsResponse:
+        """
+        @summary Manually deletes backup sets.
+        
+        @description    You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+        To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+        
+        @param request: DeleteBackupsRequest
+        @return: DeleteBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backups_with_options_async(request, runtime)
+
     def delete_dbcluster_with_options(
         self,
         request: adb_20211201_models.DeleteDBClusterRequest,
@@ -1888,7 +3928,8 @@ class Client(OpenApiClient):
         @summary Deletes an AnalyticDB for MySQL cluster.
         
         @description ### [](#)
-        You can call this operation to delete only subscription clusters.
+        You can delete only pay-as-you-go clusters.
+        The cluster that you want to delete must be in the Running state.
         For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DeleteDBClusterRequest
@@ -1913,10 +3954,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbcluster_with_options_async(
         self,
@@ -1927,7 +3974,8 @@ class Client(OpenApiClient):
         @summary Deletes an AnalyticDB for MySQL cluster.
         
         @description ### [](#)
-        You can call this operation to delete only subscription clusters.
+        You can delete only pay-as-you-go clusters.
+        The cluster that you want to delete must be in the Running state.
         For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DeleteDBClusterRequest
@@ -1952,10 +4000,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbcluster(
         self,
@@ -1965,7 +4019,8 @@ class Client(OpenApiClient):
         @summary Deletes an AnalyticDB for MySQL cluster.
         
         @description ### [](#)
-        You can call this operation to delete only subscription clusters.
+        You can delete only pay-as-you-go clusters.
+        The cluster that you want to delete must be in the Running state.
         For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DeleteDBClusterRequest
@@ -1982,7 +4037,8 @@ class Client(OpenApiClient):
         @summary Deletes an AnalyticDB for MySQL cluster.
         
         @description ### [](#)
-        You can call this operation to delete only subscription clusters.
+        You can delete only pay-as-you-go clusters.
+        The cluster that you want to delete must be in the Running state.
         For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DeleteDBClusterRequest
@@ -2025,10 +4081,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_dbresource_group_with_options_async(
         self,
@@ -2064,10 +4126,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_dbresource_group(
         self,
@@ -2133,10 +4201,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteElasticPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteElasticPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteElasticPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_elastic_plan_with_options_async(
         self,
@@ -2172,10 +4246,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteElasticPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteElasticPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteElasticPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_elastic_plan(
         self,
@@ -2206,6 +4286,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_elastic_plan_with_options_async(request, runtime)
+
+    def delete_lake_storage_with_options(
+        self,
+        request: adb_20211201_models.DeleteLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteLakeStorageResponse:
+        """
+        @summary Deletes a lake storage.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLakeStorageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        body = {}
+        if not UtilClient.is_unset(request.lake_storage_id):
+            body['LakeStorageId'] = request.lake_storage_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteLakeStorageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteLakeStorageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def delete_lake_storage_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteLakeStorageResponse:
+        """
+        @summary Deletes a lake storage.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLakeStorageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        body = {}
+        if not UtilClient.is_unset(request.lake_storage_id):
+            body['LakeStorageId'] = request.lake_storage_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteLakeStorageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteLakeStorageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def delete_lake_storage(
+        self,
+        request: adb_20211201_models.DeleteLakeStorageRequest,
+    ) -> adb_20211201_models.DeleteLakeStorageResponse:
+        """
+        @summary Deletes a lake storage.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteLakeStorageRequest
+        @return: DeleteLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_lake_storage_with_options(request, runtime)
+
+    async def delete_lake_storage_async(
+        self,
+        request: adb_20211201_models.DeleteLakeStorageRequest,
+    ) -> adb_20211201_models.DeleteLakeStorageResponse:
+        """
+        @summary Deletes a lake storage.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DeleteLakeStorageRequest
+        @return: DeleteLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_lake_storage_with_options_async(request, runtime)
 
     def delete_performance_view_with_options(
         self,
@@ -2249,10 +4457,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeletePerformanceViewResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeletePerformanceViewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeletePerformanceViewResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_performance_view_with_options_async(
         self,
@@ -2296,10 +4510,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeletePerformanceViewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeletePerformanceViewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeletePerformanceViewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_performance_view(
         self,
@@ -2366,10 +4586,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteProcessInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteProcessInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteProcessInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_process_instance_with_options_async(
         self,
@@ -2410,10 +4636,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteProcessInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteProcessInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteProcessInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_process_instance(
         self,
@@ -2483,10 +4715,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteSparkTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_spark_template_with_options_async(
         self,
@@ -2524,10 +4762,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteSparkTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_spark_template(
         self,
@@ -2599,10 +4843,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteSparkTemplateFileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateFileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateFileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_spark_template_file_with_options_async(
         self,
@@ -2640,10 +4890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DeleteSparkTemplateFileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateFileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DeleteSparkTemplateFileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_spark_template_file(
         self,
@@ -2678,6 +4934,250 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_spark_template_file_with_options_async(request, runtime)
+
+    def describe_apsadbinstances_with_options(
+        self,
+        request: adb_20211201_models.DescribeAPSADBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
+        """
+        @summary 获取APS联邦分析ADB实例列表
+        
+        @param request: DescribeAPSADBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAPSADBInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAPSADBInstances',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAPSADBInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAPSADBInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_apsadbinstances_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAPSADBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
+        """
+        @summary 获取APS联邦分析ADB实例列表
+        
+        @param request: DescribeAPSADBInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAPSADBInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAPSADBInstances',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAPSADBInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAPSADBInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_apsadbinstances(
+        self,
+        request: adb_20211201_models.DescribeAPSADBInstancesRequest,
+    ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
+        """
+        @summary 获取APS联邦分析ADB实例列表
+        
+        @param request: DescribeAPSADBInstancesRequest
+        @return: DescribeAPSADBInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apsadbinstances_with_options(request, runtime)
+
+    async def describe_apsadbinstances_async(
+        self,
+        request: adb_20211201_models.DescribeAPSADBInstancesRequest,
+    ) -> adb_20211201_models.DescribeAPSADBInstancesResponse:
+        """
+        @summary 获取APS联邦分析ADB实例列表
+        
+        @param request: DescribeAPSADBInstancesRequest
+        @return: DescribeAPSADBInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apsadbinstances_with_options_async(request, runtime)
+
+    def describe_abnormal_pattern_detection_with_options(
+        self,
+        request: adb_20211201_models.DescribeAbnormalPatternDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalPatternDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAbnormalPatternDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAbnormalPatternDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_abnormal_pattern_detection_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAbnormalPatternDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAbnormalPatternDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAbnormalPatternDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAbnormalPatternDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_abnormal_pattern_detection(
+        self,
+        request: adb_20211201_models.DescribeAbnormalPatternDetectionRequest,
+    ) -> adb_20211201_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_abnormal_pattern_detection_with_options(request, runtime)
+
+    async def describe_abnormal_pattern_detection_async(
+        self,
+        request: adb_20211201_models.DescribeAbnormalPatternDetectionRequest,
+    ) -> adb_20211201_models.DescribeAbnormalPatternDetectionResponse:
+        """
+        @summary Queries abnormal SQL patterns within a time range.
+        
+        @param request: DescribeAbnormalPatternDetectionRequest
+        @return: DescribeAbnormalPatternDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_abnormal_pattern_detection_with_options_async(request, runtime)
 
     def describe_account_all_privileges_with_options(
         self,
@@ -2717,10 +5217,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_account_all_privileges_with_options_async(
         self,
@@ -2760,10 +5266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_account_all_privileges(
         self,
@@ -2843,10 +5355,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_account_privilege_objects_with_options_async(
         self,
@@ -2896,10 +5414,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_account_privilege_objects(
         self,
@@ -2977,10 +5501,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountPrivilegesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_account_privileges_with_options_async(
         self,
@@ -3028,10 +5558,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountPrivilegesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountPrivilegesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_account_privileges(
         self,
@@ -3097,10 +5633,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_accounts_with_options_async(
         self,
@@ -3140,10 +5682,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAccountsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAccountsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_accounts(
         self,
@@ -3214,10 +5762,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_adb_my_sql_columns_with_options_async(
         self,
@@ -3258,10 +5812,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlColumnsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_adb_my_sql_columns(
         self,
@@ -3330,10 +5890,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_adb_my_sql_schemas_with_options_async(
         self,
@@ -3370,10 +5936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlSchemasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_adb_my_sql_schemas(
         self,
@@ -3444,10 +6016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlTablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlTablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_adb_my_sql_tables_with_options_async(
         self,
@@ -3486,10 +6064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAdbMySqlTablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdbMySqlTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_adb_my_sql_tables(
         self,
@@ -3522,6 +6106,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_adb_my_sql_tables_with_options_async(request, runtime)
+
+    def describe_advice_service_enabled_with_options(
+        self,
+        request: adb_20211201_models.DescribeAdviceServiceEnabledRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdviceServiceEnabledResponse:
+        """
+        @summary Queries whether the suggestion feature is enabled.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeAdviceServiceEnabledRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdviceServiceEnabledResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdviceServiceEnabled',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdviceServiceEnabledResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdviceServiceEnabledResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_advice_service_enabled_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAdviceServiceEnabledRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAdviceServiceEnabledResponse:
+        """
+        @summary Queries whether the suggestion feature is enabled.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeAdviceServiceEnabledRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAdviceServiceEnabledResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAdviceServiceEnabled',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdviceServiceEnabledResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAdviceServiceEnabledResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_advice_service_enabled(
+        self,
+        request: adb_20211201_models.DescribeAdviceServiceEnabledRequest,
+    ) -> adb_20211201_models.DescribeAdviceServiceEnabledResponse:
+        """
+        @summary Queries whether the suggestion feature is enabled.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeAdviceServiceEnabledRequest
+        @return: DescribeAdviceServiceEnabledResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_advice_service_enabled_with_options(request, runtime)
+
+    async def describe_advice_service_enabled_async(
+        self,
+        request: adb_20211201_models.DescribeAdviceServiceEnabledRequest,
+    ) -> adb_20211201_models.DescribeAdviceServiceEnabledResponse:
+        """
+        @summary Queries whether the suggestion feature is enabled.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeAdviceServiceEnabledRequest
+        @return: DescribeAdviceServiceEnabledResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_advice_service_enabled_with_options_async(request, runtime)
 
     def describe_all_data_source_with_options(
         self,
@@ -3562,10 +6266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAllDataSourceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAllDataSourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAllDataSourceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_all_data_source_with_options_async(
         self,
@@ -3606,10 +6316,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAllDataSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAllDataSourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAllDataSourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_all_data_source(
         self,
@@ -3642,6 +6358,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_all_data_source_with_options_async(request, runtime)
+
+    def describe_applied_advices_with_options(
+        self,
+        request: adb_20211201_models.DescribeAppliedAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAppliedAdvicesResponse:
+        """
+        @summary Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAppliedAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppliedAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_type):
+            query['AdviceType'] = request.advice_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_table_name):
+            query['SchemaTableName'] = request.schema_table_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppliedAdvices',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAppliedAdvicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAppliedAdvicesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_applied_advices_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAppliedAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAppliedAdvicesResponse:
+        """
+        @summary Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAppliedAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppliedAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_type):
+            query['AdviceType'] = request.advice_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_table_name):
+            query['SchemaTableName'] = request.schema_table_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppliedAdvices',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAppliedAdvicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAppliedAdvicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_applied_advices(
+        self,
+        request: adb_20211201_models.DescribeAppliedAdvicesRequest,
+    ) -> adb_20211201_models.DescribeAppliedAdvicesResponse:
+        """
+        @summary Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAppliedAdvicesRequest
+        @return: DescribeAppliedAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_applied_advices_with_options(request, runtime)
+
+    async def describe_applied_advices_async(
+        self,
+        request: adb_20211201_models.DescribeAppliedAdvicesRequest,
+    ) -> adb_20211201_models.DescribeAppliedAdvicesResponse:
+        """
+        @summary Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAppliedAdvicesRequest
+        @return: DescribeAppliedAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_applied_advices_with_options_async(request, runtime)
 
     def describe_aps_action_logs_with_options(
         self,
@@ -3703,10 +6567,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeApsActionLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsActionLogsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsActionLogsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_aps_action_logs_with_options_async(
         self,
@@ -3768,10 +6638,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeApsActionLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsActionLogsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsActionLogsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_aps_action_logs(
         self,
@@ -3806,6 +6682,862 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_aps_action_logs_with_options_async(request, runtime)
+
+    def describe_aps_datasource_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsDatasourceResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) data source.
+        
+        @param request: DescribeApsDatasourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsDatasourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsDatasource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_datasource_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsDatasourceResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) data source.
+        
+        @param request: DescribeApsDatasourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsDatasourceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsDatasource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_datasource(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourceRequest,
+    ) -> adb_20211201_models.DescribeApsDatasourceResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) data source.
+        
+        @param request: DescribeApsDatasourceRequest
+        @return: DescribeApsDatasourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_datasource_with_options(request, runtime)
+
+    async def describe_aps_datasource_async(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourceRequest,
+    ) -> adb_20211201_models.DescribeApsDatasourceResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) data source.
+        
+        @param request: DescribeApsDatasourceRequest
+        @return: DescribeApsDatasourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_datasource_with_options_async(request, runtime)
+
+    def describe_aps_datasources_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsDatasourcesResponse:
+        """
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) data sources.
+        
+        @param request: DescribeApsDatasourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsDatasourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.datasource_type):
+            body['DatasourceType'] = request.datasource_type
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsDatasources',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_datasources_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsDatasourcesResponse:
+        """
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) data sources.
+        
+        @param request: DescribeApsDatasourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsDatasourcesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.datasource_type):
+            body['DatasourceType'] = request.datasource_type
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsDatasources',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsDatasourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_datasources(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourcesRequest,
+    ) -> adb_20211201_models.DescribeApsDatasourcesResponse:
+        """
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) data sources.
+        
+        @param request: DescribeApsDatasourcesRequest
+        @return: DescribeApsDatasourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_datasources_with_options(request, runtime)
+
+    async def describe_aps_datasources_async(
+        self,
+        request: adb_20211201_models.DescribeApsDatasourcesRequest,
+    ) -> adb_20211201_models.DescribeApsDatasourcesResponse:
+        """
+        @summary Queries a list of AnalyticDB Pipeline Service (APS) data sources.
+        
+        @param request: DescribeApsDatasourcesRequest
+        @return: DescribeApsDatasourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_datasources_with_options_async(request, runtime)
+
+    def describe_aps_hive_workload_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
+        """
+        @summary 查询APS Hive工作负载
+        
+        @param request: DescribeApsHiveWorkloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsHiveWorkloadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsHiveWorkload',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsHiveWorkloadResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsHiveWorkloadResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_hive_workload_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
+        """
+        @summary 查询APS Hive工作负载
+        
+        @param request: DescribeApsHiveWorkloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsHiveWorkloadResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsHiveWorkload',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsHiveWorkloadResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsHiveWorkloadResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_hive_workload(
+        self,
+        request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
+    ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
+        """
+        @summary 查询APS Hive工作负载
+        
+        @param request: DescribeApsHiveWorkloadRequest
+        @return: DescribeApsHiveWorkloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_hive_workload_with_options(request, runtime)
+
+    async def describe_aps_hive_workload_async(
+        self,
+        request: adb_20211201_models.DescribeApsHiveWorkloadRequest,
+    ) -> adb_20211201_models.DescribeApsHiveWorkloadResponse:
+        """
+        @summary 查询APS Hive工作负载
+        
+        @param request: DescribeApsHiveWorkloadRequest
+        @return: DescribeApsHiveWorkloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_hive_workload_with_options_async(request, runtime)
+
+    def describe_aps_job_detail_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsJobDetailResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job.
+        
+        @param request: DescribeApsJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsJobDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsJobDetail',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobDetailResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_job_detail_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsJobDetailResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job.
+        
+        @param request: DescribeApsJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsJobDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsJobDetail',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_job_detail(
+        self,
+        request: adb_20211201_models.DescribeApsJobDetailRequest,
+    ) -> adb_20211201_models.DescribeApsJobDetailResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job.
+        
+        @param request: DescribeApsJobDetailRequest
+        @return: DescribeApsJobDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_job_detail_with_options(request, runtime)
+
+    async def describe_aps_job_detail_async(
+        self,
+        request: adb_20211201_models.DescribeApsJobDetailRequest,
+    ) -> adb_20211201_models.DescribeApsJobDetailResponse:
+        """
+        @summary Queries the information about an AnalyticDB Pipeline Service (APS) job.
+        
+        @param request: DescribeApsJobDetailRequest
+        @return: DescribeApsJobDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_job_detail_with_options_async(request, runtime)
+
+    def describe_aps_jobs_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsJobsResponse:
+        """
+        @summary 查询一站式链路列表
+        
+        @param request: DescribeApsJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsJobsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_name):
+            body['ApsJobName'] = request.aps_job_name
+        if not UtilClient.is_unset(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_jobs_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsJobsResponse:
+        """
+        @summary 查询一站式链路列表
+        
+        @param request: DescribeApsJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsJobsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_name):
+            body['ApsJobName'] = request.aps_job_name
+        if not UtilClient.is_unset(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_jobs(
+        self,
+        request: adb_20211201_models.DescribeApsJobsRequest,
+    ) -> adb_20211201_models.DescribeApsJobsResponse:
+        """
+        @summary 查询一站式链路列表
+        
+        @param request: DescribeApsJobsRequest
+        @return: DescribeApsJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_jobs_with_options(request, runtime)
+
+    async def describe_aps_jobs_async(
+        self,
+        request: adb_20211201_models.DescribeApsJobsRequest,
+    ) -> adb_20211201_models.DescribeApsJobsResponse:
+        """
+        @summary 查询一站式链路列表
+        
+        @param request: DescribeApsJobsRequest
+        @return: DescribeApsJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_jobs_with_options_async(request, runtime)
+
+    def describe_aps_migration_workloads_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsMigrationWorkloadsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsMigrationWorkloadsResponse:
+        """
+        @summary Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
+        
+        @param request: DescribeApsMigrationWorkloadsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsMigrationWorkloadsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsMigrationWorkloads',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsMigrationWorkloadsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsMigrationWorkloadsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_migration_workloads_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsMigrationWorkloadsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsMigrationWorkloadsResponse:
+        """
+        @summary Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
+        
+        @param request: DescribeApsMigrationWorkloadsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsMigrationWorkloadsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsMigrationWorkloads',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsMigrationWorkloadsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsMigrationWorkloadsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_migration_workloads(
+        self,
+        request: adb_20211201_models.DescribeApsMigrationWorkloadsRequest,
+    ) -> adb_20211201_models.DescribeApsMigrationWorkloadsResponse:
+        """
+        @summary Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
+        
+        @param request: DescribeApsMigrationWorkloadsRequest
+        @return: DescribeApsMigrationWorkloadsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_migration_workloads_with_options(request, runtime)
+
+    async def describe_aps_migration_workloads_async(
+        self,
+        request: adb_20211201_models.DescribeApsMigrationWorkloadsRequest,
+    ) -> adb_20211201_models.DescribeApsMigrationWorkloadsResponse:
+        """
+        @summary Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
+        
+        @param request: DescribeApsMigrationWorkloadsRequest
+        @return: DescribeApsMigrationWorkloadsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_migration_workloads_with_options_async(request, runtime)
+
+    def describe_aps_progress_with_options(
+        self,
+        request: adb_20211201_models.DescribeApsProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsProgressResponse:
+        """
+        @summary 查询aps任务进展。
+        
+        @param request: DescribeApsProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsProgressResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsProgress',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsProgressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsProgressResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_aps_progress_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeApsProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeApsProgressResponse:
+        """
+        @summary 查询aps任务进展。
+        
+        @param request: DescribeApsProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsProgressResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeApsProgress',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsProgressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsProgressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_aps_progress(
+        self,
+        request: adb_20211201_models.DescribeApsProgressRequest,
+    ) -> adb_20211201_models.DescribeApsProgressResponse:
+        """
+        @summary 查询aps任务进展。
+        
+        @param request: DescribeApsProgressRequest
+        @return: DescribeApsProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aps_progress_with_options(request, runtime)
+
+    async def describe_aps_progress_async(
+        self,
+        request: adb_20211201_models.DescribeApsProgressRequest,
+    ) -> adb_20211201_models.DescribeApsProgressResponse:
+        """
+        @summary 查询aps任务进展。
+        
+        @param request: DescribeApsProgressRequest
+        @return: DescribeApsProgressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aps_progress_with_options_async(request, runtime)
 
     def describe_aps_resource_groups_with_options(
         self,
@@ -3844,10 +7576,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeApsResourceGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsResourceGroupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsResourceGroupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_aps_resource_groups_with_options_async(
         self,
@@ -3886,10 +7624,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeApsResourceGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsResourceGroupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeApsResourceGroupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_aps_resource_groups(
         self,
@@ -3992,10 +7736,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAuditLogRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAuditLogRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAuditLogRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_audit_log_records_with_options_async(
         self,
@@ -4066,10 +7816,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAuditLogRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAuditLogRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAuditLogRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_audit_log_records(
         self,
@@ -4103,12 +7859,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_log_records_with_options_async(request, runtime)
 
+    def describe_available_advices_with_options(
+        self,
+        request: adb_20211201_models.DescribeAvailableAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAvailableAdvicesResponse:
+        """
+        @summary Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAvailableAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_type):
+            query['AdviceType'] = request.advice_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_table_name):
+            query['SchemaTableName'] = request.schema_table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableAdvices',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAvailableAdvicesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAvailableAdvicesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_available_advices_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAvailableAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAvailableAdvicesResponse:
+        """
+        @summary Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAvailableAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advice_date):
+            query['AdviceDate'] = request.advice_date
+        if not UtilClient.is_unset(request.advice_type):
+            query['AdviceType'] = request.advice_type
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_table_name):
+            query['SchemaTableName'] = request.schema_table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableAdvices',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAvailableAdvicesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeAvailableAdvicesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_available_advices(
+        self,
+        request: adb_20211201_models.DescribeAvailableAdvicesRequest,
+    ) -> adb_20211201_models.DescribeAvailableAdvicesResponse:
+        """
+        @summary Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAvailableAdvicesRequest
+        @return: DescribeAvailableAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_advices_with_options(request, runtime)
+
+    async def describe_available_advices_async(
+        self,
+        request: adb_20211201_models.DescribeAvailableAdvicesRequest,
+    ) -> adb_20211201_models.DescribeAvailableAdvicesResponse:
+        """
+        @summary Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeAvailableAdvicesRequest
+        @return: DescribeAvailableAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_advices_with_options_async(request, runtime)
+
     def describe_backup_policy_with_options(
         self,
         request: adb_20211201_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看集群备份设置
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupPolicyRequest
@@ -4141,10 +8043,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backup_policy_with_options_async(
         self,
@@ -4152,6 +8060,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看集群备份设置
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupPolicyRequest
@@ -4184,16 +8094,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backup_policy(
         self,
         request: adb_20211201_models.DescribeBackupPolicyRequest,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看集群备份设置
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupPolicyRequest
@@ -4207,6 +8125,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupPolicyRequest,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
         """
+        @summary 查看集群备份设置
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeBackupPolicyRequest
@@ -4263,10 +8183,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_backups_with_options_async(
         self,
@@ -4316,10 +8242,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBackupsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_backups(
         self,
@@ -4346,6 +8278,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
+
+    def describe_bad_sql_detection_with_options(
+        self,
+        request: adb_20211201_models.DescribeBadSqlDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBadSqlDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBadSqlDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBadSqlDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBadSqlDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_bad_sql_detection_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeBadSqlDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBadSqlDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBadSqlDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBadSqlDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeBadSqlDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_bad_sql_detection(
+        self,
+        request: adb_20211201_models.DescribeBadSqlDetectionRequest,
+    ) -> adb_20211201_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @return: DescribeBadSqlDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_bad_sql_detection_with_options(request, runtime)
+
+    async def describe_bad_sql_detection_async(
+        self,
+        request: adb_20211201_models.DescribeBadSqlDetectionRequest,
+    ) -> adb_20211201_models.DescribeBadSqlDetectionResponse:
+        """
+        @summary Queries the bad SQL statements that affect cluster stability within a time range.
+        
+        @param request: DescribeBadSqlDetectionRequest
+        @return: DescribeBadSqlDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_bad_sql_detection_with_options_async(request, runtime)
 
     def describe_cluster_access_white_list_with_options(
         self,
@@ -4383,10 +8455,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_access_white_list_with_options_async(
         self,
@@ -4424,10 +8502,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterAccessWhiteListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_access_white_list(
         self,
@@ -4493,10 +8577,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterNetInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterNetInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterNetInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_net_info_with_options_async(
         self,
@@ -4532,10 +8622,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterNetInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterNetInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterNetInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_net_info(
         self,
@@ -4599,10 +8695,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterResourceDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceDetailResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_resource_detail_with_options_async(
         self,
@@ -4636,10 +8738,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterResourceDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_resource_detail(
         self,
@@ -4677,7 +8785,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterResourceUsageResponse:
         """
-        @summary 获取实例资源统计
+        @summary Queries the resource usage of an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4699,10 +8809,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterResourceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_cluster_resource_usage_with_options_async(
         self,
@@ -4710,7 +8826,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterResourceUsageResponse:
         """
-        @summary 获取实例资源统计
+        @summary Queries the resource usage of an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4732,17 +8850,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeClusterResourceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeClusterResourceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_cluster_resource_usage(
         self,
         request: adb_20211201_models.DescribeClusterResourceUsageRequest,
     ) -> adb_20211201_models.DescribeClusterResourceUsageResponse:
         """
-        @summary 获取实例资源统计
+        @summary Queries the resource usage of an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceUsageRequest
         @return: DescribeClusterResourceUsageResponse
@@ -4755,7 +8881,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterResourceUsageRequest,
     ) -> adb_20211201_models.DescribeClusterResourceUsageResponse:
         """
-        @summary 获取实例资源统计
+        @summary Queries the resource usage of an AnalyticDB for MySQL cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeClusterResourceUsageRequest
         @return: DescribeClusterResourceUsageResponse
@@ -4802,10 +8930,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeColumnsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeColumnsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeColumnsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_columns_with_options_async(
         self,
@@ -4846,10 +8980,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeColumnsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeColumnsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeColumnsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_columns(
         self,
@@ -4883,15 +9023,123 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_columns_with_options_async(request, runtime)
 
+    def describe_compaction_service_switch_with_options(
+        self,
+        request: adb_20211201_models.DescribeCompactionServiceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeCompactionServiceSwitchResponse:
+        """
+        @summary Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeCompactionServiceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCompactionServiceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCompactionServiceSwitch',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeCompactionServiceSwitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeCompactionServiceSwitchResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_compaction_service_switch_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeCompactionServiceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeCompactionServiceSwitchResponse:
+        """
+        @summary Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeCompactionServiceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCompactionServiceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCompactionServiceSwitch',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeCompactionServiceSwitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeCompactionServiceSwitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_compaction_service_switch(
+        self,
+        request: adb_20211201_models.DescribeCompactionServiceSwitchRequest,
+    ) -> adb_20211201_models.DescribeCompactionServiceSwitchResponse:
+        """
+        @summary Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeCompactionServiceSwitchRequest
+        @return: DescribeCompactionServiceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_compaction_service_switch_with_options(request, runtime)
+
+    async def describe_compaction_service_switch_async(
+        self,
+        request: adb_20211201_models.DescribeCompactionServiceSwitchRequest,
+    ) -> adb_20211201_models.DescribeCompactionServiceSwitchResponse:
+        """
+        @summary Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeCompactionServiceSwitchRequest
+        @return: DescribeCompactionServiceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_compaction_service_switch_with_options_async(request, runtime)
+
     def describe_compute_resource_usage_with_options(
         self,
         request: adb_20211201_models.DescribeComputeResourceUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeComputeResourceUsageResponse:
         """
-        @summary 获取实例计算资源使用统计
+        @summary Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeComputeResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4921,10 +9169,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeComputeResourceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeComputeResourceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeComputeResourceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_compute_resource_usage_with_options_async(
         self,
@@ -4932,9 +9186,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeComputeResourceUsageResponse:
         """
-        @summary 获取实例计算资源使用统计
+        @summary Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeComputeResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4964,19 +9218,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeComputeResourceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeComputeResourceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeComputeResourceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_compute_resource_usage(
         self,
         request: adb_20211201_models.DescribeComputeResourceUsageRequest,
     ) -> adb_20211201_models.DescribeComputeResourceUsageResponse:
         """
-        @summary 获取实例计算资源使用统计
+        @summary Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeComputeResourceUsageRequest
         @return: DescribeComputeResourceUsageResponse
@@ -4989,15 +9249,155 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeComputeResourceUsageRequest,
     ) -> adb_20211201_models.DescribeComputeResourceUsageResponse:
         """
-        @summary 获取实例计算资源使用统计
+        @summary Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeComputeResourceUsageRequest
         @return: DescribeComputeResourceUsageResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_compute_resource_usage_with_options_async(request, runtime)
+
+    def describe_controller_detection_with_options(
+        self,
+        request: adb_20211201_models.DescribeControllerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeControllerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControllerDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeControllerDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeControllerDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_controller_detection_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeControllerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeControllerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeControllerDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeControllerDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeControllerDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_controller_detection(
+        self,
+        request: adb_20211201_models.DescribeControllerDetectionRequest,
+    ) -> adb_20211201_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @return: DescribeControllerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_controller_detection_with_options(request, runtime)
+
+    async def describe_controller_detection_async(
+        self,
+        request: adb_20211201_models.DescribeControllerDetectionRequest,
+    ) -> adb_20211201_models.DescribeControllerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the access layer.
+        
+        @param request: DescribeControllerDetectionRequest
+        @return: DescribeControllerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_controller_detection_with_options_async(request, runtime)
 
     def describe_dbcluster_attribute_with_options(
         self,
@@ -5031,10 +9431,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_attribute_with_options_async(
         self,
@@ -5068,10 +9474,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_attribute(
         self,
@@ -5137,10 +9549,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_health_status_with_options_async(
         self,
@@ -5176,10 +9594,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterHealthStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_health_status(
         self,
@@ -5253,10 +9677,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_performance_with_options_async(
         self,
@@ -5300,10 +9730,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_performance(
         self,
@@ -5377,10 +9813,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_space_summary_with_options_async(
         self,
@@ -5424,10 +9866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterSpaceSummaryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_space_summary(
         self,
@@ -5465,7 +9913,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        @summary Queries the statuses of AnalyticDB for MySQL clusters within a region.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -5491,10 +9939,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterStatusResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterStatusResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbcluster_status_with_options_async(
         self,
@@ -5502,7 +9956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        @summary Queries the statuses of AnalyticDB for MySQL clusters within a region.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -5528,17 +9982,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterStatusResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClusterStatusResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbcluster_status(
         self,
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        @summary Queries the statuses of AnalyticDB for MySQL clusters within a region.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -5553,7 +10013,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
         """
-        @summary Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        @summary Queries the statuses of AnalyticDB for MySQL clusters within a region.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -5613,10 +10073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClustersResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClustersResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbclusters_with_options_async(
         self,
@@ -5668,10 +10134,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClustersResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBClustersResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbclusters(
         self,
@@ -5743,10 +10215,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_dbresource_group_with_options_async(
         self,
@@ -5788,10 +10266,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_dbresource_group(
         self,
@@ -5865,10 +10349,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_dimensions_with_options_async(
         self,
@@ -5912,10 +10402,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisDimensionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_dimensions(
         self,
@@ -6015,10 +10511,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_records_with_options_async(
         self,
@@ -6088,10 +10590,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_records(
         self,
@@ -6153,10 +10661,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_diagnosis_sqlinfo_with_options_async(
         self,
@@ -6188,10 +10702,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDiagnosisSQLInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_diagnosis_sqlinfo(
         self,
@@ -6259,10 +10779,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDownloadRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDownloadRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDownloadRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_download_records_with_options_async(
         self,
@@ -6300,10 +10826,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDownloadRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDownloadRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeDownloadRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_download_records(
         self,
@@ -6369,10 +10901,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_elastic_plan_attribute_with_options_async(
         self,
@@ -6408,10 +10946,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_elastic_plan_attribute(
         self,
@@ -6487,10 +11031,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanJobsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanJobsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_elastic_plan_jobs_with_options_async(
         self,
@@ -6536,10 +11086,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanJobsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanJobsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_elastic_plan_jobs(
         self,
@@ -6607,10 +11163,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_elastic_plan_specifications_with_options_async(
         self,
@@ -6648,10 +11210,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_elastic_plan_specifications(
         self,
@@ -6727,10 +11295,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlansResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlansResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlansResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_elastic_plans_with_options_async(
         self,
@@ -6776,10 +11350,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeElasticPlansResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlansResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeElasticPlansResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_elastic_plans(
         self,
@@ -6839,10 +11419,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeEnabledPrivilegesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_enabled_privileges_with_options_async(
         self,
@@ -6872,10 +11458,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeEnabledPrivilegesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_enabled_privileges(
         self,
@@ -6902,6 +11494,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_enabled_privileges_with_options_async(request, runtime)
+
+    def describe_essd_cache_config_with_options(
+        self,
+        request: adb_20211201_models.DescribeEssdCacheConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
+        """
+        @summary 查询EssdCache配置
+        
+        @param request: DescribeEssdCacheConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEssdCacheConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEssdCacheConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEssdCacheConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEssdCacheConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_essd_cache_config_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeEssdCacheConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
+        """
+        @summary 查询EssdCache配置
+        
+        @param request: DescribeEssdCacheConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEssdCacheConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEssdCacheConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEssdCacheConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeEssdCacheConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_essd_cache_config(
+        self,
+        request: adb_20211201_models.DescribeEssdCacheConfigRequest,
+    ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
+        """
+        @summary 查询EssdCache配置
+        
+        @param request: DescribeEssdCacheConfigRequest
+        @return: DescribeEssdCacheConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_essd_cache_config_with_options(request, runtime)
+
+    async def describe_essd_cache_config_async(
+        self,
+        request: adb_20211201_models.DescribeEssdCacheConfigRequest,
+    ) -> adb_20211201_models.DescribeEssdCacheConfigResponse:
+        """
+        @summary 查询EssdCache配置
+        
+        @param request: DescribeEssdCacheConfigRequest
+        @return: DescribeEssdCacheConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_essd_cache_config_with_options_async(request, runtime)
 
     def describe_excessive_primary_keys_with_options(
         self,
@@ -6955,10 +11655,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_excessive_primary_keys_with_options_async(
         self,
@@ -7012,10 +11718,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExcessivePrimaryKeysResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_excessive_primary_keys(
         self,
@@ -7042,6 +11754,286 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_excessive_primary_keys_with_options_async(request, runtime)
+
+    def describe_executor_detection_with_options(
+        self,
+        request: adb_20211201_models.DescribeExecutorDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutorDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExecutorDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExecutorDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExecutorDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_executor_detection_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeExecutorDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutorDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExecutorDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExecutorDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeExecutorDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_executor_detection(
+        self,
+        request: adb_20211201_models.DescribeExecutorDetectionRequest,
+    ) -> adb_20211201_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @return: DescribeExecutorDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_executor_detection_with_options(request, runtime)
+
+    async def describe_executor_detection_async(
+        self,
+        request: adb_20211201_models.DescribeExecutorDetectionRequest,
+    ) -> adb_20211201_models.DescribeExecutorDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the compute layer.
+        
+        @param request: DescribeExecutorDetectionRequest
+        @return: DescribeExecutorDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_executor_detection_with_options_async(request, runtime)
+
+    def describe_inclined_nodes_with_options(
+        self,
+        request: adb_20211201_models.DescribeInclinedNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedNodes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedNodesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedNodesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_inclined_nodes_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeInclinedNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInclinedNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInclinedNodes',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedNodesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeInclinedNodesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_inclined_nodes(
+        self,
+        request: adb_20211201_models.DescribeInclinedNodesRequest,
+    ) -> adb_20211201_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @return: DescribeInclinedNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_inclined_nodes_with_options(request, runtime)
+
+    async def describe_inclined_nodes_async(
+        self,
+        request: adb_20211201_models.DescribeInclinedNodesRequest,
+    ) -> adb_20211201_models.DescribeInclinedNodesResponse:
+        """
+        @summary Queries the disk usage of all storage nodes.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
+        @param request: DescribeInclinedNodesRequest
+        @return: DescribeInclinedNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_inclined_nodes_with_options_async(request, runtime)
 
     def describe_job_resource_usage_with_options(
         self,
@@ -7079,10 +12071,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeJobResourceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeJobResourceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeJobResourceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_job_resource_usage_with_options_async(
         self,
@@ -7120,10 +12118,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeJobResourceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeJobResourceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeJobResourceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_job_resource_usage(
         self,
@@ -7154,6 +12158,518 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_resource_usage_with_options_async(request, runtime)
+
+    def describe_kernel_version_with_options(
+        self,
+        request: adb_20211201_models.DescribeKernelVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeKernelVersionResponse:
+        """
+        @summary Queries the information about the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKernelVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKernelVersion',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeKernelVersionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeKernelVersionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_kernel_version_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeKernelVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeKernelVersionResponse:
+        """
+        @summary Queries the information about the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeKernelVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKernelVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKernelVersion',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeKernelVersionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeKernelVersionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_kernel_version(
+        self,
+        request: adb_20211201_models.DescribeKernelVersionRequest,
+    ) -> adb_20211201_models.DescribeKernelVersionResponse:
+        """
+        @summary Queries the information about the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeKernelVersionRequest
+        @return: DescribeKernelVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_kernel_version_with_options(request, runtime)
+
+    async def describe_kernel_version_async(
+        self,
+        request: adb_20211201_models.DescribeKernelVersionRequest,
+    ) -> adb_20211201_models.DescribeKernelVersionResponse:
+        """
+        @summary Queries the information about the minor version of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeKernelVersionRequest
+        @return: DescribeKernelVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_kernel_version_with_options_async(request, runtime)
+
+    def describe_lake_cache_size_with_options(
+        self,
+        request: adb_20211201_models.DescribeLakeCacheSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLakeCacheSizeResponse:
+        """
+        @summary Queries the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeLakeCacheSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLakeCacheSizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLakeCacheSize',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeLakeCacheSizeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeLakeCacheSizeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_lake_cache_size_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeLakeCacheSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeLakeCacheSizeResponse:
+        """
+        @summary Queries the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeLakeCacheSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLakeCacheSizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLakeCacheSize',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeLakeCacheSizeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeLakeCacheSizeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_lake_cache_size(
+        self,
+        request: adb_20211201_models.DescribeLakeCacheSizeRequest,
+    ) -> adb_20211201_models.DescribeLakeCacheSizeResponse:
+        """
+        @summary Queries the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeLakeCacheSizeRequest
+        @return: DescribeLakeCacheSizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_lake_cache_size_with_options(request, runtime)
+
+    async def describe_lake_cache_size_async(
+        self,
+        request: adb_20211201_models.DescribeLakeCacheSizeRequest,
+    ) -> adb_20211201_models.DescribeLakeCacheSizeResponse:
+        """
+        @summary Queries the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeLakeCacheSizeRequest
+        @return: DescribeLakeCacheSizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_lake_cache_size_with_options_async(request, runtime)
+
+    def describe_operator_permission_with_options(
+        self,
+        request: adb_20211201_models.DescribeOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeOperatorPermissionResponse:
+        """
+        @summary Queries the service account permissions of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOperatorPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOperatorPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_operator_permission_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeOperatorPermissionResponse:
+        """
+        @summary Queries the service account permissions of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOperatorPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOperatorPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_operator_permission(
+        self,
+        request: adb_20211201_models.DescribeOperatorPermissionRequest,
+    ) -> adb_20211201_models.DescribeOperatorPermissionResponse:
+        """
+        @summary Queries the service account permissions of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOperatorPermissionRequest
+        @return: DescribeOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_operator_permission_with_options(request, runtime)
+
+    async def describe_operator_permission_async(
+        self,
+        request: adb_20211201_models.DescribeOperatorPermissionRequest,
+    ) -> adb_20211201_models.DescribeOperatorPermissionResponse:
+        """
+        @summary Queries the service account permissions of an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOperatorPermissionRequest
+        @return: DescribeOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_operator_permission_with_options_async(request, runtime)
+
+    def describe_oversize_non_partition_table_infos_with_options(
+        self,
+        request: adb_20211201_models.DescribeOversizeNonPartitionTableInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOversizeNonPartitionTableInfos',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_oversize_non_partition_table_infos_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeOversizeNonPartitionTableInfosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOversizeNonPartitionTableInfos',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_oversize_non_partition_table_infos(
+        self,
+        request: adb_20211201_models.DescribeOversizeNonPartitionTableInfosRequest,
+    ) -> adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_oversize_non_partition_table_infos_with_options(request, runtime)
+
+    async def describe_oversize_non_partition_table_infos_async(
+        self,
+        request: adb_20211201_models.DescribeOversizeNonPartitionTableInfosRequest,
+    ) -> adb_20211201_models.DescribeOversizeNonPartitionTableInfosResponse:
+        """
+        @summary Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+        
+        @param request: DescribeOversizeNonPartitionTableInfosRequest
+        @return: DescribeOversizeNonPartitionTableInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_oversize_non_partition_table_infos_with_options_async(request, runtime)
 
     def describe_pattern_performance_with_options(
         self,
@@ -7197,10 +12713,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePatternPerformanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePatternPerformanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePatternPerformanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_pattern_performance_with_options_async(
         self,
@@ -7244,10 +12766,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePatternPerformanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePatternPerformanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePatternPerformanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_pattern_performance(
         self,
@@ -7325,10 +12853,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePerformanceViewAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_performance_view_attribute_with_options_async(
         self,
@@ -7372,10 +12906,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePerformanceViewAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_performance_view_attribute(
         self,
@@ -7443,10 +12983,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePerformanceViewsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_performance_views_with_options_async(
         self,
@@ -7488,10 +13034,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribePerformanceViewsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribePerformanceViewsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_performance_views(
         self,
@@ -7561,10 +13113,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_regions_with_options_async(
         self,
@@ -7608,10 +13166,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_regions(
         self,
@@ -7693,10 +13257,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSQLPatternsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSQLPatternsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSQLPatternsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sqlpatterns_with_options_async(
         self,
@@ -7748,10 +13318,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSQLPatternsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSQLPatternsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSQLPatternsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sqlpatterns(
         self,
@@ -7822,10 +13398,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSchemasResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSchemasResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSchemasResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_schemas_with_options_async(
         self,
@@ -7862,10 +13444,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSchemasResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSchemasResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSchemasResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_schemas(
         self,
@@ -7898,6 +13486,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_schemas_with_options_async(request, runtime)
+
+    def describe_spark_app_diagnosis_info_with_options(
+        self,
+        request: adb_20211201_models.DescribeSparkAppDiagnosisInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse:
+        """
+        @summary Queries the diagnostic information about a Spark application.
+        
+        @param request: DescribeSparkAppDiagnosisInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAppDiagnosisInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAppDiagnosisInfo',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_spark_app_diagnosis_info_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAppDiagnosisInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse:
+        """
+        @summary Queries the diagnostic information about a Spark application.
+        
+        @param request: DescribeSparkAppDiagnosisInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAppDiagnosisInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAppDiagnosisInfo',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_spark_app_diagnosis_info(
+        self,
+        request: adb_20211201_models.DescribeSparkAppDiagnosisInfoRequest,
+    ) -> adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse:
+        """
+        @summary Queries the diagnostic information about a Spark application.
+        
+        @param request: DescribeSparkAppDiagnosisInfoRequest
+        @return: DescribeSparkAppDiagnosisInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_spark_app_diagnosis_info_with_options(request, runtime)
+
+    async def describe_spark_app_diagnosis_info_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAppDiagnosisInfoRequest,
+    ) -> adb_20211201_models.DescribeSparkAppDiagnosisInfoResponse:
+        """
+        @summary Queries the diagnostic information about a Spark application.
+        
+        @param request: DescribeSparkAppDiagnosisInfoRequest
+        @return: DescribeSparkAppDiagnosisInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_spark_app_diagnosis_info_with_options_async(request, runtime)
+
+    def describe_spark_app_type_with_options(
+        self,
+        request: adb_20211201_models.DescribeSparkAppTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAppTypeResponse:
+        """
+        @summary Queries the type of a Spark application.
+        
+        @param request: DescribeSparkAppTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAppTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAppType',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppTypeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_spark_app_type_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAppTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkAppTypeResponse:
+        """
+        @summary Queries the type of a Spark application.
+        
+        @param request: DescribeSparkAppTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkAppTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkAppType',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkAppTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_spark_app_type(
+        self,
+        request: adb_20211201_models.DescribeSparkAppTypeRequest,
+    ) -> adb_20211201_models.DescribeSparkAppTypeResponse:
+        """
+        @summary Queries the type of a Spark application.
+        
+        @param request: DescribeSparkAppTypeRequest
+        @return: DescribeSparkAppTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_spark_app_type_with_options(request, runtime)
+
+    async def describe_spark_app_type_async(
+        self,
+        request: adb_20211201_models.DescribeSparkAppTypeRequest,
+    ) -> adb_20211201_models.DescribeSparkAppTypeResponse:
+        """
+        @summary Queries the type of a Spark application.
+        
+        @param request: DescribeSparkAppTypeRequest
+        @return: DescribeSparkAppTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_spark_app_type_with_options_async(request, runtime)
 
     def describe_spark_code_log_with_options(
         self,
@@ -7936,10 +13760,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_spark_code_log_with_options_async(
         self,
@@ -7978,10 +13808,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_spark_code_log(
         self,
@@ -8052,10 +13888,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeOutputResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeOutputResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeOutputResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_spark_code_output_with_options_async(
         self,
@@ -8094,10 +13936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeOutputResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeOutputResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeOutputResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_spark_code_output(
         self,
@@ -8168,10 +14016,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeWebUiResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeWebUiResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeWebUiResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_spark_code_web_ui_with_options_async(
         self,
@@ -8210,10 +14064,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSparkCodeWebUiResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeWebUiResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkCodeWebUiResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_spark_code_web_ui(
         self,
@@ -8246,6 +14106,250 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_spark_code_web_ui_with_options_async(request, runtime)
+
+    def describe_spark_sqldiagnosis_attribute_with_options(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkSQLDiagnosisAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.inner_query_id):
+            query['InnerQueryId'] = request.inner_query_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkSQLDiagnosisAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_spark_sqldiagnosis_attribute_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkSQLDiagnosisAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.inner_query_id):
+            query['InnerQueryId'] = request.inner_query_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkSQLDiagnosisAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_spark_sqldiagnosis_attribute(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisAttributeRequest
+        @return: DescribeSparkSQLDiagnosisAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_spark_sqldiagnosis_attribute_with_options(request, runtime)
+
+    async def describe_spark_sqldiagnosis_attribute_async(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisAttributeRequest,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisAttributeResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisAttributeRequest
+        @return: DescribeSparkSQLDiagnosisAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_spark_sqldiagnosis_attribute_with_options_async(request, runtime)
+
+    def describe_spark_sqldiagnosis_list_with_options(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkSQLDiagnosisListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.max_start_time):
+            query['MaxStartTime'] = request.max_start_time
+        if not UtilClient.is_unset(request.min_start_time):
+            query['MinStartTime'] = request.min_start_time
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.statement_id):
+            query['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkSQLDiagnosisList',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisListResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_spark_sqldiagnosis_list_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkSQLDiagnosisListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.max_start_time):
+            query['MaxStartTime'] = request.max_start_time
+        if not UtilClient.is_unset(request.min_start_time):
+            query['MinStartTime'] = request.min_start_time
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.statement_id):
+            query['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSparkSQLDiagnosisList',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSparkSQLDiagnosisListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_spark_sqldiagnosis_list(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisListRequest
+        @return: DescribeSparkSQLDiagnosisListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_spark_sqldiagnosis_list_with_options(request, runtime)
+
+    async def describe_spark_sqldiagnosis_list_async(
+        self,
+        request: adb_20211201_models.DescribeSparkSQLDiagnosisListRequest,
+    ) -> adb_20211201_models.DescribeSparkSQLDiagnosisListResponse:
+        """
+        @param request: DescribeSparkSQLDiagnosisListRequest
+        @return: DescribeSparkSQLDiagnosisListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_spark_sqldiagnosis_list_with_options_async(request, runtime)
 
     def describe_sql_pattern_with_options(
         self,
@@ -8293,10 +14397,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSqlPatternResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSqlPatternResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSqlPatternResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_sql_pattern_with_options_async(
         self,
@@ -8344,10 +14454,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSqlPatternResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSqlPatternResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeSqlPatternResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_sql_pattern(
         self,
@@ -8385,9 +14501,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeStorageResourceUsageResponse:
         """
-        @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the storage resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeStorageResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8415,10 +14531,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeStorageResourceUsageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeStorageResourceUsageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeStorageResourceUsageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_storage_resource_usage_with_options_async(
         self,
@@ -8426,9 +14548,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeStorageResourceUsageResponse:
         """
-        @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the storage resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeStorageResourceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8456,19 +14578,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeStorageResourceUsageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeStorageResourceUsageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeStorageResourceUsageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_storage_resource_usage(
         self,
         request: adb_20211201_models.DescribeStorageResourceUsageRequest,
     ) -> adb_20211201_models.DescribeStorageResourceUsageResponse:
         """
-        @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the storage resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeStorageResourceUsageRequest
         @return: DescribeStorageResourceUsageResponse
@@ -8481,9 +14609,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeStorageResourceUsageRequest,
     ) -> adb_20211201_models.DescribeStorageResourceUsageResponse:
         """
-        @summary Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries the storage resource usage of an AnalyticDB for MySQL cluster.
         
-        @description For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DescribeStorageResourceUsageRequest
         @return: DescribeStorageResourceUsageResponse
@@ -8535,10 +14663,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeTableAccessCountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableAccessCountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableAccessCountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_table_access_count_with_options_async(
         self,
@@ -8584,10 +14718,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeTableAccessCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableAccessCountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableAccessCountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_table_access_count(
         self,
@@ -8618,6 +14758,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_table_access_count_with_options_async(request, runtime)
+
+    def describe_table_detail_with_options(
+        self,
+        request: adb_20211201_models.DescribeTableDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTableDetailResponse:
+        """
+        @summary Queries the information about data distribution among shards of a table.
+        
+        @param request: DescribeTableDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTableDetail',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableDetailResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableDetailResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_table_detail_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeTableDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTableDetailResponse:
+        """
+        @summary Queries the information about data distribution among shards of a table.
+        
+        @param request: DescribeTableDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTableDetail',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableDetailResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTableDetailResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_table_detail(
+        self,
+        request: adb_20211201_models.DescribeTableDetailRequest,
+    ) -> adb_20211201_models.DescribeTableDetailResponse:
+        """
+        @summary Queries the information about data distribution among shards of a table.
+        
+        @param request: DescribeTableDetailRequest
+        @return: DescribeTableDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_table_detail_with_options(request, runtime)
+
+    async def describe_table_detail_async(
+        self,
+        request: adb_20211201_models.DescribeTableDetailRequest,
+    ) -> adb_20211201_models.DescribeTableDetailResponse:
+        """
+        @summary Queries the information about data distribution among shards of a table.
+        
+        @param request: DescribeTableDetailRequest
+        @return: DescribeTableDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_table_detail_with_options_async(request, runtime)
+
+    def describe_table_partition_diagnose_with_options(
+        self,
+        request: adb_20211201_models.DescribeTablePartitionDiagnoseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTablePartitionDiagnoseResponse:
+        """
+        @summary Queries the information about partition diagnostics.
+        
+        @param request: DescribeTablePartitionDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTablePartitionDiagnoseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTablePartitionDiagnose',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablePartitionDiagnoseResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablePartitionDiagnoseResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_table_partition_diagnose_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeTablePartitionDiagnoseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTablePartitionDiagnoseResponse:
+        """
+        @summary Queries the information about partition diagnostics.
+        
+        @param request: DescribeTablePartitionDiagnoseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTablePartitionDiagnoseResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTablePartitionDiagnose',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablePartitionDiagnoseResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablePartitionDiagnoseResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_table_partition_diagnose(
+        self,
+        request: adb_20211201_models.DescribeTablePartitionDiagnoseRequest,
+    ) -> adb_20211201_models.DescribeTablePartitionDiagnoseResponse:
+        """
+        @summary Queries the information about partition diagnostics.
+        
+        @param request: DescribeTablePartitionDiagnoseRequest
+        @return: DescribeTablePartitionDiagnoseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_table_partition_diagnose_with_options(request, runtime)
+
+    async def describe_table_partition_diagnose_async(
+        self,
+        request: adb_20211201_models.DescribeTablePartitionDiagnoseRequest,
+    ) -> adb_20211201_models.DescribeTablePartitionDiagnoseResponse:
+        """
+        @summary Queries the information about partition diagnostics.
+        
+        @param request: DescribeTablePartitionDiagnoseRequest
+        @return: DescribeTablePartitionDiagnoseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_table_partition_diagnose_with_options_async(request, runtime)
 
     def describe_tables_with_options(
         self,
@@ -8656,10 +15044,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeTablesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_tables_with_options_async(
         self,
@@ -8698,10 +15092,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeTablesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeTablesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_tables(
         self,
@@ -8741,7 +15141,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
         """
-        @summary 查询配额
+        @summary Queries available quotas.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -8765,10 +15165,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeUserQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeUserQuotaResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeUserQuotaResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def describe_user_quota_with_options_async(
         self,
@@ -8776,7 +15182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
         """
-        @summary 查询配额
+        @summary Queries available quotas.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -8800,17 +15206,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeUserQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeUserQuotaResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeUserQuotaResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def describe_user_quota(
         self,
         request: adb_20211201_models.DescribeUserQuotaRequest,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
         """
-        @summary 查询配额
+        @summary Queries available quotas.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -8825,7 +15237,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeUserQuotaRequest,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
         """
-        @summary 查询配额
+        @summary Queries available quotas.
         
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
@@ -8835,12 +15247,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_quota_with_options_async(request, runtime)
 
+    def describe_worker_detection_with_options(
+        self,
+        request: adb_20211201_models.DescribeWorkerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkerDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeWorkerDetectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeWorkerDetectionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def describe_worker_detection_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeWorkerDetectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkerDetectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWorkerDetection',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeWorkerDetectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DescribeWorkerDetectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def describe_worker_detection(
+        self,
+        request: adb_20211201_models.DescribeWorkerDetectionRequest,
+    ) -> adb_20211201_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @return: DescribeWorkerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_worker_detection_with_options(request, runtime)
+
+    async def describe_worker_detection_async(
+        self,
+        request: adb_20211201_models.DescribeWorkerDetectionRequest,
+    ) -> adb_20211201_models.DescribeWorkerDetectionResponse:
+        """
+        @summary Queries the diagnostic results of the storage layer.
+        
+        @param request: DescribeWorkerDetectionRequest
+        @return: DescribeWorkerDetectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_worker_detection_with_options_async(request, runtime)
+
     def detach_user_eniwith_options(
         self,
         request: adb_20211201_models.DetachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DetachUserENIResponse:
         """
+        @summary 解绑用户弹性网卡
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DetachUserENIRequest
@@ -8865,10 +15419,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DetachUserENIResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DetachUserENIResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DetachUserENIResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def detach_user_eniwith_options_async(
         self,
@@ -8876,6 +15436,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DetachUserENIResponse:
         """
+        @summary 解绑用户弹性网卡
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DetachUserENIRequest
@@ -8900,16 +15462,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DetachUserENIResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DetachUserENIResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DetachUserENIResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def detach_user_eni(
         self,
         request: adb_20211201_models.DetachUserENIRequest,
     ) -> adb_20211201_models.DetachUserENIResponse:
         """
+        @summary 解绑用户弹性网卡
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DetachUserENIRequest
@@ -8923,6 +15493,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DetachUserENIRequest,
     ) -> adb_20211201_models.DetachUserENIResponse:
         """
+        @summary 解绑用户弹性网卡
+        
         @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
         
         @param request: DetachUserENIRequest
@@ -8930,6 +15502,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.detach_user_eniwith_options_async(request, runtime)
+
+    def disable_advice_service_with_options(
+        self,
+        request: adb_20211201_models.DisableAdviceServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DisableAdviceServiceResponse:
+        """
+        @summary Disables the suggestion feature.
+        
+        @param request: DisableAdviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableAdviceServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAdviceService',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DisableAdviceServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DisableAdviceServiceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def disable_advice_service_with_options_async(
+        self,
+        request: adb_20211201_models.DisableAdviceServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DisableAdviceServiceResponse:
+        """
+        @summary Disables the suggestion feature.
+        
+        @param request: DisableAdviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableAdviceServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableAdviceService',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DisableAdviceServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DisableAdviceServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def disable_advice_service(
+        self,
+        request: adb_20211201_models.DisableAdviceServiceRequest,
+    ) -> adb_20211201_models.DisableAdviceServiceResponse:
+        """
+        @summary Disables the suggestion feature.
+        
+        @param request: DisableAdviceServiceRequest
+        @return: DisableAdviceServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_advice_service_with_options(request, runtime)
+
+    async def disable_advice_service_async(
+        self,
+        request: adb_20211201_models.DisableAdviceServiceRequest,
+    ) -> adb_20211201_models.DisableAdviceServiceResponse:
+        """
+        @summary Disables the suggestion feature.
+        
+        @param request: DisableAdviceServiceRequest
+        @return: DisableAdviceServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_advice_service_with_options_async(request, runtime)
 
     def disable_elastic_plan_with_options(
         self,
@@ -8965,10 +15649,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DisableElasticPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DisableElasticPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DisableElasticPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def disable_elastic_plan_with_options_async(
         self,
@@ -9004,10 +15694,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DisableElasticPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DisableElasticPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DisableElasticPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def disable_elastic_plan(
         self,
@@ -9099,10 +15795,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DownloadDiagnosisRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadDiagnosisRecordsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadDiagnosisRecordsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def download_diagnosis_records_with_options_async(
         self,
@@ -9164,10 +15866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.DownloadDiagnosisRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadDiagnosisRecordsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadDiagnosisRecordsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def download_diagnosis_records(
         self,
@@ -9198,6 +15906,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.download_diagnosis_records_with_options_async(request, runtime)
+
+    def download_instance_cacertificate_with_options(
+        self,
+        request: adb_20211201_models.DownloadInstanceCACertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DownloadInstanceCACertificateResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+        
+        @param request: DownloadInstanceCACertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadInstanceCACertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadInstanceCACertificate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadInstanceCACertificateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadInstanceCACertificateResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def download_instance_cacertificate_with_options_async(
+        self,
+        request: adb_20211201_models.DownloadInstanceCACertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DownloadInstanceCACertificateResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+        
+        @param request: DownloadInstanceCACertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadInstanceCACertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadInstanceCACertificate',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadInstanceCACertificateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.DownloadInstanceCACertificateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def download_instance_cacertificate(
+        self,
+        request: adb_20211201_models.DownloadInstanceCACertificateRequest,
+    ) -> adb_20211201_models.DownloadInstanceCACertificateResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+        
+        @param request: DownloadInstanceCACertificateRequest
+        @return: DownloadInstanceCACertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_instance_cacertificate_with_options(request, runtime)
+
+    async def download_instance_cacertificate_async(
+        self,
+        request: adb_20211201_models.DownloadInstanceCACertificateRequest,
+    ) -> adb_20211201_models.DownloadInstanceCACertificateResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+        
+        @param request: DownloadInstanceCACertificateRequest
+        @return: DownloadInstanceCACertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_instance_cacertificate_with_options_async(request, runtime)
+
+    def enable_advice_service_with_options(
+        self,
+        request: adb_20211201_models.EnableAdviceServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.EnableAdviceServiceResponse:
+        """
+        @summary Enables the suggestion feature.
+        
+        @param request: EnableAdviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAdviceServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAdviceService',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.EnableAdviceServiceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.EnableAdviceServiceResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def enable_advice_service_with_options_async(
+        self,
+        request: adb_20211201_models.EnableAdviceServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.EnableAdviceServiceResponse:
+        """
+        @summary Enables the suggestion feature.
+        
+        @param request: EnableAdviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAdviceServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableAdviceService',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.EnableAdviceServiceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.EnableAdviceServiceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def enable_advice_service(
+        self,
+        request: adb_20211201_models.EnableAdviceServiceRequest,
+    ) -> adb_20211201_models.EnableAdviceServiceResponse:
+        """
+        @summary Enables the suggestion feature.
+        
+        @param request: EnableAdviceServiceRequest
+        @return: EnableAdviceServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_advice_service_with_options(request, runtime)
+
+    async def enable_advice_service_async(
+        self,
+        request: adb_20211201_models.EnableAdviceServiceRequest,
+    ) -> adb_20211201_models.EnableAdviceServiceResponse:
+        """
+        @summary Enables the suggestion feature.
+        
+        @param request: EnableAdviceServiceRequest
+        @return: EnableAdviceServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_advice_service_with_options_async(request, runtime)
 
     def enable_elastic_plan_with_options(
         self,
@@ -9233,10 +16173,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.EnableElasticPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.EnableElasticPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.EnableElasticPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def enable_elastic_plan_with_options_async(
         self,
@@ -9272,10 +16218,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.EnableElasticPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.EnableElasticPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.EnableElasticPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def enable_elastic_plan(
         self,
@@ -9307,6 +16259,262 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_elastic_plan_with_options_async(request, runtime)
 
+    def execute_spark_repl_statement_with_options(
+        self,
+        request: adb_20211201_models.ExecuteSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExecuteSparkReplStatementResponse:
+        """
+        @summary Executes part of the code in a Spark job.
+        
+        @param request: ExecuteSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.code_type):
+            body['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkReplStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkReplStatementResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def execute_spark_repl_statement_with_options_async(
+        self,
+        request: adb_20211201_models.ExecuteSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExecuteSparkReplStatementResponse:
+        """
+        @summary Executes part of the code in a Spark job.
+        
+        @param request: ExecuteSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.code_type):
+            body['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkReplStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkReplStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def execute_spark_repl_statement(
+        self,
+        request: adb_20211201_models.ExecuteSparkReplStatementRequest,
+    ) -> adb_20211201_models.ExecuteSparkReplStatementResponse:
+        """
+        @summary Executes part of the code in a Spark job.
+        
+        @param request: ExecuteSparkReplStatementRequest
+        @return: ExecuteSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.execute_spark_repl_statement_with_options(request, runtime)
+
+    async def execute_spark_repl_statement_async(
+        self,
+        request: adb_20211201_models.ExecuteSparkReplStatementRequest,
+    ) -> adb_20211201_models.ExecuteSparkReplStatementResponse:
+        """
+        @summary Executes part of the code in a Spark job.
+        
+        @param request: ExecuteSparkReplStatementRequest
+        @return: ExecuteSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_spark_repl_statement_with_options_async(request, runtime)
+
+    def execute_spark_warehouse_batch_sqlwith_options(
+        self,
+        request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
+        """
+        @summary 执行一段Spark Batch SQL
+        
+        @param request: ExecuteSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.execute_result_limit):
+            body['ExecuteResultLimit'] = request.execute_result_limit
+        if not UtilClient.is_unset(request.execute_time_limit_in_seconds):
+            body['ExecuteTimeLimitInSeconds'] = request.execute_time_limit_in_seconds
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.runtime_config):
+            body['RuntimeConfig'] = request.runtime_config
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def execute_spark_warehouse_batch_sqlwith_options_async(
+        self,
+        request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
+        """
+        @summary 执行一段Spark Batch SQL
+        
+        @param request: ExecuteSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.execute_result_limit):
+            body['ExecuteResultLimit'] = request.execute_result_limit
+        if not UtilClient.is_unset(request.execute_time_limit_in_seconds):
+            body['ExecuteTimeLimitInSeconds'] = request.execute_time_limit_in_seconds
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.runtime_config):
+            body['RuntimeConfig'] = request.runtime_config
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def execute_spark_warehouse_batch_sql(
+        self,
+        request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
+        """
+        @summary 执行一段Spark Batch SQL
+        
+        @param request: ExecuteSparkWarehouseBatchSQLRequest
+        @return: ExecuteSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.execute_spark_warehouse_batch_sqlwith_options(request, runtime)
+
+    async def execute_spark_warehouse_batch_sql_async(
+        self,
+        request: adb_20211201_models.ExecuteSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.ExecuteSparkWarehouseBatchSQLResponse:
+        """
+        @summary 执行一段Spark Batch SQL
+        
+        @param request: ExecuteSparkWarehouseBatchSQLRequest
+        @return: ExecuteSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_spark_warehouse_batch_sqlwith_options_async(request, runtime)
+
     def exist_running_sqlengine_with_options(
         self,
         request: adb_20211201_models.ExistRunningSQLEngineRequest,
@@ -9315,9 +16523,9 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9343,10 +16551,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ExistRunningSQLEngineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExistRunningSQLEngineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExistRunningSQLEngineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def exist_running_sqlengine_with_options_async(
         self,
@@ -9356,9 +16570,9 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ExistRunningSQLEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9384,10 +16598,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ExistRunningSQLEngineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ExistRunningSQLEngineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ExistRunningSQLEngineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def exist_running_sqlengine(
         self,
@@ -9396,9 +16616,9 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
@@ -9413,15 +16633,263 @@ class Client(OpenApiClient):
         """
         @summary Queries whether a running SQL engine exists.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ExistRunningSQLEngineRequest
         @return: ExistRunningSQLEngineResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.exist_running_sqlengine_with_options_async(request, runtime)
+
+    def get_aps_managed_databases_with_options(
+        self,
+        request: adb_20211201_models.GetApsManagedDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetApsManagedDatabasesResponse:
+        """
+        @summary Queries a list of databases.
+        
+        @param request: GetApsManagedDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApsManagedDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetApsManagedDatabases',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetApsManagedDatabasesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetApsManagedDatabasesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_aps_managed_databases_with_options_async(
+        self,
+        request: adb_20211201_models.GetApsManagedDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetApsManagedDatabasesResponse:
+        """
+        @summary Queries a list of databases.
+        
+        @param request: GetApsManagedDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApsManagedDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetApsManagedDatabases',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetApsManagedDatabasesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetApsManagedDatabasesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_aps_managed_databases(
+        self,
+        request: adb_20211201_models.GetApsManagedDatabasesRequest,
+    ) -> adb_20211201_models.GetApsManagedDatabasesResponse:
+        """
+        @summary Queries a list of databases.
+        
+        @param request: GetApsManagedDatabasesRequest
+        @return: GetApsManagedDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_aps_managed_databases_with_options(request, runtime)
+
+    async def get_aps_managed_databases_async(
+        self,
+        request: adb_20211201_models.GetApsManagedDatabasesRequest,
+    ) -> adb_20211201_models.GetApsManagedDatabasesResponse:
+        """
+        @summary Queries a list of databases.
+        
+        @param request: GetApsManagedDatabasesRequest
+        @return: GetApsManagedDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aps_managed_databases_with_options_async(request, runtime)
+
+    def get_create_table_sqlwith_options(
+        self,
+        request: adb_20211201_models.GetCreateTableSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @param request: GetCreateTableSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreateTableSQLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateTableSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetCreateTableSQLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetCreateTableSQLResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_create_table_sqlwith_options_async(
+        self,
+        request: adb_20211201_models.GetCreateTableSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @param request: GetCreateTableSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreateTableSQLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreateTableSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetCreateTableSQLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetCreateTableSQLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_create_table_sql(
+        self,
+        request: adb_20211201_models.GetCreateTableSQLRequest,
+    ) -> adb_20211201_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @param request: GetCreateTableSQLRequest
+        @return: GetCreateTableSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_create_table_sqlwith_options(request, runtime)
+
+    async def get_create_table_sql_async(
+        self,
+        request: adb_20211201_models.GetCreateTableSQLRequest,
+    ) -> adb_20211201_models.GetCreateTableSQLResponse:
+        """
+        @summary Queries the table creation statement for tables.
+        
+        @param request: GetCreateTableSQLRequest
+        @return: GetCreateTableSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_create_table_sqlwith_options_async(request, runtime)
 
     def get_database_objects_with_options(
         self,
@@ -9468,10 +16936,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetDatabaseObjectsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetDatabaseObjectsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetDatabaseObjectsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_database_objects_with_options_async(
         self,
@@ -9518,10 +16992,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetDatabaseObjectsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetDatabaseObjectsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetDatabaseObjectsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_database_objects(
         self,
@@ -9554,6 +17034,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_objects_with_options_async(request, runtime)
+
+    def get_lake_storage_with_options(
+        self,
+        request: adb_20211201_models.GetLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetLakeStorageResponse:
+        """
+        @summary Queries a lake storage.
+        
+        @param request: GetLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLakeStorageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lake_storage_id):
+            query['LakeStorageId'] = request.lake_storage_id
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetLakeStorageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetLakeStorageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_lake_storage_with_options_async(
+        self,
+        request: adb_20211201_models.GetLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetLakeStorageResponse:
+        """
+        @summary Queries a lake storage.
+        
+        @param request: GetLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLakeStorageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.lake_storage_id):
+            query['LakeStorageId'] = request.lake_storage_id
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetLakeStorageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetLakeStorageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_lake_storage(
+        self,
+        request: adb_20211201_models.GetLakeStorageRequest,
+    ) -> adb_20211201_models.GetLakeStorageResponse:
+        """
+        @summary Queries a lake storage.
+        
+        @param request: GetLakeStorageRequest
+        @return: GetLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lake_storage_with_options(request, runtime)
+
+    async def get_lake_storage_async(
+        self,
+        request: adb_20211201_models.GetLakeStorageRequest,
+    ) -> adb_20211201_models.GetLakeStorageResponse:
+        """
+        @summary Queries a lake storage.
+        
+        @param request: GetLakeStorageRequest
+        @return: GetLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lake_storage_with_options_async(request, runtime)
 
     def get_spark_app_attempt_log_with_options(
         self,
@@ -9597,10 +17197,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppAttemptLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppAttemptLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppAttemptLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_attempt_log_with_options_async(
         self,
@@ -9644,10 +17250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppAttemptLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppAttemptLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppAttemptLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_attempt_log(
         self,
@@ -9721,10 +17333,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_info_with_options_async(
         self,
@@ -9764,10 +17382,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_info(
         self,
@@ -9847,10 +17471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppLogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppLogResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppLogResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_log_with_options_async(
         self,
@@ -9896,10 +17526,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppLogResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppLogResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_log(
         self,
@@ -9973,10 +17609,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppMetricsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppMetricsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_metrics_with_options_async(
         self,
@@ -10016,10 +17658,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppMetricsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppMetricsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_metrics(
         self,
@@ -10093,10 +17741,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppStateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppStateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppStateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_state_with_options_async(
         self,
@@ -10136,10 +17790,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppStateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppStateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppStateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_state(
         self,
@@ -10213,10 +17873,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppWebUiAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppWebUiAddressResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppWebUiAddressResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_app_web_ui_address_with_options_async(
         self,
@@ -10256,10 +17922,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkAppWebUiAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppWebUiAddressResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkAppWebUiAddressResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_app_web_ui_address(
         self,
@@ -10329,10 +18001,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkConfigLogPathResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkConfigLogPathResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkConfigLogPathResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_config_log_path_with_options_async(
         self,
@@ -10368,10 +18046,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkConfigLogPathResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkConfigLogPathResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkConfigLogPathResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_config_log_path(
         self,
@@ -10407,118 +18091,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_config_log_path_with_options_async(request, runtime)
 
-    def get_spark_definitions_with_options(
-        self,
-        request: adb_20211201_models.GetSparkDefinitionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
-        """
-        @summary Queries the common definitions of Spark applications.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: GetSparkDefinitionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSparkDefinitionsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            body['DBClusterId'] = request.dbcluster_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetSparkDefinitions',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkDefinitionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_spark_definitions_with_options_async(
-        self,
-        request: adb_20211201_models.GetSparkDefinitionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
-        """
-        @summary Queries the common definitions of Spark applications.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: GetSparkDefinitionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetSparkDefinitionsResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            body['DBClusterId'] = request.dbcluster_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='GetSparkDefinitions',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkDefinitionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_spark_definitions(
-        self,
-        request: adb_20211201_models.GetSparkDefinitionsRequest,
-    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
-        """
-        @summary Queries the common definitions of Spark applications.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: GetSparkDefinitionsRequest
-        @return: GetSparkDefinitionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_spark_definitions_with_options(request, runtime)
-
-    async def get_spark_definitions_async(
-        self,
-        request: adb_20211201_models.GetSparkDefinitionsRequest,
-    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
-        """
-        @summary Queries the common definitions of Spark applications.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: GetSparkDefinitionsRequest
-        @return: GetSparkDefinitionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_spark_definitions_with_options_async(request, runtime)
-
     def get_spark_log_analyze_task_with_options(
         self,
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
@@ -10527,9 +18099,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the results of a Spark log analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10553,10 +18125,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_log_analyze_task_with_options_async(
         self,
@@ -10566,9 +18144,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the results of a Spark log analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10592,10 +18170,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkLogAnalyzeTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_log_analyze_task(
         self,
@@ -10604,9 +18188,9 @@ class Client(OpenApiClient):
         """
         @summary Queries the results of a Spark log analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkLogAnalyzeTaskRequest
         @return: GetSparkLogAnalyzeTaskResponse
@@ -10621,15 +18205,243 @@ class Client(OpenApiClient):
         """
         @summary Queries the results of a Spark log analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: GetSparkLogAnalyzeTaskRequest
         @return: GetSparkLogAnalyzeTaskResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_log_analyze_task_with_options_async(request, runtime)
+
+    def get_spark_repl_session_with_options(
+        self,
+        request: adb_20211201_models.GetSparkReplSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkReplSessionResponse:
+        """
+        @summary Queries the status of a Spark session.
+        
+        @param request: GetSparkReplSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkReplSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkReplSession',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplSessionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_spark_repl_session_with_options_async(
+        self,
+        request: adb_20211201_models.GetSparkReplSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkReplSessionResponse:
+        """
+        @summary Queries the status of a Spark session.
+        
+        @param request: GetSparkReplSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkReplSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkReplSession',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_spark_repl_session(
+        self,
+        request: adb_20211201_models.GetSparkReplSessionRequest,
+    ) -> adb_20211201_models.GetSparkReplSessionResponse:
+        """
+        @summary Queries the status of a Spark session.
+        
+        @param request: GetSparkReplSessionRequest
+        @return: GetSparkReplSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_repl_session_with_options(request, runtime)
+
+    async def get_spark_repl_session_async(
+        self,
+        request: adb_20211201_models.GetSparkReplSessionRequest,
+    ) -> adb_20211201_models.GetSparkReplSessionResponse:
+        """
+        @summary Queries the status of a Spark session.
+        
+        @param request: GetSparkReplSessionRequest
+        @return: GetSparkReplSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_repl_session_with_options_async(request, runtime)
+
+    def get_spark_repl_statement_with_options(
+        self,
+        request: adb_20211201_models.GetSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkReplStatementResponse:
+        """
+        @summary Queries the execution result of a code block.
+        
+        @param request: GetSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplStatementResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplStatementResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_spark_repl_statement_with_options_async(
+        self,
+        request: adb_20211201_models.GetSparkReplStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkReplStatementResponse:
+        """
+        @summary Queries the execution result of a code block.
+        
+        @param request: GetSparkReplStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkReplStatementResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.statement_id):
+            body['StatementId'] = request.statement_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkReplStatement',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplStatementResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkReplStatementResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_spark_repl_statement(
+        self,
+        request: adb_20211201_models.GetSparkReplStatementRequest,
+    ) -> adb_20211201_models.GetSparkReplStatementResponse:
+        """
+        @summary Queries the execution result of a code block.
+        
+        @param request: GetSparkReplStatementRequest
+        @return: GetSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_repl_statement_with_options(request, runtime)
+
+    async def get_spark_repl_statement_async(
+        self,
+        request: adb_20211201_models.GetSparkReplStatementRequest,
+    ) -> adb_20211201_models.GetSparkReplStatementResponse:
+        """
+        @summary Queries the execution result of a code block.
+        
+        @param request: GetSparkReplStatementRequest
+        @return: GetSparkReplStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_repl_statement_with_options_async(request, runtime)
 
     def get_spark_sqlengine_state_with_options(
         self,
@@ -10667,10 +18479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkSQLEngineStateResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkSQLEngineStateResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkSQLEngineStateResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_sqlengine_state_with_options_async(
         self,
@@ -10708,10 +18526,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkSQLEngineStateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkSQLEngineStateResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkSQLEngineStateResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_sqlengine_state(
         self,
@@ -10783,10 +18607,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFileContentResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFileContentResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFileContentResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_template_file_content_with_options_async(
         self,
@@ -10824,10 +18654,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFileContentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFileContentResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFileContentResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_template_file_content(
         self,
@@ -10897,10 +18733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_template_folder_tree_with_options_async(
         self,
@@ -10936,10 +18778,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFolderTreeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_template_folder_tree(
         self,
@@ -11009,10 +18857,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFullTreeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFullTreeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFullTreeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_spark_template_full_tree_with_options_async(
         self,
@@ -11048,10 +18902,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetSparkTemplateFullTreeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFullTreeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkTemplateFullTreeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_spark_template_full_tree(
         self,
@@ -11086,6 +18946,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_template_full_tree_with_options_async(request, runtime)
+
+    def get_spark_warehouse_batch_sqlwith_options(
+        self,
+        request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
+        """
+        @summary 获取一段Spark Batch SQL的状态
+        
+        @param request: GetSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.query_id):
+            body['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkWarehouseBatchSQLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkWarehouseBatchSQLResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def get_spark_warehouse_batch_sqlwith_options_async(
+        self,
+        request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
+        """
+        @summary 获取一段Spark Batch SQL的状态
+        
+        @param request: GetSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agency):
+            body['Agency'] = request.agency
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.query_id):
+            body['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkWarehouseBatchSQLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetSparkWarehouseBatchSQLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def get_spark_warehouse_batch_sql(
+        self,
+        request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
+        """
+        @summary 获取一段Spark Batch SQL的状态
+        
+        @param request: GetSparkWarehouseBatchSQLRequest
+        @return: GetSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_warehouse_batch_sqlwith_options(request, runtime)
+
+    async def get_spark_warehouse_batch_sql_async(
+        self,
+        request: adb_20211201_models.GetSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.GetSparkWarehouseBatchSQLResponse:
+        """
+        @summary 获取一段Spark Batch SQL的状态
+        
+        @param request: GetSparkWarehouseBatchSQLRequest
+        @return: GetSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_warehouse_batch_sqlwith_options_async(request, runtime)
 
     def get_table_with_options(
         self,
@@ -11123,10 +19099,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_table_with_options_async(
         self,
@@ -11164,10 +19146,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_table(
         self,
@@ -11240,10 +19228,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableColumnsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableColumnsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableColumnsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_table_columns_with_options_async(
         self,
@@ -11290,10 +19284,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableColumnsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableColumnsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableColumnsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_table_columns(
         self,
@@ -11366,10 +19366,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableDDLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableDDLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableDDLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_table_ddlwith_options_async(
         self,
@@ -11410,10 +19416,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableDDLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableDDLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableDDLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_table_ddl(
         self,
@@ -11495,10 +19507,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableObjectsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableObjectsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableObjectsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_table_objects_with_options_async(
         self,
@@ -11548,10 +19566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetTableObjectsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableObjectsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetTableObjectsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_table_objects(
         self,
@@ -11618,10 +19642,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetViewDDLResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewDDLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewDDLResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_view_ddlwith_options_async(
         self,
@@ -11662,10 +19692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetViewDDLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewDDLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewDDLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_view_ddl(
         self,
@@ -11748,10 +19784,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetViewObjectsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewObjectsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewObjectsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_view_objects_with_options_async(
         self,
@@ -11802,10 +19844,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.GetViewObjectsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewObjectsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GetViewObjectsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_view_objects(
         self,
@@ -11838,6 +19886,242 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_view_objects_with_options_async(request, runtime)
+
+    def grant_operator_permission_with_options(
+        self,
+        request: adb_20211201_models.GrantOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GrantOperatorPermissionResponse:
+        """
+        @summary Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: GrantOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.expired_time):
+            query['ExpiredTime'] = request.expired_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.privileges):
+            query['Privileges'] = request.privileges
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GrantOperatorPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GrantOperatorPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def grant_operator_permission_with_options_async(
+        self,
+        request: adb_20211201_models.GrantOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GrantOperatorPermissionResponse:
+        """
+        @summary Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: GrantOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.expired_time):
+            query['ExpiredTime'] = request.expired_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.privileges):
+            query['Privileges'] = request.privileges
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.GrantOperatorPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.GrantOperatorPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def grant_operator_permission(
+        self,
+        request: adb_20211201_models.GrantOperatorPermissionRequest,
+    ) -> adb_20211201_models.GrantOperatorPermissionResponse:
+        """
+        @summary Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: GrantOperatorPermissionRequest
+        @return: GrantOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.grant_operator_permission_with_options(request, runtime)
+
+    async def grant_operator_permission_async(
+        self,
+        request: adb_20211201_models.GrantOperatorPermissionRequest,
+    ) -> adb_20211201_models.GrantOperatorPermissionResponse:
+        """
+        @summary Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: GrantOperatorPermissionRequest
+        @return: GrantOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_operator_permission_with_options_async(request, runtime)
+
+    def kill_process_with_options(
+        self,
+        request: adb_20211201_models.KillProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.KillProcessResponse:
+        """
+        @summary Terminates an ongoing query.
+        
+        @param request: KillProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='KillProcess',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillProcessResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillProcessResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def kill_process_with_options_async(
+        self,
+        request: adb_20211201_models.KillProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.KillProcessResponse:
+        """
+        @summary Terminates an ongoing query.
+        
+        @param request: KillProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='KillProcess',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillProcessResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillProcessResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def kill_process(
+        self,
+        request: adb_20211201_models.KillProcessRequest,
+    ) -> adb_20211201_models.KillProcessResponse:
+        """
+        @summary Terminates an ongoing query.
+        
+        @param request: KillProcessRequest
+        @return: KillProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.kill_process_with_options(request, runtime)
+
+    async def kill_process_async(
+        self,
+        request: adb_20211201_models.KillProcessRequest,
+    ) -> adb_20211201_models.KillProcessResponse:
+        """
+        @summary Terminates an ongoing query.
+        
+        @param request: KillProcessRequest
+        @return: KillProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.kill_process_with_options_async(request, runtime)
 
     def kill_spark_app_with_options(
         self,
@@ -11877,10 +20161,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def kill_spark_app_with_options_async(
         self,
@@ -11920,10 +20210,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def kill_spark_app(
         self,
@@ -11967,9 +20263,9 @@ class Client(OpenApiClient):
         """
         @summary Terminates a Spark log analysis task and queries the information about the analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: KillSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11993,10 +20289,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def kill_spark_log_analyze_task_with_options_async(
         self,
@@ -12006,9 +20308,9 @@ class Client(OpenApiClient):
         """
         @summary Terminates a Spark log analysis task and queries the information about the analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: KillSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12032,10 +20334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkLogAnalyzeTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def kill_spark_log_analyze_task(
         self,
@@ -12044,9 +20352,9 @@ class Client(OpenApiClient):
         """
         @summary Terminates a Spark log analysis task and queries the information about the analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: KillSparkLogAnalyzeTaskRequest
         @return: KillSparkLogAnalyzeTaskResponse
@@ -12061,9 +20369,9 @@ class Client(OpenApiClient):
         """
         @summary Terminates a Spark log analysis task and queries the information about the analysis task.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: KillSparkLogAnalyzeTaskRequest
         @return: KillSparkLogAnalyzeTaskResponse
@@ -12107,10 +20415,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkSQLEngineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkSQLEngineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkSQLEngineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def kill_spark_sqlengine_with_options_async(
         self,
@@ -12148,10 +20462,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.KillSparkSQLEngineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkSQLEngineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.KillSparkSQLEngineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def kill_spark_sqlengine(
         self,
@@ -12186,6 +20506,638 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.kill_spark_sqlengine_with_options_async(request, runtime)
+
+    def list_aps_lifecycle_strategy_with_options(
+        self,
+        request: adb_20211201_models.ListApsLifecycleStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsLifecycleStrategyResponse:
+        """
+        @summary Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
+        
+        @param request: ListApsLifecycleStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsLifecycleStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsLifecycleStrategy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsLifecycleStrategyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsLifecycleStrategyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_aps_lifecycle_strategy_with_options_async(
+        self,
+        request: adb_20211201_models.ListApsLifecycleStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsLifecycleStrategyResponse:
+        """
+        @summary Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
+        
+        @param request: ListApsLifecycleStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsLifecycleStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsLifecycleStrategy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsLifecycleStrategyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsLifecycleStrategyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_aps_lifecycle_strategy(
+        self,
+        request: adb_20211201_models.ListApsLifecycleStrategyRequest,
+    ) -> adb_20211201_models.ListApsLifecycleStrategyResponse:
+        """
+        @summary Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
+        
+        @param request: ListApsLifecycleStrategyRequest
+        @return: ListApsLifecycleStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aps_lifecycle_strategy_with_options(request, runtime)
+
+    async def list_aps_lifecycle_strategy_async(
+        self,
+        request: adb_20211201_models.ListApsLifecycleStrategyRequest,
+    ) -> adb_20211201_models.ListApsLifecycleStrategyResponse:
+        """
+        @summary Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
+        
+        @param request: ListApsLifecycleStrategyRequest
+        @return: ListApsLifecycleStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aps_lifecycle_strategy_with_options_async(request, runtime)
+
+    def list_aps_optimization_strategy_with_options(
+        self,
+        request: adb_20211201_models.ListApsOptimizationStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
+        """
+        @summary 获取当前ADB实例湖存储优化策略列表。
+        
+        @param request: ListApsOptimizationStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsOptimizationStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsOptimizationStrategy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationStrategyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationStrategyResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_aps_optimization_strategy_with_options_async(
+        self,
+        request: adb_20211201_models.ListApsOptimizationStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
+        """
+        @summary 获取当前ADB实例湖存储优化策略列表。
+        
+        @param request: ListApsOptimizationStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsOptimizationStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsOptimizationStrategy',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationStrategyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationStrategyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_aps_optimization_strategy(
+        self,
+        request: adb_20211201_models.ListApsOptimizationStrategyRequest,
+    ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
+        """
+        @summary 获取当前ADB实例湖存储优化策略列表。
+        
+        @param request: ListApsOptimizationStrategyRequest
+        @return: ListApsOptimizationStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aps_optimization_strategy_with_options(request, runtime)
+
+    async def list_aps_optimization_strategy_async(
+        self,
+        request: adb_20211201_models.ListApsOptimizationStrategyRequest,
+    ) -> adb_20211201_models.ListApsOptimizationStrategyResponse:
+        """
+        @summary 获取当前ADB实例湖存储优化策略列表。
+        
+        @param request: ListApsOptimizationStrategyRequest
+        @return: ListApsOptimizationStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aps_optimization_strategy_with_options_async(request, runtime)
+
+    def list_aps_optimization_tasks_with_options(
+        self,
+        request: adb_20211201_models.ListApsOptimizationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsOptimizationTasksResponse:
+        """
+        @summary Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
+        
+        @param request: ListApsOptimizationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsOptimizationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy_type):
+            body['StrategyType'] = request.strategy_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsOptimizationTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationTasksResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_aps_optimization_tasks_with_options_async(
+        self,
+        request: adb_20211201_models.ListApsOptimizationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListApsOptimizationTasksResponse:
+        """
+        @summary Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
+        
+        @param request: ListApsOptimizationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApsOptimizationTasksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy_type):
+            body['StrategyType'] = request.strategy_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListApsOptimizationTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListApsOptimizationTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_aps_optimization_tasks(
+        self,
+        request: adb_20211201_models.ListApsOptimizationTasksRequest,
+    ) -> adb_20211201_models.ListApsOptimizationTasksResponse:
+        """
+        @summary Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
+        
+        @param request: ListApsOptimizationTasksRequest
+        @return: ListApsOptimizationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aps_optimization_tasks_with_options(request, runtime)
+
+    async def list_aps_optimization_tasks_async(
+        self,
+        request: adb_20211201_models.ListApsOptimizationTasksRequest,
+    ) -> adb_20211201_models.ListApsOptimizationTasksResponse:
+        """
+        @summary Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
+        
+        @param request: ListApsOptimizationTasksRequest
+        @return: ListApsOptimizationTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aps_optimization_tasks_with_options_async(request, runtime)
+
+    def list_lake_storages_with_options(
+        self,
+        request: adb_20211201_models.ListLakeStoragesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListLakeStoragesResponse:
+        """
+        @summary 列取湖存储
+        
+        @param request: ListLakeStoragesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLakeStoragesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLakeStorages',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListLakeStoragesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListLakeStoragesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_lake_storages_with_options_async(
+        self,
+        request: adb_20211201_models.ListLakeStoragesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListLakeStoragesResponse:
+        """
+        @summary 列取湖存储
+        
+        @param request: ListLakeStoragesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLakeStoragesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLakeStorages',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListLakeStoragesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListLakeStoragesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_lake_storages(
+        self,
+        request: adb_20211201_models.ListLakeStoragesRequest,
+    ) -> adb_20211201_models.ListLakeStoragesResponse:
+        """
+        @summary 列取湖存储
+        
+        @param request: ListLakeStoragesRequest
+        @return: ListLakeStoragesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_lake_storages_with_options(request, runtime)
+
+    async def list_lake_storages_async(
+        self,
+        request: adb_20211201_models.ListLakeStoragesRequest,
+    ) -> adb_20211201_models.ListLakeStoragesResponse:
+        """
+        @summary 列取湖存储
+        
+        @param request: ListLakeStoragesRequest
+        @return: ListLakeStoragesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_lake_storages_with_options_async(request, runtime)
+
+    def list_result_export_job_history_with_options(
+        self,
+        tmp_req: adb_20211201_models.ListResultExportJobHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListResultExportJobHistoryResponse:
+        """
+        @summary Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+        
+        @param tmp_req: ListResultExportJobHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResultExportJobHistoryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ListResultExportJobHistoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order):
+            request.order_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order, 'Order', 'json')
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_user):
+            body['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order_shrink):
+            body['Order'] = request.order_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_list_shrink):
+            body['StatusList'] = request.status_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListResultExportJobHistory',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListResultExportJobHistoryResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListResultExportJobHistoryResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_result_export_job_history_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ListResultExportJobHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListResultExportJobHistoryResponse:
+        """
+        @summary Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+        
+        @param tmp_req: ListResultExportJobHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResultExportJobHistoryResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ListResultExportJobHistoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order):
+            request.order_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order, 'Order', 'json')
+        if not UtilClient.is_unset(tmp_req.status_list):
+            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_user):
+            body['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order_shrink):
+            body['Order'] = request.order_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status_list_shrink):
+            body['StatusList'] = request.status_list_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListResultExportJobHistory',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListResultExportJobHistoryResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListResultExportJobHistoryResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_result_export_job_history(
+        self,
+        request: adb_20211201_models.ListResultExportJobHistoryRequest,
+    ) -> adb_20211201_models.ListResultExportJobHistoryResponse:
+        """
+        @summary Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+        
+        @param request: ListResultExportJobHistoryRequest
+        @return: ListResultExportJobHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_result_export_job_history_with_options(request, runtime)
+
+    async def list_result_export_job_history_async(
+        self,
+        request: adb_20211201_models.ListResultExportJobHistoryRequest,
+    ) -> adb_20211201_models.ListResultExportJobHistoryResponse:
+        """
+        @summary Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+        
+        @param request: ListResultExportJobHistoryRequest
+        @return: ListResultExportJobHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_result_export_job_history_with_options_async(request, runtime)
 
     def list_spark_app_attempts_with_options(
         self,
@@ -12227,10 +21179,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkAppAttemptsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppAttemptsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppAttemptsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_spark_app_attempts_with_options_async(
         self,
@@ -12272,10 +21230,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkAppAttemptsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppAttemptsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppAttemptsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_spark_app_attempts(
         self,
@@ -12327,6 +21291,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12347,10 +21313,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkAppsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_spark_apps_with_options_async(
         self,
@@ -12368,6 +21340,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filters):
+            query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -12388,10 +21362,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkAppsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkAppsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_spark_apps(
         self,
@@ -12427,9 +21407,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of Spark log analysis tasks.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkLogAnalyzeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12457,10 +21437,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_spark_log_analyze_tasks_with_options_async(
         self,
@@ -12470,9 +21456,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of Spark log analysis tasks.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkLogAnalyzeTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12500,10 +21486,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkLogAnalyzeTasksResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_spark_log_analyze_tasks(
         self,
@@ -12512,9 +21504,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of Spark log analysis tasks.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkLogAnalyzeTasksRequest
         @return: ListSparkLogAnalyzeTasksResponse
@@ -12529,9 +21521,9 @@ class Client(OpenApiClient):
         """
         @summary Queries a list of Spark log analysis tasks.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: ListSparkLogAnalyzeTasksRequest
         @return: ListSparkLogAnalyzeTasksResponse
@@ -12545,7 +21537,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
         """
-        @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -12573,10 +21565,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkTemplateFileIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkTemplateFileIdsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkTemplateFileIdsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_spark_template_file_ids_with_options_async(
         self,
@@ -12584,7 +21582,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
         """
-        @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -12612,17 +21610,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ListSparkTemplateFileIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkTemplateFileIdsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkTemplateFileIdsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_spark_template_file_ids(
         self,
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
         """
-        @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -12639,7 +21643,7 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
         """
-        @summary Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        @summary Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
         
         @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
@@ -12650,6 +21654,266 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_spark_template_file_ids_with_options_async(request, runtime)
+
+    def list_spark_warehouse_batch_sqlwith_options(
+        self,
+        request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
+        """
+        @summary 列出提交的的SparkBatchSQL
+        
+        @param request: ListSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkWarehouseBatchSQLResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkWarehouseBatchSQLResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_spark_warehouse_batch_sqlwith_options_async(
+        self,
+        request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
+        """
+        @summary 列出提交的的SparkBatchSQL
+        
+        @param request: ListSparkWarehouseBatchSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkWarehouseBatchSQLResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListSparkWarehouseBatchSQL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkWarehouseBatchSQLResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListSparkWarehouseBatchSQLResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_spark_warehouse_batch_sql(
+        self,
+        request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
+        """
+        @summary 列出提交的的SparkBatchSQL
+        
+        @param request: ListSparkWarehouseBatchSQLRequest
+        @return: ListSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_spark_warehouse_batch_sqlwith_options(request, runtime)
+
+    async def list_spark_warehouse_batch_sql_async(
+        self,
+        request: adb_20211201_models.ListSparkWarehouseBatchSQLRequest,
+    ) -> adb_20211201_models.ListSparkWarehouseBatchSQLResponse:
+        """
+        @summary 列出提交的的SparkBatchSQL
+        
+        @param request: ListSparkWarehouseBatchSQLRequest
+        @return: ListSparkWarehouseBatchSQLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_spark_warehouse_batch_sqlwith_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: adb_20211201_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListTagResourcesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListTagResourcesResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: adb_20211201_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ListTagResourcesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ListTagResourcesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def list_tag_resources(
+        self,
+        request: adb_20211201_models.ListTagResourcesRequest,
+    ) -> adb_20211201_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: adb_20211201_models.ListTagResourcesRequest,
+    ) -> adb_20211201_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def load_sample_data_set_with_options(
         self,
@@ -12683,10 +21947,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.LoadSampleDataSetResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.LoadSampleDataSetResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.LoadSampleDataSetResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def load_sample_data_set_with_options_async(
         self,
@@ -12720,10 +21990,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.LoadSampleDataSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.LoadSampleDataSetResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.LoadSampleDataSetResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def load_sample_data_set(
         self,
@@ -12793,10 +22069,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAccountDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_description_with_options_async(
         self,
@@ -12836,10 +22118,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAccountDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_description(
         self,
@@ -12913,10 +22201,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAccountPrivilegesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountPrivilegesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountPrivilegesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_account_privileges_with_options_async(
         self,
@@ -12960,10 +22254,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAccountPrivilegesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountPrivilegesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAccountPrivilegesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_account_privileges(
         self,
@@ -12994,6 +22294,594 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_privileges_with_options_async(request, runtime)
+
+    def modify_aps_datasoure_with_options(
+        self,
+        tmp_req: adb_20211201_models.ModifyApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsDatasoureResponse:
+        """
+        @summary Modifies an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description ### [](#)
+        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        You cannot modify the number of nodes for the USER_DEFAULT resource group.
+        
+        @param tmp_req: ModifyApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsDatasoureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyApsDatasoureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.kafka_info):
+            request.kafka_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_info, 'KafkaInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.lakehouse_id):
+            request.lakehouse_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lakehouse_id, 'LakehouseId', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbmysql_info):
+            request.polar_dbmysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbmysql_info, 'PolarDBMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rds_mysql_info):
+            request.rds_mysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rds_mysql_info, 'RdsMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_description):
+            body['DatasourceDescription'] = request.datasource_description
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.kafka_info_shrink):
+            body['KafkaInfo'] = request.kafka_info_shrink
+        if not UtilClient.is_unset(request.lakehouse_id_shrink):
+            body['LakehouseId'] = request.lakehouse_id_shrink
+        if not UtilClient.is_unset(request.polar_dbmysql_info_shrink):
+            body['PolarDBMysqlInfo'] = request.polar_dbmysql_info_shrink
+        if not UtilClient.is_unset(request.rds_mysql_info_shrink):
+            body['RdsMysqlInfo'] = request.rds_mysql_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsDatasoureResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsDatasoureResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_aps_datasoure_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ModifyApsDatasoureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsDatasoureResponse:
+        """
+        @summary Modifies an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description ### [](#)
+        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        You cannot modify the number of nodes for the USER_DEFAULT resource group.
+        
+        @param tmp_req: ModifyApsDatasoureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsDatasoureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyApsDatasoureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.kafka_info):
+            request.kafka_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kafka_info, 'KafkaInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.lakehouse_id):
+            request.lakehouse_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.lakehouse_id, 'LakehouseId', 'json')
+        if not UtilClient.is_unset(tmp_req.polar_dbmysql_info):
+            request.polar_dbmysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.polar_dbmysql_info, 'PolarDBMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.rds_mysql_info):
+            request.rds_mysql_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rds_mysql_info, 'RdsMysqlInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sls_info):
+            request.sls_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sls_info, 'SlsInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.datasource_description):
+            body['DatasourceDescription'] = request.datasource_description
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.datasource_name):
+            body['DatasourceName'] = request.datasource_name
+        if not UtilClient.is_unset(request.kafka_info_shrink):
+            body['KafkaInfo'] = request.kafka_info_shrink
+        if not UtilClient.is_unset(request.lakehouse_id_shrink):
+            body['LakehouseId'] = request.lakehouse_id_shrink
+        if not UtilClient.is_unset(request.polar_dbmysql_info_shrink):
+            body['PolarDBMysqlInfo'] = request.polar_dbmysql_info_shrink
+        if not UtilClient.is_unset(request.rds_mysql_info_shrink):
+            body['RdsMysqlInfo'] = request.rds_mysql_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sls_info_shrink):
+            body['SlsInfo'] = request.sls_info_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsDatasoure',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsDatasoureResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsDatasoureResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_aps_datasoure(
+        self,
+        request: adb_20211201_models.ModifyApsDatasoureRequest,
+    ) -> adb_20211201_models.ModifyApsDatasoureResponse:
+        """
+        @summary Modifies an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description ### [](#)
+        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        You cannot modify the number of nodes for the USER_DEFAULT resource group.
+        
+        @param request: ModifyApsDatasoureRequest
+        @return: ModifyApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_aps_datasoure_with_options(request, runtime)
+
+    async def modify_aps_datasoure_async(
+        self,
+        request: adb_20211201_models.ModifyApsDatasoureRequest,
+    ) -> adb_20211201_models.ModifyApsDatasoureResponse:
+        """
+        @summary Modifies an AnalyticDB Pipeline Service (APS) data source.
+        
+        @description ### [](#)
+        You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+        You cannot modify the number of nodes for the USER_DEFAULT resource group.
+        
+        @param request: ModifyApsDatasoureRequest
+        @return: ModifyApsDatasoureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_aps_datasoure_with_options_async(request, runtime)
+
+    def modify_aps_job_with_options(
+        self,
+        request: adb_20211201_models.ModifyApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsJobResponse:
+        """
+        @summary 修改aps任务
+        
+        @param request: ModifyApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.partition_list):
+            body['PartitionList'] = request.partition_list
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_aps_job_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsJobResponse:
+        """
+        @summary 修改aps任务
+        
+        @param request: ModifyApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.partition_list):
+            body['PartitionList'] = request.partition_list
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_aps_job(
+        self,
+        request: adb_20211201_models.ModifyApsJobRequest,
+    ) -> adb_20211201_models.ModifyApsJobResponse:
+        """
+        @summary 修改aps任务
+        
+        @param request: ModifyApsJobRequest
+        @return: ModifyApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_aps_job_with_options(request, runtime)
+
+    async def modify_aps_job_async(
+        self,
+        request: adb_20211201_models.ModifyApsJobRequest,
+    ) -> adb_20211201_models.ModifyApsJobResponse:
+        """
+        @summary 修改aps任务
+        
+        @param request: ModifyApsJobRequest
+        @return: ModifyApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_aps_job_with_options_async(request, runtime)
+
+    def modify_aps_sls_adbjob_with_options(
+        self,
+        tmp_req: adb_20211201_models.ModifyApsSlsADBJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
+        """
+        @summary 修改sls投递adb数仓任务
+        
+        @param tmp_req: ModifyApsSlsADBJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsSlsADBJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyApsSlsADBJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dirty_data_process_pattern):
+            body['DirtyDataProcessPattern'] = request.dirty_data_process_pattern
+        if not UtilClient.is_unset(request.exactly_once):
+            body['ExactlyOnce'] = request.exactly_once
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.unix_timestamp_convert):
+            body['UnixTimestampConvert'] = request.unix_timestamp_convert
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsSlsADBJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsSlsADBJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsSlsADBJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_aps_sls_adbjob_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ModifyApsSlsADBJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
+        """
+        @summary 修改sls投递adb数仓任务
+        
+        @param tmp_req: ModifyApsSlsADBJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsSlsADBJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyApsSlsADBJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dirty_data_process_pattern):
+            body['DirtyDataProcessPattern'] = request.dirty_data_process_pattern
+        if not UtilClient.is_unset(request.exactly_once):
+            body['ExactlyOnce'] = request.exactly_once
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.unix_timestamp_convert):
+            body['UnixTimestampConvert'] = request.unix_timestamp_convert
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsSlsADBJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsSlsADBJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsSlsADBJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_aps_sls_adbjob(
+        self,
+        request: adb_20211201_models.ModifyApsSlsADBJobRequest,
+    ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
+        """
+        @summary 修改sls投递adb数仓任务
+        
+        @param request: ModifyApsSlsADBJobRequest
+        @return: ModifyApsSlsADBJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_aps_sls_adbjob_with_options(request, runtime)
+
+    async def modify_aps_sls_adbjob_async(
+        self,
+        request: adb_20211201_models.ModifyApsSlsADBJobRequest,
+    ) -> adb_20211201_models.ModifyApsSlsADBJobResponse:
+        """
+        @summary 修改sls投递adb数仓任务
+        
+        @param request: ModifyApsSlsADBJobRequest
+        @return: ModifyApsSlsADBJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_aps_sls_adbjob_with_options_async(request, runtime)
+
+    def modify_aps_workload_name_with_options(
+        self,
+        request: adb_20211201_models.ModifyApsWorkloadNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
+        """
+        @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @param request: ModifyApsWorkloadNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsWorkloadNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsWorkloadName',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsWorkloadNameResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsWorkloadNameResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_aps_workload_name_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyApsWorkloadNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
+        """
+        @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @param request: ModifyApsWorkloadNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApsWorkloadNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workload_id):
+            body['WorkloadId'] = request.workload_id
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApsWorkloadName',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsWorkloadNameResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyApsWorkloadNameResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_aps_workload_name(
+        self,
+        request: adb_20211201_models.ModifyApsWorkloadNameRequest,
+    ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
+        """
+        @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @param request: ModifyApsWorkloadNameRequest
+        @return: ModifyApsWorkloadNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_aps_workload_name_with_options(request, runtime)
+
+    async def modify_aps_workload_name_async(
+        self,
+        request: adb_20211201_models.ModifyApsWorkloadNameRequest,
+    ) -> adb_20211201_models.ModifyApsWorkloadNameResponse:
+        """
+        @summary Modifies the AnalyticDB Pipeline Service (APS) workload name.
+        
+        @param request: ModifyApsWorkloadNameRequest
+        @return: ModifyApsWorkloadNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_aps_workload_name_with_options_async(request, runtime)
 
     def modify_audit_log_config_with_options(
         self,
@@ -13041,10 +22929,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAuditLogConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAuditLogConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAuditLogConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_audit_log_config_with_options_async(
         self,
@@ -13092,10 +22986,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyAuditLogConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAuditLogConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyAuditLogConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_audit_log_config(
         self,
@@ -13177,10 +23077,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyBackupPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyBackupPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_backup_policy_with_options_async(
         self,
@@ -13232,10 +23138,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyBackupPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyBackupPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_backup_policy(
         self,
@@ -13266,6 +23178,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
+
+    def modify_clickhouse_engine_with_options(
+        self,
+        request: adb_20211201_models.ModifyClickhouseEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
+        """
+        @summary 开启宽表引擎
+        
+        @param request: ModifyClickhouseEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClickhouseEngineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_size):
+            query['CacheSize'] = request.cache_size
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyClickhouseEngine',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClickhouseEngineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClickhouseEngineResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_clickhouse_engine_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyClickhouseEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
+        """
+        @summary 开启宽表引擎
+        
+        @param request: ModifyClickhouseEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClickhouseEngineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cache_size):
+            query['CacheSize'] = request.cache_size
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyClickhouseEngine',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClickhouseEngineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClickhouseEngineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_clickhouse_engine(
+        self,
+        request: adb_20211201_models.ModifyClickhouseEngineRequest,
+    ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
+        """
+        @summary 开启宽表引擎
+        
+        @param request: ModifyClickhouseEngineRequest
+        @return: ModifyClickhouseEngineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_clickhouse_engine_with_options(request, runtime)
+
+    async def modify_clickhouse_engine_async(
+        self,
+        request: adb_20211201_models.ModifyClickhouseEngineRequest,
+    ) -> adb_20211201_models.ModifyClickhouseEngineResponse:
+        """
+        @summary 开启宽表引擎
+        
+        @param request: ModifyClickhouseEngineRequest
+        @return: ModifyClickhouseEngineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_clickhouse_engine_with_options_async(request, runtime)
 
     def modify_cluster_access_white_list_with_options(
         self,
@@ -13307,10 +23339,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_cluster_access_white_list_with_options_async(
         self,
@@ -13352,10 +23390,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterAccessWhiteListResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_cluster_access_white_list(
         self,
@@ -13425,10 +23469,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyClusterConnectionStringResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterConnectionStringResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterConnectionStringResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_cluster_connection_string_with_options_async(
         self,
@@ -13468,10 +23518,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyClusterConnectionStringResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterConnectionStringResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyClusterConnectionStringResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_cluster_connection_string(
         self,
@@ -13502,6 +23558,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cluster_connection_string_with_options_async(request, runtime)
+
+    def modify_compaction_service_switch_with_options(
+        self,
+        request: adb_20211201_models.ModifyCompactionServiceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyCompactionServiceSwitchResponse:
+        """
+        @summary Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyCompactionServiceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCompactionServiceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_compaction_service):
+            query['EnableCompactionService'] = request.enable_compaction_service
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCompactionServiceSwitch',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyCompactionServiceSwitchResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyCompactionServiceSwitchResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_compaction_service_switch_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyCompactionServiceSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyCompactionServiceSwitchResponse:
+        """
+        @summary Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyCompactionServiceSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCompactionServiceSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_compaction_service):
+            query['EnableCompactionService'] = request.enable_compaction_service
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCompactionServiceSwitch',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyCompactionServiceSwitchResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyCompactionServiceSwitchResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_compaction_service_switch(
+        self,
+        request: adb_20211201_models.ModifyCompactionServiceSwitchRequest,
+    ) -> adb_20211201_models.ModifyCompactionServiceSwitchResponse:
+        """
+        @summary Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyCompactionServiceSwitchRequest
+        @return: ModifyCompactionServiceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_compaction_service_switch_with_options(request, runtime)
+
+    async def modify_compaction_service_switch_async(
+        self,
+        request: adb_20211201_models.ModifyCompactionServiceSwitchRequest,
+    ) -> adb_20211201_models.ModifyCompactionServiceSwitchResponse:
+        """
+        @summary Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyCompactionServiceSwitchRequest
+        @return: ModifyCompactionServiceSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_compaction_service_switch_with_options_async(request, runtime)
 
     def modify_dbcluster_with_options(
         self,
@@ -13561,10 +23729,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_with_options_async(
         self,
@@ -13624,10 +23798,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster(
         self,
@@ -13705,10 +23885,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterDescriptionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterDescriptionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterDescriptionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_description_with_options_async(
         self,
@@ -13744,10 +23930,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterDescriptionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterDescriptionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_description(
         self,
@@ -13813,10 +24005,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbcluster_maintain_time_with_options_async(
         self,
@@ -13852,10 +24050,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterMaintainTimeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbcluster_maintain_time(
         self,
@@ -13886,6 +24090,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_maintain_time_with_options_async(request, runtime)
+
+    def modify_dbcluster_resource_group_with_options(
+        self,
+        request: adb_20211201_models.ModifyDBClusterResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
+        
+        @param request: ModifyDBClusterResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterResourceGroup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_dbcluster_resource_group_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
+        
+        @param request: ModifyDBClusterResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterResourceGroup',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_dbcluster_resource_group(
+        self,
+        request: adb_20211201_models.ModifyDBClusterResourceGroupRequest,
+    ) -> adb_20211201_models.ModifyDBClusterResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
+        
+        @param request: ModifyDBClusterResourceGroupRequest
+        @return: ModifyDBClusterResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_resource_group_with_options(request, runtime)
+
+    async def modify_dbcluster_resource_group_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterResourceGroupRequest,
+    ) -> adb_20211201_models.ModifyDBClusterResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
+        
+        @param request: ModifyDBClusterResourceGroupRequest
+        @return: ModifyDBClusterResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_resource_group_with_options_async(request, runtime)
+
+    def modify_dbcluster_vip_with_options(
+        self,
+        request: adb_20211201_models.ModifyDBClusterVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterVipResponse:
+        """
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyDBClusterVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connect_string):
+            query['ConnectString'] = request.connect_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterVip',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterVipResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterVipResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_dbcluster_vip_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterVipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterVipResponse:
+        """
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyDBClusterVipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterVipResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connect_string):
+            query['ConnectString'] = request.connect_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterVip',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterVipResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBClusterVipResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_dbcluster_vip(
+        self,
+        request: adb_20211201_models.ModifyDBClusterVipRequest,
+    ) -> adb_20211201_models.ModifyDBClusterVipResponse:
+        """
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyDBClusterVipRequest
+        @return: ModifyDBClusterVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_vip_with_options(request, runtime)
+
+    async def modify_dbcluster_vip_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterVipRequest,
+    ) -> adb_20211201_models.ModifyDBClusterVipResponse:
+        """
+        @summary Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyDBClusterVipRequest
+        @return: ModifyDBClusterVipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_vip_with_options_async(request, runtime)
 
     def modify_dbresource_group_with_options(
         self,
@@ -13961,10 +24413,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBResourceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBResourceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBResourceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_dbresource_group_with_options_async(
         self,
@@ -14040,10 +24498,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyDBResourceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBResourceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyDBResourceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_dbresource_group(
         self,
@@ -14117,10 +24581,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyElasticPlanResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyElasticPlanResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyElasticPlanResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_elastic_plan_with_options_async(
         self,
@@ -14164,10 +24634,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyElasticPlanResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyElasticPlanResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyElasticPlanResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_elastic_plan(
         self,
@@ -14198,6 +24674,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_elastic_plan_with_options_async(request, runtime)
+
+    def modify_essd_cache_config_with_options(
+        self,
+        request: adb_20211201_models.ModifyEssdCacheConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyEssdCacheConfigResponse:
+        """
+        @summary Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyEssdCacheConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEssdCacheConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_essd_cache):
+            query['EnableEssdCache'] = request.enable_essd_cache
+        if not UtilClient.is_unset(request.essd_cache_size):
+            query['EssdCacheSize'] = request.essd_cache_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEssdCacheConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyEssdCacheConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyEssdCacheConfigResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_essd_cache_config_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyEssdCacheConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyEssdCacheConfigResponse:
+        """
+        @summary Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyEssdCacheConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEssdCacheConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_essd_cache):
+            query['EnableEssdCache'] = request.enable_essd_cache
+        if not UtilClient.is_unset(request.essd_cache_size):
+            query['EssdCacheSize'] = request.essd_cache_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEssdCacheConfig',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyEssdCacheConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyEssdCacheConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_essd_cache_config(
+        self,
+        request: adb_20211201_models.ModifyEssdCacheConfigRequest,
+    ) -> adb_20211201_models.ModifyEssdCacheConfigResponse:
+        """
+        @summary Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyEssdCacheConfigRequest
+        @return: ModifyEssdCacheConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_essd_cache_config_with_options(request, runtime)
+
+    async def modify_essd_cache_config_async(
+        self,
+        request: adb_20211201_models.ModifyEssdCacheConfigRequest,
+    ) -> adb_20211201_models.ModifyEssdCacheConfigResponse:
+        """
+        @summary Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyEssdCacheConfigRequest
+        @return: ModifyEssdCacheConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_essd_cache_config_with_options_async(request, runtime)
+
+    def modify_lake_cache_size_with_options(
+        self,
+        request: adb_20211201_models.ModifyLakeCacheSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyLakeCacheSizeResponse:
+        """
+        @summary Modifies the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyLakeCacheSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLakeCacheSizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_lake_cache):
+            query['EnableLakeCache'] = request.enable_lake_cache
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLakeCacheSize',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyLakeCacheSizeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyLakeCacheSizeResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_lake_cache_size_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyLakeCacheSizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyLakeCacheSizeResponse:
+        """
+        @summary Modifies the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyLakeCacheSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLakeCacheSizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capacity):
+            query['Capacity'] = request.capacity
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_lake_cache):
+            query['EnableLakeCache'] = request.enable_lake_cache
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLakeCacheSize',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyLakeCacheSizeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyLakeCacheSizeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_lake_cache_size(
+        self,
+        request: adb_20211201_models.ModifyLakeCacheSizeRequest,
+    ) -> adb_20211201_models.ModifyLakeCacheSizeResponse:
+        """
+        @summary Modifies the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyLakeCacheSizeRequest
+        @return: ModifyLakeCacheSizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_lake_cache_size_with_options(request, runtime)
+
+    async def modify_lake_cache_size_async(
+        self,
+        request: adb_20211201_models.ModifyLakeCacheSizeRequest,
+    ) -> adb_20211201_models.ModifyLakeCacheSizeResponse:
+        """
+        @summary Modifies the lake cache size of an AnalyticDB for MySQL cluster.
+        
+        @param request: ModifyLakeCacheSizeRequest
+        @return: ModifyLakeCacheSizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_lake_cache_size_with_options_async(request, runtime)
 
     def modify_performance_view_with_options(
         self,
@@ -14247,10 +24955,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyPerformanceViewResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyPerformanceViewResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyPerformanceViewResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_performance_view_with_options_async(
         self,
@@ -14300,10 +25014,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyPerformanceViewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyPerformanceViewResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyPerformanceViewResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_performance_view(
         self,
@@ -14330,6 +25050,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_performance_view_with_options_async(request, runtime)
+
+    def modify_user_eni_vswitch_options_with_options(
+        self,
+        request: adb_20211201_models.ModifyUserEniVswitchOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyUserEniVswitchOptionsResponse:
+        """
+        @summary Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
+        
+        @param request: ModifyUserEniVswitchOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserEniVswitchOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_cluster_id):
+            query['DbClusterId'] = request.db_cluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.v_switch_options):
+            body['VSwitchOptions'] = request.v_switch_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserEniVswitchOptions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyUserEniVswitchOptionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyUserEniVswitchOptionsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def modify_user_eni_vswitch_options_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyUserEniVswitchOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyUserEniVswitchOptionsResponse:
+        """
+        @summary Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
+        
+        @param request: ModifyUserEniVswitchOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserEniVswitchOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_cluster_id):
+            query['DbClusterId'] = request.db_cluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.v_switch_options):
+            body['VSwitchOptions'] = request.v_switch_options
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserEniVswitchOptions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyUserEniVswitchOptionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ModifyUserEniVswitchOptionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def modify_user_eni_vswitch_options(
+        self,
+        request: adb_20211201_models.ModifyUserEniVswitchOptionsRequest,
+    ) -> adb_20211201_models.ModifyUserEniVswitchOptionsResponse:
+        """
+        @summary Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
+        
+        @param request: ModifyUserEniVswitchOptionsRequest
+        @return: ModifyUserEniVswitchOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_eni_vswitch_options_with_options(request, runtime)
+
+    async def modify_user_eni_vswitch_options_async(
+        self,
+        request: adb_20211201_models.ModifyUserEniVswitchOptionsRequest,
+    ) -> adb_20211201_models.ModifyUserEniVswitchOptionsResponse:
+        """
+        @summary Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
+        
+        @param request: ModifyUserEniVswitchOptionsRequest
+        @return: ModifyUserEniVswitchOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_eni_vswitch_options_with_options_async(request, runtime)
 
     def preload_spark_app_metrics_with_options(
         self,
@@ -14369,10 +25225,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.PreloadSparkAppMetricsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.PreloadSparkAppMetricsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.PreloadSparkAppMetricsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def preload_spark_app_metrics_with_options_async(
         self,
@@ -14412,10 +25274,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.PreloadSparkAppMetricsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.PreloadSparkAppMetricsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.PreloadSparkAppMetricsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def preload_spark_app_metrics(
         self,
@@ -14485,10 +25353,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def release_cluster_public_connection_with_options_async(
         self,
@@ -14524,10 +25398,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ReleaseClusterPublicConnectionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def release_cluster_public_connection(
         self,
@@ -14558,126 +25438,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_cluster_public_connection_with_options_async(request, runtime)
-
-    def rename_spark_template_file_with_options(
-        self,
-        request: adb_20211201_models.RenameSparkTemplateFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
-        """
-        @summary Renames a Spark template file.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: RenameSparkTemplateFileRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RenameSparkTemplateFileResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RenameSparkTemplateFile',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.RenameSparkTemplateFileResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def rename_spark_template_file_with_options_async(
-        self,
-        request: adb_20211201_models.RenameSparkTemplateFileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
-        """
-        @summary Renames a Spark template file.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: RenameSparkTemplateFileRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RenameSparkTemplateFileResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RenameSparkTemplateFile',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.RenameSparkTemplateFileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def rename_spark_template_file(
-        self,
-        request: adb_20211201_models.RenameSparkTemplateFileRequest,
-    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
-        """
-        @summary Renames a Spark template file.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: RenameSparkTemplateFileRequest
-        @return: RenameSparkTemplateFileResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.rename_spark_template_file_with_options(request, runtime)
-
-    async def rename_spark_template_file_async(
-        self,
-        request: adb_20211201_models.RenameSparkTemplateFileRequest,
-    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
-        """
-        @summary Renames a Spark template file.
-        
-        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-        Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-        
-        @param request: RenameSparkTemplateFileRequest
-        @return: RenameSparkTemplateFileResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.rename_spark_template_file_with_options_async(request, runtime)
 
     def reset_account_password_with_options(
         self,
@@ -14719,10 +25479,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ResetAccountPasswordResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ResetAccountPasswordResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ResetAccountPasswordResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def reset_account_password_with_options_async(
         self,
@@ -14764,10 +25530,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.ResetAccountPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.ResetAccountPasswordResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.ResetAccountPasswordResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def reset_account_password(
         self,
@@ -14798,6 +25570,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
+
+    def revoke_operator_permission_with_options(
+        self,
+        request: adb_20211201_models.RevokeOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.RevokeOperatorPermissionResponse:
+        """
+        @summary Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: RevokeOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.RevokeOperatorPermissionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.RevokeOperatorPermissionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def revoke_operator_permission_with_options_async(
+        self,
+        request: adb_20211201_models.RevokeOperatorPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.RevokeOperatorPermissionResponse:
+        """
+        @summary Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: RevokeOperatorPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeOperatorPermissionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeOperatorPermission',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.RevokeOperatorPermissionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.RevokeOperatorPermissionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def revoke_operator_permission(
+        self,
+        request: adb_20211201_models.RevokeOperatorPermissionRequest,
+    ) -> adb_20211201_models.RevokeOperatorPermissionResponse:
+        """
+        @summary Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: RevokeOperatorPermissionRequest
+        @return: RevokeOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_operator_permission_with_options(request, runtime)
+
+    async def revoke_operator_permission_async(
+        self,
+        request: adb_20211201_models.RevokeOperatorPermissionRequest,
+    ) -> adb_20211201_models.RevokeOperatorPermissionResponse:
+        """
+        @summary Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+        
+        @param request: RevokeOperatorPermissionRequest
+        @return: RevokeOperatorPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_operator_permission_with_options_async(request, runtime)
 
     def set_spark_app_log_root_path_with_options(
         self,
@@ -14837,10 +25733,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SetSparkAppLogRootPathResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SetSparkAppLogRootPathResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SetSparkAppLogRootPathResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def set_spark_app_log_root_path_with_options_async(
         self,
@@ -14880,10 +25782,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SetSparkAppLogRootPathResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SetSparkAppLogRootPathResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SetSparkAppLogRootPathResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def set_spark_app_log_root_path(
         self,
@@ -14918,6 +25826,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_spark_app_log_root_path_with_options_async(request, runtime)
+
+    def start_aps_job_with_options(
+        self,
+        request: adb_20211201_models.StartApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.StartApsJobResponse:
+        """
+        @summary 启动aps任务
+        
+        @param request: StartApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartApsJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartApsJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def start_aps_job_with_options_async(
+        self,
+        request: adb_20211201_models.StartApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.StartApsJobResponse:
+        """
+        @summary 启动aps任务
+        
+        @param request: StartApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartApsJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartApsJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def start_aps_job(
+        self,
+        request: adb_20211201_models.StartApsJobRequest,
+    ) -> adb_20211201_models.StartApsJobResponse:
+        """
+        @summary 启动aps任务
+        
+        @param request: StartApsJobRequest
+        @return: StartApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_aps_job_with_options(request, runtime)
+
+    async def start_aps_job_async(
+        self,
+        request: adb_20211201_models.StartApsJobRequest,
+    ) -> adb_20211201_models.StartApsJobResponse:
+        """
+        @summary 启动aps任务
+        
+        @param request: StartApsJobRequest
+        @return: StartApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_aps_job_with_options_async(request, runtime)
+
+    def start_spark_repl_session_with_options(
+        self,
+        request: adb_20211201_models.StartSparkReplSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.StartSparkReplSessionResponse:
+        """
+        @summary Starts a Spark session.
+        
+        @param request: StartSparkReplSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSparkReplSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSparkReplSession',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkReplSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkReplSessionResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def start_spark_repl_session_with_options_async(
+        self,
+        request: adb_20211201_models.StartSparkReplSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.StartSparkReplSessionResponse:
+        """
+        @summary Starts a Spark session.
+        
+        @param request: StartSparkReplSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSparkReplSessionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSparkReplSession',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkReplSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkReplSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def start_spark_repl_session(
+        self,
+        request: adb_20211201_models.StartSparkReplSessionRequest,
+    ) -> adb_20211201_models.StartSparkReplSessionResponse:
+        """
+        @summary Starts a Spark session.
+        
+        @param request: StartSparkReplSessionRequest
+        @return: StartSparkReplSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_spark_repl_session_with_options(request, runtime)
+
+    async def start_spark_repl_session_async(
+        self,
+        request: adb_20211201_models.StartSparkReplSessionRequest,
+    ) -> adb_20211201_models.StartSparkReplSessionResponse:
+        """
+        @summary Starts a Spark session.
+        
+        @param request: StartSparkReplSessionRequest
+        @return: StartSparkReplSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_spark_repl_session_with_options_async(request, runtime)
 
     def start_spark_sqlengine_with_options(
         self,
@@ -14965,10 +26101,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.StartSparkSQLEngineResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkSQLEngineResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkSQLEngineResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def start_spark_sqlengine_with_options_async(
         self,
@@ -15016,10 +26158,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.StartSparkSQLEngineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkSQLEngineResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.StartSparkSQLEngineResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def start_spark_sqlengine(
         self,
@@ -15054,6 +26202,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_spark_sqlengine_with_options_async(request, runtime)
+
+    def submit_result_export_job_with_options(
+        self,
+        request: adb_20211201_models.SubmitResultExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.SubmitResultExportJobResponse:
+        """
+        @summary Submits an SQL query and exports a result set.
+        
+        @param request: SubmitResultExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitResultExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            body['Engine'] = request.engine
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.sql):
+            body['SQL'] = request.sql
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitResultExportJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitResultExportJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitResultExportJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def submit_result_export_job_with_options_async(
+        self,
+        request: adb_20211201_models.SubmitResultExportJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.SubmitResultExportJobResponse:
+        """
+        @summary Submits an SQL query and exports a result set.
+        
+        @param request: SubmitResultExportJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitResultExportJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine):
+            body['Engine'] = request.engine
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.sql):
+            body['SQL'] = request.sql
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitResultExportJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitResultExportJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitResultExportJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def submit_result_export_job(
+        self,
+        request: adb_20211201_models.SubmitResultExportJobRequest,
+    ) -> adb_20211201_models.SubmitResultExportJobResponse:
+        """
+        @summary Submits an SQL query and exports a result set.
+        
+        @param request: SubmitResultExportJobRequest
+        @return: SubmitResultExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_result_export_job_with_options(request, runtime)
+
+    async def submit_result_export_job_async(
+        self,
+        request: adb_20211201_models.SubmitResultExportJobRequest,
+    ) -> adb_20211201_models.SubmitResultExportJobResponse:
+        """
+        @summary Submits an SQL query and exports a result set.
+        
+        @param request: SubmitResultExportJobRequest
+        @return: SubmitResultExportJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_result_export_job_with_options_async(request, runtime)
 
     def submit_spark_app_with_options(
         self,
@@ -15103,10 +26383,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SubmitSparkAppResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkAppResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkAppResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_spark_app_with_options_async(
         self,
@@ -15156,10 +26442,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SubmitSparkAppResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkAppResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkAppResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_spark_app(
         self,
@@ -15203,9 +26495,9 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15229,10 +26521,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def submit_spark_log_analyze_task_with_options_async(
         self,
@@ -15242,9 +26540,9 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15268,10 +26566,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SubmitSparkLogAnalyzeTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def submit_spark_log_analyze_task(
         self,
@@ -15280,9 +26584,9 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @return: SubmitSparkLogAnalyzeTaskResponse
@@ -15297,15 +26601,127 @@ class Client(OpenApiClient):
         """
         @summary Submits a Spark log analysis task and queries the analysis results.
         
-        @description    General endpoint: `adb.aliyuncs.com`.
-        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        @description    Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
         Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
         
         @param request: SubmitSparkLogAnalyzeTaskRequest
         @return: SubmitSparkLogAnalyzeTaskResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_spark_log_analyze_task_with_options_async(request, runtime)
+
+    def suspend_aps_job_with_options(
+        self,
+        request: adb_20211201_models.SuspendApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.SuspendApsJobResponse:
+        """
+        @summary 暂停aps任务
+        
+        @param request: SuspendApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SuspendApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SuspendApsJobResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SuspendApsJobResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def suspend_aps_job_with_options_async(
+        self,
+        request: adb_20211201_models.SuspendApsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.SuspendApsJobResponse:
+        """
+        @summary 暂停aps任务
+        
+        @param request: SuspendApsJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendApsJobResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aps_job_id):
+            body['ApsJobId'] = request.aps_job_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SuspendApsJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.SuspendApsJobResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.SuspendApsJobResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def suspend_aps_job(
+        self,
+        request: adb_20211201_models.SuspendApsJobRequest,
+    ) -> adb_20211201_models.SuspendApsJobResponse:
+        """
+        @summary 暂停aps任务
+        
+        @param request: SuspendApsJobRequest
+        @return: SuspendApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_aps_job_with_options(request, runtime)
+
+    async def suspend_aps_job_async(
+        self,
+        request: adb_20211201_models.SuspendApsJobRequest,
+    ) -> adb_20211201_models.SuspendApsJobResponse:
+        """
+        @summary 暂停aps任务
+        
+        @param request: SuspendApsJobRequest
+        @return: SuspendApsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_aps_job_with_options_async(request, runtime)
 
     def unbind_account_with_options(
         self,
@@ -15341,10 +26757,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UnbindAccountResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindAccountResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindAccountResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_account_with_options_async(
         self,
@@ -15380,10 +26802,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UnbindAccountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindAccountResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindAccountResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind_account(
         self,
@@ -15451,10 +26879,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_dbresource_group_with_user_with_options_async(
         self,
@@ -15492,10 +26926,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind_dbresource_group_with_user(
         self,
@@ -15526,6 +26966,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_dbresource_group_with_user_with_options_async(request, runtime)
+
+    def update_lake_storage_with_options(
+        self,
+        tmp_req: adb_20211201_models.UpdateLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpdateLakeStorageResponse:
+        """
+        @summary Updates a lake storage.
+        
+        @param tmp_req: UpdateLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLakeStorageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.UpdateLakeStorageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.lake_storage_id):
+            body['LakeStorageId'] = request.lake_storage_id
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateLakeStorageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateLakeStorageResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def update_lake_storage_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.UpdateLakeStorageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UpdateLakeStorageResponse:
+        """
+        @summary Updates a lake storage.
+        
+        @param tmp_req: UpdateLakeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLakeStorageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.UpdateLakeStorageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.lake_storage_id):
+            body['LakeStorageId'] = request.lake_storage_id
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLakeStorage',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateLakeStorageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateLakeStorageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def update_lake_storage(
+        self,
+        request: adb_20211201_models.UpdateLakeStorageRequest,
+    ) -> adb_20211201_models.UpdateLakeStorageResponse:
+        """
+        @summary Updates a lake storage.
+        
+        @param request: UpdateLakeStorageRequest
+        @return: UpdateLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_lake_storage_with_options(request, runtime)
+
+    async def update_lake_storage_async(
+        self,
+        request: adb_20211201_models.UpdateLakeStorageRequest,
+    ) -> adb_20211201_models.UpdateLakeStorageResponse:
+        """
+        @summary Updates a lake storage.
+        
+        @param request: UpdateLakeStorageRequest
+        @return: UpdateLakeStorageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_lake_storage_with_options_async(request, runtime)
 
     def update_spark_template_file_with_options(
         self,
@@ -15567,10 +27139,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UpdateSparkTemplateFileResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateSparkTemplateFileResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateSparkTemplateFileResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_spark_template_file_with_options_async(
         self,
@@ -15612,10 +27190,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            adb_20211201_models.UpdateSparkTemplateFileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateSparkTemplateFileResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                adb_20211201_models.UpdateSparkTemplateFileResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_spark_template_file(
         self,
