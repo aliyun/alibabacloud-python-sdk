@@ -12688,7 +12688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @param headers: map
@@ -12730,7 +12730,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @param headers: map
@@ -12770,7 +12770,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @return: ModifyClusterTagsResponse
@@ -12785,7 +12785,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         """
-        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
+        @summary You can add labels in key-value pairs to clusters. This allows cluster developers or O\\\\\\&M engineers to classify and manage clusters in a more flexible manner. This also meets the requirements for monitoring, cost analysis, and tenant isolation. You can call the ModifyClusterTags operation to modify the labels of a cluster.
         
         @param request: ModifyClusterTagsRequest
         @return: ModifyClusterTagsResponse
@@ -12814,6 +12814,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.containerd_config):
+            body['containerd_config'] = request.containerd_config
         if not UtilClient.is_unset(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
         if not UtilClient.is_unset(request.os_config):
@@ -12866,6 +12868,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.containerd_config):
+            body['containerd_config'] = request.containerd_config
         if not UtilClient.is_unset(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
         if not UtilClient.is_unset(request.os_config):
@@ -15218,6 +15222,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
         """
+        @summary 启用告警
+        
         @param request: StartAlertRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15263,6 +15269,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
         """
+        @summary 启用告警
+        
         @param request: StartAlertRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -15306,6 +15314,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         """
+        @summary 启用告警
+        
         @param request: StartAlertRequest
         @return: StartAlertResponse
         """
@@ -15319,6 +15329,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
         """
+        @summary 启用告警
+        
         @param request: StartAlertRequest
         @return: StartAlertResponse
         """

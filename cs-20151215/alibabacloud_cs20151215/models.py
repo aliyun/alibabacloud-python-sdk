@@ -49,6 +49,39 @@ class Addon(TeaModel):
         return self
 
 
+class ContainerdConfig(TeaModel):
+    def __init__(
+        self,
+        insecure_registries: List[str] = None,
+        registry_mirrors: List[str] = None,
+    ):
+        self.insecure_registries = insecure_registries
+        self.registry_mirrors = registry_mirrors
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.insecure_registries is not None:
+            result['insecureRegistries'] = self.insecure_registries
+        if self.registry_mirrors is not None:
+            result['registryMirrors'] = self.registry_mirrors
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('insecureRegistries') is not None:
+            self.insecure_registries = m.get('insecureRegistries')
+        if m.get('registryMirrors') is not None:
+            self.registry_mirrors = m.get('registryMirrors')
+        return self
+
+
 class DataDisk(TeaModel):
     def __init__(
         self,
@@ -26037,7 +26070,7 @@ class ModifyClusterTagsRequest(TeaModel):
         self,
         body: List[Tag] = None,
     ):
-        # The data of the labels that you want to modify.
+        # The data of the tags that you want to modify.
         self.body = body
 
     def validate(self):
@@ -26160,18 +26193,22 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(TeaModel):
 class ModifyNodePoolNodeConfigRequest(TeaModel):
     def __init__(
         self,
+        containerd_config: ContainerdConfig = None,
         kubelet_config: KubeletConfig = None,
         os_config: ModifyNodePoolNodeConfigRequestOsConfig = None,
         rolling_policy: ModifyNodePoolNodeConfigRequestRollingPolicy = None,
     ):
-        # The kubelet configuration.
+        self.containerd_config = containerd_config
+        # The parameters of the kubelet.
         self.kubelet_config = kubelet_config
         # The OS configuration.
         self.os_config = os_config
-        # The rotation configuration.
+        # The rolling policy configuration.
         self.rolling_policy = rolling_policy
 
     def validate(self):
+        if self.containerd_config:
+            self.containerd_config.validate()
         if self.kubelet_config:
             self.kubelet_config.validate()
         if self.os_config:
@@ -26185,6 +26222,8 @@ class ModifyNodePoolNodeConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.containerd_config is not None:
+            result['containerd_config'] = self.containerd_config.to_map()
         if self.kubelet_config is not None:
             result['kubelet_config'] = self.kubelet_config.to_map()
         if self.os_config is not None:
@@ -26195,6 +26234,9 @@ class ModifyNodePoolNodeConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('containerd_config') is not None:
+            temp_model = ContainerdConfig()
+            self.containerd_config = temp_model.from_map(m['containerd_config'])
         if m.get('kubelet_config') is not None:
             temp_model = KubeletConfig()
             self.kubelet_config = temp_model.from_map(m['kubelet_config'])
