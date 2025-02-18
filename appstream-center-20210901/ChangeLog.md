@@ -1,3 +1,8 @@
+2025-02-18 Version: 3.0.1
+- Update API ListAppInstances: update response param.
+- Update API ModifyAppInstanceGroupAttribute: update param StoragePolicy.
+
+
 2025-01-17 Version: 3.0.0
 - Support API ListBindInfo.
 - Delete API AccessPageGetAcl.

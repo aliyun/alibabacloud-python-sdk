@@ -153,16 +153,34 @@ class ApproveOtaTaskRequest(TeaModel):
         start_time: str = None,
         task_id: str = None,
     ):
+        # The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the region where the delivery group resides. You can call the [ListRegions](https://help.aliyun.com/document_detail/428500.html) operation to query the list of regions supported by App Streaming.
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The type of the OTA update task.
+        # 
+        # Valid values:
+        # 
+        # *   Fota: update of the system components of Alibaba Cloud Workspace
+        # *   AppUpdate
+        # *   ImageUpdate
+        # 
         # This parameter is required.
         self.ota_type = ota_type
+        # The start time of the OTA update task. The time follows the ISO 8601 standard.
+        # 
         # This parameter is required.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
+        # The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
+        # >  Each successful call to the `ApproveOtaTask` operation causes a value change of this parameter.`` Before you call this operation, call the `ListAppInstanceGroup` operation again to obtain the latest value of this parameter.``
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -209,8 +227,11 @@ class ApproveOtaTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
+        # The error message. If the value of `Code` is `success`, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2069,10 +2090,20 @@ class CreateImageFromAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # The image name.
+        # 
         # This parameter is required.
         self.app_center_image_name = app_center_image_name
+        # The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -2110,7 +2141,9 @@ class CreateImageFromAppInstanceGroupResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2298,8 +2331,16 @@ class DeleteAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -2332,6 +2373,7 @@ class DeleteAppInstanceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2402,10 +2444,20 @@ class DeleteAppInstancesRequest(TeaModel):
         app_instance_ids: List[str] = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The IDs of application instances.
+        # 
         # This parameter is required.
         self.app_instance_ids = app_instance_ids
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -2445,9 +2497,18 @@ class DeleteAppInstancesResponseBodyDeleteAppInstanceModels(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The ID of the application instance.
         self.app_instance_id = app_instance_id
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # Specifies whether the application instance is deleted.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2488,7 +2549,9 @@ class DeleteAppInstancesResponseBody(TeaModel):
         delete_app_instance_models: List[DeleteAppInstancesResponseBodyDeleteAppInstanceModels] = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.delete_app_instance_models = delete_app_instance_models
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3418,17 +3481,52 @@ class GetConnectionTicketRequest(TeaModel):
         product_type: str = None,
         task_id: str = None,
     ):
+        # The application ID.
+        # 
+        # >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
         self.app_id = app_id
+        # The delivery groups.
+        # 
+        # > 
+        # 
+        # *   If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups.
+        # 
+        # *   This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
         self.app_instance_group_id_list = app_instance_group_id_list
+        # The ID of the application instance.
+        # 
+        # > 
+        # 
+        # *   If you configure this parameter, the system attempts to assign only the specified application instance.
+        # 
+        # *   If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
         self.app_instance_id = app_instance_id
+        # The ID of the persistent session.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/zh/wuying-appstreaming/user-guide/create-an-application?#how-to-get-installation-and-startup-para).
         self.app_start_param = app_start_param
+        # The application version. If you configure this parameter, only an application of the specified version is started. If you do not configure this parameter, an application of a random authorized version is started.
         self.app_version = app_version
+        # The region ID.
+        # 
+        # >  If you configure this parameter, the system assigns application instances only among the delivery groups that reside in the specified region.
         self.biz_region_id = biz_region_id
+        # The ID of the convenience account.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The product type.
+        # 
+        # Valid values:
+        # 
+        # *   CloudApp: App Streaming
+        # *   AndroidCloud: Cloud Phone
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The task ID.
+        # 
+        # >  This parameter is required for calls other than the first call to this operation. You can use this parameter to query the task status and connection credential.
         self.task_id = task_id
 
     def validate(self):
@@ -3501,15 +3599,37 @@ class GetConnectionTicketResponseBody(TeaModel):
         tenant_id: int = None,
         ticket: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the application instance.
         self.app_instance_id = app_instance_id
+        # The ID of the persistent session.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # The operating system.
+        # 
+        # Valid value:
+        # 
+        # *   Windows: the Windows operating system
         self.os_type = os_type
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
+        # The task status.
+        # 
+        # Valid values:
+        # 
+        # *   Finished: The task is complete.
+        # *   Failed: The task failed.
+        # *   Running: The task is being executed.
         self.task_status = task_status
+        # The ID of the Alibaba Cloud account.
         self.tenant_id = tenant_id
+        # The credential that is used to connect to App Streaming.
+        # 
+        # >  This parameter is displayed for calls other than the first call to this operation.
         self.ticket = ticket
 
     def validate(self):
@@ -3615,8 +3735,16 @@ class GetDebugAppInstanceRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group. You can call the `listAppInstanceGroup` operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -3655,12 +3783,19 @@ class GetDebugAppInstanceResponseBody(TeaModel):
         request_id: str = None,
         user_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the application instance.
         self.app_instance_id = app_instance_id
+        # The ID of the application version.
         self.app_version = app_version
+        # The authorization code. This authorization code is valid for 3 minutes and can be used only once, regardless of whether the authentication succeeds. If multiple authentication codes are generated for a user, only the latest authentication code takes effect.
         self.auth_code = auth_code
+        # The request ID.
         self.request_id = request_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -3753,6 +3888,8 @@ class GetOtaTaskByTaskIdRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -3786,11 +3923,18 @@ class GetOtaTaskByTaskIdResponseBody(TeaModel):
         request_id: str = None,
         task_start_time: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The OTA version.
         self.ota_version = ota_version
+        # The version description.
         self.release_note = release_note
+        # The request ID.
         self.request_id = request_id
+        # The execution time of the OTA update task. The time follows the ISO 8601 standard.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time
 
@@ -3887,18 +4031,69 @@ class GetResourcePriceRequest(TeaModel):
         period_unit: str = None,
         product_type: str = None,
     ):
+        # The number of resources to purchase.
+        # 
         # This parameter is required.
         self.amount = amount
+        # The type ID of the sessions that you purchase. You can call the `ListAppInstanceType` operation to obtain the ID.
+        # 
+        # You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
         self.app_instance_type = app_instance_type
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai).
+        # *   cn-hangzhou: China (Hangzhou)
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go
+        # *   PrePaid: subscription
+        # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The ID of the resource type that you purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) to obtain the ID.
+        # 
+        # You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
+        # 
+        # Valid values:
+        # 
+        # *   appstreaming.vgpu.8c16g.4g: WUYING - Graphics - 8 vCPUs, 16 GiB Memory, 4 GiB GPU Memory
+        # *   appstreaming.general.8c16g: WUYING - General - 8 vCPUs, 16 GiB Memory
+        # *   appstreaming.general.4c8g: WUYING - General - 4 vCPUs, 8 GiB Memory
+        # *   appstreaming.vgpu.14c93g.12g: WUYING - Graphics - 14 vCPUs, 93 GiB Memory, 12 GiB GPU Memory.
+        # *   appstreaming.vgpu.8c31g.16g: WUYING - Graphics - 8 vCPUs, 31 GiB Memory, 16 GiB GPU Memory
         self.node_instance_type = node_instance_type
+        # The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+        # 
         # This parameter is required.
         self.period = period
+        # The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+        # 
+        # *   1 Week
+        # *   1 Month
+        # *   2 Month
+        # *   3 Month
+        # *   6 Month
+        # *   1 Year
+        # *   2 Year
+        # *   3 Year
+        # 
+        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # 
         # This parameter is required.
         self.period_unit = period_unit
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -3959,10 +4154,20 @@ class GetResourcePriceResponseBodyPriceListPricePromotions(TeaModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The coupon code.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon ID.
         self.promotion_id = promotion_id
+        # The coupon name.
         self.promotion_name = promotion_name
+        # Indicates whether the coupon was used.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.selected = selected
 
     def validate(self):
@@ -4010,10 +4215,15 @@ class GetResourcePriceResponseBodyPriceListPrice(TeaModel):
         promotions: List[GetResourcePriceResponseBodyPriceListPricePromotions] = None,
         trade_price: str = None,
     ):
+        # The currency type.
         self.currency = currency
+        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The coupon metadata.
         self.promotions = promotions
+        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -4066,7 +4276,9 @@ class GetResourcePriceResponseBodyPriceListRules(TeaModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The description of the price calculation rule.
         self.description = description
+        # The ID of the price calculation rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4100,8 +4312,16 @@ class GetResourcePriceResponseBodyPriceList(TeaModel):
         price_type: str = None,
         rules: List[GetResourcePriceResponseBodyPriceListRules] = None,
     ):
+        # The price details.
         self.price = price
+        # The price type.
+        # 
+        # Valid values:
+        # 
+        # *   Connected: in use
+        # *   Standby: pending for use.
         self.price_type = price_type
+        # The price calculation rules.
         self.rules = rules
 
     def validate(self):
@@ -4152,10 +4372,20 @@ class GetResourcePriceResponseBodyPriceModelPricePromotions(TeaModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The coupon code.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon ID.
         self.promotion_id = promotion_id
+        # The coupon name.
         self.promotion_name = promotion_name
+        # Indicates whether the coupon was used.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.selected = selected
 
     def validate(self):
@@ -4203,10 +4433,15 @@ class GetResourcePriceResponseBodyPriceModelPrice(TeaModel):
         promotions: List[GetResourcePriceResponseBodyPriceModelPricePromotions] = None,
         trade_price: str = None,
     ):
+        # The currency type.
         self.currency = currency
+        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The coupon metadata.
         self.promotions = promotions
+        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -4259,7 +4494,9 @@ class GetResourcePriceResponseBodyPriceModelRules(TeaModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The description of the price calculation rule.
         self.description = description
+        # The ID of the price calculation rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4292,7 +4529,9 @@ class GetResourcePriceResponseBodyPriceModel(TeaModel):
         price: GetResourcePriceResponseBodyPriceModelPrice = None,
         rules: List[GetResourcePriceResponseBodyPriceModelRules] = None,
     ):
+        # The price details.
         self.price = price
+        # The price calculation rules.
         self.rules = rules
 
     def validate(self):
@@ -4339,10 +4578,19 @@ class GetResourcePriceResponseBody(TeaModel):
         price_model: GetResourcePriceResponseBodyPriceModel = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The price objects.
+        # 
+        # This parameter is returned only if a value is specified for AppInstanceType.
         self.price_list = price_list
+        # The price object.
+        # 
+        # This parameter is returned only if a value is specified for NodeInstanceType.
         self.price_model = price_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4441,12 +4689,35 @@ class GetResourceRenewPriceRequest(TeaModel):
         period_unit: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+        # 
         # This parameter is required.
         self.period = period
+        # The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+        # 
+        # *   1 Week
+        # *   1 Month
+        # *   2 Month
+        # *   3 Month
+        # *   6 Month
+        # *   1 Year
+        # *   2 Year
+        # *   3 Year
+        # 
+        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # 
         # This parameter is required.
         self.period_unit = period_unit
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -4491,10 +4762,20 @@ class GetResourceRenewPriceResponseBodyDataPricePromotions(TeaModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The coupon code.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon ID.
         self.promotion_id = promotion_id
+        # The coupon name.
         self.promotion_name = promotion_name
+        # Indicates whether the coupon was used.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.selected = selected
 
     def validate(self):
@@ -4542,10 +4823,15 @@ class GetResourceRenewPriceResponseBodyDataPrice(TeaModel):
         promotions: List[GetResourceRenewPriceResponseBodyDataPricePromotions] = None,
         trade_price: str = None,
     ):
+        # The currency type.
         self.currency = currency
+        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The coupon description.
         self.promotions = promotions
+        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -4598,7 +4884,9 @@ class GetResourceRenewPriceResponseBodyDataRules(TeaModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The description of the price calculation rule.
         self.description = description
+        # The ID of the price calculation rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4631,7 +4919,9 @@ class GetResourceRenewPriceResponseBodyData(TeaModel):
         price: GetResourceRenewPriceResponseBodyDataPrice = None,
         rules: List[GetResourceRenewPriceResponseBodyDataRules] = None,
     ):
+        # The price details.
         self.price = price
+        # The price calculation rules.
         self.rules = rules
 
     def validate(self):
@@ -4675,7 +4965,9 @@ class GetResourceRenewPriceResponseBody(TeaModel):
         data: GetResourceRenewPriceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The price object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5775,13 +6067,26 @@ class ListAppInstancesRequest(TeaModel):
         page_size: int = None,
         status: List[str] = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the application instance.
         self.app_instance_id = app_instance_id
+        # The IDs of the application instances. Up to 100 IDs can be specified.
         self.app_instance_id_list = app_instance_id_list
+        # Specifies whether to query the information about deleted application instances. If you set this parameter to true, you must configure AppInstanceIdList. Otherwise, a parameter error is reported.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.include_deleted = include_deleted
+        # The number of the page to return. Default value: `1`. We recommend that you configure this parameter.
         self.page_number = page_number
+        # The number of entries to return on each page. The value cannot be greater than `100`. Default value: `20`. We recommend that you configure this parameter.
         self.page_size = page_size
+        # The status of the application instances.
         self.status = status
 
     def validate(self):
@@ -5834,7 +6139,9 @@ class ListAppInstancesResponseBodyAppInstanceModelsBindInfo(TeaModel):
         end_user_id: str = None,
         usage_duration: int = None,
     ):
+        # The ID of the end user that is bound to the application instance.
         self.end_user_id = end_user_id
+        # The use duration of the application instance. Unit: seconds.
         self.usage_duration = usage_duration
 
     def validate(self):
@@ -5867,19 +6174,36 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         app_instance_group_id: str = None,
         app_instance_id: str = None,
         bind_info: ListAppInstancesResponseBodyAppInstanceModelsBindInfo = None,
+        charge_type: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         main_eth_public_ip: str = None,
+        node_id: str = None,
         session_status: str = None,
         status: str = None,
     ):
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the application instance.
         self.app_instance_id = app_instance_id
+        # The information about the binding between the application instance and end users.
         self.bind_info = bind_info
+        self.charge_type = charge_type
+        # The time when the application instance was created.
         self.gmt_create = gmt_create
+        # The time when the application instance was updated.
         self.gmt_modified = gmt_modified
+        # The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
         self.main_eth_public_ip = main_eth_public_ip
+        self.node_id = node_id
+        # The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
+        # 
+        # Valid values:
+        # 
+        # *   disconnect: disconnected
+        # *   connect: connected
         self.session_status = session_status
+        # The status of the application instance.
         self.status = status
 
     def validate(self):
@@ -5898,12 +6222,16 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
             result['AppInstanceId'] = self.app_instance_id
         if self.bind_info is not None:
             result['BindInfo'] = self.bind_info.to_map()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
         if self.main_eth_public_ip is not None:
             result['MainEthPublicIp'] = self.main_eth_public_ip
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
         if self.status is not None:
@@ -5919,12 +6247,16 @@ class ListAppInstancesResponseBodyAppInstanceModels(TeaModel):
         if m.get('BindInfo') is not None:
             temp_model = ListAppInstancesResponseBodyAppInstanceModelsBindInfo()
             self.bind_info = temp_model.from_map(m['BindInfo'])
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
         if m.get('MainEthPublicIp') is not None:
             self.main_eth_public_ip = m.get('MainEthPublicIp')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
         if m.get('Status') is not None:
@@ -5941,10 +6273,15 @@ class ListAppInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The IDs of the application instances.
         self.app_instance_models = app_instance_models
+        # The page number of the returned page. We recommend that you configure this parameter.
         self.page_number = page_number
+        # The number of entries returned on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6288,23 +6625,48 @@ class ListNodeInstanceTypeRequest(TeaModel):
         product_type: str = None,
         sort_type: str = None,
     ):
-        # 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](https://help.aliyun.com/document_detail/426036.html)。
+        # The ID of the region where the resource resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
         self.biz_region_id = biz_region_id
         self.cpu = cpu
         self.gpu = gpu
         self.gpu_memory = gpu_memory
-        # 语言类型。
+        # The language that you want to use.
+        # 
+        # Valid values:
+        # 
+        # *   en-US: English (US)
+        # *   zh-CN: Simplified Chinese
         self.language = language
         self.memory = memory
+        # The resource type that you want to query. If you do not configure this parameter, all resource types are returned.
         self.node_instance_type = node_instance_type
         self.node_instance_type_family = node_instance_type_family
         self.order_by = order_by
-        # 支持的操作系统类型。
+        # The operating system that is supported.
+        # 
+        # Valid value:
+        # 
+        # *   Windows: the Windows operating system
         self.os_type = os_type
+        # The number of the page to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
         self.sort_type = sort_type
@@ -6393,22 +6755,32 @@ class ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels(TeaModel):
         node_instance_type_family: str = None,
         node_type_name: str = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
-        # 显卡内存大小，单位为MB。
+        # The GPU size. Unit: MB.
         self.gpu_memory = gpu_memory
-        # 最大并发会话数，即单个资源可同时连接的会话数。如果同时连接的会话数过多，可能导致应用的使用体验下降。取值范围因资源规格不同而不同。各资源规格对应的取值范围分别是：
+        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
         # 
-        # - appstreaming.general.4c8g：1\\~2；
-        # - appstreaming.general.8c16g：1\\~4；
-        # - appstreaming.vgpu.8c16g.4g：1\\~4；
-        # - appstreaming.vgpu.8c31g.16g：1\\~4；
-        # - appstreaming.vgpu.14c93g.12g：1\\~6；
+        # *   appstreaming.general.4c8g: 1 to 2
+        # *   appstreaming.general.8c16g: 1 to 4
+        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
+        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
+        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
         self.max_capacity = max_capacity
+        # The memory size. Unit: MB.
         self.memory = memory
+        # The ID of the resource type.
         self.node_instance_type = node_instance_type
+        # The resource type family.
+        # 
+        # Valid values:
+        # 
+        # *   appstreaming.general: WUYING - General
+        # *   appstreaming.vgpu: WUYING - Graphics
         self.node_instance_type_family = node_instance_type_family
-        # 资源规格名称。
+        # The name of the resource type.
         self.node_type_name = node_type_name
 
     def validate(self):
@@ -6468,10 +6840,15 @@ class ListNodeInstanceTypeResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The resource types.
         self.node_instance_type_models = node_instance_type_models
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6567,12 +6944,24 @@ class ListOtaTaskRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The type of the OTA update task.
+        # 
+        # Valid values:
+        # 
+        # *   Fota: update of the system components of Alibaba Cloud Workspace
+        # 
         # This parameter is required.
         self.ota_type = ota_type
+        # The page number of the page to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -6616,9 +7005,23 @@ class ListOtaTaskResponseBodyTaskList(TeaModel):
         task_id: str = None,
         task_start_time: str = None,
     ):
+        # The OTA version.
         self.ota_version = ota_version
+        # The task status.
+        # 
+        # Valid values:
+        # 
+        # *   FAILED
+        # *   RUNNING
+        # *   TERMINATED
+        # *   PART_FINISHED
+        # *   STANDBY
+        # *   FINISHED
         self.task_display_status = task_display_status
+        # The task ID.
         self.task_id = task_id
+        # The start time of the OTA update task. The time follows the ISO 8601 standard.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time
 
@@ -6663,10 +7066,15 @@ class ListOtaTaskResponseBody(TeaModel):
         task_list: List[ListOtaTaskResponseBodyTaskList] = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The OTA update tasks.
         self.task_list = task_list
+        # The total number of OTA update tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -7264,6 +7672,12 @@ class ListTenantConfigResponseBodyTenantConfigModel(TeaModel):
         self,
         app_instance_group_expire_remind: bool = None,
     ):
+        # Indicates whether the resource expiration reminder feature is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
 
     def validate(self):
@@ -7292,7 +7706,9 @@ class ListTenantConfigResponseBody(TeaModel):
         request_id: str = None,
         tenant_config_model: ListTenantConfigResponseBodyTenantConfigModel = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user configurations.
         self.tenant_config_model = tenant_config_model
 
     def validate(self):
@@ -7368,8 +7784,16 @@ class LogOffAllSessionsInAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -7404,8 +7828,11 @@ class LogOffAllSessionsInAppInstanceGroupResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7483,7 +7910,14 @@ class ModifyAppInstanceGroupAttributeRequestNetworkDomainRules(TeaModel):
         domain: str = None,
         policy: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The policy used for the domain name.
+        # 
+        # Valid values:
+        # 
+        # *   allow
+        # *   block
         self.policy = policy
 
     def validate(self):
@@ -7515,6 +7949,7 @@ class ModifyAppInstanceGroupAttributeRequestNetwork(TeaModel):
         self,
         domain_rules: List[ModifyAppInstanceGroupAttributeRequestNetworkDomainRules] = None,
     ):
+        # The domain name rules.
         self.domain_rules = domain_rules
 
     def validate(self):
@@ -7551,7 +7986,15 @@ class ModifyAppInstanceGroupAttributeRequestNodePool(TeaModel):
         node_capacity: int = None,
         node_pool_id: str = None,
     ):
+        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+        # 
+        # *   appstreaming.general.4c8g: 1 to 2
+        # *   appstreaming.general.8c16g: 1 to 4
+        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
+        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
+        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
         self.node_capacity = node_capacity
+        # The ID of the resource group.
         self.node_pool_id = node_pool_id
 
     def validate(self):
@@ -7584,7 +8027,19 @@ class ModifyAppInstanceGroupAttributeRequestSecurityPolicy(TeaModel):
         reset_after_unbind: bool = None,
         skip_user_auth_check: bool = None,
     ):
+        # Specifies whether to reset after unbinding from a delivery group.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.reset_after_unbind = reset_after_unbind
+        # Specifies whether to skip user permission verification.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: This is the default value.
         self.skip_user_auth_check = skip_user_auth_check
 
     def validate(self):
@@ -7608,6 +8063,39 @@ class ModifyAppInstanceGroupAttributeRequestSecurityPolicy(TeaModel):
             self.reset_after_unbind = m.get('ResetAfterUnbind')
         if m.get('SkipUserAuthCheck') is not None:
             self.skip_user_auth_check = m.get('SkipUserAuthCheck')
+        return self
+
+
+class ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        user_profile_switch: bool = None,
+    ):
+        self.file_system_id = file_system_id
+        self.user_profile_switch = user_profile_switch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.user_profile_switch is not None:
+            result['UserProfileSwitch'] = self.user_profile_switch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('UserProfileSwitch') is not None:
+            self.user_profile_switch = m.get('UserProfileSwitch')
         return self
 
 
@@ -7648,12 +8136,17 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(TeaModel):
     def __init__(
         self,
         storage_type_list: List[str] = None,
+        user_profile: ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile = None,
         user_profile_follow: ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow = None,
     ):
+        # The storage types.
         self.storage_type_list = storage_type_list
+        self.user_profile = user_profile
         self.user_profile_follow = user_profile_follow
 
     def validate(self):
+        if self.user_profile:
+            self.user_profile.validate()
         if self.user_profile_follow:
             self.user_profile_follow.validate()
 
@@ -7665,6 +8158,8 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(TeaModel):
         result = dict()
         if self.storage_type_list is not None:
             result['StorageTypeList'] = self.storage_type_list
+        if self.user_profile is not None:
+            result['UserProfile'] = self.user_profile.to_map()
         if self.user_profile_follow is not None:
             result['UserProfileFollow'] = self.user_profile_follow.to_map()
         return result
@@ -7673,6 +8168,9 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(TeaModel):
         m = m or dict()
         if m.get('StorageTypeList') is not None:
             self.storage_type_list = m.get('StorageTypeList')
+        if m.get('UserProfile') is not None:
+            temp_model = ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile()
+            self.user_profile = temp_model.from_map(m['UserProfile'])
         if m.get('UserProfileFollow') is not None:
             temp_model = ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow()
             self.user_profile_follow = temp_model.from_map(m['UserProfileFollow'])
@@ -7694,18 +8192,41 @@ class ModifyAppInstanceGroupAttributeRequest(TeaModel):
         session_timeout: int = None,
         storage_policy: ModifyAppInstanceGroupAttributeRequestStoragePolicy = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # The network settings.
+        # 
+        # >  If you want to use this parameter, submit a ticket.
         self.network = network
+        # The information about the resource group.
         self.node_pool = node_pool
         self.per_session_per_app = per_session_per_app
+        # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
         self.pre_open_app_id = pre_open_app_id
+        # The pre-open mode.
+        # 
+        # Valid values:
+        # 
+        # *   SINGLE_APP: enables the pre-open mode for a single application.
+        # *   OFF: disables the pre-open mode. This is the default value.
         self.pre_open_mode = pre_open_mode
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The security policy.
         self.security_policy = security_policy
+        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
+        # The storage policy.
         self.storage_policy = storage_policy
 
     def validate(self):
@@ -7794,18 +8315,41 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(TeaModel):
         session_timeout: int = None,
         storage_policy_shrink: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
+        # The network settings.
+        # 
+        # >  If you want to use this parameter, submit a ticket.
         self.network_shrink = network_shrink
+        # The information about the resource group.
         self.node_pool_shrink = node_pool_shrink
         self.per_session_per_app = per_session_per_app
+        # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
         self.pre_open_app_id = pre_open_app_id
+        # The pre-open mode.
+        # 
+        # Valid values:
+        # 
+        # *   SINGLE_APP: enables the pre-open mode for a single application.
+        # *   OFF: disables the pre-open mode. This is the default value.
         self.pre_open_mode = pre_open_mode
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The security policy.
         self.security_policy_shrink = security_policy_shrink
+        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
+        # The storage policy.
         self.storage_policy_shrink = storage_policy_shrink
 
     def validate(self):
@@ -7875,8 +8419,11 @@ class ModifyAppInstanceGroupAttributeResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8556,6 +9103,12 @@ class ModifyTenantConfigRequest(TeaModel):
         self,
         app_instance_group_expire_remind: bool = None,
     ):
+        # Specifies whether to enable the resource expiration reminder feature.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
 
     def validate(self):
@@ -8583,6 +9136,7 @@ class ModifyTenantConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8654,10 +9208,20 @@ class PageListAppInstanceGroupUserRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The number of the page to return. We recommend that you configure this parameter.
         self.page_number = page_number
+        # The number of entries to be return on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
         self.page_size = page_size
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -8699,7 +9263,9 @@ class PageListAppInstanceGroupUserResponseBody(TeaModel):
         request_id: str = None,
         users: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The users.
         self.users = users
 
     def validate(self):
@@ -8777,15 +9343,45 @@ class RenewAppInstanceGroupRequest(TeaModel):
         product_type: str = None,
         promotion_id: str = None,
     ):
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # Specifies whether to enable automatic payment.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false: manual payment. This is the default value.
         self.auto_pay = auto_pay
+        # The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+        # 
         # This parameter is required.
         self.period = period
+        # The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+        # 
+        # *   1 Week
+        # *   1 Month
+        # *   2 Month
+        # *   3 Month
+        # *   6 Month
+        # *   1 Year
+        # *   2 Year
+        # *   3 Year
+        # 
+        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # 
         # This parameter is required.
         self.period_unit = period_unit
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
+        # The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
         self.promotion_id = promotion_id
 
     def validate(self):
@@ -8836,9 +9432,13 @@ class RenewAppInstanceGroupResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8923,12 +9523,24 @@ class UnbindRequest(TeaModel):
         end_user_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the delivery group. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
         self.app_instance_id = app_instance_id
+        # The ID of the persistent session. You can call the [GetConnectionTicket](https://help.aliyun.com/zh/wuying-appstreaming/developer-reference/api-appstream-center-2021-09-01-getconnectionticket) operation to obtain the ID.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The username.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -8973,6 +9585,7 @@ class UnbindResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9044,12 +9657,29 @@ class UpdateAppInstanceGroupImageRequest(TeaModel):
         biz_region_id: str = None,
         product_type: str = None,
     ):
+        # The image ID of the application. You can obtain the ID from the Images page in the App Streaming console.
+        # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # The ID of the delivery group.
+        # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai).
+        # *   cn-hangzhou: China (Hangzhou)
+        # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
+        # 
         # This parameter is required.
         self.product_type = product_type
 
@@ -9092,8 +9722,11 @@ class UpdateAppInstanceGroupImageResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

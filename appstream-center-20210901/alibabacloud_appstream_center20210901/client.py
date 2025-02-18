@@ -80,10 +80,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AccessPageSetAclResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AccessPageSetAclResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AccessPageSetAclResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def access_page_set_acl_with_options_async(
         self,
@@ -123,10 +129,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AccessPageSetAclResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AccessPageSetAclResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AccessPageSetAclResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def access_page_set_acl(
         self,
@@ -160,7 +172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
         """
-        @summary 同意Ota升级
+        @summary Sets the execution time of an over-the-air (OTA) update task.
         
         @param request: ApproveOtaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -192,10 +204,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ApproveOtaTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ApproveOtaTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ApproveOtaTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def approve_ota_task_with_options_async(
         self,
@@ -203,7 +221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
         """
-        @summary 同意Ota升级
+        @summary Sets the execution time of an over-the-air (OTA) update task.
         
         @param request: ApproveOtaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -235,17 +253,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ApproveOtaTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ApproveOtaTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ApproveOtaTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def approve_ota_task(
         self,
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
         """
-        @summary 同意Ota升级
+        @summary Sets the execution time of an over-the-air (OTA) update task.
         
         @param request: ApproveOtaTaskRequest
         @return: ApproveOtaTaskResponse
@@ -258,7 +282,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
         """
-        @summary 同意Ota升级
+        @summary Sets the execution time of an over-the-air (OTA) update task.
         
         @param request: ApproveOtaTaskRequest
         @return: ApproveOtaTaskResponse
@@ -310,10 +334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AskSessionPackagePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AskSessionPackagePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AskSessionPackagePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def ask_session_package_price_with_options_async(
         self,
@@ -359,10 +389,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AskSessionPackagePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AskSessionPackagePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AskSessionPackagePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def ask_session_package_price(
         self,
@@ -435,10 +471,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def authorize_instance_group_with_options_async(
         self,
@@ -485,10 +527,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.AuthorizeInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def authorize_instance_group(
         self,
@@ -566,10 +614,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.BuySessionPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.BuySessionPackageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.BuySessionPackageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def buy_session_package_with_options_async(
         self,
@@ -621,10 +675,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.BuySessionPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.BuySessionPackageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.BuySessionPackageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def buy_session_package(
         self,
@@ -692,10 +752,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAccessPageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAccessPageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAccessPageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_access_page_with_options_async(
         self,
@@ -737,10 +803,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAccessPageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAccessPageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAccessPageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_access_page(
         self,
@@ -862,10 +934,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_app_instance_group_with_options_async(
         self,
@@ -961,10 +1039,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_app_instance_group(
         self,
@@ -998,7 +1082,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
         """
-        @summary CreateImageFromAppInstanceGroup
+        @summary Creates a new image by debugging the delivery group.
         
         @param request: CreateImageFromAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1026,10 +1110,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def create_image_from_app_instance_group_with_options_async(
         self,
@@ -1037,7 +1127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
         """
-        @summary CreateImageFromAppInstanceGroup
+        @summary Creates a new image by debugging the delivery group.
         
         @param request: CreateImageFromAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1065,17 +1155,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def create_image_from_app_instance_group(
         self,
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
         """
-        @summary CreateImageFromAppInstanceGroup
+        @summary Creates a new image by debugging the delivery group.
         
         @param request: CreateImageFromAppInstanceGroupRequest
         @return: CreateImageFromAppInstanceGroupResponse
@@ -1088,7 +1184,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
         """
-        @summary CreateImageFromAppInstanceGroup
+        @summary Creates a new image by debugging the delivery group.
         
         @param request: CreateImageFromAppInstanceGroupRequest
         @return: CreateImageFromAppInstanceGroupResponse
@@ -1126,10 +1222,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAccessPageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAccessPageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAccessPageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_access_page_with_options_async(
         self,
@@ -1161,10 +1263,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAccessPageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAccessPageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAccessPageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_access_page(
         self,
@@ -1198,7 +1306,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
         """
-        @summary 实例组释放接口
+        @summary Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+        
+        @description >  You cannot call this operation to delete a subscription delivery group.
         
         @param request: DeleteAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1224,10 +1334,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_app_instance_group_with_options_async(
         self,
@@ -1235,7 +1351,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
         """
-        @summary 实例组释放接口
+        @summary Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+        
+        @description >  You cannot call this operation to delete a subscription delivery group.
         
         @param request: DeleteAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1261,17 +1379,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_app_instance_group(
         self,
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
         """
-        @summary 实例组释放接口
+        @summary Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+        
+        @description >  You cannot call this operation to delete a subscription delivery group.
         
         @param request: DeleteAppInstanceGroupRequest
         @return: DeleteAppInstanceGroupResponse
@@ -1284,7 +1410,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
         """
-        @summary 实例组释放接口
+        @summary Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
+        
+        @description >  You cannot call this operation to delete a subscription delivery group.
         
         @param request: DeleteAppInstanceGroupRequest
         @return: DeleteAppInstanceGroupResponse
@@ -1298,7 +1426,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
+        
+        @description Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
         
         @param request: DeleteAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1326,10 +1456,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAppInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def delete_app_instances_with_options_async(
         self,
@@ -1337,7 +1473,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
+        
+        @description Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
         
         @param request: DeleteAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1365,17 +1503,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.DeleteAppInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.DeleteAppInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def delete_app_instances(
         self,
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
+        
+        @description Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
         
         @param request: DeleteAppInstancesRequest
         @return: DeleteAppInstancesResponse
@@ -1388,7 +1534,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
         """
-        @summary 删除实例
+        @summary Deletes an application instance.
+        
+        @description Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
         
         @param request: DeleteAppInstancesRequest
         @return: DeleteAppInstancesResponse
@@ -1430,10 +1578,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAccessPageSessionResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAccessPageSessionResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAccessPageSessionResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_access_page_session_with_options_async(
         self,
@@ -1469,10 +1623,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAccessPageSessionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAccessPageSessionResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAccessPageSessionResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_access_page_session(
         self,
@@ -1532,10 +1692,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_app_instance_group_with_options_async(
         self,
@@ -1569,10 +1735,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_app_instance_group(
         self,
@@ -1606,7 +1778,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
         """
-        @summary 获取连接ticket，Open API
+        @summary Queries the credential that is used to connect to App Streaming.
+        
+        @description You must call this operation at least twice to obtain a connection credential.
+        The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+        In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1648,10 +1824,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetConnectionTicketResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetConnectionTicketResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetConnectionTicketResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_connection_ticket_with_options_async(
         self,
@@ -1659,7 +1841,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
         """
-        @summary 获取连接ticket，Open API
+        @summary Queries the credential that is used to connect to App Streaming.
+        
+        @description You must call this operation at least twice to obtain a connection credential.
+        The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+        In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1701,17 +1887,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetConnectionTicketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetConnectionTicketResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetConnectionTicketResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_connection_ticket(
         self,
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
         """
-        @summary 获取连接ticket，Open API
+        @summary Queries the credential that is used to connect to App Streaming.
+        
+        @description You must call this operation at least twice to obtain a connection credential.
+        The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+        In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
@@ -1724,7 +1920,11 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
         """
-        @summary 获取连接ticket，Open API
+        @summary Queries the credential that is used to connect to App Streaming.
+        
+        @description You must call this operation at least twice to obtain a connection credential.
+        The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
+        In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
@@ -1738,7 +1938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
         """
-        @summary GetDebugAppInstance
+        @summary Queries information that is used to debug an application instance.
         
         @param request: GetDebugAppInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1764,10 +1964,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetDebugAppInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_debug_app_instance_with_options_async(
         self,
@@ -1775,7 +1981,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
         """
-        @summary GetDebugAppInstance
+        @summary Queries information that is used to debug an application instance.
         
         @param request: GetDebugAppInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1801,17 +2007,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetDebugAppInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetDebugAppInstanceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_debug_app_instance(
         self,
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
         """
-        @summary GetDebugAppInstance
+        @summary Queries information that is used to debug an application instance.
         
         @param request: GetDebugAppInstanceRequest
         @return: GetDebugAppInstanceResponse
@@ -1824,7 +2036,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
         """
-        @summary GetDebugAppInstance
+        @summary Queries information that is used to debug an application instance.
         
         @param request: GetDebugAppInstanceRequest
         @return: GetDebugAppInstanceResponse
@@ -1838,7 +2050,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
         """
-        @summary 获取ota任务明细
+        @summary Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
         
         @param request: GetOtaTaskByTaskIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1862,10 +2074,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_ota_task_by_task_id_with_options_async(
         self,
@@ -1873,7 +2091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
         """
-        @summary 获取ota任务明细
+        @summary Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
         
         @param request: GetOtaTaskByTaskIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1897,17 +2115,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetOtaTaskByTaskIdResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_ota_task_by_task_id(
         self,
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
         """
-        @summary 获取ota任务明细
+        @summary Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
         
         @param request: GetOtaTaskByTaskIdRequest
         @return: GetOtaTaskByTaskIdResponse
@@ -1920,7 +2144,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
         """
-        @summary 获取ota任务明细
+        @summary Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
         
         @param request: GetOtaTaskByTaskIdRequest
         @return: GetOtaTaskByTaskIdResponse
@@ -1934,7 +2158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries resource prices.
         
         @param request: GetResourcePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1972,10 +2196,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetResourcePriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourcePriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourcePriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resource_price_with_options_async(
         self,
@@ -1983,7 +2213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries resource prices.
         
         @param request: GetResourcePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2021,17 +2251,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetResourcePriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourcePriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourcePriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resource_price(
         self,
         request: appstream_center_20210901_models.GetResourcePriceRequest,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries resource prices.
         
         @param request: GetResourcePriceRequest
         @return: GetResourcePriceResponse
@@ -2044,7 +2280,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourcePriceRequest,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries resource prices.
         
         @param request: GetResourcePriceRequest
         @return: GetResourcePriceResponse
@@ -2058,7 +2294,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries the renewal prices of App Streaming resources.
         
         @param request: GetResourceRenewPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2088,10 +2324,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetResourceRenewPriceResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourceRenewPriceResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourceRenewPriceResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def get_resource_renew_price_with_options_async(
         self,
@@ -2099,7 +2341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries the renewal prices of App Streaming resources.
         
         @param request: GetResourceRenewPriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2129,17 +2371,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.GetResourceRenewPriceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourceRenewPriceResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.GetResourceRenewPriceResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def get_resource_renew_price(
         self,
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries the renewal prices of App Streaming resources.
         
         @param request: GetResourceRenewPriceRequest
         @return: GetResourceRenewPriceResponse
@@ -2152,7 +2400,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
         """
-        @summary 云应用资源询价接口
+        @summary Queries the renewal prices of App Streaming resources.
         
         @param request: GetResourceRenewPriceRequest
         @return: GetResourceRenewPriceResponse
@@ -2200,10 +2448,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAccessPagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAccessPagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAccessPagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_access_pages_with_options_async(
         self,
@@ -2245,10 +2499,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAccessPagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAccessPagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAccessPagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_access_pages(
         self,
@@ -2328,10 +2588,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_app_instance_group_with_options_async(
         self,
@@ -2385,10 +2651,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_app_instance_group(
         self,
@@ -2422,7 +2694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
         """
-        @summary 查询交付组内实例列表
+        @summary Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
         
         @param request: ListAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2460,10 +2732,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAppInstancesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstancesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstancesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_app_instances_with_options_async(
         self,
@@ -2471,7 +2749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
         """
-        @summary 查询交付组内实例列表
+        @summary Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
         
         @param request: ListAppInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2509,17 +2787,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListAppInstancesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstancesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListAppInstancesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_app_instances(
         self,
         request: appstream_center_20210901_models.ListAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
         """
-        @summary 查询交付组内实例列表
+        @summary Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
         
         @param request: ListAppInstancesRequest
         @return: ListAppInstancesResponse
@@ -2532,7 +2816,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
         """
-        @summary 查询交付组内实例列表
+        @summary Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
         
         @param request: ListAppInstancesRequest
         @return: ListAppInstancesResponse
@@ -2582,10 +2866,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListBindInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListBindInfoResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListBindInfoResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_bind_info_with_options_async(
         self,
@@ -2629,10 +2919,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListBindInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListBindInfoResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListBindInfoResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_bind_info(
         self,
@@ -2666,7 +2962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
         """
-        @summary 获取资源规格
+        @summary Queries the resource types that are available for purchase when you create a delivery group.
         
         @param request: ListNodeInstanceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2716,10 +3012,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_node_instance_type_with_options_async(
         self,
@@ -2727,7 +3029,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
         """
-        @summary 获取资源规格
+        @summary Queries the resource types that are available for purchase when you create a delivery group.
         
         @param request: ListNodeInstanceTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2777,17 +3079,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListNodeInstanceTypeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_node_instance_type(
         self,
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
         """
-        @summary 获取资源规格
+        @summary Queries the resource types that are available for purchase when you create a delivery group.
         
         @param request: ListNodeInstanceTypeRequest
         @return: ListNodeInstanceTypeResponse
@@ -2800,7 +3108,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
         """
-        @summary 获取资源规格
+        @summary Queries the resource types that are available for purchase when you create a delivery group.
         
         @param request: ListNodeInstanceTypeRequest
         @return: ListNodeInstanceTypeResponse
@@ -2814,7 +3122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
         """
-        @summary 升级历史记录
+        @summary Queries the information about over-the-air (OTA) update tasks.
         
         @param request: ListOtaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2844,10 +3152,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListOtaTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListOtaTaskResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListOtaTaskResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_ota_task_with_options_async(
         self,
@@ -2855,7 +3169,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
         """
-        @summary 升级历史记录
+        @summary Queries the information about over-the-air (OTA) update tasks.
         
         @param request: ListOtaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2885,17 +3199,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListOtaTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListOtaTaskResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListOtaTaskResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_ota_task(
         self,
         request: appstream_center_20210901_models.ListOtaTaskRequest,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
         """
-        @summary 升级历史记录
+        @summary Queries the information about over-the-air (OTA) update tasks.
         
         @param request: ListOtaTaskRequest
         @return: ListOtaTaskResponse
@@ -2908,7 +3228,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListOtaTaskRequest,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
         """
-        @summary 升级历史记录
+        @summary Queries the information about over-the-air (OTA) update tasks.
         
         @param request: ListOtaTaskRequest
         @return: ListOtaTaskResponse
@@ -2948,10 +3268,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListRegionsResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListRegionsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListRegionsResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_regions_with_options_async(
         self,
@@ -2985,10 +3311,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListRegionsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListRegionsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_regions(
         self,
@@ -3058,10 +3390,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListSessionPackagesResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListSessionPackagesResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListSessionPackagesResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_session_packages_with_options_async(
         self,
@@ -3105,10 +3443,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListSessionPackagesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListSessionPackagesResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListSessionPackagesResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_session_packages(
         self,
@@ -3141,6 +3485,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListTenantConfigResponse:
         """
+        @summary Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+        
         @param request: ListTenantConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTenantConfigResponse
@@ -3157,16 +3503,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListTenantConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTenantConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTenantConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def list_tenant_config_with_options_async(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListTenantConfigResponse:
         """
+        @summary Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+        
         @param request: ListTenantConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTenantConfigResponse
@@ -3183,13 +3537,21 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ListTenantConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTenantConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ListTenantConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def list_tenant_config(self) -> appstream_center_20210901_models.ListTenantConfigResponse:
         """
+        @summary Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+        
         @return: ListTenantConfigResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3197,6 +3559,8 @@ class Client(OpenApiClient):
 
     async def list_tenant_config_async(self) -> appstream_center_20210901_models.ListTenantConfigResponse:
         """
+        @summary Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
+        
         @return: ListTenantConfigResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -3208,7 +3572,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
         """
-        @summary 注销交付下所有会话
+        @summary Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+        
+        @description >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
         
         @param request: LogOffAllSessionsInAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3234,10 +3600,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def log_off_all_sessions_in_app_instance_group_with_options_async(
         self,
@@ -3245,7 +3617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
         """
-        @summary 注销交付下所有会话
+        @summary Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+        
+        @description >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
         
         @param request: LogOffAllSessionsInAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3271,17 +3645,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def log_off_all_sessions_in_app_instance_group(
         self,
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
         """
-        @summary 注销交付下所有会话
+        @summary Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+        
+        @description >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
         
         @param request: LogOffAllSessionsInAppInstanceGroupRequest
         @return: LogOffAllSessionsInAppInstanceGroupResponse
@@ -3294,7 +3676,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
         """
-        @summary 注销交付下所有会话
+        @summary Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
+        
+        @description >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
         
         @param request: LogOffAllSessionsInAppInstanceGroupRequest
         @return: LogOffAllSessionsInAppInstanceGroupResponse
@@ -3308,7 +3692,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
         """
-        @summary 修改云应用交付组
+        @summary Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
         
         @param tmp_req: ModifyAppInstanceGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3364,10 +3748,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_app_instance_group_attribute_with_options_async(
         self,
@@ -3375,7 +3765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
         """
-        @summary 修改云应用交付组
+        @summary Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
         
         @param tmp_req: ModifyAppInstanceGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3431,17 +3821,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_app_instance_group_attribute(
         self,
         request: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
         """
-        @summary 修改云应用交付组
+        @summary Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
         
         @param request: ModifyAppInstanceGroupAttributeRequest
         @return: ModifyAppInstanceGroupAttributeResponse
@@ -3454,7 +3850,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
         """
-        @summary 修改云应用交付组
+        @summary Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
         
         @param request: ModifyAppInstanceGroupAttributeRequest
         @return: ModifyAppInstanceGroupAttributeResponse
@@ -3500,10 +3896,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyAppPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppPolicyResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppPolicyResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_app_policy_with_options_async(
         self,
@@ -3543,10 +3945,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyAppPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppPolicyResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyAppPolicyResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_app_policy(
         self,
@@ -3614,10 +4022,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_node_pool_attribute_with_options_async(
         self,
@@ -3659,10 +4073,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyNodePoolAttributeResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_node_pool_attribute(
         self,
@@ -3692,6 +4112,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
         """
+        @summary Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+        
         @param request: ModifyTenantConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTenantConfigResponse
@@ -3714,10 +4136,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyTenantConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyTenantConfigResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyTenantConfigResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def modify_tenant_config_with_options_async(
         self,
@@ -3725,6 +4153,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
         """
+        @summary Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+        
         @param request: ModifyTenantConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTenantConfigResponse
@@ -3747,16 +4177,24 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.ModifyTenantConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyTenantConfigResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.ModifyTenantConfigResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def modify_tenant_config(
         self,
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
         """
+        @summary Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+        
         @param request: ModifyTenantConfigRequest
         @return: ModifyTenantConfigResponse
         """
@@ -3768,6 +4206,8 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
         """
+        @summary Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
+        
         @param request: ModifyTenantConfigRequest
         @return: ModifyTenantConfigResponse
         """
@@ -3780,7 +4220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
         """
-        @summary 获取授权用户列表
+        @summary Queries the assigned users that are added to a delivery group by page.
         
         @param request: PageListAppInstanceGroupUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3810,10 +4250,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def page_list_app_instance_group_user_with_options_async(
         self,
@@ -3821,7 +4267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
         """
-        @summary 获取授权用户列表
+        @summary Queries the assigned users that are added to a delivery group by page.
         
         @param request: PageListAppInstanceGroupUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3851,17 +4297,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.PageListAppInstanceGroupUserResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def page_list_app_instance_group_user(
         self,
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
         """
-        @summary 获取授权用户列表
+        @summary Queries the assigned users that are added to a delivery group by page.
         
         @param request: PageListAppInstanceGroupUserRequest
         @return: PageListAppInstanceGroupUserResponse
@@ -3874,7 +4326,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
         """
-        @summary 获取授权用户列表
+        @summary Queries the assigned users that are added to a delivery group by page.
         
         @param request: PageListAppInstanceGroupUserRequest
         @return: PageListAppInstanceGroupUserResponse
@@ -3888,7 +4340,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
-        @summary 资源续费接口
+        @summary Renews a delivery group.
+        
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
         @param request: RenewAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3922,10 +4376,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def renew_app_instance_group_with_options_async(
         self,
@@ -3933,7 +4393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
-        @summary 资源续费接口
+        @summary Renews a delivery group.
+        
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
         @param request: RenewAppInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3967,17 +4429,25 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.RenewAppInstanceGroupResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def renew_app_instance_group(
         self,
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
-        @summary 资源续费接口
+        @summary Renews a delivery group.
+        
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
         @param request: RenewAppInstanceGroupRequest
         @return: RenewAppInstanceGroupResponse
@@ -3990,7 +4460,9 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
         """
-        @summary 资源续费接口
+        @summary Renews a delivery group.
+        
+        @description Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
         
         @param request: RenewAppInstanceGroupRequest
         @return: RenewAppInstanceGroupResponse
@@ -4004,7 +4476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UnbindResponse:
         """
-        @summary 解除用户绑定
+        @summary Unbinds a user and a session.
         
         @param request: UnbindRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4036,10 +4508,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.UnbindResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UnbindResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UnbindResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def unbind_with_options_async(
         self,
@@ -4047,7 +4525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UnbindResponse:
         """
-        @summary 解除用户绑定
+        @summary Unbinds a user and a session.
         
         @param request: UnbindRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4079,17 +4557,23 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.UnbindResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UnbindResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UnbindResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def unbind(
         self,
         request: appstream_center_20210901_models.UnbindRequest,
     ) -> appstream_center_20210901_models.UnbindResponse:
         """
-        @summary 解除用户绑定
+        @summary Unbinds a user and a session.
         
         @param request: UnbindRequest
         @return: UnbindResponse
@@ -4102,7 +4586,7 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UnbindRequest,
     ) -> appstream_center_20210901_models.UnbindResponse:
         """
-        @summary 解除用户绑定
+        @summary Unbinds a user and a session.
         
         @param request: UnbindRequest
         @return: UnbindResponse
@@ -4116,7 +4600,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
         """
-        @summary 更新镜像
+        @summary Updates the image of a delivery group.
+        
+        @description *\
+        *Warning** After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+        >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
         
         @param request: UpdateAppInstanceGroupImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4146,10 +4634,16 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
-            self.call_api(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
+                self.execute(params, req, runtime)
+            )
 
     async def update_app_instance_group_image_with_options_async(
         self,
@@ -4157,7 +4651,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
         """
-        @summary 更新镜像
+        @summary Updates the image of a delivery group.
+        
+        @description *\
+        *Warning** After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+        >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
         
         @param request: UpdateAppInstanceGroupImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4187,17 +4685,27 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        return TeaCore.from_map(
-            appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse(),
+                await self.execute_async(params, req, runtime)
+            )
 
     def update_app_instance_group_image(
         self,
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
         """
-        @summary 更新镜像
+        @summary Updates the image of a delivery group.
+        
+        @description *\
+        *Warning** After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+        >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
         
         @param request: UpdateAppInstanceGroupImageRequest
         @return: UpdateAppInstanceGroupImageResponse
@@ -4210,7 +4718,11 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
         """
-        @summary 更新镜像
+        @summary Updates the image of a delivery group.
+        
+        @description *\
+        *Warning** After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
+        >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
         
         @param request: UpdateAppInstanceGroupImageRequest
         @return: UpdateAppInstanceGroupImageResponse
