@@ -687,6 +687,12 @@ class AttachInstancesRequest(TeaModel):
         # 
         # Default value: false.
         self.entrusted = entrusted
+        # Specifies whether to ignore invalid instances when a batch of instances is added to the scaling group. Valid values:
+        # 
+        # *   true: ignores invalid instances. If invalid instances exist and valid instances are added, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
+        # *   false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to add to the scaling group, an error is reported.
+        # 
+        # Default value: false.
         self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances, elastic container instances, non-Alibaba Cloud instances, or instances in Economical Mode.
         self.instance_ids = instance_ids
@@ -5450,15 +5456,22 @@ class CreateScalingConfigurationRequestSystemDisk(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the system disk. Unit: GiB.
         # 
-        # *   If you set SystemDisk.Category cloud: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+        # *   Basic disk: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to the value of max{20, ImageSize}.
+        # *   ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
         # 
-        # Default value: 40 or the size of the image, whichever is greater.
+        #     *   PL0 ESSD: 1 to 2048.
+        #     *   PL1 ESSD: 20 to 2048.
+        #     *   PL2 ESSD: 461 to 2048.
+        #     *   PL3 ESSD: 1261 to 2048.
+        # 
+        # *   ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        # 
+        # *   Other disk categories: 20 to 2048.
+        # 
+        # The value of this parameter must be at least 1 and greater than or equal to the image size.
+        # 
+        # Default value: 40 or the size of the image, whichever is larger.
         self.size = size
 
     def validate(self):
@@ -6888,15 +6901,22 @@ class CreateScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the system disk. Unit: GiB.
         # 
-        # *   If you set SystemDisk.Category cloud: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
+        # *   Basic disk: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to the value of max{20, ImageSize}.
+        # *   ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD.
         # 
-        # Default value: 40 or the size of the image, whichever is greater.
+        #     *   PL0 ESSD: 1 to 2048.
+        #     *   PL1 ESSD: 20 to 2048.
+        #     *   PL2 ESSD: 461 to 2048.
+        #     *   PL3 ESSD: 1261 to 2048.
+        # 
+        # *   ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        # 
+        # *   Other disk categories: 20 to 2048.
+        # 
+        # The value of this parameter must be at least 1 and greater than or equal to the image size.
+        # 
+        # Default value: 40 or the size of the image, whichever is larger.
         self.size = size
 
     def validate(self):
@@ -8307,6 +8327,7 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
         compensate_with_on_demand: bool = None,
         on_demand_base_capacity: int = None,
         on_demand_percentage_above_base_capacity: int = None,
+        price_comparison_mode: str = None,
         spot_auto_replace_on_demand: bool = None,
     ):
         # Specifies whether to automatically create pay-as-you-go ECS instances to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
@@ -8324,6 +8345,7 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
         # 
         # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
         # *   true
@@ -8347,6 +8369,8 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
             result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
         if self.on_demand_percentage_above_base_capacity is not None:
             result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.price_comparison_mode is not None:
+            result['PriceComparisonMode'] = self.price_comparison_mode
         if self.spot_auto_replace_on_demand is not None:
             result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
         return result
@@ -8359,6 +8383,8 @@ class CreateScalingGroupRequestCapacityOptions(TeaModel):
             self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
         if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
             self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('PriceComparisonMode') is not None:
+            self.price_comparison_mode = m.get('PriceComparisonMode')
         if m.get('SpotAutoReplaceOnDemand') is not None:
             self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
         return self
@@ -9472,7 +9498,9 @@ class CreateScalingRuleRequestHybridMetricsDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
+        # The key of the metric dimension.
         self.dimension_key = dimension_key
+        # The value of the metric dimension.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -9508,10 +9536,21 @@ class CreateScalingRuleRequestHybridMetrics(TeaModel):
         metric_name: str = None,
         statistic: str = None,
     ):
+        # The metric dimensions. You can use this parameter to specify the monitored resources.
         self.dimensions = dimensions
+        # The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events.
+        # 
+        # The expression must be written in Reverse Polish Notation (RPN) format and supports only the following operators: `+, -, *, /`.
         self.expression = expression
+        # The reference ID of the metric in the metric expression.
         self.id = id
+        # The name of the Hybrid Cloud Monitoring metric.
         self.metric_name = metric_name
+        # The statistical method of the metric value. Valid values:
+        # 
+        # *   Average: calculates the average value of all metric values within a specified interval.
+        # *   Minimum: calculates the minimum value of all metric values within a specified interval.
+        # *   Maximum: calculates the maximum value of all metric values within a specified interval.
         self.statistic = statistic
 
     def validate(self):
@@ -9661,7 +9700,11 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # Default value: 300.
         self.estimated_instance_warmup = estimated_instance_warmup
+        # The Hybrid Cloud Monitoring metrics.
         self.hybrid_metrics = hybrid_metrics
+        # The ID of the Hybrid Cloud Monitoring namespace.
+        # 
+        # For information about how to manage Hybrid Cloud Monitoring namespaces, see [Manage namespaces](https://help.aliyun.com/document_detail/217606.html).
         self.hybrid_monitor_namespace = hybrid_monitor_namespace
         # The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
         # 
@@ -9688,6 +9731,11 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
+        # The metric type. Valid values:
+        # 
+        # *   system: system metrics of CloudMonitor.
+        # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   hybrid: metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
         self.min_adjustment_magnitude = min_adjustment_magnitude
@@ -11406,10 +11454,11 @@ class DescribeAlarmsRequest(TeaModel):
         self.is_enable = is_enable
         # The metric name.
         self.metric_name = metric_name
-        # The metric type. Valid values:
+        # The type of the metric. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
         # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   hybrid: metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         self.owner_id = owner_id
         # The page number. Pages start from page 1.
@@ -11655,7 +11704,9 @@ class DescribeAlarmsResponseBodyAlarmListHybridMetricsDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
+        # The key of the metric dimension.
         self.dimension_key = dimension_key
+        # The key of the metric dimension.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -11691,10 +11742,21 @@ class DescribeAlarmsResponseBodyAlarmListHybridMetrics(TeaModel):
         metric_name: str = None,
         statistic: str = None,
     ):
+        # The metric dimensions. This parameter is used to specify the monitored resources.
         self.dimensions = dimensions
+        # The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events.
+        # 
+        # The expression is written in Reverse Polish Notation (RPN) format and supports only the following operators: `+, -, *, /`.
         self.expression = expression
+        # The reference ID of the metric in the metric expression.
         self.id = id
+        # The name of the Hybrid Cloud Monitoring metric.
         self.metric_name = metric_name
+        # The statistical method of the metric value. Valid values:
+        # 
+        # *   Average: The average value of all metric values within a specified interval is calculated.
+        # *   Minimum: The minimum value of all metric values within a specified interval is calculated.
+        # *   Maximum: The maximum value of all metric values within a specified interval is calculated.
         self.statistic = statistic
 
     def validate(self):
@@ -11797,7 +11859,11 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         # *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet their trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
         # *   `||`: An alert is triggered only if one of the metrics in the multi-metric alert rule meets its trigger condition.
         self.expressions_logic_operator = expressions_logic_operator
+        # The Hybrid Cloud Monitoring metrics.
         self.hybrid_metrics = hybrid_metrics
+        # The ID of the Hybrid Cloud Monitoring namespace.
+        # 
+        # For information about how to manage Hybrid Cloud Monitoring namespaces, see [Manage namespaces](https://help.aliyun.com/document_detail/217606.html).
         self.hybrid_monitor_namespace = hybrid_monitor_namespace
         # The metric name. Valid values:
         # 
@@ -11829,10 +11895,11 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid values:
+        # The type of the metric. Valid values:
         # 
         # *   system: system metrics of CloudMonitor
         # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   hybrid: metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
@@ -11846,6 +11913,7 @@ class DescribeAlarmsResponseBodyAlarmList(TeaModel):
         # 
         # >  You can set the value of this parameter to 15 Seconds only for scaling groups of the ECS type.
         self.period = period
+        # The PromQL statement of Hybrid Cloud Monitoring.
         self.prom_ql = prom_ql
         # The ID of the scaling group to which the event-triggered task is associated.
         self.scaling_group_id = scaling_group_id
@@ -17229,6 +17297,14 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         self.region_id = region_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # Indicates whether instances that match the desired scaling configuration are skipped.
+        # 
+        # >  The system determines the match based on the ID of the desired scaling configuration rather than individual configuration items.
+        # 
+        # Valid values:
+        # 
+        # *   true: Instances that match the desired scaling configuration are skipped. When you initiate an instance refresh task, the system checks the configurations of all instances. The refresh operation is skipped for instances created based on the desired scaling configuration.
+        # *   false: Instances that match the desired scaling configuration are not skipped. When an instance refresh task is initiated, all instances in the scaling group at the time of initiation are refreshed.
         self.skip_matching = skip_matching
         # The start time of the instance refresh task.
         self.start_time = start_time
@@ -19223,9 +19299,13 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages(TeaMod
         failed_instance_ids: List[str] = None,
         message: str = None,
     ):
+        # The error code that is returned when the scaling activity failed.
         self.code = code
+        # The description of the scaling activity exception.
         self.description = description
+        # The IDs of the instances included in the failed scaling activities.
         self.failed_instance_ids = failed_instance_ids
+        # The error message that is returned when the scaling activity failed or is partially successful.
         self.message = message
 
     def validate(self):
@@ -19358,6 +19438,7 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.error_code = error_code
         # The error message that is returned when the scaling activity failed.
         self.error_message = error_message
+        # The error messages that are returned when the scaling activities failed or are partially successful.
         self.error_messages = error_messages
         # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
@@ -22633,6 +22714,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
         compensate_with_on_demand: bool = None,
         on_demand_base_capacity: int = None,
         on_demand_percentage_above_base_capacity: int = None,
+        price_comparison_mode: str = None,
         spot_auto_replace_on_demand: bool = None,
     ):
         # Indicates whether pay-as-you-go ECS instances can be automatically created to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
@@ -22644,6 +22726,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
         self.on_demand_base_capacity = on_demand_base_capacity
         # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
         # *   true
@@ -22665,6 +22748,8 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
             result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
         if self.on_demand_percentage_above_base_capacity is not None:
             result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.price_comparison_mode is not None:
+            result['PriceComparisonMode'] = self.price_comparison_mode
         if self.spot_auto_replace_on_demand is not None:
             result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
         return result
@@ -22677,6 +22762,8 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(TeaModel):
             self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
         if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
             self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('PriceComparisonMode') is not None:
+            self.price_comparison_mode = m.get('PriceComparisonMode')
         if m.get('SpotAutoReplaceOnDemand') is not None:
             self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
         return self
@@ -24457,7 +24544,9 @@ class DescribeScalingRulesResponseBodyScalingRulesHybridMetricsDimensions(TeaMod
         dimension_key: str = None,
         dimension_value: str = None,
     ):
+        # The key of the metric dimension.
         self.dimension_key = dimension_key
+        # The key of the metric dimension.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -24493,10 +24582,21 @@ class DescribeScalingRulesResponseBodyScalingRulesHybridMetrics(TeaModel):
         metric_name: str = None,
         statistic: str = None,
     ):
+        # The metric dimensions. This parameter is used to specify the monitored resources.
         self.dimensions = dimensions
+        # The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events.
+        # 
+        # The expression is written in Reverse Polish Notation (RPN) format and supports only the following operators: `+, -, *, /`.
         self.expression = expression
+        # The reference ID of the metric in the metric expression.
         self.id = id
+        # The name of the Hybrid Cloud Monitoring metric.
         self.metric_name = metric_name
+        # The statistical method of the metric value. Valid values:
+        # 
+        # *   Average: The average value of all metric values within a specified interval is calculated.
+        # *   Minimum: The minimum value of all metric values within a specified interval is calculated.
+        # *   Maximum: The maximum value of all metric values within a specified interval is calculated.
         self.statistic = statistic
 
     def validate(self):
@@ -24638,7 +24738,11 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.disable_scale_in = disable_scale_in
         # The warm-up period of instances. During the warm-up period, a series of preparation measures are taken for the new instances. Performance metrics of instances being warmed up are not counted towards the monitoring range.
         self.estimated_instance_warmup = estimated_instance_warmup
+        # The Hybrid Cloud Monitoring metrics.
         self.hybrid_metrics = hybrid_metrics
+        # The ID of the Hybrid Cloud Monitoring namespace.
+        # 
+        # For information about how to manage Hybrid Cloud Monitoring namespaces, see [Manage namespaces](https://help.aliyun.com/document_detail/217606.html).
         self.hybrid_monitor_namespace = hybrid_monitor_namespace
         # The maximum number of ECS instances that can be contained in the scaling group. If you specify this parameter, you must also specify PredictiveValueBehavior.
         self.initial_max_size = initial_max_size
@@ -24646,6 +24750,11 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.max_size = max_size
         # The name of the metric of the event-triggered task that is associated with the scaling rule.
         self.metric_name = metric_name
+        # The metric type. Valid values:
+        # 
+        # *   system: system metrics of CloudMonitor.
+        # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   hybrid: metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         # The minimum number of instances that must be scaled. This parameter takes effect only if you set ScalingRuleType to SimpleScalingRule or StepScalingRule and set AdjustmentType to PercentChangeInCapacity.
         self.min_adjustment_magnitude = min_adjustment_magnitude
@@ -31845,13 +31954,20 @@ class ModifyScalingConfigurationRequestSystemDisk(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the system disk. Unit: GiB. Valid values:
         # 
-        # *   If you set SystemDisk.Category to cloud: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
-        # *   If you set SystemDisk.Category to ephemeral_ssd: 20 to 500.
+        # *   Basic disk: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
+        # *   ESSD: Valid values vary based on the performance level of the ESSD.
+        # 
+        #     *   PL0 ESSD: 1 to 2048.
+        #     *   PL1 ESSD: 20 to 2048.
+        #     *   PL2 ESSD: 461 to 2048.
+        #     *   PL3 ESSD: 1261 to 2048.
+        # 
+        # *   ESSD AutoPL disk: 1 to 2048.
+        # 
+        # *   Other disk categories: 20 to 2048.
+        # 
+        # The value of this parameter must be at least 1 and greater than or equal to the image size.
         self.size = size
 
     def validate(self):
@@ -32624,13 +32740,13 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   Standard: the standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
         # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
         self.credit_specification = credit_specification
-        # The priority of the custom ECS instance type + vSwitch combination.
+        # The priority of the custom "ECS instance type + vSwitch" combination.
         # 
         # >  This setting is valid only if the scaling policy of the scaling group is a priority policy.
         # 
-        # If Auto Scaling cannot create ECS instances by using the custom ECS instance type + vSwitch combination of the highest priority, Auto Scaling creates ECS instances by using the custom ECS instance type + vSwitch combination of the next highest priority.
+        # If Auto Scaling cannot create ECS instances by using the custom "ECS instance type + vSwitch" combination of the highest priority, Auto Scaling creates ECS instances by using the custom "ECS instance type + vSwitch" combination of the next highest priority.
         # 
-        # >  If you specify the priorities of only a part of custom ECS instance type + vSwitch combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have the specified priorities. If the custom combinations that have the specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have the specified priorities based on the specified orders of vSwitches and instance types.
+        # >  If you specify the priorities of only a part of custom "ECS instance type + vSwitch" combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have the specified priorities. If the custom combinations that have the specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have the specified priorities based on the specified orders of vSwitches and instance types.
         # 
         # *   Example: The specified order of vSwitches for your scaling group is vsw1 and vsw2, and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify ["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
         self.custom_priorities = custom_priorities
@@ -33271,13 +33387,20 @@ class ModifyScalingConfigurationShrinkRequestSystemDisk(TeaModel):
         self.provisioned_iops = provisioned_iops
         # The size of the system disk. Unit: GiB. Valid values:
         # 
-        # *   If you set SystemDisk.Category to cloud: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_efficiency: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_ssd: 20 to 500.
-        # *   If you set SystemDisk.Category to cloud_essd: 20 to 500.
-        # *   If you set SystemDisk.Category to ephemeral_ssd: 20 to 500.
+        # *   Basic disk: 20 to 500.
         # 
-        # The value of SystemDisk.Size must be greater than or equal to max{20, ImageSize}.
+        # *   ESSD: Valid values vary based on the performance level of the ESSD.
+        # 
+        #     *   PL0 ESSD: 1 to 2048.
+        #     *   PL1 ESSD: 20 to 2048.
+        #     *   PL2 ESSD: 461 to 2048.
+        #     *   PL3 ESSD: 1261 to 2048.
+        # 
+        # *   ESSD AutoPL disk: 1 to 2048.
+        # 
+        # *   Other disk categories: 20 to 2048.
+        # 
+        # The value of this parameter must be at least 1 and greater than or equal to the image size.
         self.size = size
 
     def validate(self):
@@ -34050,13 +34173,13 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   Standard: the standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
         # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
         self.credit_specification = credit_specification
-        # The priority of the custom ECS instance type + vSwitch combination.
+        # The priority of the custom "ECS instance type + vSwitch" combination.
         # 
         # >  This setting is valid only if the scaling policy of the scaling group is a priority policy.
         # 
-        # If Auto Scaling cannot create ECS instances by using the custom ECS instance type + vSwitch combination of the highest priority, Auto Scaling creates ECS instances by using the custom ECS instance type + vSwitch combination of the next highest priority.
+        # If Auto Scaling cannot create ECS instances by using the custom "ECS instance type + vSwitch" combination of the highest priority, Auto Scaling creates ECS instances by using the custom "ECS instance type + vSwitch" combination of the next highest priority.
         # 
-        # >  If you specify the priorities of only a part of custom ECS instance type + vSwitch combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have the specified priorities. If the custom combinations that have the specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have the specified priorities based on the specified orders of vSwitches and instance types.
+        # >  If you specify the priorities of only a part of custom "ECS instance type + vSwitch" combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have the specified priorities. If the custom combinations that have the specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have the specified priorities based on the specified orders of vSwitches and instance types.
         # 
         # *   Example: The specified order of vSwitches for your scaling group is vsw1 and vsw2, and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify ["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
         self.custom_priorities = custom_priorities
@@ -34630,6 +34753,7 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
         compensate_with_on_demand: bool = None,
         on_demand_base_capacity: int = None,
         on_demand_percentage_above_base_capacity: int = None,
+        price_comparison_mode: str = None,
         spot_auto_replace_on_demand: bool = None,
     ):
         # Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
@@ -34645,6 +34769,7 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
         # 
         # If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
+        self.price_comparison_mode = price_comparison_mode
         # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
         # 
         # *   true
@@ -34668,6 +34793,8 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
             result['OnDemandBaseCapacity'] = self.on_demand_base_capacity
         if self.on_demand_percentage_above_base_capacity is not None:
             result['OnDemandPercentageAboveBaseCapacity'] = self.on_demand_percentage_above_base_capacity
+        if self.price_comparison_mode is not None:
+            result['PriceComparisonMode'] = self.price_comparison_mode
         if self.spot_auto_replace_on_demand is not None:
             result['SpotAutoReplaceOnDemand'] = self.spot_auto_replace_on_demand
         return result
@@ -34680,6 +34807,8 @@ class ModifyScalingGroupRequestCapacityOptions(TeaModel):
             self.on_demand_base_capacity = m.get('OnDemandBaseCapacity')
         if m.get('OnDemandPercentageAboveBaseCapacity') is not None:
             self.on_demand_percentage_above_base_capacity = m.get('OnDemandPercentageAboveBaseCapacity')
+        if m.get('PriceComparisonMode') is not None:
+            self.price_comparison_mode = m.get('PriceComparisonMode')
         if m.get('SpotAutoReplaceOnDemand') is not None:
             self.spot_auto_replace_on_demand = m.get('SpotAutoReplaceOnDemand')
         return self
@@ -35222,7 +35351,9 @@ class ModifyScalingRuleRequestHybridMetricsDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
+        # The key of the metric dimension.
         self.dimension_key = dimension_key
+        # The value of the metric dimension.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -35258,10 +35389,21 @@ class ModifyScalingRuleRequestHybridMetrics(TeaModel):
         metric_name: str = None,
         statistic: str = None,
     ):
+        # The metric dimensions. You can use this parameter to specify the monitored resources.
         self.dimensions = dimensions
+        # The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events.
+        # 
+        # The expression must be written in Reverse Polish Notation (RPN) format and supports only the following operators: `+, -, *, /`.
         self.expression = expression
+        # The reference ID of the metric in the metric expression.
         self.id = id
+        # The name of the Hybrid Cloud Monitoring metric.
         self.metric_name = metric_name
+        # The statistical method of the metric value. Valid values:
+        # 
+        # *   Average: calculates the average value of all metric values within a specified interval.
+        # *   Minimum: calculates the minimum value of all metric values within a specified interval.
+        # *   Maximum: calculates the maximum value of all metric values within a specified interval.
         self.statistic = statistic
 
     def validate(self):
@@ -35406,7 +35548,11 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # Valid values: 0 to 86400. Unit: seconds.
         self.estimated_instance_warmup = estimated_instance_warmup
+        # The Hybrid Cloud Monitoring metrics.
         self.hybrid_metrics = hybrid_metrics
+        # The ID of the Hybrid Cloud Monitoring namespace.
+        # 
+        # For information about how to manage Hybrid Cloud Monitoring namespaces, see [Manage namespaces](https://help.aliyun.com/document_detail/217606.html).
         self.hybrid_monitor_namespace = hybrid_monitor_namespace
         # The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
         self.initial_max_size = initial_max_size
@@ -35431,6 +35577,11 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
+        # The metric type. Valid values:
+        # 
+        # *   system: system metrics of CloudMonitor.
+        # *   custom: custom metrics that are reported to CloudMonitor.
+        # *   hybrid: metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
         # The minimum number of instances to scale. This parameter takes effect only if you create a simple scaling rule or step scaling rule and set `AdjustmentType` to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
@@ -37822,6 +37973,16 @@ class StartInstanceRefreshRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        # Specifies whether to skip instances that match the desired scaling configuration.
+        # 
+        # >  The system determines the match based on the ID of the desired scaling configuration rather than individual configuration items.
+        # 
+        # Valid values:
+        # 
+        # *   true: skips instances that match the desired scaling configuration. When you initiate an instance refresh task, the system checks the configurations of all instances. The refresh operation is skipped for instances created based on the desired scaling configuration.
+        # *   false: does not skip instances that match the desired scaling configuration. When an instance refresh task is initiated, all instances in the scaling group at the time of initiation are refreshed.
+        # 
+        # Default value: true.
         self.skip_matching = skip_matching
 
     def validate(self):

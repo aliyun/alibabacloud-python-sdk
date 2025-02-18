@@ -1,3 +1,10 @@
+2025-02-18 Version: 1.10.9
+- Update API CreateScalingGroup: update param CapacityOptions.
+- Update API DescribeScalingActivities: update response param.
+- Update API DescribeScalingGroups: update response param.
+- Update API ModifyScalingGroup: update param CapacityOptions.
+
+
 2025-01-14 Version: 1.10.8
 - Update API DescribeScalingActivities: update response param.
 
