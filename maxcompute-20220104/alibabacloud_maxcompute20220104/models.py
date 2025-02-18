@@ -676,6 +676,7 @@ class CreateMmsJobRequest(TeaModel):
         dst_db_name: str = None,
         dst_schema_name: str = None,
         enable_verification: bool = None,
+        eta: str = None,
         increment: bool = None,
         name: str = None,
         others: Dict[str, Any] = None,
@@ -696,6 +697,7 @@ class CreateMmsJobRequest(TeaModel):
         self.dst_db_name = dst_db_name
         self.dst_schema_name = dst_schema_name
         self.enable_verification = enable_verification
+        self.eta = eta
         self.increment = increment
         self.name = name
         self.others = others
@@ -730,6 +732,8 @@ class CreateMmsJobRequest(TeaModel):
             result['dstSchemaName'] = self.dst_schema_name
         if self.enable_verification is not None:
             result['enableVerification'] = self.enable_verification
+        if self.eta is not None:
+            result['eta'] = self.eta
         if self.increment is not None:
             result['increment'] = self.increment
         if self.name is not None:
@@ -772,6 +776,8 @@ class CreateMmsJobRequest(TeaModel):
             self.dst_schema_name = m.get('dstSchemaName')
         if m.get('enableVerification') is not None:
             self.enable_verification = m.get('enableVerification')
+        if m.get('eta') is not None:
+            self.eta = m.get('eta')
         if m.get('increment') is not None:
             self.increment = m.get('increment')
         if m.get('name') is not None:
@@ -2231,7 +2237,7 @@ class GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList(TeaModel):
         self.nick_name = nick_name
         # The parameters of the level-2 quota.
         self.parameter = parameter
-        # Region ID。
+        # Region ID.
         self.region_id = region_id
         # Resource status.
         self.status = status
@@ -4037,13 +4043,114 @@ class GetMmsFetchMetadataJobResponse(TeaModel):
         return self
 
 
+class GetMmsJobResponseBodyDataConfig(TeaModel):
+    def __init__(
+        self,
+        column_mapping: Dict[str, str] = None,
+        enable_verification: bool = None,
+        increment: bool = None,
+        others: Dict[str, Any] = None,
+        partition_filters: Dict[str, str] = None,
+        partitions: List[int] = None,
+        schema_only: bool = None,
+        table_black_list: List[str] = None,
+        table_mapping: Dict[str, str] = None,
+        table_white_list: List[str] = None,
+        tables: List[str] = None,
+        task_type: str = None,
+        tunnel_quota: str = None,
+    ):
+        self.column_mapping = column_mapping
+        self.enable_verification = enable_verification
+        self.increment = increment
+        self.others = others
+        self.partition_filters = partition_filters
+        self.partitions = partitions
+        self.schema_only = schema_only
+        self.table_black_list = table_black_list
+        self.table_mapping = table_mapping
+        self.table_white_list = table_white_list
+        self.tables = tables
+        self.task_type = task_type
+        self.tunnel_quota = tunnel_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_mapping is not None:
+            result['columnMapping'] = self.column_mapping
+        if self.enable_verification is not None:
+            result['enableVerification'] = self.enable_verification
+        if self.increment is not None:
+            result['increment'] = self.increment
+        if self.others is not None:
+            result['others'] = self.others
+        if self.partition_filters is not None:
+            result['partitionFilters'] = self.partition_filters
+        if self.partitions is not None:
+            result['partitions'] = self.partitions
+        if self.schema_only is not None:
+            result['schemaOnly'] = self.schema_only
+        if self.table_black_list is not None:
+            result['tableBlackList'] = self.table_black_list
+        if self.table_mapping is not None:
+            result['tableMapping'] = self.table_mapping
+        if self.table_white_list is not None:
+            result['tableWhiteList'] = self.table_white_list
+        if self.tables is not None:
+            result['tables'] = self.tables
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.tunnel_quota is not None:
+            result['tunnelQuota'] = self.tunnel_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columnMapping') is not None:
+            self.column_mapping = m.get('columnMapping')
+        if m.get('enableVerification') is not None:
+            self.enable_verification = m.get('enableVerification')
+        if m.get('increment') is not None:
+            self.increment = m.get('increment')
+        if m.get('others') is not None:
+            self.others = m.get('others')
+        if m.get('partitionFilters') is not None:
+            self.partition_filters = m.get('partitionFilters')
+        if m.get('partitions') is not None:
+            self.partitions = m.get('partitions')
+        if m.get('schemaOnly') is not None:
+            self.schema_only = m.get('schemaOnly')
+        if m.get('tableBlackList') is not None:
+            self.table_black_list = m.get('tableBlackList')
+        if m.get('tableMapping') is not None:
+            self.table_mapping = m.get('tableMapping')
+        if m.get('tableWhiteList') is not None:
+            self.table_white_list = m.get('tableWhiteList')
+        if m.get('tables') is not None:
+            self.tables = m.get('tables')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('tunnelQuota') is not None:
+            self.tunnel_quota = m.get('tunnelQuota')
+        return self
+
+
 class GetMmsJobResponseBodyData(TeaModel):
     def __init__(
         self,
+        config: GetMmsJobResponseBodyDataConfig = None,
         create_time: str = None,
         db_id: int = None,
         dst_db_name: str = None,
         dst_schema_name: str = None,
+        eta: str = None,
         id: int = None,
         name: str = None,
         source_id: int = None,
@@ -4056,10 +4163,12 @@ class GetMmsJobResponseBodyData(TeaModel):
         task_num: int = None,
         type: str = None,
     ):
+        self.config = config
         self.create_time = create_time
         self.db_id = db_id
         self.dst_db_name = dst_db_name
         self.dst_schema_name = dst_schema_name
+        self.eta = eta
         self.id = id
         self.name = name
         self.source_id = source_id
@@ -4073,7 +4182,8 @@ class GetMmsJobResponseBodyData(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.config:
+            self.config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4081,6 +4191,8 @@ class GetMmsJobResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.db_id is not None:
@@ -4089,6 +4201,8 @@ class GetMmsJobResponseBodyData(TeaModel):
             result['dstDbName'] = self.dst_db_name
         if self.dst_schema_name is not None:
             result['dstSchemaName'] = self.dst_schema_name
+        if self.eta is not None:
+            result['eta'] = self.eta
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -4115,6 +4229,9 @@ class GetMmsJobResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = GetMmsJobResponseBodyDataConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('dbId') is not None:
@@ -4123,6 +4240,8 @@ class GetMmsJobResponseBodyData(TeaModel):
             self.dst_db_name = m.get('dstDbName')
         if m.get('dstSchemaName') is not None:
             self.dst_schema_name = m.get('dstSchemaName')
+        if m.get('eta') is not None:
+            self.eta = m.get('eta')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -8701,16 +8820,36 @@ class GetQuotaUsageRequest(TeaModel):
         to: int = None,
         y_axis_types: List[str] = None,
     ):
+        # The aggregation algorithm. For a better page experience, up to 60 points can be displayed for each metric. If you select a time range longer than 1 hour, the chart uses the average value within the range (minutes of the selected time range/60) to aggregate data by default. You can change the aggregation algorithm based on your business requirements.
         self.agg_method = agg_method
+        # The time when the query starts. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The types of the charts.
         self.plot_types = plot_types
+        # The quota type. Default value: ODPS.
+        # 
+        # *   ODPS: computing quota
+        # *   TUNNEL: Tunnel quota
         self.product_id = product_id
+        # The region ID.
         self.region = region
+        # The alias of the level-2 quota.
         self.sub_quota_nickname = sub_quota_nickname
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The time when the query ends. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.to = to
+        # The data metric fields.
         self.y_axis_types = y_axis_types
 
     def validate(self):
@@ -8778,16 +8917,36 @@ class GetQuotaUsageShrinkRequest(TeaModel):
         to: int = None,
         y_axis_types_shrink: str = None,
     ):
+        # The aggregation algorithm. For a better page experience, up to 60 points can be displayed for each metric. If you select a time range longer than 1 hour, the chart uses the average value within the range (minutes of the selected time range/60) to aggregate data by default. You can change the aggregation algorithm based on your business requirements.
         self.agg_method = agg_method
+        # The time when the query starts. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The types of the charts.
         self.plot_types_shrink = plot_types_shrink
+        # The quota type. Default value: ODPS.
+        # 
+        # *   ODPS: computing quota
+        # *   TUNNEL: Tunnel quota
         self.product_id = product_id
+        # The region ID.
         self.region = region
+        # The alias of the level-2 quota.
         self.sub_quota_nickname = sub_quota_nickname
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The time when the query ends. The value is the log time that is specified when log data is written.
+        # 
+        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.to = to
+        # The data metric fields.
         self.y_axis_types_shrink = y_axis_types_shrink
 
     def validate(self):
@@ -8849,8 +9008,11 @@ class GetQuotaUsageResponseBodyDataPlot(TeaModel):
         type: str = None,
         y_axis: List[str] = None,
     ):
+        # The title of the chart.
         self.title = title
+        # The type of the chart.
         self.type = type
+        # The data metric field.
         self.y_axis = y_axis
 
     def validate(self):
@@ -8887,7 +9049,9 @@ class GetQuotaUsageResponseBodyData(TeaModel):
         metrics: Dict[str, Any] = None,
         plot: List[GetQuotaUsageResponseBodyDataPlot] = None,
     ):
+        # The metric results.
         self.metrics = metrics
+        # The information about the chart.
         self.plot = plot
 
     def validate(self):
@@ -8931,10 +9095,21 @@ class GetQuotaUsageResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10879,6 +11054,453 @@ class KillJobsResponse(TeaModel):
         return self
 
 
+class ListComputeMetricsByInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        instance_id: str = None,
+        job_owner: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_names: List[str] = None,
+        region: str = None,
+        signature: str = None,
+        spec_codes: List[str] = None,
+        start_date: int = None,
+        types: List[str] = None,
+    ):
+        # The end time for the period.
+        self.end_date = end_date
+        # The job(instance) ID.
+        self.instance_id = instance_id
+        # The Alibaba Cloud account that is used to run the MaxCompute job.
+        self.job_owner = job_owner
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The name of MaxCompute project.
+        self.project_names = project_names
+        # The region ID.
+        self.region = region
+        # The signature of the SQL job.
+        self.signature = signature
+        # Specification types.
+        self.spec_codes = spec_codes
+        # The start time for the period.
+        self.start_date = start_date
+        # Metering types.
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.project_names is not None:
+            result['projectNames'] = self.project_names
+        if self.region is not None:
+            result['region'] = self.region
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.spec_codes is not None:
+            result['specCodes'] = self.spec_codes
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+        if self.types is not None:
+            result['types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('projectNames') is not None:
+            self.project_names = m.get('projectNames')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('specCodes') is not None:
+            self.spec_codes = m.get('specCodes')
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
+        if m.get('types') is not None:
+            self.types = m.get('types')
+        return self
+
+
+class ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        job_owner: str = None,
+        project_name: str = None,
+        signature: str = None,
+        spec_code: str = None,
+        submit_time: int = None,
+        type: str = None,
+        unit: str = None,
+        usage: float = None,
+    ):
+        # The end time of the job execution.
+        self.end_time = end_time
+        # The job(instance) ID.
+        self.instance_id = instance_id
+        # The owner of the job.
+        self.job_owner = job_owner
+        # The name of the project.
+        self.project_name = project_name
+        # The signature of the SQL job.
+        self.signature = signature
+        # Specifications Type, specifies the resource package that you select when you purchase the MaxCompute service.
+        # - OdpsStandard: the pay-as-you-go resource package.
+        # 
+        # - OdpsSpot: the pay-as-you-go spot resource package.
+        self.spec_code = spec_code
+        # The submission time of the job.
+        self.submit_time = submit_time
+        # Metering types.
+        # - ComputationSql: the metering data of SQL jobs that involve internal tables.
+        # 
+        # - ComputationSqlOTS: the metering data of SQL jobs that involve Tablestore external tables.
+        # 
+        # - ComputationSqlOSS: the metering data of SQL jobs that involve OSS external tables.
+        # 
+        # - MapReduce: the metering data of MapReduce jobs.
+        # 
+        # - spark: the metering data of Spark jobs.
+        # 
+        # - mars: the metering data of Mars jobs.
+        self.type = type
+        # The unit of computing resource usage
+        self.unit = unit
+        # The computing resource usage is calculated based on the following items:
+        # 
+        # - Amount of scanned data in the unit of GB. For the jobs whose metering types are ComputationSql, ComputationSqlOTS, or ComputationSqlOSS, they are billed based on the amount of scanned data. The computing resource usage of such a job is calculated by using the following formula: Amount of scanned data × Complexity. The complexity is fixed at 1 for the jobs whose metering types are ComputationSqlOTS or ComputationSqlOSS.
+        # 
+        # - CU-hours. For the jobs whose metering types are MapReduce, spark, or mars, they are billed based on CU-hours.
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.spec_code is not None:
+            result['specCode'] = self.spec_code
+        if self.submit_time is not None:
+            result['submitTime'] = self.submit_time
+        if self.type is not None:
+            result['type'] = self.type
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.usage is not None:
+            result['usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('specCode') is not None:
+            self.spec_code = m.get('specCode')
+        if m.get('submitTime') is not None:
+            self.submit_time = m.get('submitTime')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('usage') is not None:
+            self.usage = m.get('usage')
+        return self
+
+
+class ListComputeMetricsByInstanceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_compute_metrics: List[ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # List of pay-as-you-go job compute usage.
+        self.instance_compute_metrics = instance_compute_metrics
+        # The current page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The total number of results returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_compute_metrics:
+            for k in self.instance_compute_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['instanceComputeMetrics'] = []
+        if self.instance_compute_metrics is not None:
+            for k in self.instance_compute_metrics:
+                result['instanceComputeMetrics'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_compute_metrics = []
+        if m.get('instanceComputeMetrics') is not None:
+            for k in m.get('instanceComputeMetrics'):
+                temp_model = ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics()
+                self.instance_compute_metrics.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListComputeMetricsByInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListComputeMetricsByInstanceResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # The error code.
+        self.error_code = error_code
+        # The error message.
+        self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
+        self.http_code = http_code
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ListComputeMetricsByInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListComputeMetricsByInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListComputeMetricsByInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListComputeMetricsByInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        max_cu: int = None,
+        min_cu: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.max_cu = max_cu
+        self.min_cu = min_cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        return self
+
+
+class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter(TeaModel):
+    def __init__(
+        self,
+        elastic_reserved_cu: int = None,
+        max_cu: int = None,
+        min_cu: int = None,
+    ):
+        self.elastic_reserved_cu = elastic_reserved_cu
+        self.max_cu = max_cu
+        self.min_cu = min_cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.elastic_reserved_cu is not None:
+            result['elasticReservedCU'] = self.elastic_reserved_cu
+        if self.max_cu is not None:
+            result['maxCU'] = self.max_cu
+        if self.min_cu is not None:
+            result['minCU'] = self.min_cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('elasticReservedCU') is not None:
+            self.elastic_reserved_cu = m.get('elasticReservedCU')
+        if m.get('maxCU') is not None:
+            self.max_cu = m.get('maxCU')
+        if m.get('minCU') is not None:
+            self.min_cu = m.get('minCU')
+        return self
+
+
 class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel):
     def __init__(
         self,
@@ -10888,7 +11510,7 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter = None,
         region_id: str = None,
         status: str = None,
         tenant_id: str = None,
@@ -10921,7 +11543,8 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel
         self.version = version
 
     def validate(self):
-        pass
+        if self.parameter:
+            self.parameter.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10942,7 +11565,7 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.status is not None:
@@ -10970,7 +11593,8 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList(TeaModel
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('status') is not None:
@@ -10993,7 +11617,7 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(TeaModel):
         id: str = None,
         name: str = None,
         nick_name: str = None,
-        parameter: Dict[str, Any] = None,
+        parameter: ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter = None,
         region_id: str = None,
         status: str = None,
         sub_quota_info_list: List[ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList] = None,
@@ -11029,6 +11653,8 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(TeaModel):
         self.version = version
 
     def validate(self):
+        if self.parameter:
+            self.parameter.validate()
         if self.sub_quota_info_list:
             for k in self.sub_quota_info_list:
                 if k:
@@ -11053,7 +11679,7 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(TeaModel):
         if self.nick_name is not None:
             result['nickName'] = self.nick_name
         if self.parameter is not None:
-            result['parameter'] = self.parameter
+            result['parameter'] = self.parameter.to_map()
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.status is not None:
@@ -11085,7 +11711,8 @@ class ListComputeQuotaPlanResponseBodyDataPlanListQuota(TeaModel):
         if m.get('nickName') is not None:
             self.nick_name = m.get('nickName')
         if m.get('parameter') is not None:
-            self.parameter = m.get('parameter')
+            temp_model = ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter()
+            self.parameter = temp_model.from_map(m['parameter'])
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('status') is not None:
@@ -12115,6 +12742,838 @@ class ListJobInfosResponse(TeaModel):
         return self
 
 
+class ListJobMetricRequest(TeaModel):
+    def __init__(
+        self,
+        group: str = None,
+        metric: str = None,
+        period: int = None,
+        project: List[str] = None,
+        quota: List[str] = None,
+        type: str = None,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        # Grouping basis.
+        # 
+        # > Available values: project, quota, type, status. Meanings:
+        # >- project: Group and aggregate by project;
+        # >- quota: Group and aggregate by quota;
+        # >- type: Group and aggregate by job type;
+        # >- status: Group and aggregate by job status.
+        self.group = group
+        # The name of observation metric.
+        self.metric = metric
+        # The monitoring statistical period.Unit:Second(s).
+        self.period = period
+        # The name of MaxCompute projects (for filtering).
+        self.project = project
+        # The nickname of computing Quota nickname used by the job (for filtering).
+        self.quota = quota
+        # The type of observation metric.
+        self.type = type
+        # The end time for the observation interval.
+        # 
+        # This parameter is required.
+        self.end_time = end_time
+        # The start time for the observation interval.
+        # 
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group is not None:
+            result['group'] = self.group
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.period is not None:
+            result['period'] = self.period
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota is not None:
+            result['quota'] = self.quota
+        if self.type is not None:
+            result['type'] = self.type
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group') is not None:
+            self.group = m.get('group')
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quota') is not None:
+            self.quota = m.get('quota')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ListJobMetricResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        metric: Dict[str, str] = None,
+        values: List[List[float]] = None,
+    ):
+        # Metric related information.
+        self.metric = metric
+        # Metric values information.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric is not None:
+            result['metric'] = self.metric
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class ListJobMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        metrics: List[ListJobMetricResponseBodyDataMetrics] = None,
+        name: str = None,
+        period: int = None,
+    ):
+        # The category of the metrics.
+        self.category = category
+        # Metric details.
+        self.metrics = metrics
+        # The name of observation metric.
+        self.name = name
+        # The monitoring statistical period.Unit:Second(s).
+        self.period = period
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        result['metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['metrics'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        self.metrics = []
+        if m.get('metrics') is not None:
+            for k in m.get('metrics'):
+                temp_model = ListJobMetricResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
+class ListJobMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListJobMetricResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # The error code.
+        self.error_code = error_code
+        # The error message.
+        self.error_msg = error_msg
+        # HTTP status code.
+        # - 1xx: Informational response - Request received, processing continues.
+        # - 2xx: Success - The request has been successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection - Further action must be taken to complete the request.
+        # - 4xx: Client error - The request contains bad syntax or cannot be fulfilled.
+        # - 5xx: Server error - The server failed to fulfill an apparently valid request.
+        self.http_code = http_code
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ListJobMetricResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListJobMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListJobSnapshotInfosRequest(TeaModel):
+    def __init__(
+        self,
+        asc_order: bool = None,
+        ext_node_id_list: List[str] = None,
+        from_: int = None,
+        instance_id_list: List[str] = None,
+        job_owner_list: List[str] = None,
+        priority_list: List[int] = None,
+        project_list: List[str] = None,
+        quota_nickname: str = None,
+        signature_list: List[str] = None,
+        sort_by_list: List[str] = None,
+        sort_order_list: List[str] = None,
+        status_list: List[str] = None,
+        to: int = None,
+        type_list: List[str] = None,
+        order_column: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        tenant_id: str = None,
+    ):
+        # Specifies whether to sort query results in ascending or descending order.
+        self.asc_order = asc_order
+        # The ID of the upstream node.
+        self.ext_node_id_list = ext_node_id_list
+        # Start timestamp.
+        # > This parameter is invalid. The end timestamp should be the time point for the snapshot you want to view.
+        self.from_ = from_
+        # The instance ID.
+        self.instance_id_list = instance_id_list
+        # The account that commits the job.
+        self.job_owner_list = job_owner_list
+        # The priority of the job.
+        self.priority_list = priority_list
+        # The name of project.
+        self.project_list = project_list
+        # The nickname of the compute Quota used by the job.
+        self.quota_nickname = quota_nickname
+        # The signature of the SQL job.
+        self.signature_list = signature_list
+        # The sorting columns.
+        self.sort_by_list = sort_by_list
+        # The orders for the sorting columns.
+        self.sort_order_list = sort_order_list
+        # The status of jobs.
+        self.status_list = status_list
+        # End timestamp.
+        # 
+        # This parameter is required.
+        self.to = to
+        # The type of the job.
+        self.type_list = type_list
+        # The column based on which you want to sort query results.
+        self.order_column = order_column
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID.
+        self.region = region
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc_order is not None:
+            result['ascOrder'] = self.asc_order
+        if self.ext_node_id_list is not None:
+            result['extNodeIdList'] = self.ext_node_id_list
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.instance_id_list is not None:
+            result['instanceIdList'] = self.instance_id_list
+        if self.job_owner_list is not None:
+            result['jobOwnerList'] = self.job_owner_list
+        if self.priority_list is not None:
+            result['priorityList'] = self.priority_list
+        if self.project_list is not None:
+            result['projectList'] = self.project_list
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.signature_list is not None:
+            result['signatureList'] = self.signature_list
+        if self.sort_by_list is not None:
+            result['sortByList'] = self.sort_by_list
+        if self.sort_order_list is not None:
+            result['sortOrderList'] = self.sort_order_list
+        if self.status_list is not None:
+            result['statusList'] = self.status_list
+        if self.to is not None:
+            result['to'] = self.to
+        if self.type_list is not None:
+            result['typeList'] = self.type_list
+        if self.order_column is not None:
+            result['orderColumn'] = self.order_column
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.region is not None:
+            result['region'] = self.region
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ascOrder') is not None:
+            self.asc_order = m.get('ascOrder')
+        if m.get('extNodeIdList') is not None:
+            self.ext_node_id_list = m.get('extNodeIdList')
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('instanceIdList') is not None:
+            self.instance_id_list = m.get('instanceIdList')
+        if m.get('jobOwnerList') is not None:
+            self.job_owner_list = m.get('jobOwnerList')
+        if m.get('priorityList') is not None:
+            self.priority_list = m.get('priorityList')
+        if m.get('projectList') is not None:
+            self.project_list = m.get('projectList')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('signatureList') is not None:
+            self.signature_list = m.get('signatureList')
+        if m.get('sortByList') is not None:
+            self.sort_by_list = m.get('sortByList')
+        if m.get('sortOrderList') is not None:
+            self.sort_order_list = m.get('sortOrderList')
+        if m.get('statusList') is not None:
+            self.status_list = m.get('statusList')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        if m.get('typeList') is not None:
+            self.type_list = m.get('typeList')
+        if m.get('orderColumn') is not None:
+            self.order_column = m.get('orderColumn')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class ListJobSnapshotInfosResponseBodyDataJobInfoList(TeaModel):
+    def __init__(
+        self,
+        cpu_request: int = None,
+        cpu_usage: int = None,
+        cpu_usage_to_request_ratio: float = None,
+        ext_node_id: str = None,
+        ext_node_on_duty: str = None,
+        ext_plant_from: str = None,
+        instance_id: str = None,
+        job_owner: str = None,
+        job_type: str = None,
+        max_cpu_pct: float = None,
+        max_memory_pct: float = None,
+        memory_request: int = None,
+        memory_usage: int = None,
+        memory_usage_to_request_ratio: float = None,
+        min_cpu_pct: float = None,
+        min_memory_pct: float = None,
+        priority: int = None,
+        project: str = None,
+        quota_nickname: str = None,
+        quota_type: str = None,
+        region: str = None,
+        running_at_time: int = None,
+        running_time: int = None,
+        signature: str = None,
+        snapshot_time: int = None,
+        status: str = None,
+        submitted_at_time: int = None,
+        tenant_id: str = None,
+        total_time: int = None,
+        waiting_time: int = None,
+    ):
+        self.cpu_request = cpu_request
+        # CPU usage of the job at the snapshot time. Unit: Core.
+        self.cpu_usage = cpu_usage
+        self.cpu_usage_to_request_ratio = cpu_usage_to_request_ratio
+        # The ID of the upstream node.
+        self.ext_node_id = ext_node_id
+        # The account ID of the task owner.
+        self.ext_node_on_duty = ext_node_on_duty
+        # The upstream platform.
+        self.ext_plant_from = ext_plant_from
+        # The instance ID.
+        self.instance_id = instance_id
+        # The account that commits the job.
+        self.job_owner = job_owner
+        # The type of the job.
+        self.job_type = job_type
+        # Not applicable.
+        self.max_cpu_pct = max_cpu_pct
+        # Not applicable.
+        self.max_memory_pct = max_memory_pct
+        self.memory_request = memory_request
+        # Memory usage of the job at the snapshot time. Unit: MB.
+        self.memory_usage = memory_usage
+        self.memory_usage_to_request_ratio = memory_usage_to_request_ratio
+        # The CPU usage ratio of the annual or monthly subscription job at the snapshot time (CPU usage / (reserved CPU guarantee + elastic reserved CPU)). This parameter is not available for pay-as-you-go jobs.
+        self.min_cpu_pct = min_cpu_pct
+        # The memory usage ratio of the annual or monthly subscription job at the observation time (memory usage / (reserved memory guarantee + elastic reserved memory)). This parameter is not available for pay-as-you-go jobs.
+        self.min_memory_pct = min_memory_pct
+        # The priority of the job.
+        self.priority = priority
+        # The name of the MaxCompute project.
+        self.project = project
+        # The nickname of the computing Quota used by the job.
+        self.quota_nickname = quota_nickname
+        # The type of the quota.
+        self.quota_type = quota_type
+        # The region ID.
+        self.region = region
+        # The start time of the job.
+        # > The time when the job received the first batch of computing resources.
+        self.running_at_time = running_at_time
+        # The running duration, which is the duration from the runningAtTime to the snapshotTime of the job.  Unit: seconds (s).
+        self.running_time = running_time
+        # The signature of the SQL job.
+        self.signature = signature
+        # The snapshot time.
+        self.snapshot_time = snapshot_time
+        # The snapshot status of the job.
+        # 
+        # > The snapshot status is only running.
+        self.status = status
+        # The time when the job was committed.
+        self.submitted_at_time = submitted_at_time
+        # The tenant ID.
+        self.tenant_id = tenant_id
+        # The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+        self.total_time = total_time
+        # The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+        self.waiting_time = waiting_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_request is not None:
+            result['cpuRequest'] = self.cpu_request
+        if self.cpu_usage is not None:
+            result['cpuUsage'] = self.cpu_usage
+        if self.cpu_usage_to_request_ratio is not None:
+            result['cpuUsageToRequestRatio'] = self.cpu_usage_to_request_ratio
+        if self.ext_node_id is not None:
+            result['extNodeId'] = self.ext_node_id
+        if self.ext_node_on_duty is not None:
+            result['extNodeOnDuty'] = self.ext_node_on_duty
+        if self.ext_plant_from is not None:
+            result['extPlantFrom'] = self.ext_plant_from
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.job_owner is not None:
+            result['jobOwner'] = self.job_owner
+        if self.job_type is not None:
+            result['jobType'] = self.job_type
+        if self.max_cpu_pct is not None:
+            result['maxCpuPct'] = self.max_cpu_pct
+        if self.max_memory_pct is not None:
+            result['maxMemoryPct'] = self.max_memory_pct
+        if self.memory_request is not None:
+            result['memoryRequest'] = self.memory_request
+        if self.memory_usage is not None:
+            result['memoryUsage'] = self.memory_usage
+        if self.memory_usage_to_request_ratio is not None:
+            result['memoryUsageToRequestRatio'] = self.memory_usage_to_request_ratio
+        if self.min_cpu_pct is not None:
+            result['minCpuPct'] = self.min_cpu_pct
+        if self.min_memory_pct is not None:
+            result['minMemoryPct'] = self.min_memory_pct
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.project is not None:
+            result['project'] = self.project
+        if self.quota_nickname is not None:
+            result['quotaNickname'] = self.quota_nickname
+        if self.quota_type is not None:
+            result['quotaType'] = self.quota_type
+        if self.region is not None:
+            result['region'] = self.region
+        if self.running_at_time is not None:
+            result['runningAtTime'] = self.running_at_time
+        if self.running_time is not None:
+            result['runningTime'] = self.running_time
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.snapshot_time is not None:
+            result['snapshotTime'] = self.snapshot_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.submitted_at_time is not None:
+            result['submittedAtTime'] = self.submitted_at_time
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        if self.total_time is not None:
+            result['totalTime'] = self.total_time
+        if self.waiting_time is not None:
+            result['waitingTime'] = self.waiting_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cpuRequest') is not None:
+            self.cpu_request = m.get('cpuRequest')
+        if m.get('cpuUsage') is not None:
+            self.cpu_usage = m.get('cpuUsage')
+        if m.get('cpuUsageToRequestRatio') is not None:
+            self.cpu_usage_to_request_ratio = m.get('cpuUsageToRequestRatio')
+        if m.get('extNodeId') is not None:
+            self.ext_node_id = m.get('extNodeId')
+        if m.get('extNodeOnDuty') is not None:
+            self.ext_node_on_duty = m.get('extNodeOnDuty')
+        if m.get('extPlantFrom') is not None:
+            self.ext_plant_from = m.get('extPlantFrom')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('jobOwner') is not None:
+            self.job_owner = m.get('jobOwner')
+        if m.get('jobType') is not None:
+            self.job_type = m.get('jobType')
+        if m.get('maxCpuPct') is not None:
+            self.max_cpu_pct = m.get('maxCpuPct')
+        if m.get('maxMemoryPct') is not None:
+            self.max_memory_pct = m.get('maxMemoryPct')
+        if m.get('memoryRequest') is not None:
+            self.memory_request = m.get('memoryRequest')
+        if m.get('memoryUsage') is not None:
+            self.memory_usage = m.get('memoryUsage')
+        if m.get('memoryUsageToRequestRatio') is not None:
+            self.memory_usage_to_request_ratio = m.get('memoryUsageToRequestRatio')
+        if m.get('minCpuPct') is not None:
+            self.min_cpu_pct = m.get('minCpuPct')
+        if m.get('minMemoryPct') is not None:
+            self.min_memory_pct = m.get('minMemoryPct')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('quotaNickname') is not None:
+            self.quota_nickname = m.get('quotaNickname')
+        if m.get('quotaType') is not None:
+            self.quota_type = m.get('quotaType')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('runningAtTime') is not None:
+            self.running_at_time = m.get('runningAtTime')
+        if m.get('runningTime') is not None:
+            self.running_time = m.get('runningTime')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('snapshotTime') is not None:
+            self.snapshot_time = m.get('snapshotTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('submittedAtTime') is not None:
+            self.submitted_at_time = m.get('submittedAtTime')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        if m.get('totalTime') is not None:
+            self.total_time = m.get('totalTime')
+        if m.get('waitingTime') is not None:
+            self.waiting_time = m.get('waitingTime')
+        return self
+
+
+class ListJobSnapshotInfosResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_info_list: List[ListJobSnapshotInfosResponseBodyDataJobInfoList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # The list of jobs snapshot information
+        self.job_info_list = job_info_list
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The total number of returned results.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.job_info_list:
+            for k in self.job_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['jobInfoList'] = []
+        if self.job_info_list is not None:
+            for k in self.job_info_list:
+                result['jobInfoList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.job_info_list = []
+        if m.get('jobInfoList') is not None:
+            for k in m.get('jobInfoList'):
+                temp_model = ListJobSnapshotInfosResponseBodyDataJobInfoList()
+                self.job_info_list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListJobSnapshotInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListJobSnapshotInfosResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        # The data returned.
+        self.data = data
+        # The error code.
+        self.error_code = error_code
+        # The error message.
+        self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # - 1xx: informational response. The request is received and is being processed.
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
+        self.http_code = http_code
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ListJobSnapshotInfosResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListJobSnapshotInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobSnapshotInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobSnapshotInfosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMmsDataSourcesRequest(TeaModel):
     def __init__(
         self,
@@ -13091,13 +14550,114 @@ class ListMmsJobsRequest(TeaModel):
         return self
 
 
+class ListMmsJobsResponseBodyDataObjectListConfig(TeaModel):
+    def __init__(
+        self,
+        column_mapping: Dict[str, str] = None,
+        enable_verification: bool = None,
+        increment: bool = None,
+        others: Dict[str, Any] = None,
+        partition_filters: Dict[str, str] = None,
+        partitions: List[int] = None,
+        schema_only: bool = None,
+        table_black_list: List[str] = None,
+        table_mapping: Dict[str, str] = None,
+        table_white_list: List[str] = None,
+        tables: List[str] = None,
+        task_type: str = None,
+        tunnel_quota: str = None,
+    ):
+        self.column_mapping = column_mapping
+        self.enable_verification = enable_verification
+        self.increment = increment
+        self.others = others
+        self.partition_filters = partition_filters
+        self.partitions = partitions
+        self.schema_only = schema_only
+        self.table_black_list = table_black_list
+        self.table_mapping = table_mapping
+        self.table_white_list = table_white_list
+        self.tables = tables
+        self.task_type = task_type
+        self.tunnel_quota = tunnel_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_mapping is not None:
+            result['columnMapping'] = self.column_mapping
+        if self.enable_verification is not None:
+            result['enableVerification'] = self.enable_verification
+        if self.increment is not None:
+            result['increment'] = self.increment
+        if self.others is not None:
+            result['others'] = self.others
+        if self.partition_filters is not None:
+            result['partitionFilters'] = self.partition_filters
+        if self.partitions is not None:
+            result['partitions'] = self.partitions
+        if self.schema_only is not None:
+            result['schemaOnly'] = self.schema_only
+        if self.table_black_list is not None:
+            result['tableBlackList'] = self.table_black_list
+        if self.table_mapping is not None:
+            result['tableMapping'] = self.table_mapping
+        if self.table_white_list is not None:
+            result['tableWhiteList'] = self.table_white_list
+        if self.tables is not None:
+            result['tables'] = self.tables
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        if self.tunnel_quota is not None:
+            result['tunnelQuota'] = self.tunnel_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columnMapping') is not None:
+            self.column_mapping = m.get('columnMapping')
+        if m.get('enableVerification') is not None:
+            self.enable_verification = m.get('enableVerification')
+        if m.get('increment') is not None:
+            self.increment = m.get('increment')
+        if m.get('others') is not None:
+            self.others = m.get('others')
+        if m.get('partitionFilters') is not None:
+            self.partition_filters = m.get('partitionFilters')
+        if m.get('partitions') is not None:
+            self.partitions = m.get('partitions')
+        if m.get('schemaOnly') is not None:
+            self.schema_only = m.get('schemaOnly')
+        if m.get('tableBlackList') is not None:
+            self.table_black_list = m.get('tableBlackList')
+        if m.get('tableMapping') is not None:
+            self.table_mapping = m.get('tableMapping')
+        if m.get('tableWhiteList') is not None:
+            self.table_white_list = m.get('tableWhiteList')
+        if m.get('tables') is not None:
+            self.tables = m.get('tables')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        if m.get('tunnelQuota') is not None:
+            self.tunnel_quota = m.get('tunnelQuota')
+        return self
+
+
 class ListMmsJobsResponseBodyDataObjectList(TeaModel):
     def __init__(
         self,
+        config: ListMmsJobsResponseBodyDataObjectListConfig = None,
         create_time: str = None,
         db_id: int = None,
         dst_db_name: str = None,
         dst_schema_name: str = None,
+        eta: str = None,
         id: int = None,
         name: str = None,
         source_id: int = None,
@@ -13110,10 +14670,12 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
         task_num: int = None,
         type: str = None,
     ):
+        self.config = config
         self.create_time = create_time
         self.db_id = db_id
         self.dst_db_name = dst_db_name
         self.dst_schema_name = dst_schema_name
+        self.eta = eta
         self.id = id
         self.name = name
         self.source_id = source_id
@@ -13127,7 +14689,8 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
         self.type = type
 
     def validate(self):
-        pass
+        if self.config:
+            self.config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13135,6 +14698,8 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
             return _map
 
         result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.db_id is not None:
@@ -13143,6 +14708,8 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
             result['dstDbName'] = self.dst_db_name
         if self.dst_schema_name is not None:
             result['dstSchemaName'] = self.dst_schema_name
+        if self.eta is not None:
+            result['eta'] = self.eta
         if self.id is not None:
             result['id'] = self.id
         if self.name is not None:
@@ -13169,6 +14736,9 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('config') is not None:
+            temp_model = ListMmsJobsResponseBodyDataObjectListConfig()
+            self.config = temp_model.from_map(m['config'])
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('dbId') is not None:
@@ -13177,6 +14747,8 @@ class ListMmsJobsResponseBodyDataObjectList(TeaModel):
             self.dst_db_name = m.get('dstDbName')
         if m.get('dstSchemaName') is not None:
             self.dst_schema_name = m.get('dstSchemaName')
+        if m.get('eta') is not None:
+            self.eta = m.get('eta')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('name') is not None:
@@ -19368,16 +20940,27 @@ class ListStoragePartitionsInfoRequest(TeaModel):
         tenant_id: str = None,
         types: List[str] = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the YYYYMMdd format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The name of the partition that you want to use for fuzzy match.
         self.partition_prefix = partition_prefix
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types = types
 
     def validate(self):
@@ -19450,16 +21033,27 @@ class ListStoragePartitionsInfoShrinkRequest(TeaModel):
         tenant_id: str = None,
         types_shrink: str = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the YYYYMMdd format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The name of the partition that you want to use for fuzzy match.
         self.partition_prefix = partition_prefix
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types_shrink = types_shrink
 
     def validate(self):
@@ -19537,20 +21131,53 @@ class ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList(TeaModel
         total_input_amount_unit: str = None,
         type: str = None,
     ):
+        # The number of files.
         self.file_count = file_count
+        # The storage size.
         self.file_size = file_size
+        # The unit of the storage size.
         self.file_size_unit = file_size_unit
+        # Indicates whether the table is a partitioned table. This operation returns the partition information. You do not need to take note of this parameter.
         self.is_partitioned = is_partitioned
+        # The time when the partition data was last accessed.
+        # 
+        # >  The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
         self.last_access_time = last_access_time
+        # The partition name.
         self.partition = partition
+        # The project name.
         self.project_name = project_name
+        # The change rate of the total storage usage compared with that of the recent {$recentDays} days. No value is returned.
         self.rate = rate
+        # The schema name.
         self.schema_name = schema_name
+        # The storage type.
+        # 
+        # *   standard
+        # *   lowfrequency
+        # *   longterm
         self.storage_type = storage_type
+        # The table name.
         self.table_name = table_name
+        # The access frequency.
+        # 
+        # > 
+        # 
+        # *   Access behaviors include:
+        # 
+        # *   The table is used as the input table of an SQL task.
+        # *   The table is downloaded by Tunnel.
+        # *   The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
+        # 
+        # *   The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
         self.total_frequency = total_frequency
+        # The total amount of accessed data.
+        # 
+        # >  The amount of data that is read by all access behaviors.
         self.total_input_amount = total_input_amount
+        # The unit of the total amount of accessed data.
         self.total_input_amount_unit = total_input_amount_unit
+        # The type.
         self.type = type
 
     def validate(self):
@@ -19638,10 +21265,15 @@ class ListStoragePartitionsInfoResponseBodyData(TeaModel):
         storage_partition_info_list: List[ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList] = None,
         total_count: int = None,
     ):
+        # The date on which the statistics are collected.
         self.date = date
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The partition storage information.
         self.storage_partition_info_list = storage_partition_info_list
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -19697,10 +21329,21 @@ class ListStoragePartitionsInfoResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19797,17 +21440,29 @@ class ListStorageTablesInfoRequest(TeaModel):
         tenant_id: str = None,
         types: List[str] = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the `YYYYMMdd` format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The number of recent days for comparison.
         self.recent_days = recent_days
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The name of the table that you want to use for fuzzy match.
         self.table_prefix = table_prefix
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types = types
 
     def validate(self):
@@ -19885,17 +21540,29 @@ class ListStorageTablesInfoShrinkRequest(TeaModel):
         tenant_id: str = None,
         types_shrink: str = None,
     ):
+        # Specifies whether to sort data in ascending order.
         self.asc_order = asc_order
+        # The date on which the statistics are collected, in days. Set this parameter to a value in the `YYYYMMdd` format.
+        # 
         # This parameter is required.
         self.date = date
+        # The sorting column.
         self.order_column = order_column
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The number of recent days for comparison.
         self.recent_days = recent_days
+        # The region ID.
         self.region = region
+        # The name of the schema.
         self.schema = schema
+        # The name of the table that you want to use for fuzzy match.
         self.table_prefix = table_prefix
+        # The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
         self.tenant_id = tenant_id
+        # The storage types.
         self.types_shrink = types_shrink
 
     def validate(self):
@@ -19985,28 +21652,70 @@ class ListStorageTablesInfoResponseBodyDataStorageTableInfoList(TeaModel):
         total_storage_file_count: int = None,
         total_storage_unit: str = None,
     ):
+        # The date on which the statistics are collected. This value is not returned.
         self.date = date
+        # Indicates whether the table is a partitioned table.
         self.is_partitioned = is_partitioned
+        # The time when the table was last accessed. This value is returned when the table is a non-partitioned table.
+        # 
+        # >  The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
         self.last_access_time = last_access_time
+        # The storage usage at the long-term storage tier.
         self.long_term_storage = long_term_storage
+        # The number of long-term storage files.
         self.long_term_storage_file_count = long_term_storage_file_count
+        # The unit of the storage usage at the long-term storage tier.
         self.long_term_storage_unit = long_term_storage_unit
+        # The storage usage at the low-frequency tier.
         self.low_freq_storage = low_freq_storage
+        # The number of low-frequency storage files.
         self.low_freq_storage_file_count = low_freq_storage_file_count
+        # The unit of the storage usage at the low-frequency storage tier.
         self.low_freq_storage_unit = low_freq_storage_unit
+        # The project name.
         self.project_name = project_name
+        # The change rate of the total storage usage compared with that of the recent {$recentDays} days.
         self.rate = rate
+        # The schema name.
         self.schema_name = schema_name
+        # The storage usage at the standard storage tier.
         self.standard_storage = standard_storage
+        # The number of standard storage files.
         self.standard_storage_file_count = standard_storage_file_count
+        # The unit of the storage usage at the standard storage tier.
         self.standard_storage_unit = standard_storage_unit
+        # The table storage type.
+        # 
+        # *   standard
+        # *   lowfrequency
+        # *   longterm
+        # *   unknown: This value is returned when the table is a partitioned table. You can call the ListStoragePartitionsInfo operation to query the storage type of each partition.
         self.storage_type = storage_type
+        # The table name.
         self.table_name = table_name
+        # The access frequency.
+        # 
+        # > 
+        # 
+        # *   Access behaviors include:
+        # 
+        # *   The table is used as the input table of an SQL task.
+        # *   The table is downloaded by Tunnel.
+        # *   The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
+        # 
+        # *   The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
         self.total_frequency = total_frequency
+        # The total amount of accessed data.
+        # 
+        # >  The amount of data that is read by all access behaviors.
         self.total_input_amount = total_input_amount
+        # The unit of the total amount of accessed data.
         self.total_input_amount_unit = total_input_amount_unit
+        # The total storage usage. For a partitioned table, this parameter indicates the sum of the storage usage of all partitions. If the storage types of partitions are different, the value is the sum of the storage usage of each storage type.
         self.total_storage = total_storage
+        # The total number of files.
         self.total_storage_file_count = total_storage_file_count
+        # The unit of storage usage.
         self.total_storage_unit = total_storage_unit
 
     def validate(self):
@@ -20126,10 +21835,15 @@ class ListStorageTablesInfoResponseBodyData(TeaModel):
         storage_table_info_list: List[ListStorageTablesInfoResponseBodyDataStorageTableInfoList] = None,
         total_count: int = None,
     ):
+        # The date on which the statistics are collected.
         self.date = date
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The table storage information.
         self.storage_table_info_list = storage_table_info_list
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -20185,10 +21899,21 @@ class ListStorageTablesInfoResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20523,7 +22248,9 @@ class ListTunnelQuotaTimerResponseBodyDataTunnelQuotaParameter(TeaModel):
         elastic_reserved_slot_num: int = None,
         slot_num: int = None,
     ):
+        # The number of elastically reserved slots.
         self.elastic_reserved_slot_num = elastic_reserved_slot_num
+        # The number of reserved slots.
         self.slot_num = slot_num
 
     def validate(self):
@@ -20558,9 +22285,13 @@ class ListTunnelQuotaTimerResponseBodyData(TeaModel):
         timezone: str = None,
         tunnel_quota_parameter: ListTunnelQuotaTimerResponseBodyDataTunnelQuotaParameter = None,
     ):
+        # The start time of the time-specific configuration.
         self.begin_time = begin_time
+        # The end time of the time-specific configuration.
         self.end_time = end_time
+        # The time zone property for the time-specific configuration.
         self.timezone = timezone
+        # The parameters for the time-specific configuration.
         self.tunnel_quota_parameter = tunnel_quota_parameter
 
     def validate(self):
@@ -20606,10 +22337,21 @@ class ListTunnelQuotaTimerResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22356,7 +24098,6 @@ class UpdateComputeQuotaScheduleRequestBody(TeaModel):
         self,
         condition: UpdateComputeQuotaScheduleRequestBodyCondition = None,
         plan: str = None,
-        timezone: str = None,
         type: str = None,
     ):
         # The value of effective condition.
@@ -22365,10 +24106,6 @@ class UpdateComputeQuotaScheduleRequestBody(TeaModel):
         # 
         # This parameter is required.
         self.plan = plan
-        # Time zone.
-        # 
-        # > Default Key: UTC+8
-        self.timezone = timezone
         # The type of the quota plan.
         # 
         # >Notice: Currently, only daily is supported.</notice>
@@ -22390,8 +24127,6 @@ class UpdateComputeQuotaScheduleRequestBody(TeaModel):
             result['condition'] = self.condition.to_map()
         if self.plan is not None:
             result['plan'] = self.plan
-        if self.timezone is not None:
-            result['timezone'] = self.timezone
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -22403,8 +24138,6 @@ class UpdateComputeQuotaScheduleRequestBody(TeaModel):
             self.condition = temp_model.from_map(m['condition'])
         if m.get('plan') is not None:
             self.plan = m.get('plan')
-        if m.get('timezone') is not None:
-            self.timezone = m.get('timezone')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -22414,9 +24147,11 @@ class UpdateComputeQuotaScheduleRequest(TeaModel):
     def __init__(
         self,
         body: List[UpdateComputeQuotaScheduleRequestBody] = None,
+        schedule_timezone: str = None,
     ):
         # The request body parameters.
         self.body = body
+        self.schedule_timezone = schedule_timezone
 
     def validate(self):
         if self.body:
@@ -22434,6 +24169,8 @@ class UpdateComputeQuotaScheduleRequest(TeaModel):
         if self.body is not None:
             for k in self.body:
                 result['body'].append(k.to_map() if k else None)
+        if self.schedule_timezone is not None:
+            result['scheduleTimezone'] = self.schedule_timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -22443,6 +24180,8 @@ class UpdateComputeQuotaScheduleRequest(TeaModel):
             for k in m.get('body'):
                 temp_model = UpdateComputeQuotaScheduleRequestBody()
                 self.body.append(temp_model.from_map(k))
+        if m.get('scheduleTimezone') is not None:
+            self.schedule_timezone = m.get('scheduleTimezone')
         return self
 
 
@@ -23844,7 +25583,9 @@ class UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter(TeaModel):
         elastic_reserved_slot_num: int = None,
         slot_num: int = None,
     ):
+        # The number of elastically reserved slots.
         self.elastic_reserved_slot_num = elastic_reserved_slot_num
+        # The number of reserved slots.
         self.slot_num = slot_num
 
     def validate(self):
@@ -23876,12 +25617,13 @@ class UpdateTunnelQuotaTimerRequestBody(TeaModel):
         self,
         begin_time: str = None,
         end_time: str = None,
-        timezone: str = None,
         tunnel_quota_parameter: UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter = None,
     ):
+        # The start time of the time-specific configuration.
         self.begin_time = begin_time
+        # The end time of the time-specific configuration.
         self.end_time = end_time
-        self.timezone = timezone
+        # The parameters for the time-specific configuration.
         self.tunnel_quota_parameter = tunnel_quota_parameter
 
     def validate(self):
@@ -23898,8 +25640,6 @@ class UpdateTunnelQuotaTimerRequestBody(TeaModel):
             result['beginTime'] = self.begin_time
         if self.end_time is not None:
             result['endTime'] = self.end_time
-        if self.timezone is not None:
-            result['timezone'] = self.timezone
         if self.tunnel_quota_parameter is not None:
             result['tunnelQuotaParameter'] = self.tunnel_quota_parameter.to_map()
         return result
@@ -23910,8 +25650,6 @@ class UpdateTunnelQuotaTimerRequestBody(TeaModel):
             self.begin_time = m.get('beginTime')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
-        if m.get('timezone') is not None:
-            self.timezone = m.get('timezone')
         if m.get('tunnelQuotaParameter') is not None:
             temp_model = UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter()
             self.tunnel_quota_parameter = temp_model.from_map(m['tunnelQuotaParameter'])
@@ -23922,8 +25660,11 @@ class UpdateTunnelQuotaTimerRequest(TeaModel):
     def __init__(
         self,
         body: List[UpdateTunnelQuotaTimerRequestBody] = None,
+        timezone: str = None,
     ):
+        # The request body.
         self.body = body
+        self.timezone = timezone
 
     def validate(self):
         if self.body:
@@ -23941,6 +25682,8 @@ class UpdateTunnelQuotaTimerRequest(TeaModel):
         if self.body is not None:
             for k in self.body:
                 result['body'].append(k.to_map() if k else None)
+        if self.timezone is not None:
+            result['timezone'] = self.timezone
         return result
 
     def from_map(self, m: dict = None):
@@ -23950,6 +25693,8 @@ class UpdateTunnelQuotaTimerRequest(TeaModel):
             for k in m.get('body'):
                 temp_model = UpdateTunnelQuotaTimerRequestBody()
                 self.body.append(temp_model.from_map(k))
+        if m.get('timezone') is not None:
+            self.timezone = m.get('timezone')
         return self
 
 
@@ -23962,10 +25707,21 @@ class UpdateTunnelQuotaTimerResponseBody(TeaModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
+        # 
+        # *   1xx: informational response. The request is received and is being processed.
+        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
+        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # *   4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+        # *   5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

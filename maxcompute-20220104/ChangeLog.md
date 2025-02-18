@@ -1,3 +1,17 @@
+2025-02-18 Version: 4.0.0
+- Support API ListComputeMetricsByInstance.
+- Support API ListJobMetric.
+- Support API ListJobSnapshotInfos.
+- Update API CreateMmsJob: update param body.
+- Update API GetMmsJob: update response param.
+- Update API ListComputeQuotaPlan: update response param.
+- Update API ListMmsJobs: update response param.
+- Update API UpdateComputeQuotaSchedule: add param scheduleTimezone.
+- Update API UpdateComputeQuotaSchedule: update param body.
+- Update API UpdateTunnelQuotaTimer: add param timezone.
+- Update API UpdateTunnelQuotaTimer: update param body.
+
+
 2025-01-02 Version: 3.1.0
 - Support API ApplyComputeQuotaPlan.
 - Support API CreateComputeQuotaPlan.
