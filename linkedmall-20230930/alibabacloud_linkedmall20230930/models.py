@@ -6001,6 +6001,721 @@ class RenderRefundOrderResponse(TeaModel):
         return self
 
 
+class SearchProductsRequest(TeaModel):
+    def __init__(
+        self,
+        brand_name: str = None,
+        category_ids: List[str] = None,
+        create_end_time: str = None,
+        create_start_time: str = None,
+        distribution_high_price: int = None,
+        distribution_high_price_ratio: int = None,
+        distribution_low_price: int = None,
+        distribution_low_price_ratio: int = None,
+        high_mark_price: int = None,
+        high_price: int = None,
+        in_group: bool = None,
+        in_group_end_time: str = None,
+        in_group_start_time: str = None,
+        inventory_risk_level: str = None,
+        lm_item_id: str = None,
+        low_mark_price: int = None,
+        low_price: int = None,
+        modify_end_time: str = None,
+        modify_start_time: str = None,
+        order_by: str = None,
+        order_direction: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        platform: str = None,
+        product_id: str = None,
+        product_name: str = None,
+        product_status: str = None,
+        purchaser_id: str = None,
+        tax_rate: str = None,
+        trade_mode_and_credit: str = None,
+    ):
+        self.brand_name = brand_name
+        self.category_ids = category_ids
+        self.create_end_time = create_end_time
+        self.create_start_time = create_start_time
+        self.distribution_high_price = distribution_high_price
+        self.distribution_high_price_ratio = distribution_high_price_ratio
+        self.distribution_low_price = distribution_low_price
+        self.distribution_low_price_ratio = distribution_low_price_ratio
+        self.high_mark_price = high_mark_price
+        self.high_price = high_price
+        self.in_group = in_group
+        self.in_group_end_time = in_group_end_time
+        self.in_group_start_time = in_group_start_time
+        self.inventory_risk_level = inventory_risk_level
+        self.lm_item_id = lm_item_id
+        self.low_mark_price = low_mark_price
+        self.low_price = low_price
+        self.modify_end_time = modify_end_time
+        self.modify_start_time = modify_start_time
+        self.order_by = order_by
+        self.order_direction = order_direction
+        self.page_number = page_number
+        self.page_size = page_size
+        self.platform = platform
+        self.product_id = product_id
+        self.product_name = product_name
+        self.product_status = product_status
+        self.purchaser_id = purchaser_id
+        self.tax_rate = tax_rate
+        self.trade_mode_and_credit = trade_mode_and_credit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.brand_name is not None:
+            result['brandName'] = self.brand_name
+        if self.category_ids is not None:
+            result['categoryIds'] = self.category_ids
+        if self.create_end_time is not None:
+            result['createEndTime'] = self.create_end_time
+        if self.create_start_time is not None:
+            result['createStartTime'] = self.create_start_time
+        if self.distribution_high_price is not None:
+            result['distributionHighPrice'] = self.distribution_high_price
+        if self.distribution_high_price_ratio is not None:
+            result['distributionHighPriceRatio'] = self.distribution_high_price_ratio
+        if self.distribution_low_price is not None:
+            result['distributionLowPrice'] = self.distribution_low_price
+        if self.distribution_low_price_ratio is not None:
+            result['distributionLowPriceRatio'] = self.distribution_low_price_ratio
+        if self.high_mark_price is not None:
+            result['highMarkPrice'] = self.high_mark_price
+        if self.high_price is not None:
+            result['highPrice'] = self.high_price
+        if self.in_group is not None:
+            result['inGroup'] = self.in_group
+        if self.in_group_end_time is not None:
+            result['inGroupEndTime'] = self.in_group_end_time
+        if self.in_group_start_time is not None:
+            result['inGroupStartTime'] = self.in_group_start_time
+        if self.inventory_risk_level is not None:
+            result['inventoryRiskLevel'] = self.inventory_risk_level
+        if self.lm_item_id is not None:
+            result['lmItemId'] = self.lm_item_id
+        if self.low_mark_price is not None:
+            result['lowMarkPrice'] = self.low_mark_price
+        if self.low_price is not None:
+            result['lowPrice'] = self.low_price
+        if self.modify_end_time is not None:
+            result['modifyEndTime'] = self.modify_end_time
+        if self.modify_start_time is not None:
+            result['modifyStartTime'] = self.modify_start_time
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.order_direction is not None:
+            result['orderDirection'] = self.order_direction
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.platform is not None:
+            result['platform'] = self.platform
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.product_name is not None:
+            result['productName'] = self.product_name
+        if self.product_status is not None:
+            result['productStatus'] = self.product_status
+        if self.purchaser_id is not None:
+            result['purchaserId'] = self.purchaser_id
+        if self.tax_rate is not None:
+            result['taxRate'] = self.tax_rate
+        if self.trade_mode_and_credit is not None:
+            result['tradeModeAndCredit'] = self.trade_mode_and_credit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('brandName') is not None:
+            self.brand_name = m.get('brandName')
+        if m.get('categoryIds') is not None:
+            self.category_ids = m.get('categoryIds')
+        if m.get('createEndTime') is not None:
+            self.create_end_time = m.get('createEndTime')
+        if m.get('createStartTime') is not None:
+            self.create_start_time = m.get('createStartTime')
+        if m.get('distributionHighPrice') is not None:
+            self.distribution_high_price = m.get('distributionHighPrice')
+        if m.get('distributionHighPriceRatio') is not None:
+            self.distribution_high_price_ratio = m.get('distributionHighPriceRatio')
+        if m.get('distributionLowPrice') is not None:
+            self.distribution_low_price = m.get('distributionLowPrice')
+        if m.get('distributionLowPriceRatio') is not None:
+            self.distribution_low_price_ratio = m.get('distributionLowPriceRatio')
+        if m.get('highMarkPrice') is not None:
+            self.high_mark_price = m.get('highMarkPrice')
+        if m.get('highPrice') is not None:
+            self.high_price = m.get('highPrice')
+        if m.get('inGroup') is not None:
+            self.in_group = m.get('inGroup')
+        if m.get('inGroupEndTime') is not None:
+            self.in_group_end_time = m.get('inGroupEndTime')
+        if m.get('inGroupStartTime') is not None:
+            self.in_group_start_time = m.get('inGroupStartTime')
+        if m.get('inventoryRiskLevel') is not None:
+            self.inventory_risk_level = m.get('inventoryRiskLevel')
+        if m.get('lmItemId') is not None:
+            self.lm_item_id = m.get('lmItemId')
+        if m.get('lowMarkPrice') is not None:
+            self.low_mark_price = m.get('lowMarkPrice')
+        if m.get('lowPrice') is not None:
+            self.low_price = m.get('lowPrice')
+        if m.get('modifyEndTime') is not None:
+            self.modify_end_time = m.get('modifyEndTime')
+        if m.get('modifyStartTime') is not None:
+            self.modify_start_time = m.get('modifyStartTime')
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('orderDirection') is not None:
+            self.order_direction = m.get('orderDirection')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('platform') is not None:
+            self.platform = m.get('platform')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('productName') is not None:
+            self.product_name = m.get('productName')
+        if m.get('productStatus') is not None:
+            self.product_status = m.get('productStatus')
+        if m.get('purchaserId') is not None:
+            self.purchaser_id = m.get('purchaserId')
+        if m.get('taxRate') is not None:
+            self.tax_rate = m.get('taxRate')
+        if m.get('tradeModeAndCredit') is not None:
+            self.trade_mode_and_credit = m.get('tradeModeAndCredit')
+        return self
+
+
+class SearchProductsResponseBodyProductsCategoryChain(TeaModel):
+    def __init__(
+        self,
+        category_id: int = None,
+        level: bool = None,
+        name: str = None,
+        parent_id: int = None,
+    ):
+        self.category_id = category_id
+        self.level = level
+        self.name = name
+        self.parent_id = parent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['categoryId'] = self.category_id
+        if self.level is not None:
+            result['level'] = self.level
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categoryId') is not None:
+            self.category_id = m.get('categoryId')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        return self
+
+
+class SearchProductsResponseBodyProducts(TeaModel):
+    def __init__(
+        self,
+        band_name: str = None,
+        can_not_sell_reason: str = None,
+        can_sell: bool = None,
+        category_chain: List[SearchProductsResponseBodyProductsCategoryChain] = None,
+        credit: List[str] = None,
+        diff_price: str = None,
+        distribution_price: str = None,
+        distribution_price_ratio: str = None,
+        external_platform_type: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        in_group: bool = None,
+        in_group_time: str = None,
+        inventory_risk_level: str = None,
+        invoice_type: str = None,
+        lm_item_id: str = None,
+        pic_url: str = None,
+        platform_price: str = None,
+        platform_reserve_price: str = None,
+        product_id: str = None,
+        product_name: str = None,
+        shop_name: str = None,
+        sold_quantity: str = None,
+        tax_code: str = None,
+        tax_rate: int = None,
+        trade_mode: str = None,
+    ):
+        self.band_name = band_name
+        self.can_not_sell_reason = can_not_sell_reason
+        self.can_sell = can_sell
+        self.category_chain = category_chain
+        self.credit = credit
+        self.diff_price = diff_price
+        self.distribution_price = distribution_price
+        self.distribution_price_ratio = distribution_price_ratio
+        self.external_platform_type = external_platform_type
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.in_group = in_group
+        self.in_group_time = in_group_time
+        self.inventory_risk_level = inventory_risk_level
+        self.invoice_type = invoice_type
+        self.lm_item_id = lm_item_id
+        self.pic_url = pic_url
+        self.platform_price = platform_price
+        self.platform_reserve_price = platform_reserve_price
+        self.product_id = product_id
+        self.product_name = product_name
+        self.shop_name = shop_name
+        self.sold_quantity = sold_quantity
+        self.tax_code = tax_code
+        self.tax_rate = tax_rate
+        self.trade_mode = trade_mode
+
+    def validate(self):
+        if self.category_chain:
+            for k in self.category_chain:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.band_name is not None:
+            result['bandName'] = self.band_name
+        if self.can_not_sell_reason is not None:
+            result['canNotSellReason'] = self.can_not_sell_reason
+        if self.can_sell is not None:
+            result['canSell'] = self.can_sell
+        result['categoryChain'] = []
+        if self.category_chain is not None:
+            for k in self.category_chain:
+                result['categoryChain'].append(k.to_map() if k else None)
+        if self.credit is not None:
+            result['credit'] = self.credit
+        if self.diff_price is not None:
+            result['diffPrice'] = self.diff_price
+        if self.distribution_price is not None:
+            result['distributionPrice'] = self.distribution_price
+        if self.distribution_price_ratio is not None:
+            result['distributionPriceRatio'] = self.distribution_price_ratio
+        if self.external_platform_type is not None:
+            result['externalPlatformType'] = self.external_platform_type
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.in_group is not None:
+            result['inGroup'] = self.in_group
+        if self.in_group_time is not None:
+            result['inGroupTime'] = self.in_group_time
+        if self.inventory_risk_level is not None:
+            result['inventoryRiskLevel'] = self.inventory_risk_level
+        if self.invoice_type is not None:
+            result['invoiceType'] = self.invoice_type
+        if self.lm_item_id is not None:
+            result['lmItemId'] = self.lm_item_id
+        if self.pic_url is not None:
+            result['picUrl'] = self.pic_url
+        if self.platform_price is not None:
+            result['platformPrice'] = self.platform_price
+        if self.platform_reserve_price is not None:
+            result['platformReservePrice'] = self.platform_reserve_price
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.product_name is not None:
+            result['productName'] = self.product_name
+        if self.shop_name is not None:
+            result['shopName'] = self.shop_name
+        if self.sold_quantity is not None:
+            result['soldQuantity'] = self.sold_quantity
+        if self.tax_code is not None:
+            result['taxCode'] = self.tax_code
+        if self.tax_rate is not None:
+            result['taxRate'] = self.tax_rate
+        if self.trade_mode is not None:
+            result['tradeMode'] = self.trade_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bandName') is not None:
+            self.band_name = m.get('bandName')
+        if m.get('canNotSellReason') is not None:
+            self.can_not_sell_reason = m.get('canNotSellReason')
+        if m.get('canSell') is not None:
+            self.can_sell = m.get('canSell')
+        self.category_chain = []
+        if m.get('categoryChain') is not None:
+            for k in m.get('categoryChain'):
+                temp_model = SearchProductsResponseBodyProductsCategoryChain()
+                self.category_chain.append(temp_model.from_map(k))
+        if m.get('credit') is not None:
+            self.credit = m.get('credit')
+        if m.get('diffPrice') is not None:
+            self.diff_price = m.get('diffPrice')
+        if m.get('distributionPrice') is not None:
+            self.distribution_price = m.get('distributionPrice')
+        if m.get('distributionPriceRatio') is not None:
+            self.distribution_price_ratio = m.get('distributionPriceRatio')
+        if m.get('externalPlatformType') is not None:
+            self.external_platform_type = m.get('externalPlatformType')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('inGroup') is not None:
+            self.in_group = m.get('inGroup')
+        if m.get('inGroupTime') is not None:
+            self.in_group_time = m.get('inGroupTime')
+        if m.get('inventoryRiskLevel') is not None:
+            self.inventory_risk_level = m.get('inventoryRiskLevel')
+        if m.get('invoiceType') is not None:
+            self.invoice_type = m.get('invoiceType')
+        if m.get('lmItemId') is not None:
+            self.lm_item_id = m.get('lmItemId')
+        if m.get('picUrl') is not None:
+            self.pic_url = m.get('picUrl')
+        if m.get('platformPrice') is not None:
+            self.platform_price = m.get('platformPrice')
+        if m.get('platformReservePrice') is not None:
+            self.platform_reserve_price = m.get('platformReservePrice')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('productName') is not None:
+            self.product_name = m.get('productName')
+        if m.get('shopName') is not None:
+            self.shop_name = m.get('shopName')
+        if m.get('soldQuantity') is not None:
+            self.sold_quantity = m.get('soldQuantity')
+        if m.get('taxCode') is not None:
+            self.tax_code = m.get('taxCode')
+        if m.get('taxRate') is not None:
+            self.tax_rate = m.get('taxRate')
+        if m.get('tradeMode') is not None:
+            self.trade_mode = m.get('tradeMode')
+        return self
+
+
+class SearchProductsResponseBody(TeaModel):
+    def __init__(
+        self,
+        products: List[SearchProductsResponseBodyProducts] = None,
+        total: int = None,
+    ):
+        self.products = products
+        self.total = total
+
+    def validate(self):
+        if self.products:
+            for k in self.products:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['products'] = []
+        if self.products is not None:
+            for k in self.products:
+                result['products'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.products = []
+        if m.get('products') is not None:
+            for k in m.get('products'):
+                temp_model = SearchProductsResponseBodyProducts()
+                self.products.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class SearchProductsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchProductsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchProductsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SelectionGroupAddProductRequest(TeaModel):
+    def __init__(
+        self,
+        product_ids: List[str] = None,
+        purchaser_id: str = None,
+    ):
+        self.product_ids = product_ids
+        self.purchaser_id = purchaser_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_ids is not None:
+            result['productIds'] = self.product_ids
+        if self.purchaser_id is not None:
+            result['purchaserId'] = self.purchaser_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('productIds') is not None:
+            self.product_ids = m.get('productIds')
+        if m.get('purchaserId') is not None:
+            self.purchaser_id = m.get('purchaserId')
+        return self
+
+
+class SelectionGroupAddProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        product_ids: List[str] = None,
+    ):
+        self.product_ids = product_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_ids is not None:
+            result['productIds'] = self.product_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('productIds') is not None:
+            self.product_ids = m.get('productIds')
+        return self
+
+
+class SelectionGroupAddProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SelectionGroupAddProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SelectionGroupAddProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SelectionGroupRemoveProductRequest(TeaModel):
+    def __init__(
+        self,
+        product_ids: List[str] = None,
+        purchaser_id: str = None,
+    ):
+        self.product_ids = product_ids
+        self.purchaser_id = purchaser_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_ids is not None:
+            result['productIds'] = self.product_ids
+        if self.purchaser_id is not None:
+            result['purchaserId'] = self.purchaser_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('productIds') is not None:
+            self.product_ids = m.get('productIds')
+        if m.get('purchaserId') is not None:
+            self.purchaser_id = m.get('purchaserId')
+        return self
+
+
+class SelectionGroupRemoveProductResponseBody(TeaModel):
+    def __init__(
+        self,
+        product_ids: List[str] = None,
+    ):
+        self.product_ids = product_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_ids is not None:
+            result['productIds'] = self.product_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('productIds') is not None:
+            self.product_ids = m.get('productIds')
+        return self
+
+
+class SelectionGroupRemoveProductResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SelectionGroupRemoveProductResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SelectionGroupRemoveProductResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SplitPurchaseOrderRequest(TeaModel):
     def __init__(
         self,

@@ -2411,6 +2411,478 @@ class Client(OpenApiClient):
         headers = {}
         return await self.render_refund_order_with_options_async(request, headers, runtime)
 
+    def search_products_with_options(
+        self,
+        request: linkedmall_20230930_models.SearchProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SearchProductsResponse:
+        """
+        @summary 搜索商品
+        
+        @param request: SearchProductsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchProductsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.brand_name):
+            body['brandName'] = request.brand_name
+        if not UtilClient.is_unset(request.category_ids):
+            body['categoryIds'] = request.category_ids
+        if not UtilClient.is_unset(request.create_end_time):
+            body['createEndTime'] = request.create_end_time
+        if not UtilClient.is_unset(request.create_start_time):
+            body['createStartTime'] = request.create_start_time
+        if not UtilClient.is_unset(request.distribution_high_price):
+            body['distributionHighPrice'] = request.distribution_high_price
+        if not UtilClient.is_unset(request.distribution_high_price_ratio):
+            body['distributionHighPriceRatio'] = request.distribution_high_price_ratio
+        if not UtilClient.is_unset(request.distribution_low_price):
+            body['distributionLowPrice'] = request.distribution_low_price
+        if not UtilClient.is_unset(request.distribution_low_price_ratio):
+            body['distributionLowPriceRatio'] = request.distribution_low_price_ratio
+        if not UtilClient.is_unset(request.high_mark_price):
+            body['highMarkPrice'] = request.high_mark_price
+        if not UtilClient.is_unset(request.high_price):
+            body['highPrice'] = request.high_price
+        if not UtilClient.is_unset(request.in_group):
+            body['inGroup'] = request.in_group
+        if not UtilClient.is_unset(request.in_group_end_time):
+            body['inGroupEndTime'] = request.in_group_end_time
+        if not UtilClient.is_unset(request.in_group_start_time):
+            body['inGroupStartTime'] = request.in_group_start_time
+        if not UtilClient.is_unset(request.inventory_risk_level):
+            body['inventoryRiskLevel'] = request.inventory_risk_level
+        if not UtilClient.is_unset(request.lm_item_id):
+            body['lmItemId'] = request.lm_item_id
+        if not UtilClient.is_unset(request.low_mark_price):
+            body['lowMarkPrice'] = request.low_mark_price
+        if not UtilClient.is_unset(request.low_price):
+            body['lowPrice'] = request.low_price
+        if not UtilClient.is_unset(request.modify_end_time):
+            body['modifyEndTime'] = request.modify_end_time
+        if not UtilClient.is_unset(request.modify_start_time):
+            body['modifyStartTime'] = request.modify_start_time
+        if not UtilClient.is_unset(request.order_by):
+            body['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            body['platform'] = request.platform
+        if not UtilClient.is_unset(request.product_id):
+            body['productId'] = request.product_id
+        if not UtilClient.is_unset(request.product_name):
+            body['productName'] = request.product_name
+        if not UtilClient.is_unset(request.product_status):
+            body['productStatus'] = request.product_status
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        if not UtilClient.is_unset(request.tax_rate):
+            body['taxRate'] = request.tax_rate
+        if not UtilClient.is_unset(request.trade_mode_and_credit):
+            body['tradeModeAndCredit'] = request.trade_mode_and_credit
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchProducts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/searchProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SearchProductsResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SearchProductsResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def search_products_with_options_async(
+        self,
+        request: linkedmall_20230930_models.SearchProductsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SearchProductsResponse:
+        """
+        @summary 搜索商品
+        
+        @param request: SearchProductsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchProductsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.brand_name):
+            body['brandName'] = request.brand_name
+        if not UtilClient.is_unset(request.category_ids):
+            body['categoryIds'] = request.category_ids
+        if not UtilClient.is_unset(request.create_end_time):
+            body['createEndTime'] = request.create_end_time
+        if not UtilClient.is_unset(request.create_start_time):
+            body['createStartTime'] = request.create_start_time
+        if not UtilClient.is_unset(request.distribution_high_price):
+            body['distributionHighPrice'] = request.distribution_high_price
+        if not UtilClient.is_unset(request.distribution_high_price_ratio):
+            body['distributionHighPriceRatio'] = request.distribution_high_price_ratio
+        if not UtilClient.is_unset(request.distribution_low_price):
+            body['distributionLowPrice'] = request.distribution_low_price
+        if not UtilClient.is_unset(request.distribution_low_price_ratio):
+            body['distributionLowPriceRatio'] = request.distribution_low_price_ratio
+        if not UtilClient.is_unset(request.high_mark_price):
+            body['highMarkPrice'] = request.high_mark_price
+        if not UtilClient.is_unset(request.high_price):
+            body['highPrice'] = request.high_price
+        if not UtilClient.is_unset(request.in_group):
+            body['inGroup'] = request.in_group
+        if not UtilClient.is_unset(request.in_group_end_time):
+            body['inGroupEndTime'] = request.in_group_end_time
+        if not UtilClient.is_unset(request.in_group_start_time):
+            body['inGroupStartTime'] = request.in_group_start_time
+        if not UtilClient.is_unset(request.inventory_risk_level):
+            body['inventoryRiskLevel'] = request.inventory_risk_level
+        if not UtilClient.is_unset(request.lm_item_id):
+            body['lmItemId'] = request.lm_item_id
+        if not UtilClient.is_unset(request.low_mark_price):
+            body['lowMarkPrice'] = request.low_mark_price
+        if not UtilClient.is_unset(request.low_price):
+            body['lowPrice'] = request.low_price
+        if not UtilClient.is_unset(request.modify_end_time):
+            body['modifyEndTime'] = request.modify_end_time
+        if not UtilClient.is_unset(request.modify_start_time):
+            body['modifyStartTime'] = request.modify_start_time
+        if not UtilClient.is_unset(request.order_by):
+            body['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            body['platform'] = request.platform
+        if not UtilClient.is_unset(request.product_id):
+            body['productId'] = request.product_id
+        if not UtilClient.is_unset(request.product_name):
+            body['productName'] = request.product_name
+        if not UtilClient.is_unset(request.product_status):
+            body['productStatus'] = request.product_status
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        if not UtilClient.is_unset(request.tax_rate):
+            body['taxRate'] = request.tax_rate
+        if not UtilClient.is_unset(request.trade_mode_and_credit):
+            body['tradeModeAndCredit'] = request.trade_mode_and_credit
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SearchProducts',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/searchProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SearchProductsResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SearchProductsResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def search_products(
+        self,
+        request: linkedmall_20230930_models.SearchProductsRequest,
+    ) -> linkedmall_20230930_models.SearchProductsResponse:
+        """
+        @summary 搜索商品
+        
+        @param request: SearchProductsRequest
+        @return: SearchProductsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.search_products_with_options(request, headers, runtime)
+
+    async def search_products_async(
+        self,
+        request: linkedmall_20230930_models.SearchProductsRequest,
+    ) -> linkedmall_20230930_models.SearchProductsResponse:
+        """
+        @summary 搜索商品
+        
+        @param request: SearchProductsRequest
+        @return: SearchProductsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.search_products_with_options_async(request, headers, runtime)
+
+    def selection_group_add_product_with_options(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupAddProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SelectionGroupAddProductResponse:
+        """
+        @summary 入库操作
+        
+        @param request: SelectionGroupAddProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectionGroupAddProductResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_ids):
+            body['productIds'] = request.product_ids
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SelectionGroupAddProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/addProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def selection_group_add_product_with_options_async(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupAddProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SelectionGroupAddProductResponse:
+        """
+        @summary 入库操作
+        
+        @param request: SelectionGroupAddProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectionGroupAddProductResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_ids):
+            body['productIds'] = request.product_ids
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SelectionGroupAddProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/addProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupAddProductResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def selection_group_add_product(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupAddProductRequest,
+    ) -> linkedmall_20230930_models.SelectionGroupAddProductResponse:
+        """
+        @summary 入库操作
+        
+        @param request: SelectionGroupAddProductRequest
+        @return: SelectionGroupAddProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.selection_group_add_product_with_options(request, headers, runtime)
+
+    async def selection_group_add_product_async(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupAddProductRequest,
+    ) -> linkedmall_20230930_models.SelectionGroupAddProductResponse:
+        """
+        @summary 入库操作
+        
+        @param request: SelectionGroupAddProductRequest
+        @return: SelectionGroupAddProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.selection_group_add_product_with_options_async(request, headers, runtime)
+
+    def selection_group_remove_product_with_options(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupRemoveProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SelectionGroupRemoveProductResponse:
+        """
+        @summary 出库操作
+        
+        @param request: SelectionGroupRemoveProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectionGroupRemoveProductResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_ids):
+            body['productIds'] = request.product_ids
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SelectionGroupRemoveProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/removeProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+                self.call_api(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+                self.execute(params, req, runtime)
+            )
+
+    async def selection_group_remove_product_with_options_async(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupRemoveProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> linkedmall_20230930_models.SelectionGroupRemoveProductResponse:
+        """
+        @summary 出库操作
+        
+        @param request: SelectionGroupRemoveProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectionGroupRemoveProductResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.product_ids):
+            body['productIds'] = request.product_ids
+        if not UtilClient.is_unset(request.purchaser_id):
+            body['purchaserId'] = request.purchaser_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SelectionGroupRemoveProduct',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/selection-group/product/command/removeProduct',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+                await self.call_api_async(params, req, runtime)
+            )
+        else:
+            return TeaCore.from_map(
+                linkedmall_20230930_models.SelectionGroupRemoveProductResponse(),
+                await self.execute_async(params, req, runtime)
+            )
+
+    def selection_group_remove_product(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupRemoveProductRequest,
+    ) -> linkedmall_20230930_models.SelectionGroupRemoveProductResponse:
+        """
+        @summary 出库操作
+        
+        @param request: SelectionGroupRemoveProductRequest
+        @return: SelectionGroupRemoveProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.selection_group_remove_product_with_options(request, headers, runtime)
+
+    async def selection_group_remove_product_async(
+        self,
+        request: linkedmall_20230930_models.SelectionGroupRemoveProductRequest,
+    ) -> linkedmall_20230930_models.SelectionGroupRemoveProductResponse:
+        """
+        @summary 出库操作
+        
+        @param request: SelectionGroupRemoveProductRequest
+        @return: SelectionGroupRemoveProductResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.selection_group_remove_product_with_options_async(request, headers, runtime)
+
     def split_purchase_order_with_options(
         self,
         request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
