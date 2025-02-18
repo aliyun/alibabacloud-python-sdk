@@ -1,3 +1,8 @@
+2025-02-18 Version: 3.0.0
+- Update API GetUserCertificateDetail: update response param.
+- Update API UploadUserCertificate: update response param.
+
+
 2024-12-11 Version: 2.0.4
 - Generated python 2020-04-07 for cas.
 

@@ -212,7 +212,9 @@ class CreateCertificateForPackageRequestRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -298,6 +300,7 @@ class CreateCertificateForPackageRequestRequest(TeaModel):
         # *   **cfca-ov-1-personal**: China Financial Certification Authority (CFCA) single-domain OV certificate, available only on the China site (aliyun.com).
         # *   **cfca-ev-w-advanced**: CFCA wildcard OV certificate, available only on the China site (aliyun.com).
         self.product_code = product_code
+        # The list of tags.
         self.tags = tags
         # The name of the applicant.
         # 
@@ -455,7 +458,15 @@ class CreateCertificateRequestRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys. You cannot specify empty strings as tag keys.
+        # 
+        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # 
+        # >  You must specify at least one of **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
         self.key = key
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -517,6 +528,7 @@ class CreateCertificateRequestRequest(TeaModel):
         # *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
+        # The tags.
         self.tags = tags
         # The name of the applicant.
         # 
@@ -668,7 +680,9 @@ class CreateCertificateWithCsrRequestRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -732,6 +746,7 @@ class CreateCertificateWithCsrRequestRequest(TeaModel):
         # *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
         # *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
         self.product_code = product_code
+        # The tag list.
         self.tags = tags
         # The name of the applicant.
         # 
@@ -3516,6 +3531,8 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         issuer: str = None,
         key: str = None,
         name: str = None,
+        not_after: int = None,
+        not_before: int = None,
         order_id: int = None,
         org_name: str = None,
         province: str = None,
@@ -3539,7 +3556,7 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.cert = cert
         # The certificate chain.
         self.cert_chain = cert_chain
-        # The unique identifier of the certificate. The value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
+        # The certificate identifier. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
         self.cert_identifier = cert_identifier
         # The city of the company or organization to which the certificate purchaser belongs.
         self.city = city
@@ -3570,6 +3587,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.key = key
         # The name of the certificate.
         self.name = name
+        # The end of the validity period of the certificate.
+        self.not_after = not_after
+        # The beginning of the validity period of the certificate.
+        self.not_before = not_before
         # The order ID.
         self.order_id = order_id
         # The name of the company or organization to which the certificate purchaser belongs.
@@ -3643,6 +3664,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             result['Key'] = self.key
         if self.name is not None:
             result['Name'] = self.name
+        if self.not_after is not None:
+            result['NotAfter'] = self.not_after
+        if self.not_before is not None:
+            result['NotBefore'] = self.not_before
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.org_name is not None:
@@ -3708,6 +3733,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             self.key = m.get('Key')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NotAfter') is not None:
+            self.not_after = m.get('NotAfter')
+        if m.get('NotBefore') is not None:
+            self.not_before = m.get('NotBefore')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('OrgName') is not None:
@@ -7478,7 +7507,13 @@ class RenewCertificateOrderForPackageRequestRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
+        # The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
+        # 
+        # A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
         self.value = value
 
     def validate(self):
@@ -7526,6 +7561,7 @@ class RenewCertificateOrderForPackageRequestRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -8407,7 +8443,9 @@ class UploadUserCertificateRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -8455,7 +8493,7 @@ class UploadUserCertificateRequest(TeaModel):
         self.encrypt_private_key = encrypt_private_key
         # The private key of the certificate in the PEM format.
         self.key = key
-        # The name of the certificate. The name can contain up to 128 characters in length. The name can contain all types of characters, such as letters, digits, and underscores (_).
+        # The name of the certificate. The name can be up to 64 characters in length, and can contain all types of characters, such as letters, digits, and underscores (_).
         # 
         # >  The name must be unique within an Alibaba Cloud account.
         self.name = name
@@ -8465,6 +8503,7 @@ class UploadUserCertificateRequest(TeaModel):
         self.sign_cert = sign_cert
         # The private key of the signing certificate in the PEM format.
         self.sign_private_key = sign_private_key
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -8532,11 +8571,14 @@ class UploadUserCertificateResponseBody(TeaModel):
         self,
         cert_id: int = None,
         request_id: str = None,
+        resource_id: str = None,
     ):
         # The ID of the certificate.
         self.cert_id = cert_id
         # The ID of the request.
         self.request_id = request_id
+        # The ID of the resource.
+        self.resource_id = resource_id
 
     def validate(self):
         pass
@@ -8551,6 +8593,8 @@ class UploadUserCertificateResponseBody(TeaModel):
             result['CertId'] = self.cert_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8559,6 +8603,8 @@ class UploadUserCertificateResponseBody(TeaModel):
             self.cert_id = m.get('CertId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
